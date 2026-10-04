@@ -1,0 +1,126 @@
+{
+  "problem_num": 137,
+  "problem_name": "compare_one",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "parse_number",
+          "code": "double parse_number(char* s) {\n    double result = 0.0;\n    double decimal = 0.0;\n    int decimal_places = 0;\n    int in_decimal = 0;\n    \n    for (int i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        if (s[i] == '.' || s[i] == ',') {\n            in_decimal = 1;\n        } else if (s[i] >= '0' && s[i] <= '9') {\n            if (in_decimal) {\n                decimal = decimal * 10 + (s[i] - '0');\n                decimal_places++;\n            } else {\n                result = result * 10 + (s[i] - '0');\n            }\n        }\n    }\n    \n    while (decimal_places > 0) {\n        decimal /= 10.0;\n        decimal_places--;\n    }\n    \n    return result + decimal;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char a[100], b[100];\n    scanf(\"%s %s\", a, b);\n    \n    double val_a = parse_number(a);\n    double val_b = parse_number(b);\n    \n    if (val_a > val_b) {\n        printf(\"%s\\n\", a);\n    } else if (val_b > val_a) {\n        printf(\"%s\\n\", b);\n    } else {\n        printf(\"None\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "parse_number",
+          "code": "double parse_number(char* s) {\n    double result = 0.0;\n    double decimal = 0.0;\n    int decimal_places = 0;\n    int in_decimal = 0;\n    \n    for (int i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        if (s[i] == '.' || s[i] == ',') {\n            in_decimal = 1;\n        } else if (s[i] >= '0' && s[i] <= '9') {\n            if (in_decimal) {\n                decimal = decimal * 10 + (s[i] - '0');\n                decimal_places++;\n            } else {\n                result = result * 10 + (s[i] - '0');\n            }\n        }\n    }\n    \n    while (decimal_places > 0) {\n        decimal /= 10.0;\n        decimal_places--;\n    }\n    \n    return result + decimal;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char a[100], b[100];\n    scanf(\"%s %s\", a, b);\n    \n    double val_a = parse_number(a);\n    double val_b = parse_number(b);\n    \n    if (val_a > val_b) {\n        printf(\"%s\\n\", a);\n    } else if (val_b > val_a) {\n        printf(\"%s\\n\", b);\n    } else {\n        printf(\"None\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "parse_number",
+          "code": "double parse_number(char* s) {\n    double result = 0.0;\n    double decimal = 0.0;\n    int decimal_places = 0;\n    int in_decimal = 0;\n    \n    for (int i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        if (s[i] == '.' || s[i] == ',') {\n            in_decimal = 1;\n        } else if (s[i] >= '0' && s[i] <= '9') {\n            if (in_decimal) {\n                decimal = decimal * 10 + (s[i] - '0');\n                decimal_places++;\n            } else {\n                result = result * 10 + (s[i] - '0');\n            }\n        }\n    }\n    \n    while (decimal_places > 0) {\n        decimal /= 10.0;\n        decimal_places--;\n    }\n    \n    return result + decimal;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char a[100], b[100];\n    scanf(\"%s %s\", a, b);\n    \n    double val_a = parse_number(a);\n    double val_b = parse_number(b);\n    \n    if (val_a > val_b) {\n        printf(\"%s\\n\", a);\n    } else if (val_b > val_a) {\n        printf(\"%s\\n\", b);\n    } else {\n        printf(\"None\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "parse_number",
+          "code": "double parse_number(char* s) {\n    double result = 0.0;\n    double decimal = 0.0;\n    int decimal_places = 0;\n    int in_decimal = 0;\n    \n    for (int i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        if (s[i] == '.' || s[i] == ',') {\n            in_decimal = 1;\n        } else if (s[i] >= '0' && s[i] <= '9') {\n            if (in_decimal) {\n                decimal = decimal * 10 + (s[i] - '0');\n                decimal_places++;\n            } else {\n                result = result * 10 + (s[i] - '0');\n            }\n        }\n    }\n    \n    while (decimal_places > 0) {\n        decimal /= 10.0;\n        decimal_places--;\n    }\n    \n    return result + decimal;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char a[100], b[100];\n    scanf(\"%s %s\", a, b);\n    \n    double val_a = parse_number(a);\n    double val_b = parse_number(b);\n    \n    if (val_a > val_b) {\n        printf(\"%s\\n\", a);\n    } else if (val_b > val_a) {\n        printf(\"%s\\n\", b);\n    } else {\n        printf(\"None\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "parse_number",
+          "code": "double parse_number(char* s) {\n    double result = 0.0;\n    double decimal = 0.0;\n    int decimal_places = 0;\n    int in_decimal = 0;\n    \n    for (int i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        if (s[i] == '.' || s[i] == ',') {\n            in_decimal = 1;\n        } else if (s[i] >= '0' && s[i] <= '9') {\n            if (in_decimal) {\n                decimal = decimal * 10 + (s[i] - '0');\n                decimal_places++;\n            } else {\n                result = result * 10 + (s[i] - '0');\n            }\n        }\n    }\n    \n    while (decimal_places > 0) {\n        decimal /= 10.0;\n        decimal_places--;\n    }\n    \n    return result + decimal;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char a[100], b[100];\n    scanf(\"%s %s\", a, b);\n    \n    double val_a = parse_number(a);\n    double val_b = parse_number(b);\n    \n    if (val_a > val_b) {\n        printf(\"%s\\n\", a);\n    } else if (val_b > val_a) {\n        printf(\"%s\\n\", b);\n    } else {\n        printf(\"None\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

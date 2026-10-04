@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.7411477411477412,
+  "clauses": [
+    {
+      "clause": "construct_palindrome_formula",
+      "confidence": 0.29999999999999993
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9748717948717948
+    },
+    {
+      "clause": "read_target",
+      "confidence": 0.9485714285714287
+    }
+  ]
+}

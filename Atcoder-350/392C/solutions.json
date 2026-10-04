@@ -1,0 +1,171 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *P,int *Q)",
+          "code": "scanf(\"%d\", n); for(int i=1;i<=*n;i++) scanf(\"%d\", &P[i]); for(int i=1;i<=*n;i++) scanf(\"%d\", &Q[i]);\n"
+        },
+        {
+          "clause_id": "build_inv",
+          "signature": "void build_inv(int n,int *Q,int *inv)",
+          "code": "for(int i=1;i<=n;i++) inv[Q[i]]=i;\n"
+        },
+        {
+          "clause_id": "build_ans",
+          "signature": "void build_ans(int n,int *P,int *Q,int *inv,int *ans)",
+          "code": "for(int bib=1;bib<=n;bib++){ int person=inv[bib]; int target=P[person]; ans[bib]=Q[target]; }\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int n,int *ans)",
+          "code": "for(int i=1;i<=n;i++){ if(i>1) printf(\" \"); printf(\"%d\", ans[i]); } printf(\"\\n\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int P[200005],Q[200005],inv[200005],ans[200005]; read_input(&n,P,Q); build_inv(n,Q,inv); build_ans(n,P,Q,inv,ans); print_ans(n,ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *P,int *Q)",
+          "code": "scanf(\"%d\", n); for(int i=1;i<=*n;i++) scanf(\"%d\", &P[i]); for(int i=1;i<=*n;i++) scanf(\"%d\", &Q[i]);\n"
+        },
+        {
+          "clause_id": "build_inv",
+          "signature": "void build_inv(int n,int *Q,int *inv)",
+          "code": "for(int i=1;i<=n;i++) inv[Q[i]]=i;\n"
+        },
+        {
+          "clause_id": "build_ans",
+          "signature": "void build_ans(int n,int *P,int *Q,int *inv,int *ans)",
+          "code": "for(int bib=1;bib<=n;bib++){ int person=inv[bib]; int target=P[person]; ans[bib]=Q[target]; }\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int n,int *ans)",
+          "code": "for(int i=1;i<=n;i++){ if(i>1) printf(\" \"); printf(\"%d\", ans[i]); } printf(\"\\n\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int P[200005],Q[200005],inv[200005],ans[200005]; read_input(&n,P,Q); build_inv(n,Q,inv); build_ans(n,P,Q,inv,ans); print_ans(n,ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *P,int *Q)",
+          "code": "scanf(\"%d\", n); for(int i=1;i<=*n;i++) scanf(\"%d\", &P[i]); for(int i=1;i<=*n;i++) scanf(\"%d\", &Q[i]);\n"
+        },
+        {
+          "clause_id": "build_inv",
+          "signature": "void build_inv(int n,int *Q,int *inv)",
+          "code": "for(int i=1;i<=n;i++) inv[Q[i]]=i;\n"
+        },
+        {
+          "clause_id": "build_ans",
+          "signature": "void build_ans(int n,int *P,int *Q,int *inv,int *ans)",
+          "code": "for(int bib=1;bib<=n;bib++){ int person=inv[bib]; int target=P[person]; ans[bib]=Q[target]; }\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int n,int *ans)",
+          "code": "for(int i=1;i<=n;i++){ if(i>1) printf(\" \"); printf(\"%d\", ans[i]); } printf(\"\\n\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int P[200005],Q[200005],inv[200005],ans[200005]; read_input(&n,P,Q); build_inv(n,Q,inv); build_ans(n,P,Q,inv,ans); print_ans(n,ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *P,int *Q)",
+          "code": "scanf(\"%d\", n); for(int i=1;i<=*n;i++) scanf(\"%d\", &P[i]); for(int i=1;i<=*n;i++) scanf(\"%d\", &Q[i]);\n"
+        },
+        {
+          "clause_id": "build_inv",
+          "signature": "void build_inv(int n,int *Q,int *inv)",
+          "code": "for(int i=1;i<=n;i++) inv[Q[i]]=i;\n"
+        },
+        {
+          "clause_id": "build_ans",
+          "signature": "void build_ans(int n,int *P,int *Q,int *inv,int *ans)",
+          "code": "for(int bib=1;bib<=n;bib++){ int person=inv[bib]; int target=P[person]; ans[bib]=Q[target]; }\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int n,int *ans)",
+          "code": "for(int i=1;i<=n;i++){ if(i>1) printf(\" \"); printf(\"%d\", ans[i]); } printf(\"\\n\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int P[200005],Q[200005],inv[200005],ans[200005]; read_input(&n,P,Q); build_inv(n,Q,inv); build_ans(n,P,Q,inv,ans); print_ans(n,ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *P,int *Q)",
+          "code": "scanf(\"%d\", n); for(int i=1;i<=*n;i++) scanf(\"%d\", &P[i]); for(int i=1;i<=*n;i++) scanf(\"%d\", &Q[i]);\n"
+        },
+        {
+          "clause_id": "build_inv",
+          "signature": "void build_inv(int n,int *Q,int *inv)",
+          "code": "for(int i=1;i<=n;i++) inv[Q[i]]=i;\n"
+        },
+        {
+          "clause_id": "build_ans",
+          "signature": "void build_ans(int n,int *P,int *Q,int *inv,int *ans)",
+          "code": "for(int bib=1;bib<=n;bib++){ int person=inv[bib]; int target=P[person]; ans[bib]=Q[target]; }\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int n,int *ans)",
+          "code": "for(int i=1;i<=n;i++){ if(i>1) printf(\" \"); printf(\"%d\", ans[i]); } printf(\"\\n\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int P[200005],Q[200005],inv[200005],ans[200005]; read_input(&n,P,Q); build_inv(n,Q,inv); build_ans(n,P,Q,inv,ans); print_ans(n,ans); return 0; }\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "392C",
+  "total_programs": 5
+}

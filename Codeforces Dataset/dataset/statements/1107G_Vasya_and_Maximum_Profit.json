@@ -1,0 +1,34 @@
+{
+  "contestId": 1107,
+  "index": "G",
+  "problem_id": "1107G",
+  "name": "Vasya and Maximum Profit",
+  "rating": 2400,
+  "tags": [
+    "binary search",
+    "constructive algorithms",
+    "data structures",
+    "dp",
+    "dsu"
+  ],
+  "points": null,
+  "solvedCount": 1280,
+  "source": "verbatim_cf_fetch",
+  "title": "G. Vasya and Maximum Profit",
+  "legend": "Vasya got really tired of these credits (from problem F) and now wants to earn the money himself! He decided to make a contest to gain a profit.\n\nVasya has n problems to choose from. They are numbered from 1 to n. The difficulty of the i-th problem is di. Moreover, the problems are given in the increasing order by their difficulties. The difficulties of all tasks are pairwise distinct. In order to add the i-th problem to the contest you need to pay ci burles to its author. For each problem in the contest Vasya gets a burles.\n\nIn order to create a contest he needs to choose a consecutive subsegment of tasks.\n\nSo the total earnings for the contest are calculated as follows:\n\nif Vasya takes problem i to the contest, he needs to pay ci to its author;\nfor each problem in the contest Vasya gets a burles;\nlet gap(l,r)=max\nl≤i<r(di+1−di)2. If Vasya takes all the tasks with indices from l to r to the contest, he also needs to pay gap(l,r). If l=r then gap(l,r)=0.\n\nCalculate the maximum profit that Vasya can earn by taking a consecutive segment of tasks.",
+  "input_spec": "The first line contains two integers n and a (1≤n≤3⋅105, 1≤a≤109) — the number of proposed tasks and the profit for a single problem, respectively.\n\nEach of the next n lines contains two integers di and ci (1≤di,ci≤109,di<di+1).",
+  "output_spec": "Print one integer — maximum amount of burles Vasya can earn.",
+  "note": "",
+  "time_limit": "3.5 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5 10\n1 15\n5 3\n6 11\n7 2\n11 22\n",
+      "output": "13"
+    },
+    {
+      "input": "3 5\n1 8\n2 19\n3 11\n",
+      "output": "0"
+    }
+  ]
+}

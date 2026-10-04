@@ -1,0 +1,7 @@
+You are given an integer K . For a set S that is initially empty, process Q queries of the following two types in order: 1 x : An integer x is given. If x is in S , remove x from S . Otherwise, add x to S . 2 x : An integer x that is in S is given. Consider a graph where the vertices are the numbers in S , and there is an edge between two numbers if and only if the absolute difference between them is at most K . Print the count of vertices in the connected component that contains x .
+
+**Constraints:**
+- 1 <= Q <= 2 * 10^5
+- -10^{18} <= X, Y <= 10^{18}
+- 1 <= Z <= 10^{18}
+- All input values are integers

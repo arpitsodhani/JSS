@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_range_sum_fenwick",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "query_prefix_sum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "update_fenwick_tree",
+      "confidence": 1.0
+    }
+  ]
+}

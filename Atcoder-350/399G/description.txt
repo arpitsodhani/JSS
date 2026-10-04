@@ -1,0 +1,6 @@
+You are given a connected undirected graph with N vertices and M edges, where the vertices are labeled 1 to N . The graph does not contain self-loops, but it may contain multi-edges. Each edge has a color, and the i -th edge has a color c_i ( 1 \leq c_i \leq C ) and connects vertices u_i and v_i . Also, a sequence A = (A_1, A_2, \dots, A_C) is given. Among the spanning trees of this graph, those satisfying the following condition are called colorful spanning trees : For every integer i such that 1 \leq i \leq C , the number of edges of color i included in the spanning tree is at most A_i . Find the number of integer pairs (L, R) with 1 \leq L \leq R \leq C that satisfy the following condition: There exists a colorful spanning tree T such that every edge in T has a color c with L \leq c \leq R .
+
+**Constraints:**
+- 1 <= N <= 5000
+- 1 <= A_i <= 10^9
+- All input values are integers

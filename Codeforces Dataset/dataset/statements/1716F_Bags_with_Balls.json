@@ -1,0 +1,29 @@
+{
+  "contestId": 1716,
+  "index": "F",
+  "problem_id": "1716F",
+  "name": "Bags with Balls",
+  "rating": 2500,
+  "tags": [
+    "combinatorics",
+    "dp",
+    "math",
+    "number theory"
+  ],
+  "points": null,
+  "solvedCount": 1451,
+  "source": "verbatim_cf_fetch",
+  "title": "F. Bags with Balls",
+  "legend": "There are n bags, each bag contains m balls with numbers from 1 to m. For every i∈[1,m], there is exactly one ball with number i in each bag.\n\nYou have to take exactly one ball from each bag (all bags are different, so, for example, taking the ball 1 from the first bag and the ball 2 from the second bag is not the same as taking the ball 2 from the first bag and the ball 1 from the second bag). After that, you calculate the number of balls with odd numbers among the ones you have taken. Let the number of these balls be F.\n\nYour task is to calculate the sum of Fk over all possible ways to take n balls, one from each bag.",
+  "input_spec": "The first line contains one integer t (1≤t≤5000) — the number of test cases.\n\nEach test case consists of one line containing three integers n, m and k (1≤n,m≤998244352; 1≤k≤2000).",
+  "output_spec": "For each test case, print one integer — the sum of Fk over all possible ways to take n balls, one from each bag. Since it can be huge, print it modulo 998244353.",
+  "note": "",
+  "time_limit": "3 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "5\n2 3 8\n1 1 1\n1 5 10\n3 7 2000\n1337666 42424242 2000\n",
+      "output": "1028\n1\n3\n729229716\n652219904"
+    }
+  ]
+}

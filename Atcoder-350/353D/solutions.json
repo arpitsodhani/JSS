@@ -1,0 +1,169 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *a)",
+          "code": "int read_input(long long *a) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%lld\", &a[i]); return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int count_digits(long long x)",
+          "code": "int count_digits(long long x) { int cnt = 0; while(x > 0) { cnt++; x /= 10; } return cnt; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long concat_numbers(long long x, long long y)",
+          "code": "long long concat_numbers(long long x, long long y) { int d = count_digits(y); long long mul = 1; for(int i = 0; i < d; i++) mul *= 10; return (x * mul + y) % 998244353LL; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long sum_pairs(long long *a, int n)",
+          "code": "long long sum_pairs(long long *a, int n) { long long res = 0; for(int i = 0; i < n - 1; i++) { for(int j = i + 1; j < n; j++) { res = (res + concat_numbers(a[i], a[j])) % 998244353LL; } } return res; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long a[200000]; int n = read_input(a); printf(\"%lld\\n\", sum_pairs(a, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_data(int *n, long long arr[])",
+          "code": "void get_data(int *n, long long arr[]) { scanf(\"%d\", n); for(int i = 0; i < *n; i++) scanf(\"%lld\", &arr[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int digit_count(long long num)",
+          "code": "int digit_count(long long num) { if(num == 0) return 1; int c = 0; while(num) { c++; num /= 10; } return c; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long merge_vals(long long a, long long b)",
+          "code": "long long merge_vals(long long a, long long b) { int dc = digit_count(b); long long p = 1; while(dc--) p = (p * 10) % 998244353LL; return ((a * p) % 998244353LL + b) % 998244353LL; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long compute_total(long long arr[], int n)",
+          "code": "long long compute_total(long long arr[], int n) { long long sum = 0; for(int i = 0; i < n; i++) { for(int j = i + 1; j < n; j++) { sum = (sum + merge_vals(arr[i], arr[j])) % 998244353LL; } } return sum; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n; long long arr[200000]; get_data(&n, arr); printf(\"%lld\\n\", compute_total(arr, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *a)",
+          "code": "int read_input(long long *a) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%lld\", &a[i]); return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int count_digits(long long x)",
+          "code": "int count_digits(long long x) { int cnt = 0; while(x > 0) { cnt++; x /= 10; } return cnt; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long concat_numbers(long long x, long long y)",
+          "code": "long long concat_numbers(long long x, long long y) { int d = count_digits(y); long long mul = 1; for(int i = 0; i < d; i++) mul *= 10; return (x * mul + y) % 998244353LL; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long sum_pairs(long long *a, int n)",
+          "code": "long long sum_pairs(long long *a, int n) { long long res = 0; for(int i = 0; i < n - 1; i++) { for(int j = i + 1; j < n; j++) { res = (res + concat_numbers(a[i], a[j])) % 998244353LL; } } return res; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long a[200000]; int n = read_input(a); printf(\"%lld\\n\", sum_pairs(a, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_data(int *n, long long arr[])",
+          "code": "void get_data(int *n, long long arr[]) { scanf(\"%d\", n); for(int i = 0; i < *n; i++) scanf(\"%lld\", &arr[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int digit_count(long long num)",
+          "code": "int digit_count(long long num) { if(num == 0) return 1; int c = 0; while(num) { c++; num /= 10; } return c; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long merge_vals(long long a, long long b)",
+          "code": "long long merge_vals(long long a, long long b) { int dc = digit_count(b); long long p = 1; while(dc--) p = (p * 10) % 998244353LL; return ((a * p) % 998244353LL + b) % 998244353LL; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long compute_total(long long arr[], int n)",
+          "code": "long long compute_total(long long arr[], int n) { long long sum = 0; for(int i = 0; i < n; i++) { for(int j = i + 1; j < n; j++) { sum = (sum + merge_vals(arr[i], arr[j])) % 998244353LL; } } return sum; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n; long long arr[200000]; get_data(&n, arr); printf(\"%lld\\n\", compute_total(arr, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *a)",
+          "code": "int read_input(long long *a) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%lld\", &a[i]); return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int count_digits(long long x)",
+          "code": "int count_digits(long long x) { int cnt = 0; while(x > 0) { cnt++; x /= 10; } return cnt; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long concat_numbers(long long x, long long y)",
+          "code": "long long concat_numbers(long long x, long long y) { int d = count_digits(y); long long mul = 1; for(int i = 0; i < d; i++) mul *= 10; return (x * mul + y) % 998244353LL; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long sum_pairs(long long *a, int n)",
+          "code": "long long sum_pairs(long long *a, int n) { long long res = 0; for(int i = 0; i < n - 1; i++) { for(int j = i + 1; j < n; j++) { res = (res + concat_numbers(a[i], a[j])) % 998244353LL; } } return res; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long a[200000]; int n = read_input(a); printf(\"%lld\\n\", sum_pairs(a, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

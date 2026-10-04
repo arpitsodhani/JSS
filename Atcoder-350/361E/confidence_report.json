@@ -1,0 +1,25 @@
+{
+  "average_confidence": 0.9815269073220687,
+  "clauses": [
+    {
+      "clause": "compute_minimum_travel",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_total_edge_weight",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_maximum_edge",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9596345366103429
+    },
+    {
+      "clause": "read_tree",
+      "confidence": 0.9480000000000001
+    }
+  ]
+}

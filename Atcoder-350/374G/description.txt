@@ -1,0 +1,9 @@
+All KEYENCE product names consist of two uppercase English letters . They have already used N product names, the i -th of which (1\leq i\leq N) is S_i . Once a product name is used, it cannot be reused, so they decided to create an NG (Not Good) list to quickly identify previously used product names. The NG list must satisfy the following conditions. It consists of one or more strings, each consisting of uppercase English letters. For each already used product name, there exists at least one string in the list that contains the name as a (contiguous) substring. None of the strings in the list contain any length- 2 (contiguous) substring that is not an already used product name. Find the minimum possible number of strings in the NG list.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= a_i, b_i <= N
+- a_i != b_i
+- The graph is simple
+- All input values are integers

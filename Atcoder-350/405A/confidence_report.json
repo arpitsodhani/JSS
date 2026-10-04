@@ -1,0 +1,28 @@
+{
+  "problem_id": "405A",
+  "average_confidence": 0.835,
+  "clauses": {
+    "read_abc": {
+      "confidence": 0.8,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "compute_sum": {
+      "confidence": 0.54,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "print_ans": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    }
+  },
+  "total_clauses": 4,
+  "compile_success": true
+}

@@ -1,0 +1,64 @@
+import sys
+
+# Clause read_input [Confidence: 1.00]
+def read_input():
+    data = list(map(int, sys.stdin.buffer.read().split()))
+    t = data[0]
+    pos = 1
+    cases = []
+    for _ in range(t):
+        n = data[pos]
+        d = data[pos + 1]
+        pos += 2
+        cases.append((d, data[pos:pos + n]))
+        pos += n
+    return cases
+
+# Clause rest_without [Confidence: 1.00]
+def rest_without(d, days, skip):
+    smallest = -1
+    largest = 0
+    previous = 0
+    last = 0
+    for i in range(len(days)):
+        if i == skip:
+            continue
+        gap = days[i] - previous - 1
+        if smallest < 0 or gap < smallest:
+            smallest = gap
+        if gap > largest:
+            largest = gap
+        previous = days[i]
+        last = days[i]
+    tail = d - last - 1
+    inside = (largest - 1) // 2
+    room = tail if tail > inside else inside
+    return smallest if smallest < room else room
+
+# Clause best_rest [Confidence: 1.00]
+def best_rest(d, days):
+    worst = 0
+    smallest = days[0] - 1
+    for i in range(1, len(days)):
+        gap = days[i] - days[i - 1] - 1
+        if gap < smallest:
+            smallest = gap
+            worst = i
+    best = rest_without(d, days, worst)
+    if worst > 0:
+        other = rest_without(d, days, worst - 1)
+        if other > best:
+            best = other
+    return best
+
+# Clause main [Confidence: 1.00]
+def main():
+    out = []
+    for d, days in read_input():
+        out.append(best_rest(d, days))
+    sys.stdout.write("\n".join(map(str, out)) + "\n")
+
+
+if __name__ == "__main__":
+    main()
+

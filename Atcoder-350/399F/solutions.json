@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *a)",
+          "code": "scanf(\"%d %d\", n, k); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "build_binom",
+          "signature": "void build_binom(int k, long long *c)",
+          "code": "for(int i=0;i<=k;i++) c[i]=0;\nc[0]=1;\nfor(int i=1;i<=k;i++){\n  for(int j=i;j>=1;j--) c[j]=(c[j]+c[j-1])%998244353LL;\n}\n"
+        },
+        {
+          "clause_id": "sum_pows",
+          "signature": "long long sum_pows(int n, int k, const int *a)",
+          "code": "const long long MOD=998244353LL;\nlong long *C=(long long*)malloc((size_t)(k+1)*sizeof(long long));\nbuild_binom(k,C);\nlong long S[11];\nfor(int i=0;i<=k;i++) S[i]=0;\nS[0]=1;\nlong long pref=0;\nlong long ans=0;\nfor(int r=1;r<=n;r++){\n  pref += a[r-1]; pref%=MOD;\n  long long powx[11]; powx[0]=1;\n  for(int i=1;i<=k;i++) powx[i]=powx[i-1]*pref%MOD;\n  long long add=0;\n  for(int t=0;t<=k;t++){\n    long long term = C[t] * powx[t] % MOD;\n    int p=k-t;\n    long long s=S[p];\n    if(p%2==1) s=(MOD-s)%MOD;\n    add = (add + term * s)%MOD;\n  }\n  ans = (ans + add)%MOD;\n  long long powp[11]; powp[0]=1;\n  for(int i=1;i<=k;i++) powp[i]=powp[i-1]*pref%MOD;\n  for(int i=0;i<=k;i++) S[i]=(S[i]+powp[i])%MOD;\n}\nfree(C);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static int a[200005]; read_input(&n,&k,a); long long ans=sum_pows(n,k,a); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *a)",
+          "code": "scanf(\"%d %d\", n, k); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "build_binom",
+          "signature": "void build_binom(int k, long long *c)",
+          "code": "for(int i=0;i<=k;i++) c[i]=0;\nc[0]=1;\nfor(int i=1;i<=k;i++){\n  for(int j=i;j>=1;j--) c[j]=(c[j]+c[j-1])%998244353LL;\n}\n"
+        },
+        {
+          "clause_id": "sum_pows",
+          "signature": "long long sum_pows(int n, int k, const int *a)",
+          "code": "const long long MOD=998244353LL;\nlong long *C=(long long*)malloc((size_t)(k+1)*sizeof(long long));\nbuild_binom(k,C);\nlong long S[11];\nfor(int i=0;i<=k;i++) S[i]=0;\nS[0]=1;\nlong long pref=0;\nlong long ans=0;\nfor(int r=1;r<=n;r++){\n  pref += a[r-1]; pref%=MOD;\n  long long powx[11]; powx[0]=1;\n  for(int i=1;i<=k;i++) powx[i]=powx[i-1]*pref%MOD;\n  long long add=0;\n  for(int t=0;t<=k;t++){\n    long long term = C[t] * powx[t] % MOD;\n    int p=k-t;\n    long long s=S[p];\n    if(p%2==1) s=(MOD-s)%MOD;\n    add = (add + term * s)%MOD;\n  }\n  ans = (ans + add)%MOD;\n  long long powp[11]; powp[0]=1;\n  for(int i=1;i<=k;i++) powp[i]=powp[i-1]*pref%MOD;\n  for(int i=0;i<=k;i++) S[i]=(S[i]+powp[i])%MOD;\n}\nfree(C);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static int a[200005]; read_input(&n,&k,a); long long ans=sum_pows(n,k,a); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *a)",
+          "code": "scanf(\"%d %d\", n, k); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "build_binom",
+          "signature": "void build_binom(int k, long long *c)",
+          "code": "for(int i=0;i<=k;i++) c[i]=0;\nc[0]=1;\nfor(int i=1;i<=k;i++){\n  for(int j=i;j>=1;j--) c[j]=(c[j]+c[j-1])%998244353LL;\n}\n"
+        },
+        {
+          "clause_id": "sum_pows",
+          "signature": "long long sum_pows(int n, int k, const int *a)",
+          "code": "const long long MOD=998244353LL;\nlong long *C=(long long*)malloc((size_t)(k+1)*sizeof(long long));\nbuild_binom(k,C);\nlong long S[11];\nfor(int i=0;i<=k;i++) S[i]=0;\nS[0]=1;\nlong long pref=0;\nlong long ans=0;\nfor(int r=1;r<=n;r++){\n  pref += a[r-1]; pref%=MOD;\n  long long powx[11]; powx[0]=1;\n  for(int i=1;i<=k;i++) powx[i]=powx[i-1]*pref%MOD;\n  long long add=0;\n  for(int t=0;t<=k;t++){\n    long long term = C[t] * powx[t] % MOD;\n    int p=k-t;\n    long long s=S[p];\n    if(p%2==1) s=(MOD-s)%MOD;\n    add = (add + term * s)%MOD;\n  }\n  ans = (ans + add)%MOD;\n  long long powp[11]; powp[0]=1;\n  for(int i=1;i<=k;i++) powp[i]=powp[i-1]*pref%MOD;\n  for(int i=0;i<=k;i++) S[i]=(S[i]+powp[i])%MOD;\n}\nfree(C);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static int a[200005]; read_input(&n,&k,a); long long ans=sum_pows(n,k,a); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *a)",
+          "code": "scanf(\"%d %d\", n, k); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "build_binom",
+          "signature": "void build_binom(int k, long long *c)",
+          "code": "for(int i=0;i<=k;i++) c[i]=0;\nc[0]=1;\nfor(int i=1;i<=k;i++){\n  for(int j=i;j>=1;j--) c[j]=(c[j]+c[j-1])%998244353LL;\n}\n"
+        },
+        {
+          "clause_id": "sum_pows",
+          "signature": "long long sum_pows(int n, int k, const int *a)",
+          "code": "const long long MOD=998244353LL;\nlong long *C=(long long*)malloc((size_t)(k+1)*sizeof(long long));\nbuild_binom(k,C);\nlong long S[11];\nfor(int i=0;i<=k;i++) S[i]=0;\nS[0]=1;\nlong long pref=0;\nlong long ans=0;\nfor(int r=1;r<=n;r++){\n  pref += a[r-1]; pref%=MOD;\n  long long powx[11]; powx[0]=1;\n  for(int i=1;i<=k;i++) powx[i]=powx[i-1]*pref%MOD;\n  long long add=0;\n  for(int t=0;t<=k;t++){\n    long long term = C[t] * powx[t] % MOD;\n    int p=k-t;\n    long long s=S[p];\n    if(p%2==1) s=(MOD-s)%MOD;\n    add = (add + term * s)%MOD;\n  }\n  ans = (ans + add)%MOD;\n  long long powp[11]; powp[0]=1;\n  for(int i=1;i<=k;i++) powp[i]=powp[i-1]*pref%MOD;\n  for(int i=0;i<=k;i++) S[i]=(S[i]+powp[i])%MOD;\n}\nfree(C);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static int a[200005]; read_input(&n,&k,a); long long ans=sum_pows(n,k,a); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *a)",
+          "code": "scanf(\"%d %d\", n, k); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "build_binom",
+          "signature": "void build_binom(int k, long long *c)",
+          "code": "for(int i=0;i<=k;i++) c[i]=0;\nc[0]=1;\nfor(int i=1;i<=k;i++){\n  for(int j=i;j>=1;j--) c[j]=(c[j]+c[j-1])%998244353LL;\n}\n"
+        },
+        {
+          "clause_id": "sum_pows",
+          "signature": "long long sum_pows(int n, int k, const int *a)",
+          "code": "const long long MOD=998244353LL;\nlong long *C=(long long*)malloc((size_t)(k+1)*sizeof(long long));\nbuild_binom(k,C);\nlong long S[11];\nfor(int i=0;i<=k;i++) S[i]=0;\nS[0]=1;\nlong long pref=0;\nlong long ans=0;\nfor(int r=1;r<=n;r++){\n  pref += a[r-1]; pref%=MOD;\n  long long powx[11]; powx[0]=1;\n  for(int i=1;i<=k;i++) powx[i]=powx[i-1]*pref%MOD;\n  long long add=0;\n  for(int t=0;t<=k;t++){\n    long long term = C[t] * powx[t] % MOD;\n    int p=k-t;\n    long long s=S[p];\n    if(p%2==1) s=(MOD-s)%MOD;\n    add = (add + term * s)%MOD;\n  }\n  ans = (ans + add)%MOD;\n  long long powp[11]; powp[0]=1;\n  for(int i=1;i<=k;i++) powp[i]=powp[i-1]*pref%MOD;\n  for(int i=0;i<=k;i++) S[i]=(S[i]+powp[i])%MOD;\n}\nfree(C);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static int a[200005]; read_input(&n,&k,a); long long ans=sum_pows(n,k,a); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

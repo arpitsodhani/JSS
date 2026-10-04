@@ -1,0 +1,36 @@
+{
+  "contestId": 124,
+  "index": "B",
+  "problem_id": "124B",
+  "name": "Permutations",
+  "rating": 1400,
+  "tags": [
+    "brute force",
+    "combinatorics",
+    "implementation"
+  ],
+  "points": 1000.0,
+  "solvedCount": 4957,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Permutations",
+  "legend": "You are given n k-digit integers. You have to rearrange the digits in the integers so that the difference between the largest and the smallest number was minimum. Digits should be rearranged by the same rule in all integers.",
+  "input_spec": "The first line contains integers n and k — the number and digit capacity of numbers correspondingly (1 ≤ n, k ≤ 8). Next n lines contain k-digit positive integers. Leading zeroes are allowed both in the initial integers and the integers resulting from the rearranging of digits.",
+  "output_spec": "Print a single number: the minimally possible difference between the largest and the smallest number after the digits are rearranged in all integers by the same rule.",
+  "note": "In the first sample, if we rearrange the digits in numbers as (3,1,4,2), then the 2-nd and the 4-th numbers will equal 5237 and 2537 correspondingly (they will be maximum and minimum for such order of digits).\n\nIn the second sample, if we swap the second digits and the first ones, we get integers 100, 99 and 102.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6 4\n5237\n2753\n7523\n5723\n5327\n2537\n",
+      "output": "2700"
+    },
+    {
+      "input": "3 3\n010\n909\n012\n",
+      "output": "3"
+    },
+    {
+      "input": "7 5\n50808\n36603\n37198\n44911\n29994\n42543\n50156\n",
+      "output": "20522"
+    }
+  ]
+}

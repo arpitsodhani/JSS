@@ -1,0 +1,7 @@
+You are given a sequence A=(A_1,A_2,\dots,A_N) of length N and a sequence B=(B_1,B_2,\dots,B_M) of length M . Here, all elements of A and B are pairwise distinct. Determine whether the sequence C=(C_1,C_2,\dots,C_{N+M}) formed by sorting all elements of A and B in ascending order contains two consecutive elements appearing in A .
+
+**Constraints:**
+- 1\leq N,M \leq 100
+- 1\leq A_i,B_j \leq 200
+- A_1, A_2, \dots, A_N, B_1, B_2, \dots, B_M distinct
+- allintegers

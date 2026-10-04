@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b,int *c)",
+          "code": "void read_input(int *a,int *b,int *c){\n    scanf(\"%d%d%d\", a,b,c);\n}\n"
+        },
+        {
+          "clause_id": "can_split",
+          "signature": "int can_split(int a,int b,int c)",
+          "code": "int can_split(int a,int b,int c){\n    int sum = a+b+c;\n    if(a==b && b==c) return 1;\n    if(sum%2) return 0;\n    int half = sum/2;\n    return (a==half || b==half || c==half);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){\n    printf(\"%s\\n\", ok? \"Yes\":\"No\");\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int a,b,c;\n    read_input(&a,&b,&c);\n    int ok = can_split(a,b,c);\n    print_answer(ok);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b,int *c)",
+          "code": "void read_input(int *a,int *b,int *c){\n    int x,y,z;\n    scanf(\"%d%d%d\", &x,&y,&z);\n    *a=x; *b=y; *c=z;\n}\n"
+        },
+        {
+          "clause_id": "can_split",
+          "signature": "int can_split(int a,int b,int c)",
+          "code": "int can_split(int a,int b,int c){\n    int sum = a+b+c;\n    if(a==b && b==c) return 1;\n    if(sum%2!=0) return 0;\n    int half=sum/2;\n    if(a==half || b==half || c==half) return 1;\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){\n    printf(\"%s\\n\", ok? \"Yes\":\"No\");\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int a,b,c;\n    read_input(&a,&b,&c);\n    int ok = can_split(a,b,c);\n    print_answer(ok);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b,int *c)",
+          "code": "void read_input(int *a,int *b,int *c){\n    scanf(\"%d%d%d\", a,b,c);\n}\n"
+        },
+        {
+          "clause_id": "can_split",
+          "signature": "int can_split(int a,int b,int c)",
+          "code": "int can_split(int a,int b,int c){\n    int sum = a+b+c;\n    if(a==b && b==c) return 1;\n    if(sum%2!=0) return 0;\n    int half=sum/2;\n    if(a==half || b==half || c==half) return 1;\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){\n    printf(\"%s\\n\", ok? \"Yes\":\"No\");\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int a,b,c;\n    read_input(&a,&b,&c);\n    int ok = can_split(a,b,c);\n    print_answer(ok);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b,int *c)",
+          "code": "void read_input(int *a,int *b,int *c){\n    int x,y,z;\n    scanf(\"%d%d%d\", &x,&y,&z);\n    *a=x; *b=y; *c=z;\n}\n"
+        },
+        {
+          "clause_id": "can_split",
+          "signature": "int can_split(int a,int b,int c)",
+          "code": "int can_split(int a,int b,int c){\n    int sum = a+b+c;\n    if(a==b && b==c) return 1;\n    if(sum%2) return 0;\n    int half = sum/2;\n    return (a==half || b==half || c==half);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){\n    printf(\"%s\\n\", ok? \"Yes\":\"No\");\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int a,b,c;\n    read_input(&a,&b,&c);\n    int ok = can_split(a,b,c);\n    print_answer(ok);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b,int *c)",
+          "code": "void read_input(int *a,int *b,int *c){\n    scanf(\"%d%d%d\", a,b,c);\n}\n"
+        },
+        {
+          "clause_id": "can_split",
+          "signature": "int can_split(int a,int b,int c)",
+          "code": "int can_split(int a,int b,int c){\n    int sum = a+b+c;\n    if(a==b && b==c) return 1;\n    if(sum%2!=0) return 0;\n    int half=sum/2;\n    if(a==half || b==half || c==half) return 1;\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){\n    printf(\"%s\\n\", ok? \"Yes\":\"No\");\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int a,b,c;\n    read_input(&a,&b,&c);\n    int ok = can_split(a,b,c);\n    print_answer(ok);\n    return 0;\n}\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "max_element",
+          "code": "int max_element(int *arr, int n) {\n    int max_val = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] > max_val) max_val = arr[i];\n    }\n    return max_val;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    printf(\"%d\\n\", max_element(arr, n));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "find_max",
+          "code": "int find_max(int *nums, int size) {\n    int maximum = nums[0];\n    for (int i = 1; i < size; i++) {\n        if (nums[i] > maximum) maximum = nums[i];\n    }\n    return maximum;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    int data[count];\n    for (int i = 0; i < count; i++) scanf(\"%d\", &data[i]);\n    printf(\"%d\\n\", find_max(data, count));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "array_max",
+          "code": "int array_max(int *arr, int n) {\n    int m=arr[0];\n    for(int i=1;i<n;i++) if(arr[i]>m) m=arr[i];\n    return m;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\",&n);\n    int arr[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&arr[i]);\n    printf(\"%d\\n\",array_max(arr,n));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "get_max",
+          "code": "int get_max(int *v, int sz) {\n    int best=v[0];\n    int k=1;\n    while(k<sz){if(v[k]>best)best=v[k];k++;}\n    return best;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int sz;\n    scanf(\"%d\",&sz);\n    int v[sz];\n    for(int i=0;i<sz;i++) scanf(\"%d\",&v[i]);\n    printf(\"%d\\n\",get_max(v,sz));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "peak_value",
+          "code": "int peak_value(int *nums, int cnt) {\n    int high=nums[0];\n    for(int i=1;i<cnt;i++) if(nums[i]>high) high=nums[i];\n    return high;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int cnt;\n    scanf(\"%d\",&cnt);\n    int nums[cnt];\n    for(int i=0;i<cnt;i++) scanf(\"%d\",&nums[i]);\n    printf(\"%d\\n\",peak_value(nums,cnt));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

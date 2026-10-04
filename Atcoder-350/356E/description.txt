@@ -1,0 +1,6 @@
+You are given a sequence A=(A_1,\ldots,A_N) of length N . Find \displaystyle \sum_{i=1}^{N-1}\sum_{j=i+1}^{N}\left\lfloor\frac{\max(A_i,A_j)}{\min(A_i,A_j)}\right\rfloor . Here, \lfloor x \rfloor represents the greatest integer not greater than x . For example, \lfloor 3.14 \rfloor=3 and \lfloor 2 \rfloor=2 .
+
+**Constraints:**
+- 1 <= N <= 10^5
+- 1 <= A_i <= 10^6
+- All input values are integers

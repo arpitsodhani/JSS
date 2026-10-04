@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9608486237407667,
+  "clauses": [
+    {
+      "clause": "build_factor_counts",
+      "confidence": 0.9815384615384616
+    },
+    {
+      "clause": "build_400_numbers",
+      "confidence": 0.9536785714285714
+    },
+    {
+      "clause": "answer_query",
+      "confidence": 0.9324999999999999
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9756774619960344
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+Santa starts at coordinate (S_x, S_y) on a 2D grid. There are N houses at coordinates (X_i, Y_i). A string S of length M consists of characters U, D, L, R; Santa moves one unit in that direction for each character. A house is visited if Santa passes through or arrives at its coordinate at any time. Output Santa's final coordinates and the number of distinct houses visited.
+
+**Constraints:**
+- 1 <= N, M <= 2 * 10^5
+- -10^9 <= S_x, S_y, X_i, Y_i <= 10^9
+- S is a string of length M consisting of U, D, L, R
+- All house coordinates are distinct

@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "extended_gcd_recursive",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_modular_inverse",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve_linear_diophantine",
+      "confidence": 1.0
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *N,int **R,int **C,int **L)",
+          "code": "void read_input(int *H,int *W,int *N,int **R,int **C,int **L){ scanf(\"%d%d%d\", H,W,N); *R=(int*)malloc((size_t)(*N)*sizeof(int)); *C=(int*)malloc((size_t)(*N)*sizeof(int)); *L=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d%d%d\", &(*R)[i], &(*C)[i], &(*L)[i]); }\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "void simulate(int H,int W,int N,int *R,int *C,int *L,int *out)",
+          "code": "void simulate(int H,int W,int N,int *R,int *C,int *L,int *out){\n    int total_cells=0;\n    for(int i=0;i<N;i++) total_cells += L[i];\n    long long *cells=(long long*)malloc((size_t)total_cells*sizeof(long long));\n    int *start=(int*)malloc((size_t)N*sizeof(int));\n    int idx=0;\n    for(int i=0;i<N;i++){\n        start[i]=idx;\n        for(int k=0;k<L[i];k++) cells[idx++]=(long long)(R[i])*1000000LL + (C[i]+k);\n    }\n    int moved=1;\n    for(int step=0; step<H && moved; step++){\n        moved=0;\n        for(int i=0;i<N;i++){\n            int can=1;\n            for(int k=0;k<L[i];k++){\n                long long v=cells[start[i]+k];\n                int r=(int)(v/1000000LL);\n                int c=(int)(v%1000000LL);\n                if(r>=H) { can=0; break; }\n                for(int j=0;j<total_cells;j++){\n                    if(j>=start[i] && j<start[i]+L[i]) continue;\n                    if(cells[j]==(long long)(r+1)*1000000LL + c){ can=0; break; }\n                }\n                if(!can) break;\n            }\n            if(can){\n                moved=1;\n                for(int k=0;k<L[i];k++) cells[start[i]+k]+=1000000LL;\n            }\n        }\n    }\n    for(int i=0;i<N;i++){\n        long long v=cells[start[i]];\n        out[i]=(int)(v/1000000LL);\n    }\n    free(cells); free(start);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int *out)",
+          "code": "void print_answer(int N,int *out){ for(int i=0;i<N;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,N; int *R=NULL,*C=NULL,*L=NULL; read_input(&H,&W,&N,&R,&C,&L); int *out=(int*)malloc((size_t)N*sizeof(int)); simulate(H,W,N,R,C,L,out); print_answer(N,out); free(R); free(C); free(L); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *N,int **R,int **C,int **L)",
+          "code": "void read_input(int *H,int *W,int *N,int **R,int **C,int **L){ scanf(\"%d%d%d\", H,W,N); *R=(int*)malloc((size_t)(*N)*sizeof(int)); *C=(int*)malloc((size_t)(*N)*sizeof(int)); *L=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d%d%d\", &(*R)[i], &(*C)[i], &(*L)[i]); }\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "void simulate(int H,int W,int N,int *R,int *C,int *L,int *out)",
+          "code": "void simulate(int H,int W,int N,int *R,int *C,int *L,int *out){\n    int total_cells=0;\n    for(int i=0;i<N;i++) total_cells += L[i];\n    long long *cells=(long long*)malloc((size_t)total_cells*sizeof(long long));\n    int *start=(int*)malloc((size_t)N*sizeof(int));\n    int idx=0;\n    for(int i=0;i<N;i++){\n        start[i]=idx;\n        for(int k=0;k<L[i];k++) cells[idx++]=(long long)(R[i])*1000000LL + (C[i]+k);\n    }\n    int moved=1;\n    for(int step=0; step<H && moved; step++){\n        moved=0;\n        for(int i=0;i<N;i++){\n            int can=1;\n            for(int k=0;k<L[i];k++){\n                long long v=cells[start[i]+k];\n                int r=(int)(v/1000000LL);\n                int c=(int)(v%1000000LL);\n                if(r>=H) { can=0; break; }\n                for(int j=0;j<total_cells;j++){\n                    if(j>=start[i] && j<start[i]+L[i]) continue;\n                    if(cells[j]==(long long)(r+1)*1000000LL + c){ can=0; break; }\n                }\n                if(!can) break;\n            }\n            if(can){\n                moved=1;\n                for(int k=0;k<L[i];k++) cells[start[i]+k]+=1000000LL;\n            }\n        }\n    }\n    for(int i=0;i<N;i++){\n        long long v=cells[start[i]];\n        out[i]=(int)(v/1000000LL);\n    }\n    free(cells); free(start);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int *out)",
+          "code": "void print_answer(int N,int *out){ for(int i=0;i<N;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,N; int *R=NULL,*C=NULL,*L=NULL; read_input(&H,&W,&N,&R,&C,&L); int *out=(int*)malloc((size_t)N*sizeof(int)); simulate(H,W,N,R,C,L,out); print_answer(N,out); free(R); free(C); free(L); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *N,int **R,int **C,int **L)",
+          "code": "void read_input(int *H,int *W,int *N,int **R,int **C,int **L){ scanf(\"%d%d%d\", H,W,N); *R=(int*)malloc((size_t)(*N)*sizeof(int)); *C=(int*)malloc((size_t)(*N)*sizeof(int)); *L=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d%d%d\", &(*R)[i], &(*C)[i], &(*L)[i]); }\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "void simulate(int H,int W,int N,int *R,int *C,int *L,int *out)",
+          "code": "void simulate(int H,int W,int N,int *R,int *C,int *L,int *out){\n    int total_cells=0;\n    for(int i=0;i<N;i++) total_cells += L[i];\n    long long *cells=(long long*)malloc((size_t)total_cells*sizeof(long long));\n    int *start=(int*)malloc((size_t)N*sizeof(int));\n    int idx=0;\n    for(int i=0;i<N;i++){\n        start[i]=idx;\n        for(int k=0;k<L[i];k++) cells[idx++]=(long long)(R[i])*1000000LL + (C[i]+k);\n    }\n    int moved=1;\n    for(int step=0; step<H && moved; step++){\n        moved=0;\n        for(int i=0;i<N;i++){\n            int can=1;\n            for(int k=0;k<L[i];k++){\n                long long v=cells[start[i]+k];\n                int r=(int)(v/1000000LL);\n                int c=(int)(v%1000000LL);\n                if(r>=H) { can=0; break; }\n                for(int j=0;j<total_cells;j++){\n                    if(j>=start[i] && j<start[i]+L[i]) continue;\n                    if(cells[j]==(long long)(r+1)*1000000LL + c){ can=0; break; }\n                }\n                if(!can) break;\n            }\n            if(can){\n                moved=1;\n                for(int k=0;k<L[i];k++) cells[start[i]+k]+=1000000LL;\n            }\n        }\n    }\n    for(int i=0;i<N;i++){\n        long long v=cells[start[i]];\n        out[i]=(int)(v/1000000LL);\n    }\n    free(cells); free(start);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int *out)",
+          "code": "void print_answer(int N,int *out){ for(int i=0;i<N;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,N; int *R=NULL,*C=NULL,*L=NULL; read_input(&H,&W,&N,&R,&C,&L); int *out=(int*)malloc((size_t)N*sizeof(int)); simulate(H,W,N,R,C,L,out); print_answer(N,out); free(R); free(C); free(L); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *N,int **R,int **C,int **L)",
+          "code": "void read_input(int *H,int *W,int *N,int **R,int **C,int **L){ scanf(\"%d%d%d\", H,W,N); *R=(int*)malloc((size_t)(*N)*sizeof(int)); *C=(int*)malloc((size_t)(*N)*sizeof(int)); *L=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d%d%d\", &(*R)[i], &(*C)[i], &(*L)[i]); }\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "void simulate(int H,int W,int N,int *R,int *C,int *L,int *out)",
+          "code": "void simulate(int H,int W,int N,int *R,int *C,int *L,int *out){\n    int total_cells=0;\n    for(int i=0;i<N;i++) total_cells += L[i];\n    long long *cells=(long long*)malloc((size_t)total_cells*sizeof(long long));\n    int *start=(int*)malloc((size_t)N*sizeof(int));\n    int idx=0;\n    for(int i=0;i<N;i++){\n        start[i]=idx;\n        for(int k=0;k<L[i];k++) cells[idx++]=(long long)(R[i])*1000000LL + (C[i]+k);\n    }\n    int moved=1;\n    for(int step=0; step<H && moved; step++){\n        moved=0;\n        for(int i=0;i<N;i++){\n            int can=1;\n            for(int k=0;k<L[i];k++){\n                long long v=cells[start[i]+k];\n                int r=(int)(v/1000000LL);\n                int c=(int)(v%1000000LL);\n                if(r>=H) { can=0; break; }\n                for(int j=0;j<total_cells;j++){\n                    if(j>=start[i] && j<start[i]+L[i]) continue;\n                    if(cells[j]==(long long)(r+1)*1000000LL + c){ can=0; break; }\n                }\n                if(!can) break;\n            }\n            if(can){\n                moved=1;\n                for(int k=0;k<L[i];k++) cells[start[i]+k]+=1000000LL;\n            }\n        }\n    }\n    for(int i=0;i<N;i++){\n        long long v=cells[start[i]];\n        out[i]=(int)(v/1000000LL);\n    }\n    free(cells); free(start);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int *out)",
+          "code": "void print_answer(int N,int *out){ for(int i=0;i<N;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,N; int *R=NULL,*C=NULL,*L=NULL; read_input(&H,&W,&N,&R,&C,&L); int *out=(int*)malloc((size_t)N*sizeof(int)); simulate(H,W,N,R,C,L,out); print_answer(N,out); free(R); free(C); free(L); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *N,int **R,int **C,int **L)",
+          "code": "void read_input(int *H,int *W,int *N,int **R,int **C,int **L){ scanf(\"%d%d%d\", H,W,N); *R=(int*)malloc((size_t)(*N)*sizeof(int)); *C=(int*)malloc((size_t)(*N)*sizeof(int)); *L=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d%d%d\", &(*R)[i], &(*C)[i], &(*L)[i]); }\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "void simulate(int H,int W,int N,int *R,int *C,int *L,int *out)",
+          "code": "void simulate(int H,int W,int N,int *R,int *C,int *L,int *out){\n    int total_cells=0;\n    for(int i=0;i<N;i++) total_cells += L[i];\n    long long *cells=(long long*)malloc((size_t)total_cells*sizeof(long long));\n    int *start=(int*)malloc((size_t)N*sizeof(int));\n    int idx=0;\n    for(int i=0;i<N;i++){\n        start[i]=idx;\n        for(int k=0;k<L[i];k++) cells[idx++]=(long long)(R[i])*1000000LL + (C[i]+k);\n    }\n    int moved=1;\n    for(int step=0; step<H && moved; step++){\n        moved=0;\n        for(int i=0;i<N;i++){\n            int can=1;\n            for(int k=0;k<L[i];k++){\n                long long v=cells[start[i]+k];\n                int r=(int)(v/1000000LL);\n                int c=(int)(v%1000000LL);\n                if(r>=H) { can=0; break; }\n                for(int j=0;j<total_cells;j++){\n                    if(j>=start[i] && j<start[i]+L[i]) continue;\n                    if(cells[j]==(long long)(r+1)*1000000LL + c){ can=0; break; }\n                }\n                if(!can) break;\n            }\n            if(can){\n                moved=1;\n                for(int k=0;k<L[i];k++) cells[start[i]+k]+=1000000LL;\n            }\n        }\n    }\n    for(int i=0;i<N;i++){\n        long long v=cells[start[i]];\n        out[i]=(int)(v/1000000LL);\n    }\n    free(cells); free(start);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int *out)",
+          "code": "void print_answer(int N,int *out){ for(int i=0;i<N;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,N; int *R=NULL,*C=NULL,*L=NULL; read_input(&H,&W,&N,&R,&C,&L); int *out=(int*)malloc((size_t)N*sizeof(int)); simulate(H,W,N,R,C,L,out); print_answer(N,out); free(R); free(C); free(L); free(out); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

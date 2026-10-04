@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_range_xor",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "process_xor_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "update_array_element",
+      "confidence": 1.0
+    }
+  ]
+}

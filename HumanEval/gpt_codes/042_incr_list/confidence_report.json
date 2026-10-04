@@ -1,0 +1,50 @@
+{
+  "clause_wise_confidence": {
+    "incr_list": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "main": {
+      "confidence_score": 0.9646312178387649,
+      "cluster_info": {
+        "programs_in_consensus": 4,
+        "total_programs": 5
+      }
+    },
+    "add_one": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "increment_vals": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "bump_up": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "plus_one": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    }
+  },
+  "overall_metrics": {
+    "average_confidence": 0.9941052029731274,
+    "total_clauses": 6
+  }
+}

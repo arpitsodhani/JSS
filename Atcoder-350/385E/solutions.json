@@ -1,0 +1,176 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,long long *sx,long long *sy,char *S,long long *hx,long long *hy)",
+          "code": "scanf(\"%d%d%lld%lld\", N,M,sx,sy);\nscanf(\"%s\", S);\nfor(int i=0;i<*N;i++) scanf(\"%lld%lld\", &hx[i], &hy[i]);\n"
+        },
+        {
+          "clause_id": "build_maps",
+          "signature": "void build_maps(int N,long long *hx,long long *hy)",
+          "code": "/* no-op placeholder: maps built in move */\n"
+        },
+        {
+          "clause_id": "move_and_count",
+          "signature": "int move_and_count(int M,long long *sx,long long *sy,char *S)",
+          "code": "/* build per-axis sorted lists with indices */\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(long long sx,long long sy,int cnt)",
+          "code": "/* handled in main */\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int N,M; long long sx,sy; static char S[200005];\nstatic long long hx[200005], hy[200005];\nread_input(&N,&M,&sx,&sy,S,hx,hy);\n/* maps: for each x -> sorted y, and for each y -> sorted x */\ntypedef struct Node{ long long v; struct Node*next; } Node;\n/* use sorted arrays per x and y via coordinate compression */\nstatic long long xs[200005], ys[200005];\nfor(int i=0;i<N;i++){ xs[i]=hx[i]; ys[i]=hy[i]; }\nint xn=N, yn=N;\nfor(int i=0;i<xn;i++) for(int j=i+1;j<xn;j++) if(xs[j]<xs[i]){ long long t=xs[i]; xs[i]=xs[j]; xs[j]=t; }\nfor(int i=0;i<yn;i++) for(int j=i+1;j<yn;j++) if(ys[j]<ys[i]){ long long t=ys[i]; ys[i]=ys[j]; ys[j]=t; }\nint ux=0; for(int i=0;i<xn;i++) if(i==0||xs[i]!=xs[i-1]) xs[ux++]=xs[i];\nint uy=0; for(int i=0;i<yn;i++) if(i==0||ys[i]!=ys[i-1]) ys[uy++]=ys[i];\n/* adjacency lists by x and y (stored as sorted dynamic arrays) */\nstatic int xcnt[200005], ycnt[200005];\nfor(int i=0;i<ux;i++) xcnt[i]=0; for(int i=0;i<uy;i++) ycnt[i]=0;\nint *xid=(int*)malloc((size_t)N*sizeof(int));\nint *yid=(int*)malloc((size_t)N*sizeof(int));\nfor(int i=0;i<N;i++){\n  int lx=0,rx=ux-1; while(lx<=rx){ int md=(lx+rx)/2; if(xs[md]<hx[i]) lx=md+1; else rx=md-1; } xid[i]=lx;\n  int ly=0,ry=uy-1; while(ly<=ry){ int md=(ly+ry)/2; if(ys[md]<hy[i]) ly=md+1; else ry=md-1; } yid[i]=ly;\n  xcnt[xid[i]]++; ycnt[yid[i]]++;\n}\nlong long **xlist=(long long**)malloc((size_t)ux*sizeof(long long*));\nlong long **ylist=(long long**)malloc((size_t)uy*sizeof(long long*));\nfor(int i=0;i<ux;i++){ xlist[i]=(long long*)malloc((size_t)xcnt[i]*sizeof(long long)); xcnt[i]=0; }\nfor(int i=0;i<uy;i++){ ylist[i]=(long long*)malloc((size_t)ycnt[i]*sizeof(long long)); ycnt[i]=0; }\nfor(int i=0;i<N;i++){ xlist[xid[i]][xcnt[xid[i]]++]=hy[i]; ylist[yid[i]][ycnt[yid[i]]++]=hx[i]; }\nfor(int i=0;i<ux;i++) for(int a=0;a<xcnt[i];a++) for(int b=a+1;b<xcnt[i];b++) if(xlist[i][b]<xlist[i][a]){ long long t=xlist[i][a]; xlist[i][a]=xlist[i][b]; xlist[i][b]=t; }\nfor(int i=0;i<uy;i++) for(int a=0;a<ycnt[i];a++) for(int b=a+1;b<ycnt[i];b++) if(ylist[i][b]<ylist[i][a]){ long long t=ylist[i][a]; ylist[i][a]=ylist[i][b]; ylist[i][b]=t; }\nint visited=0;\nfor(int step=0; step<M; step++){\n  char c=S[step]; long long nx=sx, ny=sy;\n  if(c=='U') ny++; else if(c=='D') ny--; else if(c=='L') nx--; else if(c=='R') nx++;\n  if(nx==sx){\n    int idx=0, l=0,r=ux-1; while(l<=r){ int md=(l+r)/2; if(xs[md]<sx) l=md+1; else r=md-1; } idx=l; if(idx<ux && xs[idx]==sx){\n      long long lo=sy<ny?sy:ny, hi=sy<ny?ny:sy;\n      long long *arr=xlist[idx]; int sz=xcnt[idx];\n      int a=0; while(a<sz && arr[a]<lo) a++; int b=a; while(b<sz && arr[b]<=hi) b++;\n      if(b>a){ visited += (b-a);\n        /* remove visited from both maps by marking with sentinel */\n        for(int k=a;k<b;k++) arr[k]= (long long)4e18;\n      }\n    }\n  } else {\n    int idx=0, l=0,r=uy-1; while(l<=r){ int md=(l+r)/2; if(ys[md]<sy) l=md+1; else r=md-1; } idx=l; if(idx<uy && ys[idx]==sy){\n      long long lo=sx<nx?sx:nx, hi=sx<nx?nx:sx;\n      long long *arr=ylist[idx]; int sz=ycnt[idx];\n      int a=0; while(a<sz && arr[a]<lo) a++; int b=a; while(b<sz && arr[b]<=hi) b++;\n      if(b>a){ visited += (b-a); for(int k=a;k<b;k++) arr[k]=(long long)4e18; }\n    }\n  }\n  sx=nx; sy=ny;\n}\nprintf(\"%lld %lld %d\\n\", sx, sy, visited);\nreturn 0;\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,long long *sx,long long *sy,char *S,long long *hx,long long *hy)",
+          "code": "scanf(\"%d%d%lld%lld\", N,M,sx,sy);\nscanf(\"%s\", S);\nfor(int i=0;i<*N;i++) scanf(\"%lld%lld\", &hx[i], &hy[i]);\n"
+        },
+        {
+          "clause_id": "build_maps",
+          "signature": "void build_maps(int N,long long *hx,long long *hy)",
+          "code": "/* no-op placeholder: maps built in move */\n"
+        },
+        {
+          "clause_id": "move_and_count",
+          "signature": "int move_and_count(int M,long long *sx,long long *sy,char *S)",
+          "code": "/* build per-axis sorted lists with indices */\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(long long sx,long long sy,int cnt)",
+          "code": "/* handled in main */\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int N,M; long long sx,sy; static char S[200005];\nstatic long long hx[200005], hy[200005];\nread_input(&N,&M,&sx,&sy,S,hx,hy);\n/* maps: for each x -> sorted y, and for each y -> sorted x */\ntypedef struct Node{ long long v; struct Node*next; } Node;\n/* use sorted arrays per x and y via coordinate compression */\nstatic long long xs[200005], ys[200005];\nfor(int i=0;i<N;i++){ xs[i]=hx[i]; ys[i]=hy[i]; }\nint xn=N, yn=N;\nfor(int i=0;i<xn;i++) for(int j=i+1;j<xn;j++) if(xs[j]<xs[i]){ long long t=xs[i]; xs[i]=xs[j]; xs[j]=t; }\nfor(int i=0;i<yn;i++) for(int j=i+1;j<yn;j++) if(ys[j]<ys[i]){ long long t=ys[i]; ys[i]=ys[j]; ys[j]=t; }\nint ux=0; for(int i=0;i<xn;i++) if(i==0||xs[i]!=xs[i-1]) xs[ux++]=xs[i];\nint uy=0; for(int i=0;i<yn;i++) if(i==0||ys[i]!=ys[i-1]) ys[uy++]=ys[i];\n/* adjacency lists by x and y (stored as sorted dynamic arrays) */\nstatic int xcnt[200005], ycnt[200005];\nfor(int i=0;i<ux;i++) xcnt[i]=0; for(int i=0;i<uy;i++) ycnt[i]=0;\nint *xid=(int*)malloc((size_t)N*sizeof(int));\nint *yid=(int*)malloc((size_t)N*sizeof(int));\nfor(int i=0;i<N;i++){\n  int lx=0,rx=ux-1; while(lx<=rx){ int md=(lx+rx)/2; if(xs[md]<hx[i]) lx=md+1; else rx=md-1; } xid[i]=lx;\n  int ly=0,ry=uy-1; while(ly<=ry){ int md=(ly+ry)/2; if(ys[md]<hy[i]) ly=md+1; else ry=md-1; } yid[i]=ly;\n  xcnt[xid[i]]++; ycnt[yid[i]]++;\n}\nlong long **xlist=(long long**)malloc((size_t)ux*sizeof(long long*));\nlong long **ylist=(long long**)malloc((size_t)uy*sizeof(long long*));\nfor(int i=0;i<ux;i++){ xlist[i]=(long long*)malloc((size_t)xcnt[i]*sizeof(long long)); xcnt[i]=0; }\nfor(int i=0;i<uy;i++){ ylist[i]=(long long*)malloc((size_t)ycnt[i]*sizeof(long long)); ycnt[i]=0; }\nfor(int i=0;i<N;i++){ xlist[xid[i]][xcnt[xid[i]]++]=hy[i]; ylist[yid[i]][ycnt[yid[i]]++]=hx[i]; }\nfor(int i=0;i<ux;i++) for(int a=0;a<xcnt[i];a++) for(int b=a+1;b<xcnt[i];b++) if(xlist[i][b]<xlist[i][a]){ long long t=xlist[i][a]; xlist[i][a]=xlist[i][b]; xlist[i][b]=t; }\nfor(int i=0;i<uy;i++) for(int a=0;a<ycnt[i];a++) for(int b=a+1;b<ycnt[i];b++) if(ylist[i][b]<ylist[i][a]){ long long t=ylist[i][a]; ylist[i][a]=ylist[i][b]; ylist[i][b]=t; }\nint visited=0;\nfor(int step=0; step<M; step++){\n  char c=S[step]; long long nx=sx, ny=sy;\n  if(c=='U') ny++; else if(c=='D') ny--; else if(c=='L') nx--; else if(c=='R') nx++;\n  if(nx==sx){\n    int idx=0, l=0,r=ux-1; while(l<=r){ int md=(l+r)/2; if(xs[md]<sx) l=md+1; else r=md-1; } idx=l; if(idx<ux && xs[idx]==sx){\n      long long lo=sy<ny?sy:ny, hi=sy<ny?ny:sy;\n      long long *arr=xlist[idx]; int sz=xcnt[idx];\n      int a=0; while(a<sz && arr[a]<lo) a++; int b=a; while(b<sz && arr[b]<=hi) b++;\n      if(b>a){ visited += (b-a);\n        /* remove visited from both maps by marking with sentinel */\n        for(int k=a;k<b;k++) arr[k]= (long long)4e18;\n      }\n    }\n  } else {\n    int idx=0, l=0,r=uy-1; while(l<=r){ int md=(l+r)/2; if(ys[md]<sy) l=md+1; else r=md-1; } idx=l; if(idx<uy && ys[idx]==sy){\n      long long lo=sx<nx?sx:nx, hi=sx<nx?nx:sx;\n      long long *arr=ylist[idx]; int sz=ycnt[idx];\n      int a=0; while(a<sz && arr[a]<lo) a++; int b=a; while(b<sz && arr[b]<=hi) b++;\n      if(b>a){ visited += (b-a); for(int k=a;k<b;k++) arr[k]=(long long)4e18; }\n    }\n  }\n  sx=nx; sy=ny;\n}\nprintf(\"%lld %lld %d\\n\", sx, sy, visited);\nreturn 0;\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,long long *sx,long long *sy,char *S,long long *hx,long long *hy)",
+          "code": "scanf(\"%d%d%lld%lld\", N,M,sx,sy);\nscanf(\"%s\", S);\nfor(int i=0;i<*N;i++) scanf(\"%lld%lld\", &hx[i], &hy[i]);\n"
+        },
+        {
+          "clause_id": "build_maps",
+          "signature": "void build_maps(int N,long long *hx,long long *hy)",
+          "code": "/* no-op placeholder: maps built in move */\n"
+        },
+        {
+          "clause_id": "move_and_count",
+          "signature": "int move_and_count(int M,long long *sx,long long *sy,char *S)",
+          "code": "/* build per-axis sorted lists with indices */\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(long long sx,long long sy,int cnt)",
+          "code": "/* handled in main */\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int N,M; long long sx,sy; static char S[200005];\nstatic long long hx[200005], hy[200005];\nread_input(&N,&M,&sx,&sy,S,hx,hy);\n/* maps: for each x -> sorted y, and for each y -> sorted x */\ntypedef struct Node{ long long v; struct Node*next; } Node;\n/* use sorted arrays per x and y via coordinate compression */\nstatic long long xs[200005], ys[200005];\nfor(int i=0;i<N;i++){ xs[i]=hx[i]; ys[i]=hy[i]; }\nint xn=N, yn=N;\nfor(int i=0;i<xn;i++) for(int j=i+1;j<xn;j++) if(xs[j]<xs[i]){ long long t=xs[i]; xs[i]=xs[j]; xs[j]=t; }\nfor(int i=0;i<yn;i++) for(int j=i+1;j<yn;j++) if(ys[j]<ys[i]){ long long t=ys[i]; ys[i]=ys[j]; ys[j]=t; }\nint ux=0; for(int i=0;i<xn;i++) if(i==0||xs[i]!=xs[i-1]) xs[ux++]=xs[i];\nint uy=0; for(int i=0;i<yn;i++) if(i==0||ys[i]!=ys[i-1]) ys[uy++]=ys[i];\n/* adjacency lists by x and y (stored as sorted dynamic arrays) */\nstatic int xcnt[200005], ycnt[200005];\nfor(int i=0;i<ux;i++) xcnt[i]=0; for(int i=0;i<uy;i++) ycnt[i]=0;\nint *xid=(int*)malloc((size_t)N*sizeof(int));\nint *yid=(int*)malloc((size_t)N*sizeof(int));\nfor(int i=0;i<N;i++){\n  int lx=0,rx=ux-1; while(lx<=rx){ int md=(lx+rx)/2; if(xs[md]<hx[i]) lx=md+1; else rx=md-1; } xid[i]=lx;\n  int ly=0,ry=uy-1; while(ly<=ry){ int md=(ly+ry)/2; if(ys[md]<hy[i]) ly=md+1; else ry=md-1; } yid[i]=ly;\n  xcnt[xid[i]]++; ycnt[yid[i]]++;\n}\nlong long **xlist=(long long**)malloc((size_t)ux*sizeof(long long*));\nlong long **ylist=(long long**)malloc((size_t)uy*sizeof(long long*));\nfor(int i=0;i<ux;i++){ xlist[i]=(long long*)malloc((size_t)xcnt[i]*sizeof(long long)); xcnt[i]=0; }\nfor(int i=0;i<uy;i++){ ylist[i]=(long long*)malloc((size_t)ycnt[i]*sizeof(long long)); ycnt[i]=0; }\nfor(int i=0;i<N;i++){ xlist[xid[i]][xcnt[xid[i]]++]=hy[i]; ylist[yid[i]][ycnt[yid[i]]++]=hx[i]; }\nfor(int i=0;i<ux;i++) for(int a=0;a<xcnt[i];a++) for(int b=a+1;b<xcnt[i];b++) if(xlist[i][b]<xlist[i][a]){ long long t=xlist[i][a]; xlist[i][a]=xlist[i][b]; xlist[i][b]=t; }\nfor(int i=0;i<uy;i++) for(int a=0;a<ycnt[i];a++) for(int b=a+1;b<ycnt[i];b++) if(ylist[i][b]<ylist[i][a]){ long long t=ylist[i][a]; ylist[i][a]=ylist[i][b]; ylist[i][b]=t; }\nint visited=0;\nfor(int step=0; step<M; step++){\n  char c=S[step]; long long nx=sx, ny=sy;\n  if(c=='U') ny++; else if(c=='D') ny--; else if(c=='L') nx--; else if(c=='R') nx++;\n  if(nx==sx){\n    int idx=0, l=0,r=ux-1; while(l<=r){ int md=(l+r)/2; if(xs[md]<sx) l=md+1; else r=md-1; } idx=l; if(idx<ux && xs[idx]==sx){\n      long long lo=sy<ny?sy:ny, hi=sy<ny?ny:sy;\n      long long *arr=xlist[idx]; int sz=xcnt[idx];\n      int a=0; while(a<sz && arr[a]<lo) a++; int b=a; while(b<sz && arr[b]<=hi) b++;\n      if(b>a){ visited += (b-a);\n        /* remove visited from both maps by marking with sentinel */\n        for(int k=a;k<b;k++) arr[k]= (long long)4e18;\n      }\n    }\n  } else {\n    int idx=0, l=0,r=uy-1; while(l<=r){ int md=(l+r)/2; if(ys[md]<sy) l=md+1; else r=md-1; } idx=l; if(idx<uy && ys[idx]==sy){\n      long long lo=sx<nx?sx:nx, hi=sx<nx?nx:sx;\n      long long *arr=ylist[idx]; int sz=ycnt[idx];\n      int a=0; while(a<sz && arr[a]<lo) a++; int b=a; while(b<sz && arr[b]<=hi) b++;\n      if(b>a){ visited += (b-a); for(int k=a;k<b;k++) arr[k]=(long long)4e18; }\n    }\n  }\n  sx=nx; sy=ny;\n}\nprintf(\"%lld %lld %d\\n\", sx, sy, visited);\nreturn 0;\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,long long *sx,long long *sy,char *S,long long *hx,long long *hy)",
+          "code": "scanf(\"%d%d%lld%lld\", N,M,sx,sy);\nscanf(\"%s\", S);\nfor(int i=0;i<*N;i++) scanf(\"%lld%lld\", &hx[i], &hy[i]);\n"
+        },
+        {
+          "clause_id": "build_maps",
+          "signature": "void build_maps(int N,long long *hx,long long *hy)",
+          "code": "/* no-op placeholder: maps built in move */\n"
+        },
+        {
+          "clause_id": "move_and_count",
+          "signature": "int move_and_count(int M,long long *sx,long long *sy,char *S)",
+          "code": "/* build per-axis sorted lists with indices */\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(long long sx,long long sy,int cnt)",
+          "code": "/* handled in main */\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int N,M; long long sx,sy; static char S[200005];\nstatic long long hx[200005], hy[200005];\nread_input(&N,&M,&sx,&sy,S,hx,hy);\n/* maps: for each x -> sorted y, and for each y -> sorted x */\ntypedef struct Node{ long long v; struct Node*next; } Node;\n/* use sorted arrays per x and y via coordinate compression */\nstatic long long xs[200005], ys[200005];\nfor(int i=0;i<N;i++){ xs[i]=hx[i]; ys[i]=hy[i]; }\nint xn=N, yn=N;\nfor(int i=0;i<xn;i++) for(int j=i+1;j<xn;j++) if(xs[j]<xs[i]){ long long t=xs[i]; xs[i]=xs[j]; xs[j]=t; }\nfor(int i=0;i<yn;i++) for(int j=i+1;j<yn;j++) if(ys[j]<ys[i]){ long long t=ys[i]; ys[i]=ys[j]; ys[j]=t; }\nint ux=0; for(int i=0;i<xn;i++) if(i==0||xs[i]!=xs[i-1]) xs[ux++]=xs[i];\nint uy=0; for(int i=0;i<yn;i++) if(i==0||ys[i]!=ys[i-1]) ys[uy++]=ys[i];\n/* adjacency lists by x and y (stored as sorted dynamic arrays) */\nstatic int xcnt[200005], ycnt[200005];\nfor(int i=0;i<ux;i++) xcnt[i]=0; for(int i=0;i<uy;i++) ycnt[i]=0;\nint *xid=(int*)malloc((size_t)N*sizeof(int));\nint *yid=(int*)malloc((size_t)N*sizeof(int));\nfor(int i=0;i<N;i++){\n  int lx=0,rx=ux-1; while(lx<=rx){ int md=(lx+rx)/2; if(xs[md]<hx[i]) lx=md+1; else rx=md-1; } xid[i]=lx;\n  int ly=0,ry=uy-1; while(ly<=ry){ int md=(ly+ry)/2; if(ys[md]<hy[i]) ly=md+1; else ry=md-1; } yid[i]=ly;\n  xcnt[xid[i]]++; ycnt[yid[i]]++;\n}\nlong long **xlist=(long long**)malloc((size_t)ux*sizeof(long long*));\nlong long **ylist=(long long**)malloc((size_t)uy*sizeof(long long*));\nfor(int i=0;i<ux;i++){ xlist[i]=(long long*)malloc((size_t)xcnt[i]*sizeof(long long)); xcnt[i]=0; }\nfor(int i=0;i<uy;i++){ ylist[i]=(long long*)malloc((size_t)ycnt[i]*sizeof(long long)); ycnt[i]=0; }\nfor(int i=0;i<N;i++){ xlist[xid[i]][xcnt[xid[i]]++]=hy[i]; ylist[yid[i]][ycnt[yid[i]]++]=hx[i]; }\nfor(int i=0;i<ux;i++) for(int a=0;a<xcnt[i];a++) for(int b=a+1;b<xcnt[i];b++) if(xlist[i][b]<xlist[i][a]){ long long t=xlist[i][a]; xlist[i][a]=xlist[i][b]; xlist[i][b]=t; }\nfor(int i=0;i<uy;i++) for(int a=0;a<ycnt[i];a++) for(int b=a+1;b<ycnt[i];b++) if(ylist[i][b]<ylist[i][a]){ long long t=ylist[i][a]; ylist[i][a]=ylist[i][b]; ylist[i][b]=t; }\nint visited=0;\nfor(int step=0; step<M; step++){\n  char c=S[step]; long long nx=sx, ny=sy;\n  if(c=='U') ny++; else if(c=='D') ny--; else if(c=='L') nx--; else if(c=='R') nx++;\n  if(nx==sx){\n    int idx=0, l=0,r=ux-1; while(l<=r){ int md=(l+r)/2; if(xs[md]<sx) l=md+1; else r=md-1; } idx=l; if(idx<ux && xs[idx]==sx){\n      long long lo=sy<ny?sy:ny, hi=sy<ny?ny:sy;\n      long long *arr=xlist[idx]; int sz=xcnt[idx];\n      int a=0; while(a<sz && arr[a]<lo) a++; int b=a; while(b<sz && arr[b]<=hi) b++;\n      if(b>a){ visited += (b-a);\n        /* remove visited from both maps by marking with sentinel */\n        for(int k=a;k<b;k++) arr[k]= (long long)4e18;\n      }\n    }\n  } else {\n    int idx=0, l=0,r=uy-1; while(l<=r){ int md=(l+r)/2; if(ys[md]<sy) l=md+1; else r=md-1; } idx=l; if(idx<uy && ys[idx]==sy){\n      long long lo=sx<nx?sx:nx, hi=sx<nx?nx:sx;\n      long long *arr=ylist[idx]; int sz=ycnt[idx];\n      int a=0; while(a<sz && arr[a]<lo) a++; int b=a; while(b<sz && arr[b]<=hi) b++;\n      if(b>a){ visited += (b-a); for(int k=a;k<b;k++) arr[k]=(long long)4e18; }\n    }\n  }\n  sx=nx; sy=ny;\n}\nprintf(\"%lld %lld %d\\n\", sx, sy, visited);\nreturn 0;\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,long long *sx,long long *sy,char *S,long long *hx,long long *hy)",
+          "code": "scanf(\"%d%d%lld%lld\", N,M,sx,sy);\nscanf(\"%s\", S);\nfor(int i=0;i<*N;i++) scanf(\"%lld%lld\", &hx[i], &hy[i]);\n"
+        },
+        {
+          "clause_id": "build_maps",
+          "signature": "void build_maps(int N,long long *hx,long long *hy)",
+          "code": "/* no-op placeholder: maps built in move */\n"
+        },
+        {
+          "clause_id": "move_and_count",
+          "signature": "int move_and_count(int M,long long *sx,long long *sy,char *S)",
+          "code": "/* build per-axis sorted lists with indices */\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(long long sx,long long sy,int cnt)",
+          "code": "/* handled in main */\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int N,M; long long sx,sy; static char S[200005];\nstatic long long hx[200005], hy[200005];\nread_input(&N,&M,&sx,&sy,S,hx,hy);\n/* maps: for each x -> sorted y, and for each y -> sorted x */\ntypedef struct Node{ long long v; struct Node*next; } Node;\n/* use sorted arrays per x and y via coordinate compression */\nstatic long long xs[200005], ys[200005];\nfor(int i=0;i<N;i++){ xs[i]=hx[i]; ys[i]=hy[i]; }\nint xn=N, yn=N;\nfor(int i=0;i<xn;i++) for(int j=i+1;j<xn;j++) if(xs[j]<xs[i]){ long long t=xs[i]; xs[i]=xs[j]; xs[j]=t; }\nfor(int i=0;i<yn;i++) for(int j=i+1;j<yn;j++) if(ys[j]<ys[i]){ long long t=ys[i]; ys[i]=ys[j]; ys[j]=t; }\nint ux=0; for(int i=0;i<xn;i++) if(i==0||xs[i]!=xs[i-1]) xs[ux++]=xs[i];\nint uy=0; for(int i=0;i<yn;i++) if(i==0||ys[i]!=ys[i-1]) ys[uy++]=ys[i];\n/* adjacency lists by x and y (stored as sorted dynamic arrays) */\nstatic int xcnt[200005], ycnt[200005];\nfor(int i=0;i<ux;i++) xcnt[i]=0; for(int i=0;i<uy;i++) ycnt[i]=0;\nint *xid=(int*)malloc((size_t)N*sizeof(int));\nint *yid=(int*)malloc((size_t)N*sizeof(int));\nfor(int i=0;i<N;i++){\n  int lx=0,rx=ux-1; while(lx<=rx){ int md=(lx+rx)/2; if(xs[md]<hx[i]) lx=md+1; else rx=md-1; } xid[i]=lx;\n  int ly=0,ry=uy-1; while(ly<=ry){ int md=(ly+ry)/2; if(ys[md]<hy[i]) ly=md+1; else ry=md-1; } yid[i]=ly;\n  xcnt[xid[i]]++; ycnt[yid[i]]++;\n}\nlong long **xlist=(long long**)malloc((size_t)ux*sizeof(long long*));\nlong long **ylist=(long long**)malloc((size_t)uy*sizeof(long long*));\nfor(int i=0;i<ux;i++){ xlist[i]=(long long*)malloc((size_t)xcnt[i]*sizeof(long long)); xcnt[i]=0; }\nfor(int i=0;i<uy;i++){ ylist[i]=(long long*)malloc((size_t)ycnt[i]*sizeof(long long)); ycnt[i]=0; }\nfor(int i=0;i<N;i++){ xlist[xid[i]][xcnt[xid[i]]++]=hy[i]; ylist[yid[i]][ycnt[yid[i]]++]=hx[i]; }\nfor(int i=0;i<ux;i++) for(int a=0;a<xcnt[i];a++) for(int b=a+1;b<xcnt[i];b++) if(xlist[i][b]<xlist[i][a]){ long long t=xlist[i][a]; xlist[i][a]=xlist[i][b]; xlist[i][b]=t; }\nfor(int i=0;i<uy;i++) for(int a=0;a<ycnt[i];a++) for(int b=a+1;b<ycnt[i];b++) if(ylist[i][b]<ylist[i][a]){ long long t=ylist[i][a]; ylist[i][a]=ylist[i][b]; ylist[i][b]=t; }\nint visited=0;\nfor(int step=0; step<M; step++){\n  char c=S[step]; long long nx=sx, ny=sy;\n  if(c=='U') ny++; else if(c=='D') ny--; else if(c=='L') nx--; else if(c=='R') nx++;\n  if(nx==sx){\n    int idx=0, l=0,r=ux-1; while(l<=r){ int md=(l+r)/2; if(xs[md]<sx) l=md+1; else r=md-1; } idx=l; if(idx<ux && xs[idx]==sx){\n      long long lo=sy<ny?sy:ny, hi=sy<ny?ny:sy;\n      long long *arr=xlist[idx]; int sz=xcnt[idx];\n      int a=0; while(a<sz && arr[a]<lo) a++; int b=a; while(b<sz && arr[b]<=hi) b++;\n      if(b>a){ visited += (b-a);\n        /* remove visited from both maps by marking with sentinel */\n        for(int k=a;k<b;k++) arr[k]= (long long)4e18;\n      }\n    }\n  } else {\n    int idx=0, l=0,r=uy-1; while(l<=r){ int md=(l+r)/2; if(ys[md]<sy) l=md+1; else r=md-1; } idx=l; if(idx<uy && ys[idx]==sy){\n      long long lo=sx<nx?sx:nx, hi=sx<nx?nx:sx;\n      long long *arr=ylist[idx]; int sz=ycnt[idx];\n      int a=0; while(a<sz && arr[a]<lo) a++; int b=a; while(b<sz && arr[b]<=hi) b++;\n      if(b>a){ visited += (b-a); for(int k=a;k<b;k++) arr[k]=(long long)4e18; }\n    }\n  }\n  sx=nx; sy=ny;\n}\nprintf(\"%lld %lld %d\\n\", sx, sy, visited);\nreturn 0;\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "385E",
+  "total_programs": 5
+}

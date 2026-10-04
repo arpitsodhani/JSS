@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *D,char *S)",
+          "code": "void read_input(int *H,int *W,int *D,char *S){ scanf(\"%d%d%d\", H,W,D); for(int i=0;i<*H;i++) scanf(\"%s\", S+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "max_humidified",
+          "signature": "int max_humidified(int H,int W,int D,char *S)",
+          "code": "int max_humidified(int H,int W,int D,char *S){\n    int cells[105][2]; int n=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++) if(S[i*(W+1)+j]=='.'){ cells[n][0]=i; cells[n][1]=j; n++; }\n    int best=0;\n    for(int i=0;i<n;i++){\n        for(int j=i+1;j<n;j++){\n            int cnt=0;\n            for(int r=0;r<n;r++){\n                int d1 = abs(cells[r][0]-cells[i][0]) + abs(cells[r][1]-cells[i][1]);\n                int d2 = abs(cells[r][0]-cells[j][0]) + abs(cells[r][1]-cells[j][1]);\n                if(d1<=D || d2<=D) cnt++;\n            }\n            if(cnt>best) best=cnt;\n        }\n    }\n    return best;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,D; static char S[1200]; read_input(&H,&W,&D,S); int ans=max_humidified(H,W,D,S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *D,char *S)",
+          "code": "void read_input(int *H,int *W,int *D,char *S){ scanf(\"%d%d%d\", H,W,D); for(int i=0;i<*H;i++) scanf(\"%s\", S+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "max_humidified",
+          "signature": "int max_humidified(int H,int W,int D,char *S)",
+          "code": "int max_humidified(int H,int W,int D,char *S){\n    int cells[105][2]; int n=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++) if(S[i*(W+1)+j]=='.'){ cells[n][0]=i; cells[n][1]=j; n++; }\n    int best=0;\n    for(int i=0;i<n;i++){\n        for(int j=i+1;j<n;j++){\n            int cnt=0;\n            for(int r=0;r<n;r++){\n                int d1 = abs(cells[r][0]-cells[i][0]) + abs(cells[r][1]-cells[i][1]);\n                int d2 = abs(cells[r][0]-cells[j][0]) + abs(cells[r][1]-cells[j][1]);\n                if(d1<=D || d2<=D) cnt++;\n            }\n            if(cnt>best) best=cnt;\n        }\n    }\n    return best;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,D; static char S[1200]; read_input(&H,&W,&D,S); int ans=max_humidified(H,W,D,S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *D,char *S)",
+          "code": "void read_input(int *H,int *W,int *D,char *S){ scanf(\"%d%d%d\", H,W,D); for(int i=0;i<*H;i++) scanf(\"%s\", S+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "max_humidified",
+          "signature": "int max_humidified(int H,int W,int D,char *S)",
+          "code": "int max_humidified(int H,int W,int D,char *S){\n    int cells[105][2]; int n=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++) if(S[i*(W+1)+j]=='.'){ cells[n][0]=i; cells[n][1]=j; n++; }\n    int best=0;\n    for(int i=0;i<n;i++){\n        for(int j=i+1;j<n;j++){\n            int cnt=0;\n            for(int r=0;r<n;r++){\n                int d1 = abs(cells[r][0]-cells[i][0]) + abs(cells[r][1]-cells[i][1]);\n                int d2 = abs(cells[r][0]-cells[j][0]) + abs(cells[r][1]-cells[j][1]);\n                if(d1<=D || d2<=D) cnt++;\n            }\n            if(cnt>best) best=cnt;\n        }\n    }\n    return best;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,D; static char S[1200]; read_input(&H,&W,&D,S); int ans=max_humidified(H,W,D,S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *D,char *S)",
+          "code": "void read_input(int *H,int *W,int *D,char *S){ scanf(\"%d%d%d\", H,W,D); for(int i=0;i<*H;i++) scanf(\"%s\", S+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "max_humidified",
+          "signature": "int max_humidified(int H,int W,int D,char *S)",
+          "code": "int max_humidified(int H,int W,int D,char *S){\n    int cells[105][2]; int n=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++) if(S[i*(W+1)+j]=='.'){ cells[n][0]=i; cells[n][1]=j; n++; }\n    int best=0;\n    for(int i=0;i<n;i++){\n        for(int j=i+1;j<n;j++){\n            int cnt=0;\n            for(int r=0;r<n;r++){\n                int d1 = abs(cells[r][0]-cells[i][0]) + abs(cells[r][1]-cells[i][1]);\n                int d2 = abs(cells[r][0]-cells[j][0]) + abs(cells[r][1]-cells[j][1]);\n                if(d1<=D || d2<=D) cnt++;\n            }\n            if(cnt>best) best=cnt;\n        }\n    }\n    return best;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,D; static char S[1200]; read_input(&H,&W,&D,S); int ans=max_humidified(H,W,D,S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *D,char *S)",
+          "code": "void read_input(int *H,int *W,int *D,char *S){ scanf(\"%d%d%d\", H,W,D); for(int i=0;i<*H;i++) scanf(\"%s\", S+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "max_humidified",
+          "signature": "int max_humidified(int H,int W,int D,char *S)",
+          "code": "int max_humidified(int H,int W,int D,char *S){\n    int cells[105][2]; int n=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++) if(S[i*(W+1)+j]=='.'){ cells[n][0]=i; cells[n][1]=j; n++; }\n    int best=0;\n    for(int i=0;i<n;i++){\n        for(int j=i+1;j<n;j++){\n            int cnt=0;\n            for(int r=0;r<n;r++){\n                int d1 = abs(cells[r][0]-cells[i][0]) + abs(cells[r][1]-cells[i][1]);\n                int d2 = abs(cells[r][0]-cells[j][0]) + abs(cells[r][1]-cells[j][1]);\n                if(d1<=D || d2<=D) cnt++;\n            }\n            if(cnt>best) best=cnt;\n        }\n    }\n    return best;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,D; static char S[1200]; read_input(&H,&W,&D,S); int ans=max_humidified(H,W,D,S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

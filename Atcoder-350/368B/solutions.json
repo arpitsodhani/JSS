@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "extract_window_values",
+          "signature": "void extract_window_values(int *array, int center, int window_size, int *window)",
+          "code": "void extract_window_values(int *array, int center, int window_size, int *window) {\n    int half = window_size / 2;\n    for (int i = 0; i < window_size; i++) {\n        window[i] = array[center - half + i];\n    }\n}"
+        },
+        {
+          "clause_id": "find_median_value",
+          "signature": "int find_median_value(int *window, int size)",
+          "code": "int find_median_value(int *window, int size) {\n    for (int i = 0; i < size - 1; i++) {\n        for (int j = i + 1; j < size; j++) {\n            if (window[j] < window[i]) {\n                int tmp = window[i];\n                window[i] = window[j];\n                window[j] = tmp;\n            }\n        }\n    }\n    return window[size / 2];\n}"
+        },
+        {
+          "clause_id": "apply_median_filter",
+          "signature": "void apply_median_filter(int n, int *input, int *output, int window_size)",
+          "code": "void apply_median_filter(int n, int *input, int *output, int window_size) {\n    int half = window_size / 2;\n    for (int i = half; i < n - half; i++) {\n        int window[105];\n        extract_window_values(input, i, window_size, window);\n        output[i] = find_median_value(window, window_size);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, window_size, input[10005], output[10005];\n    scanf(\"%d %d\", &n, &window_size);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &input[i]);\n    apply_median_filter(n, input, output, window_size);\n    int half = window_size / 2;\n    for (int i = half; i < n - half; i++) {\n        printf(\"%d \", output[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "extract_window_values",
+          "signature": "void extract_window_values(int *array, int center, int window_size, int *window)",
+          "code": "void extract_window_values(int *array, int center, int window_size, int *window) {\n    int half = window_size / 2;\n    for (int i = 0; i < window_size; i++) {\n        window[i] = array[center - half + i];\n    }\n}"
+        },
+        {
+          "clause_id": "find_median_value",
+          "signature": "int find_median_value(int *window, int size)",
+          "code": "int find_median_value(int *window, int size) {\n    for (int i = 0; i < size - 1; i++) {\n        for (int j = i + 1; j < size; j++) {\n            if (window[j] < window[i]) {\n                int tmp = window[i];\n                window[i] = window[j];\n                window[j] = tmp;\n            }\n        }\n    }\n    return window[size / 2];\n}"
+        },
+        {
+          "clause_id": "apply_median_filter",
+          "signature": "void apply_median_filter(int n, int *input, int *output, int window_size)",
+          "code": "void apply_median_filter(int n, int *input, int *output, int window_size) {\n    int half = window_size / 2;\n    for (int i = half; i < n - half; i++) {\n        int window[105];\n        extract_window_values(input, i, window_size, window);\n        output[i] = find_median_value(window, window_size);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, window_size, input[10005], output[10005];\n    scanf(\"%d %d\", &n, &window_size);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &input[i]);\n    apply_median_filter(n, input, output, window_size);\n    int half = window_size / 2;\n    for (int i = half; i < n - half; i++) {\n        printf(\"%d \", output[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "extract_window_values",
+          "signature": "void extract_window_values(int *array, int center, int window_size, int *window)",
+          "code": "void extract_window_values(int *array, int center, int window_size, int *window) {\n    int half = window_size / 2;\n    for (int i = 0; i < window_size; i++) {\n        window[i] = array[center - half + i];\n    }\n}"
+        },
+        {
+          "clause_id": "find_median_value",
+          "signature": "int find_median_value(int *window, int size)",
+          "code": "int find_median_value(int *window, int size) {\n    for (int i = 0; i < size - 1; i++) {\n        for (int j = i + 1; j < size; j++) {\n            if (window[j] < window[i]) {\n                int tmp = window[i];\n                window[i] = window[j];\n                window[j] = tmp;\n            }\n        }\n    }\n    return window[size / 2];\n}"
+        },
+        {
+          "clause_id": "apply_median_filter",
+          "signature": "void apply_median_filter(int n, int *input, int *output, int window_size)",
+          "code": "void apply_median_filter(int n, int *input, int *output, int window_size) {\n    int half = window_size / 2;\n    for (int i = half; i < n - half; i++) {\n        int window[105];\n        extract_window_values(input, i, window_size, window);\n        output[i] = find_median_value(window, window_size);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, window_size, input[10005], output[10005];\n    scanf(\"%d %d\", &n, &window_size);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &input[i]);\n    apply_median_filter(n, input, output, window_size);\n    int half = window_size / 2;\n    for (int i = half; i < n - half; i++) {\n        printf(\"%d \", output[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "extract_window_values",
+          "signature": "void extract_window_values(int *array, int center, int window_size, int *window)",
+          "code": "void extract_window_values(int *array, int center, int window_size, int *window) {\n    int half = window_size / 2;\n    for (int i = 0; i < window_size; i++) {\n        window[i] = array[center - half + i];\n    }\n}"
+        },
+        {
+          "clause_id": "find_median_value",
+          "signature": "int find_median_value(int *window, int size)",
+          "code": "int find_median_value(int *window, int size) {\n    for (int i = 0; i < size - 1; i++) {\n        for (int j = i + 1; j < size; j++) {\n            if (window[j] < window[i]) {\n                int tmp = window[i];\n                window[i] = window[j];\n                window[j] = tmp;\n            }\n        }\n    }\n    return window[size / 2];\n}"
+        },
+        {
+          "clause_id": "apply_median_filter",
+          "signature": "void apply_median_filter(int n, int *input, int *output, int window_size)",
+          "code": "void apply_median_filter(int n, int *input, int *output, int window_size) {\n    int half = window_size / 2;\n    for (int i = half; i < n - half; i++) {\n        int window[105];\n        extract_window_values(input, i, window_size, window);\n        output[i] = find_median_value(window, window_size);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, window_size, input[10005], output[10005];\n    scanf(\"%d %d\", &n, &window_size);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &input[i]);\n    apply_median_filter(n, input, output, window_size);\n    int half = window_size / 2;\n    for (int i = half; i < n - half; i++) {\n        printf(\"%d \", output[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "extract_window_values",
+          "signature": "void extract_window_values(int *array, int center, int window_size, int *window)",
+          "code": "void extract_window_values(int *array, int center, int window_size, int *window) {\n    int half = window_size / 2;\n    for (int i = 0; i < window_size; i++) {\n        window[i] = array[center - half + i];\n    }\n}"
+        },
+        {
+          "clause_id": "find_median_value",
+          "signature": "int find_median_value(int *window, int size)",
+          "code": "int find_median_value(int *window, int size) {\n    for (int i = 0; i < size - 1; i++) {\n        for (int j = i + 1; j < size; j++) {\n            if (window[j] < window[i]) {\n                int tmp = window[i];\n                window[i] = window[j];\n                window[j] = tmp;\n            }\n        }\n    }\n    return window[size / 2];\n}"
+        },
+        {
+          "clause_id": "apply_median_filter",
+          "signature": "void apply_median_filter(int n, int *input, int *output, int window_size)",
+          "code": "void apply_median_filter(int n, int *input, int *output, int window_size) {\n    int half = window_size / 2;\n    for (int i = half; i < n - half; i++) {\n        int window[105];\n        extract_window_values(input, i, window_size, window);\n        output[i] = find_median_value(window, window_size);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, window_size, input[10005], output[10005];\n    scanf(\"%d %d\", &n, &window_size);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &input[i]);\n    apply_median_filter(n, input, output, window_size);\n    int half = window_size / 2;\n    for (int i = half; i < n - half; i++) {\n        printf(\"%d \", output[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

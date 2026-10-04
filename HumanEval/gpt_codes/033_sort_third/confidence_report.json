@@ -1,0 +1,50 @@
+{
+  "clause_wise_confidence": {
+    "sort_third": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "main": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 5,
+        "total_programs": 5
+      }
+    },
+    "sort_every_third": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "order_thirds": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "sort_step3": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "sort_multiples_of_3": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    }
+  },
+  "overall_metrics": {
+    "average_confidence": 1.0,
+    "total_clauses": 6
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "contestId": 2002,
+  "index": "B",
+  "problem_id": "2002B",
+  "name": "Removals Game",
+  "rating": 1000,
+  "tags": [
+    "constructive algorithms",
+    "games"
+  ],
+  "points": 750.0,
+  "solvedCount": 23354,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Removals Game",
+  "legend": "Alice got a permutation a1,a2,…,an of [1,2,…,n], and Bob got another permutation b1,b2,…,bn of [1,2,…,n]. They are going to play a game with these arrays.\n\nIn each turn, the following events happen in order:\n\nAlice chooses either the first or the last element of her array and removes it from the array;\nBob chooses either the first or the last element of his array and removes it from the array.\n\nThe game continues for n−1 turns, after which both arrays will have exactly one remaining element: x in the array a and y in the array b.\n\nIf x=y, Bob wins; otherwise, Alice wins. Find which player will win if both players play optimally.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe first line of each test case contains a single integer n (1≤n≤3⋅105).\n\nThe next line contains n integers a1,a2,…,an (1≤ai≤n, all ai are distinct) — the permutation of Alice.\n\nThe next line contains n integers b1,b2,…,bn (1≤bi≤n, all bi are distinct) — the permutation of Bob.\n\nIt is guaranteed that the sum of all n does not exceed 3⋅105.",
+  "output_spec": "For each test case, print a single line with the name of the winner, assuming both players play optimally. If Alice wins, print Alice; otherwise, print Bob.",
+  "note": "In the first test case, Bob can win the game by deleting the same element as Alice did.\n\nIn the second test case, Alice can delete 3 in the first turn, and then in the second turn, delete the element that is different from the one Bob deleted in the first turn to win the game.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n2\n1 2\n1 2\n3\n1 2 3\n2 3 1\n",
+      "output": "Bob\nAlice"
+    }
+  ]
+}

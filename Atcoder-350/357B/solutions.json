@@ -1,0 +1,135 @@
+{
+  "problem_id": "357B",
+  "includes": [
+    "#include <stdio.h>",
+    "#include <string.h>",
+    "#include <ctype.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char s[])",
+          "code": "void read_input(char s[]) { scanf(\"%s\", s); }"
+        },
+        {
+          "clause_id": "convert_case",
+          "signature": "void convert_case(char s[])",
+          "code": "void convert_case(char s[]) { int upper = 0, lower = 0; for(int i = 0; s[i]; i++) { if(isupper(s[i])) upper++; else lower++; } if(upper > lower) { for(int i = 0; s[i]; i++) s[i] = toupper(s[i]); } else { for(int i = 0; s[i]; i++) s[i] = tolower(s[i]); } }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[105]; read_input(s); convert_case(s); printf(\"%s\\n\", s); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char s[])",
+          "code": "void read_input(char s[]) { scanf(\"%s\", s); }"
+        },
+        {
+          "clause_id": "convert_case",
+          "signature": "void convert_case(char s[])",
+          "code": "void convert_case(char s[]) { int u = 0, l = 0, len = strlen(s); for(int i = 0; i < len; i++) { if(s[i] >= 'A' && s[i] <= 'Z') u++; else l++; } for(int i = 0; i < len; i++) { if(u > l) s[i] = toupper(s[i]); else s[i] = tolower(s[i]); } }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char text[105]; read_input(text); convert_case(text); puts(text); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char s[])",
+          "code": "void read_input(char s[]) { scanf(\"%s\", s); }"
+        },
+        {
+          "clause_id": "convert_case",
+          "signature": "void convert_case(char s[])",
+          "code": "void convert_case(char s[]) { int uppercase_count = 0, lowercase_count = 0; int i; for(i = 0; s[i] != '\\0'; i++) { if(isupper(s[i])) uppercase_count++; else if(islower(s[i])) lowercase_count++; } if(uppercase_count > lowercase_count) { for(i = 0; s[i]; i++) if(islower(s[i])) s[i] = toupper(s[i]); } else { for(i = 0; s[i]; i++) if(isupper(s[i])) s[i] = tolower(s[i]); } }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char str[105]; read_input(str); convert_case(str); printf(\"%s\\n\", str); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char s[])",
+          "code": "void read_input(char s[]) { scanf(\"%s\", s); }"
+        },
+        {
+          "clause_id": "convert_case",
+          "signature": "void convert_case(char s[])",
+          "code": "void convert_case(char s[]) { int caps = 0, smalls = 0; for(char *p = s; *p; p++) { if(*p >= 'A' && *p <= 'Z') caps++; else smalls++; } if(caps > smalls) { for(char *p = s; *p; p++) *p = toupper(*p); } else { for(char *p = s; *p; p++) *p = tolower(*p); } }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char string[105]; read_input(string); convert_case(string); printf(\"%s\\n\", string); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char s[])",
+          "code": "void read_input(char s[]) { scanf(\"%s\", s); }"
+        },
+        {
+          "clause_id": "convert_case",
+          "signature": "void convert_case(char s[])",
+          "code": "void convert_case(char s[]) { int big = 0, small = 0; for(int idx = 0; s[idx]; idx++) { if(s[idx] >= 'A' && s[idx] <= 'Z') big++; else if(s[idx] >= 'a' && s[idx] <= 'z') small++; } int to_upper = (big > small); for(int idx = 0; s[idx]; idx++) { s[idx] = to_upper ? toupper(s[idx]) : tolower(s[idx]); } }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char input[105]; read_input(input); convert_case(input); printf(\"%s\\n\", input); return 0; }"
+        }
+      ]
+    }
+  ]
+}

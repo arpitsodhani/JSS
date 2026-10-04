@@ -1,0 +1,8 @@
+You are given a lowercase English string S of length N and an integer M . For each k=0,1,\ldots,N , solve the following problem: There are 26^M lowercase English strings of length M . Among these, find the number, modulo 998244353 , of strings whose longest common subsequence with S has length exactly k .
+
+**Constraints:**
+- 1 <= N <= 500
+- 1 <= M <= N(N-1)/2
+- 1 <= u_i < v_i <= N
+- All pairs (u_i, v_i) are distinct
+- All input values are integers

@@ -1,0 +1,6 @@
+You are given an integer sequence A = (A_1, A_2, \dots, A_N) . Calculate the following expression: \displaystyle \sum_{i=1}^N \sum_{j=i+1}^N \max(A_j - A_i, 0) The guarantee that the answer is less than 2^{63} .
+
+**Constraints:**
+- 2 \leq N \leq 4 \times 10^5
+- 0 \leq A_i \leq 10^8
+- integers

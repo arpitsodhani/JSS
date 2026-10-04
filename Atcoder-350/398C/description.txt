@@ -1,0 +1,6 @@
+There are N people, labeled 1 to N . Person i has an integer A_i . Among the people who satisfy the condition "None of the other N-1 people has the same integer as themselves," find the one with the greatest integer, and print that person's label. If no person satisfies the condition, report that fact instead.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= N
+- All input values are integers

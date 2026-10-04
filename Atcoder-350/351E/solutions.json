@@ -1,0 +1,129 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "prog1_read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    long long x, y;\n} Point;\n\nPoint points[200005];\nint n;\n\nvoid read_input() {\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld %lld\", &points[i].x, &points[i].y);\n    }\n}\n\nlong long abs_val(long long x) {\n    return x < 0 ? -x : x;\n}\n\nlong long calculate_result() {\n    long long total = 0;\n    \n    for (int i = 0; i < n; i++) {\n        points[i].x = points[i].x + points[i].y;\n        points[i].y = points[i].x - 2 * points[i].y;\n    }\n    \n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (points[j].x < points[i].x) {\n                Point temp = points[i];\n                points[i] = points[j];\n                points[j] = temp;\n            }\n        }\n    }\n    \n    for (int i = 0; i < n; i++) {\n        total += (long long)(2 * i - n + 1) * points[i].x;\n    }\n    \n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (points[j].y < points[i].y) {\n                Point temp = points[i];\n                points[i] = points[j];\n                points[j] = temp;\n            }\n        }\n    }\n    \n    for (int i = 0; i < n; i++) {\n        total += (long long)(2 * i - n + 1) * points[i].y;\n    }\n    \n    return total / 2;\n}\n\nint main() {\n    read_input();\n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog1_abs_val",
+          "signature": "long long abs_val(long long)",
+          "code": "long long abs_val(long long x) {\n    return x < 0 ? -x : x;\n}"
+        },
+        {
+          "clause_id": "prog1_calculate_result",
+          "signature": "long long calculate_result()",
+          "code": "long long calculate_result() {\n    long long total = 0;\n    \n    for (int i = 0; i < n; i++) {\n        points[i].x = points[i].x + points[i].y;\n        points[i].y = points[i].x - 2 * points[i].y;\n    }"
+        },
+        {
+          "clause_id": "prog1_main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "prog2_read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    long long x, y;\n} Point;\n\nPoint pts[200005];\nint n;\n\nvoid read_input() {\n    scanf(\"%d\", &n);\n    int i = 0;\n    while (i < n) {\n        scanf(\"%lld %lld\", &pts[i].x, &pts[i].y);\n        i++;\n    }\n}\n\nlong long abs_val(long long v) {\n    return v >= 0 ? v : -v;\n}\n\nlong long calculate_result() {\n    long long answer = 0;\n    \n    for (int i = 0; i < n; i++) {\n        long long sum = pts[i].x + pts[i].y;\n        long long diff = pts[i].x - pts[i].y;\n        pts[i].x = sum;\n        pts[i].y = diff;\n    }\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (pts[i].x > pts[j].x) {\n                Point t = pts[i];\n                pts[i] = pts[j];\n                pts[j] = t;\n            }\n        }\n    }\n    \n    for (int i = 0; i < n; i++) {\n        answer += pts[i].x * (2 * i - n + 1);\n    }\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (pts[i].y > pts[j].y) {\n                Point t = pts[i];\n                pts[i] = pts[j];\n                pts[j] = t;\n            }\n        }\n    }\n    \n    for (int i = 0; i < n; i++) {\n        answer += pts[i].y * (2 * i - n + 1);\n    }\n    \n    return answer / 2;\n}\n\nint main() {\n    read_input();\n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog2_abs_val",
+          "signature": "long long abs_val(long long)",
+          "code": "long long abs_val(long long v) {\n    return v >= 0 ? v : -v;\n}"
+        },
+        {
+          "clause_id": "prog2_calculate_result",
+          "signature": "long long calculate_result()",
+          "code": "long long calculate_result() {\n    long long answer = 0;\n    \n    for (int i = 0; i < n; i++) {\n        long long sum = pts[i].x + pts[i].y;\n        long long diff = pts[i].x - pts[i].y;\n        pts[i].x = sum;\n        pts[i].y = diff;\n    }"
+        },
+        {
+          "clause_id": "prog2_main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "prog3_read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct { long long x, y; } Point;\nPoint p[200005];\nint n;\n\nvoid read_input() {\n    scanf(\"%d\", &n);\n    for (int k = 0; k < n; k++) scanf(\"%lld %lld\", &p[k].x, &p[k].y);\n}\n\nlong long abs_val(long long a) { return a < 0 ? -a : a; }\n\nlong long calculate_result() {\n    long long res = 0;\n    for (int i = 0; i < n; i++) {\n        long long s = p[i].x + p[i].y, d = p[i].x - p[i].y;\n        p[i].x = s; p[i].y = d;\n    }\n    \n    for (int i = 0; i < n - 1; i++)\n        for (int j = 0; j < n - 1 - i; j++)\n            if (p[j].x > p[j+1].x) {\n                Point tmp = p[j]; p[j] = p[j+1]; p[j+1] = tmp;\n            }\n    \n    for (int i = 0; i < n; i++) res += p[i].x * (2 * i - n + 1);\n    \n    for (int i = 0; i < n - 1; i++)\n        for (int j = 0; j < n - 1 - i; j++)\n            if (p[j].y > p[j+1].y) {\n                Point tmp = p[j]; p[j] = p[j+1]; p[j+1] = tmp;\n            }\n    \n    for (int i = 0; i < n; i++) res += p[i].y * (2 * i - n + 1);\n    \n    return res / 2;\n}\n\nint main() {\n    read_input();\n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog3_abs_val",
+          "signature": "long long abs_val(long long)",
+          "code": "long long abs_val(long long a) { return a < 0 ? -a : a; }"
+        },
+        {
+          "clause_id": "prog3_calculate_result",
+          "signature": "long long calculate_result()",
+          "code": "long long calculate_result() {\n    long long res = 0;\n    for (int i = 0; i < n; i++) {\n        long long s = p[i].x + p[i].y, d = p[i].x - p[i].y;\n        p[i].x = s; p[i].y = d;\n    }"
+        },
+        {
+          "clause_id": "prog3_main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "prog4_read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct { long long x, y; } Point;\nPoint arr[200005];\nint n;\n\nvoid read_input() {\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%lld %lld\", &arr[i].x, &arr[i].y);\n}\n\nlong long abs_val(long long x) { return x < 0 ? -x : x; }\n\nlong long calculate_result() {\n    long long sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        long long a = arr[i].x + arr[i].y;\n        long long b = arr[i].x - arr[i].y;\n        arr[i].x = a; arr[i].y = b;\n    }\n    \n    int swapped;\n    do {\n        swapped = 0;\n        for (int i = 0; i < n - 1; i++) {\n            if (arr[i].x > arr[i+1].x) {\n                Point t = arr[i]; arr[i] = arr[i+1]; arr[i+1] = t;\n                swapped = 1;\n            }\n        }\n    } while (swapped);\n    \n    for (int i = 0; i < n; i++) sum += arr[i].x * (2 * i - n + 1);\n    \n    do {\n        swapped = 0;\n        for (int i = 0; i < n - 1; i++) {\n            if (arr[i].y > arr[i+1].y) {\n                Point t = arr[i]; arr[i] = arr[i+1]; arr[i+1] = t;\n                swapped = 1;\n            }\n        }\n    } while (swapped);\n    \n    for (int i = 0; i < n; i++) sum += arr[i].y * (2 * i - n + 1);\n    \n    return sum / 2;\n}\n\nint main() {\n    read_input();\n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog4_abs_val",
+          "signature": "long long abs_val(long long)",
+          "code": "long long abs_val(long long x) { return x < 0 ? -x : x; }"
+        },
+        {
+          "clause_id": "prog4_calculate_result",
+          "signature": "long long calculate_result()",
+          "code": "long long calculate_result() {\n    long long sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        long long a = arr[i].x + arr[i].y;\n        long long b = arr[i].x - arr[i].y;\n        arr[i].x = a; arr[i].y = b;\n    }"
+        },
+        {
+          "clause_id": "prog4_main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "prog5_read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct { long long x, y; } Point;\nPoint data[200005];\nint n;\n\nvoid read_input() {\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%lld %lld\", &data[i].x, &data[i].y);\n}\n\nlong long abs_val(long long v) { return v < 0 ? -v : v; }\n\nlong long calculate_result() {\n    long long total = 0;\n    for (int i = 0; i < n; i++) {\n        long long u = data[i].x + data[i].y, v = data[i].x - data[i].y;\n        data[i].x = u; data[i].y = v;\n    }\n    \n    for (int step = 0; step < n; step++)\n        for (int i = 0; i < n - step - 1; i++)\n            if (data[i].x > data[i+1].x) {\n                Point swap = data[i]; data[i] = data[i+1]; data[i+1] = swap;\n            }\n    \n    for (int i = 0; i < n; i++) total += data[i].x * (2 * i - n + 1);\n    \n    for (int step = 0; step < n; step++)\n        for (int i = 0; i < n - step - 1; i++)\n            if (data[i].y > data[i+1].y) {\n                Point swap = data[i]; data[i] = data[i+1]; data[i+1] = swap;\n            }\n    \n    for (int i = 0; i < n; i++) total += data[i].y * (2 * i - n + 1);\n    \n    return total / 2;\n}\n\nint main() {\n    read_input();\n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog5_abs_val",
+          "signature": "long long abs_val(long long)",
+          "code": "long long abs_val(long long v) { return v < 0 ? -v : v; }"
+        },
+        {
+          "clause_id": "prog5_calculate_result",
+          "signature": "long long calculate_result()",
+          "code": "long long calculate_result() {\n    long long total = 0;\n    for (int i = 0; i < n; i++) {\n        long long u = data[i].x + data[i].y, v = data[i].x - data[i].y;\n        data[i].x = u; data[i].y = v;\n    }"
+        },
+        {
+          "clause_id": "prog5_main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *k, int *u, int *v)",
+          "code": "scanf(\"%d %d %d\", n, m, k); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "shortest_01",
+          "signature": "int shortest_01(int n, int m, const int *u, const int *v, const char *w)",
+          "code": "int INF=1e9;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nfor(int i=0;i<m;i++){ to[i]=v[i]; nx[i]=head[u[i]]; head[u[i]]=i; }\nint *dist=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) dist[i]=INF;\nint *dq=(int*)malloc((size_t)(2*n+5)*sizeof(int));\nint headq=n, tailq=n;\ndist[0]=0; dq[headq]=0;\nwhile(headq<=tailq){\n  int x=dq[headq++];\n  int dx=dist[x];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    int nd=dx + (w[e]?1:0);\n    if(nd<dist[y]){\n      dist[y]=nd;\n      if(w[e]) dq[++tailq]=y; else dq[--headq]=y;\n    }\n  }\n}\nint ans=dist[n-1];\nfree(head); free(to); free(nx); free(dist); free(dq);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "improve_once",
+          "signature": "int improve_once(int n, int m, int k, const int *u, const int *v, char *w, char *chosen)",
+          "code": "int INF=1e9;\nint V=n;\nint *head=(int*)malloc((size_t)V*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<V;i++) head[i]=-1;\nfor(int i=0;i<m;i++){ to[i]=v[i]; nx[i]=head[u[i]]; head[u[i]]=i; }\nint *dist=(int*)malloc((size_t)V*sizeof(int));\nint *pre_v=(int*)malloc((size_t)V*sizeof(int));\nint *pre_e=(int*)malloc((size_t)V*sizeof(int));\nfor(int i=0;i<V;i++){ dist[i]=INF; pre_v[i]=-1; pre_e[i]=-1; }\nint *dq=(int*)malloc((size_t)(2*V+5)*sizeof(int));\nint hq=V,tq=V;\ndist[0]=0; dq[hq]=0;\nwhile(hq<=tq){\n  int x=dq[hq++];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    int nd=dist[x] + (w[e]?1:0);\n    if(nd<dist[y]){\n      dist[y]=nd; pre_v[y]=x; pre_e[y]=e;\n      if(w[e]) dq[++tq]=y; else dq[--hq]=y;\n    }\n  }\n}\nint cur=n-1;\nint flipped=0;\nwhile(cur!=0 && pre_v[cur]!=-1){\n  int e=pre_e[cur];\n  if(!w[e] && !chosen[e]){\n    chosen[e]=1; flipped++; if(flipped==k) break;\n  }\n  cur=pre_v[cur];\n}\nfor(int i=0;i<m;i++) if(chosen[i]) w[i]=1;\nfree(head); free(to); free(nx); free(dist); free(pre_v); free(pre_e); free(dq);\nreturn flipped;\n"
+        },
+        {
+          "clause_id": "maximize_distance",
+          "signature": "int maximize_distance(int n, int m, int k, const int *u, const int *v)",
+          "code": "char *w=(char*)calloc((size_t)m,sizeof(char));\nchar *chosen=(char*)calloc((size_t)m,sizeof(char));\nint picked=0;\nfor(int it=0; it<200 && picked<k; it++){\n  int add=improve_once(n,m,k-picked,u,v,w,chosen);\n  if(add==0) break;\n  picked += add;\n}\nfor(int i=0;i<m && picked<k;i++) if(!chosen[i]){ chosen[i]=1; w[i]=1; picked++; }\nint ans=shortest_01(n,m,u,v,w);\nfree(w); free(chosen);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m,k; static int u[105], v[105]; read_graph(&n,&m,&k,u,v); int ans=maximize_distance(n,m,k,u,v); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *k, int *u, int *v)",
+          "code": "scanf(\"%d %d %d\", n, m, k); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "shortest_01",
+          "signature": "int shortest_01(int n, int m, const int *u, const int *v, const char *w)",
+          "code": "int INF=1e9;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nfor(int i=0;i<m;i++){ to[i]=v[i]; nx[i]=head[u[i]]; head[u[i]]=i; }\nint *dist=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) dist[i]=INF;\nint *dq=(int*)malloc((size_t)(2*n+5)*sizeof(int));\nint headq=n, tailq=n;\ndist[0]=0; dq[headq]=0;\nwhile(headq<=tailq){\n  int x=dq[headq++];\n  int dx=dist[x];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    int nd=dx + (w[e]?1:0);\n    if(nd<dist[y]){\n      dist[y]=nd;\n      if(w[e]) dq[++tailq]=y; else dq[--headq]=y;\n    }\n  }\n}\nint ans=dist[n-1];\nfree(head); free(to); free(nx); free(dist); free(dq);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "improve_once",
+          "signature": "int improve_once(int n, int m, int k, const int *u, const int *v, char *w, char *chosen)",
+          "code": "int INF=1e9;\nint V=n;\nint *head=(int*)malloc((size_t)V*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<V;i++) head[i]=-1;\nfor(int i=0;i<m;i++){ to[i]=v[i]; nx[i]=head[u[i]]; head[u[i]]=i; }\nint *dist=(int*)malloc((size_t)V*sizeof(int));\nint *pre_v=(int*)malloc((size_t)V*sizeof(int));\nint *pre_e=(int*)malloc((size_t)V*sizeof(int));\nfor(int i=0;i<V;i++){ dist[i]=INF; pre_v[i]=-1; pre_e[i]=-1; }\nint *dq=(int*)malloc((size_t)(2*V+5)*sizeof(int));\nint hq=V,tq=V;\ndist[0]=0; dq[hq]=0;\nwhile(hq<=tq){\n  int x=dq[hq++];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    int nd=dist[x] + (w[e]?1:0);\n    if(nd<dist[y]){\n      dist[y]=nd; pre_v[y]=x; pre_e[y]=e;\n      if(w[e]) dq[++tq]=y; else dq[--hq]=y;\n    }\n  }\n}\nint cur=n-1;\nint flipped=0;\nwhile(cur!=0 && pre_v[cur]!=-1){\n  int e=pre_e[cur];\n  if(!w[e] && !chosen[e]){\n    chosen[e]=1; flipped++; if(flipped==k) break;\n  }\n  cur=pre_v[cur];\n}\nfor(int i=0;i<m;i++) if(chosen[i]) w[i]=1;\nfree(head); free(to); free(nx); free(dist); free(pre_v); free(pre_e); free(dq);\nreturn flipped;\n"
+        },
+        {
+          "clause_id": "maximize_distance",
+          "signature": "int maximize_distance(int n, int m, int k, const int *u, const int *v)",
+          "code": "char *w=(char*)calloc((size_t)m,sizeof(char));\nchar *chosen=(char*)calloc((size_t)m,sizeof(char));\nint picked=0;\nfor(int it=0; it<200 && picked<k; it++){\n  int add=improve_once(n,m,k-picked,u,v,w,chosen);\n  if(add==0) break;\n  picked += add;\n}\nfor(int i=0;i<m && picked<k;i++) if(!chosen[i]){ chosen[i]=1; w[i]=1; picked++; }\nint ans=shortest_01(n,m,u,v,w);\nfree(w); free(chosen);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m,k; static int u[105], v[105]; read_graph(&n,&m,&k,u,v); int ans=maximize_distance(n,m,k,u,v); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *k, int *u, int *v)",
+          "code": "scanf(\"%d %d %d\", n, m, k); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "shortest_01",
+          "signature": "int shortest_01(int n, int m, const int *u, const int *v, const char *w)",
+          "code": "int INF=1e9;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nfor(int i=0;i<m;i++){ to[i]=v[i]; nx[i]=head[u[i]]; head[u[i]]=i; }\nint *dist=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) dist[i]=INF;\nint *dq=(int*)malloc((size_t)(2*n+5)*sizeof(int));\nint headq=n, tailq=n;\ndist[0]=0; dq[headq]=0;\nwhile(headq<=tailq){\n  int x=dq[headq++];\n  int dx=dist[x];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    int nd=dx + (w[e]?1:0);\n    if(nd<dist[y]){\n      dist[y]=nd;\n      if(w[e]) dq[++tailq]=y; else dq[--headq]=y;\n    }\n  }\n}\nint ans=dist[n-1];\nfree(head); free(to); free(nx); free(dist); free(dq);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "improve_once",
+          "signature": "int improve_once(int n, int m, int k, const int *u, const int *v, char *w, char *chosen)",
+          "code": "int INF=1e9;\nint V=n;\nint *head=(int*)malloc((size_t)V*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<V;i++) head[i]=-1;\nfor(int i=0;i<m;i++){ to[i]=v[i]; nx[i]=head[u[i]]; head[u[i]]=i; }\nint *dist=(int*)malloc((size_t)V*sizeof(int));\nint *pre_v=(int*)malloc((size_t)V*sizeof(int));\nint *pre_e=(int*)malloc((size_t)V*sizeof(int));\nfor(int i=0;i<V;i++){ dist[i]=INF; pre_v[i]=-1; pre_e[i]=-1; }\nint *dq=(int*)malloc((size_t)(2*V+5)*sizeof(int));\nint hq=V,tq=V;\ndist[0]=0; dq[hq]=0;\nwhile(hq<=tq){\n  int x=dq[hq++];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    int nd=dist[x] + (w[e]?1:0);\n    if(nd<dist[y]){\n      dist[y]=nd; pre_v[y]=x; pre_e[y]=e;\n      if(w[e]) dq[++tq]=y; else dq[--hq]=y;\n    }\n  }\n}\nint cur=n-1;\nint flipped=0;\nwhile(cur!=0 && pre_v[cur]!=-1){\n  int e=pre_e[cur];\n  if(!w[e] && !chosen[e]){\n    chosen[e]=1; flipped++; if(flipped==k) break;\n  }\n  cur=pre_v[cur];\n}\nfor(int i=0;i<m;i++) if(chosen[i]) w[i]=1;\nfree(head); free(to); free(nx); free(dist); free(pre_v); free(pre_e); free(dq);\nreturn flipped;\n"
+        },
+        {
+          "clause_id": "maximize_distance",
+          "signature": "int maximize_distance(int n, int m, int k, const int *u, const int *v)",
+          "code": "char *w=(char*)calloc((size_t)m,sizeof(char));\nchar *chosen=(char*)calloc((size_t)m,sizeof(char));\nint picked=0;\nfor(int it=0; it<200 && picked<k; it++){\n  int add=improve_once(n,m,k-picked,u,v,w,chosen);\n  if(add==0) break;\n  picked += add;\n}\nfor(int i=0;i<m && picked<k;i++) if(!chosen[i]){ chosen[i]=1; w[i]=1; picked++; }\nint ans=shortest_01(n,m,u,v,w);\nfree(w); free(chosen);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m,k; static int u[105], v[105]; read_graph(&n,&m,&k,u,v); int ans=maximize_distance(n,m,k,u,v); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *k, int *u, int *v)",
+          "code": "scanf(\"%d %d %d\", n, m, k); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "shortest_01",
+          "signature": "int shortest_01(int n, int m, const int *u, const int *v, const char *w)",
+          "code": "int INF=1e9;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nfor(int i=0;i<m;i++){ to[i]=v[i]; nx[i]=head[u[i]]; head[u[i]]=i; }\nint *dist=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) dist[i]=INF;\nint *dq=(int*)malloc((size_t)(2*n+5)*sizeof(int));\nint headq=n, tailq=n;\ndist[0]=0; dq[headq]=0;\nwhile(headq<=tailq){\n  int x=dq[headq++];\n  int dx=dist[x];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    int nd=dx + (w[e]?1:0);\n    if(nd<dist[y]){\n      dist[y]=nd;\n      if(w[e]) dq[++tailq]=y; else dq[--headq]=y;\n    }\n  }\n}\nint ans=dist[n-1];\nfree(head); free(to); free(nx); free(dist); free(dq);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "improve_once",
+          "signature": "int improve_once(int n, int m, int k, const int *u, const int *v, char *w, char *chosen)",
+          "code": "int INF=1e9;\nint V=n;\nint *head=(int*)malloc((size_t)V*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<V;i++) head[i]=-1;\nfor(int i=0;i<m;i++){ to[i]=v[i]; nx[i]=head[u[i]]; head[u[i]]=i; }\nint *dist=(int*)malloc((size_t)V*sizeof(int));\nint *pre_v=(int*)malloc((size_t)V*sizeof(int));\nint *pre_e=(int*)malloc((size_t)V*sizeof(int));\nfor(int i=0;i<V;i++){ dist[i]=INF; pre_v[i]=-1; pre_e[i]=-1; }\nint *dq=(int*)malloc((size_t)(2*V+5)*sizeof(int));\nint hq=V,tq=V;\ndist[0]=0; dq[hq]=0;\nwhile(hq<=tq){\n  int x=dq[hq++];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    int nd=dist[x] + (w[e]?1:0);\n    if(nd<dist[y]){\n      dist[y]=nd; pre_v[y]=x; pre_e[y]=e;\n      if(w[e]) dq[++tq]=y; else dq[--hq]=y;\n    }\n  }\n}\nint cur=n-1;\nint flipped=0;\nwhile(cur!=0 && pre_v[cur]!=-1){\n  int e=pre_e[cur];\n  if(!w[e] && !chosen[e]){\n    chosen[e]=1; flipped++; if(flipped==k) break;\n  }\n  cur=pre_v[cur];\n}\nfor(int i=0;i<m;i++) if(chosen[i]) w[i]=1;\nfree(head); free(to); free(nx); free(dist); free(pre_v); free(pre_e); free(dq);\nreturn flipped;\n"
+        },
+        {
+          "clause_id": "maximize_distance",
+          "signature": "int maximize_distance(int n, int m, int k, const int *u, const int *v)",
+          "code": "char *w=(char*)calloc((size_t)m,sizeof(char));\nchar *chosen=(char*)calloc((size_t)m,sizeof(char));\nint picked=0;\nfor(int it=0; it<200 && picked<k; it++){\n  int add=improve_once(n,m,k-picked,u,v,w,chosen);\n  if(add==0) break;\n  picked += add;\n}\nfor(int i=0;i<m && picked<k;i++) if(!chosen[i]){ chosen[i]=1; w[i]=1; picked++; }\nint ans=shortest_01(n,m,u,v,w);\nfree(w); free(chosen);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m,k; static int u[105], v[105]; read_graph(&n,&m,&k,u,v); int ans=maximize_distance(n,m,k,u,v); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *k, int *u, int *v)",
+          "code": "scanf(\"%d %d %d\", n, m, k); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "shortest_01",
+          "signature": "int shortest_01(int n, int m, const int *u, const int *v, const char *w)",
+          "code": "int INF=1e9;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nfor(int i=0;i<m;i++){ to[i]=v[i]; nx[i]=head[u[i]]; head[u[i]]=i; }\nint *dist=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) dist[i]=INF;\nint *dq=(int*)malloc((size_t)(2*n+5)*sizeof(int));\nint headq=n, tailq=n;\ndist[0]=0; dq[headq]=0;\nwhile(headq<=tailq){\n  int x=dq[headq++];\n  int dx=dist[x];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    int nd=dx + (w[e]?1:0);\n    if(nd<dist[y]){\n      dist[y]=nd;\n      if(w[e]) dq[++tailq]=y; else dq[--headq]=y;\n    }\n  }\n}\nint ans=dist[n-1];\nfree(head); free(to); free(nx); free(dist); free(dq);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "improve_once",
+          "signature": "int improve_once(int n, int m, int k, const int *u, const int *v, char *w, char *chosen)",
+          "code": "int INF=1e9;\nint V=n;\nint *head=(int*)malloc((size_t)V*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<V;i++) head[i]=-1;\nfor(int i=0;i<m;i++){ to[i]=v[i]; nx[i]=head[u[i]]; head[u[i]]=i; }\nint *dist=(int*)malloc((size_t)V*sizeof(int));\nint *pre_v=(int*)malloc((size_t)V*sizeof(int));\nint *pre_e=(int*)malloc((size_t)V*sizeof(int));\nfor(int i=0;i<V;i++){ dist[i]=INF; pre_v[i]=-1; pre_e[i]=-1; }\nint *dq=(int*)malloc((size_t)(2*V+5)*sizeof(int));\nint hq=V,tq=V;\ndist[0]=0; dq[hq]=0;\nwhile(hq<=tq){\n  int x=dq[hq++];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    int nd=dist[x] + (w[e]?1:0);\n    if(nd<dist[y]){\n      dist[y]=nd; pre_v[y]=x; pre_e[y]=e;\n      if(w[e]) dq[++tq]=y; else dq[--hq]=y;\n    }\n  }\n}\nint cur=n-1;\nint flipped=0;\nwhile(cur!=0 && pre_v[cur]!=-1){\n  int e=pre_e[cur];\n  if(!w[e] && !chosen[e]){\n    chosen[e]=1; flipped++; if(flipped==k) break;\n  }\n  cur=pre_v[cur];\n}\nfor(int i=0;i<m;i++) if(chosen[i]) w[i]=1;\nfree(head); free(to); free(nx); free(dist); free(pre_v); free(pre_e); free(dq);\nreturn flipped;\n"
+        },
+        {
+          "clause_id": "maximize_distance",
+          "signature": "int maximize_distance(int n, int m, int k, const int *u, const int *v)",
+          "code": "char *w=(char*)calloc((size_t)m,sizeof(char));\nchar *chosen=(char*)calloc((size_t)m,sizeof(char));\nint picked=0;\nfor(int it=0; it<200 && picked<k; it++){\n  int add=improve_once(n,m,k-picked,u,v,w,chosen);\n  if(add==0) break;\n  picked += add;\n}\nfor(int i=0;i<m && picked<k;i++) if(!chosen[i]){ chosen[i]=1; w[i]=1; picked++; }\nint ans=shortest_01(n,m,u,v,w);\nfree(w); free(chosen);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m,k; static int u[105], v[105]; read_graph(&n,&m,&k,u,v); int ans=maximize_distance(n,m,k,u,v); print_int(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

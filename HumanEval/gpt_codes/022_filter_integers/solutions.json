@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "filter_ints",
+          "code": "void filter_ints(char strs[][100], int n) {\n    int first = 1;\n    for (int i = 0; i < n; i++) {\n        int is_int = 1;\n        for (int j = 0; strs[i][j]; j++) {\n            if ((strs[i][j] < '0' || strs[i][j] > '9') && strs[i][j] != '-') {\n                is_int = 0;\n                break;\n            }\n        }\n        if (is_int && strs[i][0]) {\n            if (!first) printf(\" \");\n            printf(\"%s\", strs[i]);\n            first = 0;\n        }\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char strs[n][100];\n    for (int i = 0; i < n; i++) scanf(\"%s\", strs[i]);\n    filter_ints(strs, n);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "get_integers",
+          "code": "void get_integers(char items[][100], int count) {\n    int found = 0;\n    for (int i = 0; i < count; i++) {\n        int valid = 1;\n        for (int j = 0; items[i][j]; j++) {\n            if ((items[i][j] < '0' || items[i][j] > '9') && items[i][j] != '-') {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid && items[i][0]) {\n            if (found > 0) printf(\" \");\n            printf(\"%s\", items[i]);\n            found++;\n        }\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int num;\n    scanf(\"%d\", &num);\n    char data[num][100];\n    for (int i = 0; i < num; i++) scanf(\"%s\", data[i]);\n    get_integers(data, num);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "keep_integers",
+          "code": "void keep_integers(char strs[][100], int n) {\n    int first=1;\n    for (int i=0;i<n;i++) {\n        int ok=1;\n        for (int j=0;strs[i][j];j++) if((strs[i][j]<'0'||strs[i][j]>'9')&&strs[i][j]!='-'){ok=0;break;}\n        if(ok&&strs[i][0]){if(!first)printf(\" \");printf(\"%s\",strs[i]);first=0;}\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\",&n);\n    char strs[n][100];\n    for (int i=0;i<n;i++) scanf(\"%s\",strs[i]);\n    keep_integers(strs,n);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "select_ints",
+          "code": "void select_ints(char items[][100], int cnt) {\n    int found=0;\n    for (int i=0;i<cnt;i++) {\n        int valid=1;\n        for (int j=0;items[i][j];j++) if((items[i][j]<'0'||items[i][j]>'9')&&items[i][j]!='-'){valid=0;break;}\n        if(valid&&items[i][0]){if(found>0)printf(\" \");printf(\"%s\",items[i]);found++;}\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int cnt;\n    scanf(\"%d\",&cnt);\n    char items[cnt][100];\n    for (int i=0;i<cnt;i++) scanf(\"%s\",items[i]);\n    select_ints(items,cnt);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "extract_ints",
+          "code": "void extract_ints(char ws[][100], int sz) {\n    int cnt=0;\n    for (int i=0;i<sz;i++) {\n        int is_int=1;\n        for (int j=0;ws[i][j];j++) if((ws[i][j]<'0'||ws[i][j]>'9')&&ws[i][j]!='-'){is_int=0;break;}\n        if(is_int&&ws[i][0]){if(cnt>0)printf(\" \");printf(\"%s\",ws[i]);cnt++;}\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int sz;\n    scanf(\"%d\",&sz);\n    char ws[sz][100];\n    for (int i=0;i<sz;i++) scanf(\"%s\",ws[i]);\n    extract_ints(ws,sz);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

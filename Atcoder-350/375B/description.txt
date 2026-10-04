@@ -1,0 +1,6 @@
+Takahashi is at the origin on a two-dimensional coordinate plane. The cost for him to move from (a, b) to (c, d) is \sqrt{(a - c)^2 + (b - d)^2} . Find the total cost when he starts at the origin, visits N (X_1, Y_1), \ldots, (X_N, Y_N) in this order, and then returns to the origin.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- -10^6 <= X_i, Y_i <= 10^6
+- All input values are integers

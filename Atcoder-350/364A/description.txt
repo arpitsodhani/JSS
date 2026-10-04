@@ -1,0 +1,5 @@
+Takahashi is planning to eat N dishes. The i -th dish he plans to eat is sweet if S_i = sweet , and salty if S_i = salty . If he eats two sweet dishes consecutively, he will feel sick and be unable to eat any more dishes. Determine whether he can eat all the dishes.
+
+**Constraints:**
+- 2 <= N <= 100
+- S_i is either "sweet" or "salty"

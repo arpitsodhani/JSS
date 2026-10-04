@@ -1,0 +1,26 @@
+{
+  "contestId": 2131,
+  "index": "G",
+  "problem_id": "2131G",
+  "name": "Wafu!",
+  "rating": 2000,
+  "tags": [
+    "bitmasks",
+    "brute force",
+    "data structures",
+    "dfs and similar",
+    "dp",
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 3878,
+  "source": "verbatim_cf_fetch",
+  "title": null,
+  "legend": null,
+  "input_spec": null,
+  "output_spec": null,
+  "note": null,
+  "time_limit": null,
+  "mem_limit": null,
+  "samples": null
+}

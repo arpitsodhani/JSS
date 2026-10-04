@@ -1,0 +1,39 @@
+{
+  "contestId": 818,
+  "index": "A",
+  "problem_id": "818A",
+  "name": "Diplomas and Certificates",
+  "rating": 800,
+  "tags": [
+    "implementation",
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 7907,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Diplomas and Certificates",
+  "legend": "There are n students who have taken part in an olympiad. Now it's time to award the students.\n\nSome of them will receive diplomas, some wiil get certificates, and others won't receive anything. Students with diplomas and certificates are called winners. But there are some rules of counting the number of diplomas and certificates. The number of certificates must be exactly k times greater than the number of diplomas. The number of winners must not be greater than half of the number of all students (i.e. not be greater than half of n). It's possible that there are no winners.\n\nYou have to identify the maximum possible number of winners, according to these rules. Also for this case you have to calculate the number of students with diplomas, the number of students with certificates and the number of students who are not winners.",
+  "input_spec": "The first (and the only) line of input contains two integers n and k (1 ≤ n, k ≤ 1012), where n is the number of students and k is the ratio between the number of certificates and the number of diplomas.",
+  "output_spec": "Output three numbers: the number of students with diplomas, the number of students with certificates and the number of students who are not winners in case when the number of winners is maximum possible.\n\nIt's possible that there are no winners.",
+  "note": "",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "18 2\n",
+      "output": "3 6 9"
+    },
+    {
+      "input": "9 10\n",
+      "output": "0 0 9"
+    },
+    {
+      "input": "1000000000000 5\n",
+      "output": "83333333333 416666666665 500000000002"
+    },
+    {
+      "input": "1000000000000 499999999999\n",
+      "output": "1 499999999999 500000000000"
+    }
+  ]
+}

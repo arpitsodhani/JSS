@@ -1,0 +1,126 @@
+{
+  "problem_num": 140,
+  "problem_name": "fix_spaces",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "fix_spaces",
+          "code": "void fix_spaces(char* text, char* result) {\n    int i = 0, j = 0;\n    int space_count = 0;\n    \n    while (text[i] != '\\0' && text[i] != '\\n') {\n        if (text[i] == ' ') {\n            space_count++;\n        } else {\n            if (space_count > 0) {\n                if (space_count == 1) {\n                    result[j++] = '_';\n                } else if (space_count == 2) {\n                    result[j++] = '_';\n                    result[j++] = '_';\n                } else {\n                    result[j++] = '-';\n                }\n                space_count = 0;\n            }\n            result[j++] = text[i];\n        }\n        i++;\n    }\n    \n    if (space_count > 0) {\n        if (space_count == 1) {\n            result[j++] = '_';\n        } else if (space_count == 2) {\n            result[j++] = '_';\n            result[j++] = '_';\n        } else {\n            result[j++] = '-';\n        }\n    }\n    \n    result[j] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[10000];\n    fix_spaces(text, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "fix_spaces",
+          "code": "void fix_spaces(char* text, char* result) {\n    int i = 0, j = 0;\n    int space_count = 0;\n    \n    while (text[i] != '\\0' && text[i] != '\\n') {\n        if (text[i] == ' ') {\n            space_count++;\n        } else {\n            if (space_count > 0) {\n                if (space_count == 1) {\n                    result[j++] = '_';\n                } else if (space_count == 2) {\n                    result[j++] = '_';\n                    result[j++] = '_';\n                } else {\n                    result[j++] = '-';\n                }\n                space_count = 0;\n            }\n            result[j++] = text[i];\n        }\n        i++;\n    }\n    \n    if (space_count > 0) {\n        if (space_count == 1) {\n            result[j++] = '_';\n        } else if (space_count == 2) {\n            result[j++] = '_';\n            result[j++] = '_';\n        } else {\n            result[j++] = '-';\n        }\n    }\n    \n    result[j] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[10000];\n    fix_spaces(text, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "fix_spaces",
+          "code": "void fix_spaces(char* text, char* result) {\n    int i = 0, j = 0;\n    int space_count = 0;\n    \n    while (text[i] != '\\0' && text[i] != '\\n') {\n        if (text[i] == ' ') {\n            space_count++;\n        } else {\n            if (space_count > 0) {\n                if (space_count == 1) {\n                    result[j++] = '_';\n                } else if (space_count == 2) {\n                    result[j++] = '_';\n                    result[j++] = '_';\n                } else {\n                    result[j++] = '-';\n                }\n                space_count = 0;\n            }\n            result[j++] = text[i];\n        }\n        i++;\n    }\n    \n    if (space_count > 0) {\n        if (space_count == 1) {\n            result[j++] = '_';\n        } else if (space_count == 2) {\n            result[j++] = '_';\n            result[j++] = '_';\n        } else {\n            result[j++] = '-';\n        }\n    }\n    \n    result[j] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[10000];\n    fix_spaces(text, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "fix_spaces",
+          "code": "void fix_spaces(char* text, char* result) {\n    int i = 0, j = 0;\n    int space_count = 0;\n    \n    while (text[i] != '\\0' && text[i] != '\\n') {\n        if (text[i] == ' ') {\n            space_count++;\n        } else {\n            if (space_count > 0) {\n                if (space_count == 1) {\n                    result[j++] = '_';\n                } else if (space_count == 2) {\n                    result[j++] = '_';\n                    result[j++] = '_';\n                } else {\n                    result[j++] = '-';\n                }\n                space_count = 0;\n            }\n            result[j++] = text[i];\n        }\n        i++;\n    }\n    \n    if (space_count > 0) {\n        if (space_count == 1) {\n            result[j++] = '_';\n        } else if (space_count == 2) {\n            result[j++] = '_';\n            result[j++] = '_';\n        } else {\n            result[j++] = '-';\n        }\n    }\n    \n    result[j] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[10000];\n    fix_spaces(text, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "fix_spaces",
+          "code": "void fix_spaces(char* text, char* result) {\n    int i = 0, j = 0;\n    int space_count = 0;\n    \n    while (text[i] != '\\0' && text[i] != '\\n') {\n        if (text[i] == ' ') {\n            space_count++;\n        } else {\n            if (space_count > 0) {\n                if (space_count == 1) {\n                    result[j++] = '_';\n                } else if (space_count == 2) {\n                    result[j++] = '_';\n                    result[j++] = '_';\n                } else {\n                    result[j++] = '-';\n                }\n                space_count = 0;\n            }\n            result[j++] = text[i];\n        }\n        i++;\n    }\n    \n    if (space_count > 0) {\n        if (space_count == 1) {\n            result[j++] = '_';\n        } else if (space_count == 2) {\n            result[j++] = '_';\n            result[j++] = '_';\n        } else {\n            result[j++] = '-';\n        }\n    }\n    \n    result[j] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[10000];\n    fix_spaces(text, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

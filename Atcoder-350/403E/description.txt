@@ -1,0 +1,26 @@
+You are given a tree with N vertices. The i-th edge connects vertices a_i and b_i and has a length of c_i.
+Process Q queries. For each query, given two vertices u and v, find the distance between them.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N
+a_1 b_1 c_1
+...
+a_{N-1} b_{N-1} c_{N-1}
+Q
+u_1 v_1
+...
+u_Q v_Q
+
+**Output:**
+Print Q lines. The i-th line should contain the answer for the i-th query.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= a_i, b_i <= N
+- a_i != b_i
+- 1 <= c_i <= 10^9
+- The given edges form a tree
+- 1 <= Q <= 2 * 10^5
+- 1 <= u_i, v_i <= N
+- All input values are integers

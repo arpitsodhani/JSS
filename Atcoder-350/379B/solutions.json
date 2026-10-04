@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *S)",
+          "code": "void read_input(int *N,int *K,char *S){ scanf(\"%d%d\", N,K); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "max_strawberries",
+          "signature": "int max_strawberries(int N,int K,char *S)",
+          "code": "int max_strawberries(int N,int K,char *S){ int run=0,ans=0; for(int i=0;i<N;i++){ if(S[i]=='O') run++; else run=0; if(run==K){ ans++; run=0; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; char S[205]; read_input(&N,&K,S); int ans=max_strawberries(N,K,S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *S)",
+          "code": "void read_input(int *N,int *K,char *S){ scanf(\"%d%d\", N,K); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "max_strawberries",
+          "signature": "int max_strawberries(int N,int K,char *S)",
+          "code": "int max_strawberries(int N,int K,char *S){ int run=0,ans=0; for(int i=0;i<N;i++){ if(S[i]=='O') run++; else run=0; if(run==K){ ans++; run=0; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; char S[205]; read_input(&N,&K,S); int ans=max_strawberries(N,K,S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *S)",
+          "code": "void read_input(int *N,int *K,char *S){ scanf(\"%d%d\", N,K); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "max_strawberries",
+          "signature": "int max_strawberries(int N,int K,char *S)",
+          "code": "int max_strawberries(int N,int K,char *S){ int run=0,ans=0; for(int i=0;i<N;i++){ if(S[i]=='O') run++; else run=0; if(run==K){ ans++; run=0; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; char S[205]; read_input(&N,&K,S); int ans=max_strawberries(N,K,S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *S)",
+          "code": "void read_input(int *N,int *K,char *S){ scanf(\"%d%d\", N,K); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "max_strawberries",
+          "signature": "int max_strawberries(int N,int K,char *S)",
+          "code": "int max_strawberries(int N,int K,char *S){ int run=0,ans=0; for(int i=0;i<N;i++){ if(S[i]=='O') run++; else run=0; if(run==K){ ans++; run=0; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; char S[205]; read_input(&N,&K,S); int ans=max_strawberries(N,K,S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *S)",
+          "code": "void read_input(int *N,int *K,char *S){ scanf(\"%d%d\", N,K); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "max_strawberries",
+          "signature": "int max_strawberries(int N,int K,char *S)",
+          "code": "int max_strawberries(int N,int K,char *S){ int run=0,ans=0; for(int i=0;i<N;i++){ if(S[i]=='O') run++; else run=0; if(run==K){ ans++; run=0; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; char S[205]; read_input(&N,&K,S); int ans=max_strawberries(N,K,S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

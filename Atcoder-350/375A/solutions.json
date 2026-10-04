@@ -1,0 +1,240 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "perform_dfs_heavy_light",
+          "signature": "void perform_dfs_heavy_light(int node, int parent)",
+          "implementations": [
+            {
+              "code": "void perform_dfs_heavy_light(int node, int parent) {\n    int max_subtree = -1;\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent) continue;\n        perform_dfs_heavy_light(child, node);\n        subtree_size[node] += subtree_size[child];\n        if (max_subtree == -1 || subtree_size[child] > subtree_size[max_subtree])\n            max_subtree = child;\n    }\n    heavy_child[node] = max_subtree;\n}"
+            },
+            {
+              "code": "void perform_dfs_heavy_light(int node, int parent) {\n    int max_subtree = -1;\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent) continue;\n        perform_dfs_heavy_light(child, node);\n        subtree_size[node] += subtree_size[child];\n        if (max_subtree == -1 || subtree_size[child] > subtree_size[max_subtree])\n            max_subtree = child;\n    }\n    heavy_child[node] = max_subtree;\n}"
+            },
+            {
+              "code": "void perform_dfs_heavy_light(int node, int parent) {\n    int max_subtree = -1;\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent) continue;\n        perform_dfs_heavy_light(child, node);\n        subtree_size[node] += subtree_size[child];\n        if (max_subtree == -1 || subtree_size[child] > subtree_size[max_subtree])\n            max_subtree = child;\n    }\n    heavy_child[node] = max_subtree;\n}"
+            },
+            {
+              "code": "void perform_dfs_heavy_light(int node, int parent) {\n    int max_subtree = -1;\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent) continue;\n        perform_dfs_heavy_light(child, node);\n        subtree_size[node] += subtree_size[child];\n        if (max_subtree == -1 || subtree_size[child] > subtree_size[max_subtree])\n            max_subtree = child;\n    }\n    heavy_child[node] = max_subtree;\n}"
+            },
+            {
+              "code": "void perform_dfs_heavy_light(int node, int parent) {\n    int max_subtree = -1;\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent) continue;\n        perform_dfs_heavy_light(child, node);\n        subtree_size[node] += subtree_size[child];\n        if (max_subtree == -1 || subtree_size[child] > subtree_size[max_subtree])\n            max_subtree = child;\n    }\n    heavy_child[node] = max_subtree;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "decompose_tree_chains",
+          "signature": "void decompose_tree_chains(int node, int parent, int chain_head)",
+          "implementations": [
+            {
+              "code": "void decompose_tree_chains(int node, int parent, int chain_head) {\n    chain_top[node] = chain_head;\n    chain_pos[node] = chain_counter++;\n    if (heavy_child[node] != -1)\n        decompose_tree_chains(heavy_child[node], node, chain_head);\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || child == heavy_child[node]) continue;\n        decompose_tree_chains(child, node, child);\n    }\n}"
+            },
+            {
+              "code": "void decompose_tree_chains(int node, int parent, int chain_head) {\n    chain_top[node] = chain_head;\n    chain_pos[node] = chain_counter++;\n    if (heavy_child[node] != -1)\n        decompose_tree_chains(heavy_child[node], node, chain_head);\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || child == heavy_child[node]) continue;\n        decompose_tree_chains(child, node, child);\n    }\n}"
+            },
+            {
+              "code": "void decompose_tree_chains(int node, int parent, int chain_head) {\n    chain_top[node] = chain_head;\n    chain_pos[node] = chain_counter++;\n    if (heavy_child[node] != -1)\n        decompose_tree_chains(heavy_child[node], node, chain_head);\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || child == heavy_child[node]) continue;\n        decompose_tree_chains(child, node, child);\n    }\n}"
+            },
+            {
+              "code": "void decompose_tree_chains(int node, int parent, int chain_head) {\n    chain_top[node] = chain_head;\n    chain_pos[node] = chain_counter++;\n    if (heavy_child[node] != -1)\n        decompose_tree_chains(heavy_child[node], node, chain_head);\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || child == heavy_child[node]) continue;\n        decompose_tree_chains(child, node, child);\n    }\n}"
+            },
+            {
+              "code": "void decompose_tree_chains(int node, int parent, int chain_head) {\n    chain_top[node] = chain_head;\n    chain_pos[node] = chain_counter++;\n    if (heavy_child[node] != -1)\n        decompose_tree_chains(heavy_child[node], node, chain_head);\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || child == heavy_child[node]) continue;\n        decompose_tree_chains(child, node, child);\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "query_path_heavy_light",
+          "signature": "long long query_path_heavy_light(int u, int v)",
+          "implementations": [
+            {
+              "code": "long long query_path_heavy_light(int u, int v) {\n    long long result = 0;\n    while (chain_top[u] != chain_top[v]) {\n        if (depth[chain_top[u]] < depth[chain_top[v]]) {\n            int temp = u; u = v; v = temp;\n        }\n        result += segment_tree_query(chain_pos[chain_top[u]], chain_pos[u]);\n        u = parent[chain_top[u]];\n    }\n    if (depth[u] > depth[v]) {\n        int temp = u; u = v; v = temp;\n    }\n    result += segment_tree_query(chain_pos[u], chain_pos[v]);\n    return result;\n}"
+            },
+            {
+              "code": "long long query_path_heavy_light(int u, int v) {\n    long long result = 0;\n    while (chain_top[u] != chain_top[v]) {\n        if (depth[chain_top[u]] < depth[chain_top[v]]) {\n            int temp = u; u = v; v = temp;\n        }\n        result += segment_tree_query(chain_pos[chain_top[u]], chain_pos[u]);\n        u = parent[chain_top[u]];\n    }\n    if (depth[u] > depth[v]) {\n        int temp = u; u = v; v = temp;\n    }\n    result += segment_tree_query(chain_pos[u], chain_pos[v]);\n    return result;\n}"
+            },
+            {
+              "code": "long long query_path_heavy_light(int u, int v) {\n    long long result = 0;\n    while (chain_top[u] != chain_top[v]) {\n        if (depth[chain_top[u]] < depth[chain_top[v]]) {\n            int temp = u; u = v; v = temp;\n        }\n        result += segment_tree_query(chain_pos[chain_top[u]], chain_pos[u]);\n        u = parent[chain_top[u]];\n    }\n    if (depth[u] > depth[v]) {\n        int temp = u; u = v; v = temp;\n    }\n    result += segment_tree_query(chain_pos[u], chain_pos[v]);\n    return result;\n}"
+            },
+            {
+              "code": "long long query_path_heavy_light(int u, int v) {\n    long long result = 0;\n    while (chain_top[u] != chain_top[v]) {\n        if (depth[chain_top[u]] < depth[chain_top[v]]) {\n            int temp = u; u = v; v = temp;\n        }\n        result += segment_tree_query(chain_pos[chain_top[u]], chain_pos[u]);\n        u = parent[chain_top[u]];\n    }\n    if (depth[u] > depth[v]) {\n        int temp = u; u = v; v = temp;\n    }\n    result += segment_tree_query(chain_pos[u], chain_pos[v]);\n    return result;\n}"
+            },
+            {
+              "code": "long long query_path_heavy_light(int u, int v) {\n    long long result = 0;\n    while (chain_top[u] != chain_top[v]) {\n        if (depth[chain_top[u]] < depth[chain_top[v]]) {\n            int temp = u; u = v; v = temp;\n        }\n        result += segment_tree_query(chain_pos[chain_top[u]], chain_pos[u]);\n        u = parent[chain_top[u]];\n    }\n    if (depth[u] > depth[v]) {\n        int temp = u; u = v; v = temp;\n    }\n    result += segment_tree_query(chain_pos[u], chain_pos[v]);\n    return result;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "initialize_hld_arrays",
+          "signature": "void initialize_hld_arrays(int n)",
+          "implementations": [
+            {
+              "code": "void initialize_hld_arrays(int n) {\n    for (int i = 0; i < n; i++) {\n        heavy_child[i] = -1;\n        subtree_size[i] = 0;\n        chain_top[i] = i;\n        chain_pos[i] = 0;\n    }\n}"
+            },
+            {
+              "code": "void initialize_hld_arrays(int n) {\n    for (int i = 0; i < n; i++) {\n        heavy_child[i] = -1;\n        subtree_size[i] = 0;\n        chain_top[i] = i;\n        chain_pos[i] = 0;\n    }\n}"
+            },
+            {
+              "code": "void initialize_hld_arrays(int n) {\n    for (int i = 0; i < n; i++) {\n        heavy_child[i] = -1;\n        subtree_size[i] = 0;\n        chain_top[i] = i;\n        chain_pos[i] = 0;\n    }\n}"
+            },
+            {
+              "code": "void initialize_hld_arrays(int n) {\n    for (int i = 0; i < n; i++) {\n        heavy_child[i] = -1;\n        subtree_size[i] = 0;\n        chain_top[i] = i;\n        chain_pos[i] = 0;\n    }\n}"
+            },
+            {
+              "code": "void initialize_hld_arrays(int n) {\n    for (int i = 0; i < n; i++) {\n        heavy_child[i] = -1;\n        subtree_size[i] = 0;\n        chain_top[i] = i;\n        chain_pos[i] = 0;\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    perform_dfs_heavy_light(0, -1);\n    decompose_tree_chains(0, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        printf(\"%lld\\n\", query_path_heavy_light(u, v));\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    perform_dfs_heavy_light(0, -1);\n    decompose_tree_chains(0, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        printf(\"%lld\\n\", query_path_heavy_light(u, v));\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    perform_dfs_heavy_light(0, -1);\n    decompose_tree_chains(0, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        printf(\"%lld\\n\", query_path_heavy_light(u, v));\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    perform_dfs_heavy_light(0, -1);\n    decompose_tree_chains(0, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        printf(\"%lld\\n\", query_path_heavy_light(u, v));\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    perform_dfs_heavy_light(0, -1);\n    decompose_tree_chains(0, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        printf(\"%lld\\n\", query_path_heavy_light(u, v));\n    }\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "perform_dfs_heavy_light",
+          "signature": "void perform_dfs_heavy_light(int node, int parent)",
+          "code": "void perform_dfs_heavy_light(int node, int parent) {\n    int max_subtree = -1;\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent) continue;\n        perform_dfs_heavy_light(child, node);\n        subtree_size[node] += subtree_size[child];\n        if (max_subtree == -1 || subtree_size[child] > subtree_size[max_subtree])\n            max_subtree = child;\n    }\n    heavy_child[node] = max_subtree;\n}"
+        },
+        {
+          "clause_id": "decompose_tree_chains",
+          "signature": "void decompose_tree_chains(int node, int parent, int chain_head)",
+          "code": "void decompose_tree_chains(int node, int parent, int chain_head) {\n    chain_top[node] = chain_head;\n    chain_pos[node] = chain_counter++;\n    if (heavy_child[node] != -1)\n        decompose_tree_chains(heavy_child[node], node, chain_head);\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || child == heavy_child[node]) continue;\n        decompose_tree_chains(child, node, child);\n    }\n}"
+        },
+        {
+          "clause_id": "query_path_heavy_light",
+          "signature": "long long query_path_heavy_light(int u, int v)",
+          "code": "long long query_path_heavy_light(int u, int v) {\n    long long result = 0;\n    while (chain_top[u] != chain_top[v]) {\n        if (depth[chain_top[u]] < depth[chain_top[v]]) {\n            int temp = u; u = v; v = temp;\n        }\n        result += segment_tree_query(chain_pos[chain_top[u]], chain_pos[u]);\n        u = parent[chain_top[u]];\n    }\n    if (depth[u] > depth[v]) {\n        int temp = u; u = v; v = temp;\n    }\n    result += segment_tree_query(chain_pos[u], chain_pos[v]);\n    return result;\n}"
+        },
+        {
+          "clause_id": "initialize_hld_arrays",
+          "signature": "void initialize_hld_arrays(int n)",
+          "code": "void initialize_hld_arrays(int n) {\n    for (int i = 0; i < n; i++) {\n        heavy_child[i] = -1;\n        subtree_size[i] = 0;\n        chain_top[i] = i;\n        chain_pos[i] = 0;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    perform_dfs_heavy_light(0, -1);\n    decompose_tree_chains(0, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        printf(\"%lld\\n\", query_path_heavy_light(u, v));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "perform_dfs_heavy_light",
+          "signature": "void perform_dfs_heavy_light(int node, int parent)",
+          "code": "void perform_dfs_heavy_light(int node, int parent) {\n    int max_subtree = -1;\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent) continue;\n        perform_dfs_heavy_light(child, node);\n        subtree_size[node] += subtree_size[child];\n        if (max_subtree == -1 || subtree_size[child] > subtree_size[max_subtree])\n            max_subtree = child;\n    }\n    heavy_child[node] = max_subtree;\n}"
+        },
+        {
+          "clause_id": "decompose_tree_chains",
+          "signature": "void decompose_tree_chains(int node, int parent, int chain_head)",
+          "code": "void decompose_tree_chains(int node, int parent, int chain_head) {\n    chain_top[node] = chain_head;\n    chain_pos[node] = chain_counter++;\n    if (heavy_child[node] != -1)\n        decompose_tree_chains(heavy_child[node], node, chain_head);\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || child == heavy_child[node]) continue;\n        decompose_tree_chains(child, node, child);\n    }\n}"
+        },
+        {
+          "clause_id": "query_path_heavy_light",
+          "signature": "long long query_path_heavy_light(int u, int v)",
+          "code": "long long query_path_heavy_light(int u, int v) {\n    long long result = 0;\n    while (chain_top[u] != chain_top[v]) {\n        if (depth[chain_top[u]] < depth[chain_top[v]]) {\n            int temp = u; u = v; v = temp;\n        }\n        result += segment_tree_query(chain_pos[chain_top[u]], chain_pos[u]);\n        u = parent[chain_top[u]];\n    }\n    if (depth[u] > depth[v]) {\n        int temp = u; u = v; v = temp;\n    }\n    result += segment_tree_query(chain_pos[u], chain_pos[v]);\n    return result;\n}"
+        },
+        {
+          "clause_id": "initialize_hld_arrays",
+          "signature": "void initialize_hld_arrays(int n)",
+          "code": "void initialize_hld_arrays(int n) {\n    for (int i = 0; i < n; i++) {\n        heavy_child[i] = -1;\n        subtree_size[i] = 0;\n        chain_top[i] = i;\n        chain_pos[i] = 0;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    perform_dfs_heavy_light(0, -1);\n    decompose_tree_chains(0, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        printf(\"%lld\\n\", query_path_heavy_light(u, v));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "perform_dfs_heavy_light",
+          "signature": "void perform_dfs_heavy_light(int node, int parent)",
+          "code": "void perform_dfs_heavy_light(int node, int parent) {\n    int max_subtree = -1;\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent) continue;\n        perform_dfs_heavy_light(child, node);\n        subtree_size[node] += subtree_size[child];\n        if (max_subtree == -1 || subtree_size[child] > subtree_size[max_subtree])\n            max_subtree = child;\n    }\n    heavy_child[node] = max_subtree;\n}"
+        },
+        {
+          "clause_id": "decompose_tree_chains",
+          "signature": "void decompose_tree_chains(int node, int parent, int chain_head)",
+          "code": "void decompose_tree_chains(int node, int parent, int chain_head) {\n    chain_top[node] = chain_head;\n    chain_pos[node] = chain_counter++;\n    if (heavy_child[node] != -1)\n        decompose_tree_chains(heavy_child[node], node, chain_head);\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || child == heavy_child[node]) continue;\n        decompose_tree_chains(child, node, child);\n    }\n}"
+        },
+        {
+          "clause_id": "query_path_heavy_light",
+          "signature": "long long query_path_heavy_light(int u, int v)",
+          "code": "long long query_path_heavy_light(int u, int v) {\n    long long result = 0;\n    while (chain_top[u] != chain_top[v]) {\n        if (depth[chain_top[u]] < depth[chain_top[v]]) {\n            int temp = u; u = v; v = temp;\n        }\n        result += segment_tree_query(chain_pos[chain_top[u]], chain_pos[u]);\n        u = parent[chain_top[u]];\n    }\n    if (depth[u] > depth[v]) {\n        int temp = u; u = v; v = temp;\n    }\n    result += segment_tree_query(chain_pos[u], chain_pos[v]);\n    return result;\n}"
+        },
+        {
+          "clause_id": "initialize_hld_arrays",
+          "signature": "void initialize_hld_arrays(int n)",
+          "code": "void initialize_hld_arrays(int n) {\n    for (int i = 0; i < n; i++) {\n        heavy_child[i] = -1;\n        subtree_size[i] = 0;\n        chain_top[i] = i;\n        chain_pos[i] = 0;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    perform_dfs_heavy_light(0, -1);\n    decompose_tree_chains(0, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        printf(\"%lld\\n\", query_path_heavy_light(u, v));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "perform_dfs_heavy_light",
+          "signature": "void perform_dfs_heavy_light(int node, int parent)",
+          "code": "void perform_dfs_heavy_light(int node, int parent) {\n    int max_subtree = -1;\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent) continue;\n        perform_dfs_heavy_light(child, node);\n        subtree_size[node] += subtree_size[child];\n        if (max_subtree == -1 || subtree_size[child] > subtree_size[max_subtree])\n            max_subtree = child;\n    }\n    heavy_child[node] = max_subtree;\n}"
+        },
+        {
+          "clause_id": "decompose_tree_chains",
+          "signature": "void decompose_tree_chains(int node, int parent, int chain_head)",
+          "code": "void decompose_tree_chains(int node, int parent, int chain_head) {\n    chain_top[node] = chain_head;\n    chain_pos[node] = chain_counter++;\n    if (heavy_child[node] != -1)\n        decompose_tree_chains(heavy_child[node], node, chain_head);\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || child == heavy_child[node]) continue;\n        decompose_tree_chains(child, node, child);\n    }\n}"
+        },
+        {
+          "clause_id": "query_path_heavy_light",
+          "signature": "long long query_path_heavy_light(int u, int v)",
+          "code": "long long query_path_heavy_light(int u, int v) {\n    long long result = 0;\n    while (chain_top[u] != chain_top[v]) {\n        if (depth[chain_top[u]] < depth[chain_top[v]]) {\n            int temp = u; u = v; v = temp;\n        }\n        result += segment_tree_query(chain_pos[chain_top[u]], chain_pos[u]);\n        u = parent[chain_top[u]];\n    }\n    if (depth[u] > depth[v]) {\n        int temp = u; u = v; v = temp;\n    }\n    result += segment_tree_query(chain_pos[u], chain_pos[v]);\n    return result;\n}"
+        },
+        {
+          "clause_id": "initialize_hld_arrays",
+          "signature": "void initialize_hld_arrays(int n)",
+          "code": "void initialize_hld_arrays(int n) {\n    for (int i = 0; i < n; i++) {\n        heavy_child[i] = -1;\n        subtree_size[i] = 0;\n        chain_top[i] = i;\n        chain_pos[i] = 0;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    perform_dfs_heavy_light(0, -1);\n    decompose_tree_chains(0, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        printf(\"%lld\\n\", query_path_heavy_light(u, v));\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

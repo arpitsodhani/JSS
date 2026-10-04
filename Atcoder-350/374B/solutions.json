@@ -1,0 +1,240 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "modular_power_fast",
+          "signature": "long long modular_power_fast(long long base, long long exp, long long mod)",
+          "implementations": [
+            {
+              "code": "long long modular_power_fast(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_power_fast(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_power_fast(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_power_fast(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_power_fast(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "insert_hash_entry",
+          "signature": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size)",
+          "implementations": [
+            {
+              "code": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        idx = (idx + 1) % table_size;\n    }\n    hash_table[idx] = 1;\n    keys[idx] = key;\n    values[idx] = value;\n}"
+            },
+            {
+              "code": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        idx = (idx + 1) % table_size;\n    }\n    hash_table[idx] = 1;\n    keys[idx] = key;\n    values[idx] = value;\n}"
+            },
+            {
+              "code": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        idx = (idx + 1) % table_size;\n    }\n    hash_table[idx] = 1;\n    keys[idx] = key;\n    values[idx] = value;\n}"
+            },
+            {
+              "code": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        idx = (idx + 1) % table_size;\n    }\n    hash_table[idx] = 1;\n    keys[idx] = key;\n    values[idx] = value;\n}"
+            },
+            {
+              "code": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        idx = (idx + 1) % table_size;\n    }\n    hash_table[idx] = 1;\n    keys[idx] = key;\n    values[idx] = value;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "search_hash_entry",
+          "signature": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size)",
+          "implementations": [
+            {
+              "code": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        if (keys[idx] == key) return values[idx];\n        idx = (idx + 1) % table_size;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        if (keys[idx] == key) return values[idx];\n        idx = (idx + 1) % table_size;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        if (keys[idx] == key) return values[idx];\n        idx = (idx + 1) % table_size;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        if (keys[idx] == key) return values[idx];\n        idx = (idx + 1) % table_size;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        if (keys[idx] == key) return values[idx];\n        idx = (idx + 1) % table_size;\n    }\n    return -1;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "discrete_log_baby_giant",
+          "signature": "long long discrete_log_baby_giant(long long a, long long b, long long p)",
+          "implementations": [
+            {
+              "code": "long long discrete_log_baby_giant(long long a, long long b, long long p) {\n    long long m = (long long)ceil(sqrt(p));\n    long long keys[100005], values[100005];\n    int hash_table[100005];\n    for (int i = 0; i < 100005; i++) hash_table[i] = -1;\n    \n    long long gamma = 1;\n    for (long long j = 0; j < m; j++) {\n        insert_hash_entry(gamma, j, keys, values, hash_table, 100005);\n        gamma = (gamma * a) % p;\n    }\n    \n    long long factor = modular_power_fast(a, m * (p - 2), p);\n    long long cur = b;\n    \n    for (long long i = 0; i < m; i++) {\n        long long j = search_hash_entry(cur, keys, values, hash_table, 100005);\n        if (j != -1) return i * m + j;\n        cur = (cur * factor) % p;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long discrete_log_baby_giant(long long a, long long b, long long p) {\n    long long m = (long long)ceil(sqrt(p));\n    long long keys[100005], values[100005];\n    int hash_table[100005];\n    for (int i = 0; i < 100005; i++) hash_table[i] = -1;\n    \n    long long gamma = 1;\n    for (long long j = 0; j < m; j++) {\n        insert_hash_entry(gamma, j, keys, values, hash_table, 100005);\n        gamma = (gamma * a) % p;\n    }\n    \n    long long factor = modular_power_fast(a, m * (p - 2), p);\n    long long cur = b;\n    \n    for (long long i = 0; i < m; i++) {\n        long long j = search_hash_entry(cur, keys, values, hash_table, 100005);\n        if (j != -1) return i * m + j;\n        cur = (cur * factor) % p;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long discrete_log_baby_giant(long long a, long long b, long long p) {\n    long long m = (long long)ceil(sqrt(p));\n    long long keys[100005], values[100005];\n    int hash_table[100005];\n    for (int i = 0; i < 100005; i++) hash_table[i] = -1;\n    \n    long long gamma = 1;\n    for (long long j = 0; j < m; j++) {\n        insert_hash_entry(gamma, j, keys, values, hash_table, 100005);\n        gamma = (gamma * a) % p;\n    }\n    \n    long long factor = modular_power_fast(a, m * (p - 2), p);\n    long long cur = b;\n    \n    for (long long i = 0; i < m; i++) {\n        long long j = search_hash_entry(cur, keys, values, hash_table, 100005);\n        if (j != -1) return i * m + j;\n        cur = (cur * factor) % p;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long discrete_log_baby_giant(long long a, long long b, long long p) {\n    long long m = (long long)ceil(sqrt(p));\n    long long keys[100005], values[100005];\n    int hash_table[100005];\n    for (int i = 0; i < 100005; i++) hash_table[i] = -1;\n    \n    long long gamma = 1;\n    for (long long j = 0; j < m; j++) {\n        insert_hash_entry(gamma, j, keys, values, hash_table, 100005);\n        gamma = (gamma * a) % p;\n    }\n    \n    long long factor = modular_power_fast(a, m * (p - 2), p);\n    long long cur = b;\n    \n    for (long long i = 0; i < m; i++) {\n        long long j = search_hash_entry(cur, keys, values, hash_table, 100005);\n        if (j != -1) return i * m + j;\n        cur = (cur * factor) % p;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long discrete_log_baby_giant(long long a, long long b, long long p) {\n    long long m = (long long)ceil(sqrt(p));\n    long long keys[100005], values[100005];\n    int hash_table[100005];\n    for (int i = 0; i < 100005; i++) hash_table[i] = -1;\n    \n    long long gamma = 1;\n    for (long long j = 0; j < m; j++) {\n        insert_hash_entry(gamma, j, keys, values, hash_table, 100005);\n        gamma = (gamma * a) % p;\n    }\n    \n    long long factor = modular_power_fast(a, m * (p - 2), p);\n    long long cur = b;\n    \n    for (long long i = 0; i < m; i++) {\n        long long j = search_hash_entry(cur, keys, values, hash_table, 100005);\n        if (j != -1) return i * m + j;\n        cur = (cur * factor) % p;\n    }\n    return -1;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    long long a, b, p;\n    scanf(\"%lld %lld %lld\", &a, &b, &p);\n    long long result = discrete_log_baby_giant(a, b, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long a, b, p;\n    scanf(\"%lld %lld %lld\", &a, &b, &p);\n    long long result = discrete_log_baby_giant(a, b, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long a, b, p;\n    scanf(\"%lld %lld %lld\", &a, &b, &p);\n    long long result = discrete_log_baby_giant(a, b, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long a, b, p;\n    scanf(\"%lld %lld %lld\", &a, &b, &p);\n    long long result = discrete_log_baby_giant(a, b, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long a, b, p;\n    scanf(\"%lld %lld %lld\", &a, &b, &p);\n    long long result = discrete_log_baby_giant(a, b, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "modular_power_fast",
+          "signature": "long long modular_power_fast(long long base, long long exp, long long mod)",
+          "code": "long long modular_power_fast(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "insert_hash_entry",
+          "signature": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size)",
+          "code": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        idx = (idx + 1) % table_size;\n    }\n    hash_table[idx] = 1;\n    keys[idx] = key;\n    values[idx] = value;\n}"
+        },
+        {
+          "clause_id": "search_hash_entry",
+          "signature": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size)",
+          "code": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        if (keys[idx] == key) return values[idx];\n        idx = (idx + 1) % table_size;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "discrete_log_baby_giant",
+          "signature": "long long discrete_log_baby_giant(long long a, long long b, long long p)",
+          "code": "long long discrete_log_baby_giant(long long a, long long b, long long p) {\n    long long m = (long long)ceil(sqrt(p));\n    long long keys[100005], values[100005];\n    int hash_table[100005];\n    for (int i = 0; i < 100005; i++) hash_table[i] = -1;\n    \n    long long gamma = 1;\n    for (long long j = 0; j < m; j++) {\n        insert_hash_entry(gamma, j, keys, values, hash_table, 100005);\n        gamma = (gamma * a) % p;\n    }\n    \n    long long factor = modular_power_fast(a, m * (p - 2), p);\n    long long cur = b;\n    \n    for (long long i = 0; i < m; i++) {\n        long long j = search_hash_entry(cur, keys, values, hash_table, 100005);\n        if (j != -1) return i * m + j;\n        cur = (cur * factor) % p;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long a, b, p;\n    scanf(\"%lld %lld %lld\", &a, &b, &p);\n    long long result = discrete_log_baby_giant(a, b, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "modular_power_fast",
+          "signature": "long long modular_power_fast(long long base, long long exp, long long mod)",
+          "code": "long long modular_power_fast(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "insert_hash_entry",
+          "signature": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size)",
+          "code": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        idx = (idx + 1) % table_size;\n    }\n    hash_table[idx] = 1;\n    keys[idx] = key;\n    values[idx] = value;\n}"
+        },
+        {
+          "clause_id": "search_hash_entry",
+          "signature": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size)",
+          "code": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        if (keys[idx] == key) return values[idx];\n        idx = (idx + 1) % table_size;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "discrete_log_baby_giant",
+          "signature": "long long discrete_log_baby_giant(long long a, long long b, long long p)",
+          "code": "long long discrete_log_baby_giant(long long a, long long b, long long p) {\n    long long m = (long long)ceil(sqrt(p));\n    long long keys[100005], values[100005];\n    int hash_table[100005];\n    for (int i = 0; i < 100005; i++) hash_table[i] = -1;\n    \n    long long gamma = 1;\n    for (long long j = 0; j < m; j++) {\n        insert_hash_entry(gamma, j, keys, values, hash_table, 100005);\n        gamma = (gamma * a) % p;\n    }\n    \n    long long factor = modular_power_fast(a, m * (p - 2), p);\n    long long cur = b;\n    \n    for (long long i = 0; i < m; i++) {\n        long long j = search_hash_entry(cur, keys, values, hash_table, 100005);\n        if (j != -1) return i * m + j;\n        cur = (cur * factor) % p;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long a, b, p;\n    scanf(\"%lld %lld %lld\", &a, &b, &p);\n    long long result = discrete_log_baby_giant(a, b, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "modular_power_fast",
+          "signature": "long long modular_power_fast(long long base, long long exp, long long mod)",
+          "code": "long long modular_power_fast(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "insert_hash_entry",
+          "signature": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size)",
+          "code": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        idx = (idx + 1) % table_size;\n    }\n    hash_table[idx] = 1;\n    keys[idx] = key;\n    values[idx] = value;\n}"
+        },
+        {
+          "clause_id": "search_hash_entry",
+          "signature": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size)",
+          "code": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        if (keys[idx] == key) return values[idx];\n        idx = (idx + 1) % table_size;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "discrete_log_baby_giant",
+          "signature": "long long discrete_log_baby_giant(long long a, long long b, long long p)",
+          "code": "long long discrete_log_baby_giant(long long a, long long b, long long p) {\n    long long m = (long long)ceil(sqrt(p));\n    long long keys[100005], values[100005];\n    int hash_table[100005];\n    for (int i = 0; i < 100005; i++) hash_table[i] = -1;\n    \n    long long gamma = 1;\n    for (long long j = 0; j < m; j++) {\n        insert_hash_entry(gamma, j, keys, values, hash_table, 100005);\n        gamma = (gamma * a) % p;\n    }\n    \n    long long factor = modular_power_fast(a, m * (p - 2), p);\n    long long cur = b;\n    \n    for (long long i = 0; i < m; i++) {\n        long long j = search_hash_entry(cur, keys, values, hash_table, 100005);\n        if (j != -1) return i * m + j;\n        cur = (cur * factor) % p;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long a, b, p;\n    scanf(\"%lld %lld %lld\", &a, &b, &p);\n    long long result = discrete_log_baby_giant(a, b, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "modular_power_fast",
+          "signature": "long long modular_power_fast(long long base, long long exp, long long mod)",
+          "code": "long long modular_power_fast(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "insert_hash_entry",
+          "signature": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size)",
+          "code": "void insert_hash_entry(long long key, long long value, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        idx = (idx + 1) % table_size;\n    }\n    hash_table[idx] = 1;\n    keys[idx] = key;\n    values[idx] = value;\n}"
+        },
+        {
+          "clause_id": "search_hash_entry",
+          "signature": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size)",
+          "code": "long long search_hash_entry(long long key, long long *keys, long long *values, int *hash_table, int table_size) {\n    int idx = key % table_size;\n    while (hash_table[idx] != -1) {\n        if (keys[idx] == key) return values[idx];\n        idx = (idx + 1) % table_size;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "discrete_log_baby_giant",
+          "signature": "long long discrete_log_baby_giant(long long a, long long b, long long p)",
+          "code": "long long discrete_log_baby_giant(long long a, long long b, long long p) {\n    long long m = (long long)ceil(sqrt(p));\n    long long keys[100005], values[100005];\n    int hash_table[100005];\n    for (int i = 0; i < 100005; i++) hash_table[i] = -1;\n    \n    long long gamma = 1;\n    for (long long j = 0; j < m; j++) {\n        insert_hash_entry(gamma, j, keys, values, hash_table, 100005);\n        gamma = (gamma * a) % p;\n    }\n    \n    long long factor = modular_power_fast(a, m * (p - 2), p);\n    long long cur = b;\n    \n    for (long long i = 0; i < m; i++) {\n        long long j = search_hash_entry(cur, keys, values, hash_table, 100005);\n        if (j != -1) return i * m + j;\n        cur = (cur * factor) % p;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long a, b, p;\n    scanf(\"%lld %lld %lld\", &a, &b, &p);\n    long long result = discrete_log_baby_giant(a, b, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

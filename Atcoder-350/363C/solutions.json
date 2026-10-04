@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_string",
+          "signature": "void read_string(int *n, int *k, char *s)",
+          "code": "void read_string(int *n, int *k, char *s) {\n    scanf(\"%d %d %s\", n, k, s);\n}"
+        },
+        {
+          "clause_id": "check_has_k_palindrome",
+          "signature": "int check_has_k_palindrome(char *s, int n, int k)",
+          "code": "int check_has_k_palindrome(char *s, int n, int k) {\n    for (int i = 0; i <= n - k; i++) {\n        int is_pal = 1;\n        for (int j = 0; j < k / 2; j++) {\n            if (s[i + j] != s[i + k - 1 - j]) {\n                is_pal = 0;\n                break;\n            }\n        }\n        if (is_pal) return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "count_valid_permutations",
+          "signature": "long long count_valid_permutations(char *s, int n, int k)",
+          "code": "long long count_valid_permutations(char *s, int n, int k) {\n    char perm[15];\n    strcpy(perm, s);\n    int used[15] = {0};\n    long long count = 0;\n    void generate(int pos) {\n        if (pos == n) {\n            if (!check_has_k_palindrome(perm, n, k)) count++;\n            return;\n        }\n        for (int i = 0; i < n; i++) {\n            if (used[i]) continue;\n            perm[pos] = s[i];\n            used[i] = 1;\n            generate(pos + 1);\n            used[i] = 0;\n        }\n    }\n    generate(0);\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k;\n    char s[15];\n    read_string(&n, &k, s);\n    printf(\"%lld\\n\", count_valid_permutations(s, n, k));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_string",
+          "signature": "int read_string(int *n, int *k, char str[])",
+          "code": "int read_string(int *n, int *k, char str[]) {\n    scanf(\"%d %d %s\", n, k, str);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "check_has_k_palindrome",
+          "signature": "int check_has_k_palindrome(char str[], int n, int k)",
+          "code": "int check_has_k_palindrome(char str[], int n, int k) {\n    for (int start = 0; start <= n - k; start++) {\n        int valid = 1;\n        for (int offset = 0; offset < k / 2; offset++) {\n            if (str[start + offset] != str[start + k - 1 - offset]) {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid) return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "count_valid_permutations",
+          "signature": "long long count_valid_permutations(char str[], int n, int k)",
+          "code": "long long count_valid_permutations(char str[], int n, int k) {\n    char temp[15];\n    int taken[15] = {0};\n    long long result = 0;\n    void backtrack(int idx) {\n        if (idx == n) {\n            temp[n] = '\\0';\n            if (!check_has_k_palindrome(temp, n, k)) result++;\n            return;\n        }\n        for (int i = 0; i < n; i++) {\n            if (taken[i]) continue;\n            temp[idx] = str[i];\n            taken[i] = 1;\n            backtrack(idx + 1);\n            taken[i] = 0;\n        }\n    }\n    backtrack(0);\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k;\n    char str[15];\n    read_string(&n, &k, str);\n    long long result = count_valid_permutations(str, n, k);\n    printf(\"%lld\\n\", result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_string",
+          "signature": "void read_string(int *n, int *k, char *input)",
+          "code": "void read_string(int *n, int *k, char *input) {\n    scanf(\"%d %d\", n, k);\n    scanf(\"%s\", input);\n}"
+        },
+        {
+          "clause_id": "check_has_k_palindrome",
+          "signature": "int check_has_k_palindrome(char *input, int n, int k)",
+          "code": "int check_has_k_palindrome(char *input, int n, int k) {\n    for (int i = 0; i <= n - k; i++) {\n        int palindrome = 1;\n        for (int j = 0; j < k / 2; j++) {\n            if (input[i + j] != input[i + k - 1 - j]) {\n                palindrome = 0;\n                break;\n            }\n        }\n        if (palindrome) return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "count_valid_permutations",
+          "signature": "long long count_valid_permutations(char *input, int n, int k)",
+          "code": "long long count_valid_permutations(char *input, int n, int k) {\n    char current[15];\n    int selected[15] = {0};\n    long long ans = 0;\n    void permute(int position) {\n        if (position == n) {\n            current[n] = '\\0';\n            if (!check_has_k_palindrome(current, n, k)) ans++;\n            return;\n        }\n        for (int i = 0; i < n; i++) {\n            if (selected[i]) continue;\n            current[position] = input[i];\n            selected[i] = 1;\n            permute(position + 1);\n            selected[i] = 0;\n        }\n    }\n    permute(0);\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k;\n    char input[15];\n    read_string(&n, &k, input);\n    long long ans = count_valid_permutations(input, n, k);\n    printf(\"%lld\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_string",
+          "signature": "long long read_string(int *n, int *k, char s[])",
+          "code": "long long read_string(int *n, int *k, char s[]) {\n    scanf(\"%d %d %s\", n, k, s);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "check_has_k_palindrome",
+          "signature": "int check_has_k_palindrome(char s[], int n, int k)",
+          "code": "int check_has_k_palindrome(char s[], int n, int k) {\n    for (int pos = 0; pos <= n - k; pos++) {\n        int ok = 1;\n        for (int d = 0; d < k / 2; d++) {\n            if (s[pos + d] != s[pos + k - 1 - d]) {\n                ok = 0;\n                break;\n            }\n        }\n        if (ok) return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "count_valid_permutations",
+          "signature": "long long count_valid_permutations(char s[], int n, int k)",
+          "code": "long long count_valid_permutations(char s[], int n, int k) {\n    char buf[15];\n    int vis[15] = {0};\n    long long cnt = 0;\n    void gen(int p) {\n        if (p == n) {\n            buf[n] = 0;\n            if (!check_has_k_palindrome(buf, n, k)) cnt++;\n            return;\n        }\n        for (int i = 0; i < n; i++) {\n            if (vis[i]) continue;\n            buf[p] = s[i];\n            vis[i] = 1;\n            gen(p + 1);\n            vis[i] = 0;\n        }\n    }\n    gen(0);\n    return cnt;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k;\n    char s[15];\n    read_string(&n, &k, s);\n    printf(\"%lld\\n\", count_valid_permutations(s, n, k));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_string",
+          "signature": "void read_string(int *length, int *palindrome_len, char *text)",
+          "code": "void read_string(int *length, int *palindrome_len, char *text) {\n    scanf(\"%d %d %s\", length, palindrome_len, text);\n}"
+        },
+        {
+          "clause_id": "check_has_k_palindrome",
+          "signature": "int check_has_k_palindrome(char *text, int length, int palindrome_len)",
+          "code": "int check_has_k_palindrome(char *text, int length, int palindrome_len) {\n    for (int i = 0; i <= length - palindrome_len; i++) {\n        int is_palindrome = 1;\n        for (int j = 0; j < palindrome_len / 2; j++) {\n            if (text[i + j] != text[i + palindrome_len - 1 - j]) {\n                is_palindrome = 0;\n                break;\n            }\n        }\n        if (is_palindrome) return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "count_valid_permutations",
+          "signature": "long long count_valid_permutations(char *text, int length, int palindrome_len)",
+          "code": "long long count_valid_permutations(char *text, int length, int palindrome_len) {\n    char permutation[15];\n    int used[15] = {0};\n    long long total = 0;\n    void generate_permutations(int pos) {\n        if (pos == length) {\n            permutation[length] = '\\0';\n            if (!check_has_k_palindrome(permutation, length, palindrome_len)) total++;\n            return;\n        }\n        for (int i = 0; i < length; i++) {\n            if (used[i]) continue;\n            permutation[pos] = text[i];\n            used[i] = 1;\n            generate_permutations(pos + 1);\n            used[i] = 0;\n        }\n    }\n    generate_permutations(0);\n    return total;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int length, palindrome_len;\n    char text[15];\n    read_string(&length, &palindrome_len, text);\n    printf(\"%lld\\n\", count_valid_permutations(text, length, palindrome_len));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

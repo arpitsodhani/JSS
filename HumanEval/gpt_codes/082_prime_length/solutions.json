@@ -1,0 +1,114 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 1;\n    if (n % 2 == 0) return 0;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "prime_length",
+          "code": "int prime_length(const char *s) {\n    int len = strlen(s);\n    return is_prime(len);\n}\n\nint main() {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    printf(\"%s\\n\", prime_length(s) ? \"True\" : \"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 1;\n    if (n % 2 == 0) return 0;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "prime_length",
+          "code": "int prime_length(const char *s) {\n    int len = strlen(s);\n    return is_prime(len);\n}\n\nint main() {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    printf(\"%s\\n\", prime_length(s) ? \"True\" : \"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 1;\n    if (n % 2 == 0) return 0;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "prime_length",
+          "code": "int prime_length(const char *s) {\n    int len = strlen(s);\n    return is_prime(len);\n}\n\nint main() {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    printf(\"%s\\n\", prime_length(s) ? \"True\" : \"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 1;\n    if (n % 2 == 0) return 0;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "prime_length",
+          "code": "int prime_length(const char *s) {\n    int len = strlen(s);\n    return is_prime(len);\n}\n\nint main() {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    printf(\"%s\\n\", prime_length(s) ? \"True\" : \"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 1;\n    if (n % 2 == 0) return 0;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "prime_length",
+          "code": "int prime_length(const char *s) {\n    int len = strlen(s);\n    return is_prime(len);\n}\n\nint main() {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    printf(\"%s\\n\", prime_length(s) ? \"True\" : \"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

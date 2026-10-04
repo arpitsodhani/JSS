@@ -1,0 +1,30 @@
+{
+  "contestId": 579,
+  "index": "A",
+  "problem_id": "579A",
+  "name": "Raising Bacteria",
+  "rating": 1000,
+  "tags": [
+    "bitmasks"
+  ],
+  "points": 250.0,
+  "solvedCount": 81082,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Raising Bacteria",
+  "legend": "You are a lover of bacteria. You want to raise some bacteria in a box.\n\nInitially, the box is empty. Each morning, you can put any number of bacteria into the box. And each night, every bacterium in the box will split into two bacteria. You hope to see exactly x bacteria in the box at some moment.\n\nWhat is the minimum number of bacteria you need to put into the box across those days?",
+  "input_spec": "The only line containing one integer x (1 ≤ x ≤ 109).",
+  "output_spec": "The only line containing one integer: the answer.",
+  "note": "For the first sample, we can add one bacterium in the box in the first day morning and at the third morning there will be 4 bacteria in the box. Now we put one more resulting 5 in the box. We added 2 bacteria in the process so the answer is 2.\n\nFor the second sample, we can put one in the first morning and in the 4-th morning there will be 8 in the box. So the answer is 1.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n",
+      "output": "2"
+    },
+    {
+      "input": "8\n",
+      "output": "1"
+    }
+  ]
+}

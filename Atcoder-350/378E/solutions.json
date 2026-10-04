@@ -1,0 +1,174 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int **A)",
+          "code": "void read_input(int *N,int *M,int **A){ scanf(\"%d%d\", N,M); *A=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "build_prefix",
+          "signature": "void build_prefix(int N,int M,int *A,int *P)",
+          "code": "void build_prefix(int N,int M,int *A,int *P){ P[0]=0; for(int i=0;i<N;i++) P[i+1]=(P[i]+A[i])%M; }\n"
+        },
+        {
+          "clause_id": "sum_mods",
+          "signature": "long long sum_mods(int N,int M,int *P)",
+          "code": "long long sum_mods(int N,int M,int *P){ long long ans=0; for(int l=0;l<N;l++){ for(int r=l;r<N;r++){ int val=P[r+1]-P[l]; if(val<0) val+=M; ans+=val; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; int *A=NULL; read_input(&N,&M,&A); int *P=(int*)malloc((size_t)(N+1)*sizeof(int)); build_prefix(N,M,A,P); long long ans=sum_mods(N,M,P); print_answer(ans); free(A); free(P); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int **A)",
+          "code": "void read_input(int *N,int *M,int **A){ scanf(\"%d%d\", N,M); *A=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "build_prefix",
+          "signature": "void build_prefix(int N,int M,int *A,int *P)",
+          "code": "void build_prefix(int N,int M,int *A,int *P){ P[0]=0; for(int i=0;i<N;i++) P[i+1]=(P[i]+A[i])%M; }\n"
+        },
+        {
+          "clause_id": "sum_mods",
+          "signature": "long long sum_mods(int N,int M,int *P)",
+          "code": "long long sum_mods(int N,int M,int *P){ long long ans=0; for(int l=0;l<N;l++){ for(int r=l;r<N;r++){ int val=P[r+1]-P[l]; if(val<0) val+=M; ans+=val; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; int *A=NULL; read_input(&N,&M,&A); int *P=(int*)malloc((size_t)(N+1)*sizeof(int)); build_prefix(N,M,A,P); long long ans=sum_mods(N,M,P); print_answer(ans); free(A); free(P); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int **A)",
+          "code": "void read_input(int *N,int *M,int **A){ scanf(\"%d%d\", N,M); *A=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "build_prefix",
+          "signature": "void build_prefix(int N,int M,int *A,int *P)",
+          "code": "void build_prefix(int N,int M,int *A,int *P){ P[0]=0; for(int i=0;i<N;i++) P[i+1]=(P[i]+A[i])%M; }\n"
+        },
+        {
+          "clause_id": "sum_mods",
+          "signature": "long long sum_mods(int N,int M,int *P)",
+          "code": "long long sum_mods(int N,int M,int *P){ long long ans=0; for(int l=0;l<N;l++){ for(int r=l;r<N;r++){ int val=P[r+1]-P[l]; if(val<0) val+=M; ans+=val; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; int *A=NULL; read_input(&N,&M,&A); int *P=(int*)malloc((size_t)(N+1)*sizeof(int)); build_prefix(N,M,A,P); long long ans=sum_mods(N,M,P); print_answer(ans); free(A); free(P); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int **A)",
+          "code": "void read_input(int *N,int *M,int **A){ scanf(\"%d%d\", N,M); *A=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "build_prefix",
+          "signature": "void build_prefix(int N,int M,int *A,int *P)",
+          "code": "void build_prefix(int N,int M,int *A,int *P){ P[0]=0; for(int i=0;i<N;i++) P[i+1]=(P[i]+A[i])%M; }\n"
+        },
+        {
+          "clause_id": "sum_mods",
+          "signature": "long long sum_mods(int N,int M,int *P)",
+          "code": "long long sum_mods(int N,int M,int *P){ long long ans=0; for(int l=0;l<N;l++){ for(int r=l;r<N;r++){ int val=P[r+1]-P[l]; if(val<0) val+=M; ans+=val; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; int *A=NULL; read_input(&N,&M,&A); int *P=(int*)malloc((size_t)(N+1)*sizeof(int)); build_prefix(N,M,A,P); long long ans=sum_mods(N,M,P); print_answer(ans); free(A); free(P); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int **A)",
+          "code": "void read_input(int *N,int *M,int **A){ scanf(\"%d%d\", N,M); *A=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "build_prefix",
+          "signature": "void build_prefix(int N,int M,int *A,int *P)",
+          "code": "void build_prefix(int N,int M,int *A,int *P){ P[0]=0; for(int i=0;i<N;i++) P[i+1]=(P[i]+A[i])%M; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "sum_mods",
+          "signature": "long long sum_mods(int N,int M,int *P)",
+          "code": "long long sum_mods(int N,int M,int *P){ long long ans=0; for(int l=0;l<N;l++){ for(int r=l;r<N;r++){ int val=P[r+1]-P[l]; if(val<0) val+=M; ans+=val; } } return ans; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; int *A=NULL; read_input(&N,&M,&A); int *P=(int*)malloc((size_t)(N+1)*sizeof(int)); build_prefix(N,M,A,P); long long ans=sum_mods(N,M,P); print_answer(ans); free(A); free(P); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

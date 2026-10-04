@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_automaton_state",
+          "signature": "int create_automaton_state(int *len, int *link, int *node_count, int length)",
+          "code": "int create_automaton_state(int *len, int *link, int *node_count, int length) {\n    int state = (*node_count)++;\n    len[state] = length;\n    link[state] = -1;\n    return state;\n}"
+        },
+        {
+          "clause_id": "extend_automaton_with_char",
+          "signature": "int extend_automaton_with_char(char c, int last, int transitions[200005][26], int *len, int *link, int *node_count)",
+          "code": "int extend_automaton_with_char(char c, int last, int transitions[200005][26], int *len, int *link, int *node_count) {\n    int cur = create_automaton_state(len, link, node_count, len[last] + 1);\n    int p = last;\n    \n    while (p != -1 && transitions[p][c - 'a'] == -1) {\n        transitions[p][c - 'a'] = cur;\n        p = link[p];\n    }\n    \n    if (p == -1) {\n        link[cur] = 0;\n    } else {\n        int q = transitions[p][c - 'a'];\n        if (len[p] + 1 == len[q]) {\n            link[cur] = q;\n        } else {\n            int clone = create_automaton_state(len, link, node_count, len[p] + 1);\n            for (int i = 0; i < 26; i++) {\n                transitions[clone][i] = transitions[q][i];\n            }\n            link[clone] = link[q];\n            while (p != -1 && transitions[p][c - 'a'] == q) {\n                transitions[p][c - 'a'] = clone;\n                p = link[p];\n            }\n            link[q] = link[cur] = clone;\n        }\n    }\n    return cur;\n}"
+        },
+        {
+          "clause_id": "count_distinct_substrings",
+          "signature": "long long count_distinct_substrings(char *s, int transitions[200005][26], int *len, int *link)",
+          "code": "long long count_distinct_substrings(char *s, int transitions[200005][26], int *len, int *link) {\n    int node_count = 1, last = 0;\n    for (int i = 0; i < 200005; i++) {\n        for (int j = 0; j < 26; j++) {\n            transitions[i][j] = -1;\n        }\n    }\n    \n    for (int i = 0; s[i] != '\\0'; i++) {\n        last = extend_automaton_with_char(s[i], last, transitions, len, link, &node_count);\n    }\n    \n    long long total = 0;\n    for (int i = 1; i < node_count; i++) {\n        total += len[i] - (link[i] == -1 ? 0 : len[link[i]]);\n    }\n    return total;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char s[100005];\n    int transitions[200005][26], len[200005], link[200005];\n    scanf(\"%s\", s);\n    printf(\"%lld\\n\", count_distinct_substrings(s, transitions, len, link));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_automaton_state",
+          "signature": "int create_automaton_state(int *len, int *link, int *node_count, int length)",
+          "code": "int create_automaton_state(int *len, int *link, int *node_count, int length) {\n    int state = (*node_count)++;\n    len[state] = length;\n    link[state] = -1;\n    return state;\n}"
+        },
+        {
+          "clause_id": "extend_automaton_with_char",
+          "signature": "int extend_automaton_with_char(char c, int last, int transitions[200005][26], int *len, int *link, int *node_count)",
+          "code": "int extend_automaton_with_char(char c, int last, int transitions[200005][26], int *len, int *link, int *node_count) {\n    int cur = create_automaton_state(len, link, node_count, len[last] + 1);\n    int p = last;\n    \n    while (p != -1 && transitions[p][c - 'a'] == -1) {\n        transitions[p][c - 'a'] = cur;\n        p = link[p];\n    }\n    \n    if (p == -1) {\n        link[cur] = 0;\n    } else {\n        int q = transitions[p][c - 'a'];\n        if (len[p] + 1 == len[q]) {\n            link[cur] = q;\n        } else {\n            int clone = create_automaton_state(len, link, node_count, len[p] + 1);\n            for (int i = 0; i < 26; i++) {\n                transitions[clone][i] = transitions[q][i];\n            }\n            link[clone] = link[q];\n            while (p != -1 && transitions[p][c - 'a'] == q) {\n                transitions[p][c - 'a'] = clone;\n                p = link[p];\n            }\n            link[q] = link[cur] = clone;\n        }\n    }\n    return cur;\n}"
+        },
+        {
+          "clause_id": "count_distinct_substrings",
+          "signature": "long long count_distinct_substrings(char *s, int transitions[200005][26], int *len, int *link)",
+          "code": "long long count_distinct_substrings(char *s, int transitions[200005][26], int *len, int *link) {\n    int node_count = 1, last = 0;\n    for (int i = 0; i < 200005; i++) {\n        for (int j = 0; j < 26; j++) {\n            transitions[i][j] = -1;\n        }\n    }\n    \n    for (int i = 0; s[i] != '\\0'; i++) {\n        last = extend_automaton_with_char(s[i], last, transitions, len, link, &node_count);\n    }\n    \n    long long total = 0;\n    for (int i = 1; i < node_count; i++) {\n        total += len[i] - (link[i] == -1 ? 0 : len[link[i]]);\n    }\n    return total;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char s[100005];\n    int transitions[200005][26], len[200005], link[200005];\n    scanf(\"%s\", s);\n    printf(\"%lld\\n\", count_distinct_substrings(s, transitions, len, link));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_automaton_state",
+          "signature": "int create_automaton_state(int *len, int *link, int *node_count, int length)",
+          "code": "int create_automaton_state(int *len, int *link, int *node_count, int length) {\n    int state = (*node_count)++;\n    len[state] = length;\n    link[state] = -1;\n    return state;\n}"
+        },
+        {
+          "clause_id": "extend_automaton_with_char",
+          "signature": "int extend_automaton_with_char(char c, int last, int transitions[200005][26], int *len, int *link, int *node_count)",
+          "code": "int extend_automaton_with_char(char c, int last, int transitions[200005][26], int *len, int *link, int *node_count) {\n    int cur = create_automaton_state(len, link, node_count, len[last] + 1);\n    int p = last;\n    \n    while (p != -1 && transitions[p][c - 'a'] == -1) {\n        transitions[p][c - 'a'] = cur;\n        p = link[p];\n    }\n    \n    if (p == -1) {\n        link[cur] = 0;\n    } else {\n        int q = transitions[p][c - 'a'];\n        if (len[p] + 1 == len[q]) {\n            link[cur] = q;\n        } else {\n            int clone = create_automaton_state(len, link, node_count, len[p] + 1);\n            for (int i = 0; i < 26; i++) {\n                transitions[clone][i] = transitions[q][i];\n            }\n            link[clone] = link[q];\n            while (p != -1 && transitions[p][c - 'a'] == q) {\n                transitions[p][c - 'a'] = clone;\n                p = link[p];\n            }\n            link[q] = link[cur] = clone;\n        }\n    }\n    return cur;\n}"
+        },
+        {
+          "clause_id": "count_distinct_substrings",
+          "signature": "long long count_distinct_substrings(char *s, int transitions[200005][26], int *len, int *link)",
+          "code": "long long count_distinct_substrings(char *s, int transitions[200005][26], int *len, int *link) {\n    int node_count = 1, last = 0;\n    for (int i = 0; i < 200005; i++) {\n        for (int j = 0; j < 26; j++) {\n            transitions[i][j] = -1;\n        }\n    }\n    \n    for (int i = 0; s[i] != '\\0'; i++) {\n        last = extend_automaton_with_char(s[i], last, transitions, len, link, &node_count);\n    }\n    \n    long long total = 0;\n    for (int i = 1; i < node_count; i++) {\n        total += len[i] - (link[i] == -1 ? 0 : len[link[i]]);\n    }\n    return total;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char s[100005];\n    int transitions[200005][26], len[200005], link[200005];\n    scanf(\"%s\", s);\n    printf(\"%lld\\n\", count_distinct_substrings(s, transitions, len, link));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_automaton_state",
+          "signature": "int create_automaton_state(int *len, int *link, int *node_count, int length)",
+          "code": "int create_automaton_state(int *len, int *link, int *node_count, int length) {\n    int state = (*node_count)++;\n    len[state] = length;\n    link[state] = -1;\n    return state;\n}"
+        },
+        {
+          "clause_id": "extend_automaton_with_char",
+          "signature": "int extend_automaton_with_char(char c, int last, int transitions[200005][26], int *len, int *link, int *node_count)",
+          "code": "int extend_automaton_with_char(char c, int last, int transitions[200005][26], int *len, int *link, int *node_count) {\n    int cur = create_automaton_state(len, link, node_count, len[last] + 1);\n    int p = last;\n    \n    while (p != -1 && transitions[p][c - 'a'] == -1) {\n        transitions[p][c - 'a'] = cur;\n        p = link[p];\n    }\n    \n    if (p == -1) {\n        link[cur] = 0;\n    } else {\n        int q = transitions[p][c - 'a'];\n        if (len[p] + 1 == len[q]) {\n            link[cur] = q;\n        } else {\n            int clone = create_automaton_state(len, link, node_count, len[p] + 1);\n            for (int i = 0; i < 26; i++) {\n                transitions[clone][i] = transitions[q][i];\n            }\n            link[clone] = link[q];\n            while (p != -1 && transitions[p][c - 'a'] == q) {\n                transitions[p][c - 'a'] = clone;\n                p = link[p];\n            }\n            link[q] = link[cur] = clone;\n        }\n    }\n    return cur;\n}"
+        },
+        {
+          "clause_id": "count_distinct_substrings",
+          "signature": "long long count_distinct_substrings(char *s, int transitions[200005][26], int *len, int *link)",
+          "code": "long long count_distinct_substrings(char *s, int transitions[200005][26], int *len, int *link) {\n    int node_count = 1, last = 0;\n    for (int i = 0; i < 200005; i++) {\n        for (int j = 0; j < 26; j++) {\n            transitions[i][j] = -1;\n        }\n    }\n    \n    for (int i = 0; s[i] != '\\0'; i++) {\n        last = extend_automaton_with_char(s[i], last, transitions, len, link, &node_count);\n    }\n    \n    long long total = 0;\n    for (int i = 1; i < node_count; i++) {\n        total += len[i] - (link[i] == -1 ? 0 : len[link[i]]);\n    }\n    return total;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char s[100005];\n    int transitions[200005][26], len[200005], link[200005];\n    scanf(\"%s\", s);\n    printf(\"%lld\\n\", count_distinct_substrings(s, transitions, len, link));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_automaton_state",
+          "signature": "int create_automaton_state(int *len, int *link, int *node_count, int length)",
+          "code": "int create_automaton_state(int *len, int *link, int *node_count, int length) {\n    int state = (*node_count)++;\n    len[state] = length;\n    link[state] = -1;\n    return state;\n}"
+        },
+        {
+          "clause_id": "extend_automaton_with_char",
+          "signature": "int extend_automaton_with_char(char c, int last, int transitions[200005][26], int *len, int *link, int *node_count)",
+          "code": "int extend_automaton_with_char(char c, int last, int transitions[200005][26], int *len, int *link, int *node_count) {\n    int cur = create_automaton_state(len, link, node_count, len[last] + 1);\n    int p = last;\n    \n    while (p != -1 && transitions[p][c - 'a'] == -1) {\n        transitions[p][c - 'a'] = cur;\n        p = link[p];\n    }\n    \n    if (p == -1) {\n        link[cur] = 0;\n    } else {\n        int q = transitions[p][c - 'a'];\n        if (len[p] + 1 == len[q]) {\n            link[cur] = q;\n        } else {\n            int clone = create_automaton_state(len, link, node_count, len[p] + 1);\n            for (int i = 0; i < 26; i++) {\n                transitions[clone][i] = transitions[q][i];\n            }\n            link[clone] = link[q];\n            while (p != -1 && transitions[p][c - 'a'] == q) {\n                transitions[p][c - 'a'] = clone;\n                p = link[p];\n            }\n            link[q] = link[cur] = clone;\n        }\n    }\n    return cur;\n}"
+        },
+        {
+          "clause_id": "count_distinct_substrings",
+          "signature": "long long count_distinct_substrings(char *s, int transitions[200005][26], int *len, int *link)",
+          "code": "long long count_distinct_substrings(char *s, int transitions[200005][26], int *len, int *link) {\n    int node_count = 1, last = 0;\n    for (int i = 0; i < 200005; i++) {\n        for (int j = 0; j < 26; j++) {\n            transitions[i][j] = -1;\n        }\n    }\n    \n    for (int i = 0; s[i] != '\\0'; i++) {\n        last = extend_automaton_with_char(s[i], last, transitions, len, link, &node_count);\n    }\n    \n    long long total = 0;\n    for (int i = 1; i < node_count; i++) {\n        total += len[i] - (link[i] == -1 ? 0 : len[link[i]]);\n    }\n    return total;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char s[100005];\n    int transitions[200005][26], len[200005], link[200005];\n    scanf(\"%s\", s);\n    printf(\"%lld\\n\", count_distinct_substrings(s, transitions, len, link));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

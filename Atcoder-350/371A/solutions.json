@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "insert_pattern_into_automaton",
+          "signature": "void insert_pattern_into_automaton(char *pattern, int trie[10005][26], int *is_end, int *node_count)",
+          "code": "void insert_pattern_into_automaton(char *pattern, int trie[10005][26], int *is_end, int *node_count) {\n    int current = 0;\n    for (int i = 0; pattern[i] != '\\0'; i++) {\n        int c = pattern[i] - 'a';\n        if (trie[current][c] == -1) {\n            trie[current][c] = *node_count;\n            for (int j = 0; j < 26; j++) {\n                trie[*node_count][j] = -1;\n            }\n            (*node_count)++;\n        }\n        current = trie[current][c];\n    }\n    is_end[current] = 1;\n}"
+        },
+        {
+          "clause_id": "build_failure_links_bfs",
+          "signature": "void build_failure_links_bfs(int trie[10005][26], int *fail, int node_count)",
+          "code": "void build_failure_links_bfs(int trie[10005][26], int *fail, int node_count) {\n    int queue[10005], front = 0, rear = 0;\n    for (int c = 0; c < 26; c++) {\n        if (trie[0][c] != -1) {\n            fail[trie[0][c]] = 0;\n            queue[rear++] = trie[0][c];\n        } else {\n            trie[0][c] = 0;\n        }\n    }\n    \n    while (front < rear) {\n        int state = queue[front++];\n        for (int c = 0; c < 26; c++) {\n            if (trie[state][c] != -1) {\n                int failure = fail[state];\n                while (trie[failure][c] == -1) {\n                    failure = fail[failure];\n                }\n                fail[trie[state][c]] = trie[failure][c];\n                queue[rear++] = trie[state][c];\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "search_text_with_automaton",
+          "signature": "int search_text_with_automaton(char *text, int trie[10005][26], int *fail, int *is_end)",
+          "code": "int search_text_with_automaton(char *text, int trie[10005][26], int *fail, int *is_end) {\n    int state = 0, matches = 0;\n    for (int i = 0; text[i] != '\\0'; i++) {\n        int c = text[i] - 'a';\n        while (trie[state][c] == -1) {\n            state = fail[state];\n        }\n        state = trie[state][c];\n        if (is_end[state]) matches++;\n    }\n    return matches;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, trie[10005][26], is_end[10005] = {0}, fail[10005] = {0}, node_count = 1;\n    char patterns[105][105], text[100005];\n    \n    for (int i = 0; i < 10005; i++) {\n        for (int j = 0; j < 26; j++) {\n            trie[i][j] = -1;\n        }\n    }\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", patterns[i]);\n        insert_pattern_into_automaton(patterns[i], trie, is_end, &node_count);\n    }\n    \n    build_failure_links_bfs(trie, fail, node_count);\n    scanf(\"%s\", text);\n    printf(\"%d\\n\", search_text_with_automaton(text, trie, fail, is_end));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "insert_pattern_into_automaton",
+          "signature": "void insert_pattern_into_automaton(char *pattern, int trie[10005][26], int *is_end, int *node_count)",
+          "code": "void insert_pattern_into_automaton(char *pattern, int trie[10005][26], int *is_end, int *node_count) {\n    int current = 0;\n    for (int i = 0; pattern[i] != '\\0'; i++) {\n        int c = pattern[i] - 'a';\n        if (trie[current][c] == -1) {\n            trie[current][c] = *node_count;\n            for (int j = 0; j < 26; j++) {\n                trie[*node_count][j] = -1;\n            }\n            (*node_count)++;\n        }\n        current = trie[current][c];\n    }\n    is_end[current] = 1;\n}"
+        },
+        {
+          "clause_id": "build_failure_links_bfs",
+          "signature": "void build_failure_links_bfs(int trie[10005][26], int *fail, int node_count)",
+          "code": "void build_failure_links_bfs(int trie[10005][26], int *fail, int node_count) {\n    int queue[10005], front = 0, rear = 0;\n    for (int c = 0; c < 26; c++) {\n        if (trie[0][c] != -1) {\n            fail[trie[0][c]] = 0;\n            queue[rear++] = trie[0][c];\n        } else {\n            trie[0][c] = 0;\n        }\n    }\n    \n    while (front < rear) {\n        int state = queue[front++];\n        for (int c = 0; c < 26; c++) {\n            if (trie[state][c] != -1) {\n                int failure = fail[state];\n                while (trie[failure][c] == -1) {\n                    failure = fail[failure];\n                }\n                fail[trie[state][c]] = trie[failure][c];\n                queue[rear++] = trie[state][c];\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "search_text_with_automaton",
+          "signature": "int search_text_with_automaton(char *text, int trie[10005][26], int *fail, int *is_end)",
+          "code": "int search_text_with_automaton(char *text, int trie[10005][26], int *fail, int *is_end) {\n    int state = 0, matches = 0;\n    for (int i = 0; text[i] != '\\0'; i++) {\n        int c = text[i] - 'a';\n        while (trie[state][c] == -1) {\n            state = fail[state];\n        }\n        state = trie[state][c];\n        if (is_end[state]) matches++;\n    }\n    return matches;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, trie[10005][26], is_end[10005] = {0}, fail[10005] = {0}, node_count = 1;\n    char patterns[105][105], text[100005];\n    \n    for (int i = 0; i < 10005; i++) {\n        for (int j = 0; j < 26; j++) {\n            trie[i][j] = -1;\n        }\n    }\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", patterns[i]);\n        insert_pattern_into_automaton(patterns[i], trie, is_end, &node_count);\n    }\n    \n    build_failure_links_bfs(trie, fail, node_count);\n    scanf(\"%s\", text);\n    printf(\"%d\\n\", search_text_with_automaton(text, trie, fail, is_end));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "insert_pattern_into_automaton",
+          "signature": "void insert_pattern_into_automaton(char *pattern, int trie[10005][26], int *is_end, int *node_count)",
+          "code": "void insert_pattern_into_automaton(char *pattern, int trie[10005][26], int *is_end, int *node_count) {\n    int current = 0;\n    for (int i = 0; pattern[i] != '\\0'; i++) {\n        int c = pattern[i] - 'a';\n        if (trie[current][c] == -1) {\n            trie[current][c] = *node_count;\n            for (int j = 0; j < 26; j++) {\n                trie[*node_count][j] = -1;\n            }\n            (*node_count)++;\n        }\n        current = trie[current][c];\n    }\n    is_end[current] = 1;\n}"
+        },
+        {
+          "clause_id": "build_failure_links_bfs",
+          "signature": "void build_failure_links_bfs(int trie[10005][26], int *fail, int node_count)",
+          "code": "void build_failure_links_bfs(int trie[10005][26], int *fail, int node_count) {\n    int queue[10005], front = 0, rear = 0;\n    for (int c = 0; c < 26; c++) {\n        if (trie[0][c] != -1) {\n            fail[trie[0][c]] = 0;\n            queue[rear++] = trie[0][c];\n        } else {\n            trie[0][c] = 0;\n        }\n    }\n    \n    while (front < rear) {\n        int state = queue[front++];\n        for (int c = 0; c < 26; c++) {\n            if (trie[state][c] != -1) {\n                int failure = fail[state];\n                while (trie[failure][c] == -1) {\n                    failure = fail[failure];\n                }\n                fail[trie[state][c]] = trie[failure][c];\n                queue[rear++] = trie[state][c];\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "search_text_with_automaton",
+          "signature": "int search_text_with_automaton(char *text, int trie[10005][26], int *fail, int *is_end)",
+          "code": "int search_text_with_automaton(char *text, int trie[10005][26], int *fail, int *is_end) {\n    int state = 0, matches = 0;\n    for (int i = 0; text[i] != '\\0'; i++) {\n        int c = text[i] - 'a';\n        while (trie[state][c] == -1) {\n            state = fail[state];\n        }\n        state = trie[state][c];\n        if (is_end[state]) matches++;\n    }\n    return matches;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, trie[10005][26], is_end[10005] = {0}, fail[10005] = {0}, node_count = 1;\n    char patterns[105][105], text[100005];\n    \n    for (int i = 0; i < 10005; i++) {\n        for (int j = 0; j < 26; j++) {\n            trie[i][j] = -1;\n        }\n    }\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", patterns[i]);\n        insert_pattern_into_automaton(patterns[i], trie, is_end, &node_count);\n    }\n    \n    build_failure_links_bfs(trie, fail, node_count);\n    scanf(\"%s\", text);\n    printf(\"%d\\n\", search_text_with_automaton(text, trie, fail, is_end));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "insert_pattern_into_automaton",
+          "signature": "void insert_pattern_into_automaton(char *pattern, int trie[10005][26], int *is_end, int *node_count)",
+          "code": "void insert_pattern_into_automaton(char *pattern, int trie[10005][26], int *is_end, int *node_count) {\n    int current = 0;\n    for (int i = 0; pattern[i] != '\\0'; i++) {\n        int c = pattern[i] - 'a';\n        if (trie[current][c] == -1) {\n            trie[current][c] = *node_count;\n            for (int j = 0; j < 26; j++) {\n                trie[*node_count][j] = -1;\n            }\n            (*node_count)++;\n        }\n        current = trie[current][c];\n    }\n    is_end[current] = 1;\n}"
+        },
+        {
+          "clause_id": "build_failure_links_bfs",
+          "signature": "void build_failure_links_bfs(int trie[10005][26], int *fail, int node_count)",
+          "code": "void build_failure_links_bfs(int trie[10005][26], int *fail, int node_count) {\n    int queue[10005], front = 0, rear = 0;\n    for (int c = 0; c < 26; c++) {\n        if (trie[0][c] != -1) {\n            fail[trie[0][c]] = 0;\n            queue[rear++] = trie[0][c];\n        } else {\n            trie[0][c] = 0;\n        }\n    }\n    \n    while (front < rear) {\n        int state = queue[front++];\n        for (int c = 0; c < 26; c++) {\n            if (trie[state][c] != -1) {\n                int failure = fail[state];\n                while (trie[failure][c] == -1) {\n                    failure = fail[failure];\n                }\n                fail[trie[state][c]] = trie[failure][c];\n                queue[rear++] = trie[state][c];\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "search_text_with_automaton",
+          "signature": "int search_text_with_automaton(char *text, int trie[10005][26], int *fail, int *is_end)",
+          "code": "int search_text_with_automaton(char *text, int trie[10005][26], int *fail, int *is_end) {\n    int state = 0, matches = 0;\n    for (int i = 0; text[i] != '\\0'; i++) {\n        int c = text[i] - 'a';\n        while (trie[state][c] == -1) {\n            state = fail[state];\n        }\n        state = trie[state][c];\n        if (is_end[state]) matches++;\n    }\n    return matches;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, trie[10005][26], is_end[10005] = {0}, fail[10005] = {0}, node_count = 1;\n    char patterns[105][105], text[100005];\n    \n    for (int i = 0; i < 10005; i++) {\n        for (int j = 0; j < 26; j++) {\n            trie[i][j] = -1;\n        }\n    }\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", patterns[i]);\n        insert_pattern_into_automaton(patterns[i], trie, is_end, &node_count);\n    }\n    \n    build_failure_links_bfs(trie, fail, node_count);\n    scanf(\"%s\", text);\n    printf(\"%d\\n\", search_text_with_automaton(text, trie, fail, is_end));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "insert_pattern_into_automaton",
+          "signature": "void insert_pattern_into_automaton(char *pattern, int trie[10005][26], int *is_end, int *node_count)",
+          "code": "void insert_pattern_into_automaton(char *pattern, int trie[10005][26], int *is_end, int *node_count) {\n    int current = 0;\n    for (int i = 0; pattern[i] != '\\0'; i++) {\n        int c = pattern[i] - 'a';\n        if (trie[current][c] == -1) {\n            trie[current][c] = *node_count;\n            for (int j = 0; j < 26; j++) {\n                trie[*node_count][j] = -1;\n            }\n            (*node_count)++;\n        }\n        current = trie[current][c];\n    }\n    is_end[current] = 1;\n}"
+        },
+        {
+          "clause_id": "build_failure_links_bfs",
+          "signature": "void build_failure_links_bfs(int trie[10005][26], int *fail, int node_count)",
+          "code": "void build_failure_links_bfs(int trie[10005][26], int *fail, int node_count) {\n    int queue[10005], front = 0, rear = 0;\n    for (int c = 0; c < 26; c++) {\n        if (trie[0][c] != -1) {\n            fail[trie[0][c]] = 0;\n            queue[rear++] = trie[0][c];\n        } else {\n            trie[0][c] = 0;\n        }\n    }\n    \n    while (front < rear) {\n        int state = queue[front++];\n        for (int c = 0; c < 26; c++) {\n            if (trie[state][c] != -1) {\n                int failure = fail[state];\n                while (trie[failure][c] == -1) {\n                    failure = fail[failure];\n                }\n                fail[trie[state][c]] = trie[failure][c];\n                queue[rear++] = trie[state][c];\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "search_text_with_automaton",
+          "signature": "int search_text_with_automaton(char *text, int trie[10005][26], int *fail, int *is_end)",
+          "code": "int search_text_with_automaton(char *text, int trie[10005][26], int *fail, int *is_end) {\n    int state = 0, matches = 0;\n    for (int i = 0; text[i] != '\\0'; i++) {\n        int c = text[i] - 'a';\n        while (trie[state][c] == -1) {\n            state = fail[state];\n        }\n        state = trie[state][c];\n        if (is_end[state]) matches++;\n    }\n    return matches;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, trie[10005][26], is_end[10005] = {0}, fail[10005] = {0}, node_count = 1;\n    char patterns[105][105], text[100005];\n    \n    for (int i = 0; i < 10005; i++) {\n        for (int j = 0; j < 26; j++) {\n            trie[i][j] = -1;\n        }\n    }\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", patterns[i]);\n        insert_pattern_into_automaton(patterns[i], trie, is_end, &node_count);\n    }\n    \n    build_failure_links_bfs(trie, fail, node_count);\n    scanf(\"%s\", text);\n    printf(\"%d\\n\", search_text_with_automaton(text, trie, fail, is_end));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+There is a city divided into H \times W blocks in the north-south-east-west directions, and there is exactly one building in each block. Specifically, in the block at the i -th row from the north (1\leq i\leq H) and the j -th column from the west (1\leq j\leq W) (hereafter referred to as block (i,j) ), there is a building of F_{i,j} floors. Takahashi has two ways of moving. If he is on the X -th floor (1\leq X\leq F_{i,j}) of the building in block (i,j) , he can: Move up or down one floor within the same building using stairs . If X=1 , he cannot move down; if X=F_{i,j} , he cannot move up. Choose a building with at least X floors in a cardinally adjacent block, and move to the X -th floor of that building using a (sky) walkway . Here, two blocks (i,j) and (i',j') are cardinally adjacent if and only if \lvert i - i'\rvert + \lvert j - j'\rvert = 1 . You are given Q queries to be answered. The i -th query (1\leq i\leq Q) is the following. Find the minimum possible number of times that Takahashi uses stairs to move from the Y_i -th floor of the building in block (A_i,B_i) to the Z_i -th floor of the building in block (C_i,D_i) . The count of times using stairs is incremented each time he moves up or down one floor, possibly multiple times within the same building. (For example, moving from the 1st floor to the 6th floor of a building counts as 5 uses of stairs.) Note that he does not have to minimize the number of times he uses walkways.
+
+**Constraints:**
+- 1 <= N <= 200
+- 1 <= M <= N(N-1)/2
+- 1 <= u_i < v_i <= N
+- All pairs (u_i, v_i) are distinct
+- All input values are integers

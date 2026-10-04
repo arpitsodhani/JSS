@@ -1,0 +1,6 @@
+There are N snakes. Initially, the thickness of the i -th snake is T_i , and its length is L_i . The weight of a snake is defined as the product of its thickness and length. For each integer k satisfying 1 \leq k \leq D , find the weight of the heaviest snake when every snake's length has increased by k .
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= D <= 100
+- All input values are integers

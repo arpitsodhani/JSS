@@ -1,0 +1,99 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int ops[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &ops[i]);\n    \n    int balance = 0;\n    for (int i = 0; i < n; i++) {\n        balance += ops[i];\n        if (balance < 0) {\n            printf(\"True\\n\");\n            return 0;\n        }\n    }\n    printf(\"False\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    \n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum = sum + arr[i];\n        if (sum < 0) {\n            printf(\"True\\n\");\n            return 0;\n        }\n    }\n    printf(\"False\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "check_negative",
+          "signature": "int check_negative(int *arr, int n)",
+          "code": "int check_negative(int *arr, int n) {\n    int bal = 0;\n    for (int i = 0; i < n; i++) {\n        bal += arr[i];\n        if (bal < 0) return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    \n    if (check_negative(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    int numbers[count];\n    for (int i = 0; i < count; i++) scanf(\"%d\", &numbers[i]);\n    \n    int total = 0;\n    for (int i = 0; i < count; i++) {\n        total += numbers[i];\n        if (total < 0) {\n            printf(\"True\\n\");\n            return 0;\n        }\n    }\n    printf(\"False\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int a[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    \n    int b = 0;\n    for (int i = 0; i < n; i++) {\n        b += a[i];\n        if (b < 0) {\n            printf(\"True\\n\");\n            return 0;\n        }\n    }\n    printf(\"False\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ],
+  "global_includes": [],
+  "tests": {
+    "clause_tests": {},
+    "program_tests": [
+      {
+        "test_id": "test_0",
+        "input": "0\n",
+        "expected": "False\n"
+      },
+      {
+        "test_id": "test_1",
+        "input": "3\n1 2 -3\n",
+        "expected": "True\n"
+      },
+      {
+        "test_id": "test_2",
+        "input": "4\n1 2 -4 5\n",
+        "expected": "False\n"
+      }
+    ]
+  },
+  "merge_settings": {
+    "consensus_threshold": 0.6,
+    "max_rounds": 3
+  }
+}

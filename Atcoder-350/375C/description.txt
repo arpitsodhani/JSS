@@ -1,0 +1,6 @@
+You are given a grid with N rows and N columns, where N is an even number. Let (i, j) denote the cell at the i -th row from the top and j -th column from the left. Each cell is painted black or white. If A_{i, j} = # , cell (i, j) is black; if A_{i, j} = . , it is white. Find the color of each cell after performing the following operation for i = 1, 2, \ldots, \frac{N}{2} in this order. For all pairs of integers x, y between i and N + 1 - i , inclusive, replace the color of cell (y, N + 1 - x) with the color of cell (x, y) . Perform these replacements simultaneously for all such pairs x, y .
+
+**Constraints:**
+- 1 <= N <= 3000
+- N is even
+- A_{i,j} is '#' or '.'

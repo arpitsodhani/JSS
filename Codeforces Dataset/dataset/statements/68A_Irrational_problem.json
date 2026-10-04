@@ -1,0 +1,35 @@
+{
+  "contestId": 68,
+  "index": "A",
+  "problem_id": "68A",
+  "name": "Irrational problem",
+  "rating": 1100,
+  "tags": [
+    "implementation",
+    "number theory"
+  ],
+  "points": 500.0,
+  "solvedCount": 5419,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Irrational problem",
+  "legend": "Little Petya was given this problem for homework:\n\nYou are given function  (here  represents the operation of taking the remainder). His task is to count the number of integers x in range [a;b] with property f(x) = x.\n\nIt is a pity that Petya forgot the order in which the remainders should be taken and wrote down only 4 numbers. Each of 24 possible orders of taking the remainder has equal probability of being chosen. For example, if Petya has numbers 1, 2, 3, 4 then he can take remainders in that order or first take remainder modulo 4, then modulo 2, 3, 1. There also are 22 other permutations of these numbers that represent orders in which remainder can be taken. In this problem 4 numbers wrote down by Petya will be pairwise distinct.\n\nNow it is impossible for Petya to complete the task given by teacher but just for fun he decided to find the number of integers  with property that probability that f(x) = x is not less than 31.4159265352718281828459045%. In other words, Petya will pick up the number x if there exist at least 7 permutations of numbers p1, p2, p3, p4, for which f(x) = x.",
+  "input_spec": "First line of the input will contain 6 integers, separated by spaces: p1, p2, p3, p4, a, b (1 ≤ p1, p2, p3, p4 ≤ 1000, 0 ≤ a ≤ b ≤ 31415).\n\nIt is guaranteed that numbers p1, p2, p3, p4 will be pairwise distinct.",
+  "output_spec": "Output the number of integers in the given range that have the given property.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2 7 1 8 2 8\n",
+      "output": "0"
+    },
+    {
+      "input": "20 30 40 50 0 100\n",
+      "output": "20"
+    },
+    {
+      "input": "31 41 59 26 17 43\n",
+      "output": "9"
+    }
+  ]
+}

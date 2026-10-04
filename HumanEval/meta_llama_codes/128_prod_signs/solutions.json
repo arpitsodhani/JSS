@@ -1,0 +1,126 @@
+{
+  "problem_num": 128,
+  "problem_name": "prod_signs",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "compute_sign_product",
+          "code": "int compute_sign_product(int* arr, int n, int* sum) {\n    int prod = 1;\n    *sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] == 0) {\n            return 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n            *sum += -arr[i];\n        } else {\n            *sum += arr[i];\n        }\n    }\n    \n    return prod;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    if (n == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int sum;\n    int prod = compute_sign_product(arr, n, &sum);\n    \n    printf(\"%d\\n\", prod * sum);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "compute_sign_product",
+          "code": "int compute_sign_product(int* arr, int n, int* sum) {\n    int prod = 1;\n    *sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] == 0) {\n            return 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n            *sum += -arr[i];\n        } else {\n            *sum += arr[i];\n        }\n    }\n    \n    return prod;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    if (n == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int sum;\n    int prod = compute_sign_product(arr, n, &sum);\n    \n    printf(\"%d\\n\", prod * sum);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "compute_sign_product",
+          "code": "int compute_sign_product(int* arr, int n, int* sum) {\n    int prod = 1;\n    *sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] == 0) {\n            return 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n            *sum += -arr[i];\n        } else {\n            *sum += arr[i];\n        }\n    }\n    \n    return prod;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    if (n == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int sum;\n    int prod = compute_sign_product(arr, n, &sum);\n    \n    printf(\"%d\\n\", prod * sum);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "compute_sign_product",
+          "code": "int compute_sign_product(int* arr, int n, int* sum) {\n    int prod = 1;\n    *sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] == 0) {\n            return 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n            *sum += -arr[i];\n        } else {\n            *sum += arr[i];\n        }\n    }\n    \n    return prod;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    if (n == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int sum;\n    int prod = compute_sign_product(arr, n, &sum);\n    \n    printf(\"%d\\n\", prod * sum);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "compute_sign_product",
+          "code": "int compute_sign_product(int* arr, int n, int* sum) {\n    int prod = 1;\n    *sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] == 0) {\n            return 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n            *sum += -arr[i];\n        } else {\n            *sum += arr[i];\n        }\n    }\n    \n    return prod;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    if (n == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int sum;\n    int prod = compute_sign_product(arr, n, &sum);\n    \n    printf(\"%d\\n\", prod * sum);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

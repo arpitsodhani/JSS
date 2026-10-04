@@ -1,0 +1,151 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char s[][205])",
+          "code": "scanf(\"%d%d\", H,W); for(int i=0;i<*H;i++) scanf(\"%s\", s[i]);\n"
+        },
+        {
+          "clause_id": "can_rect",
+          "signature": "int can_rect(int H,int W,char s[][205])",
+          "code": "int minr=H, maxr=-1, minc=W, maxc=-1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++) if(s[i][j]=='#'){ if(i<minr) minr=i; if(i>maxr) maxr=i; if(j<minc) minc=j; if(j>maxc) maxc=j; }\nif(maxr==-1) return 1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++){\n  if(i>=minr && i<=maxr && j>=minc && j<=maxc){ if(s[i][j]=='.') return 0; }\n  else { if(s[i][j]=='#') return 0; }\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; char s[205][205]; read_input(&H,&W,s); int ok=can_rect(H,W,s); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char s[][205])",
+          "code": "scanf(\"%d%d\", H,W); for(int i=0;i<*H;i++) scanf(\"%s\", s[i]);\n"
+        },
+        {
+          "clause_id": "can_rect",
+          "signature": "int can_rect(int H,int W,char s[][205])",
+          "code": "int minr=H, maxr=-1, minc=W, maxc=-1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++) if(s[i][j]=='#'){ if(i<minr) minr=i; if(i>maxr) maxr=i; if(j<minc) minc=j; if(j>maxc) maxc=j; }\nif(maxr==-1) return 1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++){\n  if(i>=minr && i<=maxr && j>=minc && j<=maxc){ if(s[i][j]=='.') return 0; }\n  else { if(s[i][j]=='#') return 0; }\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; char s[205][205]; read_input(&H,&W,s); int ok=can_rect(H,W,s); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char s[][205])",
+          "code": "scanf(\"%d%d\", H,W); for(int i=0;i<*H;i++) scanf(\"%s\", s[i]);\n"
+        },
+        {
+          "clause_id": "can_rect",
+          "signature": "int can_rect(int H,int W,char s[][205])",
+          "code": "int minr=H, maxr=-1, minc=W, maxc=-1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++) if(s[i][j]=='#'){ if(i<minr) minr=i; if(i>maxr) maxr=i; if(j<minc) minc=j; if(j>maxc) maxc=j; }\nif(maxr==-1) return 1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++){\n  if(i>=minr && i<=maxr && j>=minc && j<=maxc){ if(s[i][j]=='.') return 0; }\n  else { if(s[i][j]=='#') return 0; }\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; char s[205][205]; read_input(&H,&W,s); int ok=can_rect(H,W,s); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char s[][205])",
+          "code": "scanf(\"%d%d\", H,W); for(int i=0;i<*H;i++) scanf(\"%s\", s[i]);\n"
+        },
+        {
+          "clause_id": "can_rect",
+          "signature": "int can_rect(int H,int W,char s[][205])",
+          "code": "int minr=H, maxr=-1, minc=W, maxc=-1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++) if(s[i][j]=='#'){ if(i<minr) minr=i; if(i>maxr) maxr=i; if(j<minc) minc=j; if(j>maxc) maxc=j; }\nif(maxr==-1) return 1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++){\n  if(i>=minr && i<=maxr && j>=minc && j<=maxc){ if(s[i][j]=='.') return 0; }\n  else { if(s[i][j]=='#') return 0; }\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; char s[205][205]; read_input(&H,&W,s); int ok=can_rect(H,W,s); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char s[][205])",
+          "code": "scanf(\"%d%d\", H,W); for(int i=0;i<*H;i++) scanf(\"%s\", s[i]);\n"
+        },
+        {
+          "clause_id": "can_rect",
+          "signature": "int can_rect(int H,int W,char s[][205])",
+          "code": "int minr=H, maxr=-1, minc=W, maxc=-1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++) if(s[i][j]=='#'){ if(i<minr) minr=i; if(i>maxr) maxr=i; if(j<minc) minc=j; if(j>maxc) maxc=j; }\nif(maxr==-1) return 1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++){\n  if(i>=minr && i<=maxr && j>=minc && j<=maxc){ if(s[i][j]=='.') return 0; }\n  else { if(s[i][j]=='#') return 0; }\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; char s[205][205]; read_input(&H,&W,s); int ok=can_rect(H,W,s); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "390C",
+  "total_programs": 5
+}

@@ -1,0 +1,7 @@
+An election is being held with N candidates numbered 1, 2, \ldots, N . There are K votes, some of which have been counted so far. Up until now, candidate i has received A_i votes. After all ballots are counted, candidate i (1 \leq i \leq N) will be elected if and only if the number of candidates who have received more votes than them is less than M . There may be multiple candidates elected. For each candidate, find the minimum number of additional votes they need from the remaining ballots to guarantee their victory regardless of how the other candidates receive votes. Formally, solve the following problem for each i = 1,2,\ldots,N . Determine if there is a non-negative integer X not exceeding K - \displaystyle{\sum_{i=1}^{N}} A_i satisfying the following condition. If it exists, find the minimum possible such integer. If candidate i receives X additional votes, then candidate i will always be elected.
+
+**Constraints:**
+- 1 <= N, M, K <= 2 * 10^5
+- 0 <= A_i <= 10^{12}
+- Sum of all A_i <= K
+- All input values are integers

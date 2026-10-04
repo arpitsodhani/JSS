@@ -1,0 +1,35 @@
+{
+  "contestId": 118,
+  "index": "A",
+  "problem_id": "118A",
+  "name": "String Task",
+  "rating": 1000,
+  "tags": [
+    "implementation",
+    "strings"
+  ],
+  "points": 500.0,
+  "solvedCount": 235675,
+  "source": "verbatim_cf_fetch",
+  "title": "A. String Task",
+  "legend": "Petya started to attend programming lessons. On the first lesson his task was to write a simple program. The program was supposed to do the following: in the given string, consisting if uppercase and lowercase Latin letters, it:\n\ndeletes all the vowels,\ninserts a character \".\" before each consonant,\nreplaces all uppercase consonants with corresponding lowercase ones.\n\nVowels are letters \"A\", \"O\", \"Y\", \"E\", \"U\", \"I\", and the rest are consonants. The program's input is exactly one string, it should return the output as a single string, resulting after the program's processing the initial string.\n\nHelp Petya cope with this easy task.",
+  "input_spec": "The first line represents input string of Petya's program. This string only consists of uppercase and lowercase Latin letters and its length is from 1 to 100, inclusive.",
+  "output_spec": "Print the resulting string. It is guaranteed that this string is not empty.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "tour\n",
+      "output": ".t.r"
+    },
+    {
+      "input": "Codeforces\n",
+      "output": ".c.d.f.r.c.s"
+    },
+    {
+      "input": "aBAcAba\n",
+      "output": ".b.c.b"
+    }
+  ]
+}

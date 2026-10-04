@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "mark_node_as_visited",
+          "signature": "void mark_node_as_visited(int *visited, int node)",
+          "code": "void mark_node_as_visited(int *visited, int node) {\n    visited[node] = 1;\n}"
+        },
+        {
+          "clause_id": "search_hamiltonian_path_dfs",
+          "signature": "int search_hamiltonian_path_dfs(int n, int adj[105][105], int *adj_count, int node, int *visited, int count)",
+          "code": "int search_hamiltonian_path_dfs(int n, int adj[105][105], int *adj_count, int node, int *visited, int count) {\n    mark_node_as_visited(visited, node);\n    if (count == n) return 1;\n    \n    for (int i = 0; i < adj_count[node]; i++) {\n        int neighbor = adj[node][i];\n        if (!visited[neighbor]) {\n            if (search_hamiltonian_path_dfs(n, adj, adj_count, neighbor, visited, count + 1)) {\n                return 1;\n            }\n        }\n    }\n    visited[node] = 0;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "check_hamiltonian_path_exists",
+          "signature": "int check_hamiltonian_path_exists(int n, int adj[105][105], int *adj_count)",
+          "code": "int check_hamiltonian_path_exists(int n, int adj[105][105], int *adj_count) {\n    for (int start = 0; start < n; start++) {\n        int visited[105] = {0};\n        if (search_hamiltonian_path_dfs(n, adj, adj_count, start, visited, 1)) {\n            return 1;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, adj[105][105], adj_count[105] = {0};\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    printf(\"%s\\n\", check_hamiltonian_path_exists(n, adj, adj_count) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "mark_node_as_visited",
+          "signature": "void mark_node_as_visited(int *visited, int node)",
+          "code": "void mark_node_as_visited(int *visited, int node) {\n    visited[node] = 1;\n}"
+        },
+        {
+          "clause_id": "search_hamiltonian_path_dfs",
+          "signature": "int search_hamiltonian_path_dfs(int n, int adj[105][105], int *adj_count, int node, int *visited, int count)",
+          "code": "int search_hamiltonian_path_dfs(int n, int adj[105][105], int *adj_count, int node, int *visited, int count) {\n    mark_node_as_visited(visited, node);\n    if (count == n) return 1;\n    \n    for (int i = 0; i < adj_count[node]; i++) {\n        int neighbor = adj[node][i];\n        if (!visited[neighbor]) {\n            if (search_hamiltonian_path_dfs(n, adj, adj_count, neighbor, visited, count + 1)) {\n                return 1;\n            }\n        }\n    }\n    visited[node] = 0;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "check_hamiltonian_path_exists",
+          "signature": "int check_hamiltonian_path_exists(int n, int adj[105][105], int *adj_count)",
+          "code": "int check_hamiltonian_path_exists(int n, int adj[105][105], int *adj_count) {\n    for (int start = 0; start < n; start++) {\n        int visited[105] = {0};\n        if (search_hamiltonian_path_dfs(n, adj, adj_count, start, visited, 1)) {\n            return 1;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, adj[105][105], adj_count[105] = {0};\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    printf(\"%s\\n\", check_hamiltonian_path_exists(n, adj, adj_count) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "mark_node_as_visited",
+          "signature": "void mark_node_as_visited(int *visited, int node)",
+          "code": "void mark_node_as_visited(int *visited, int node) {\n    visited[node] = 1;\n}"
+        },
+        {
+          "clause_id": "search_hamiltonian_path_dfs",
+          "signature": "int search_hamiltonian_path_dfs(int n, int adj[105][105], int *adj_count, int node, int *visited, int count)",
+          "code": "int search_hamiltonian_path_dfs(int n, int adj[105][105], int *adj_count, int node, int *visited, int count) {\n    mark_node_as_visited(visited, node);\n    if (count == n) return 1;\n    \n    for (int i = 0; i < adj_count[node]; i++) {\n        int neighbor = adj[node][i];\n        if (!visited[neighbor]) {\n            if (search_hamiltonian_path_dfs(n, adj, adj_count, neighbor, visited, count + 1)) {\n                return 1;\n            }\n        }\n    }\n    visited[node] = 0;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "check_hamiltonian_path_exists",
+          "signature": "int check_hamiltonian_path_exists(int n, int adj[105][105], int *adj_count)",
+          "code": "int check_hamiltonian_path_exists(int n, int adj[105][105], int *adj_count) {\n    for (int start = 0; start < n; start++) {\n        int visited[105] = {0};\n        if (search_hamiltonian_path_dfs(n, adj, adj_count, start, visited, 1)) {\n            return 1;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, adj[105][105], adj_count[105] = {0};\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    printf(\"%s\\n\", check_hamiltonian_path_exists(n, adj, adj_count) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "mark_node_as_visited",
+          "signature": "void mark_node_as_visited(int *visited, int node)",
+          "code": "void mark_node_as_visited(int *visited, int node) {\n    visited[node] = 1;\n}"
+        },
+        {
+          "clause_id": "search_hamiltonian_path_dfs",
+          "signature": "int search_hamiltonian_path_dfs(int n, int adj[105][105], int *adj_count, int node, int *visited, int count)",
+          "code": "int search_hamiltonian_path_dfs(int n, int adj[105][105], int *adj_count, int node, int *visited, int count) {\n    mark_node_as_visited(visited, node);\n    if (count == n) return 1;\n    \n    for (int i = 0; i < adj_count[node]; i++) {\n        int neighbor = adj[node][i];\n        if (!visited[neighbor]) {\n            if (search_hamiltonian_path_dfs(n, adj, adj_count, neighbor, visited, count + 1)) {\n                return 1;\n            }\n        }\n    }\n    visited[node] = 0;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "check_hamiltonian_path_exists",
+          "signature": "int check_hamiltonian_path_exists(int n, int adj[105][105], int *adj_count)",
+          "code": "int check_hamiltonian_path_exists(int n, int adj[105][105], int *adj_count) {\n    for (int start = 0; start < n; start++) {\n        int visited[105] = {0};\n        if (search_hamiltonian_path_dfs(n, adj, adj_count, start, visited, 1)) {\n            return 1;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, adj[105][105], adj_count[105] = {0};\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    printf(\"%s\\n\", check_hamiltonian_path_exists(n, adj, adj_count) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "mark_node_as_visited",
+          "signature": "void mark_node_as_visited(int *visited, int node)",
+          "code": "void mark_node_as_visited(int *visited, int node) {\n    visited[node] = 1;\n}"
+        },
+        {
+          "clause_id": "search_hamiltonian_path_dfs",
+          "signature": "int search_hamiltonian_path_dfs(int n, int adj[105][105], int *adj_count, int node, int *visited, int count)",
+          "code": "int search_hamiltonian_path_dfs(int n, int adj[105][105], int *adj_count, int node, int *visited, int count) {\n    mark_node_as_visited(visited, node);\n    if (count == n) return 1;\n    \n    for (int i = 0; i < adj_count[node]; i++) {\n        int neighbor = adj[node][i];\n        if (!visited[neighbor]) {\n            if (search_hamiltonian_path_dfs(n, adj, adj_count, neighbor, visited, count + 1)) {\n                return 1;\n            }\n        }\n    }\n    visited[node] = 0;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "check_hamiltonian_path_exists",
+          "signature": "int check_hamiltonian_path_exists(int n, int adj[105][105], int *adj_count)",
+          "code": "int check_hamiltonian_path_exists(int n, int adj[105][105], int *adj_count) {\n    for (int start = 0; start < n; start++) {\n        int visited[105] = {0};\n        if (search_hamiltonian_path_dfs(n, adj, adj_count, start, visited, 1)) {\n            return 1;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, adj[105][105], adj_count[105] = {0};\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    printf(\"%s\\n\", check_hamiltonian_path_exists(n, adj, adj_count) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

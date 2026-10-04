@@ -1,0 +1,151 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *X,int *V,int *A,int *C)",
+          "code": "scanf(\"%d%d\", n,X); for(int i=0;i<*n;i++) scanf(\"%d%d%d\", &V[i], &A[i], &C[i]);\n"
+        },
+        {
+          "clause_id": "max_min",
+          "signature": "int max_min(int n,int X,int *V,int *A,int *C)",
+          "code": "int *dp1=(int*)calloc((size_t)(X+1),sizeof(int));\nint *dp2=(int*)calloc((size_t)(X+1),sizeof(int));\nint *dp3=(int*)calloc((size_t)(X+1),sizeof(int));\nfor(int i=0;i<n;i++){\n  for(int x=X; x>=C[i]; x--){\n    if(V[i]==1 && dp1[x-C[i]]+A[i]>dp1[x]) dp1[x]=dp1[x-C[i]]+A[i];\n    if(V[i]==2 && dp2[x-C[i]]+A[i]>dp2[x]) dp2[x]=dp2[x-C[i]]+A[i];\n    if(V[i]==3 && dp3[x-C[i]]+A[i]>dp3[x]) dp3[x]=dp3[x-C[i]]+A[i];\n  }\n}\nint best=0; for(int x=0;x<=X;x++){ int m=dp1[x]; if(dp2[x]<m) m=dp2[x]; if(dp3[x]<m) m=dp3[x]; if(m>best) best=m; }\nfree(dp1); free(dp2); free(dp3); return best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,X; static int V[205],A[205],C[205]; read_input(&n,&X,V,A,C); int ans=max_min(n,X,V,A,C); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *X,int *V,int *A,int *C)",
+          "code": "scanf(\"%d%d\", n,X); for(int i=0;i<*n;i++) scanf(\"%d%d%d\", &V[i], &A[i], &C[i]);\n"
+        },
+        {
+          "clause_id": "max_min",
+          "signature": "int max_min(int n,int X,int *V,int *A,int *C)",
+          "code": "int *dp1=(int*)calloc((size_t)(X+1),sizeof(int));\nint *dp2=(int*)calloc((size_t)(X+1),sizeof(int));\nint *dp3=(int*)calloc((size_t)(X+1),sizeof(int));\nfor(int i=0;i<n;i++){\n  for(int x=X; x>=C[i]; x--){\n    if(V[i]==1 && dp1[x-C[i]]+A[i]>dp1[x]) dp1[x]=dp1[x-C[i]]+A[i];\n    if(V[i]==2 && dp2[x-C[i]]+A[i]>dp2[x]) dp2[x]=dp2[x-C[i]]+A[i];\n    if(V[i]==3 && dp3[x-C[i]]+A[i]>dp3[x]) dp3[x]=dp3[x-C[i]]+A[i];\n  }\n}\nint best=0; for(int x=0;x<=X;x++){ int m=dp1[x]; if(dp2[x]<m) m=dp2[x]; if(dp3[x]<m) m=dp3[x]; if(m>best) best=m; }\nfree(dp1); free(dp2); free(dp3); return best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,X; static int V[205],A[205],C[205]; read_input(&n,&X,V,A,C); int ans=max_min(n,X,V,A,C); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *X,int *V,int *A,int *C)",
+          "code": "scanf(\"%d%d\", n,X); for(int i=0;i<*n;i++) scanf(\"%d%d%d\", &V[i], &A[i], &C[i]);\n"
+        },
+        {
+          "clause_id": "max_min",
+          "signature": "int max_min(int n,int X,int *V,int *A,int *C)",
+          "code": "int *dp1=(int*)calloc((size_t)(X+1),sizeof(int));\nint *dp2=(int*)calloc((size_t)(X+1),sizeof(int));\nint *dp3=(int*)calloc((size_t)(X+1),sizeof(int));\nfor(int i=0;i<n;i++){\n  for(int x=X; x>=C[i]; x--){\n    if(V[i]==1 && dp1[x-C[i]]+A[i]>dp1[x]) dp1[x]=dp1[x-C[i]]+A[i];\n    if(V[i]==2 && dp2[x-C[i]]+A[i]>dp2[x]) dp2[x]=dp2[x-C[i]]+A[i];\n    if(V[i]==3 && dp3[x-C[i]]+A[i]>dp3[x]) dp3[x]=dp3[x-C[i]]+A[i];\n  }\n}\nint best=0; for(int x=0;x<=X;x++){ int m=dp1[x]; if(dp2[x]<m) m=dp2[x]; if(dp3[x]<m) m=dp3[x]; if(m>best) best=m; }\nfree(dp1); free(dp2); free(dp3); return best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,X; static int V[205],A[205],C[205]; read_input(&n,&X,V,A,C); int ans=max_min(n,X,V,A,C); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *X,int *V,int *A,int *C)",
+          "code": "scanf(\"%d%d\", n,X); for(int i=0;i<*n;i++) scanf(\"%d%d%d\", &V[i], &A[i], &C[i]);\n"
+        },
+        {
+          "clause_id": "max_min",
+          "signature": "int max_min(int n,int X,int *V,int *A,int *C)",
+          "code": "int *dp1=(int*)calloc((size_t)(X+1),sizeof(int));\nint *dp2=(int*)calloc((size_t)(X+1),sizeof(int));\nint *dp3=(int*)calloc((size_t)(X+1),sizeof(int));\nfor(int i=0;i<n;i++){\n  for(int x=X; x>=C[i]; x--){\n    if(V[i]==1 && dp1[x-C[i]]+A[i]>dp1[x]) dp1[x]=dp1[x-C[i]]+A[i];\n    if(V[i]==2 && dp2[x-C[i]]+A[i]>dp2[x]) dp2[x]=dp2[x-C[i]]+A[i];\n    if(V[i]==3 && dp3[x-C[i]]+A[i]>dp3[x]) dp3[x]=dp3[x-C[i]]+A[i];\n  }\n}\nint best=0; for(int x=0;x<=X;x++){ int m=dp1[x]; if(dp2[x]<m) m=dp2[x]; if(dp3[x]<m) m=dp3[x]; if(m>best) best=m; }\nfree(dp1); free(dp2); free(dp3); return best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,X; static int V[205],A[205],C[205]; read_input(&n,&X,V,A,C); int ans=max_min(n,X,V,A,C); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *X,int *V,int *A,int *C)",
+          "code": "scanf(\"%d%d\", n,X); for(int i=0;i<*n;i++) scanf(\"%d%d%d\", &V[i], &A[i], &C[i]);\n"
+        },
+        {
+          "clause_id": "max_min",
+          "signature": "int max_min(int n,int X,int *V,int *A,int *C)",
+          "code": "int *dp1=(int*)calloc((size_t)(X+1),sizeof(int));\nint *dp2=(int*)calloc((size_t)(X+1),sizeof(int));\nint *dp3=(int*)calloc((size_t)(X+1),sizeof(int));\nfor(int i=0;i<n;i++){\n  for(int x=X; x>=C[i]; x--){\n    if(V[i]==1 && dp1[x-C[i]]+A[i]>dp1[x]) dp1[x]=dp1[x-C[i]]+A[i];\n    if(V[i]==2 && dp2[x-C[i]]+A[i]>dp2[x]) dp2[x]=dp2[x-C[i]]+A[i];\n    if(V[i]==3 && dp3[x-C[i]]+A[i]>dp3[x]) dp3[x]=dp3[x-C[i]]+A[i];\n  }\n}\nint best=0; for(int x=0;x<=X;x++){ int m=dp1[x]; if(dp2[x]<m) m=dp2[x]; if(dp3[x]<m) m=dp3[x]; if(m>best) best=m; }\nfree(dp1); free(dp2); free(dp3); return best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,X; static int V[205],A[205],C[205]; read_input(&n,&X,V,A,C); int ans=max_min(n,X,V,A,C); print_int(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "390E",
+  "total_programs": 5
+}

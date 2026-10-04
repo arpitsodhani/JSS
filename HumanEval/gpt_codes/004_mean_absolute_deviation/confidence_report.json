@@ -1,0 +1,92 @@
+{
+  "clause_wise_confidence": {
+    "calculate_mean": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "calculate_mad": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "run": {
+      "confidence_score": 0.9756470588235293,
+      "cluster_info": {
+        "programs_in_consensus": 4,
+        "total_programs": 5
+      }
+    },
+    "main": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 5,
+        "total_programs": 5
+      }
+    },
+    "mean": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "mad": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "avg": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "abs_dev": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "compute_average": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "compute_deviation": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "get_mean": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "get_mad": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    }
+  },
+  "overall_metrics": {
+    "average_confidence": 0.9979705882352942,
+    "total_clauses": 12
+  }
+}

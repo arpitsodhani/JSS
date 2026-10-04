@@ -1,0 +1,130 @@
+{
+  "problem_id": "066_digitSum",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "compute_digit_sum",
+          "code": "int compute_digit_sum(char *s) {\n    int sum = 0;\n    for (int i = 0; s[i]; i++) {\n        if (isupper(s[i])) {\n            sum += s[i];\n        }\n    }\n    return sum;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = compute_digit_sum(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "compute_digit_sum",
+          "code": "int compute_digit_sum(char *s) {\n    int sum = 0;\n    for (int i = 0; s[i]; i++) {\n        if (isupper(s[i])) {\n            sum += s[i];\n        }\n    }\n    return sum;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = compute_digit_sum(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "compute_digit_sum",
+          "code": "int compute_digit_sum(char *s) {\n    int sum = 0;\n    for (int i = 0; s[i]; i++) {\n        if (isupper(s[i])) {\n            sum += s[i];\n        }\n    }\n    return sum;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = compute_digit_sum(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "compute_digit_sum",
+          "code": "int compute_digit_sum(char *s) {\n    int sum = 0;\n    for (int i = 0; s[i]; i++) {\n        if (isupper(s[i])) {\n            sum += s[i];\n        }\n    }\n    return sum;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = compute_digit_sum(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "compute_digit_sum",
+          "code": "int compute_digit_sum(char *s) {\n    int sum = 0;\n    for (int i = 0; s[i]; i++) {\n        if (isupper(s[i])) {\n            sum += s[i];\n        }\n    }\n    return sum;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = compute_digit_sum(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>",
+    "<ctype.h>"
+  ]
+}

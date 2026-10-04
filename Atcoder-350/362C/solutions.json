@@ -1,0 +1,159 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ranges",
+          "signature": "void read_ranges(int *n, long long *l, long long *r)",
+          "code": "void read_ranges(int *n, long long *l, long long *r) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) {\n        scanf(\"%lld %lld\", &l[i], &r[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "check_feasibility",
+          "signature": "int check_feasibility(int n, long long *l, long long *r)",
+          "code": "int check_feasibility(int n, long long *l, long long *r) {\n    long long min_sum = 0, max_sum = 0;\n    for (int i = 0; i < n; i++) {\n        min_sum += l[i];\n        max_sum += r[i];\n    }\n    return (min_sum <= 0 && max_sum >= 0) ? 1 : 0;\n}"
+        },
+        {
+          "clause_id": "construct_sequence",
+          "signature": "void construct_sequence(int n, long long *l, long long *r, long long *x)",
+          "code": "void construct_sequence(int n, long long *l, long long *r, long long *x) {\n    long long sum = 0;\n    for (int i = 0; i < n; i++) {\n        x[i] = l[i];\n        sum += l[i];\n    }\n    for (int i = 0; i < n && sum < 0; i++) {\n        long long add = (r[i] - l[i] < -sum) ? (r[i] - l[i]) : -sum;\n        x[i] += add;\n        sum += add;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long l[200005], r[200005], x[200005];\n    read_ranges(&n, l, r);\n    if (check_feasibility(n, l, r)) {\n        printf(\"Yes\\n\");\n        construct_sequence(n, l, r, x);\n        for (int i = 0; i < n; i++) printf(\"%lld%c\", x[i], i == n - 1 ? '\\n' : ' ');\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ranges",
+          "signature": "int read_ranges(int *n, long long l[], long long r[])",
+          "code": "int read_ranges(int *n, long long l[], long long r[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) {\n        scanf(\"%lld %lld\", &l[i], &r[i]);\n    }\n    return *n;\n}"
+        },
+        {
+          "clause_id": "check_feasibility",
+          "signature": "int check_feasibility(int n, long long l[], long long r[])",
+          "code": "int check_feasibility(int n, long long l[], long long r[]) {\n    long long s_min = 0, s_max = 0;\n    for (int i = 0; i < n; i++) {\n        s_min += l[i];\n        s_max += r[i];\n    }\n    return (s_min <= 0 && 0 <= s_max);\n}"
+        },
+        {
+          "clause_id": "construct_sequence",
+          "signature": "void construct_sequence(int n, long long l[], long long r[], long long result[])",
+          "code": "void construct_sequence(int n, long long l[], long long r[], long long result[]) {\n    long long s = 0;\n    for (int i = 0; i < n; i++) {\n        result[i] = l[i];\n        s += l[i];\n    }\n    for (int i = 0; i < n; i++) {\n        if (s >= 0) break;\n        long long delta = (s + r[i] - l[i] > 0) ? -s : (r[i] - l[i]);\n        result[i] += delta;\n        s += delta;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long l[200005], r[200005], result[200005];\n    read_ranges(&n, l, r);\n    if (check_feasibility(n, l, r)) {\n        printf(\"Yes\\n\");\n        construct_sequence(n, l, r, result);\n        for (int i = 0; i < n; i++) printf(\"%lld \", result[i]);\n        printf(\"\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ranges",
+          "signature": "void read_ranges(int *n, long long left[], long long right[])",
+          "code": "void read_ranges(int *n, long long left[], long long right[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) {\n        scanf(\"%lld %lld\", &left[i], &right[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "check_feasibility",
+          "signature": "int check_feasibility(int n, long long left[], long long right[])",
+          "code": "int check_feasibility(int n, long long left[], long long right[]) {\n    long long lower = 0, upper = 0;\n    for (int i = 0; i < n; i++) {\n        lower += left[i];\n        upper += right[i];\n    }\n    return (lower <= 0 && upper >= 0) ? 1 : 0;\n}"
+        },
+        {
+          "clause_id": "construct_sequence",
+          "signature": "void construct_sequence(int n, long long left[], long long right[], long long ans[])",
+          "code": "void construct_sequence(int n, long long left[], long long right[], long long ans[]) {\n    long long current = 0;\n    for (int i = 0; i < n; i++) {\n        ans[i] = left[i];\n        current += left[i];\n    }\n    int idx = 0;\n    while (current < 0 && idx < n) {\n        long long need = -current;\n        long long avail = right[idx] - left[idx];\n        long long use = (avail < need) ? avail : need;\n        ans[idx] += use;\n        current += use;\n        idx++;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long left[200005], right[200005], ans[200005];\n    read_ranges(&n, left, right);\n    if (!check_feasibility(n, left, right)) {\n        printf(\"No\\n\");\n    } else {\n        printf(\"Yes\\n\");\n        construct_sequence(n, left, right, ans);\n        for (int i = 0; i < n; i++) {\n            printf(\"%lld\", ans[i]);\n            if (i < n - 1) printf(\" \");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ranges",
+          "signature": "long long read_ranges(int *n, long long *low, long long *high)",
+          "code": "long long read_ranges(int *n, long long *low, long long *high) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) {\n        scanf(\"%lld %lld\", &low[i], &high[i]);\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "check_feasibility",
+          "signature": "int check_feasibility(int n, long long *low, long long *high)",
+          "code": "int check_feasibility(int n, long long *low, long long *high) {\n    long long sum_low = 0, sum_high = 0;\n    for (int i = 0; i < n; i++) {\n        sum_low += low[i];\n        sum_high += high[i];\n    }\n    if (sum_low <= 0 && sum_high >= 0) return 1;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "construct_sequence",
+          "signature": "void construct_sequence(int n, long long *low, long long *high, long long *out)",
+          "code": "void construct_sequence(int n, long long *low, long long *high, long long *out) {\n    long long total = 0;\n    for (int i = 0; i < n; i++) {\n        out[i] = low[i];\n        total += low[i];\n    }\n    for (int i = 0; i < n; i++) {\n        if (total >= 0) break;\n        long long gap = high[i] - low[i];\n        long long adjust = (gap > -total) ? -total : gap;\n        out[i] += adjust;\n        total += adjust;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long low[200005], high[200005], out[200005];\n    read_ranges(&n, low, high);\n    int possible = check_feasibility(n, low, high);\n    if (possible) {\n        printf(\"Yes\\n\");\n        construct_sequence(n, low, high, out);\n        for (int i = 0; i < n; i++) printf(\"%lld%c\", out[i], i == n - 1 ? '\\n' : ' ');\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ranges",
+          "signature": "void read_ranges(int *n, long long mins[], long long maxs[])",
+          "code": "void read_ranges(int *n, long long mins[], long long maxs[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) {\n        scanf(\"%lld %lld\", &mins[i], &maxs[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "check_feasibility",
+          "signature": "int check_feasibility(int n, long long mins[], long long maxs[])",
+          "code": "int check_feasibility(int n, long long mins[], long long maxs[]) {\n    long long total_min = 0, total_max = 0;\n    for (int i = 0; i < n; i++) {\n        total_min += mins[i];\n        total_max += maxs[i];\n    }\n    return (total_min <= 0 && total_max >= 0);\n}"
+        },
+        {
+          "clause_id": "construct_sequence",
+          "signature": "void construct_sequence(int n, long long mins[], long long maxs[], long long seq[])",
+          "code": "void construct_sequence(int n, long long mins[], long long maxs[], long long seq[]) {\n    long long sum = 0;\n    for (int i = 0; i < n; i++) {\n        seq[i] = mins[i];\n        sum += mins[i];\n    }\n    for (int i = 0; i < n && sum != 0; i++) {\n        long long range = maxs[i] - mins[i];\n        long long change = (range < -sum) ? range : -sum;\n        seq[i] += change;\n        sum += change;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long mins[200005], maxs[200005], seq[200005];\n    read_ranges(&n, mins, maxs);\n    if (check_feasibility(n, mins, maxs)) {\n        printf(\"Yes\\n\");\n        construct_sequence(n, mins, maxs, seq);\n        for (int i = 0; i < n; i++) {\n            if (i > 0) printf(\" \");\n            printf(\"%lld\", seq[i]);\n        }\n        printf(\"\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

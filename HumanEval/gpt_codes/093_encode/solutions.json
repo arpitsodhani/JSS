@@ -1,0 +1,164 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "swap_case_vowel",
+          "code": "char swap_case_vowel(char c) {\n    if (c == 'a') return 'C';\n    if (c == 'e') return 'G';\n    if (c == 'i') return 'K';\n    if (c == 'o') return 'Q';\n    if (c == 'u') return 'W';\n    if (c == 'A') return 'c';\n    if (c == 'E') return 'g';\n    if (c == 'I') return 'k';\n    if (c == 'O') return 'q';\n    if (c == 'U') return 'w';\n    if (islower(c)) return toupper(c);\n    if (isupper(c)) return tolower(c);\n    return c;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "encode",
+          "code": "void encode(const char *message, char *result) {\n    for (int i = 0; message[i]; i++) {\n        result[i] = swap_case_vowel(message[i]);\n    }\n    result[strlen(message)] = 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char message[10000], result[10000];\n    fgets(message, sizeof(message), stdin);\n    message[strcspn(message, \"\\n\")] = 0;\n    encode(message, result);\n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "swap_case_vowel",
+          "code": "char swap_case_vowel(char c) {\n    if (c == 'a') return 'C';\n    if (c == 'e') return 'G';\n    if (c == 'i') return 'K';\n    if (c == 'o') return 'Q';\n    if (c == 'u') return 'W';\n    if (c == 'A') return 'c';\n    if (c == 'E') return 'g';\n    if (c == 'I') return 'k';\n    if (c == 'O') return 'q';\n    if (c == 'U') return 'w';\n    if (islower(c)) return toupper(c);\n    if (isupper(c)) return tolower(c);\n    return c;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "encode",
+          "code": "void encode(const char *message, char *result) {\n    for (int i = 0; message[i]; i++) {\n        result[i] = swap_case_vowel(message[i]);\n    }\n    result[strlen(message)] = 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char message[10000], result[10000];\n    fgets(message, sizeof(message), stdin);\n    message[strcspn(message, \"\\n\")] = 0;\n    encode(message, result);\n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "swap_case_vowel",
+          "code": "char swap_case_vowel(char c) {\n    if (c == 'a') return 'C';\n    if (c == 'e') return 'G';\n    if (c == 'i') return 'K';\n    if (c == 'o') return 'Q';\n    if (c == 'u') return 'W';\n    if (c == 'A') return 'c';\n    if (c == 'E') return 'g';\n    if (c == 'I') return 'k';\n    if (c == 'O') return 'q';\n    if (c == 'U') return 'w';\n    if (islower(c)) return toupper(c);\n    if (isupper(c)) return tolower(c);\n    return c;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "encode",
+          "code": "void encode(const char *message, char *result) {\n    for (int i = 0; message[i]; i++) {\n        result[i] = swap_case_vowel(message[i]);\n    }\n    result[strlen(message)] = 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char message[10000], result[10000];\n    fgets(message, sizeof(message), stdin);\n    message[strcspn(message, \"\\n\")] = 0;\n    encode(message, result);\n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "swap_case_vowel",
+          "code": "char swap_case_vowel(char c) {\n    if (c == 'a') return 'C';\n    if (c == 'e') return 'G';\n    if (c == 'i') return 'K';\n    if (c == 'o') return 'Q';\n    if (c == 'u') return 'W';\n    if (c == 'A') return 'c';\n    if (c == 'E') return 'g';\n    if (c == 'I') return 'k';\n    if (c == 'O') return 'q';\n    if (c == 'U') return 'w';\n    if (islower(c)) return toupper(c);\n    if (isupper(c)) return tolower(c);\n    return c;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "encode",
+          "code": "void encode(const char *message, char *result) {\n    for (int i = 0; message[i]; i++) {\n        result[i] = swap_case_vowel(message[i]);\n    }\n    result[strlen(message)] = 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char message[10000], result[10000];\n    fgets(message, sizeof(message), stdin);\n    message[strcspn(message, \"\\n\")] = 0;\n    encode(message, result);\n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "swap_case_vowel",
+          "code": "char swap_case_vowel(char c) {\n    if (c == 'a') return 'C';\n    if (c == 'e') return 'G';\n    if (c == 'i') return 'K';\n    if (c == 'o') return 'Q';\n    if (c == 'u') return 'W';\n    if (c == 'A') return 'c';\n    if (c == 'E') return 'g';\n    if (c == 'I') return 'k';\n    if (c == 'O') return 'q';\n    if (c == 'U') return 'w';\n    if (islower(c)) return toupper(c);\n    if (isupper(c)) return tolower(c);\n    return c;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "encode",
+          "code": "void encode(const char *message, char *result) {\n    for (int i = 0; message[i]; i++) {\n        result[i] = swap_case_vowel(message[i]);\n    }\n    result[strlen(message)] = 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char message[10000], result[10000];\n    fgets(message, sizeof(message), stdin);\n    message[strcspn(message, \"\\n\")] = 0;\n    encode(message, result);\n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

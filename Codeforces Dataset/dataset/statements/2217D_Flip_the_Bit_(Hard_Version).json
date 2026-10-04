@@ -1,0 +1,28 @@
+{
+  "contestId": 2217,
+  "index": "D",
+  "problem_id": "2217D",
+  "name": "Flip the Bit (Hard Version)",
+  "rating": 1900,
+  "tags": [
+    "greedy",
+    "implementation",
+    "math"
+  ],
+  "points": 1500.0,
+  "solvedCount": 3745,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Flip the Bit (Hard Version)",
+  "legend": "This is the hard version of the problem. The difference between the versions is that in this version, there can be multiple special indices (1≤k≤n). You can hack only if you solved all versions of this problem.\n\nYou are given a binary array a of length n and k special indices p1,p2,…,pk (1≤pi≤n). It is given that the values ai of all elements at special indices are the same (i. e., ap1=ap2=…=apk).\n\nIn one operation, you can choose a range [l,r] (1≤l≤r≤n) such that the range contains at least one special index (l≤pi≤r) and flip all bits aj for l≤j≤r. Flipping a bit changes 0 to 1 and 1 to 0.\n\nLet x denote the value at special indices before any operations are applied. Find the minimum number of operations required to make all elements of the array equal to x.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe first line of each test case contains two integers n and k (1≤k≤n≤2⋅105) — the length of the array and the number of special indices.\n\nThe second line contains n integers a1,a2,…,an (0≤ai≤1) — the elements of the array.\n\nThe third line contains k integers p1,p2,…,pk (1≤p1<p2<…<pk≤n) — the special indices. It is guaranteed that ap1=ap2=…=apk.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, output a single integer — the minimum number of operations required.",
+  "note": "For the first test case, you can choose the range [1,2] and flip both the bits to get [0,1]. Then you can choose the range [1,1] and flip the first bit to get [1,1].\n\nFor the second test case, you can choose the range [1,2] and flip the bits to get [1,0,0]. Then you can choose the range [1,1] and flip the first bit to get [0,0,0].\n\nFor the fourth test case, you can choose the range [2,8] and flip the bits to get [0,0,1,1,0,1,1,0,0]. Then you can choose the range [3,4] and flip the bits to get [0,0,0,0,0,1,1,0,0]. Then you can choose the range [6,7] and flip the bits to get [0,0,0,0,0,0,0,0,0]. Note that, while there can be other ways to achieve this, it can be proved that the minimum number of operations is 3.",
+  "time_limit": "1.5 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n2 1\n1 0\n1\n3 2\n0 1 0\n1 3\n5 5\n1 1 1 1 1\n1 2 3 4 5\n9 5\n0 1 0 0 1 0 0 1 0\n3 4 6 7 9\n13 4\n1 0 0 1 0 1 0 1 1 0 1 0 1\n4 8 11 13\n15 3\n1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\n3 11 13\n",
+      "output": "2\n2\n0\n3\n5\n8"
+    }
+  ]
+}

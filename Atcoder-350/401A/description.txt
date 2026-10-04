@@ -1,0 +1,13 @@
+Given an integer N, determine whether N is positive or negative.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N
+
+**Output:**
+Print `1` if N is positive, and `-1` if N is negative.
+
+**Constraints:**
+- -100 <= N <= 100
+- N is an integer
+- N != 0

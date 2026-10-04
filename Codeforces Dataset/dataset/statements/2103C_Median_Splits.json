@@ -1,0 +1,29 @@
+{
+  "contestId": 2103,
+  "index": "C",
+  "problem_id": "2103C",
+  "name": "Median Splits",
+  "rating": 1600,
+  "tags": [
+    "binary search",
+    "greedy",
+    "implementation",
+    "sortings"
+  ],
+  "points": 1500.0,
+  "solvedCount": 10926,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Median Splits",
+  "legend": "The median of an array b1,b2,…bm, written as med(b1,b2,…,bm), is the ⌈\nm\n\n\n2\n⌉-th∗ smallest element of array b.\n\nYou are given an array of integers a1,a2,…,an and an integer k. You need to determine whether there exists a pair of indices 1≤l<r<n such that:\n\nmed(med(a1,a2,…,al),med(al+1,al+2,…,ar),med(ar+1,ar+2,…,an))≤k.\n\nIn other words, determine whether it is possible to split the array into three contiguous subarrays† such that the median of the three subarray medians is less than or equal to k.\n\n∗⌈x⌉ is the ceiling function which returns the least integer greater than or equal to x.\n\n†An array x is a subarray of an array y if x can be obtained from y by the deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe first line of each test case contains two integers n and k (3≤n≤2⋅105, 1≤k≤109) — the length of the array a and the constant k.\n\nThe second line of each test case contains n integers a1,a2,…,an (1≤ai≤109) — the elements of the array a.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each testcase, output \"YES\" if such a split exists, and \"NO\" otherwise.\n\nYou can output the answer in any case (upper or lower). For example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will be recognized as positive responses.",
+  "note": "In the first and second test case, the only possible partition of the array into three contiguous subarrays is [3], [2], [1]. Their respective medians are 3, 2, and 1. The median of the three subarray medians is med(3,2,1)=2. Therefore, the answer for the first test case is \"YES\" since 2≤2, while the answer for the second test case is \"NO\" since 2>1.\n\nIn the third test case, it can be proven that no partition satisfies the constraints.\n\nIn the fourth test case, one of the partitions satisfying the constraints is [10,7], [12,16,3,15], [6,11]. The respective medians of subarrays are 7, 12, and 6. The median of the three subarray medians is med(7,12,6)=7≤k, hence this partition satisfies the constraints.\n\nIn the fifth test case, one of the partitions satisfying the constraints is [7,11], [12,4], [9,17]. The respective medians of the subarrays are 7, 4, and 9. The median of the three subarray medians is med(7,4,9)=7≤k, hence this partition satisfies the constraints.\n\nIn the sixth test case, the only possible partition of the array into three contiguous subarrays is [1000], [109], [1000]. The respective medians of the subarrays are 1000, 109, and 1000. The median of the three subarray medians is med(1000,109,1000)=1000≤k, hence this partition satisfies the constraints.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n3 2\n3 2 1\n3 1\n3 2 1\n6 3\n8 5 3 1 6 4\n8 7\n10 7 12 16 3 15 6 11\n6 8\n7 11 12 4 9 17\n3 500000000\n1000 1000000000 1000\n",
+      "output": "YES\nNO\nNO\nYES\nYES\nYES"
+    }
+  ]
+}

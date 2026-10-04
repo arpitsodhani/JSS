@@ -1,0 +1,6 @@
+There are N people, and the current hair length of the i -th person (1 \leq i \leq N) is L_i . Each person's hair grows by 1 per day. Print the number of days after which the number of people whose hair length is at least T becomes P or more for the first time. If there are already P or more people whose hair length is at least T now, print 0 .
+
+**Constraints:**
+- 1 <= N, T, P <= 100
+- 0 <= L_i <= 100
+- All input values are integers

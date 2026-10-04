@@ -1,0 +1,109 @@
+{
+  "average_confidence": 0.9994871794871796,
+  "clauses": [
+    {
+      "clause": "answer_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "build_adj",
+      "confidence": 1.0
+    },
+    {
+      "clause": "build_children",
+      "confidence": 1.0
+    },
+    {
+      "clause": "calc_f",
+      "confidence": 1.0
+    },
+    {
+      "clause": "check_leaf",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_fn",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_hash",
+      "confidence": 1.0
+    },
+    {
+      "clause": "construct_adj",
+      "confidence": 1.0
+    },
+    {
+      "clause": "evaluate",
+      "confidence": 1.0
+    },
+    {
+      "clause": "get_tree",
+      "confidence": 1.0
+    },
+    {
+      "clause": "handle_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "hash_tree",
+      "confidence": 1.0
+    },
+    {
+      "clause": "input_tree_data",
+      "confidence": 1.0
+    },
+    {
+      "clause": "is_leaf",
+      "confidence": 1.0
+    },
+    {
+      "clause": "is_leaf_node",
+      "confidence": 1.0
+    },
+    {
+      "clause": "leaf_check",
+      "confidence": 1.0
+    },
+    {
+      "clause": "load_tree",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9866666666666667
+    },
+    {
+      "clause": "make_adj_list",
+      "confidence": 1.0
+    },
+    {
+      "clause": "process_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_tree",
+      "confidence": 1.0
+    },
+    {
+      "clause": "run_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "scan_tree",
+      "confidence": 1.0
+    },
+    {
+      "clause": "setup_children",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "test_leaf",
+      "confidence": 1.0
+    }
+  ]
+}

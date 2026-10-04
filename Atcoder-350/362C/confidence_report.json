@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9620646544215068,
+  "clauses": [
+    {
+      "clause": "check_feasibility",
+      "confidence": 0.9440384615384616
+    },
+    {
+      "clause": "construct_sequence",
+      "confidence": 0.9723076923076924
+    },
+    {
+      "clause": "main",
+      "confidence": 0.961912463839873
+    },
+    {
+      "clause": "read_ranges",
+      "confidence": 0.97
+    }
+  ]
+}

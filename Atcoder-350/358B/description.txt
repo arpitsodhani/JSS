@@ -1,0 +1,7 @@
+At the entrance of AtCoder Land, there is a single ticket booth where visitors line up to purchase tickets one by one. The purchasing process takes A seconds per person. Once the person at the front of the line finishes purchasing their ticket, the next person (if any) immediately starts their purchasing process. Currently, there is no one in line at the ticket booth, and N people will come to buy tickets one after another. Specifically, the i -th person will arrive at the ticket booth T_i seconds from now. If there is already a line, they will join the end of it; if not, they will start the purchasing process immediately. Here, T_1 < T_2 < \dots < T_N . For each i\ (1 \leq i \leq N) , determine how many seconds from now the i -th person will finish purchasing their ticket.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= A <= 1000
+- 1 <= T_i <= 1000
+- All input values are integers

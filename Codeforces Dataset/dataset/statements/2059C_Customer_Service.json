@@ -1,0 +1,31 @@
+{
+  "contestId": 2059,
+  "index": "C",
+  "problem_id": "2059C",
+  "name": "Customer Service",
+  "rating": 1600,
+  "tags": [
+    "brute force",
+    "constructive algorithms",
+    "graph matchings",
+    "greedy",
+    "math",
+    "sortings"
+  ],
+  "points": 1500.0,
+  "solvedCount": 12810,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Customer Service",
+  "legend": "Nikyr has started working as a queue manager at the company \"Black Contour.\" He needs to choose the order of servicing customers. There are a total of n queues, each initially containing 0 people. In each of the next n moments of time, there are two sequential events:\n\nNew customers arrive in all queues. More formally, at the j-th moment of time, the number of people in the i-th queue increases by a positive integer ai,j.\nNikyr chooses exactly one of the n queues to be served at that moment in time. The number of customers in this queue becomes 0.\n\nLet the number of people in the i-th queue after all events be xi. Nikyr wants MEX† of the collection x1,x2,…,xn to be as large as possible. Help him determine the maximum value he can achieve with an optimal order of servicing the queues.\n\n†The minimum excluded (MEX) of a collection of integers c1,c2,…,ck is defined as the smallest non-negative integer y which does not occur in the collection c.\n\nFor example:\n\nMEX([2,2,1])=0, since 0 does not belong to the array.\nMEX([3,1,0,1])=2, since 0 and 1 belong to the array, but 2 does not.\nMEX([0,3,1,2])=4, since 0, 1, 2, and 3 belong to the array, but 4 does not.",
+  "input_spec": "Each test consists of multiple test cases. The first line contains a single integer t (1≤t≤2⋅104) — the number of test cases. The description of the test cases follows.\n\nThe first line of each test case contains a single integer n (1≤n≤300) — the number of queues and moments of time.\n\nThe i-th of the next n lines contains n integers ai,1,ai,2,…,ai,n (1≤ai,j≤109) — the number of new customers in the i-th queue at each moment of time.\n\nIt is guaranteed that the sum of n2 over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, output a single integer — the maximum value of MEX([x1,x2,…,xn]) that can be achieved.",
+  "note": "In the first test case, the second queue can be served at time 1, and the first queue at time 2. There will be x1=0 people left in the first queue and x2=1 person left in the second queue. Therefore, the answer is MEX([0,1])=2.\n\nIn the second test case, the first queue can be served both times. There will be x1=0 people left in the first queue and x2=20 people left in the second queue. Therefore, the answer is MEX([0,20])=1.\n\nIn the third test case, the third queue can be served at time 1, the second queue at time 2, and the first queue at time 3. There will be x1=0 people left in the first queue, x2=1 person left in the second queue, and x3=2 people left in the third queue. Therefore, the answer is MEX([0,1,2])=3.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n2\n1 2\n2 1\n2\n10 10\n10 10\n3\n2 3 3\n4 4 1\n2 1 1\n4\n4 2 2 17\n1 9 3 1\n5 5 5 11\n1 2 1 1\n",
+      "output": "2\n1\n3\n3"
+    }
+  ]
+}

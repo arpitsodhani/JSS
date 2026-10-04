@@ -1,0 +1,159 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, long long *a, int *u, int *v, long long *b)",
+          "code": "void read_graph(int *n, int *m, long long *a, int *u, int *v, long long *b) {\n    scanf(\"%d %d\", n, m);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &a[i]);\n    for (int i = 0; i < *m; i++) {\n        scanf(\"%d %d %lld\", &u[i], &v[i], &b[i]);\n        u[i]--;\n        v[i]--;\n    }\n}"
+        },
+        {
+          "clause_id": "build_adjacency_list",
+          "signature": "void build_adjacency_list(int n, int m, int *u, int *v, long long *b, int *head, int *next_edge, int *to, long long *weight)",
+          "code": "void build_adjacency_list(int n, int m, int *u, int *v, long long *b, int *head, int *next_edge, int *to, long long *weight) {\n    for (int i = 0; i < n; i++) head[i] = -1;\n    for (int i = 0; i < m; i++) {\n        next_edge[2 * i] = head[u[i]];\n        to[2 * i] = v[i];\n        weight[2 * i] = b[i];\n        head[u[i]] = 2 * i;\n        next_edge[2 * i + 1] = head[v[i]];\n        to[2 * i + 1] = u[i];\n        weight[2 * i + 1] = b[i];\n        head[v[i]] = 2 * i + 1;\n    }\n}"
+        },
+        {
+          "clause_id": "dijkstra_shortest_paths",
+          "signature": "void dijkstra_shortest_paths(int n, long long *a, int *head, int *next_edge, int *to, long long *weight, long long *dist)",
+          "code": "void dijkstra_shortest_paths(int n, long long *a, int *head, int *next_edge, int *to, long long *weight, long long *dist) {\n    for (int i = 0; i < n; i++) dist[i] = 1e18;\n    dist[0] = a[0];\n    int visited[200005] = {0};\n    for (int iter = 0; iter < n; iter++) {\n        int u = -1;\n        for (int i = 0; i < n; i++) {\n            if (!visited[i] && (u == -1 || dist[i] < dist[u])) u = i;\n        }\n        if (u == -1 || dist[u] == 1e18) break;\n        visited[u] = 1;\n        for (int e = head[u]; e != -1; e = next_edge[e]) {\n            int v = to[e];\n            long long new_dist = dist[u] + weight[e] + a[v];\n            if (new_dist < dist[v]) dist[v] = new_dist;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m;\n    long long a[200005], b[400005];\n    int u[400005], v[400005];\n    read_graph(&n, &m, a, u, v, b);\n    int head[200005], next_edge[800005], to[800005];\n    long long weight[800005];\n    build_adjacency_list(n, m, u, v, b, head, next_edge, to, weight);\n    long long dist[200005];\n    dijkstra_shortest_paths(n, a, head, next_edge, to, weight, dist);\n    for (int i = 1; i < n; i++) printf(\"%lld%c\", dist[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "int read_graph(int *n, int *m, long long vertex_w[], int edges_u[], int edges_v[], long long edge_w[])",
+          "code": "int read_graph(int *n, int *m, long long vertex_w[], int edges_u[], int edges_v[], long long edge_w[]) {\n    scanf(\"%d %d\", n, m);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &vertex_w[i]);\n    for (int i = 0; i < *m; i++) {\n        scanf(\"%d %d %lld\", &edges_u[i], &edges_v[i], &edge_w[i]);\n        edges_u[i]--;\n        edges_v[i]--;\n    }\n    return *n;\n}"
+        },
+        {
+          "clause_id": "build_adjacency_list",
+          "signature": "void build_adjacency_list(int n, int m, int eu[], int ev[], long long ew[], int h[], int nxt[], int dest[], long long wt[])",
+          "code": "void build_adjacency_list(int n, int m, int eu[], int ev[], long long ew[], int h[], int nxt[], int dest[], long long wt[]) {\n    for (int i = 0; i < n; i++) h[i] = -1;\n    int idx = 0;\n    for (int i = 0; i < m; i++) {\n        nxt[idx] = h[eu[i]];\n        dest[idx] = ev[i];\n        wt[idx] = ew[i];\n        h[eu[i]] = idx++;\n        nxt[idx] = h[ev[i]];\n        dest[idx] = eu[i];\n        wt[idx] = ew[i];\n        h[ev[i]] = idx++;\n    }\n}"
+        },
+        {
+          "clause_id": "dijkstra_shortest_paths",
+          "signature": "void dijkstra_shortest_paths(int n, long long vw[], int h[], int nxt[], int dest[], long long wt[], long long d[])",
+          "code": "void dijkstra_shortest_paths(int n, long long vw[], int h[], int nxt[], int dest[], long long wt[], long long d[]) {\n    for (int i = 0; i < n; i++) d[i] = 1e18;\n    d[0] = vw[0];\n    int done[200005] = {0};\n    for (int cnt = 0; cnt < n; cnt++) {\n        int u = -1;\n        for (int i = 0; i < n; i++) {\n            if (!done[i] && (u == -1 || d[i] < d[u])) u = i;\n        }\n        if (u == -1) break;\n        done[u] = 1;\n        for (int e = h[u]; e != -1; e = nxt[e]) {\n            int v = dest[e];\n            long long nd = d[u] + wt[e] + vw[v];\n            if (nd < d[v]) d[v] = nd;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m;\n    long long vw[200005], ew[400005];\n    int eu[400005], ev[400005];\n    read_graph(&n, &m, vw, eu, ev, ew);\n    int h[200005], nxt[800005], dest[800005];\n    long long wt[800005];\n    build_adjacency_list(n, m, eu, ev, ew, h, nxt, dest, wt);\n    long long d[200005];\n    dijkstra_shortest_paths(n, vw, h, nxt, dest, wt, d);\n    for (int i = 1; i < n; i++) {\n        printf(\"%lld\", d[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, long long node_weights[], int from[], int to[], long long costs[])",
+          "code": "void read_graph(int *n, int *m, long long node_weights[], int from[], int to[], long long costs[]) {\n    scanf(\"%d %d\", n, m);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &node_weights[i]);\n    for (int i = 0; i < *m; i++) {\n        scanf(\"%d %d %lld\", &from[i], &to[i], &costs[i]);\n        from[i]--;\n        to[i]--;\n    }\n}"
+        },
+        {
+          "clause_id": "build_adjacency_list",
+          "signature": "void build_adjacency_list(int n, int m, int from[], int to[], long long costs[], int heads[], int nexts[], int targets[], long long weights[])",
+          "code": "void build_adjacency_list(int n, int m, int from[], int to[], long long costs[], int heads[], int nexts[], int targets[], long long weights[]) {\n    for (int i = 0; i < n; i++) heads[i] = -1;\n    for (int i = 0; i < m; i++) {\n        int edge_id = i * 2;\n        nexts[edge_id] = heads[from[i]];\n        targets[edge_id] = to[i];\n        weights[edge_id] = costs[i];\n        heads[from[i]] = edge_id;\n        nexts[edge_id + 1] = heads[to[i]];\n        targets[edge_id + 1] = from[i];\n        weights[edge_id + 1] = costs[i];\n        heads[to[i]] = edge_id + 1;\n    }\n}"
+        },
+        {
+          "clause_id": "dijkstra_shortest_paths",
+          "signature": "void dijkstra_shortest_paths(int n, long long node_weights[], int heads[], int nexts[], int targets[], long long weights[], long long distances[])",
+          "code": "void dijkstra_shortest_paths(int n, long long node_weights[], int heads[], int nexts[], int targets[], long long weights[], long long distances[]) {\n    for (int i = 0; i < n; i++) distances[i] = 1e18;\n    distances[0] = node_weights[0];\n    int processed[200005] = {0};\n    for (int round = 0; round < n; round++) {\n        int current = -1;\n        for (int i = 0; i < n; i++) {\n            if (!processed[i] && (current == -1 || distances[i] < distances[current])) current = i;\n        }\n        if (current == -1) break;\n        processed[current] = 1;\n        for (int edge = heads[current]; edge != -1; edge = nexts[edge]) {\n            int neighbor = targets[edge];\n            long long candidate = distances[current] + weights[edge] + node_weights[neighbor];\n            if (candidate < distances[neighbor]) distances[neighbor] = candidate;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m;\n    long long node_weights[200005], costs[400005];\n    int from[400005], to[400005];\n    read_graph(&n, &m, node_weights, from, to, costs);\n    int heads[200005], nexts[800005], targets[800005];\n    long long weights[800005];\n    build_adjacency_list(n, m, from, to, costs, heads, nexts, targets, weights);\n    long long distances[200005];\n    dijkstra_shortest_paths(n, node_weights, heads, nexts, targets, weights, distances);\n    for (int i = 1; i < n; i++) {\n        if (i > 1) printf(\" \");\n        printf(\"%lld\", distances[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "long long read_graph(int *n, int *m, long long *vw, int *eu, int *ev, long long *ew)",
+          "code": "long long read_graph(int *n, int *m, long long *vw, int *eu, int *ev, long long *ew) {\n    scanf(\"%d %d\", n, m);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &vw[i]);\n    for (int i = 0; i < *m; i++) {\n        scanf(\"%d %d %lld\", &eu[i], &ev[i], &ew[i]);\n        eu[i]--;\n        ev[i]--;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "build_adjacency_list",
+          "signature": "void build_adjacency_list(int n, int m, int *eu, int *ev, long long *ew, int *hd, int *nx, int *tg, long long *wg)",
+          "code": "void build_adjacency_list(int n, int m, int *eu, int *ev, long long *ew, int *hd, int *nx, int *tg, long long *wg) {\n    for (int i = 0; i < n; i++) hd[i] = -1;\n    for (int e = 0; e < m; e++) {\n        nx[e * 2] = hd[eu[e]];\n        tg[e * 2] = ev[e];\n        wg[e * 2] = ew[e];\n        hd[eu[e]] = e * 2;\n        nx[e * 2 + 1] = hd[ev[e]];\n        tg[e * 2 + 1] = eu[e];\n        wg[e * 2 + 1] = ew[e];\n        hd[ev[e]] = e * 2 + 1;\n    }\n}"
+        },
+        {
+          "clause_id": "dijkstra_shortest_paths",
+          "signature": "void dijkstra_shortest_paths(int n, long long *vw, int *hd, int *nx, int *tg, long long *wg, long long *res)",
+          "code": "void dijkstra_shortest_paths(int n, long long *vw, int *hd, int *nx, int *tg, long long *wg, long long *res) {\n    for (int i = 0; i < n; i++) res[i] = 1e18;\n    res[0] = vw[0];\n    int vis[200005] = {0};\n    for (int i = 0; i < n; i++) {\n        int u = -1;\n        for (int j = 0; j < n; j++) {\n            if (!vis[j] && (u == -1 || res[j] < res[u])) u = j;\n        }\n        if (u == -1) break;\n        vis[u] = 1;\n        for (int e = hd[u]; e != -1; e = nx[e]) {\n            int v = tg[e];\n            long long cost = res[u] + wg[e] + vw[v];\n            if (cost < res[v]) res[v] = cost;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m;\n    long long vw[200005], ew[400005];\n    int eu[400005], ev[400005];\n    read_graph(&n, &m, vw, eu, ev, ew);\n    int hd[200005], nx[800005], tg[800005];\n    long long wg[800005];\n    build_adjacency_list(n, m, eu, ev, ew, hd, nx, tg, wg);\n    long long res[200005];\n    dijkstra_shortest_paths(n, vw, hd, nx, tg, wg, res);\n    for (int i = 1; i < n; i++) printf(\"%lld%c\", res[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, long long a[], int u[], int v[], long long b[])",
+          "code": "void read_graph(int *n, int *m, long long a[], int u[], int v[], long long b[]) {\n    scanf(\"%d %d\", n, m);\n    for (int i = 1; i <= *n; i++) scanf(\"%lld\", &a[i - 1]);\n    for (int i = 0; i < *m; i++) {\n        scanf(\"%d %d %lld\", &u[i], &v[i], &b[i]);\n        u[i]--;\n        v[i]--;\n    }\n}"
+        },
+        {
+          "clause_id": "build_adjacency_list",
+          "signature": "void build_adjacency_list(int n, int m, int u[], int v[], long long b[], int head[], int next[], int target[], long long edge_weight[])",
+          "code": "void build_adjacency_list(int n, int m, int u[], int v[], long long b[], int head[], int next[], int target[], long long edge_weight[]) {\n    for (int i = 0; i < n; i++) head[i] = -1;\n    int count = 0;\n    for (int i = 0; i < m; i++) {\n        next[count] = head[u[i]];\n        target[count] = v[i];\n        edge_weight[count] = b[i];\n        head[u[i]] = count++;\n        next[count] = head[v[i]];\n        target[count] = u[i];\n        edge_weight[count] = b[i];\n        head[v[i]] = count++;\n    }\n}"
+        },
+        {
+          "clause_id": "dijkstra_shortest_paths",
+          "signature": "void dijkstra_shortest_paths(int n, long long a[], int head[], int next[], int target[], long long edge_weight[], long long dist[])",
+          "code": "void dijkstra_shortest_paths(int n, long long a[], int head[], int next[], int target[], long long edge_weight[], long long dist[]) {\n    for (int i = 0; i < n; i++) dist[i] = 1e18;\n    dist[0] = a[0];\n    int used[200005] = {0};\n    for (int step = 0; step < n; step++) {\n        int node = -1;\n        for (int i = 0; i < n; i++) {\n            if (!used[i] && (node == -1 || dist[i] < dist[node])) node = i;\n        }\n        if (node == -1) break;\n        used[node] = 1;\n        for (int e = head[node]; e != -1; e = next[e]) {\n            int nb = target[e];\n            long long new_cost = dist[node] + edge_weight[e] + a[nb];\n            if (new_cost < dist[nb]) dist[nb] = new_cost;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m;\n    long long a[200005], b[400005];\n    int u[400005], v[400005];\n    read_graph(&n, &m, a, u, v, b);\n    int head[200005], next[800005], target[800005];\n    long long edge_weight[800005];\n    build_adjacency_list(n, m, u, v, b, head, next, target, edge_weight);\n    long long dist[200005];\n    dijkstra_shortest_paths(n, a, head, next, target, edge_weight, dist);\n    for (int i = 1; i < n; i++) printf(\"%lld \", dist[i]);\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

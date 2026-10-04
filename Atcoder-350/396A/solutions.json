@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "has_triple",
+          "signature": "int has_triple(int n)",
+          "code": "int prev=-1, run=0;\nfor(int i=0;i<n;i++){\n  int x; scanf(\"%d\", &x);\n  if(x==prev) run++; else { prev=x; run=1; }\n  if(run>=3) return 1;\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); puts(has_triple(n)?\"Yes\":\"No\"); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "has_triple",
+          "signature": "int has_triple(int n)",
+          "code": "int prev=-1, run=0;\nfor(int i=0;i<n;i++){\n  int x; scanf(\"%d\", &x);\n  if(x==prev) run++; else { prev=x; run=1; }\n  if(run>=3) return 1;\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); puts(has_triple(n)?\"Yes\":\"No\"); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "has_triple",
+          "signature": "int has_triple(int n)",
+          "code": "int prev=-1, run=0;\nfor(int i=0;i<n;i++){\n  int x; scanf(\"%d\", &x);\n  if(x==prev) run++; else { prev=x; run=1; }\n  if(run>=3) return 1;\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); puts(has_triple(n)?\"Yes\":\"No\"); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "has_triple",
+          "signature": "int has_triple(int n)",
+          "code": "int prev=-1, run=0;\nfor(int i=0;i<n;i++){\n  int x; scanf(\"%d\", &x);\n  if(x==prev) run++; else { prev=x; run=1; }\n  if(run>=3) return 1;\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); puts(has_triple(n)?\"Yes\":\"No\"); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "has_triple",
+          "signature": "int has_triple(int n)",
+          "code": "int prev=-1, run=0;\nfor(int i=0;i<n;i++){\n  int x; scanf(\"%d\", &x);\n  if(x==prev) run++; else { prev=x; run=1; }\n  if(run>=3) return 1;\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); puts(has_triple(n)?\"Yes\":\"No\"); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

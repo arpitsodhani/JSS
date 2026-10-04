@@ -1,0 +1,8 @@
+You are given a tree with N vertices. The i -th edge (1 \leq i \leq N-1) connects vertices u_i and v_i bidirectionally. Adding one undirected edge to the given tree always yields a graph with exactly one cycle. Among such graphs, how many satisfy all of the following conditions? The graph is simple. All vertices in the cycle have degree 3 .
+
+**Constraints:**
+- 3 <= N <= 2 * 10^5
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The given edges form a tree
+- All input values are integers

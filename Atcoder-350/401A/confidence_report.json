@@ -1,0 +1,28 @@
+{
+  "problem_id": "401A",
+  "average_confidence": 0.9705909090909091,
+  "clauses": {
+    "read_n": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "sign_nonzero": {
+      "confidence": 0.8823636363636365,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "print_int": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    }
+  },
+  "total_clauses": 4,
+  "compile_success": true
+}

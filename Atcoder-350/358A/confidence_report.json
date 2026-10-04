@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9436363636363635,
+  "clauses": [
+    {
+      "clause": "check_match",
+      "confidence": 0.8701818181818182
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9607272727272725
+    },
+    {
+      "clause": "read_strings",
+      "confidence": 1.0
+    }
+  ]
+}

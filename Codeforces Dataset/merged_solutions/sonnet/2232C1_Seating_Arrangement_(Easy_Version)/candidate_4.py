@@ -1,0 +1,54 @@
+import sys
+
+
+# --- clause: read_input :: () -> list[tuple[int, int, int, str]] ---
+def read_input():
+    data = sys.stdin.buffer.read().split()
+    t = int(data[0])
+    pos = 1
+    cases = []
+    for _ in range(t):
+        n = int(data[pos])
+        x = int(data[pos + 1])
+        s = int(data[pos + 2])
+        line = data[pos + 3].decode()
+        pos += 4
+        cases.append((n, x, s, line))
+    return cases
+
+
+# --- clause: seat_people :: (n: int, x: int, s: int, line: str) -> int ---
+def seat_people(n, x, s, line):
+    tables = 0
+    seated = 0
+    lonely = 0
+    for person in line:
+        room = tables * s - seated
+        if person == "I":
+            if tables < x:
+                tables += 1
+                seated += 1
+            continue
+        if room == 0 and lonely > 0 and tables < x:
+            tables += 1
+            lonely -= 1
+            room = tables * s - seated
+        if room > 0:
+            seated += 1
+            if person == "A":
+                lonely += 1
+        elif person == "A" and tables < x:
+            tables += 1
+            seated += 1
+    return seated
+
+# --- clause: main :: () -> None ---
+def main():
+    out = []
+    for n, x, s, line in read_input():
+        out.append(str(seat_people(n, x, s, line)))
+    sys.stdout.write("\n".join(out) + "\n")
+
+
+if __name__ == "__main__":
+    main()

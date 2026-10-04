@@ -1,0 +1,35 @@
+{
+  "contestId": 320,
+  "index": "A",
+  "problem_id": "320A",
+  "name": "Magic Numbers",
+  "rating": 900,
+  "tags": [
+    "brute force",
+    "greedy"
+  ],
+  "points": 500.0,
+  "solvedCount": 46070,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Magic Numbers",
+  "legend": "A magic number is a number formed by concatenation of numbers 1, 14 and 144. We can use each of these numbers any number of times. Therefore 14144, 141414 and 1411 are magic numbers but 1444, 514 and 414 are not.\n\nYou're given a number. Determine if it is a magic number or not.",
+  "input_spec": "The first line of input contains an integer n, (1 ≤ n ≤ 109). This number doesn't contain leading zeros.",
+  "output_spec": "Print \"YES\" if n is a magic number or print \"NO\" if it's not.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "114114\n",
+      "output": "YES"
+    },
+    {
+      "input": "1111\n",
+      "output": "YES"
+    },
+    {
+      "input": "441231\n",
+      "output": "NO"
+    }
+  ]
+}

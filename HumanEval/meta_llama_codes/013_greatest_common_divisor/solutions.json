@@ -1,0 +1,69 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    while (y) {\n        int r = x % y;\n        x = y;\n        y = r;\n    }\n    printf(\"%d\\n\", x);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    int m, n;\n    scanf(\"%d %d\", &m, &n);\n    int tmp;\n    while (n != 0) {\n        tmp = n;\n        n = m % n;\n        m = tmp;\n    }\n    printf(\"%d\\n\", m);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int remainder;\n    while (b) {\n        remainder = a % b;\n        a = b;\n        b = remainder;\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    int num1, num2;\n    scanf(\"%d %d\", &num1, &num2);\n    while (num2 != 0) {\n        int t = num2;\n        num2 = num1 % num2;\n        num1 = t;\n    }\n    printf(\"%d\\n\", num1);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

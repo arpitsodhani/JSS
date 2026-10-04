@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.977,
+  "clauses": [
+    {
+      "clause": "find_minimum_stands",
+      "confidence": 0.9849999999999998
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_stands",
+      "confidence": 0.9460000000000001
+    }
+  ]
+}

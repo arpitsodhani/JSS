@@ -1,0 +1,110 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_dishes",
+          "signature": "void read_dishes(int *n, char *s)",
+          "code": "void read_dishes(int *n, char *s) {\n    scanf(\"%d %s\", n, s);\n}"
+        },
+        {
+          "clause_id": "check_consecutive_sweets",
+          "signature": "int check_consecutive_sweets(int n, char *s)",
+          "code": "int check_consecutive_sweets(int n, char *s) {\n    for (int i = 0; i < n - 1; i++) {\n        if (s[i] == '1' && s[i + 1] == '1') return 0;\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    char s[105];\n    read_dishes(&n, s);\n    printf(\"%s\\n\", check_consecutive_sweets(n, s) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_dishes",
+          "signature": "int read_dishes(int *n, char dishes[])",
+          "code": "int read_dishes(int *n, char dishes[]) {\n    scanf(\"%d %s\", n, dishes);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "check_consecutive_sweets",
+          "signature": "int check_consecutive_sweets(int n, char dishes[])",
+          "code": "int check_consecutive_sweets(int n, char dishes[]) {\n    for (int i = 0; i < n - 1; i++) {\n        if (dishes[i] == '1' && dishes[i + 1] == '1') return 0;\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    char dishes[105];\n    read_dishes(&n, dishes);\n    int result = check_consecutive_sweets(n, dishes);\n    printf(\"%s\\n\", result ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_dishes",
+          "signature": "void read_dishes(int *n, char *input)",
+          "code": "void read_dishes(int *n, char *input) {\n    scanf(\"%d\", n);\n    scanf(\"%s\", input);\n}"
+        },
+        {
+          "clause_id": "check_consecutive_sweets",
+          "signature": "int check_consecutive_sweets(int n, char *input)",
+          "code": "int check_consecutive_sweets(int n, char *input) {\n    for (int i = 0; i < n - 1; i++) {\n        if (input[i] == '1' && input[i + 1] == '1') return 0;\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    char input[105];\n    read_dishes(&n, input);\n    int ans = check_consecutive_sweets(n, input);\n    if (ans) printf(\"Yes\\n\");\n    else printf(\"No\\n\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_dishes",
+          "signature": "long long read_dishes(int *n, char s[])",
+          "code": "long long read_dishes(int *n, char s[]) {\n    scanf(\"%d %s\", n, s);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "check_consecutive_sweets",
+          "signature": "int check_consecutive_sweets(int n, char s[])",
+          "code": "int check_consecutive_sweets(int n, char s[]) {\n    for (int pos = 0; pos < n - 1; pos++) {\n        if (s[pos] == '1' && s[pos + 1] == '1') return 0;\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    char s[105];\n    read_dishes(&n, s);\n    printf(\"%s\\n\", check_consecutive_sweets(n, s) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_dishes",
+          "signature": "void read_dishes(int *count, char *sequence)",
+          "code": "void read_dishes(int *count, char *sequence) {\n    scanf(\"%d %s\", count, sequence);\n}"
+        },
+        {
+          "clause_id": "check_consecutive_sweets",
+          "signature": "int check_consecutive_sweets(int count, char *sequence)",
+          "code": "int check_consecutive_sweets(int count, char *sequence) {\n    for (int i = 0; i < count - 1; i++) {\n        if (sequence[i] == '1' && sequence[i + 1] == '1') return 0;\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int count;\n    char sequence[105];\n    read_dishes(&count, sequence);\n    printf(\"%s\\n\", check_consecutive_sweets(count, sequence) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

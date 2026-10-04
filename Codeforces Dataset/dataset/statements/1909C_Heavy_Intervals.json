@@ -1,0 +1,31 @@
+{
+  "contestId": 1909,
+  "index": "C",
+  "problem_id": "1909C",
+  "name": "Heavy Intervals",
+  "rating": 1400,
+  "tags": [
+    "constructive algorithms",
+    "data structures",
+    "dsu",
+    "greedy",
+    "math",
+    "sortings"
+  ],
+  "points": 1500.0,
+  "solvedCount": 13379,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Heavy Intervals",
+  "legend": "Shiki - Pure Ruby\n⠀\n\nYou have n intervals [l1,r1],[l2,r2],…,[ln,rn], such that li<ri for each i, and all the endpoints of the intervals are distinct.\n\nThe i-th interval has weight ci per unit length. Therefore, the weight of the i-th interval is ci⋅(ri−li).\n\nYou don't like large weights, so you want to make the sum of weights of the intervals as small as possible. It turns out you can perform all the following three operations:\n\nrearrange the elements in the array l in any order;\nrearrange the elements in the array r in any order;\nrearrange the elements in the array c in any order.\n\nHowever, after performing all of the operations, the intervals must still be valid (i.e., for each i, li<ri must hold).\n\nWhat's the minimum possible sum of weights of the intervals after performing the operations?",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe first line of each test case contains a single integer n (1≤n≤105) — the number of intervals.\n\nThe second line of each test case contains n integers l1,l2,…,ln (1≤li≤2⋅105) — the left endpoints of the initial intervals.\n\nThe third line of each test case contains n integers r1,r2,…,rn (li<ri≤2⋅105) — the right endpoints of the initial intervals.\n\nIt is guaranteed that {l1,l2,…,ln,r1,r2,…,rn} are all distinct.\n\nThe fourth line of each test case contains n integers c1,c2,…,cn (1≤ci≤107) — the initial weights of the intervals per unit length.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 105.",
+  "output_spec": "For each test case, output a single integer: the minimum possible sum of weights of the intervals after your operations.",
+  "note": "In the first test case, you can make\n\nl=[8,3];\nr=[23,12];\nc=[100,100].\n\nIn that case, there are two intervals:\n\ninterval [8,23] with weight 100 per unit length, and 100⋅(23−8)=1500 in total;\ninterval [3,12] with weight 100 per unit length, and 100⋅(12−3)=900 in total.\n\nThe sum of the weights is 2400. It can be shown that there is no configuration of final intervals whose sum of weights is less than 2400.\n\nIn the second test case, you can make\n\nl=[1,2,5,20];\nr=[3,4,10,30];\nc=[3,3,2,2].\n\nIn that case, there are four intervals:\n\ninterval [1,3] with weight 3 per unit length, and 3⋅(3−1)=6 in total;\ninterval [2,4] with weight 3 per unit length, and 3⋅(4−2)=6 in total;\ninterval [5,10] with weight 2 per unit length, and 2⋅(10−5)=10 in total;\ninterval [20,30] with weight 2 per unit length, and 2⋅(30−20)=20 in total.\n\nThe sum of the weights is 42. It can be shown that there is no configuration of final intervals whose sum of weights is less than 42.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n2\n8 3\n12 23\n100 100\n4\n20 1 2 5\n30 4 3 10\n2 3 2 3\n",
+      "output": "2400\n42"
+    }
+  ]
+}

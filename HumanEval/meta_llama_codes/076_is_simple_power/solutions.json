@@ -1,0 +1,75 @@
+{
+  "problem_id": "076_is_simple_power",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int x, n;\n    scanf(\"%d %d\", &x, &n);\n    if (n == 1) {\n        printf(\"%s\\n\", (x == 1) ? \"True\" : \"False\");\n        return 0;\n    }\n    long long power = 1;\n    while (power < x) power *= n;\n    printf(\"%s\\n\", (power == x) ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    if (b == 1) {\n        printf(\"%s\\n\", (a == 1) ? \"True\" : \"False\");\n        return 0;\n    }\n    long long val = 1;\n    while (val < a) val *= b;\n    printf(\"%s\\n\", (val == a) ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int num, base;\n    scanf(\"%d %d\", &num, &base);\n    if (base == 1) {\n        printf(\"%s\\n\", (num == 1) ? \"True\" : \"False\");\n        return 0;\n    }\n    long long result = 1;\n    while (result < num) result *= base;\n    printf(\"%s\\n\", (result == num) ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int target, n;\n    scanf(\"%d %d\", &target, &n);\n    if (n == 1) {\n        printf(\"%s\\n\", (target == 1) ? \"True\" : \"False\");\n        return 0;\n    }\n    long long p = 1;\n    while (p < target) p *= n;\n    printf(\"%s\\n\", (p == target) ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int val, exp;\n    scanf(\"%d %d\", &val, &exp);\n    if (exp == 1) {\n        printf(\"%s\\n\", (val == 1) ? \"True\" : \"False\");\n        return 0;\n    }\n    long long ans = 1;\n    while (ans < val) ans *= exp;\n    printf(\"%s\\n\", (ans == val) ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
+    }
+  ]
+}

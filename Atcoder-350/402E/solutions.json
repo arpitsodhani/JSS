@@ -1,0 +1,199 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, long long *a, int *u, int *v)",
+          "code": "scanf(\"%d\", n);\nfor(int i=1;i<=*n;i++) scanf(\"%lld\", &a[i]);\nfor(int i=0;i<*n-1;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "build_euler",
+          "signature": "void build_euler(int n, const int *u, const int *v, int *tin, int *tout, int *order)",
+          "code": "int m=n-1;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<m;i++){ int a=u[i], b=v[i]; to[ec]=b; nx[ec]=head[a]; head[a]=ec++; to[ec]=a; nx[ec]=head[b]; head[b]=ec++; }\nint *st=(int*)malloc((size_t)(2*n)*sizeof(int));\nint *it=(int*)malloc((size_t)(2*n)*sizeof(int));\nint top=0; int timer=0;\nst[top]=0; it[top]=head[0]; tin[0]=timer; order[timer]=0; timer++; top++;\nint *parent=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) parent[i]=-1; parent[0]=0;\nwhile(top){\n  int vtx=st[top-1];\n  int e=it[top-1];\n  if(e==-1){ tout[vtx]=timer; top--; continue; }\n  it[top-1]=nx[e];\n  int w=to[e];\n  if(w==parent[vtx]) continue;\n  parent[w]=vtx;\n  tin[w]=timer; order[timer]=w; timer++;\n  st[top]=w; it[top]=head[w]; top++;\n}\nfree(head); free(to); free(nx); free(st); free(it); free(parent);\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(long long *bit, int n, int idx, long long delta)",
+          "code": "for(int i=idx;i<=n;i+=i&-i) bit[i]+=delta;\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(const long long *bit, int idx)",
+          "code": "long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s;\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int n, const long long *a0, const int *tin, const int *tout, const int *order)",
+          "code": "long long *bit=(long long*)calloc((size_t)(n+2), sizeof(long long));\nlong long *cur=(long long*)malloc((size_t)(n+1)*sizeof(long long));\nfor(int i=0;i<n;i++){\n  int v=order[i];\n  cur[v+1]=a0[v+1];\n  bit_add(bit,n,i+1,cur[v+1]);\n}\nint Q; scanf(\"%d\", &Q);\nfor(int qi=0;qi<Q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int x; long long y; scanf(\"%d %lld\", &x, &y); x--; int pos=tin[x]+1; long long old=cur[x+1]; cur[x+1]=y; bit_add(bit,n,pos,y-old); }\n  else { int x; scanf(\"%d\", &x); x--; int l=tin[x]+1; int r=tout[x]; long long ans=bit_sum(bit,r)-bit_sum(bit,l-1); printf(\"%lld\\n\", ans); }\n}\nfree(bit); free(cur);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[200005]; static int u[200005], v[200005]; read_tree(&n,a,u,v); int *tin=(int*)malloc((size_t)n*sizeof(int)); int *tout=(int*)malloc((size_t)n*sizeof(int)); int *order=(int*)malloc((size_t)n*sizeof(int)); build_euler(n,u,v,tin,tout,order); process_queries(n,a,tin,tout,order); free(tin); free(tout); free(order); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, long long *a, int *u, int *v)",
+          "code": "scanf(\"%d\", n);\nfor(int i=1;i<=*n;i++) scanf(\"%lld\", &a[i]);\nfor(int i=0;i<*n-1;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "build_euler",
+          "signature": "void build_euler(int n, const int *u, const int *v, int *tin, int *tout, int *order)",
+          "code": "int m=n-1;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<m;i++){ int a=u[i], b=v[i]; to[ec]=b; nx[ec]=head[a]; head[a]=ec++; to[ec]=a; nx[ec]=head[b]; head[b]=ec++; }\nint *st=(int*)malloc((size_t)(2*n)*sizeof(int));\nint *it=(int*)malloc((size_t)(2*n)*sizeof(int));\nint top=0; int timer=0;\nst[top]=0; it[top]=head[0]; tin[0]=timer; order[timer]=0; timer++; top++;\nint *parent=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) parent[i]=-1; parent[0]=0;\nwhile(top){\n  int vtx=st[top-1];\n  int e=it[top-1];\n  if(e==-1){ tout[vtx]=timer; top--; continue; }\n  it[top-1]=nx[e];\n  int w=to[e];\n  if(w==parent[vtx]) continue;\n  parent[w]=vtx;\n  tin[w]=timer; order[timer]=w; timer++;\n  st[top]=w; it[top]=head[w]; top++;\n}\nfree(head); free(to); free(nx); free(st); free(it); free(parent);\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(long long *bit, int n, int idx, long long delta)",
+          "code": "for(int i=idx;i<=n;i+=i&-i) bit[i]+=delta;\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(const long long *bit, int idx)",
+          "code": "long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s;\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int n, const long long *a0, const int *tin, const int *tout, const int *order)",
+          "code": "long long *bit=(long long*)calloc((size_t)(n+2), sizeof(long long));\nlong long *cur=(long long*)malloc((size_t)(n+1)*sizeof(long long));\nfor(int i=0;i<n;i++){\n  int v=order[i];\n  cur[v+1]=a0[v+1];\n  bit_add(bit,n,i+1,cur[v+1]);\n}\nint Q; scanf(\"%d\", &Q);\nfor(int qi=0;qi<Q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int x; long long y; scanf(\"%d %lld\", &x, &y); x--; int pos=tin[x]+1; long long old=cur[x+1]; cur[x+1]=y; bit_add(bit,n,pos,y-old); }\n  else { int x; scanf(\"%d\", &x); x--; int l=tin[x]+1; int r=tout[x]; long long ans=bit_sum(bit,r)-bit_sum(bit,l-1); printf(\"%lld\\n\", ans); }\n}\nfree(bit); free(cur);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[200005]; static int u[200005], v[200005]; read_tree(&n,a,u,v); int *tin=(int*)malloc((size_t)n*sizeof(int)); int *tout=(int*)malloc((size_t)n*sizeof(int)); int *order=(int*)malloc((size_t)n*sizeof(int)); build_euler(n,u,v,tin,tout,order); process_queries(n,a,tin,tout,order); free(tin); free(tout); free(order); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, long long *a, int *u, int *v)",
+          "code": "scanf(\"%d\", n);\nfor(int i=1;i<=*n;i++) scanf(\"%lld\", &a[i]);\nfor(int i=0;i<*n-1;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "build_euler",
+          "signature": "void build_euler(int n, const int *u, const int *v, int *tin, int *tout, int *order)",
+          "code": "int m=n-1;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<m;i++){ int a=u[i], b=v[i]; to[ec]=b; nx[ec]=head[a]; head[a]=ec++; to[ec]=a; nx[ec]=head[b]; head[b]=ec++; }\nint *st=(int*)malloc((size_t)(2*n)*sizeof(int));\nint *it=(int*)malloc((size_t)(2*n)*sizeof(int));\nint top=0; int timer=0;\nst[top]=0; it[top]=head[0]; tin[0]=timer; order[timer]=0; timer++; top++;\nint *parent=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) parent[i]=-1; parent[0]=0;\nwhile(top){\n  int vtx=st[top-1];\n  int e=it[top-1];\n  if(e==-1){ tout[vtx]=timer; top--; continue; }\n  it[top-1]=nx[e];\n  int w=to[e];\n  if(w==parent[vtx]) continue;\n  parent[w]=vtx;\n  tin[w]=timer; order[timer]=w; timer++;\n  st[top]=w; it[top]=head[w]; top++;\n}\nfree(head); free(to); free(nx); free(st); free(it); free(parent);\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(long long *bit, int n, int idx, long long delta)",
+          "code": "for(int i=idx;i<=n;i+=i&-i) bit[i]+=delta;\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(const long long *bit, int idx)",
+          "code": "long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s;\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int n, const long long *a0, const int *tin, const int *tout, const int *order)",
+          "code": "long long *bit=(long long*)calloc((size_t)(n+2), sizeof(long long));\nlong long *cur=(long long*)malloc((size_t)(n+1)*sizeof(long long));\nfor(int i=0;i<n;i++){\n  int v=order[i];\n  cur[v+1]=a0[v+1];\n  bit_add(bit,n,i+1,cur[v+1]);\n}\nint Q; scanf(\"%d\", &Q);\nfor(int qi=0;qi<Q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int x; long long y; scanf(\"%d %lld\", &x, &y); x--; int pos=tin[x]+1; long long old=cur[x+1]; cur[x+1]=y; bit_add(bit,n,pos,y-old); }\n  else { int x; scanf(\"%d\", &x); x--; int l=tin[x]+1; int r=tout[x]; long long ans=bit_sum(bit,r)-bit_sum(bit,l-1); printf(\"%lld\\n\", ans); }\n}\nfree(bit); free(cur);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[200005]; static int u[200005], v[200005]; read_tree(&n,a,u,v); int *tin=(int*)malloc((size_t)n*sizeof(int)); int *tout=(int*)malloc((size_t)n*sizeof(int)); int *order=(int*)malloc((size_t)n*sizeof(int)); build_euler(n,u,v,tin,tout,order); process_queries(n,a,tin,tout,order); free(tin); free(tout); free(order); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, long long *a, int *u, int *v)",
+          "code": "scanf(\"%d\", n);\nfor(int i=1;i<=*n;i++) scanf(\"%lld\", &a[i]);\nfor(int i=0;i<*n-1;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "build_euler",
+          "signature": "void build_euler(int n, const int *u, const int *v, int *tin, int *tout, int *order)",
+          "code": "int m=n-1;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<m;i++){ int a=u[i], b=v[i]; to[ec]=b; nx[ec]=head[a]; head[a]=ec++; to[ec]=a; nx[ec]=head[b]; head[b]=ec++; }\nint *st=(int*)malloc((size_t)(2*n)*sizeof(int));\nint *it=(int*)malloc((size_t)(2*n)*sizeof(int));\nint top=0; int timer=0;\nst[top]=0; it[top]=head[0]; tin[0]=timer; order[timer]=0; timer++; top++;\nint *parent=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) parent[i]=-1; parent[0]=0;\nwhile(top){\n  int vtx=st[top-1];\n  int e=it[top-1];\n  if(e==-1){ tout[vtx]=timer; top--; continue; }\n  it[top-1]=nx[e];\n  int w=to[e];\n  if(w==parent[vtx]) continue;\n  parent[w]=vtx;\n  tin[w]=timer; order[timer]=w; timer++;\n  st[top]=w; it[top]=head[w]; top++;\n}\nfree(head); free(to); free(nx); free(st); free(it); free(parent);\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(long long *bit, int n, int idx, long long delta)",
+          "code": "for(int i=idx;i<=n;i+=i&-i) bit[i]+=delta;\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(const long long *bit, int idx)",
+          "code": "long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s;\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int n, const long long *a0, const int *tin, const int *tout, const int *order)",
+          "code": "long long *bit=(long long*)calloc((size_t)(n+2), sizeof(long long));\nlong long *cur=(long long*)malloc((size_t)(n+1)*sizeof(long long));\nfor(int i=0;i<n;i++){\n  int v=order[i];\n  cur[v+1]=a0[v+1];\n  bit_add(bit,n,i+1,cur[v+1]);\n}\nint Q; scanf(\"%d\", &Q);\nfor(int qi=0;qi<Q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int x; long long y; scanf(\"%d %lld\", &x, &y); x--; int pos=tin[x]+1; long long old=cur[x+1]; cur[x+1]=y; bit_add(bit,n,pos,y-old); }\n  else { int x; scanf(\"%d\", &x); x--; int l=tin[x]+1; int r=tout[x]; long long ans=bit_sum(bit,r)-bit_sum(bit,l-1); printf(\"%lld\\n\", ans); }\n}\nfree(bit); free(cur);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[200005]; static int u[200005], v[200005]; read_tree(&n,a,u,v); int *tin=(int*)malloc((size_t)n*sizeof(int)); int *tout=(int*)malloc((size_t)n*sizeof(int)); int *order=(int*)malloc((size_t)n*sizeof(int)); build_euler(n,u,v,tin,tout,order); process_queries(n,a,tin,tout,order); free(tin); free(tout); free(order); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, long long *a, int *u, int *v)",
+          "code": "scanf(\"%d\", n);\nfor(int i=1;i<=*n;i++) scanf(\"%lld\", &a[i]);\nfor(int i=0;i<*n-1;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "build_euler",
+          "signature": "void build_euler(int n, const int *u, const int *v, int *tin, int *tout, int *order)",
+          "code": "int m=n-1;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<m;i++){ int a=u[i], b=v[i]; to[ec]=b; nx[ec]=head[a]; head[a]=ec++; to[ec]=a; nx[ec]=head[b]; head[b]=ec++; }\nint *st=(int*)malloc((size_t)(2*n)*sizeof(int));\nint *it=(int*)malloc((size_t)(2*n)*sizeof(int));\nint top=0; int timer=0;\nst[top]=0; it[top]=head[0]; tin[0]=timer; order[timer]=0; timer++; top++;\nint *parent=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) parent[i]=-1; parent[0]=0;\nwhile(top){\n  int vtx=st[top-1];\n  int e=it[top-1];\n  if(e==-1){ tout[vtx]=timer; top--; continue; }\n  it[top-1]=nx[e];\n  int w=to[e];\n  if(w==parent[vtx]) continue;\n  parent[w]=vtx;\n  tin[w]=timer; order[timer]=w; timer++;\n  st[top]=w; it[top]=head[w]; top++;\n}\nfree(head); free(to); free(nx); free(st); free(it); free(parent);\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(long long *bit, int n, int idx, long long delta)",
+          "code": "for(int i=idx;i<=n;i+=i&-i) bit[i]+=delta;\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(const long long *bit, int idx)",
+          "code": "long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s;\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int n, const long long *a0, const int *tin, const int *tout, const int *order)",
+          "code": "long long *bit=(long long*)calloc((size_t)(n+2), sizeof(long long));\nlong long *cur=(long long*)malloc((size_t)(n+1)*sizeof(long long));\nfor(int i=0;i<n;i++){\n  int v=order[i];\n  cur[v+1]=a0[v+1];\n  bit_add(bit,n,i+1,cur[v+1]);\n}\nint Q; scanf(\"%d\", &Q);\nfor(int qi=0;qi<Q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int x; long long y; scanf(\"%d %lld\", &x, &y); x--; int pos=tin[x]+1; long long old=cur[x+1]; cur[x+1]=y; bit_add(bit,n,pos,y-old); }\n  else { int x; scanf(\"%d\", &x); x--; int l=tin[x]+1; int r=tout[x]; long long ans=bit_sum(bit,r)-bit_sum(bit,l-1); printf(\"%lld\\n\", ans); }\n}\nfree(bit); free(cur);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[200005]; static int u[200005], v[200005]; read_tree(&n,a,u,v); int *tin=(int*)malloc((size_t)n*sizeof(int)); int *tout=(int*)malloc((size_t)n*sizeof(int)); int *order=(int*)malloc((size_t)n*sizeof(int)); build_euler(n,u,v,tin,tout,order); process_queries(n,a,tin,tout,order); free(tin); free(tout); free(order); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+There are N ants on a number line, labeled 1 to N . Ant i (1 \leq i \leq N) starts at coordinate X_i and faces either a positive or negative direction. Initially, all ants are at distinct coordinates. The direction each ant is facing is represented by a binary string S of length N , where ant i is facing the negative direction if S_i is 0 and the positive direction if S_i is 1 . Let the current time be 0 , and the ants move in their respective directions at a speed of 1 unit per unit time for (T+0.1) units of time until time (T+0.1) . If multiple ants reach the same coordinate, they pass through each other without changing direction or speed. After (T+0.1) units of time, all ants stop. Find the number of pairs (i, j) such that 1 \leq i < j \leq N and ants i and j pass each other from now before time (T+0.1) .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- S is a string of length N consisting of '0' and '1'
+- 1 <= T <= 10^9
+- -10^9 <= X_i <= 10^9
+- X_i are distinct
+- All input values are integers

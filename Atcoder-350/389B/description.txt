@@ -1,0 +1,5 @@
+You are given an integer X not less than 2 . Find the positive integer N such that N! = X . Here, N! denotes the factorial of N , and it is guaranteed that there is exactly one such N .
+
+**Constraints:**
+- 1 <= N <= 100
+- S is a string of length N consisting of '<' and '>'

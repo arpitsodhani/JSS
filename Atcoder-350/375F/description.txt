@@ -1,0 +1,12 @@
+In the nation of AtCoder, there are N cities numbered 1 to N , and M roads numbered 1 to M . Road i connects cities A_i and B_i bidirectionally and has a length of C_i . You are given Q queries to process in order. The queries are of the following two types. 1 i : Road i becomes closed. 2 x y : Print the shortest distance from city x to city y , using only roads that are not closed. If city y cannot be reached from city x , print -1 instead. It is guaranteed that each test case contains at most 300 queries of the first type.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M, Q <= 2 * 10^5
+- 1 <= A_i, B_i <= N
+- A_i != B_i
+- 1 <= C_i <= 10^9
+- Type is 1 or 2
+- 1 <= X_i <= M (for type 1 queries)
+- 1 <= Y_i, Z_i <= N (for type 2 queries)
+- All input values are integers

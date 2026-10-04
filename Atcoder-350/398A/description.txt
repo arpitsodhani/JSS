@@ -1,0 +1,5 @@
+Find a length- N string that satisfies all of the following conditions: Each character is - or = . It is a palindrome. It contains exactly one or exactly two = s. If it contains two = s, they are adjacent. Such a string is unique.
+
+**Constraints:**
+- 1 <= N <= 100
+- All input values are integers

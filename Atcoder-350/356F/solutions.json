@@ -1,0 +1,148 @@
+{
+  "problem_id": "356F",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *k)",
+          "code": "int read_input(long long *k) { int q; scanf(\"%d%lld\", &q, k); return q; }"
+        },
+        {
+          "clause_id": "toggle_element",
+          "signature": "void toggle_element(long long set[], int *size, long long x)",
+          "code": "void toggle_element(long long set[], int *size, long long x) { int found = -1; for(int i = 0; i < *size; i++) if(set[i] == x) { found = i; break; } if(found >= 0) { for(int i = found; i < *size - 1; i++) set[i] = set[i+1]; (*size)--; } else { set[(*size)++] = x; } }"
+        },
+        {
+          "clause_id": "find_kth_distance",
+          "signature": "long long find_kth_distance(long long set[], int size, long long x, long long k)",
+          "code": "long long find_kth_distance(long long set[], int size, long long x, long long k) { long long dists[200005]; int cnt = 0; for(int i = 0; i < size; i++) { if(set[i] == x) continue; long long d = set[i] > x ? set[i] - x : x - set[i]; dists[cnt++] = d; } for(int i = 0; i < cnt - 1; i++) for(int j = i + 1; j < cnt; j++) if(dists[i] > dists[j]) { long long t = dists[i]; dists[i] = dists[j]; dists[j] = t; } return dists[k-1]; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long k; int q = read_input(&k); long long set[200005]; int size = 0; for(int i = 0; i < q; i++) { int type; long long x; scanf(\"%d%lld\", &type, &x); if(type == 1) toggle_element(set, &size, x); else printf(\"%lld\\n\", find_kth_distance(set, size, x, k)); } return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *k)",
+          "code": "int read_input(long long *k) { int q; scanf(\"%d %lld\", &q, k); return q; }"
+        },
+        {
+          "clause_id": "toggle_element",
+          "signature": "void toggle_element(long long set[], int *size, long long x)",
+          "code": "void toggle_element(long long set[], int *size, long long x) { int pos = -1; for(int i = 0; i < *size; i++) { if(set[i] == x) { pos = i; break; } } if(pos != -1) { set[pos] = set[--(*size)]; } else { set[(*size)++] = x; } }"
+        },
+        {
+          "clause_id": "find_kth_distance",
+          "signature": "long long find_kth_distance(long long set[], int size, long long x, long long k)",
+          "code": "long long find_kth_distance(long long set[], int size, long long x, long long k) { long long distances[200005]; int count = 0; for(int i = 0; i < size; i++) { if(set[i] != x) { long long dist = set[i] > x ? set[i] - x : x - set[i]; distances[count++] = dist; } } for(int i = 0; i < count; i++) for(int j = i + 1; j < count; j++) if(distances[i] > distances[j]) { long long tmp = distances[i]; distances[i] = distances[j]; distances[j] = tmp; } return distances[k - 1]; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long k; int num_queries = read_input(&k); long long elements[200005]; int n = 0; for(int query = 0; query < num_queries; query++) { int op; long long val; scanf(\"%d %lld\", &op, &val); if(op == 1) { toggle_element(elements, &n, val); } else { long long ans = find_kth_distance(elements, n, val, k); printf(\"%lld\\n\", ans); } } return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *k)",
+          "code": "int read_input(long long *k) { int q; scanf(\"%d%lld\", &q, k); return q; }"
+        },
+        {
+          "clause_id": "toggle_element",
+          "signature": "void toggle_element(long long set[], int *size, long long x)",
+          "code": "void toggle_element(long long set[], int *size, long long x) { int idx = -1; int i; for(i = 0; i < *size; i++) if(set[i] == x) { idx = i; break; } if(idx >= 0) { for(i = idx; i < *size - 1; i++) set[i] = set[i + 1]; (*size)--; } else { set[*size] = x; (*size)++; } }"
+        },
+        {
+          "clause_id": "find_kth_distance",
+          "signature": "long long find_kth_distance(long long set[], int size, long long x, long long k)",
+          "code": "long long find_kth_distance(long long set[], int size, long long x, long long k) { long long gaps[200005]; int total = 0; for(int i = 0; i < size; i++) if(set[i] != x) { long long gap = (set[i] > x) ? (set[i] - x) : (x - set[i]); gaps[total++] = gap; } int i, j; for(i = 0; i < total - 1; i++) for(j = 0; j < total - i - 1; j++) if(gaps[j] > gaps[j+1]) { long long swap = gaps[j]; gaps[j] = gaps[j+1]; gaps[j+1] = swap; } return gaps[k - 1]; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long k; int q = read_input(&k); long long data[200005]; int sz = 0; int i; for(i = 0; i < q; i++) { int t; long long v; scanf(\"%d%lld\", &t, &v); if(t == 1) toggle_element(data, &sz, v); else printf(\"%lld\\n\", find_kth_distance(data, sz, v, k)); } return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *k)",
+          "code": "int read_input(long long *k) { int q; scanf(\"%d %lld\", &q, k); return q; }"
+        },
+        {
+          "clause_id": "toggle_element",
+          "signature": "void toggle_element(long long set[], int *size, long long x)",
+          "code": "void toggle_element(long long set[], int *size, long long x) { int exists_at = -1; for(int loc = 0; loc < *size; loc++) { if(set[loc] == x) { exists_at = loc; break; } } if(exists_at != -1) { (*size)--; set[exists_at] = set[*size]; } else { set[(*size)++] = x; } }"
+        },
+        {
+          "clause_id": "find_kth_distance",
+          "signature": "long long find_kth_distance(long long set[], int size, long long x, long long k)",
+          "code": "long long find_kth_distance(long long set[], int size, long long x, long long k) { long long diff[200005]; int num = 0; for(int idx = 0; idx < size; idx++) { if(set[idx] == x) continue; long long delta = set[idx] - x; if(delta < 0) delta = -delta; diff[num++] = delta; } for(int a = 0; a < num - 1; a++) { for(int b = a + 1; b < num; b++) { if(diff[a] > diff[b]) { long long temp = diff[a]; diff[a] = diff[b]; diff[b] = temp; } } } return diff[k - 1]; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long k; int queries = read_input(&k); long long active[200005]; int active_count = 0; for(int qid = 0; qid < queries; qid++) { int cmd; long long num; scanf(\"%d %lld\", &cmd, &num); if(cmd == 1) { toggle_element(active, &active_count, num); } else { printf(\"%lld\\n\", find_kth_distance(active, active_count, num, k)); } } return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *k)",
+          "code": "int read_input(long long *k) { int q; scanf(\"%d%lld\", &q, k); return q; }"
+        },
+        {
+          "clause_id": "toggle_element",
+          "signature": "void toggle_element(long long set[], int *size, long long x)",
+          "code": "void toggle_element(long long set[], int *size, long long x) { int found_idx = -1; for(int j = 0; j < *size; j++) { if(set[j] == x) { found_idx = j; break; } } if(found_idx >= 0) { for(int j = found_idx; j < (*size) - 1; j++) { set[j] = set[j + 1]; } (*size)--; } else { set[(*size)] = x; (*size)++; } }"
+        },
+        {
+          "clause_id": "find_kth_distance",
+          "signature": "long long find_kth_distance(long long set[], int size, long long x, long long k)",
+          "code": "long long find_kth_distance(long long set[], int size, long long x, long long k) { long long deltas[200005]; int delta_count = 0; for(int m = 0; m < size; m++) { if(set[m] == x) continue; long long diff_val = (set[m] > x) ? (set[m] - x) : (x - set[m]); deltas[delta_count++] = diff_val; } for(int p = 0; p < delta_count - 1; p++) { for(int q = p + 1; q < delta_count; q++) { if(deltas[p] > deltas[q]) { long long swap_val = deltas[p]; deltas[p] = deltas[q]; deltas[q] = swap_val; } } } return deltas[k - 1]; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long k; int total_queries = read_input(&k); long long collection[200005]; int collection_size = 0; for(int query_num = 0; query_num < total_queries; query_num++) { int operation; long long value; scanf(\"%d%lld\", &operation, &value); if(operation == 1) { toggle_element(collection, &collection_size, value); } else { long long result = find_kth_distance(collection, collection_size, value, k); printf(\"%lld\\n\", result); } } return 0; }"
+        }
+      ]
+    }
+  ]
+}

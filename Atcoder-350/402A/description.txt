@@ -1,0 +1,15 @@
+You are given N positive integers A_1, A_2, ..., A_N.
+Print the maximum value among them.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N
+A_1 A_2 ... A_N
+
+**Output:**
+Print the answer.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= A_i <= 100
+- All input values are integers

@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *A,long long *B,long long *M)",
+          "code": "void read_input(long long *A,long long *B,long long *M){ scanf(\"%lld%lld%lld\", A,B,M); }\n"
+        },
+        {
+          "clause_id": "simple_count",
+          "signature": "long long simple_count(long long A,long long B,long long M)",
+          "code": "long long simple_count(long long A,long long B,long long M){ if(A==1 && B==1) return 1%M; return 0; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long A,B,M; read_input(&A,&B,&M); long long ans=simple_count(A,B,M); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *A,long long *B,long long *M)",
+          "code": "void read_input(long long *A,long long *B,long long *M){ scanf(\"%lld%lld%lld\", A,B,M); }\n"
+        },
+        {
+          "clause_id": "simple_count",
+          "signature": "long long simple_count(long long A,long long B,long long M)",
+          "code": "long long simple_count(long long A,long long B,long long M){ if(A==1 && B==1) return 1%M; return 0; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long A,B,M; read_input(&A,&B,&M); long long ans=simple_count(A,B,M); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *A,long long *B,long long *M)",
+          "code": "void read_input(long long *A,long long *B,long long *M){ scanf(\"%lld%lld%lld\", A,B,M); }\n"
+        },
+        {
+          "clause_id": "simple_count",
+          "signature": "long long simple_count(long long A,long long B,long long M)",
+          "code": "long long simple_count(long long A,long long B,long long M){ if(A==1 && B==1) return 1%M; return 0; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long A,B,M; read_input(&A,&B,&M); long long ans=simple_count(A,B,M); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *A,long long *B,long long *M)",
+          "code": "void read_input(long long *A,long long *B,long long *M){ scanf(\"%lld%lld%lld\", A,B,M); }\n"
+        },
+        {
+          "clause_id": "simple_count",
+          "signature": "long long simple_count(long long A,long long B,long long M)",
+          "code": "long long simple_count(long long A,long long B,long long M){ if(A==1 && B==1) return 1%M; return 0; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long A,B,M; read_input(&A,&B,&M); long long ans=simple_count(A,B,M); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *A,long long *B,long long *M)",
+          "code": "void read_input(long long *A,long long *B,long long *M){ scanf(\"%lld%lld%lld\", A,B,M); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "simple_count",
+          "signature": "long long simple_count(long long A,long long B,long long M)",
+          "code": "long long simple_count(long long A,long long B,long long M){ if(A==1 && B==1) return 1%M; return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long A,B,M; read_input(&A,&B,&M); long long ans=simple_count(A,B,M); print_answer(ans); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *L,long long *R)",
+          "code": "scanf(\"%lld%lld\", L,R);\n"
+        },
+        {
+          "clause_id": "count_snake",
+          "signature": "long long count_snake(long long n)",
+          "code": "if(n<10) return 0;\nlong long ans=0; long long pow[20]; pow[0]=1; for(int i=1;i<20;i++) pow[i]=pow[i-1]*10;\nlong long tmp=n; int digits=0; while(tmp){ digits++; tmp/=10; }\nfor(int len=2; len<digits; len++){\n  for(int d=1; d<=9; d++){\n    long long cnt=1; for(int i=0;i<len-1;i++) cnt*=d; ans+=cnt;\n  }\n}\n/* length=digits */\nlong long p=1; for(int i=1;i<digits;i++) p*=10; long long first=n/p;\nfor(int d=1; d<first; d++){\n  long long cnt=1; for(int i=0;i<digits-1;i++) cnt*=d; ans+=cnt;\n}\n/* equal first */\nint ok=1; long long rem=n%p; long long mult=1; for(int i=0;i<digits-1;i++) mult*=first;\nlong long add=0; long long cur=rem; for(int i=digits-2;i>=0;i--){ long long base=1; for(int j=0;j<i;j++) base*=10; long long digit=cur/base; if(digit>=first){ ok=0; break; } long long ways=1; for(int j=0;j<i;j++) ways*=first; add += digit*ways; cur%=base; }\nif(ok) ans+=add+1; return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long L,R; read_input(&L,&R); long long ans=count_snake(R)-count_snake(L-1); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *L,long long *R)",
+          "code": "scanf(\"%lld%lld\", L,R);\n"
+        },
+        {
+          "clause_id": "count_snake",
+          "signature": "long long count_snake(long long n)",
+          "code": "if(n<10) return 0;\nlong long ans=0; long long pow[20]; pow[0]=1; for(int i=1;i<20;i++) pow[i]=pow[i-1]*10;\nlong long tmp=n; int digits=0; while(tmp){ digits++; tmp/=10; }\nfor(int len=2; len<digits; len++){\n  for(int d=1; d<=9; d++){\n    long long cnt=1; for(int i=0;i<len-1;i++) cnt*=d; ans+=cnt;\n  }\n}\n/* length=digits */\nlong long p=1; for(int i=1;i<digits;i++) p*=10; long long first=n/p;\nfor(int d=1; d<first; d++){\n  long long cnt=1; for(int i=0;i<digits-1;i++) cnt*=d; ans+=cnt;\n}\n/* equal first */\nint ok=1; long long rem=n%p; long long mult=1; for(int i=0;i<digits-1;i++) mult*=first;\nlong long add=0; long long cur=rem; for(int i=digits-2;i>=0;i--){ long long base=1; for(int j=0;j<i;j++) base*=10; long long digit=cur/base; if(digit>=first){ ok=0; break; } long long ways=1; for(int j=0;j<i;j++) ways*=first; add += digit*ways; cur%=base; }\nif(ok) ans+=add+1; return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long L,R; read_input(&L,&R); long long ans=count_snake(R)-count_snake(L-1); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *L,long long *R)",
+          "code": "scanf(\"%lld%lld\", L,R);\n"
+        },
+        {
+          "clause_id": "count_snake",
+          "signature": "long long count_snake(long long n)",
+          "code": "if(n<10) return 0;\nlong long ans=0; long long pow[20]; pow[0]=1; for(int i=1;i<20;i++) pow[i]=pow[i-1]*10;\nlong long tmp=n; int digits=0; while(tmp){ digits++; tmp/=10; }\nfor(int len=2; len<digits; len++){\n  for(int d=1; d<=9; d++){\n    long long cnt=1; for(int i=0;i<len-1;i++) cnt*=d; ans+=cnt;\n  }\n}\n/* length=digits */\nlong long p=1; for(int i=1;i<digits;i++) p*=10; long long first=n/p;\nfor(int d=1; d<first; d++){\n  long long cnt=1; for(int i=0;i<digits-1;i++) cnt*=d; ans+=cnt;\n}\n/* equal first */\nint ok=1; long long rem=n%p; long long mult=1; for(int i=0;i<digits-1;i++) mult*=first;\nlong long add=0; long long cur=rem; for(int i=digits-2;i>=0;i--){ long long base=1; for(int j=0;j<i;j++) base*=10; long long digit=cur/base; if(digit>=first){ ok=0; break; } long long ways=1; for(int j=0;j<i;j++) ways*=first; add += digit*ways; cur%=base; }\nif(ok) ans+=add+1; return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long L,R; read_input(&L,&R); long long ans=count_snake(R)-count_snake(L-1); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *L,long long *R)",
+          "code": "scanf(\"%lld%lld\", L,R);\n"
+        },
+        {
+          "clause_id": "count_snake",
+          "signature": "long long count_snake(long long n)",
+          "code": "if(n<10) return 0;\nlong long ans=0; long long pow[20]; pow[0]=1; for(int i=1;i<20;i++) pow[i]=pow[i-1]*10;\nlong long tmp=n; int digits=0; while(tmp){ digits++; tmp/=10; }\nfor(int len=2; len<digits; len++){\n  for(int d=1; d<=9; d++){\n    long long cnt=1; for(int i=0;i<len-1;i++) cnt*=d; ans+=cnt;\n  }\n}\n/* length=digits */\nlong long p=1; for(int i=1;i<digits;i++) p*=10; long long first=n/p;\nfor(int d=1; d<first; d++){\n  long long cnt=1; for(int i=0;i<digits-1;i++) cnt*=d; ans+=cnt;\n}\n/* equal first */\nint ok=1; long long rem=n%p; long long mult=1; for(int i=0;i<digits-1;i++) mult*=first;\nlong long add=0; long long cur=rem; for(int i=digits-2;i>=0;i--){ long long base=1; for(int j=0;j<i;j++) base*=10; long long digit=cur/base; if(digit>=first){ ok=0; break; } long long ways=1; for(int j=0;j<i;j++) ways*=first; add += digit*ways; cur%=base; }\nif(ok) ans+=add+1; return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long L,R; read_input(&L,&R); long long ans=count_snake(R)-count_snake(L-1); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *L,long long *R)",
+          "code": "scanf(\"%lld%lld\", L,R);\n"
+        },
+        {
+          "clause_id": "count_snake",
+          "signature": "long long count_snake(long long n)",
+          "code": "if(n<10) return 0;\nlong long ans=0; long long pow[20]; pow[0]=1; for(int i=1;i<20;i++) pow[i]=pow[i-1]*10;\nlong long tmp=n; int digits=0; while(tmp){ digits++; tmp/=10; }\nfor(int len=2; len<digits; len++){\n  for(int d=1; d<=9; d++){\n    long long cnt=1; for(int i=0;i<len-1;i++) cnt*=d; ans+=cnt;\n  }\n}\n/* length=digits */\nlong long p=1; for(int i=1;i<digits;i++) p*=10; long long first=n/p;\nfor(int d=1; d<first; d++){\n  long long cnt=1; for(int i=0;i<digits-1;i++) cnt*=d; ans+=cnt;\n}\n/* equal first */\nint ok=1; long long rem=n%p; long long mult=1; for(int i=0;i<digits-1;i++) mult*=first;\nlong long add=0; long long cur=rem; for(int i=digits-2;i>=0;i--){ long long base=1; for(int j=0;j<i;j++) base*=10; long long digit=cur/base; if(digit>=first){ ok=0; break; } long long ways=1; for(int j=0;j<i;j++) ways*=first; add += digit*ways; cur%=base; }\nif(ok) ans+=add+1; return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long L,R; read_input(&L,&R); long long ans=count_snake(R)-count_snake(L-1); print_ll(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "387C",
+  "total_programs": 5
+}

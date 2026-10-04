@@ -1,0 +1,27 @@
+{
+  "contestId": 2153,
+  "index": "B",
+  "problem_id": "2153B",
+  "name": "Bitwise Reversion",
+  "rating": 800,
+  "tags": [
+    "bitmasks",
+    "greedy"
+  ],
+  "points": 750.0,
+  "solvedCount": 23046,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Bitwise Reversion",
+  "legend": "You are given three non-negative integers x, y and z. Determine whether there exist three non-negative integers a, b and c satisfying the following three conditions:\n\na&b=x\nb&c=y\na&c=z\n\nwhere & denotes the bitwise AND operation.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe first and only line of each test case contains three integers x, y and z (0≤x,y,z≤109) — the target values of a&b, b&c and a&c, respectively.",
+  "output_spec": "For each test case, output \"YES\" if there exists three non-negative integers a, b, and c satisfying the above conditions, and \"NO\" otherwise.\n\nYou can output the answer in any case (upper or lower). For example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will be recognized as positive responses.",
+  "note": "In the first test case, a=3, b=5, and c=9 satisfies the condition as 3&5=1, 5&9=1, and 3&9=1.\n\nIn the second test case, a=7, b=3, and c=22 satisfies the condition as 7&3=3, 3&22=2, and 7&22=6.\n\nIn the third test case, it can be proven that there are no three non-negative integers a, b, and c such that a&b=4, b&c=8, and a&c=12.",
+  "time_limit": "1.5 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n1 1 1\n3 2 6\n4 8 12\n9 10 12\n12730 3088 28130\n",
+      "output": "YES\nYES\nNO\nYES\nNO"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+import sys
+
+data = list(map(int, sys.stdin.read().split()))
+t = data[0]
+ans = []
+
+for n in data[1:1 + t]:
+    ans.append(str((n // 15) * 3 + min(n % 15 + 1, 3)))
+
+print("\n".join(ans))

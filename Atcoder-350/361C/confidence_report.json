@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9839772727272728,
+  "clauses": [
+    {
+      "clause": "find_minimum_range",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.965909090909091
+    },
+    {
+      "clause": "read_sequence",
+      "confidence": 0.97
+    },
+    {
+      "clause": "sort_sequence",
+      "confidence": 1.0
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compare_str",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_winner",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "sort_lex",
+      "confidence": 1.0
+    }
+  ]
+}

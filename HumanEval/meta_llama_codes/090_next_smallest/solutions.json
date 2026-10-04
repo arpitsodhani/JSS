@@ -1,0 +1,118 @@
+{
+  "problem_id": "090_next_smallest",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "find_next_smallest",
+          "code": "int find_next_smallest(int *arr, int n) {\n    int sorted[n];\n    for (int i = 0; i < n; i++) sorted[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (sorted[j] > sorted[j + 1]) {\n                int temp = sorted[j];\n                sorted[j] = sorted[j + 1];\n                sorted[j + 1] = temp;\n            }\n        }\n    }\n    for (int i = 1; i < n; i++) {\n        if (sorted[i] != sorted[0]) {\n            return sorted[i];\n        }\n    }\n    return -1;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = find_next_smallest(arr, n);\n    if (result == -1) {\n        printf(\"None\\n\");\n    } else {\n        printf(\"%d\\n\", result);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "find_next_smallest",
+          "code": "int find_next_smallest(int *arr, int n) {\n    int sorted[n];\n    for (int i = 0; i < n; i++) sorted[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (sorted[j] > sorted[j + 1]) {\n                int temp = sorted[j];\n                sorted[j] = sorted[j + 1];\n                sorted[j + 1] = temp;\n            }\n        }\n    }\n    for (int i = 1; i < n; i++) {\n        if (sorted[i] != sorted[0]) {\n            return sorted[i];\n        }\n    }\n    return -1;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = find_next_smallest(arr, n);\n    if (result == -1) {\n        printf(\"None\\n\");\n    } else {\n        printf(\"%d\\n\", result);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "find_next_smallest",
+          "code": "int find_next_smallest(int *arr, int n) {\n    int sorted[n];\n    for (int i = 0; i < n; i++) sorted[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (sorted[j] > sorted[j + 1]) {\n                int temp = sorted[j];\n                sorted[j] = sorted[j + 1];\n                sorted[j + 1] = temp;\n            }\n        }\n    }\n    for (int i = 1; i < n; i++) {\n        if (sorted[i] != sorted[0]) {\n            return sorted[i];\n        }\n    }\n    return -1;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = find_next_smallest(arr, n);\n    if (result == -1) {\n        printf(\"None\\n\");\n    } else {\n        printf(\"%d\\n\", result);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "find_next_smallest",
+          "code": "int find_next_smallest(int *arr, int n) {\n    int sorted[n];\n    for (int i = 0; i < n; i++) sorted[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (sorted[j] > sorted[j + 1]) {\n                int temp = sorted[j];\n                sorted[j] = sorted[j + 1];\n                sorted[j + 1] = temp;\n            }\n        }\n    }\n    for (int i = 1; i < n; i++) {\n        if (sorted[i] != sorted[0]) {\n            return sorted[i];\n        }\n    }\n    return -1;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = find_next_smallest(arr, n);\n    if (result == -1) {\n        printf(\"None\\n\");\n    } else {\n        printf(\"%d\\n\", result);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "find_next_smallest",
+          "code": "int find_next_smallest(int *arr, int n) {\n    int sorted[n];\n    for (int i = 0; i < n; i++) sorted[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (sorted[j] > sorted[j + 1]) {\n                int temp = sorted[j];\n                sorted[j] = sorted[j + 1];\n                sorted[j + 1] = temp;\n            }\n        }\n    }\n    for (int i = 1; i < n; i++) {\n        if (sorted[i] != sorted[0]) {\n            return sorted[i];\n        }\n    }\n    return -1;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = find_next_smallest(arr, n);\n    if (result == -1) {\n        printf(\"None\\n\");\n    } else {\n        printf(\"%d\\n\", result);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ],
+  "includes": [
+    "<stdio.h>"
+  ]
+}

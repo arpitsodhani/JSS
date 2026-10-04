@@ -1,0 +1,5 @@
+On a certain planet, there are N aliens, all of whom are minors. The i -th alien currently has A_i stones, and will become an adult exactly i years later. When someone becomes an adult on this planet, every adult who has at least one stone gives exactly one stone as a congratulatory gift to the alien who has just become an adult. Find how many stones each alien will have after N years. Assume that no new aliens will be born in the future.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- S is a string of length N consisting of lowercase English letters

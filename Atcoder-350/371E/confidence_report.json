@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "eliminate_column_below",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_pivot_row",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "perform_back_substitution",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve_linear_system",
+      "confidence": 1.0
+    }
+  ]
+}

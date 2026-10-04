@@ -1,0 +1,249 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *X,int **P)",
+          "code": "void read_input(int *N,int *X,int **P){ scanf(\"%d%d\", N,X); *P=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*P)[i]); }\n"
+        },
+        {
+          "clause_id": "init_prob",
+          "signature": "void init_prob(int N,double *prob)",
+          "code": "void init_prob(int N,double *prob){ for(int i=0;i<=N;i++) prob[i]=0.0; prob[0]=1.0; }\n"
+        },
+        {
+          "clause_id": "update_prob",
+          "signature": "void update_prob(int i,int *P,double *prob)",
+          "code": "void update_prob(int i,int *P,double *prob){\n    double p=P[i]/100.0;\n    for(int k=i+1;k>=0;k--){\n        double keep = prob[k]*(1.0-p);\n        double add = (k>0? prob[k-1]*p : 0.0);\n        prob[k]=keep+add;\n    }\n}\n"
+        },
+        {
+          "clause_id": "build_distribution",
+          "signature": "void build_distribution(int N,int *P,double *prob)",
+          "code": "void build_distribution(int N,int *P,double *prob){\n    init_prob(N,prob);\n    for(int i=0;i<N;i++) update_prob(i,P,prob);\n}\n"
+        },
+        {
+          "clause_id": "safe_expect",
+          "signature": "double safe_expect(double num,double den)",
+          "code": "double safe_expect(double num,double den){ if(den<1e-12) return 0.0; return num/den; }\n"
+        },
+        {
+          "clause_id": "compute_expectation",
+          "signature": "double compute_expectation(int N,int X,double *prob)",
+          "code": "double compute_expectation(int N,int X,double *prob){\n    double *E=(double*)malloc((size_t)(X+1)*sizeof(double));\n    E[X]=0.0;\n    for(int x=X-1; x>=0; x--){\n        double p0=prob[0];\n        double sum=1.0;\n        for(int k=1;k<=N;k++){\n            int nx = x+k; if(nx>X) nx=X;\n            sum += prob[k]*E[nx];\n        }\n        E[x]=safe_expect(sum,1.0-p0);\n    }\n    double ans=E[0];\n    free(E);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(double ans)",
+          "code": "void print_answer(double ans){ printf(\"%.10f\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,X; int *P=NULL; read_input(&N,&X,&P); double *prob=(double*)malloc((size_t)(N+1)*sizeof(double)); build_distribution(N,P,prob); double ans=compute_expectation(N,X,prob); print_answer(ans); free(P); free(prob); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *X,int **P)",
+          "code": "void read_input(int *N,int *X,int **P){ scanf(\"%d%d\", N,X); *P=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*P)[i]); }\n"
+        },
+        {
+          "clause_id": "init_prob",
+          "signature": "void init_prob(int N,double *prob)",
+          "code": "void init_prob(int N,double *prob){ for(int i=0;i<=N;i++) prob[i]=0.0; prob[0]=1.0; }\n"
+        },
+        {
+          "clause_id": "update_prob",
+          "signature": "void update_prob(int i,int *P,double *prob)",
+          "code": "void update_prob(int i,int *P,double *prob){\n    double p=P[i]/100.0;\n    for(int k=i+1;k>=0;k--){\n        double keep = prob[k]*(1.0-p);\n        double add = (k>0? prob[k-1]*p : 0.0);\n        prob[k]=keep+add;\n    }\n}\n"
+        },
+        {
+          "clause_id": "build_distribution",
+          "signature": "void build_distribution(int N,int *P,double *prob)",
+          "code": "void build_distribution(int N,int *P,double *prob){\n    init_prob(N,prob);\n    for(int i=0;i<N;i++) update_prob(i,P,prob);\n}\n"
+        },
+        {
+          "clause_id": "safe_expect",
+          "signature": "double safe_expect(double num,double den)",
+          "code": "double safe_expect(double num,double den){ if(den<1e-12) return 0.0; return num/den; }\n"
+        },
+        {
+          "clause_id": "compute_expectation",
+          "signature": "double compute_expectation(int N,int X,double *prob)",
+          "code": "double compute_expectation(int N,int X,double *prob){\n    double *E=(double*)malloc((size_t)(X+1)*sizeof(double));\n    E[X]=0.0;\n    for(int x=X-1; x>=0; x--){\n        double p0=prob[0];\n        double sum=1.0;\n        for(int k=1;k<=N;k++){\n            int nx = x+k; if(nx>X) nx=X;\n            sum += prob[k]*E[nx];\n        }\n        E[x]=safe_expect(sum,1.0-p0);\n    }\n    double ans=E[0];\n    free(E);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(double ans)",
+          "code": "void print_answer(double ans){ printf(\"%.10f\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,X; int *P=NULL; read_input(&N,&X,&P); double *prob=(double*)malloc((size_t)(N+1)*sizeof(double)); build_distribution(N,P,prob); double ans=compute_expectation(N,X,prob); print_answer(ans); free(P); free(prob); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *X,int **P)",
+          "code": "void read_input(int *N,int *X,int **P){ scanf(\"%d%d\", N,X); *P=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*P)[i]); }\n"
+        },
+        {
+          "clause_id": "init_prob",
+          "signature": "void init_prob(int N,double *prob)",
+          "code": "void init_prob(int N,double *prob){ for(int i=0;i<=N;i++) prob[i]=0.0; prob[0]=1.0; }\n"
+        },
+        {
+          "clause_id": "update_prob",
+          "signature": "void update_prob(int i,int *P,double *prob)",
+          "code": "void update_prob(int i,int *P,double *prob){\n    double p=P[i]/100.0;\n    for(int k=i+1;k>=0;k--){\n        double keep = prob[k]*(1.0-p);\n        double add = (k>0? prob[k-1]*p : 0.0);\n        prob[k]=keep+add;\n    }\n}\n"
+        },
+        {
+          "clause_id": "build_distribution",
+          "signature": "void build_distribution(int N,int *P,double *prob)",
+          "code": "void build_distribution(int N,int *P,double *prob){\n    init_prob(N,prob);\n    for(int i=0;i<N;i++) update_prob(i,P,prob);\n}\n"
+        },
+        {
+          "clause_id": "safe_expect",
+          "signature": "double safe_expect(double num,double den)",
+          "code": "double safe_expect(double num,double den){ if(den<1e-12) return 0.0; return num/den; }\n"
+        },
+        {
+          "clause_id": "compute_expectation",
+          "signature": "double compute_expectation(int N,int X,double *prob)",
+          "code": "double compute_expectation(int N,int X,double *prob){\n    double *E=(double*)malloc((size_t)(X+1)*sizeof(double));\n    E[X]=0.0;\n    for(int x=X-1; x>=0; x--){\n        double p0=prob[0];\n        double sum=1.0;\n        for(int k=1;k<=N;k++){\n            int nx = x+k; if(nx>X) nx=X;\n            sum += prob[k]*E[nx];\n        }\n        E[x]=safe_expect(sum,1.0-p0);\n    }\n    double ans=E[0];\n    free(E);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(double ans)",
+          "code": "void print_answer(double ans){ printf(\"%.10f\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,X; int *P=NULL; read_input(&N,&X,&P); double *prob=(double*)malloc((size_t)(N+1)*sizeof(double)); build_distribution(N,P,prob); double ans=compute_expectation(N,X,prob); print_answer(ans); free(P); free(prob); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *X,int **P)",
+          "code": "void read_input(int *N,int *X,int **P){ scanf(\"%d%d\", N,X); *P=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*P)[i]); }\n"
+        },
+        {
+          "clause_id": "init_prob",
+          "signature": "void init_prob(int N,double *prob)",
+          "code": "void init_prob(int N,double *prob){ for(int i=0;i<=N;i++) prob[i]=0.0; prob[0]=1.0; }\n"
+        },
+        {
+          "clause_id": "update_prob",
+          "signature": "void update_prob(int i,int *P,double *prob)",
+          "code": "void update_prob(int i,int *P,double *prob){\n    double p=P[i]/100.0;\n    for(int k=i+1;k>=0;k--){\n        double keep = prob[k]*(1.0-p);\n        double add = (k>0? prob[k-1]*p : 0.0);\n        prob[k]=keep+add;\n    }\n}\n"
+        },
+        {
+          "clause_id": "build_distribution",
+          "signature": "void build_distribution(int N,int *P,double *prob)",
+          "code": "void build_distribution(int N,int *P,double *prob){\n    init_prob(N,prob);\n    for(int i=0;i<N;i++) update_prob(i,P,prob);\n}\n"
+        },
+        {
+          "clause_id": "safe_expect",
+          "signature": "double safe_expect(double num,double den)",
+          "code": "double safe_expect(double num,double den){ if(den<1e-12) return 0.0; return num/den; }\n"
+        },
+        {
+          "clause_id": "compute_expectation",
+          "signature": "double compute_expectation(int N,int X,double *prob)",
+          "code": "double compute_expectation(int N,int X,double *prob){\n    double *E=(double*)malloc((size_t)(X+1)*sizeof(double));\n    E[X]=0.0;\n    for(int x=X-1; x>=0; x--){\n        double p0=prob[0];\n        double sum=1.0;\n        for(int k=1;k<=N;k++){\n            int nx = x+k; if(nx>X) nx=X;\n            sum += prob[k]*E[nx];\n        }\n        E[x]=safe_expect(sum,1.0-p0);\n    }\n    double ans=E[0];\n    free(E);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(double ans)",
+          "code": "void print_answer(double ans){ printf(\"%.10f\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,X; int *P=NULL; read_input(&N,&X,&P); double *prob=(double*)malloc((size_t)(N+1)*sizeof(double)); build_distribution(N,P,prob); double ans=compute_expectation(N,X,prob); print_answer(ans); free(P); free(prob); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *X,int **P)",
+          "code": "void read_input(int *N,int *X,int **P){ scanf(\"%d%d\", N,X); *P=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*P)[i]); }\n"
+        },
+        {
+          "clause_id": "init_prob",
+          "signature": "void init_prob(int N,double *prob)",
+          "code": "void init_prob(int N,double *prob){ for(int i=0;i<=N;i++) prob[i]=0.0; prob[0]=1.0; }\n"
+        },
+        {
+          "clause_id": "update_prob",
+          "signature": "void update_prob(int i,int *P,double *prob)",
+          "code": "void update_prob(int i,int *P,double *prob){\n    double p=P[i]/100.0;\n    for(int k=i+1;k>=0;k--){\n        double keep = prob[k]*(1.0-p);\n        double add = (k>0? prob[k-1]*p : 0.0);\n        prob[k]=keep+add;\n    }\n}\n"
+        },
+        {
+          "clause_id": "build_distribution",
+          "signature": "void build_distribution(int N,int *P,double *prob)",
+          "code": "void build_distribution(int N,int *P,double *prob){\n    init_prob(N,prob);\n    for(int i=0;i<N;i++) update_prob(i,P,prob);\n}\n"
+        },
+        {
+          "clause_id": "safe_expect",
+          "signature": "double safe_expect(double num,double den)",
+          "code": "double safe_expect(double num,double den){ if(den<1e-12) return 0.0; return num/den; }\n"
+        },
+        {
+          "clause_id": "compute_expectation",
+          "signature": "double compute_expectation(int N,int X,double *prob)",
+          "code": "double compute_expectation(int N,int X,double *prob){\n    double *E=(double*)malloc((size_t)(X+1)*sizeof(double));\n    E[X]=0.0;\n    for(int x=X-1; x>=0; x--){\n        double p0=prob[0];\n        double sum=1.0;\n        for(int k=1;k<=N;k++){\n            int nx = x+k; if(nx>X) nx=X;\n            sum += prob[k]*E[nx];\n        }\n        E[x]=safe_expect(sum,1.0-p0);\n    }\n    double ans=E[0];\n    free(E);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(double ans)",
+          "code": "void print_answer(double ans){ printf(\"%.10f\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,X; int *P=NULL; read_input(&N,&X,&P); double *prob=(double*)malloc((size_t)(N+1)*sizeof(double)); build_distribution(N,P,prob); double ans=compute_expectation(N,X,prob); print_answer(ans); free(P); free(prob); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

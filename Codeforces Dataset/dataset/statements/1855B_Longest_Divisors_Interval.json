@@ -1,0 +1,30 @@
+{
+  "contestId": 1855,
+  "index": "B",
+  "problem_id": "1855B",
+  "name": "Longest Divisors Interval",
+  "rating": 900,
+  "tags": [
+    "brute force",
+    "combinatorics",
+    "greedy",
+    "math",
+    "number theory"
+  ],
+  "points": 1000.0,
+  "solvedCount": 47733,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Longest Divisors Interval",
+  "legend": "Given a positive integer n, find the maximum size of an interval [l,r] of positive integers such that, for every i in the interval (i.e., l≤i≤r), n is a multiple of i.\n\nGiven two integers l≤r, the size of the interval [l,r] is r−l+1 (i.e., it coincides with the number of integers belonging to the interval).",
+  "input_spec": "The first line contains a single integer t (1≤t≤104) — the number of test cases.\n\nThe only line of the description of each test case contains one integer n (1≤n≤1018).",
+  "output_spec": "For each test case, print a single integer: the maximum size of a valid interval.",
+  "note": "In the first test case, a valid interval with maximum size is [1,1] (it's valid because n=1 is a multiple of 1) and its size is 1.\n\nIn the second test case, a valid interval with maximum size is [4,5] (it's valid because n=40 is a multiple of 4 and 5) and its size is 2.\n\nIn the third test case, a valid interval with maximum size is [9,11].\n\nIn the fourth test case, a valid interval with maximum size is [8,13].\n\nIn the seventh test case, a valid interval with maximum size is [327869,327871].",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "10\n1\n40\n990990\n4204474560\n169958913706572972\n365988220345828080\n387701719537826430\n620196883578129853\n864802341280805662\n1000000000000000000\n",
+      "output": "1\n2\n3\n6\n4\n22\n3\n1\n2\n2"
+    }
+  ]
+}

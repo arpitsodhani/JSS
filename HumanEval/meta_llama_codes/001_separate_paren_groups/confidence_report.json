@@ -1,0 +1,22 @@
+{
+  "clause_wise_confidence": {
+    "parse_groups": {
+      "confidence_score": 0.9577058823529411,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 5
+      }
+    },
+    "main": {
+      "confidence_score": 0.9615686274509804,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 5
+      }
+    }
+  },
+  "overall_metrics": {
+    "average_confidence": 0.9596372549019607,
+    "total_clauses": 2
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "contestId": 1569,
+  "index": "C",
+  "problem_id": "1569C",
+  "name": "Jury Meeting",
+  "rating": 1500,
+  "tags": [
+    "combinatorics",
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 13440,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Jury Meeting",
+  "legend": "n people gathered to hold a jury meeting of the upcoming competition, the i-th member of the jury came up with ai tasks, which they want to share with each other.\n\nFirst, the jury decides on the order which they will follow while describing the tasks. Let that be a permutation p of numbers from 1 to n (an array of size n where each integer from 1 to n occurs exactly once).\n\nThen the discussion goes as follows:\n\nIf a jury member p1 has some tasks left to tell, then they tell one task to others. Otherwise, they are skipped.\nIf a jury member p2 has some tasks left to tell, then they tell one task to others. Otherwise, they are skipped.\n...\nIf a jury member pn has some tasks left to tell, then they tell one task to others. Otherwise, they are skipped.\nIf there are still members with tasks left, then the process repeats from the start. Otherwise, the discussion ends.\n\nA permutation p is nice if none of the jury members tell two or more of their own tasks in a row.\n\nCount the number of nice permutations. The answer may be really large, so print it modulo 998244353.",
+  "input_spec": "The first line contains a single integer t (1≤t≤104) — the number of test cases.\n\nThe first line of the test case contains a single integer n (2≤n≤2⋅105) — number of jury members.\n\nThe second line contains n integers a1,a2,…,an (1≤ai≤109) — the number of problems that the i-th member of the jury came up with.\n\nThe sum of n over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, print one integer — the number of nice permutations, taken modulo 998244353.",
+  "note": "Explanation of the first test case from the example:\n\nThere are two possible permutations, p=[1,2] and p=[2,1]. For p=[1,2], the process is the following:\n\nthe first jury member tells a task;\nthe second jury member tells a task;\nthe first jury member doesn't have any tasks left to tell, so they are skipped;\nthe second jury member tells a task.\n\nSo, the second jury member has told two tasks in a row (in succession), so the permutation is not nice.\n\nFor p=[2,1], the process is the following:\n\nthe second jury member tells a task;\nthe first jury member tells a task;\nthe second jury member tells a task.\n\nSo, this permutation is nice.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n2\n1 2\n3\n5 5 5\n4\n1 3 3 7\n6\n3 4 2 1 3 3\n",
+      "output": "1\n6\n0\n540"
+    }
+  ]
+}

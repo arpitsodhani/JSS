@@ -1,0 +1,4 @@
+KEYENCE has a culture of addressing everyone with the suffix "-san," regardless of roles, age, or positions. You are given a string S consisting of lowercase English letters. If S ends with san , print Yes ; otherwise, print No .
+
+**Constraints:**
+- S is a string of length between 4 and 100 consisting of lowercase English letters

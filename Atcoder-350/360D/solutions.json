@@ -1,0 +1,134 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ants",
+          "signature": "long long read_ants(int *n, long long **positions, char **directions, long long *t)",
+          "code": "long long read_ants(int *n, long long **positions, char **directions, long long *t) {\n    scanf(\"%d %lld\", n, t);\n    *positions = malloc(*n * sizeof(long long));\n    *directions = malloc((*n + 1) * sizeof(char));\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &(*positions)[i]);\n    scanf(\"%s\", *directions);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "count_passing_pairs",
+          "signature": "long long count_passing_pairs(int n, long long *x, char *s, long long t)",
+          "code": "long long count_passing_pairs(int n, long long *x, char *s, long long t) {\n    long long count = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (s[i] == '1' && s[j] == '0') {\n                long long final_i = x[i] + t;\n                long long final_j = x[j] - t;\n                if (x[i] < x[j] && final_i > final_j) count++;\n            }\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long *x, t;\n    char *s;\n    read_ants(&n, &x, &s, &t);\n    printf(\"%lld\\n\", count_passing_pairs(n, x, s, t));\n    free(x);\n    free(s);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ants",
+          "signature": "void read_ants(int *n, long long *x, char *s, long long *t)",
+          "code": "void read_ants(int *n, long long *x, char *s, long long *t) {\n    scanf(\"%d %lld\", n, t);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &x[i]);\n    scanf(\"%s\", s);\n}"
+        },
+        {
+          "clause_id": "count_passing_pairs",
+          "signature": "long long count_passing_pairs(int n, long long pos[], char dir[], long long time)",
+          "code": "long long count_passing_pairs(int n, long long pos[], char dir[], long long time) {\n    long long ans = 0;\n    for (int i = 0; i < n; i++) {\n        if (dir[i] == '1') {\n            for (int j = 0; j < n; j++) {\n                if (i < j && dir[j] == '0' && pos[i] < pos[j]) {\n                    if (pos[i] + time > pos[j] - time) ans++;\n                }\n            }\n        }\n    }\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long x[200005], t;\n    char s[200005];\n    read_ants(&n, x, s, &t);\n    printf(\"%lld\\n\", count_passing_pairs(n, x, s, t));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ants",
+          "signature": "int read_ants(int *n, long long *pos, char *dir, long long *time)",
+          "code": "int read_ants(int *n, long long *pos, char *dir, long long *time) {\n    scanf(\"%d %lld %s\", n, time, dir);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &pos[i]);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "count_passing_pairs",
+          "signature": "int count_passing_pairs(int n, long long x[], char s[], long long t)",
+          "code": "int count_passing_pairs(int n, long long x[], char s[], long long t) {\n    int result = 0;\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (s[i] > s[j] && x[i] < x[j]) {\n                long long dist = x[j] - x[i];\n                if (dist < 2 * t) result++;\n            }\n        }\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long pos[200005], time;\n    char dir[200005];\n    read_ants(&n, pos, dir, &time);\n    printf(\"%lld\\n\", count_passing_pairs(n, pos, dir, time));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ants",
+          "signature": "void read_ants(int *n, long long positions[], char directions[], long long *t)",
+          "code": "void read_ants(int *n, long long positions[], char directions[], long long *t) {\n    scanf(\"%d %lld\", n, t);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &positions[i]);\n    scanf(\"%s\", directions);\n}"
+        },
+        {
+          "clause_id": "count_passing_pairs",
+          "signature": "long long count_passing_pairs(int n, long long positions[], char directions[], long long t)",
+          "code": "long long count_passing_pairs(int n, long long positions[], char directions[], long long t) {\n    long long count = 0;\n    for (int i = 0; i < n; i++) {\n        if (directions[i] == '0') continue;\n        for (int j = i + 1; j < n; j++) {\n            if (directions[j] == '1') continue;\n            if (positions[i] < positions[j] && (positions[j] - positions[i]) <= 2 * t) {\n                count++;\n            }\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long positions[200005], t;\n    char directions[200005];\n    read_ants(&n, positions, directions, &t);\n    long long result = count_passing_pairs(n, positions, directions, t);\n    printf(\"%lld\\n\", result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ants",
+          "signature": "long long read_ants(int *n, long long x[], char s[], long long *t)",
+          "code": "long long read_ants(int *n, long long x[], char s[], long long *t) {\n    scanf(\"%d %lld\", n, t);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &x[i]);\n    scanf(\"%s\", s);\n    return *t;\n}"
+        },
+        {
+          "clause_id": "count_passing_pairs",
+          "signature": "long long count_passing_pairs(int n, long long x[], char s[], long long t)",
+          "code": "long long count_passing_pairs(int n, long long x[], char s[], long long t) {\n    long long pairs = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (s[i] == '1' && s[j] == '0') {\n                if (x[i] < x[j] && x[j] - x[i] <= 2 * t) pairs++;\n            }\n        }\n    }\n    return pairs;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long x[200005], t;\n    char s[200005];\n    read_ants(&n, x, s, &t);\n    long long ans = count_passing_pairs(n, x, s, t);\n    printf(\"%lld\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+A positive integer X is called a good integer if and only if it satisfies the following condition: There exists a pair of positive integers (a,b) such that X = 2^a \times b^2 . For example, 400 is a good integer because 400 = 2^2 \times 10^2 . Given a positive integer N , find the number of good integers between 1 and N , inclusive.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

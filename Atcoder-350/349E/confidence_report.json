@@ -1,0 +1,73 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "calculate",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute",
+      "confidence": 1.0
+    },
+    {
+      "clause": "count_pairs",
+      "confidence": 1.0
+    },
+    {
+      "clause": "display",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_pairs",
+      "confidence": 1.0
+    },
+    {
+      "clause": "get_L",
+      "confidence": 1.0
+    },
+    {
+      "clause": "input_L",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "output_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_ans",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_count",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_pairs",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_L",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "scan_L",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve",
+      "confidence": 1.0
+    },
+    {
+      "clause": "write_output",
+      "confidence": 1.0
+    }
+  ]
+}

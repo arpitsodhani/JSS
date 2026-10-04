@@ -1,0 +1,4 @@
+Count the number of connected graphs on N labeled vertices in which every cycle has prime length. Output the answer modulo 998244353.
+
+**Constraints:**
+- 1 <= N <= 2.5 * 10^5

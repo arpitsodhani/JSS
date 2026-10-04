@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "build_factor_counts",
+          "signature": "int* build_factor_counts(int A)",
+          "code": "int *v=(int*)calloc((size_t)A, sizeof(int));\nfor(int p=2;p<A;p++) if(v[p]==0) for(int j=p;j<A;j+=p) v[j]++; return v;\n"
+        },
+        {
+          "clause_id": "build_400_numbers",
+          "signature": "long long* build_400_numbers(const int *v, int A, int *out_n)",
+          "code": "long long *tmp=(long long*)malloc((size_t)A*sizeof(long long)); int cnt=0; for(long long i=2;i<A;i++) if(v[i]==2) tmp[cnt++]=i*i; *out_n=cnt; return (long long*)realloc(tmp,(size_t)cnt*sizeof(long long));\n"
+        },
+        {
+          "clause_id": "answer_query",
+          "signature": "long long answer_query(const long long *arr, int n, long long a)",
+          "code": "int l=0,r=n; while(l<r){ int m=(l+r)/2; if(arr[m]<=a) l=m+1; else r=m; } return arr[l-1];\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int A=1000001; int *v=build_factor_counts(A); int n; long long *arr=build_400_numbers(v,A,&n); free(v); int q; scanf(\"%d\", &q); while(q--){ long long a; scanf(\"%lld\", &a); long long ans=answer_query(arr,n,a); printf(\"%lld\\n\", ans); } free(arr); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "build_factor_counts",
+          "signature": "int* build_factor_counts(int A)",
+          "code": "int *v=(int*)calloc((size_t)A, sizeof(int));\nfor(int p=2;p<A;p++) if(v[p]==0){ for(int j=p;j<A;j+=p) v[j]++; }\nreturn v;\n"
+        },
+        {
+          "clause_id": "build_400_numbers",
+          "signature": "long long* build_400_numbers(const int *v, int A, int *out_n)",
+          "code": "int cnt=0; for(int i=2;i<A;i++) if(v[i]==2) cnt++; long long *tmp=(long long*)malloc((size_t)cnt*sizeof(long long)); int k=0; for(long long i=2;i<A;i++) if(v[i]==2) tmp[k++]=i*i; *out_n=k; return tmp;\n"
+        },
+        {
+          "clause_id": "answer_query",
+          "signature": "long long answer_query(const long long *arr, int n, long long a)",
+          "code": "int lo=-1,hi=n; while(hi-lo>1){ int m=(lo+hi)/2; if(arr[m]<=a) lo=m; else hi=m; } return arr[lo];\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int A=1000001; int *v=build_factor_counts(A); int n; long long *arr=build_400_numbers(v,A,&n); free(v); int q; scanf(\"%d\", &q); while(q--){ long long a; scanf(\"%lld\", &a); long long ans=answer_query(arr,n,a); printf(\"%lld\\n\", ans); } free(arr); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "build_factor_counts",
+          "signature": "int* build_factor_counts(int A)",
+          "code": "int *v=(int*)calloc((size_t)A, sizeof(int));\nfor(int p=2;p<A;p++) if(v[p]==0){ for(int j=p;j<A;j+=p) ++v[j]; }\nreturn v;\n"
+        },
+        {
+          "clause_id": "build_400_numbers",
+          "signature": "long long* build_400_numbers(const int *v, int A, int *out_n)",
+          "code": "long long *tmp=(long long*)malloc((size_t)A*sizeof(long long)); int k=0; for(int i=2;i<A;i++){ if(v[i]==2){ tmp[k++]=(long long)i*(long long)i; } } *out_n=k; return (long long*)realloc(tmp,(size_t)k*sizeof(long long));\n"
+        },
+        {
+          "clause_id": "answer_query",
+          "signature": "long long answer_query(const long long *arr, int n, long long a)",
+          "code": "int l=0,r=n-1; while(l<r){ int m=(l+r+1)/2; if(arr[m]<=a) l=m; else r=m-1; } return arr[l];\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int A=1000001; int *v=build_factor_counts(A); int n; long long *arr=build_400_numbers(v,A,&n); free(v); int q; scanf(\"%d\", &q); while(q--){ long long a; scanf(\"%lld\", &a); long long ans=answer_query(arr,n,a); printf(\"%lld\\n\", ans); } free(arr); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "build_factor_counts",
+          "signature": "int* build_factor_counts(int A)",
+          "code": "int *v=(int*)calloc((size_t)A, sizeof(int));\nfor(int p=2;p<A;p++) if(!v[p]){ for(int j=p;j<A;j+=p){ v[j]++; } }\nreturn v;\n"
+        },
+        {
+          "clause_id": "build_400_numbers",
+          "signature": "long long* build_400_numbers(const int *v, int A, int *out_n)",
+          "code": "int cnt=0; for(int i=2;i<A;i++) if(v[i]==2) cnt++; long long *arr=(long long*)malloc((size_t)cnt*sizeof(long long)); int k=0; for(long long i=2;i<A;i++){ if(v[i]==2){ arr[k++]=i*i; } } *out_n=k; return arr;\n"
+        },
+        {
+          "clause_id": "answer_query",
+          "signature": "long long answer_query(const long long *arr, int n, long long a)",
+          "code": "int l=0,r=n; for(;l+1<r;){ int m=(l+r)/2; if(arr[m]<=a) l=m; else r=m; } if(arr[r-1]<=a) return arr[r-1]; return arr[0];\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int A=1000001; int *v=build_factor_counts(A); int n; long long *arr=build_400_numbers(v,A,&n); free(v); int q; scanf(\"%d\", &q); while(q--){ long long a; scanf(\"%lld\", &a); long long ans=answer_query(arr,n,a); printf(\"%lld\\n\", ans); } free(arr); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "build_factor_counts",
+          "signature": "int* build_factor_counts(int A)",
+          "code": "int *v=(int*)calloc((size_t)A, sizeof(int));\nfor(int p=2;p<A;p++){ if(v[p]==0){ for(int j=p;j<A;j+=p){ v[j] = v[j] + 1; } } \n    /* noop */\n    if(0){;}\n}\nreturn v;\n"
+        },
+        {
+          "clause_id": "build_400_numbers",
+          "signature": "long long* build_400_numbers(const int *v, int A, int *out_n)",
+          "code": "int k=0; long long *arr=(long long*)malloc((size_t)A*sizeof(long long)); for(long long i=2;i<A;i++){ if(v[i]==2){ arr[k++]=i*i; } \n    /* noop */\n    if(0){;}\n} *out_n=k; return (long long*)realloc(arr,(size_t)k*sizeof(long long));\n"
+        },
+        {
+          "clause_id": "answer_query",
+          "signature": "long long answer_query(const long long *arr, int n, long long a)",
+          "code": "int l=0,r=n; while(l<r){ int m=l+(r-l)/2; if(arr[m]<=a) l=m+1; else r=m; \n    /* noop */\n    if(0){;}\n} return arr[l-1];\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int A=1000001; int *v=build_factor_counts(A); int n; long long *arr=build_400_numbers(v,A,&n); free(v); int q; scanf(\"%d\", &q); while(q--){ long long a; scanf(\"%lld\", &a); long long ans=answer_query(arr,n,a); printf(\"%lld\\n\", ans); } free(arr); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "contestId": 772,
+  "index": "E",
+  "problem_id": "772E",
+  "name": "Verifying Kingdom",
+  "rating": 3200,
+  "tags": [
+    "binary search",
+    "divide and conquer",
+    "interactive",
+    "trees"
+  ],
+  "points": 2250.0,
+  "solvedCount": 222,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Verifying Kingdom",
+  "legend": "This is an interactive problem.\n\nThe judge has a hidden rooted full binary tree with n leaves. A full binary tree is one where every node has either 0 or 2 children. The nodes with 0 children are called the leaves of the tree. Since this is a full binary tree, there are exactly 2n - 1 nodes in the tree. The leaves of the judge's tree has labels from 1 to n. You would like to reconstruct a tree that is isomorphic to the judge's tree. To do this, you can ask some questions.\n\nA question consists of printing the label of three distinct leaves a1, a2, a3. Let the depth of a node be the shortest distance from the node to the root of the tree. Let LCA(a, b) denote the node with maximum depth that is a common ancestor of the nodes a and b.\n\nConsider X = LCA(a1, a2), Y = LCA(a2, a3), Z = LCA(a3, a1). The judge will tell you which one of X, Y, Z has the maximum depth. Note, this pair is uniquely determined since the tree is a binary tree; there can't be any ties.\n\nMore specifically, if X (or Y, Z respectively) maximizes the depth, the judge will respond with the string \"X\" (or \"Y\", \"Z\" respectively).\n\nYou may only ask at most 10·n questions.",
+  "input_spec": "The first line of input will contain a single integer n (3 ≤ n ≤ 1 000) — the number of leaves in the tree.",
+  "output_spec": "To print the final answer, print out the string \"-1\" on its own line. Then, the next line should contain 2n - 1 integers. The i-th integer should be the parent of the i-th node, or -1, if it is the root.\n\nYour answer will be judged correct if your output is isomorphic to the judge's tree. In particular, the labels of the leaves do not need to be labeled from 1 to n. Here, isomorphic means that there exists a permutation π such that node i is the parent of node j in the judge tree if and only node π(i) is the parent of node π(j) in your tree.",
+  "note": "For the first sample, the judge has the hidden tree:\n\nHere is a more readable format of the interaction:\n\nThe last line can also be 8 6 9 8 9 7 -1 6 7.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\nX\nZ\nY\nY\nX\n",
+      "output": "1 4 2\n1 2 4\n2 4 1\n2 3 5\n2 4 3\n-1\n-1 1 1 2 2 3 3 6 6"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "contestId": 476,
+  "index": "D",
+  "problem_id": "476D",
+  "name": "Dreamoon and Sets",
+  "rating": 1900,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "math"
+  ],
+  "points": 2000.0,
+  "solvedCount": 5057,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Dreamoon and Sets",
+  "legend": "Dreamoon likes to play with sets, integers and .  is defined as the largest positive integer that divides both a and b.\n\nLet S be a set of exactly four distinct integers greater than 0. Define S to be of rank k if and only if for all pairs of distinct elements si, sj from S, .\n\nGiven k and n, Dreamoon wants to make up n sets of rank k using integers from 1 to m such that no integer is used in two different sets (of course you can leave some integers without use). Calculate the minimum m that makes it possible and print one possible solution.",
+  "input_spec": "The single line of the input contains two space separated integers n, k (1 ≤ n ≤ 10 000, 1 ≤ k ≤ 100).",
+  "output_spec": "On the first line print a single integer — the minimal possible m.\n\nOn each of the next n lines print four space separated integers representing the i-th set.\n\nNeither the order of the sets nor the order of integers within a set is important. If there are multiple possible solutions with minimal m, print any one of them.",
+  "note": "For the first example it's easy to see that set {1, 2, 3, 4} isn't a valid set of rank 1 since .",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "1 1\n",
+      "output": "5\n1 2 3 5"
+    },
+    {
+      "input": "2 2\n",
+      "output": "22\n2 4 6 22\n14 18 10 16"
+    }
+  ]
+}

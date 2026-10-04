@@ -1,0 +1,70 @@
+{
+  "problem_id": "049_modp",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, p;\n    scanf(\"%d %d\", &n, &p);\n    int result = 1;\n    for (int i = 0; i < n; i++) {\n        result = (result * 2) % p;\n    }\n    printf(\"%d\\n\", result);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, p;\n    scanf(\"%d %d\", &n, &p);\n    int ans = 1;\n    for (int i = 0; i < n; i++) {\n        ans = (ans << 1) % p;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int exp, mod;\n    scanf(\"%d %d\", &exp, &mod);\n    int value = 1;\n    for (int k = 0; k < exp; k++) {\n        value = (value * 2) % mod;\n    }\n    printf(\"%d\\n\", value);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, p;\n    scanf(\"%d %d\", &n, &p);\n    int pow2 = 1;\n    for (int j = 0; j < n; j++) {\n        pow2 = (pow2 * 2) % p;\n    }\n    printf(\"%d\\n\", pow2);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int exponent, modulus;\n    scanf(\"%d %d\", &exponent, &modulus);\n    int res = 1;\n    for (int m = 0; m < exponent; m++) {\n        res = (res + res) % modulus;\n    }\n    printf(\"%d\\n\", res);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "can_remove",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve",
+      "confidence": 1.0
+    }
+  ]
+}

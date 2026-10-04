@@ -1,0 +1,50 @@
+import sys
+
+
+# --- clause: read_input :: () -> list[list[int]] ---
+def read_input():
+    data = list(map(int, sys.stdin.buffer.read().split()))
+    t = data[0]
+    pos = 1
+    cases = []
+    for _ in range(t):
+        n = data[pos]
+        pos += 1
+        cases.append(data[pos:pos + n])
+        pos += n
+    return cases
+
+
+# --- clause: min_height :: (order: list[int]) -> int ---
+def min_height(order):
+    n = len(order)
+    height = 0
+    parents = 1
+    index = 1
+    if n == 1:
+        return 0
+    while index < n:
+        next_parents = 0
+        used = 0
+        while used < parents and index < n:
+            index += 1
+            next_parents += 1
+            while index < n and order[index] > order[index - 1]:
+                index += 1
+                next_parents += 1
+            used += 1
+        parents = next_parents
+        height += 1
+    return height
+
+
+# --- clause: main :: () -> None ---
+def main():
+    out = []
+    for order in read_input():
+        out.append(str(min_height(order)))
+    sys.stdout.write("\n".join(out) + "\n")
+
+
+if __name__ == "__main__":
+    main()

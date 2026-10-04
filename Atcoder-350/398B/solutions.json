@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_cards",
+          "signature": "void read_cards(int *a)",
+          "code": "for(int i=0;i<7;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "is_fullhouse",
+          "signature": "int is_fullhouse(const int *a)",
+          "code": "int vals[7]; int cnt[7]; int m=0;\nfor(int i=0;i<7;i++){\n  int x=a[i]; int j=0; for(;j<m;j++) if(vals[j]==x) break;\n  if(j==m){ vals[m]=x; cnt[m]=0; m++; }\n  cnt[j]++;\n}\nfor(int i=0;i<m;i++) for(int j=0;j<m;j++) if(i!=j){\n  if(cnt[i]>=3 && cnt[j]>=2) return 1;\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a[7]; read_cards(a); int ok=is_fullhouse(a); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_cards",
+          "signature": "void read_cards(int *a)",
+          "code": "for(int i=0;i<7;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "is_fullhouse",
+          "signature": "int is_fullhouse(const int *a)",
+          "code": "int vals[7]; int cnt[7]; int m=0;\nfor(int i=0;i<7;i++){\n  int x=a[i]; int j=0; for(;j<m;j++) if(vals[j]==x) break;\n  if(j==m){ vals[m]=x; cnt[m]=0; m++; }\n  cnt[j]++;\n}\nfor(int i=0;i<m;i++) for(int j=0;j<m;j++) if(i!=j){\n  if(cnt[i]>=3 && cnt[j]>=2) return 1;\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a[7]; read_cards(a); int ok=is_fullhouse(a); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_cards",
+          "signature": "void read_cards(int *a)",
+          "code": "for(int i=0;i<7;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "is_fullhouse",
+          "signature": "int is_fullhouse(const int *a)",
+          "code": "int vals[7]; int cnt[7]; int m=0;\nfor(int i=0;i<7;i++){\n  int x=a[i]; int j=0; for(;j<m;j++) if(vals[j]==x) break;\n  if(j==m){ vals[m]=x; cnt[m]=0; m++; }\n  cnt[j]++;\n}\nfor(int i=0;i<m;i++) for(int j=0;j<m;j++) if(i!=j){\n  if(cnt[i]>=3 && cnt[j]>=2) return 1;\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a[7]; read_cards(a); int ok=is_fullhouse(a); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_cards",
+          "signature": "void read_cards(int *a)",
+          "code": "for(int i=0;i<7;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "is_fullhouse",
+          "signature": "int is_fullhouse(const int *a)",
+          "code": "int vals[7]; int cnt[7]; int m=0;\nfor(int i=0;i<7;i++){\n  int x=a[i]; int j=0; for(;j<m;j++) if(vals[j]==x) break;\n  if(j==m){ vals[m]=x; cnt[m]=0; m++; }\n  cnt[j]++;\n}\nfor(int i=0;i<m;i++) for(int j=0;j<m;j++) if(i!=j){\n  if(cnt[i]>=3 && cnt[j]>=2) return 1;\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a[7]; read_cards(a); int ok=is_fullhouse(a); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_cards",
+          "signature": "void read_cards(int *a)",
+          "code": "for(int i=0;i<7;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "is_fullhouse",
+          "signature": "int is_fullhouse(const int *a)",
+          "code": "int vals[7]; int cnt[7]; int m=0;\nfor(int i=0;i<7;i++){\n  int x=a[i]; int j=0; for(;j<m;j++) if(vals[j]==x) break;\n  if(j==m){ vals[m]=x; cnt[m]=0; m++; }\n  cnt[j]++;\n}\nfor(int i=0;i<m;i++) for(int j=0;j<m;j++) if(i!=j){\n  if(cnt[i]>=3 && cnt[j]>=2) return 1;\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a[7]; read_cards(a); int ok=is_fullhouse(a); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

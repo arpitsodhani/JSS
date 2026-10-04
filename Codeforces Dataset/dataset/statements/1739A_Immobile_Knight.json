@@ -1,0 +1,26 @@
+{
+  "contestId": 1739,
+  "index": "A",
+  "problem_id": "1739A",
+  "name": "Immobile Knight",
+  "rating": 800,
+  "tags": [
+    "implementation"
+  ],
+  "points": null,
+  "solvedCount": 23852,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Immobile Knight",
+  "legend": "There is a chess board of size n×m. The rows are numbered from 1 to n, the columns are numbered from 1 to m.\n\nLet's call a cell isolated if a knight placed in that cell can't move to any other cell on the board. Recall that a chess knight moves two cells in one direction and one cell in a perpendicular direction:\n\nFind any isolated cell on the board. If there are no such cells, print any cell on the board.",
+  "input_spec": "The first line contains a single integer t (1≤t≤64) — the number of testcases.\n\nThe only line of each testcase contains two integers n and m (1≤n,m≤8) — the number of rows and columns of the board.",
+  "output_spec": "For each testcase, print two integers — the row and the column of any isolated cell on the board. If there are no such cells, print any cell on the board.",
+  "note": "In the first testcase, all cells are isolated. A knight can't move from any cell of the board to any other one. Thus, any cell on board is a correct answer.\n\nIn the second testcase, there are no isolated cells. On a normal chess board, a knight has at least two moves from any cell. Thus, again, any cell is a correct answer.\n\nIn the third testcase, only the middle cell of the board is isolated. The knight can move freely around the border of the board, but can't escape the middle.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n1 7\n8 8\n3 3\n",
+      "output": "1 7\n7 2\n2 2"
+    }
+  ]
+}

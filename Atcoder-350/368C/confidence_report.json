@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "check_item_fits_capacity",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_knapsack_greedy",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "select_maximum_value_item",
+      "confidence": 1.0
+    }
+  ]
+}

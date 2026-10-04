@@ -1,0 +1,30 @@
+{
+  "contestId": 1089,
+  "index": "F",
+  "problem_id": "1089F",
+  "name": "Fractions",
+  "rating": 1900,
+  "tags": [
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 2164,
+  "source": "verbatim_cf_fetch",
+  "title": "F. Fractions",
+  "legend": "You are given a positive integer n.\n\nFind a sequence of fractions \nai\n\n\nbi\n, i=1…k (where ai and bi are positive integers) for some k such that:\n\n{bi divides n, 1<bi<n for i=1…k\n1≤ai<bi for i=1…k\n\nk\n∑\n\ni=1\nai\n\n\nbi\n=1−\n1\n\n\nn",
+  "input_spec": "The input consists of a single integer n (2≤n≤109).",
+  "output_spec": "In the first line print \"YES\" if there exists such a sequence of fractions or \"NO\" otherwise.\n\nIf there exists such a sequence, next lines should contain a description of the sequence in the following format.\n\nThe second line should contain integer k (1≤k≤100000) — the number of elements in the sequence. It is guaranteed that if such a sequence exists, then there exists a sequence of length at most 100000.\n\nNext k lines should contain fractions of the sequence with two integers ai and bi on each line.",
+  "note": "In the second example there is a sequence \n1\n\n\n2\n,\n1\n\n\n3\n such that \n1\n\n\n2\n+\n1\n\n\n3\n=1−\n1\n\n\n6\n.",
+  "time_limit": "1.5 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "2\n",
+      "output": "NO"
+    },
+    {
+      "input": "6\n",
+      "output": "YES\n2\n1 2\n1 3"
+    }
+  ]
+}

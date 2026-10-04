@@ -1,0 +1,6 @@
+There are N servers numbered from 1 to N and M cables numbered from 1 to M . Cable i connects servers A_i and B_i bidirectionally. By performing the following operation some number of times (possibly zero), make all servers connected via cables. Operation: Choose one cable and reconnect one of its ends to a different server. Find the minimum number of operations required and output an operation sequence achieving this minimum.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i, B_i <= 10^9
+- All input values are integers

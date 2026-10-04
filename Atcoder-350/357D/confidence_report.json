@@ -1,0 +1,25 @@
+{
+  "average_confidence": 0.9046783451842275,
+  "clauses": [
+    {
+      "clause": "calculate_concatenation_value",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_power_mod",
+      "confidence": 0.7654645281189397
+    },
+    {
+      "clause": "count_digits",
+      "confidence": 0.8676707875457875
+    },
+    {
+      "clause": "main",
+      "confidence": 0.8902564102564103
+    },
+    {
+      "clause": "read_number",
+      "confidence": 1.0
+    }
+  ]
+}

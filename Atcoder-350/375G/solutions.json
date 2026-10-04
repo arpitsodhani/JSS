@@ -1,0 +1,240 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_cartesian_tree",
+          "signature": "int build_cartesian_tree(int *arr, int n)",
+          "implementations": [
+            {
+              "code": "int build_cartesian_tree(int *arr, int n) {\n    int stack[MAX_N], top = -1;\n    for (int i = 0; i < n; i++) {\n        cartesian_left[i] = cartesian_right[i] = -1;\n        int last_popped = -1;\n        while (top >= 0 && arr[stack[top]] > arr[i]) {\n            last_popped = stack[top--];\n        }\n        if (last_popped != -1)\n            cartesian_left[i] = last_popped;\n        if (top >= 0)\n            cartesian_right[stack[top]] = i;\n        stack[++top] = i;\n    }\n    return stack[0];\n}"
+            },
+            {
+              "code": "int build_cartesian_tree(int *arr, int n) {\n    int stack[MAX_N], top = -1;\n    for (int i = 0; i < n; i++) {\n        cartesian_left[i] = cartesian_right[i] = -1;\n        int last_popped = -1;\n        while (top >= 0 && arr[stack[top]] > arr[i]) {\n            last_popped = stack[top--];\n        }\n        if (last_popped != -1)\n            cartesian_left[i] = last_popped;\n        if (top >= 0)\n            cartesian_right[stack[top]] = i;\n        stack[++top] = i;\n    }\n    return stack[0];\n}"
+            },
+            {
+              "code": "int build_cartesian_tree(int *arr, int n) {\n    int stack[MAX_N], top = -1;\n    for (int i = 0; i < n; i++) {\n        cartesian_left[i] = cartesian_right[i] = -1;\n        int last_popped = -1;\n        while (top >= 0 && arr[stack[top]] > arr[i]) {\n            last_popped = stack[top--];\n        }\n        if (last_popped != -1)\n            cartesian_left[i] = last_popped;\n        if (top >= 0)\n            cartesian_right[stack[top]] = i;\n        stack[++top] = i;\n    }\n    return stack[0];\n}"
+            },
+            {
+              "code": "int build_cartesian_tree(int *arr, int n) {\n    int stack[MAX_N], top = -1;\n    for (int i = 0; i < n; i++) {\n        cartesian_left[i] = cartesian_right[i] = -1;\n        int last_popped = -1;\n        while (top >= 0 && arr[stack[top]] > arr[i]) {\n            last_popped = stack[top--];\n        }\n        if (last_popped != -1)\n            cartesian_left[i] = last_popped;\n        if (top >= 0)\n            cartesian_right[stack[top]] = i;\n        stack[++top] = i;\n    }\n    return stack[0];\n}"
+            },
+            {
+              "code": "int build_cartesian_tree(int *arr, int n) {\n    int stack[MAX_N], top = -1;\n    for (int i = 0; i < n; i++) {\n        cartesian_left[i] = cartesian_right[i] = -1;\n        int last_popped = -1;\n        while (top >= 0 && arr[stack[top]] > arr[i]) {\n            last_popped = stack[top--];\n        }\n        if (last_popped != -1)\n            cartesian_left[i] = last_popped;\n        if (top >= 0)\n            cartesian_right[stack[top]] = i;\n        stack[++top] = i;\n    }\n    return stack[0];\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "compute_cartesian_depth",
+          "signature": "void compute_cartesian_depth(int node, int depth)",
+          "implementations": [
+            {
+              "code": "void compute_cartesian_depth(int node, int depth) {\n    if (node == -1) return;\n    cartesian_depth[node] = depth;\n    compute_cartesian_depth(cartesian_left[node], depth + 1);\n    compute_cartesian_depth(cartesian_right[node], depth + 1);\n}"
+            },
+            {
+              "code": "void compute_cartesian_depth(int node, int depth) {\n    if (node == -1) return;\n    cartesian_depth[node] = depth;\n    compute_cartesian_depth(cartesian_left[node], depth + 1);\n    compute_cartesian_depth(cartesian_right[node], depth + 1);\n}"
+            },
+            {
+              "code": "void compute_cartesian_depth(int node, int depth) {\n    if (node == -1) return;\n    cartesian_depth[node] = depth;\n    compute_cartesian_depth(cartesian_left[node], depth + 1);\n    compute_cartesian_depth(cartesian_right[node], depth + 1);\n}"
+            },
+            {
+              "code": "void compute_cartesian_depth(int node, int depth) {\n    if (node == -1) return;\n    cartesian_depth[node] = depth;\n    compute_cartesian_depth(cartesian_left[node], depth + 1);\n    compute_cartesian_depth(cartesian_right[node], depth + 1);\n}"
+            },
+            {
+              "code": "void compute_cartesian_depth(int node, int depth) {\n    if (node == -1) return;\n    cartesian_depth[node] = depth;\n    compute_cartesian_depth(cartesian_left[node], depth + 1);\n    compute_cartesian_depth(cartesian_right[node], depth + 1);\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "find_range_min_cartesian",
+          "signature": "int find_range_min_cartesian(int left, int right)",
+          "implementations": [
+            {
+              "code": "int find_range_min_cartesian(int left, int right) {\n    int min_pos = left;\n    for (int i = left; i <= right; i++) {\n        if (array[i] < array[min_pos])\n            min_pos = i;\n    }\n    return min_pos;\n}"
+            },
+            {
+              "code": "int find_range_min_cartesian(int left, int right) {\n    int min_pos = left;\n    for (int i = left; i <= right; i++) {\n        if (array[i] < array[min_pos])\n            min_pos = i;\n    }\n    return min_pos;\n}"
+            },
+            {
+              "code": "int find_range_min_cartesian(int left, int right) {\n    int min_pos = left;\n    for (int i = left; i <= right; i++) {\n        if (array[i] < array[min_pos])\n            min_pos = i;\n    }\n    return min_pos;\n}"
+            },
+            {
+              "code": "int find_range_min_cartesian(int left, int right) {\n    int min_pos = left;\n    for (int i = left; i <= right; i++) {\n        if (array[i] < array[min_pos])\n            min_pos = i;\n    }\n    return min_pos;\n}"
+            },
+            {
+              "code": "int find_range_min_cartesian(int left, int right) {\n    int min_pos = left;\n    for (int i = left; i <= right; i++) {\n        if (array[i] < array[min_pos])\n            min_pos = i;\n    }\n    return min_pos;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "verify_cartesian_property",
+          "signature": "int verify_cartesian_property(int node, int *arr)",
+          "implementations": [
+            {
+              "code": "int verify_cartesian_property(int node, int *arr) {\n    if (node == -1) return 1;\n    \n    if (cartesian_left[node] != -1 && arr[cartesian_left[node]] < arr[node])\n        return 0;\n    if (cartesian_right[node] != -1 && arr[cartesian_right[node]] < arr[node])\n        return 0;\n    \n    return verify_cartesian_property(cartesian_left[node], arr) && \n           verify_cartesian_property(cartesian_right[node], arr);\n}"
+            },
+            {
+              "code": "int verify_cartesian_property(int node, int *arr) {\n    if (node == -1) return 1;\n    \n    if (cartesian_left[node] != -1 && arr[cartesian_left[node]] < arr[node])\n        return 0;\n    if (cartesian_right[node] != -1 && arr[cartesian_right[node]] < arr[node])\n        return 0;\n    \n    return verify_cartesian_property(cartesian_left[node], arr) && \n           verify_cartesian_property(cartesian_right[node], arr);\n}"
+            },
+            {
+              "code": "int verify_cartesian_property(int node, int *arr) {\n    if (node == -1) return 1;\n    \n    if (cartesian_left[node] != -1 && arr[cartesian_left[node]] < arr[node])\n        return 0;\n    if (cartesian_right[node] != -1 && arr[cartesian_right[node]] < arr[node])\n        return 0;\n    \n    return verify_cartesian_property(cartesian_left[node], arr) && \n           verify_cartesian_property(cartesian_right[node], arr);\n}"
+            },
+            {
+              "code": "int verify_cartesian_property(int node, int *arr) {\n    if (node == -1) return 1;\n    \n    if (cartesian_left[node] != -1 && arr[cartesian_left[node]] < arr[node])\n        return 0;\n    if (cartesian_right[node] != -1 && arr[cartesian_right[node]] < arr[node])\n        return 0;\n    \n    return verify_cartesian_property(cartesian_left[node], arr) && \n           verify_cartesian_property(cartesian_right[node], arr);\n}"
+            },
+            {
+              "code": "int verify_cartesian_property(int node, int *arr) {\n    if (node == -1) return 1;\n    \n    if (cartesian_left[node] != -1 && arr[cartesian_left[node]] < arr[node])\n        return 0;\n    if (cartesian_right[node] != -1 && arr[cartesian_right[node]] < arr[node])\n        return 0;\n    \n    return verify_cartesian_property(cartesian_left[node], arr) && \n           verify_cartesian_property(cartesian_right[node], arr);\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    int root = build_cartesian_tree(array, n);\n    compute_cartesian_depth(root, 0);\n    for (int i = 0; i < q; i++) {\n        int left, right;\n        scanf(\"%d %d\", &left, &right);\n        printf(\"%d\\n\", array[find_range_min_cartesian(left, right)]);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    int root = build_cartesian_tree(array, n);\n    compute_cartesian_depth(root, 0);\n    for (int i = 0; i < q; i++) {\n        int left, right;\n        scanf(\"%d %d\", &left, &right);\n        printf(\"%d\\n\", array[find_range_min_cartesian(left, right)]);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    int root = build_cartesian_tree(array, n);\n    compute_cartesian_depth(root, 0);\n    for (int i = 0; i < q; i++) {\n        int left, right;\n        scanf(\"%d %d\", &left, &right);\n        printf(\"%d\\n\", array[find_range_min_cartesian(left, right)]);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    int root = build_cartesian_tree(array, n);\n    compute_cartesian_depth(root, 0);\n    for (int i = 0; i < q; i++) {\n        int left, right;\n        scanf(\"%d %d\", &left, &right);\n        printf(\"%d\\n\", array[find_range_min_cartesian(left, right)]);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    int root = build_cartesian_tree(array, n);\n    compute_cartesian_depth(root, 0);\n    for (int i = 0; i < q; i++) {\n        int left, right;\n        scanf(\"%d %d\", &left, &right);\n        printf(\"%d\\n\", array[find_range_min_cartesian(left, right)]);\n    }\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_cartesian_tree",
+          "signature": "int build_cartesian_tree(int *arr, int n)",
+          "code": "int build_cartesian_tree(int *arr, int n) {\n    int stack[MAX_N], top = -1;\n    for (int i = 0; i < n; i++) {\n        cartesian_left[i] = cartesian_right[i] = -1;\n        int last_popped = -1;\n        while (top >= 0 && arr[stack[top]] > arr[i]) {\n            last_popped = stack[top--];\n        }\n        if (last_popped != -1)\n            cartesian_left[i] = last_popped;\n        if (top >= 0)\n            cartesian_right[stack[top]] = i;\n        stack[++top] = i;\n    }\n    return stack[0];\n}"
+        },
+        {
+          "clause_id": "compute_cartesian_depth",
+          "signature": "void compute_cartesian_depth(int node, int depth)",
+          "code": "void compute_cartesian_depth(int node, int depth) {\n    if (node == -1) return;\n    cartesian_depth[node] = depth;\n    compute_cartesian_depth(cartesian_left[node], depth + 1);\n    compute_cartesian_depth(cartesian_right[node], depth + 1);\n}"
+        },
+        {
+          "clause_id": "find_range_min_cartesian",
+          "signature": "int find_range_min_cartesian(int left, int right)",
+          "code": "int find_range_min_cartesian(int left, int right) {\n    int min_pos = left;\n    for (int i = left; i <= right; i++) {\n        if (array[i] < array[min_pos])\n            min_pos = i;\n    }\n    return min_pos;\n}"
+        },
+        {
+          "clause_id": "verify_cartesian_property",
+          "signature": "int verify_cartesian_property(int node, int *arr)",
+          "code": "int verify_cartesian_property(int node, int *arr) {\n    if (node == -1) return 1;\n    \n    if (cartesian_left[node] != -1 && arr[cartesian_left[node]] < arr[node])\n        return 0;\n    if (cartesian_right[node] != -1 && arr[cartesian_right[node]] < arr[node])\n        return 0;\n    \n    return verify_cartesian_property(cartesian_left[node], arr) && \n           verify_cartesian_property(cartesian_right[node], arr);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    int root = build_cartesian_tree(array, n);\n    compute_cartesian_depth(root, 0);\n    for (int i = 0; i < q; i++) {\n        int left, right;\n        scanf(\"%d %d\", &left, &right);\n        printf(\"%d\\n\", array[find_range_min_cartesian(left, right)]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_cartesian_tree",
+          "signature": "int build_cartesian_tree(int *arr, int n)",
+          "code": "int build_cartesian_tree(int *arr, int n) {\n    int stack[MAX_N], top = -1;\n    for (int i = 0; i < n; i++) {\n        cartesian_left[i] = cartesian_right[i] = -1;\n        int last_popped = -1;\n        while (top >= 0 && arr[stack[top]] > arr[i]) {\n            last_popped = stack[top--];\n        }\n        if (last_popped != -1)\n            cartesian_left[i] = last_popped;\n        if (top >= 0)\n            cartesian_right[stack[top]] = i;\n        stack[++top] = i;\n    }\n    return stack[0];\n}"
+        },
+        {
+          "clause_id": "compute_cartesian_depth",
+          "signature": "void compute_cartesian_depth(int node, int depth)",
+          "code": "void compute_cartesian_depth(int node, int depth) {\n    if (node == -1) return;\n    cartesian_depth[node] = depth;\n    compute_cartesian_depth(cartesian_left[node], depth + 1);\n    compute_cartesian_depth(cartesian_right[node], depth + 1);\n}"
+        },
+        {
+          "clause_id": "find_range_min_cartesian",
+          "signature": "int find_range_min_cartesian(int left, int right)",
+          "code": "int find_range_min_cartesian(int left, int right) {\n    int min_pos = left;\n    for (int i = left; i <= right; i++) {\n        if (array[i] < array[min_pos])\n            min_pos = i;\n    }\n    return min_pos;\n}"
+        },
+        {
+          "clause_id": "verify_cartesian_property",
+          "signature": "int verify_cartesian_property(int node, int *arr)",
+          "code": "int verify_cartesian_property(int node, int *arr) {\n    if (node == -1) return 1;\n    \n    if (cartesian_left[node] != -1 && arr[cartesian_left[node]] < arr[node])\n        return 0;\n    if (cartesian_right[node] != -1 && arr[cartesian_right[node]] < arr[node])\n        return 0;\n    \n    return verify_cartesian_property(cartesian_left[node], arr) && \n           verify_cartesian_property(cartesian_right[node], arr);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    int root = build_cartesian_tree(array, n);\n    compute_cartesian_depth(root, 0);\n    for (int i = 0; i < q; i++) {\n        int left, right;\n        scanf(\"%d %d\", &left, &right);\n        printf(\"%d\\n\", array[find_range_min_cartesian(left, right)]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_cartesian_tree",
+          "signature": "int build_cartesian_tree(int *arr, int n)",
+          "code": "int build_cartesian_tree(int *arr, int n) {\n    int stack[MAX_N], top = -1;\n    for (int i = 0; i < n; i++) {\n        cartesian_left[i] = cartesian_right[i] = -1;\n        int last_popped = -1;\n        while (top >= 0 && arr[stack[top]] > arr[i]) {\n            last_popped = stack[top--];\n        }\n        if (last_popped != -1)\n            cartesian_left[i] = last_popped;\n        if (top >= 0)\n            cartesian_right[stack[top]] = i;\n        stack[++top] = i;\n    }\n    return stack[0];\n}"
+        },
+        {
+          "clause_id": "compute_cartesian_depth",
+          "signature": "void compute_cartesian_depth(int node, int depth)",
+          "code": "void compute_cartesian_depth(int node, int depth) {\n    if (node == -1) return;\n    cartesian_depth[node] = depth;\n    compute_cartesian_depth(cartesian_left[node], depth + 1);\n    compute_cartesian_depth(cartesian_right[node], depth + 1);\n}"
+        },
+        {
+          "clause_id": "find_range_min_cartesian",
+          "signature": "int find_range_min_cartesian(int left, int right)",
+          "code": "int find_range_min_cartesian(int left, int right) {\n    int min_pos = left;\n    for (int i = left; i <= right; i++) {\n        if (array[i] < array[min_pos])\n            min_pos = i;\n    }\n    return min_pos;\n}"
+        },
+        {
+          "clause_id": "verify_cartesian_property",
+          "signature": "int verify_cartesian_property(int node, int *arr)",
+          "code": "int verify_cartesian_property(int node, int *arr) {\n    if (node == -1) return 1;\n    \n    if (cartesian_left[node] != -1 && arr[cartesian_left[node]] < arr[node])\n        return 0;\n    if (cartesian_right[node] != -1 && arr[cartesian_right[node]] < arr[node])\n        return 0;\n    \n    return verify_cartesian_property(cartesian_left[node], arr) && \n           verify_cartesian_property(cartesian_right[node], arr);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    int root = build_cartesian_tree(array, n);\n    compute_cartesian_depth(root, 0);\n    for (int i = 0; i < q; i++) {\n        int left, right;\n        scanf(\"%d %d\", &left, &right);\n        printf(\"%d\\n\", array[find_range_min_cartesian(left, right)]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_cartesian_tree",
+          "signature": "int build_cartesian_tree(int *arr, int n)",
+          "code": "int build_cartesian_tree(int *arr, int n) {\n    int stack[MAX_N], top = -1;\n    for (int i = 0; i < n; i++) {\n        cartesian_left[i] = cartesian_right[i] = -1;\n        int last_popped = -1;\n        while (top >= 0 && arr[stack[top]] > arr[i]) {\n            last_popped = stack[top--];\n        }\n        if (last_popped != -1)\n            cartesian_left[i] = last_popped;\n        if (top >= 0)\n            cartesian_right[stack[top]] = i;\n        stack[++top] = i;\n    }\n    return stack[0];\n}"
+        },
+        {
+          "clause_id": "compute_cartesian_depth",
+          "signature": "void compute_cartesian_depth(int node, int depth)",
+          "code": "void compute_cartesian_depth(int node, int depth) {\n    if (node == -1) return;\n    cartesian_depth[node] = depth;\n    compute_cartesian_depth(cartesian_left[node], depth + 1);\n    compute_cartesian_depth(cartesian_right[node], depth + 1);\n}"
+        },
+        {
+          "clause_id": "find_range_min_cartesian",
+          "signature": "int find_range_min_cartesian(int left, int right)",
+          "code": "int find_range_min_cartesian(int left, int right) {\n    int min_pos = left;\n    for (int i = left; i <= right; i++) {\n        if (array[i] < array[min_pos])\n            min_pos = i;\n    }\n    return min_pos;\n}"
+        },
+        {
+          "clause_id": "verify_cartesian_property",
+          "signature": "int verify_cartesian_property(int node, int *arr)",
+          "code": "int verify_cartesian_property(int node, int *arr) {\n    if (node == -1) return 1;\n    \n    if (cartesian_left[node] != -1 && arr[cartesian_left[node]] < arr[node])\n        return 0;\n    if (cartesian_right[node] != -1 && arr[cartesian_right[node]] < arr[node])\n        return 0;\n    \n    return verify_cartesian_property(cartesian_left[node], arr) && \n           verify_cartesian_property(cartesian_right[node], arr);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    int root = build_cartesian_tree(array, n);\n    compute_cartesian_depth(root, 0);\n    for (int i = 0; i < q; i++) {\n        int left, right;\n        scanf(\"%d %d\", &left, &right);\n        printf(\"%d\\n\", array[find_range_min_cartesian(left, right)]);\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

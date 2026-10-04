@@ -1,0 +1,5 @@
+You are given a three-digit integer N where each digit is an integer between 1 and 9 , inclusive. Let a , b , c be the hundreds, tens, ones digits of N , respectively. Print an integer formed by arranging b , c , a in this order, and an integer formed by arranging c , a , b in this order.
+
+**Constraints:**
+- 100 <= N <= 999
+- N is an integer

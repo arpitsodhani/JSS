@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_gcd_iterative",
+      "confidence": 1.0
+    },
+    {
+      "clause": "factorize_number_recursively",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_factor_pollard_rho",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "pollard_rho_step",
+      "confidence": 1.0
+    }
+  ]
+}

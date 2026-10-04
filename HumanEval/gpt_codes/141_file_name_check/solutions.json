@@ -1,0 +1,136 @@
+{
+  "problem_num": 141,
+  "problem_name": "file_name_check",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "function",
+          "code": "const char* file_name_check(const char* file_name) {\n    int len = strlen(file_name);\n    int dot_count = 0;\n    int dot_pos = -1;\n    int digit_count = 0;\n    \n    for (int i = 0; i < len; i++) {\n        if (file_name[i] == '.') {\n            dot_count++;\n            dot_pos = i;\n        }\n        if (isdigit(file_name[i])) {\n            digit_count++;\n        }\n    }\n    \n    if (dot_count != 1) return \"No\";\n    if (digit_count > 3) return \"No\";\n    if (dot_pos == 0) return \"No\";\n    if (!isalpha(file_name[0])) return \"No\";\n    \n    const char* extension = file_name + dot_pos + 1;\n    if (strcmp(extension, \"txt\") == 0 || \n        strcmp(extension, \"exe\") == 0 || \n        strcmp(extension, \"dll\") == 0) {\n        return \"Yes\";\n    }\n    \n    return \"No\";\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    \n    for (int i = 0; i < n; i++) {\n        char file_name[256];\n        fgets(file_name, sizeof(file_name), stdin);\n        file_name[strcspn(file_name, \"\\n\")] = 0;\n        \n        printf(\"%s\\n\", file_name_check(file_name));\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "function",
+          "code": "const char* file_name_check(const char* file_name) {\n    int len = strlen(file_name);\n    int dot_count = 0;\n    int dot_pos = -1;\n    int digit_count = 0;\n    \n    for (int i = 0; i < len; i++) {\n        if (file_name[i] == '.') {\n            dot_count++;\n            dot_pos = i;\n        }\n        if (isdigit(file_name[i])) {\n            digit_count++;\n        }\n    }\n    \n    if (dot_count != 1) return \"No\";\n    if (digit_count > 3) return \"No\";\n    if (dot_pos == 0) return \"No\";\n    if (!isalpha(file_name[0])) return \"No\";\n    \n    const char* extension = file_name + dot_pos + 1;\n    if (strcmp(extension, \"txt\") == 0 || \n        strcmp(extension, \"exe\") == 0 || \n        strcmp(extension, \"dll\") == 0) {\n        return \"Yes\";\n    }\n    \n    return \"No\";\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    \n    for (int i = 0; i < n; i++) {\n        char file_name[256];\n        fgets(file_name, sizeof(file_name), stdin);\n        file_name[strcspn(file_name, \"\\n\")] = 0;\n        \n        printf(\"%s\\n\", file_name_check(file_name));\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "function",
+          "code": "const char* file_name_check(const char* file_name) {\n    int len = strlen(file_name);\n    int dot_count = 0;\n    int dot_pos = -1;\n    int digit_count = 0;\n    \n    for (int i = 0; i < len; i++) {\n        if (file_name[i] == '.') {\n            dot_count++;\n            dot_pos = i;\n        }\n        if (isdigit(file_name[i])) {\n            digit_count++;\n        }\n    }\n    \n    if (dot_count != 1) return \"No\";\n    if (digit_count > 3) return \"No\";\n    if (dot_pos == 0) return \"No\";\n    if (!isalpha(file_name[0])) return \"No\";\n    \n    const char* extension = file_name + dot_pos + 1;\n    if (strcmp(extension, \"txt\") == 0 || \n        strcmp(extension, \"exe\") == 0 || \n        strcmp(extension, \"dll\") == 0) {\n        return \"Yes\";\n    }\n    \n    return \"No\";\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    \n    for (int i = 0; i < n; i++) {\n        char file_name[256];\n        fgets(file_name, sizeof(file_name), stdin);\n        file_name[strcspn(file_name, \"\\n\")] = 0;\n        \n        printf(\"%s\\n\", file_name_check(file_name));\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "function",
+          "code": "const char* file_name_check(const char* file_name) {\n    int len = strlen(file_name);\n    int dot_count = 0;\n    int dot_pos = -1;\n    int digit_count = 0;\n    \n    for (int i = 0; i < len; i++) {\n        if (file_name[i] == '.') {\n            dot_count++;\n            dot_pos = i;\n        }\n        if (isdigit(file_name[i])) {\n            digit_count++;\n        }\n    }\n    \n    if (dot_count != 1) return \"No\";\n    if (digit_count > 3) return \"No\";\n    if (dot_pos == 0) return \"No\";\n    if (!isalpha(file_name[0])) return \"No\";\n    \n    const char* extension = file_name + dot_pos + 1;\n    if (strcmp(extension, \"txt\") == 0 || \n        strcmp(extension, \"exe\") == 0 || \n        strcmp(extension, \"dll\") == 0) {\n        return \"Yes\";\n    }\n    \n    return \"No\";\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    \n    for (int i = 0; i < n; i++) {\n        char file_name[256];\n        fgets(file_name, sizeof(file_name), stdin);\n        file_name[strcspn(file_name, \"\\n\")] = 0;\n        \n        printf(\"%s\\n\", file_name_check(file_name));\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "function",
+          "code": "const char* file_name_check(const char* file_name) {\n    int len = strlen(file_name);\n    int dot_count = 0;\n    int dot_pos = -1;\n    int digit_count = 0;\n    \n    for (int i = 0; i < len; i++) {\n        if (file_name[i] == '.') {\n            dot_count++;\n            dot_pos = i;\n        }\n        if (isdigit(file_name[i])) {\n            digit_count++;\n        }\n    }\n    \n    if (dot_count != 1) return \"No\";\n    if (digit_count > 3) return \"No\";\n    if (dot_pos == 0) return \"No\";\n    if (!isalpha(file_name[0])) return \"No\";\n    \n    const char* extension = file_name + dot_pos + 1;\n    if (strcmp(extension, \"txt\") == 0 || \n        strcmp(extension, \"exe\") == 0 || \n        strcmp(extension, \"dll\") == 0) {\n        return \"Yes\";\n    }\n    \n    return \"No\";\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    \n    for (int i = 0; i < n; i++) {\n        char file_name[256];\n        fgets(file_name, sizeof(file_name), stdin);\n        file_name[strcspn(file_name, \"\\n\")] = 0;\n        \n        printf(\"%s\\n\", file_name_check(file_name));\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

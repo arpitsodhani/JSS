@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S,char *c1,char *c2)",
+          "code": "void read_input(char *S,char *c1,char *c2){\n    scanf(\"%s\", S);\n    scanf(\" %c %c\", c1, c2);\n}\n"
+        },
+        {
+          "clause_id": "replace_chars",
+          "signature": "void replace_chars(char *S,char c1,char c2)",
+          "code": "void replace_chars(char *S,char c1,char c2){\n    for(int i=0; S[i]; i++){\n        if(S[i]!=c1) S[i]=c2;\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *S)",
+          "code": "void print_answer(char *S){ printf(\"%s\\n\", S); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[205]; char c1,c2; read_input(S,&c1,&c2); replace_chars(S,c1,c2); print_answer(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S,char *c1,char *c2)",
+          "code": "void read_input(char *S,char *c1,char *c2){\n    scanf(\"%s\", S);\n    scanf(\" %c %c\", c1, c2);\n}\n"
+        },
+        {
+          "clause_id": "replace_chars",
+          "signature": "void replace_chars(char *S,char c1,char c2)",
+          "code": "void replace_chars(char *S,char c1,char c2){\n    int i=0;\n    while(S[i]){\n        if(S[i]!=c1) S[i]=c2;\n        i++;\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *S)",
+          "code": "void print_answer(char *S){ printf(\"%s\\n\", S); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[205]; char c1,c2; read_input(S,&c1,&c2); replace_chars(S,c1,c2); print_answer(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S,char *c1,char *c2)",
+          "code": "void read_input(char *S,char *c1,char *c2){\n    scanf(\"%s\", S);\n    scanf(\" %c %c\", c1, c2);\n}\n"
+        },
+        {
+          "clause_id": "replace_chars",
+          "signature": "void replace_chars(char *S,char c1,char c2)",
+          "code": "void replace_chars(char *S,char c1,char c2){\n    for(int i=0; S[i]; i++){\n        if(S[i]!=c1) S[i]=c2;\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *S)",
+          "code": "void print_answer(char *S){ printf(\"%s\\n\", S); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[205]; char c1,c2; read_input(S,&c1,&c2); replace_chars(S,c1,c2); print_answer(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S,char *c1,char *c2)",
+          "code": "void read_input(char *S,char *c1,char *c2){\n    scanf(\"%s\", S);\n    scanf(\" %c %c\", c1, c2);\n}\n"
+        },
+        {
+          "clause_id": "replace_chars",
+          "signature": "void replace_chars(char *S,char c1,char c2)",
+          "code": "void replace_chars(char *S,char c1,char c2){\n    int i=0;\n    while(S[i]){\n        if(S[i]!=c1) S[i]=c2;\n        i++;\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *S)",
+          "code": "void print_answer(char *S){ printf(\"%s\\n\", S); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[205]; char c1,c2; read_input(S,&c1,&c2); replace_chars(S,c1,c2); print_answer(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S,char *c1,char *c2)",
+          "code": "void read_input(char *S,char *c1,char *c2){\n    scanf(\"%s\", S);\n    scanf(\" %c %c\", c1, c2);\n}\n"
+        },
+        {
+          "clause_id": "replace_chars",
+          "signature": "void replace_chars(char *S,char c1,char c2)",
+          "code": "void replace_chars(char *S,char c1,char c2){\n    for(int i=0; S[i]; i++){\n        if(S[i]!=c1) S[i]=c2;\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *S)",
+          "code": "void print_answer(char *S){ printf(\"%s\\n\", S); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[205]; char c1,c2; read_input(S,&c1,&c2); replace_chars(S,c1,c2); print_answer(S); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

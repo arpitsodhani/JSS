@@ -1,0 +1,50 @@
+{
+  "clause_wise_confidence": {
+    "car_race_collision": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "main": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 5,
+        "total_programs": 5
+      }
+    },
+    "collision_count": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "total_collisions": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "race_result": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "compute_collisions": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    }
+  },
+  "overall_metrics": {
+    "average_confidence": 1.0,
+    "total_clauses": 6
+  }
+}

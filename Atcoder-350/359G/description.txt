@@ -1,0 +1,10 @@
+You are given a tree with N vertices. The i -th edge connects vertices u_i and v_i bidirectionally. Additionally, you are given an integer sequence A=(A_1,\ldots,A_N) . Here, define f(i,j) as follows: If A_i = A_j , then f(i,j) is the minimum number of edges you need to traverse to move from vertex i to vertex j . If A_i \neq A_j , then f(i,j) = 0 . Calculate the value of the following expression: \displaystyle \sum_{i=1}^{N-1}\sum_{j=i+1}^N f(i,j) .
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= A_i <= 10^9
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple (no multi-edges)
+- All input values are integers

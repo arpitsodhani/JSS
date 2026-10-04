@@ -1,0 +1,174 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,long long **H,int **L,int **R)",
+          "code": "void read_input(int *N,int *Q,long long **H,int **L,int **R){ scanf(\"%d%d\", N,Q); *H=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*H)[i]); *L=(int*)malloc((size_t)(*Q)*sizeof(int)); *R=(int*)malloc((size_t)(*Q)*sizeof(int)); for(int i=0;i<*Q;i++) scanf(\"%d%d\", &(*L)[i], &(*R)[i]); }\n"
+        },
+        {
+          "clause_id": "max_between",
+          "signature": "long long max_between(long long *H,int l,int r)",
+          "code": "long long max_between(long long *H,int l,int r){ long long m=0; for(int i=l;i<=r;i++) if(H[i]>m) m=H[i]; return m; }\n"
+        },
+        {
+          "clause_id": "count_visible",
+          "signature": "int count_visible(long long *H,int N,int l,int r)",
+          "code": "int count_visible(long long *H,int N,int l,int r){\n    long long midmax = max_between(H,l+1,r);\n    long long curmax=0;\n    int cnt=0;\n    for(int j=r+1;j<N;j++){\n        if(H[j]>=curmax){\n            curmax=H[j];\n            if(H[j]>=midmax) cnt++;\n        }\n    }\n    return cnt;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int N,int Q,long long *H,int *L,int *R)",
+          "code": "void process_queries(int N,int Q,long long *H,int *L,int *R){ for(int i=0;i<Q;i++){ int l=L[i]-1, r=R[i]-1; int ans=count_visible(H,N,l,r); printf(\"%d\\n\", ans); } }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; long long *H=NULL; int *L=NULL,*R=NULL; read_input(&N,&Q,&H,&L,&R); process_queries(N,Q,H,L,R); free(H); free(L); free(R); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,long long **H,int **L,int **R)",
+          "code": "void read_input(int *N,int *Q,long long **H,int **L,int **R){ scanf(\"%d%d\", N,Q); *H=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*H)[i]); *L=(int*)malloc((size_t)(*Q)*sizeof(int)); *R=(int*)malloc((size_t)(*Q)*sizeof(int)); for(int i=0;i<*Q;i++) scanf(\"%d%d\", &(*L)[i], &(*R)[i]); }\n"
+        },
+        {
+          "clause_id": "max_between",
+          "signature": "long long max_between(long long *H,int l,int r)",
+          "code": "long long max_between(long long *H,int l,int r){ long long m=0; for(int i=l;i<=r;i++) if(H[i]>m) m=H[i]; return m; }\n"
+        },
+        {
+          "clause_id": "count_visible",
+          "signature": "int count_visible(long long *H,int N,int l,int r)",
+          "code": "int count_visible(long long *H,int N,int l,int r){\n    long long midmax = max_between(H,l+1,r);\n    long long curmax=0;\n    int cnt=0;\n    for(int j=r+1;j<N;j++){\n        if(H[j]>=curmax){\n            curmax=H[j];\n            if(H[j]>=midmax) cnt++;\n        }\n    }\n    return cnt;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int N,int Q,long long *H,int *L,int *R)",
+          "code": "void process_queries(int N,int Q,long long *H,int *L,int *R){ for(int i=0;i<Q;i++){ int l=L[i]-1, r=R[i]-1; int ans=count_visible(H,N,l,r); printf(\"%d\\n\", ans); } }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; long long *H=NULL; int *L=NULL,*R=NULL; read_input(&N,&Q,&H,&L,&R); process_queries(N,Q,H,L,R); free(H); free(L); free(R); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,long long **H,int **L,int **R)",
+          "code": "void read_input(int *N,int *Q,long long **H,int **L,int **R){ scanf(\"%d%d\", N,Q); *H=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*H)[i]); *L=(int*)malloc((size_t)(*Q)*sizeof(int)); *R=(int*)malloc((size_t)(*Q)*sizeof(int)); for(int i=0;i<*Q;i++) scanf(\"%d%d\", &(*L)[i], &(*R)[i]); }\n"
+        },
+        {
+          "clause_id": "max_between",
+          "signature": "long long max_between(long long *H,int l,int r)",
+          "code": "long long max_between(long long *H,int l,int r){ long long m=0; for(int i=l;i<=r;i++) if(H[i]>m) m=H[i]; return m; }\n"
+        },
+        {
+          "clause_id": "count_visible",
+          "signature": "int count_visible(long long *H,int N,int l,int r)",
+          "code": "int count_visible(long long *H,int N,int l,int r){\n    long long midmax = max_between(H,l+1,r);\n    long long curmax=0;\n    int cnt=0;\n    for(int j=r+1;j<N;j++){\n        if(H[j]>=curmax){\n            curmax=H[j];\n            if(H[j]>=midmax) cnt++;\n        }\n    }\n    return cnt;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int N,int Q,long long *H,int *L,int *R)",
+          "code": "void process_queries(int N,int Q,long long *H,int *L,int *R){ for(int i=0;i<Q;i++){ int l=L[i]-1, r=R[i]-1; int ans=count_visible(H,N,l,r); printf(\"%d\\n\", ans); } }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; long long *H=NULL; int *L=NULL,*R=NULL; read_input(&N,&Q,&H,&L,&R); process_queries(N,Q,H,L,R); free(H); free(L); free(R); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,long long **H,int **L,int **R)",
+          "code": "void read_input(int *N,int *Q,long long **H,int **L,int **R){ scanf(\"%d%d\", N,Q); *H=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*H)[i]); *L=(int*)malloc((size_t)(*Q)*sizeof(int)); *R=(int*)malloc((size_t)(*Q)*sizeof(int)); for(int i=0;i<*Q;i++) scanf(\"%d%d\", &(*L)[i], &(*R)[i]); }\n"
+        },
+        {
+          "clause_id": "max_between",
+          "signature": "long long max_between(long long *H,int l,int r)",
+          "code": "long long max_between(long long *H,int l,int r){ long long m=0; for(int i=l;i<=r;i++) if(H[i]>m) m=H[i]; return m; }\n"
+        },
+        {
+          "clause_id": "count_visible",
+          "signature": "int count_visible(long long *H,int N,int l,int r)",
+          "code": "int count_visible(long long *H,int N,int l,int r){\n    long long midmax = max_between(H,l+1,r);\n    long long curmax=0;\n    int cnt=0;\n    for(int j=r+1;j<N;j++){\n        if(H[j]>=curmax){\n            curmax=H[j];\n            if(H[j]>=midmax) cnt++;\n        }\n    }\n    return cnt;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int N,int Q,long long *H,int *L,int *R)",
+          "code": "void process_queries(int N,int Q,long long *H,int *L,int *R){ for(int i=0;i<Q;i++){ int l=L[i]-1, r=R[i]-1; int ans=count_visible(H,N,l,r); printf(\"%d\\n\", ans); } }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; long long *H=NULL; int *L=NULL,*R=NULL; read_input(&N,&Q,&H,&L,&R); process_queries(N,Q,H,L,R); free(H); free(L); free(R); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,long long **H,int **L,int **R)",
+          "code": "void read_input(int *N,int *Q,long long **H,int **L,int **R){ scanf(\"%d%d\", N,Q); *H=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*H)[i]); *L=(int*)malloc((size_t)(*Q)*sizeof(int)); *R=(int*)malloc((size_t)(*Q)*sizeof(int)); for(int i=0;i<*Q;i++) scanf(\"%d%d\", &(*L)[i], &(*R)[i]); }\n"
+        },
+        {
+          "clause_id": "max_between",
+          "signature": "long long max_between(long long *H,int l,int r)",
+          "code": "long long max_between(long long *H,int l,int r){ long long m=0; for(int i=l;i<=r;i++) if(H[i]>m) m=H[i]; return m; }\n"
+        },
+        {
+          "clause_id": "count_visible",
+          "signature": "int count_visible(long long *H,int N,int l,int r)",
+          "code": "int count_visible(long long *H,int N,int l,int r){\n    long long midmax = max_between(H,l+1,r);\n    long long curmax=0;\n    int cnt=0;\n    for(int j=r+1;j<N;j++){\n        if(H[j]>=curmax){\n            curmax=H[j];\n            if(H[j]>=midmax) cnt++;\n        }\n    }\n    return cnt;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int N,int Q,long long *H,int *L,int *R)",
+          "code": "void process_queries(int N,int Q,long long *H,int *L,int *R){ for(int i=0;i<Q;i++){ int l=L[i]-1, r=R[i]-1; int ans=count_visible(H,N,l,r); printf(\"%d\\n\", ans); } }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; long long *H=NULL; int *L=NULL,*R=NULL; read_input(&N,&Q,&H,&L,&R); process_queries(N,Q,H,L,R); free(H); free(L); free(R); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

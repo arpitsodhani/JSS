@@ -1,0 +1,22 @@
+{
+  "contestId": 1575,
+  "index": "B",
+  "problem_id": "1575B",
+  "name": "Building an Amusement Park",
+  "rating": 2300,
+  "tags": [
+    "binary search",
+    "geometry"
+  ],
+  "points": null,
+  "solvedCount": 554,
+  "source": "verbatim_cf_fetch",
+  "title": null,
+  "legend": null,
+  "input_spec": null,
+  "output_spec": null,
+  "note": null,
+  "time_limit": null,
+  "mem_limit": null,
+  "samples": null
+}

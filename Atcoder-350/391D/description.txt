@@ -1,0 +1,5 @@
+There is a grid with 10^9 rows and W columns. The cell at the x -th column from the left and the y -th row from the bottom is denoted by (x,y) . There are N blocks. Each block is a 1 \times 1 square, and block i -th ( 1 \leq i \leq N ) is located at cell (X_i,Y_i) at time 0 . At times t=1,2,\dots,10^{100} , the blocks are moved according to the following rules: If the entire bottom row is filled with blocks, then all blocks in the bottom row are removed. For each remaining block, in order from bottom to top, perform the following: If the block is in the bottom row, or if there is a block in the cell immediately below it, do nothing. Otherwise, move the block one cell downward. You are given Q queries. For the j -th query ( 1 \leq j \leq Q ), answer whether block A_j exists at time T_j+0.5 .
+
+**Constraints:**
+- 1 <= N, M <= 1000
+- S_{i,j} is '#' or '.'

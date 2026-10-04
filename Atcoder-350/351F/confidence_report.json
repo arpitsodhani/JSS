@@ -1,0 +1,85 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "prog1_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_sort_array",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_sort_array",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_sort_array",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_sort_array",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_sort_array",
+      "confidence": 1.0
+    }
+  ]
+}

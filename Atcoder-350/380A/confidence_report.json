@@ -1,0 +1,28 @@
+{
+  "problem_id": "380A",
+  "average_confidence": 1.0,
+  "clauses": {
+    "read_input": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "check_digits": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "print_answer": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    }
+  },
+  "total_clauses": 4,
+  "compile_success": true
+}

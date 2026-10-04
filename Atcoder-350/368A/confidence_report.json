@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "accumulate_polygon_area_terms",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_cross_product_term",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_polygon_area",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    }
+  ]
+}

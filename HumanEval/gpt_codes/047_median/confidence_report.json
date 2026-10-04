@@ -1,0 +1,50 @@
+{
+  "clause_wise_confidence": {
+    "median": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "main": {
+      "confidence_score": 0.9866666666666667,
+      "cluster_info": {
+        "programs_in_consensus": 4,
+        "total_programs": 5
+      }
+    },
+    "find_median": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "calc_median": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "middle_value": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    },
+    "get_median": {
+      "confidence_score": 1.0,
+      "cluster_info": {
+        "programs_in_consensus": 1,
+        "total_programs": 1
+      }
+    }
+  },
+  "overall_metrics": {
+    "average_confidence": 0.9977777777777778,
+    "total_clauses": 6
+  }
+}

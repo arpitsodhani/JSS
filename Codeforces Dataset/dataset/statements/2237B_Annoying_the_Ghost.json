@@ -1,0 +1,27 @@
+{
+  "contestId": 2237,
+  "index": "B",
+  "problem_id": "2237B",
+  "name": "Annoying the Ghost",
+  "rating": 1000,
+  "tags": [
+    "brute force",
+    "greedy"
+  ],
+  "points": 1000.0,
+  "solvedCount": 14183,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Annoying the Ghost",
+  "legend": "Ja the Ghost is playing with rubber ducks. He has n piles of rubber ducks arranged in a row, where the i-th pile contains ai ducks. Quack the Duck gives Ja a strictly increasing sequence b1,b2,…,bn and commands him to make the piles a1,a2,…,an become exactly this sequence.\n\nJa performs the process in the following two stages:\n\nJa may add any number of ducks to each pile.\n\nFormally, for each pile i, he chooses a non-negative integer xi and replaces ai with ai+xi.\n\nJa may repeatedly swap two adjacent piles.\n\nFormally, he may perform the following operation any number of times, possibly zero: choose an index i such that 1≤i≤n−1, and swap the values of ai and ai+1.\n\nA process is called valid if, after both stages end, the sequence of pile sizes is exactly b1,b2,…,bn.\n\nFind the minimum possible number of operations performed in the second stage among all valid processes. If there is no valid process, output −1.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤2000). The description of the test cases follows.\n\nThe first line of each test case contains an integer n (1≤n≤2000) — the number of piles of rubber ducks.\n\nThe second line contains n integers a1,a2,…,an (1≤ai≤109) — the initial number of rubber ducks in each pile.\n\nThe third line contains n integers b1,b2,…,bn (1≤b1<b2<⋯<bn≤109) — the final number of rubber ducks in each pile.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2000.",
+  "output_spec": "For each test case, output a single integer — the minimum possible number of operations performed in the second stage among all valid processes. If there is no valid process, output −1.",
+  "note": "In the first test case, Ja only needs the first stage. He can set x1=0,x2=1,x3=3, so the piles become 1,3,5. No swaps are needed, so the answer is 0.\n\nIn the second test case, Ja needs both stages. He can set x1=0,x2=1,x3=0, so the piles become 2,3,1. Then he can perform two swaps:\n[2,3,1]→[2,1,3]→[1,2,3].\nThe pile with 1 duck must move from the third position to the first position, so at least two swaps are necessary. Therefore the answer is 2.\n\nIn the third test case, it is impossible. The first pile initially contains 5 ducks, but every number in the target sequence is at most 4. Since Ja can only add ducks and cannot remove them, this pile cannot become equal to any number in the target sequence. Therefore the answer is −1.\n\nIn the fourth test case, no ducks need to be added. Ja only needs to reorder the piles into increasing order. The minimum number of adjacent swaps is 15.\n\nIn the fifth test case, no ducks need to be added. Again, Ja only needs to reorder the piles into increasing order. The minimum number of adjacent swaps is 12.",
+  "time_limit": "1.5 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "10\n3\n1 2 2\n1 3 5\n3\n2 2 1\n1 2 3\n2\n5 1\n2 4\n6\n6 5 4 3 2 1\n1 2 3 4 5 6\n7\n4 7 1 6 2 5 3\n1 2 3 4 5 6 7\n2\n2 1\n2 3\n4\n3 2 2 1\n1 2 3 4\n4\n4 3 2 1\n1 3 4 5\n5\n1 5 4 3 2\n2 3 4 5 6\n5\n10 3 8 6 9\n3 6 8 9 10\n",
+      "output": "0\n2\n-1\n15\n12\n0\n4\n4\n3\n5"
+    }
+  ]
+}

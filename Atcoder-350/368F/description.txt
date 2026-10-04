@@ -1,0 +1,6 @@
+You are given a sequence of N positive integers A = (A_1, A_2, \dots ,A_N) , where each element is at least 2 . Anna and Bruno play a game using these integers. They take turns, with Anna going first, performing the following operation. Choose an integer i \ (1 \leq i \leq N) freely. Then, freely choose a positive divisor x of A_i that is not A_i itself, and replace A_i with x . The player who cannot perform the operation loses, and the other player wins. Determine who wins assuming both players play optimally for victory.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= A_i <= 10^5
+- All input values are integers

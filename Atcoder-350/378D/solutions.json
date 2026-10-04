@@ -1,0 +1,174 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *K,char **S)",
+          "code": "void read_input(int *H,int *W,int *K,char **S){ scanf(\"%d%d%d\", H,W,K); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "dfs",
+          "signature": "long long dfs(int r,int c,int H,int W,int K,char *S,char *vis)",
+          "code": "long long dfs(int r,int c,int H,int W,int K,char *S,char *vis){\n    if(K==0) return 1;\n    long long ans=0;\n    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};\n    for(int k=0;k<4;k++){\n        int nr=r+dr[k], nc=c+dc[k];\n        if(nr<0||nr>=H||nc<0||nc>=W) continue;\n        if(S[nr*(W+1)+nc]=='#') continue;\n        if(vis[nr*W+nc]) continue;\n        vis[nr*W+nc]=1;\n        ans += dfs(nr,nc,H,W,K-1,S,vis);\n        vis[nr*W+nc]=0;\n    }\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "count_paths",
+          "signature": "long long count_paths(int H,int W,int K,char *S)",
+          "code": "long long count_paths(int H,int W,int K,char *S){ long long ans=0; char *vis=(char*)calloc((size_t)H*W,1); for(int i=0;i<H;i++) for(int j=0;j<W;j++) if(S[i*(W+1)+j]=='.'){ vis[i*W+j]=1; ans+=dfs(i,j,H,W,K,S,vis); vis[i*W+j]=0; } free(vis); return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,K; char *S=NULL; read_input(&H,&W,&K,&S); long long ans=count_paths(H,W,K,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *K,char **S)",
+          "code": "void read_input(int *H,int *W,int *K,char **S){ scanf(\"%d%d%d\", H,W,K); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "dfs",
+          "signature": "long long dfs(int r,int c,int H,int W,int K,char *S,char *vis)",
+          "code": "long long dfs(int r,int c,int H,int W,int K,char *S,char *vis){\n    if(K==0) return 1;\n    long long ans=0;\n    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};\n    for(int k=0;k<4;k++){\n        int nr=r+dr[k], nc=c+dc[k];\n        if(nr<0||nr>=H||nc<0||nc>=W) continue;\n        if(S[nr*(W+1)+nc]=='#') continue;\n        if(vis[nr*W+nc]) continue;\n        vis[nr*W+nc]=1;\n        ans += dfs(nr,nc,H,W,K-1,S,vis);\n        vis[nr*W+nc]=0;\n    }\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "count_paths",
+          "signature": "long long count_paths(int H,int W,int K,char *S)",
+          "code": "long long count_paths(int H,int W,int K,char *S){ long long ans=0; char *vis=(char*)calloc((size_t)H*W,1); for(int i=0;i<H;i++) for(int j=0;j<W;j++) if(S[i*(W+1)+j]=='.'){ vis[i*W+j]=1; ans+=dfs(i,j,H,W,K,S,vis); vis[i*W+j]=0; } free(vis); return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,K; char *S=NULL; read_input(&H,&W,&K,&S); long long ans=count_paths(H,W,K,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *K,char **S)",
+          "code": "void read_input(int *H,int *W,int *K,char **S){ scanf(\"%d%d%d\", H,W,K); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "dfs",
+          "signature": "long long dfs(int r,int c,int H,int W,int K,char *S,char *vis)",
+          "code": "long long dfs(int r,int c,int H,int W,int K,char *S,char *vis){\n    if(K==0) return 1;\n    long long ans=0;\n    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};\n    for(int k=0;k<4;k++){\n        int nr=r+dr[k], nc=c+dc[k];\n        if(nr<0||nr>=H||nc<0||nc>=W) continue;\n        if(S[nr*(W+1)+nc]=='#') continue;\n        if(vis[nr*W+nc]) continue;\n        vis[nr*W+nc]=1;\n        ans += dfs(nr,nc,H,W,K-1,S,vis);\n        vis[nr*W+nc]=0;\n    }\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "count_paths",
+          "signature": "long long count_paths(int H,int W,int K,char *S)",
+          "code": "long long count_paths(int H,int W,int K,char *S){ long long ans=0; char *vis=(char*)calloc((size_t)H*W,1); for(int i=0;i<H;i++) for(int j=0;j<W;j++) if(S[i*(W+1)+j]=='.'){ vis[i*W+j]=1; ans+=dfs(i,j,H,W,K,S,vis); vis[i*W+j]=0; } free(vis); return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,K; char *S=NULL; read_input(&H,&W,&K,&S); long long ans=count_paths(H,W,K,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *K,char **S)",
+          "code": "void read_input(int *H,int *W,int *K,char **S){ scanf(\"%d%d%d\", H,W,K); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "dfs",
+          "signature": "long long dfs(int r,int c,int H,int W,int K,char *S,char *vis)",
+          "code": "long long dfs(int r,int c,int H,int W,int K,char *S,char *vis){\n    if(K==0) return 1;\n    long long ans=0;\n    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};\n    for(int k=0;k<4;k++){\n        int nr=r+dr[k], nc=c+dc[k];\n        if(nr<0||nr>=H||nc<0||nc>=W) continue;\n        if(S[nr*(W+1)+nc]=='#') continue;\n        if(vis[nr*W+nc]) continue;\n        vis[nr*W+nc]=1;\n        ans += dfs(nr,nc,H,W,K-1,S,vis);\n        vis[nr*W+nc]=0;\n    }\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "count_paths",
+          "signature": "long long count_paths(int H,int W,int K,char *S)",
+          "code": "long long count_paths(int H,int W,int K,char *S){ long long ans=0; char *vis=(char*)calloc((size_t)H*W,1); for(int i=0;i<H;i++) for(int j=0;j<W;j++) if(S[i*(W+1)+j]=='.'){ vis[i*W+j]=1; ans+=dfs(i,j,H,W,K,S,vis); vis[i*W+j]=0; } free(vis); return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,K; char *S=NULL; read_input(&H,&W,&K,&S); long long ans=count_paths(H,W,K,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *K,char **S)",
+          "code": "void read_input(int *H,int *W,int *K,char **S){ scanf(\"%d%d%d\", H,W,K); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "dfs",
+          "signature": "long long dfs(int r,int c,int H,int W,int K,char *S,char *vis)",
+          "code": "long long dfs(int r,int c,int H,int W,int K,char *S,char *vis){\n    if(K==0) return 1;\n    long long ans=0;\n    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};\n    for(int k=0;k<4;k++){\n        int nr=r+dr[k], nc=c+dc[k];\n        if(nr<0||nr>=H||nc<0||nc>=W) continue;\n        if(S[nr*(W+1)+nc]=='#') continue;\n        if(vis[nr*W+nc]) continue;\n        vis[nr*W+nc]=1;\n        ans += dfs(nr,nc,H,W,K-1,S,vis);\n        vis[nr*W+nc]=0;\n    }\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "count_paths",
+          "signature": "long long count_paths(int H,int W,int K,char *S)",
+          "code": "long long count_paths(int H,int W,int K,char *S){ long long ans=0; char *vis=(char*)calloc((size_t)H*W,1); for(int i=0;i<H;i++) for(int j=0;j<W;j++) if(S[i*(W+1)+j]=='.'){ vis[i*W+j]=1; ans+=dfs(i,j,H,W,K,S,vis); vis[i*W+j]=0; } free(vis); return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,K; char *S=NULL; read_input(&H,&W,&K,&S); long long ans=count_paths(H,W,K,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "contestId": 1749,
+  "index": "D",
+  "problem_id": "1749D",
+  "name": "Counting Arrays",
+  "rating": 1900,
+  "tags": [
+    "combinatorics",
+    "dp",
+    "math",
+    "number theory"
+  ],
+  "points": null,
+  "solvedCount": 6429,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Counting Arrays",
+  "legend": "Consider an array a of length n with elements numbered from 1 to n. It is possible to remove the i-th element of a if gcd(ai,i)=1, where gcd denotes the greatest common divisor. After an element is removed, the elements to the right are shifted to the left by one position.\n\nAn array b with n integers such that 1≤bi≤n−i+1 is a removal sequence for the array a if it is possible to remove all elements of a, if you remove the b1-th element, then the b2-th, ..., then the bn-th element. For example, let a=[42,314]:\n\n[1,1] is a removal sequence: when you remove the 1-st element of the array, the condition gcd(42,1)=1 holds, and the array becomes [314]; when you remove the 1-st element again, the condition gcd(314,1)=1 holds, and the array becomes empty.\n[2,1] is not a removal sequence: when you try to remove the 2-nd element, the condition gcd(314,2)=1 is false.\n\nAn array is ambiguous if it has at least two removal sequences. For example, the array [1,2,5] is ambiguous: it has removal sequences [3,1,1] and [1,2,1]. The array [42,314] is not ambiguous: the only removal sequence it has is [1,1].\n\nYou are given two integers n and m. You have to calculate the number of ambiguous arrays a such that the length of a is from 1 to n and each ai is an integer from 1 to m.",
+  "input_spec": "The only line of the input contains two integers n and m (2≤n≤3⋅105; 1≤m≤1012).",
+  "output_spec": "Print one integer — the number of ambiguous arrays a such that the length of a is from 1 to n and each ai is an integer from 1 to m. Since the answer can be very large, print it modulo 998244353.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "2 3\n",
+      "output": "6"
+    },
+    {
+      "input": "4 2\n",
+      "output": "26"
+    },
+    {
+      "input": "4 6\n",
+      "output": "1494"
+    },
+    {
+      "input": "1337 424242424242\n",
+      "output": "119112628"
+    }
+  ]
+}

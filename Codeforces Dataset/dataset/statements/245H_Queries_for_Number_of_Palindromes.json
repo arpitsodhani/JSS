@@ -1,0 +1,28 @@
+{
+  "contestId": 245,
+  "index": "H",
+  "problem_id": "245H",
+  "name": "Queries for Number of Palindromes",
+  "rating": 1800,
+  "tags": [
+    "dp",
+    "hashing",
+    "strings"
+  ],
+  "points": null,
+  "solvedCount": 9420,
+  "source": "verbatim_cf_fetch",
+  "title": "H. Queries for Number of Palindromes",
+  "legend": "You've got a string s = s1s2... s|s| of length |s|, consisting of lowercase English letters. There also are q queries, each query is described by two integers li, ri (1 ≤ li ≤ ri ≤ |s|). The answer to the query is the number of substrings of string s[li... ri], which are palindromes.\n\nString s[l... r] = slsl + 1... sr (1 ≤ l ≤ r ≤ |s|) is a substring of string s = s1s2... s|s|.\n\nString t is called a palindrome, if it reads the same from left to right and from right to left. Formally, if t = t1t2... t|t| = t|t|t|t| - 1... t1.",
+  "input_spec": "The first line contains string s (1 ≤ |s| ≤ 5000). The second line contains a single integer q (1 ≤ q ≤ 106) — the number of queries. Next q lines contain the queries. The i-th of these lines contains two space-separated integers li, ri (1 ≤ li ≤ ri ≤ |s|) — the description of the i-th query.\n\nIt is guaranteed that the given string consists only of lowercase English letters.",
+  "output_spec": "Print q integers — the answers to the queries. Print the answers in the order, in which the queries are given in the input. Separate the printed numbers by whitespaces.",
+  "note": "Consider the fourth query in the first test case. String s[4... 6] = «aba». Its palindrome substrings are: «a», «b», «a», «aba».",
+  "time_limit": "5 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "caaaba\n5\n1 1\n1 4\n2 3\n4 6\n4 5\n",
+      "output": "1\n7\n3\n4\n2"
+    }
+  ]
+}

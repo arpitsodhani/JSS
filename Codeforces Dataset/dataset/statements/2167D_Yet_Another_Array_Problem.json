@@ -1,0 +1,29 @@
+{
+  "contestId": 2167,
+  "index": "D",
+  "problem_id": "2167D",
+  "name": "Yet Another Array Problem",
+  "rating": 1000,
+  "tags": [
+    "brute force",
+    "implementation",
+    "math",
+    "number theory"
+  ],
+  "points": null,
+  "solvedCount": 31335,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Yet Another Array Problem",
+  "legend": "You are given an integer n and an array a of length n.\n\nFind the smallest integer x (2≤x≤1018) such that there exists an index i (1≤i≤n) with gcd∗(ai,x)=1. If no such x exists within the range [2,1018], output −1.\n\n∗gcd(x,y) denotes the greatest common divisor (GCD) of integers x and y.",
+  "input_spec": "The first line contains a single integer t (1≤t≤104) — the number of test cases.\n\nEach of the following t test cases consists of two lines:\n\nThe first line contains a single integer n (1≤n≤105) — the length of the array.\n\nThe second line contains n space-separated integers a1,a2,…,an (1≤ai≤1018).\n\nIt is guaranteed that the total sum of n across all test cases does not exceed 105.",
+  "output_spec": "For each test case, output a single integer: the smallest x (2≤x≤1018) such that there exists an index i with gcd(ai,x)=1. If there is no such x in the range [2,1018], print −1.",
+  "note": "In the first test case, gcd(2,1)=1, which is the smallest number satisfying the condition.\n\nIn the second test case:\n\ngcd(2,6)=2, gcd(2,12)=2, so 2 cannot be the answer.\ngcd(3,6)=3, gcd(3,12)=3, so 3 cannot be the answer.\ngcd(4,6)=2, gcd(4,12)=4, so 4 cannot be the answer.\ngcd(5,6)=1, so the answer is 5.\n\nIn the third test case:\n\ngcd(2,24)=2, gcd(2,120)=2, gcd(2,210)=2, so 2 cannot be the answer.\ngcd(3,24)=3, gcd(3,120)=3, gcd(3,210)=3, so 3 cannot be the answer.\ngcd(4,24)=4, gcd(4,120)=4, gcd(4,210)=2, so 4 cannot be the answer.\ngcd(5,24)=1, so the answer is 5.\n\nIn the fourth test case:\n\ngcd(2,2)=2, gcd(2,4)=2, gcd(2,6)=2, gcd(2,10)=2, so 2 cannot be the answer.\ngcd(3,2)=1, so the answer is 3.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n1\n1\n4\n6 6 12 12\n3\n24 120 210\n4\n2 4 6 10\n",
+      "output": "2\n5\n5\n3"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+The Kingdom of AtCoder has N towns: towns 1 , 2 , \ldots , N . To move from town i to town j , you must pay a toll of C \times |i-j| yen. Takahashi, a merchant, is considering participating in zero or more of M upcoming markets. The i -th market (1 \leq i \leq M) is described by the pair of integers (T_i, P_i) , where the market is held in town T_i and he will earn P_i yen if he participates. For all 1 \leq i < M , the i -th market ends before the (i+1) -th market begins. The time it takes for him to move is negligible. He starts with 10^{10^{100}} yen and is initially in town 1 . Determine the maximum profit he can make by optimally choosing which markets to participate in and how to move. Formally, let 10^{10^{100}} + X be his final amount of money if he maximizes the amount of money he has after the M markets. Find X .
+
+**Constraints:**
+- 1\leq N\leq2\times10 ^ 5
+- 1\leq C\leq10 ^ 9
+- 1\leq M\leq2\times10 ^ 5
+- 1\leq T _ i\leq N\ (1\leq i\leq M)
+- 1\leq P _ i\leq10 ^ {13}\ (1\leq i\leq M)
+- allintegers

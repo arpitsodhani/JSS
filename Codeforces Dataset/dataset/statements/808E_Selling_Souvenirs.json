@@ -1,0 +1,37 @@
+{
+  "contestId": 808,
+  "index": "E",
+  "problem_id": "808E",
+  "name": "Selling Souvenirs",
+  "rating": 2300,
+  "tags": [
+    "binary search",
+    "dp",
+    "greedy",
+    "ternary search"
+  ],
+  "points": null,
+  "solvedCount": 2232,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Selling Souvenirs",
+  "legend": "After several latest reforms many tourists are planning to visit Berland, and Berland people understood that it's an opportunity to earn money and changed their jobs to attract tourists. Petya, for example, left the IT corporation he had been working for and started to sell souvenirs at the market.\n\nThis morning, as usual, Petya will come to the market. Petya has n different souvenirs to sell; ith souvenir is characterised by its weight wi and cost ci. Petya knows that he might not be able to carry all the souvenirs to the market. So Petya wants to choose a subset of souvenirs such that its total weight is not greater than m, and total cost is maximum possible.\n\nHelp Petya to determine maximum possible total cost.",
+  "input_spec": "The first line contains two integers n and m (1 ≤ n ≤ 100000, 1 ≤ m ≤ 300000) — the number of Petya's souvenirs and total weight that he can carry to the market.\n\nThen n lines follow. ith line contains two integers wi and ci (1 ≤ wi ≤ 3, 1 ≤ ci ≤ 109) — the weight and the cost of ith souvenir.",
+  "output_spec": "Print one number — maximum possible total cost of souvenirs that Petya can carry to the market.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "1 1\n2 1\n",
+      "output": "0"
+    },
+    {
+      "input": "2 2\n1 3\n2 2\n",
+      "output": "3"
+    },
+    {
+      "input": "4 3\n3 10\n2 7\n2 8\n1 1\n",
+      "output": "10"
+    }
+  ]
+}

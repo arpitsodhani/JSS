@@ -1,0 +1,27 @@
+{
+  "contestId": 2146,
+  "index": "B",
+  "problem_id": "2146B",
+  "name": "Merging the Sets",
+  "rating": 1100,
+  "tags": [
+    "greedy",
+    "implementation"
+  ],
+  "points": 1000.0,
+  "solvedCount": 16571,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Merging the Sets",
+  "legend": "You are given n sets S1,S2,…,Sn, where each element in the sets is an integer between 1 and m.\n\nYou want to choose some of the sets (possibly none or all), such that every integer between 1 and m is included in at least one of the chosen sets.\n\nYou have to determine whether there exist at least three ways to choose the sets.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe first line of each test case contains two integers n and m (2≤n≤5⋅104, 1≤m≤105) — the number of sets and the upper bound of the integers in the sets.\n\nThen n lines follow, the i-th line first containing an integer li (1≤li≤m) — the size of set Si.\n\nThen li integers Si,1,Si,2,…,Si,li follow in the same line (1≤Si,1<Si,2<⋯<Si,li≤m) — the elements of set Si.\n\nLet L=\nn\n∑\n\ni=1li. It is guaranteed that:\n\nThe sum of n over all test cases does not exceed 5⋅104;\nThe sum of m over all test cases does not exceed 105;\nThe sum of L over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, print \"YES\" if there exist at least three ways to choose the sets. Otherwise, print \"NO\".\n\nYou can output the answer in any case (upper or lower). For example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will be recognized as positive responses.",
+  "note": "In the first test case, there are 5≥3 possible ways to choose the sets:\n\nS1 — both 1 and 2 are included in S1;\nS1 and S2 — 1 is included in S1 and S2, and 2 is included in S1;\nS1 and S3 — 1 is included in S1, and 2 is included in S1 and S3;\nS2 and S3 — 1 is included in S2, and 2 is included in S3;\nS1, S2, and S3 — 1 is included in S1 and S2, and 2 is included in S1 and S3.\n\nNote that it is invalid to choose S2 only because 2 is not included in S2.\n\nIn the second test case, the only way is to choose all the sets.\n\nIn the third test case, 5 does not appear in any of the sets, so there is no way to choose the sets.\n\nIn the fourth test case, choosing any non-empty collection of the sets is valid, so the number of ways is 25−1=31≥3.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n3 2\n2 1 2\n1 1\n1 2\n4 10\n3 1 2 3\n2 4 5\n1 6\n4 7 8 9 10\n2 5\n4 1 2 3 4\n4 1 2 3 4\n5 5\n5 1 2 3 4 5\n5 1 2 3 4 5\n5 1 2 3 4 5\n5 1 2 3 4 5\n5 1 2 3 4 5\n5 10\n4 1 2 3 4\n5 1 2 5 6 7\n5 2 6 7 8 9\n4 6 7 8 9\n2 9 10\n5 5\n1 1\n1 2\n1 3\n2 4 5\n1 5\n",
+      "output": "YES\nNO\nNO\nYES\nYES\nNO"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "programs": [
+    {
+      "id": "p1",
+      "clauses": [
+        {
+          "clause_id": "C1",
+          "code": "def process(items):\n    if len(items) == 0:\n        return []\n    return items"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "clauses": [
+        {
+          "clause_id": "C1",
+          "code": "def do_process(arr):\n    if len(arr) == 0:\n        return []\n    return arr"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "clauses": [
+        {
+          "clause_id": "C1",
+          "code": "def handle(lst):\n    if lst is None:\n        return None\n    return lst"
+        }
+      ]
+    }
+  ]
+}

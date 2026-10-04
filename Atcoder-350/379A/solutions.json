@@ -1,0 +1,169 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N)",
+          "code": "void read_input(int *N){ scanf(\"%d\", N); }\n"
+        },
+        {
+          "clause_id": "extract_digits",
+          "signature": "void extract_digits(int N,int *a,int *b,int *c)",
+          "code": "void extract_digits(int N,int *a,int *b,int *c){ *c=N%10; N/=10; *b=N%10; N/=10; *a=N%10; }\n"
+        },
+        {
+          "clause_id": "build_numbers",
+          "signature": "void build_numbers(int a,int b,int c,int *x,int *y)",
+          "code": "void build_numbers(int a,int b,int c,int *x,int *y){ *x=b*100+c*10+a; *y=c*100+a*10+b; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int x,int y)",
+          "code": "void print_answer(int x,int y){ printf(\"%d %d\\n\", x,y); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,a,b,c,x,y; read_input(&N); extract_digits(N,&a,&b,&c); build_numbers(a,b,c,&x,&y); print_answer(x,y); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N)",
+          "code": "void read_input(int *N){ scanf(\"%d\", N); }\n"
+        },
+        {
+          "clause_id": "extract_digits",
+          "signature": "void extract_digits(int N,int *a,int *b,int *c)",
+          "code": "void extract_digits(int N,int *a,int *b,int *c){ *c=N%10; N/=10; *b=N%10; N/=10; *a=N%10; }\n"
+        },
+        {
+          "clause_id": "build_numbers",
+          "signature": "void build_numbers(int a,int b,int c,int *x,int *y)",
+          "code": "void build_numbers(int a,int b,int c,int *x,int *y){ *x=b*100+c*10+a; *y=c*100+a*10+b; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int x,int y)",
+          "code": "void print_answer(int x,int y){ printf(\"%d %d\\n\", x,y); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,a,b,c,x,y; read_input(&N); extract_digits(N,&a,&b,&c); build_numbers(a,b,c,&x,&y); print_answer(x,y); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N)",
+          "code": "void read_input(int *N){ scanf(\"%d\", N); }\n"
+        },
+        {
+          "clause_id": "extract_digits",
+          "signature": "void extract_digits(int N,int *a,int *b,int *c)",
+          "code": "void extract_digits(int N,int *a,int *b,int *c){ *c=N%10; N/=10; *b=N%10; N/=10; *a=N%10; }\n"
+        },
+        {
+          "clause_id": "build_numbers",
+          "signature": "void build_numbers(int a,int b,int c,int *x,int *y)",
+          "code": "void build_numbers(int a,int b,int c,int *x,int *y){ *x=b*100+c*10+a; *y=c*100+a*10+b; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int x,int y)",
+          "code": "void print_answer(int x,int y){ printf(\"%d %d\\n\", x,y); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,a,b,c,x,y; read_input(&N); extract_digits(N,&a,&b,&c); build_numbers(a,b,c,&x,&y); print_answer(x,y); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N)",
+          "code": "void read_input(int *N){ scanf(\"%d\", N); }\n"
+        },
+        {
+          "clause_id": "extract_digits",
+          "signature": "void extract_digits(int N,int *a,int *b,int *c)",
+          "code": "void extract_digits(int N,int *a,int *b,int *c){ *c=N%10; N/=10; *b=N%10; N/=10; *a=N%10; }\n"
+        },
+        {
+          "clause_id": "build_numbers",
+          "signature": "void build_numbers(int a,int b,int c,int *x,int *y)",
+          "code": "void build_numbers(int a,int b,int c,int *x,int *y){ *x=b*100+c*10+a; *y=c*100+a*10+b; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int x,int y)",
+          "code": "void print_answer(int x,int y){ printf(\"%d %d\\n\", x,y); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,a,b,c,x,y; read_input(&N); extract_digits(N,&a,&b,&c); build_numbers(a,b,c,&x,&y); print_answer(x,y); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N)",
+          "code": "void read_input(int *N){ scanf(\"%d\", N); }\n"
+        },
+        {
+          "clause_id": "extract_digits",
+          "signature": "void extract_digits(int N,int *a,int *b,int *c)",
+          "code": "void extract_digits(int N,int *a,int *b,int *c){ *c=N%10; N/=10; *b=N%10; N/=10; *a=N%10; }\n"
+        },
+        {
+          "clause_id": "build_numbers",
+          "signature": "void build_numbers(int a,int b,int c,int *x,int *y)",
+          "code": "void build_numbers(int a,int b,int c,int *x,int *y){ *x=b*100+c*10+a; *y=c*100+a*10+b; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int x,int y)",
+          "code": "void print_answer(int x,int y){ printf(\"%d %d\\n\", x,y); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,a,b,c,x,y; read_input(&N); extract_digits(N,&a,&b,&c); build_numbers(a,b,c,&x,&y); print_answer(x,y); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

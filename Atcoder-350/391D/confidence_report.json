@@ -1,0 +1,23 @@
+{
+  "problem_id": "391D",
+  "total_clauses": 4,
+  "average_confidence": 0.905,
+  "clause_confidences": [
+    {
+      "clause_id": "read_input",
+      "confidence": 0.905
+    },
+    {
+      "clause_id": "compute_sum",
+      "confidence": 0.905
+    },
+    {
+      "clause_id": "print_result",
+      "confidence": 0.905
+    },
+    {
+      "clause_id": "main",
+      "confidence": 0.905
+    }
+  ]
+}

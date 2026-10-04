@@ -1,0 +1,28 @@
+{
+  "problem_id": "398A",
+  "average_confidence": 0.9861538461538462,
+  "clauses": {
+    "read_n": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "build_string": {
+      "confidence": 0.9446153846153846,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "print_s": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    }
+  },
+  "total_clauses": 4,
+  "compile_success": true
+}

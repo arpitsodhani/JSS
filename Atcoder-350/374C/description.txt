@@ -1,0 +1,6 @@
+As KEYENCE headquarters have more and more workers, they decided to divide the departments in the headquarters into two groups and stagger their lunch breaks. KEYENCE headquarters have N departments, and the number of people in the i -th department (1\leq i\leq N) is K_i . When assigning each department to Group A or Group B , having each group take lunch breaks at the same time, and ensuring that the lunch break times of Group A and Group B do not overlap, find the minimum possible value of the maximum number of people taking a lunch break at the same time. In other words, find the minimum possible value of the larger of the following: the total number of people in departments assigned to Group A , and the total number of people in departments assigned to Group B .
+
+**Constraints:**
+- 1 <= N <= 20
+- 1 <= K_i <= 10^9
+- All input values are integers

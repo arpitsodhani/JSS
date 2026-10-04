@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_nth_term_kitamasa",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "multiply_and_reduce_polynomial",
+      "confidence": 1.0
+    },
+    {
+      "clause": "reduce_polynomial_by_recurrence",
+      "confidence": 1.0
+    }
+  ]
+}

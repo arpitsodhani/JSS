@@ -1,0 +1,28 @@
+{
+  "contestId": 1665,
+  "index": "B",
+  "problem_id": "1665B",
+  "name": "Array Cloning Technique",
+  "rating": 900,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "sortings"
+  ],
+  "points": 750.0,
+  "solvedCount": 34934,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Array Cloning Technique",
+  "legend": "You are given an array a of n integers. Initially there is only one copy of the given array.\n\nYou can do operations of two types:\n\nChoose any array and clone it. After that there is one more copy of the chosen array.\nSwap two elements from any two copies (maybe in the same copy) on any positions.\n\nYou need to find the minimal number of operations needed to obtain a copy where all elements are equal.",
+  "input_spec": "The input consists of multiple test cases. The first line contains a single integer t (1≤t≤104) — the number of test cases. Description of the test cases follows.\n\nThe first line of each test case contains a single integer n (1≤n≤105) — the length of the array a.\n\nThe second line of each test case contains n integers a1,a2,…,an (−109≤ai≤109) — the elements of the array a.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 105.",
+  "output_spec": "For each test case output a single integer — the minimal number of operations needed to create at least one copy where all elements are equal.",
+  "note": "In the first test case all elements in the array are already equal, that's why the answer is 0.\n\nIn the second test case it is possible to create a copy of the given array. After that there will be two identical arrays:\n\n[ 0 1 3 3 7 0 ] and [ 0 1 3 3 7 0 ]\n\nAfter that we can swap elements in a way so all zeroes are in one array:\n\n[ 0 0\n_ 0\n_ 3 7 0 ] and [ 1\n_ 1 3 3 7 3\n_ ]\n\nNow let's create a copy of the first array:\n\n[ 0 0 0 3 7 0 ], [ 0 0 0 3 7 0 ] and [ 1 1 3 3 7 3 ]\n\nLet's swap elements in the first two copies:\n\n[ 0 0 0 0\n_ 0\n_ 0 ], [ 3\n_ 7\n_ 0 3 7 0 ] and [ 1 1 3 3 7 3 ].\n\nFinally, we made a copy where all elements are equal and made 6 operations.\n\nIt can be proven that no fewer operations are enough.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n1\n1789\n6\n0 1 3 3 7 0\n2\n-1000000000 1000000000\n4\n4 3 2 1\n5\n2 5 7 6 3\n7\n1 1 1 1 1 1 1\n",
+      "output": "0\n6\n2\n5\n7\n0"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "contestId": 1550,
+  "index": "D",
+  "problem_id": "1550D",
+  "name": "Excellent Arrays",
+  "rating": 2300,
+  "tags": [
+    "binary search",
+    "combinatorics",
+    "constructive algorithms",
+    "implementation",
+    "math",
+    "sortings",
+    "two pointers"
+  ],
+  "points": null,
+  "solvedCount": 2088,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Excellent Arrays",
+  "legend": "Let's call an integer array a1,a2,…,an good if ai≠i for each i.\n\nLet F(a) be the number of pairs (i,j) (1≤i<j≤n) such that ai+aj=i+j.\n\nLet's say that an array a1,a2,…,an is excellent if:\n\na is good;\nl≤ai≤r for each i;\nF(a) is the maximum possible among all good arrays of size n.\n\nGiven n, l and r, calculate the number of excellent arrays modulo 109+7.",
+  "input_spec": "The first line contains a single integer t (1≤t≤1000) — the number of test cases.\n\nThe first and only line of each test case contains three integers n, l, and r (2≤n≤2⋅105; −109≤l≤1; n≤r≤109).\n\nIt's guaranteed that the sum of n doesn't exceed 2⋅105.",
+  "output_spec": "For each test case, print the number of excellent arrays modulo 109+7.",
+  "note": "In the first test case, it can be proven that the maximum F(a) among all good arrays a is equal to 2. The excellent arrays are:\n\n[2,1,2];\n[0,3,2];\n[2,3,2];\n[3,0,1].",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n3 0 3\n4 -3 5\n42 -33 55\n69 -42 146\n",
+      "output": "4\n10\n143922563\n698570404"
+    }
+  ]
+}

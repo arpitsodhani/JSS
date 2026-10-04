@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%lld\", &a[i]);\n"
+        },
+        {
+          "clause_id": "compute_ranks",
+          "signature": "void compute_ranks(int n, long long *a, int *rank)",
+          "code": "long long *b=(long long*)malloc((size_t)n*sizeof(long long));\nfor(int i=0;i<n;i++) b[i]=a[i];\nfor(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(b[j]>b[i]){ long long t=b[i]; b[i]=b[j]; b[j]=t; }\nint r=1;\nfor(int i=0;i<n;){\n  int j=i; while(j<n && b[j]==b[i]) j++;\n  for(int k=i;k<j;k++){\n    for(int p=0;p<n;p++) if(a[p]==b[i]) rank[p]=r;\n  }\n  r += (j-i);\n  i=j;\n}\nfree(b);\n"
+        },
+        {
+          "clause_id": "print_ranks",
+          "signature": "void print_ranks(int n, const int *rank)",
+          "code": "for(int i=0;i<n;i++) printf(\"%d\\n\", rank[i]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[105]; static int r[105]; read_input(&n,a); compute_ranks(n,a,r); print_ranks(n,r); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%lld\", &a[i]);\n"
+        },
+        {
+          "clause_id": "compute_ranks",
+          "signature": "void compute_ranks(int n, long long *a, int *rank)",
+          "code": "long long *b=(long long*)malloc((size_t)n*sizeof(long long));\nfor(int i=0;i<n;i++) b[i]=a[i];\nfor(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(b[j]>b[i]){ long long t=b[i]; b[i]=b[j]; b[j]=t; }\nint r=1;\nfor(int i=0;i<n;){\n  int j=i; while(j<n && b[j]==b[i]) j++;\n  for(int k=i;k<j;k++){\n    for(int p=0;p<n;p++) if(a[p]==b[i]) rank[p]=r;\n  }\n  r += (j-i);\n  i=j;\n}\nfree(b);\n"
+        },
+        {
+          "clause_id": "print_ranks",
+          "signature": "void print_ranks(int n, const int *rank)",
+          "code": "for(int i=0;i<n;i++) printf(\"%d\\n\", rank[i]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[105]; static int r[105]; read_input(&n,a); compute_ranks(n,a,r); print_ranks(n,r); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%lld\", &a[i]);\n"
+        },
+        {
+          "clause_id": "compute_ranks",
+          "signature": "void compute_ranks(int n, long long *a, int *rank)",
+          "code": "long long *b=(long long*)malloc((size_t)n*sizeof(long long));\nfor(int i=0;i<n;i++) b[i]=a[i];\nfor(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(b[j]>b[i]){ long long t=b[i]; b[i]=b[j]; b[j]=t; }\nint r=1;\nfor(int i=0;i<n;){\n  int j=i; while(j<n && b[j]==b[i]) j++;\n  for(int k=i;k<j;k++){\n    for(int p=0;p<n;p++) if(a[p]==b[i]) rank[p]=r;\n  }\n  r += (j-i);\n  i=j;\n}\nfree(b);\n"
+        },
+        {
+          "clause_id": "print_ranks",
+          "signature": "void print_ranks(int n, const int *rank)",
+          "code": "for(int i=0;i<n;i++) printf(\"%d\\n\", rank[i]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[105]; static int r[105]; read_input(&n,a); compute_ranks(n,a,r); print_ranks(n,r); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%lld\", &a[i]);\n"
+        },
+        {
+          "clause_id": "compute_ranks",
+          "signature": "void compute_ranks(int n, long long *a, int *rank)",
+          "code": "long long *b=(long long*)malloc((size_t)n*sizeof(long long));\nfor(int i=0;i<n;i++) b[i]=a[i];\nfor(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(b[j]>b[i]){ long long t=b[i]; b[i]=b[j]; b[j]=t; }\nint r=1;\nfor(int i=0;i<n;){\n  int j=i; while(j<n && b[j]==b[i]) j++;\n  for(int k=i;k<j;k++){\n    for(int p=0;p<n;p++) if(a[p]==b[i]) rank[p]=r;\n  }\n  r += (j-i);\n  i=j;\n}\nfree(b);\n"
+        },
+        {
+          "clause_id": "print_ranks",
+          "signature": "void print_ranks(int n, const int *rank)",
+          "code": "for(int i=0;i<n;i++) printf(\"%d\\n\", rank[i]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[105]; static int r[105]; read_input(&n,a); compute_ranks(n,a,r); print_ranks(n,r); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%lld\", &a[i]);\n"
+        },
+        {
+          "clause_id": "compute_ranks",
+          "signature": "void compute_ranks(int n, long long *a, int *rank)",
+          "code": "long long *b=(long long*)malloc((size_t)n*sizeof(long long));\nfor(int i=0;i<n;i++) b[i]=a[i];\nfor(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(b[j]>b[i]){ long long t=b[i]; b[i]=b[j]; b[j]=t; }\nint r=1;\nfor(int i=0;i<n;){\n  int j=i; while(j<n && b[j]==b[i]) j++;\n  for(int k=i;k<j;k++){\n    for(int p=0;p<n;p++) if(a[p]==b[i]) rank[p]=r;\n  }\n  r += (j-i);\n  i=j;\n}\nfree(b);\n"
+        },
+        {
+          "clause_id": "print_ranks",
+          "signature": "void print_ranks(int n, const int *rank)",
+          "code": "for(int i=0;i<n;i++) printf(\"%d\\n\", rank[i]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[105]; static int r[105]; read_input(&n,a); compute_ranks(n,a,r); print_ranks(n,r); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

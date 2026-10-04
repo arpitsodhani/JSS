@@ -1,0 +1,29 @@
+{
+  "contestId": 2005,
+  "index": "A",
+  "problem_id": "2005A",
+  "name": "Simple Palindrome",
+  "rating": 900,
+  "tags": [
+    "combinatorics",
+    "constructive algorithms",
+    "greedy",
+    "math"
+  ],
+  "points": 750.0,
+  "solvedCount": 26612,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Simple Palindrome",
+  "legend": "Narek has to spend 2 hours with some 2-year-old kids at the kindergarten. He wants to teach them competitive programming, and their first lesson is about palindromes.\n\nNarek found out that the kids only know the vowels of the English alphabet (the letters a, e, i, o, and u), so Narek needs to make a string that consists of vowels only. After making the string, he'll ask the kids to count the number of subsequences that are palindromes. Narek wants to keep it simple, so he's looking for a string such that the amount of palindrome subsequences is minimal.\n\nHelp Narek find a string of length n, consisting of lowercase English vowels only (letters a, e, i, o, and u), which minimizes the amount of palindrome† subsequences‡ in it.\n\n† A string is called a palindrome if it reads the same from left to right and from right to left.\n\n‡ String t is a subsequence of string s if t can be obtained from s by removing several (possibly, zero or all) characters from s and concatenating the remaining ones, without changing their order. For example, odocs is a subsequence of codeforces.",
+  "input_spec": "The first line of the input contains a single integer t (1≤t≤100) — the number of test cases. Subsequently, the description of each test case follows.\n\nThe only line of each test case contains a single integer n (1≤n≤100) — the size of the string.",
+  "output_spec": "For each test case, output any string of length n that satisfies the above conditions.",
+  "note": "In the first example, uo has only three palindrome subsequences: u, o, and the empty string. It can be shown that there is no better answer.\n\nIn the third example, oeiiua has only eight palindrome subsequences: o, e, i, i, u, a, ii, and the empty string. It can be shown that there is no better answer.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n2\n3\n6\n",
+      "output": "uo\niae\noeiiua"
+    }
+  ]
+}

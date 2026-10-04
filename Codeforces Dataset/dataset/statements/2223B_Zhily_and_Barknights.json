@@ -1,0 +1,31 @@
+{
+  "contestId": 2223,
+  "index": "B",
+  "problem_id": "2223B",
+  "name": "Zhily and Barknights",
+  "rating": 1600,
+  "tags": [
+    "binary search",
+    "data structures",
+    "dp",
+    "math",
+    "sortings",
+    "two pointers"
+  ],
+  "points": 750.0,
+  "solvedCount": 3588,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Zhily and Barknights",
+  "legend": "Zhily developed a game called Barknights, and she is preparing to release a major update on March 25. Specifically, she plans to add a Module to each Operator in the game, multiplying their power level by the Module's power.\n\nAfter the update is released, the famous game streamer Jily will evaluate the Operators' power levels and rank them in a tier list. Whenever an earlier-released Operator is ranked higher than a later-released Operator, it will cause a wave of drama.\n\nUnfortunately, Zhily accidentally knocked over a hot water kettle and broke her computer, which caused all the Modules to be randomly rearranged. Now Zhily wants to know the expected number of waves of drama that will be generated, but since she has to move on to the next problem, she has entrusted this task to you.\n\nYou are given two arrays a and b of n positive integers. Let b′ be a permutation of array b chosen uniformly at random among all n! possible permutations. Define ci=ai⋅b\n′\ni\n for 1≤i≤n.\n\nFind the expected number of inversions∗ of array c.\n\n∗An inversion in array c is a pair of indices (i,j) such that 1≤i<j≤n and ci>cj.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤100). The description of the test cases follows.\n\nThe first line of each test case contains a single integer n (1≤n≤2000) — the length of the arrays a and b.\n\nThe second line of each test case contains n integers a1,a2,…,an (1≤ai≤109) — the array a.\n\nThe third line of each test case contains n integers b1,b2,…,bn (1≤bi≤109) — the array b.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2000.",
+  "output_spec": "For each test case, output the expected number of inversions in c modulo 998244353.\n\nFormally, let M=998244353. It can be shown that the exact answer can be expressed as an irreducible fraction \np\n\n\nq\n, where p and q are integers and q≢0(modM). Output the integer equal to p⋅q−1modM. In other words, output such an integer x that 0≤x<M and x⋅q≡p(modM).",
+  "note": "In the first test case, since all elements of b are 1, any of the 5! permutations results in b′=(1,1,1,1,1). Thus, c=(1,14,5,1,4) is always constant. The inversions are (2,3),(2,4),(2,5),(3,4), and (3,5). The expected number of inversions is 5≡5(mod998244353).\n\nIn the second test case, there are 3!=6 equally likely permutations b′. The resulting arrays c and their respective inversion counts are shown below:\n\nb′\tc=(3b\n′\n1\n,2b\n′\n2\n,5b\n′\n3\n)\tInversion Count\n(3,2,5)\t(9,4,25)\t1\n(3,5,2)\t(9,10,10)\t0\n(2,3,5)\t(6,6,25)\t0\n(2,5,3)\t(6,10,15)\t0\n(5,3,2)\t(15,6,10)\t2\n(5,2,3)\t(15,4,15)\t1\n\nThe expected number of inversions is \n1+0+0+0+2+1\n\n\n6\n=\n4\n\n\n6\n=\n2\n\n\n3\n.\n\nModulo 998244353, the answer is 2⋅3−1≡665496236(mod998244353).",
+  "time_limit": "4 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "3\n5\n1 14 5 1 4\n1 1 1 1 1\n3\n3 2 5\n3 2 5\n10\n10 72 65 43 73 23 78 13 49 99\n31 90 45 19 44 18 59 31 48 29\n",
+      "output": "5\n665496236\n820778710"
+    }
+  ]
+}

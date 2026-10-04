@@ -1,0 +1,7 @@
+Takahashi has 10^{100} flower pots. Initially, he is not growing any plants. You are given Q queries to process in order. There are three types of queries as follows. 1 : Prepare one empty flower pot and put a plant in it. Here, the plant's height is 0 . 2 T : Wait for T days. During this time, the height of every existing plants increases by T . 3 H : Harvest all plants with a height of at least H , and output the number of plants harvested. The harvested plants are removed from their flower pots. Assume that performing queries of the first and third types takes zero time.
+
+**Constraints:**
+- 1 <= Q <= 2 * 10^5
+- 1 <= T_i <= 10^{18}
+- 1 <= H_i <= 10^{18}
+- All input values are integers

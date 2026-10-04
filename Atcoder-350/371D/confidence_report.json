@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.825,
+  "clauses": [
+    {
+      "clause": "count_distinct_substrings",
+      "confidence": 1.0
+    },
+    {
+      "clause": "create_automaton_state",
+      "confidence": 1.0
+    },
+    {
+      "clause": "extend_automaton_with_char",
+      "confidence": 0.29999999999999993
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    }
+  ]
+}

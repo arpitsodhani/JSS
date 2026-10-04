@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint team_a[9];\nint team_b[8];\n\nvoid read_input() {\n    for (int i = 0; i < 9; i++) {\n        scanf(\"%d\", &team_a[i]);\n    }\n    for (int i = 0; i < 8; i++) {\n        scanf(\"%d\", &team_b[i]);\n    }\n}\n\nint calculate_result() {\n    int sum_a = 0;\n    for (int i = 0; i < 9; i++) {\n        sum_a += team_a[i];\n    }\n    \n    int sum_b = 0;\n    for (int i = 0; i < 8; i++) {\n        sum_b += team_b[i];\n    }\n    \n    return sum_b - sum_a + 1;\n}\n\nint main() {\n    read_input();\n    printf(\"%d\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "calculate_result",
+          "signature": "int calculate_result()",
+          "code": "int calculate_result() {\n    int sum_a = 0;\n    for (int i = 0; i < 9; i++) {\n        sum_a += team_a[i];\n    }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%d\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint team_a[9];\nint team_b[8];\n\nvoid read_input() {\n    int i = 0;\n    while (i < 9) {\n        scanf(\"%d\", &team_a[i]);\n        i++;\n    }\n    i = 0;\n    while (i < 8) {\n        scanf(\"%d\", &team_b[i]);\n        i++;\n    }\n}\n\nint calculate_result() {\n    int total_a = 0;\n    int idx = 0;\n    while (idx < 9) {\n        total_a += team_a[idx];\n        idx++;\n    }\n    \n    int total_b = 0;\n    idx = 0;\n    while (idx < 8) {\n        total_b += team_b[idx];\n        idx++;\n    }\n    \n    int needed = total_b - total_a + 1;\n    return needed;\n}\n\nint main() {\n    read_input();\n    printf(\"%d\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "calculate_result",
+          "signature": "int calculate_result()",
+          "code": "int calculate_result() {\n    int total_a = 0;\n    int idx = 0;\n    while (idx < 9) {\n        total_a += team_a[idx];\n        idx++;\n    }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%d\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint team_a[9];\nint team_b[8];\n\nvoid read_input() {\n    for (int j = 0; j < 9; j++) scanf(\"%d\", &team_a[j]);\n    for (int j = 0; j < 8; j++) scanf(\"%d\", &team_b[j]);\n}\n\nint calculate_result() {\n    int score_a = 0, score_b = 0;\n    \n    for (int j = 0; j < 9; j++) {\n        score_a += team_a[j];\n    }\n    \n    for (int j = 0; j < 8; j++) {\n        score_b += team_b[j];\n    }\n    \n    return score_b - score_a + 1;\n}\n\nint main() {\n    read_input();\n    printf(\"%d\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "calculate_result",
+          "signature": "int calculate_result()",
+          "code": "int calculate_result() {\n    int score_a = 0, score_b = 0;\n    \n    for (int j = 0; j < 9; j++) {\n        score_a += team_a[j];\n    }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%d\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint team_a[9];\nint team_b[8];\n\nvoid read_input() {\n    for (int k = 0; k < 9; k++) {\n        scanf(\"%d\", team_a + k);\n    }\n    for (int k = 0; k < 8; k++) {\n        scanf(\"%d\", team_b + k);\n    }\n}\n\nint calculate_result() {\n    int a = 0, b = 0, i;\n    for (i = 0; i < 9; i++) a += team_a[i];\n    for (i = 0; i < 8; i++) b += team_b[i];\n    return b - a + 1;\n}\n\nint main() {\n    read_input();\n    printf(\"%d\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "calculate_result",
+          "signature": "int calculate_result()",
+          "code": "int calculate_result() {\n    int a = 0, b = 0, i;\n    for (i = 0; i < 9; i++) a += team_a[i];\n    for (i = 0; i < 8; i++) b += team_b[i];\n    return b - a + 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%d\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint team_a[9];\nint team_b[8];\n\nvoid read_input() {\n    int i;\n    for (i = 0; i < 9; i++) scanf(\"%d\", &team_a[i]);\n    for (i = 0; i < 8; i++) scanf(\"%d\", &team_b[i]);\n}\n\nint calculate_result() {\n    int sum1 = 0, sum2 = 0;\n    for (int i = 0; i < 9; i++) sum1 += team_a[i];\n    for (int i = 0; i < 8; i++) sum2 += team_b[i];\n    return sum2 - sum1 + 1;\n}\n\nint main() {\n    read_input();\n    printf(\"%d\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "calculate_result",
+          "signature": "int calculate_result()",
+          "code": "int calculate_result() {\n    int sum1 = 0, sum2 = 0;\n    for (int i = 0; i < 9; i++) sum1 += team_a[i];\n    for (int i = 0; i < 8; i++) sum2 += team_b[i];\n    return sum2 - sum1 + 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%d\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

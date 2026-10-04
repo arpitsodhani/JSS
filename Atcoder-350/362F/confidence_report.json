@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9808141711229945,
+  "clauses": [
+    {
+      "clause": "compute_tree_distances",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_maximum_matching",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9532566844919785
+    },
+    {
+      "clause": "read_tree",
+      "confidence": 0.97
+    }
+  ]
+}

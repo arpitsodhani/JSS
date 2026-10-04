@@ -1,0 +1,8 @@
+There is a circular cake that has been cut into N equal slices by its radii. Each piece is labeled with an integer from 1 to N in clockwise order, and for each integer i with 1 \leq i \leq N , the piece i is also referred to as piece N + i . Initially, every piece’s color is color 0 . You can perform the following operation any number of times: Choose integers a , b , and c such that 1 \leq a, b, c \leq N . For each integer i with 0 \leq i < b , change the color of piece a + i to color c . The cost of this operation is b + X_c . You want each piece i (for 1 \leq i \leq N ) to have color C_i . Find the minimum total cost of operations needed to achieve this.
+
+**Constraints:**
+- 1 <= N, M, K <= 2 * 10^5
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple
+- All input values are integers

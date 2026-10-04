@@ -1,0 +1,44 @@
+{
+  "contestId": 1912,
+  "index": "K",
+  "problem_id": "1912K",
+  "name": "Kim's Quest",
+  "rating": 1800,
+  "tags": [
+    "bitmasks",
+    "combinatorics",
+    "dp"
+  ],
+  "points": null,
+  "solvedCount": 4412,
+  "source": "verbatim_cf_fetch",
+  "title": "K. Kim's Quest",
+  "legend": "In the long-forgotten halls of Kombinatoria's ancient academy, a gifted mathematician named Kim is faced with an unusual challenge. They found an old sequence of integers, which is believed to be a cryptic message from the legendary Kombinatoria's Oracle, and Kim wants to decipher its hidden meaning.\n\nKim's mission is to find specific patterns within the sequence, known as Harmonious Subsequences. These are extraordinary subsequences where the sum of every three consecutive numbers is even, and each subsequence must be at least three numbers in length.\n\nGiven a sequence ai (1≤i≤n) of length n, its subsequence of length m is equal to ab1,ab2,…,abm and is uniquely defined by a set of m indices bj, such that 1≤b1<b2<…<bm≤n. Subsequences given by different sets of indices bj are considered different.\n\nThere's a twist in Kim's quest: the number of these Harmonious Subsequences could be overwhelming. To report the findings effectively, Kim must calculate the total number of these subsequences, presenting the answer as a remainder after dividing by the number 998244353.",
+  "input_spec": "The first line contains a single integer n — the length of the sequence (3≤n≤2⋅105).\n\nThe second line contains n space-separated integers ai — the elements of the sequence (1≤ai≤2⋅105).",
+  "output_spec": "Output one number — the number of Harmonious Subsequences, modulo 998244353.",
+  "note": "In the provided input data for the fifth sample, the sequence of numbers is split into three separate lines for clarity, but it should be understood that in the actual test data, the sequence is given in one line. The actual number of Harmonious Subsequences in this example is 4991221765=5×998244353, hence the output is zero as a result of finding its remainder after dividing by the number 998244353.",
+  "time_limit": "3 seconds",
+  "mem_limit": "1024 megabytes",
+  "samples": [
+    {
+      "input": "3\n1 2 3\n",
+      "output": "1"
+    },
+    {
+      "input": "5\n2 8 2 6 4\n",
+      "output": "16"
+    },
+    {
+      "input": "5\n5 7 1 3 5\n",
+      "output": "0"
+    },
+    {
+      "input": "11\n3 1 4 1 5 9 2 6 5 3 6\n",
+      "output": "386"
+    },
+    {
+      "input": "54\n2 1 1 1 1 2 1 2 2 2 2 1 1 1 2 1 1 2\n2 1 2 2 2 2 2 2 2 1 1 1 2 2 1 1 1 1\n2 2 1 1 2 2 2 2 2 1 1 1 2 2 1 2 1 1\n",
+      "output": "0"
+    }
+  ]
+}

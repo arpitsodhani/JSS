@@ -1,0 +1,8 @@
+Beware the special input format and the smaller memory limit than usual. There is an undirected graph with vertices 1, 2, \dots, N , initially without edges. You need to process the following Q queries on this graph: 1 u v Type 1 : Add an edge between vertices u and v . Before adding the edge, u and v belong to different connected components (i.e., the graph always remains a forest). 2 u v Type 2 : If there is a vertex adjacent to both u and v , report its vertex number; otherwise, report 0 . Given that the graph always remains a forest, the answer to this query is uniquely determined. The queries are given in an encrypted form. The original query is defined by three integers A, B, C , and the encrypted query is given as three integers a, b, c . Let X_k be the answer to the k -th type- 2 query. Define X_k = 0 for k = 0 . Restore A, B, C from the given a, b, c as follows: Let l be the number of type- 2 queries given before this query (not counting the query itself). Then, use the following: A = 1 + (((a \times (1+X_l)) \mod 998244353) \mod 2) B = 1 + (((b \times (1+X_l)) \mod 998244353) \mod N) C = 1 + (((c \times (1+X_l)) \mod 998244353) \mod N)
+
+**Constraints:**
+- integers
+- 2 \le N \le 10^5
+- 1 \le Q \le 10^5
+- 1 \le u < v \le N
+- 0 \le a,b,c < 998244353

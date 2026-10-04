@@ -1,0 +1,6 @@
+There are N people participating in an event, and the transportation cost for the i -th person is A_i yen. Takahashi, the organizer of the event, decided to set a maximum limit x for the transportation subsidy. The subsidy for person i will be \min(x, A_i) yen. Here, x must be a non-negative integer. Given that Takahashi's budget is M yen, and he wants the total transportation subsidy for all N people to be at most M yen, what is the maximum possible value of the subsidy limit x ? If the subsidy limit can be made infinitely large, report that instead.
+
+**Constraints:**
+- 1 <= N, M <= 2 * 10^5
+- 0 <= A_i <= 10^9
+- All input values are integers

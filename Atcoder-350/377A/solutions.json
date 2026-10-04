@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S)",
+          "code": "void read_input(char *S){ scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "check_perm",
+          "signature": "int check_perm(char *S)",
+          "code": "int check_perm(char *S){ int seen[26]={0}; for(int i=0;i<3;i++) seen[S[i]-'A']++; return (seen['A'-'A']&&seen['B'-'A']&&seen['C'-'A']); }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[10]; read_input(S); int ok=check_perm(S); print_answer(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S)",
+          "code": "void read_input(char *S){ scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "check_perm",
+          "signature": "int check_perm(char *S)",
+          "code": "int check_perm(char *S){ int seen[26]={0}; for(int i=0;i<3;i++) seen[S[i]-'A']++; return (seen['A'-'A']&&seen['B'-'A']&&seen['C'-'A']); }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[10]; read_input(S); int ok=check_perm(S); print_answer(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S)",
+          "code": "void read_input(char *S){ scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "check_perm",
+          "signature": "int check_perm(char *S)",
+          "code": "int check_perm(char *S){ int seen[26]={0}; for(int i=0;i<3;i++) seen[S[i]-'A']++; return (seen['A'-'A']&&seen['B'-'A']&&seen['C'-'A']); }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[10]; read_input(S); int ok=check_perm(S); print_answer(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S)",
+          "code": "void read_input(char *S){ scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "check_perm",
+          "signature": "int check_perm(char *S)",
+          "code": "int check_perm(char *S){ int seen[26]={0}; for(int i=0;i<3;i++) seen[S[i]-'A']++; return (seen['A'-'A']&&seen['B'-'A']&&seen['C'-'A']); }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[10]; read_input(S); int ok=check_perm(S); print_answer(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S)",
+          "code": "void read_input(char *S){ scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "check_perm",
+          "signature": "int check_perm(char *S)",
+          "code": "int check_perm(char *S){ int seen[26]={0}; for(int i=0;i<3;i++) seen[S[i]-'A']++; return (seen['A'-'A']&&seen['B'-'A']&&seen['C'-'A']); }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[10]; read_input(S); int ok=check_perm(S); print_answer(ok); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

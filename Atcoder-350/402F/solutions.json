@@ -1,0 +1,174 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%lld\", &a[i]);\n"
+        },
+        {
+          "clause_id": "squarefree_hash",
+          "signature": "unsigned long long squarefree_hash(long long x)",
+          "code": "unsigned long long h=0;\nlong long t=x;\nfor(long long p=2;p*p<=t;p+=(p==2?1:2)){\n  int e=0;\n  while(t%p==0){ t/=p; e^=1; }\n  if(e){\n    unsigned long long z=(unsigned long long)p + 0x9e3779b97f4a7c15ULL;\n    z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;\n    z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;\n    z = z ^ (z >> 31);\n    h ^= z;\n  }\n}\nif(t>1){\n  unsigned long long z=(unsigned long long)t + 0x9e3779b97f4a7c15ULL;\n  z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;\n  z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;\n  z = z ^ (z >> 31);\n  h ^= z;\n}\nreturn h;\n"
+        },
+        {
+          "clause_id": "count_square_subseq",
+          "signature": "long long count_square_subseq(int n, const long long *a)",
+          "code": "const long long MOD=998244353LL;\nunsigned long long basis[64]; for(int i=0;i<64;i++) basis[i]=0;\nint rank=0;\nfor(int i=0;i<n;i++){\n  unsigned long long x=squarefree_hash(a[i]);\n  for(int b=63;b>=0;b--){\n    if(((x>>b)&1ULL)==0ULL) continue;\n    if(!basis[b]){ basis[b]=x; rank++; break; }\n    x ^= basis[b];\n  }\n}\nlong long exp=(long long)n-rank;\nlong long r=1,a2=2%MOD;\nwhile(exp){ if(exp&1) r=r*a2%MOD; a2=a2*a2%MOD; exp>>=1; }\nr=(r-1+MOD)%MOD;\nreturn r;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[200005]; read_input(&n,a); long long ans=count_square_subseq(n,a); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%lld\", &a[i]);\n"
+        },
+        {
+          "clause_id": "squarefree_hash",
+          "signature": "unsigned long long squarefree_hash(long long x)",
+          "code": "unsigned long long h=0;\nlong long t=x;\nfor(long long p=2;p*p<=t;p+=(p==2?1:2)){\n  int e=0;\n  while(t%p==0){ t/=p; e^=1; }\n  if(e){\n    unsigned long long z=(unsigned long long)p + 0x9e3779b97f4a7c15ULL;\n    z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;\n    z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;\n    z = z ^ (z >> 31);\n    h ^= z;\n  }\n}\nif(t>1){\n  unsigned long long z=(unsigned long long)t + 0x9e3779b97f4a7c15ULL;\n  z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;\n  z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;\n  z = z ^ (z >> 31);\n  h ^= z;\n}\nreturn h;\n"
+        },
+        {
+          "clause_id": "count_square_subseq",
+          "signature": "long long count_square_subseq(int n, const long long *a)",
+          "code": "const long long MOD=998244353LL;\nunsigned long long basis[64]; for(int i=0;i<64;i++) basis[i]=0;\nint rank=0;\nfor(int i=0;i<n;i++){\n  unsigned long long x=squarefree_hash(a[i]);\n  for(int b=63;b>=0;b--){\n    if(((x>>b)&1ULL)==0ULL) continue;\n    if(!basis[b]){ basis[b]=x; rank++; break; }\n    x ^= basis[b];\n  }\n}\nlong long exp=(long long)n-rank;\nlong long r=1,a2=2%MOD;\nwhile(exp){ if(exp&1) r=r*a2%MOD; a2=a2*a2%MOD; exp>>=1; }\nr=(r-1+MOD)%MOD;\nreturn r;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[200005]; read_input(&n,a); long long ans=count_square_subseq(n,a); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%lld\", &a[i]);\n"
+        },
+        {
+          "clause_id": "squarefree_hash",
+          "signature": "unsigned long long squarefree_hash(long long x)",
+          "code": "unsigned long long h=0;\nlong long t=x;\nfor(long long p=2;p*p<=t;p+=(p==2?1:2)){\n  int e=0;\n  while(t%p==0){ t/=p; e^=1; }\n  if(e){\n    unsigned long long z=(unsigned long long)p + 0x9e3779b97f4a7c15ULL;\n    z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;\n    z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;\n    z = z ^ (z >> 31);\n    h ^= z;\n  }\n}\nif(t>1){\n  unsigned long long z=(unsigned long long)t + 0x9e3779b97f4a7c15ULL;\n  z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;\n  z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;\n  z = z ^ (z >> 31);\n  h ^= z;\n}\nreturn h;\n"
+        },
+        {
+          "clause_id": "count_square_subseq",
+          "signature": "long long count_square_subseq(int n, const long long *a)",
+          "code": "const long long MOD=998244353LL;\nunsigned long long basis[64]; for(int i=0;i<64;i++) basis[i]=0;\nint rank=0;\nfor(int i=0;i<n;i++){\n  unsigned long long x=squarefree_hash(a[i]);\n  for(int b=63;b>=0;b--){\n    if(((x>>b)&1ULL)==0ULL) continue;\n    if(!basis[b]){ basis[b]=x; rank++; break; }\n    x ^= basis[b];\n  }\n}\nlong long exp=(long long)n-rank;\nlong long r=1,a2=2%MOD;\nwhile(exp){ if(exp&1) r=r*a2%MOD; a2=a2*a2%MOD; exp>>=1; }\nr=(r-1+MOD)%MOD;\nreturn r;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[200005]; read_input(&n,a); long long ans=count_square_subseq(n,a); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%lld\", &a[i]);\n"
+        },
+        {
+          "clause_id": "squarefree_hash",
+          "signature": "unsigned long long squarefree_hash(long long x)",
+          "code": "unsigned long long h=0;\nlong long t=x;\nfor(long long p=2;p*p<=t;p+=(p==2?1:2)){\n  int e=0;\n  while(t%p==0){ t/=p; e^=1; }\n  if(e){\n    unsigned long long z=(unsigned long long)p + 0x9e3779b97f4a7c15ULL;\n    z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;\n    z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;\n    z = z ^ (z >> 31);\n    h ^= z;\n  }\n}\nif(t>1){\n  unsigned long long z=(unsigned long long)t + 0x9e3779b97f4a7c15ULL;\n  z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;\n  z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;\n  z = z ^ (z >> 31);\n  h ^= z;\n}\nreturn h;\n"
+        },
+        {
+          "clause_id": "count_square_subseq",
+          "signature": "long long count_square_subseq(int n, const long long *a)",
+          "code": "const long long MOD=998244353LL;\nunsigned long long basis[64]; for(int i=0;i<64;i++) basis[i]=0;\nint rank=0;\nfor(int i=0;i<n;i++){\n  unsigned long long x=squarefree_hash(a[i]);\n  for(int b=63;b>=0;b--){\n    if(((x>>b)&1ULL)==0ULL) continue;\n    if(!basis[b]){ basis[b]=x; rank++; break; }\n    x ^= basis[b];\n  }\n}\nlong long exp=(long long)n-rank;\nlong long r=1,a2=2%MOD;\nwhile(exp){ if(exp&1) r=r*a2%MOD; a2=a2*a2%MOD; exp>>=1; }\nr=(r-1+MOD)%MOD;\nreturn r;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[200005]; read_input(&n,a); long long ans=count_square_subseq(n,a); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%lld\", &a[i]);\n"
+        },
+        {
+          "clause_id": "squarefree_hash",
+          "signature": "unsigned long long squarefree_hash(long long x)",
+          "code": "unsigned long long h=0;\nlong long t=x;\nfor(long long p=2;p*p<=t;p+=(p==2?1:2)){\n  int e=0;\n  while(t%p==0){ t/=p; e^=1; }\n  if(e){\n    unsigned long long z=(unsigned long long)p + 0x9e3779b97f4a7c15ULL;\n    z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;\n    z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;\n    z = z ^ (z >> 31);\n    h ^= z;\n  }\n}\nif(t>1){\n  unsigned long long z=(unsigned long long)t + 0x9e3779b97f4a7c15ULL;\n  z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;\n  z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;\n  z = z ^ (z >> 31);\n  h ^= z;\n}\nreturn h;\n"
+        },
+        {
+          "clause_id": "count_square_subseq",
+          "signature": "long long count_square_subseq(int n, const long long *a)",
+          "code": "const long long MOD=998244353LL;\nunsigned long long basis[64]; for(int i=0;i<64;i++) basis[i]=0;\nint rank=0;\nfor(int i=0;i<n;i++){\n  unsigned long long x=squarefree_hash(a[i]);\n  for(int b=63;b>=0;b--){\n    if(((x>>b)&1ULL)==0ULL) continue;\n    if(!basis[b]){ basis[b]=x; rank++; break; }\n    x ^= basis[b];\n  }\n}\nlong long exp=(long long)n-rank;\nlong long r=1,a2=2%MOD;\nwhile(exp){ if(exp&1) r=r*a2%MOD; a2=a2*a2%MOD; exp>>=1; }\nr=(r-1+MOD)%MOD;\nreturn r;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static long long a[200005]; read_input(&n,a); long long ans=count_square_subseq(n,a); print_ll(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

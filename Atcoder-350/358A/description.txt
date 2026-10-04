@@ -1,0 +1,4 @@
+Takahashi is heading to AtCoder Land. There is a signboard in front of him, and he wants to determine whether it says AtCoder Land. You are given two strings S and T separated by a space. Determine whether S= AtCoder and T= Land .
+
+**Constraints:**
+- S and T are strings of length between 1 and 100, consisting of uppercase English letters

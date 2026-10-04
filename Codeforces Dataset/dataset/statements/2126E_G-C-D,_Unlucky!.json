@@ -1,0 +1,27 @@
+{
+  "contestId": 2126,
+  "index": "E",
+  "problem_id": "2126E",
+  "name": "G-C-D, Unlucky!",
+  "rating": 1400,
+  "tags": [
+    "math",
+    "number theory"
+  ],
+  "points": null,
+  "solvedCount": 17474,
+  "source": "verbatim_cf_fetch",
+  "title": "E. G-C-D, Unlucky!",
+  "legend": "Two arrays p and s of length n are given, where p is the prefix GCD∗ of some array a, and s is the suffix GCD of the same array a. In other words, if the array a existed, then for each 1≤i≤n, the following equalities would hold both:\n\npi=gcd(a1,a2,…,ai)\nsi=gcd(ai,ai+1,…,an).\nDetermine whether there exists such an array a for which the given arrays p and s can be obtained.\n\n∗gcd(x,y) denotes the greatest common divisor (GCD) of integers x and y.",
+  "input_spec": "The first line contains an integer t (1≤t≤104) — the number of test cases.\n\nEach test case consists of three lines:\n\nThe first line of each test case contains a single integer n (1≤n≤105) — the length of the array.\n\nThe second line of each test case contains n integers p1,p2,…,pn (1≤pi≤109) — the elements of the array.\n\nThe third line of each test case contains n integers s1,s2,…,sn (1≤si≤109) — the elements of the array.\n\nIt is guaranteed that the sum of all n across all test cases does not exceed 105.",
+  "output_spec": "For each test case, output \"Yes\" (without quotes) if there exists an array a for which the given arrays p and s can be obtained, and \"No\" (without quotes) otherwise.\n\nYou may output each letter in any case (lowercase or uppercase). For example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will be accepted as a positive answer.",
+  "note": "For the first test case, a possible array is: [72, 24, 3, 6, 12, 144].\n\nFor the second test case, it can be shown that such arrays do not exist.\n\nFor the third test case, there exists an array: [125, 125, 125, 25, 75].",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n6\n72 24 3 3 3 3\n3 3 3 6 12 144\n3\n1 2 3\n4 5 6\n5\n125 125 125 25 25\n25 25 25 25 75\n4\n123 421 282 251\n125 1981 239 223\n3\n124 521 125\n125 121 121\n",
+      "output": "YES\nNO\nYES\nNO\nNO"
+    }
+  ]
+}

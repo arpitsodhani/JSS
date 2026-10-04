@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *D,char **S)",
+          "code": "void read_input(int *H,int *W,int *D,char **S){ scanf(\"%d%d%d\", H,W,D); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "count_humidified",
+          "signature": "int count_humidified(int H,int W,int D,char *S)",
+          "code": "int count_humidified(int H,int W,int D,char *S){\n    int n=H*W;\n    int *dist=(int*)malloc((size_t)n*sizeof(int));\n    for(int i=0;i<n;i++) dist[i]=-1;\n    int *qr=(int*)malloc((size_t)n*sizeof(int));\n    int *qc=(int*)malloc((size_t)n*sizeof(int));\n    int head=0, tail=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++){\n        if(S[i*(W+1)+j]=='H'){\n            dist[i*W+j]=0;\n            qr[tail]=i; qc[tail]=j; tail++;\n        }\n    }\n    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};\n    while(head<tail){\n        int r=qr[head], c=qc[head]; head++;\n        for(int k=0;k<4;k++){\n            int nr=r+dr[k], nc=c+dc[k];\n            if(nr<0||nr>=H||nc<0||nc>=W) continue;\n            if(S[nr*(W+1)+nc]=='#') continue;\n            int id=nr*W+nc;\n            if(dist[id]==-1){\n                dist[id]=dist[r*W+c]+1;\n                if(dist[id]<=D){ qr[tail]=nr; qc[tail]=nc; tail++; }\n            }\n        }\n    }\n    int cnt=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++){\n        if(S[i*(W+1)+j]!='#' && dist[i*W+j]!=-1 && dist[i*W+j]<=D) cnt++;\n    }\n    free(dist); free(qr); free(qc);\n    return cnt;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,D; char *S=NULL; read_input(&H,&W,&D,&S); int ans=count_humidified(H,W,D,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *D,char **S)",
+          "code": "void read_input(int *H,int *W,int *D,char **S){ scanf(\"%d%d%d\", H,W,D); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "count_humidified",
+          "signature": "int count_humidified(int H,int W,int D,char *S)",
+          "code": "int count_humidified(int H,int W,int D,char *S){\n    int n=H*W;\n    int *dist=(int*)malloc((size_t)n*sizeof(int));\n    for(int i=0;i<n;i++) dist[i]=-1;\n    int *qr=(int*)malloc((size_t)n*sizeof(int));\n    int *qc=(int*)malloc((size_t)n*sizeof(int));\n    int head=0, tail=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++){\n        if(S[i*(W+1)+j]=='H'){\n            dist[i*W+j]=0;\n            qr[tail]=i; qc[tail]=j; tail++;\n        }\n    }\n    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};\n    while(head<tail){\n        int r=qr[head], c=qc[head]; head++;\n        for(int k=0;k<4;k++){\n            int nr=r+dr[k], nc=c+dc[k];\n            if(nr<0||nr>=H||nc<0||nc>=W) continue;\n            if(S[nr*(W+1)+nc]=='#') continue;\n            int id=nr*W+nc;\n            if(dist[id]==-1){\n                dist[id]=dist[r*W+c]+1;\n                if(dist[id]<=D){ qr[tail]=nr; qc[tail]=nc; tail++; }\n            }\n        }\n    }\n    int cnt=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++){\n        if(S[i*(W+1)+j]!='#' && dist[i*W+j]!=-1 && dist[i*W+j]<=D) cnt++;\n    }\n    free(dist); free(qr); free(qc);\n    return cnt;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,D; char *S=NULL; read_input(&H,&W,&D,&S); int ans=count_humidified(H,W,D,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *D,char **S)",
+          "code": "void read_input(int *H,int *W,int *D,char **S){ scanf(\"%d%d%d\", H,W,D); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "count_humidified",
+          "signature": "int count_humidified(int H,int W,int D,char *S)",
+          "code": "int count_humidified(int H,int W,int D,char *S){\n    int n=H*W;\n    int *dist=(int*)malloc((size_t)n*sizeof(int));\n    for(int i=0;i<n;i++) dist[i]=-1;\n    int *qr=(int*)malloc((size_t)n*sizeof(int));\n    int *qc=(int*)malloc((size_t)n*sizeof(int));\n    int head=0, tail=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++){\n        if(S[i*(W+1)+j]=='H'){\n            dist[i*W+j]=0;\n            qr[tail]=i; qc[tail]=j; tail++;\n        }\n    }\n    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};\n    while(head<tail){\n        int r=qr[head], c=qc[head]; head++;\n        for(int k=0;k<4;k++){\n            int nr=r+dr[k], nc=c+dc[k];\n            if(nr<0||nr>=H||nc<0||nc>=W) continue;\n            if(S[nr*(W+1)+nc]=='#') continue;\n            int id=nr*W+nc;\n            if(dist[id]==-1){\n                dist[id]=dist[r*W+c]+1;\n                if(dist[id]<=D){ qr[tail]=nr; qc[tail]=nc; tail++; }\n            }\n        }\n    }\n    int cnt=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++){\n        if(S[i*(W+1)+j]!='#' && dist[i*W+j]!=-1 && dist[i*W+j]<=D) cnt++;\n    }\n    free(dist); free(qr); free(qc);\n    return cnt;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,D; char *S=NULL; read_input(&H,&W,&D,&S); int ans=count_humidified(H,W,D,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *D,char **S)",
+          "code": "void read_input(int *H,int *W,int *D,char **S){ scanf(\"%d%d%d\", H,W,D); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "count_humidified",
+          "signature": "int count_humidified(int H,int W,int D,char *S)",
+          "code": "int count_humidified(int H,int W,int D,char *S){\n    int n=H*W;\n    int *dist=(int*)malloc((size_t)n*sizeof(int));\n    for(int i=0;i<n;i++) dist[i]=-1;\n    int *qr=(int*)malloc((size_t)n*sizeof(int));\n    int *qc=(int*)malloc((size_t)n*sizeof(int));\n    int head=0, tail=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++){\n        if(S[i*(W+1)+j]=='H'){\n            dist[i*W+j]=0;\n            qr[tail]=i; qc[tail]=j; tail++;\n        }\n    }\n    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};\n    while(head<tail){\n        int r=qr[head], c=qc[head]; head++;\n        for(int k=0;k<4;k++){\n            int nr=r+dr[k], nc=c+dc[k];\n            if(nr<0||nr>=H||nc<0||nc>=W) continue;\n            if(S[nr*(W+1)+nc]=='#') continue;\n            int id=nr*W+nc;\n            if(dist[id]==-1){\n                dist[id]=dist[r*W+c]+1;\n                if(dist[id]<=D){ qr[tail]=nr; qc[tail]=nc; tail++; }\n            }\n        }\n    }\n    int cnt=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++){\n        if(S[i*(W+1)+j]!='#' && dist[i*W+j]!=-1 && dist[i*W+j]<=D) cnt++;\n    }\n    free(dist); free(qr); free(qc);\n    return cnt;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,D; char *S=NULL; read_input(&H,&W,&D,&S); int ans=count_humidified(H,W,D,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *D,char **S)",
+          "code": "void read_input(int *H,int *W,int *D,char **S){ scanf(\"%d%d%d\", H,W,D); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "count_humidified",
+          "signature": "int count_humidified(int H,int W,int D,char *S)",
+          "code": "int count_humidified(int H,int W,int D,char *S){\n    int n=H*W;\n    int *dist=(int*)malloc((size_t)n*sizeof(int));\n    for(int i=0;i<n;i++) dist[i]=-1;\n    int *qr=(int*)malloc((size_t)n*sizeof(int));\n    int *qc=(int*)malloc((size_t)n*sizeof(int));\n    int head=0, tail=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++){\n        if(S[i*(W+1)+j]=='H'){\n            dist[i*W+j]=0;\n            qr[tail]=i; qc[tail]=j; tail++;\n        }\n    }\n    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};\n    while(head<tail){\n        int r=qr[head], c=qc[head]; head++;\n        for(int k=0;k<4;k++){\n            int nr=r+dr[k], nc=c+dc[k];\n            if(nr<0||nr>=H||nc<0||nc>=W) continue;\n            if(S[nr*(W+1)+nc]=='#') continue;\n            int id=nr*W+nc;\n            if(dist[id]==-1){\n                dist[id]=dist[r*W+c]+1;\n                if(dist[id]<=D){ qr[tail]=nr; qc[tail]=nc; tail++; }\n            }\n        }\n    }\n    int cnt=0;\n    for(int i=0;i<H;i++) for(int j=0;j<W;j++){\n        if(S[i*(W+1)+j]!='#' && dist[i*W+j]!=-1 && dist[i*W+j]<=D) cnt++;\n    }\n    free(dist); free(qr); free(qc);\n    return cnt;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W,D; char *S=NULL; read_input(&H,&W,&D,&S); int ans=count_humidified(H,W,D,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

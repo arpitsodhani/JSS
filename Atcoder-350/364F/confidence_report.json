@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "find_component_root",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "merge_components",
+      "confidence": 1.0
+    },
+    {
+      "clause": "process_graph_edges",
+      "confidence": 1.0
+    },
+    {
+      "clause": "verify_single_component",
+      "confidence": 1.0
+    }
+  ]
+}

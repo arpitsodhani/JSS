@@ -1,0 +1,38 @@
+{
+  "contestId": 1110,
+  "index": "A",
+  "problem_id": "1110A",
+  "name": "Parity",
+  "rating": 900,
+  "tags": [
+    "math"
+  ],
+  "points": 500.0,
+  "solvedCount": 16184,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Parity",
+  "legend": "You are given an integer n (n≥0) represented with k digits in base (radix) b. So,\n\nn=a1⋅bk−1+a2⋅bk−2+…ak−1⋅b+ak.\n\nFor example, if b=17,k=3 and a=[11,15,7] then n=11⋅172+15⋅17+7=3179+255+7=3441.\n\nDetermine whether n is even or odd.",
+  "input_spec": "The first line contains two integers b and k (2≤b≤100, 1≤k≤105) — the base of the number and the number of digits.\n\nThe second line contains k integers a1,a2,…,ak (0≤ai<b) — the digits of n.\n\nThe representation of n contains no unnecessary leading zero. That is, a1 can be equal to 0 only if k=1.",
+  "output_spec": "Print \"even\" if n is even, otherwise print \"odd\".\n\nYou can print each letter in any case (upper or lower).",
+  "note": "In the first example, n=3⋅132+2⋅13+7=540, which is even.\n\nIn the second example, n=123456789 is odd.\n\nIn the third example, n=32⋅994+92⋅993+85⋅992+74⋅99+4=3164015155 is odd.\n\nIn the fourth example n=2.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "13 3\n3 2 7\n",
+      "output": "even"
+    },
+    {
+      "input": "10 9\n1 2 3 4 5 6 7 8 9\n",
+      "output": "odd"
+    },
+    {
+      "input": "99 5\n32 92 85 74 4\n",
+      "output": "odd"
+    },
+    {
+      "input": "2 2\n1 0\n",
+      "output": "even"
+    }
+  ]
+}

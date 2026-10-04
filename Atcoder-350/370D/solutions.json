@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "update_fenwick_tree",
+          "signature": "void update_fenwick_tree(long long *tree, int n, int idx, long long delta)",
+          "code": "void update_fenwick_tree(long long *tree, int n, int idx, long long delta) {\n    idx++;\n    while (idx <= n) {\n        tree[idx] += delta;\n        idx += idx & (-idx);\n    }\n}"
+        },
+        {
+          "clause_id": "query_prefix_sum",
+          "signature": "long long query_prefix_sum(long long *tree, int idx)",
+          "code": "long long query_prefix_sum(long long *tree, int idx) {\n    idx++;\n    long long sum = 0;\n    while (idx > 0) {\n        sum += tree[idx];\n        idx -= idx & (-idx);\n    }\n    return sum;\n}"
+        },
+        {
+          "clause_id": "compute_range_sum_fenwick",
+          "signature": "long long compute_range_sum_fenwick(long long *tree, int left, int right)",
+          "code": "long long compute_range_sum_fenwick(long long *tree, int left, int right) {\n    if (left == 0) {\n        return query_prefix_sum(tree, right);\n    }\n    return query_prefix_sum(tree, right) - query_prefix_sum(tree, left - 1);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long tree[100005] = {0}, array[100005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &array[i]);\n        update_fenwick_tree(tree, n, i, array[i]);\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int type, a, b;\n        scanf(\"%d %d %d\", &type, &a, &b);\n        if (type == 1) {\n            long long delta = b - array[a];\n            array[a] = b;\n            update_fenwick_tree(tree, n, a, delta);\n        } else {\n            printf(\"%lld\\n\", compute_range_sum_fenwick(tree, a, b));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "update_fenwick_tree",
+          "signature": "void update_fenwick_tree(long long *tree, int n, int idx, long long delta)",
+          "code": "void update_fenwick_tree(long long *tree, int n, int idx, long long delta) {\n    idx++;\n    while (idx <= n) {\n        tree[idx] += delta;\n        idx += idx & (-idx);\n    }\n}"
+        },
+        {
+          "clause_id": "query_prefix_sum",
+          "signature": "long long query_prefix_sum(long long *tree, int idx)",
+          "code": "long long query_prefix_sum(long long *tree, int idx) {\n    idx++;\n    long long sum = 0;\n    while (idx > 0) {\n        sum += tree[idx];\n        idx -= idx & (-idx);\n    }\n    return sum;\n}"
+        },
+        {
+          "clause_id": "compute_range_sum_fenwick",
+          "signature": "long long compute_range_sum_fenwick(long long *tree, int left, int right)",
+          "code": "long long compute_range_sum_fenwick(long long *tree, int left, int right) {\n    if (left == 0) {\n        return query_prefix_sum(tree, right);\n    }\n    return query_prefix_sum(tree, right) - query_prefix_sum(tree, left - 1);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long tree[100005] = {0}, array[100005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &array[i]);\n        update_fenwick_tree(tree, n, i, array[i]);\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int type, a, b;\n        scanf(\"%d %d %d\", &type, &a, &b);\n        if (type == 1) {\n            long long delta = b - array[a];\n            array[a] = b;\n            update_fenwick_tree(tree, n, a, delta);\n        } else {\n            printf(\"%lld\\n\", compute_range_sum_fenwick(tree, a, b));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "update_fenwick_tree",
+          "signature": "void update_fenwick_tree(long long *tree, int n, int idx, long long delta)",
+          "code": "void update_fenwick_tree(long long *tree, int n, int idx, long long delta) {\n    idx++;\n    while (idx <= n) {\n        tree[idx] += delta;\n        idx += idx & (-idx);\n    }\n}"
+        },
+        {
+          "clause_id": "query_prefix_sum",
+          "signature": "long long query_prefix_sum(long long *tree, int idx)",
+          "code": "long long query_prefix_sum(long long *tree, int idx) {\n    idx++;\n    long long sum = 0;\n    while (idx > 0) {\n        sum += tree[idx];\n        idx -= idx & (-idx);\n    }\n    return sum;\n}"
+        },
+        {
+          "clause_id": "compute_range_sum_fenwick",
+          "signature": "long long compute_range_sum_fenwick(long long *tree, int left, int right)",
+          "code": "long long compute_range_sum_fenwick(long long *tree, int left, int right) {\n    if (left == 0) {\n        return query_prefix_sum(tree, right);\n    }\n    return query_prefix_sum(tree, right) - query_prefix_sum(tree, left - 1);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long tree[100005] = {0}, array[100005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &array[i]);\n        update_fenwick_tree(tree, n, i, array[i]);\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int type, a, b;\n        scanf(\"%d %d %d\", &type, &a, &b);\n        if (type == 1) {\n            long long delta = b - array[a];\n            array[a] = b;\n            update_fenwick_tree(tree, n, a, delta);\n        } else {\n            printf(\"%lld\\n\", compute_range_sum_fenwick(tree, a, b));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "update_fenwick_tree",
+          "signature": "void update_fenwick_tree(long long *tree, int n, int idx, long long delta)",
+          "code": "void update_fenwick_tree(long long *tree, int n, int idx, long long delta) {\n    idx++;\n    while (idx <= n) {\n        tree[idx] += delta;\n        idx += idx & (-idx);\n    }\n}"
+        },
+        {
+          "clause_id": "query_prefix_sum",
+          "signature": "long long query_prefix_sum(long long *tree, int idx)",
+          "code": "long long query_prefix_sum(long long *tree, int idx) {\n    idx++;\n    long long sum = 0;\n    while (idx > 0) {\n        sum += tree[idx];\n        idx -= idx & (-idx);\n    }\n    return sum;\n}"
+        },
+        {
+          "clause_id": "compute_range_sum_fenwick",
+          "signature": "long long compute_range_sum_fenwick(long long *tree, int left, int right)",
+          "code": "long long compute_range_sum_fenwick(long long *tree, int left, int right) {\n    if (left == 0) {\n        return query_prefix_sum(tree, right);\n    }\n    return query_prefix_sum(tree, right) - query_prefix_sum(tree, left - 1);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long tree[100005] = {0}, array[100005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &array[i]);\n        update_fenwick_tree(tree, n, i, array[i]);\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int type, a, b;\n        scanf(\"%d %d %d\", &type, &a, &b);\n        if (type == 1) {\n            long long delta = b - array[a];\n            array[a] = b;\n            update_fenwick_tree(tree, n, a, delta);\n        } else {\n            printf(\"%lld\\n\", compute_range_sum_fenwick(tree, a, b));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "update_fenwick_tree",
+          "signature": "void update_fenwick_tree(long long *tree, int n, int idx, long long delta)",
+          "code": "void update_fenwick_tree(long long *tree, int n, int idx, long long delta) {\n    idx++;\n    while (idx <= n) {\n        tree[idx] += delta;\n        idx += idx & (-idx);\n    }\n}"
+        },
+        {
+          "clause_id": "query_prefix_sum",
+          "signature": "long long query_prefix_sum(long long *tree, int idx)",
+          "code": "long long query_prefix_sum(long long *tree, int idx) {\n    idx++;\n    long long sum = 0;\n    while (idx > 0) {\n        sum += tree[idx];\n        idx -= idx & (-idx);\n    }\n    return sum;\n}"
+        },
+        {
+          "clause_id": "compute_range_sum_fenwick",
+          "signature": "long long compute_range_sum_fenwick(long long *tree, int left, int right)",
+          "code": "long long compute_range_sum_fenwick(long long *tree, int left, int right) {\n    if (left == 0) {\n        return query_prefix_sum(tree, right);\n    }\n    return query_prefix_sum(tree, right) - query_prefix_sum(tree, left - 1);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long tree[100005] = {0}, array[100005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &array[i]);\n        update_fenwick_tree(tree, n, i, array[i]);\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int type, a, b;\n        scanf(\"%d %d %d\", &type, &a, &b);\n        if (type == 1) {\n            long long delta = b - array[a];\n            array[a] = b;\n            update_fenwick_tree(tree, n, a, delta);\n        } else {\n            printf(\"%lld\\n\", compute_range_sum_fenwick(tree, a, b));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

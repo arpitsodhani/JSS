@@ -1,0 +1,8 @@
+You are given a string S consisting of six types of characters: ( , ) , [ , ] , < , > . A string T is called a colorful bracket sequence if it satisfies the following condition: It is possible to turn T into an empty string by repeating the following operation any number of times (possibly zero): If there exists a contiguous substring of T that is one of () , [] , or <> , choose one such substring and delete it. If the deleted substring was at the beginning or end of T , the remainder becomes the new T . Otherwise, concatenate the part before the deleted substring and the part after the deleted substring, and that becomes the new T . Determine whether S is a colorful bracket sequence.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= K <= N
+- 1 <= P_i <= N
+- P is a permutation of (1, 2, ..., N)
+- All input values are integers

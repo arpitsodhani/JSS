@@ -1,0 +1,27 @@
+{
+  "contestId": 1958,
+  "index": "E",
+  "problem_id": "1958E",
+  "name": "Yet Another Permutation Constructive",
+  "rating": 1900,
+  "tags": [
+    "*special",
+    "constructive algorithms"
+  ],
+  "points": null,
+  "solvedCount": 334,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Yet Another Permutation Constructive",
+  "legend": "Suppose you have a permutation p of n integers — an array where each element is an integer from 1 to n, and every integer from 1 to n appears exactly once.\n\nIn one operation, you remove every element of this permutation which is less than at least one of its neighbors. For example, when you apply the operation to [3,1,2,5,4], you get [3,5]. If you apply an operation again, you get [5].\n\nIt's easy to see that after applying a finite number of operations, you get an array consisting of a single integer n.\n\nYou are given two integers n and k. Find a permutation of n integers such that it becomes an array consisting of a single element n after exactly k operations (and not earlier).",
+  "input_spec": "The first line contains one integer t (1≤t≤2000) — the number of test cases.\n\nEach test case consists of one line containing two integers n and k (2≤n≤100; 1≤k≤n−1).",
+  "output_spec": "For each test case, print the answer as follows:\n\nif a permutation of size n which becomes an array consisting of a single element n after exactly k operations does not exist, print −1;\notherwise, print n distinct integers from 1 to n — the requested permutation. If there are multiple such permutations, print any of them.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "4\n5 2\n5 4\n2 1\n3 2\n",
+      "output": "3 1 2 5 4\n-1\n1 2\n2 1 3"
+    }
+  ]
+}

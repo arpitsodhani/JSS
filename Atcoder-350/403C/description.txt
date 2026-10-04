@@ -1,0 +1,21 @@
+You are given N items. The i-th item has a weight of w_i and a value of v_i.
+You have a knapsack that can carry a total weight of at most W.
+Find the maximum total value of items you can put in the knapsack.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N W
+w_1 v_1
+w_2 v_2
+...
+w_N v_N
+
+**Output:**
+Print the answer.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= W <= 10^5
+- 1 <= w_i <= W
+- 1 <= v_i <= 10^9
+- All input values are integers

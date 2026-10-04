@@ -1,0 +1,6 @@
+There is a queue of snakes. Initially, the queue is empty. You are given Q queries, which should be processed in the order they are given. There are three types of queries: Type 1 : Given in the form 1 l . A snake of length l is added to the end of the queue. If the queue was empty before adding, the head position of the newly added snake is 0 ; otherwise, it is the sum of the head coordinate of the last snake in the queue and the last snake’s length. Type 2 : Given in the form 2 . The snake at the front of the queue leaves the queue. It is guaranteed that the queue is not empty at this time. Let m be the length of the snake that left, then the head coordinate of every snake remaining in the queue decreases by m . Type 3 : Given in the form 3 k . Output the head coordinate of the snake that is k -th from the front of the queue. It is guaranteed that there are at least k snakes in the queue at this time.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 2 * 10^5
+- All input values are integers

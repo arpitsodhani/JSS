@@ -1,0 +1,8 @@
+There are N products for sale in a store. The i -th product has a price of P_i yen, a utility value of U_i , and a color C_i . You will choose some subset of these N products to buy (possibly none). The total price of the chosen products must be at most X yen. Your satisfaction is S + T \times K , where S is the sum of utilities of the chosen products, and T is the number of distinct colors among the chosen products. Here, K is a given constant. You will choose products to maximize your satisfaction. Find the maximized satisfaction.
+
+**Constraints:**
+- 1 <= N <= 500
+- 1 <= X <= 10^4
+- 0 <= C_i <= 1
+- 1 <= U_i <= 10^4
+- All input values are integers

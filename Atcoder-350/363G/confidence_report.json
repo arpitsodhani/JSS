@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9899999999999999,
+  "clauses": [
+    {
+      "clause": "compute_optimal_schedule",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_jobs_and_queries",
+      "confidence": 0.97
+    }
+  ]
+}

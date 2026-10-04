@@ -1,0 +1,17 @@
+You are given N cards. The i-th card has an integer A_i written on it.
+Takahashi will choose X cards from these N cards.
+Find the minimum possible sum of the integers written on the chosen cards.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N X
+A_1 A_2 ... A_N
+
+**Output:**
+Print the answer.
+
+**Constraints:**
+- 2 <= N <= 100
+- 1 <= X <= N
+- 1 <= A_i <= 100
+- All input values are integers

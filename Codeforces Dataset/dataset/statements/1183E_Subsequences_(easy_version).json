@@ -1,0 +1,41 @@
+{
+  "contestId": 1183,
+  "index": "E",
+  "problem_id": "1183E",
+  "name": "Subsequences (easy version)",
+  "rating": 2000,
+  "tags": [
+    "dp",
+    "graphs",
+    "implementation",
+    "shortest paths"
+  ],
+  "points": null,
+  "solvedCount": 5494,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Subsequences (easy version)",
+  "legend": "The only difference between the easy and the hard versions is constraints.\n\nA subsequence is a string that can be derived from another string by deleting some or no symbols without changing the order of the remaining symbols. Characters to be deleted are not required to go successively, there can be any gaps between them. For example, for the string \"abaca\" the following strings are subsequences: \"abaca\", \"aba\", \"aaa\", \"a\" and \"\" (empty string). But the following strings are not subsequences: \"aabaca\", \"cb\" and \"bcaa\".\n\nYou are given a string s consisting of n lowercase Latin letters.\n\nIn one move you can take any subsequence t of the given string and add it to the set S. The set S can't contain duplicates. This move costs n−|t|, where |t| is the length of the added subsequence (i.e. the price equals to the number of the deleted characters).\n\nYour task is to find out the minimum possible total cost to obtain a set S of size k or report that it is impossible to do so.",
+  "input_spec": "The first line of the input contains two integers n and k (1≤n,k≤100) — the length of the string and the size of the set, correspondingly.\n\nThe second line of the input contains a string s consisting of n lowercase Latin letters.",
+  "output_spec": "Print one integer — if it is impossible to obtain the set S of size k, print -1. Otherwise, print the minimum possible total cost to do it.",
+  "note": "In the first example we can generate S = { \"asdf\", \"asd\", \"adf\", \"asf\", \"sdf\" }. The cost of the first element in S is 0 and the cost of the others is 1. So the total cost of S is 4.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4 5\nasdf\n",
+      "output": "4"
+    },
+    {
+      "input": "5 6\naaaaa\n",
+      "output": "15"
+    },
+    {
+      "input": "5 7\naaaaa\n",
+      "output": "-1"
+    },
+    {
+      "input": "10 100\najihiushda\n",
+      "output": "233"
+    }
+  ]
+}

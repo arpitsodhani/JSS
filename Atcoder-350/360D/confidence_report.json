@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9683314253237526,
+  "clauses": [
+    {
+      "clause": "count_passing_pairs",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9569942759712579
+    },
+    {
+      "clause": "read_ants",
+      "confidence": 0.9480000000000001
+    }
+  ]
+}

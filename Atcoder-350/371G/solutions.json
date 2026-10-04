@@ -1,0 +1,160 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_treap_node",
+          "signature": "int create_treap_node(int value, int *keys, int *priority, int *size, int *left, int *right, int *node_count)",
+          "code": "int create_treap_node(int value, int *keys, int *priority, int *size, int *left, int *right, int *node_count) {\n    int node = (*node_count)++;\n    keys[node] = value;\n    priority[node] = rand();\n    size[node] = 1;\n    left[node] = right[node] = -1;\n    return node;\n}"
+        },
+        {
+          "clause_id": "update_treap_size",
+          "signature": "void update_treap_size(int node, int *size, int *left, int *right)",
+          "code": "void update_treap_size(int node, int *size, int *left, int *right) {\n    if (node == -1) return;\n    size[node] = 1;\n    if (left[node] != -1) size[node] += size[left[node]];\n    if (right[node] != -1) size[node] += size[right[node]];\n}"
+        },
+        {
+          "clause_id": "split_treap_by_position",
+          "signature": "void split_treap_by_position(int node, int pos, int *left_tree, int *right_tree, int *size, int *left, int *right)",
+          "code": "void split_treap_by_position(int node, int pos, int *left_tree, int *right_tree, int *size, int *left, int *right) {\n    if (node == -1) {\n        *left_tree = *right_tree = -1;\n        return;\n    }\n    \n    int left_size = (left[node] == -1) ? 0 : size[left[node]];\n    if (pos <= left_size) {\n        split_treap_by_position(left[node], pos, left_tree, &left[node], size, left, right);\n        *right_tree = node;\n    } else {\n        split_treap_by_position(right[node], pos - left_size - 1, &right[node], right_tree, size, left, right);\n        *left_tree = node;\n    }\n    update_treap_size(node, size, left, right);\n}"
+        },
+        {
+          "clause_id": "merge_treap_nodes",
+          "signature": "int merge_treap_nodes(int left_tree, int right_tree, int *priority, int *size, int *left, int *right)",
+          "code": "int merge_treap_nodes(int left_tree, int right_tree, int *priority, int *size, int *left, int *right) {\n    if (left_tree == -1) return right_tree;\n    if (right_tree == -1) return left_tree;\n    \n    if (priority[left_tree] > priority[right_tree]) {\n        right[left_tree] = merge_treap_nodes(right[left_tree], right_tree, priority, size, left, right);\n        update_treap_size(left_tree, size, left, right);\n        return left_tree;\n    } else {\n        left[right_tree] = merge_treap_nodes(left_tree, left[right_tree], priority, size, left, right);\n        update_treap_size(right_tree, size, left, right);\n        return right_tree;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, keys[100005], priority[100005], size[100005], left[100005], right[100005], node_count = 0;\n    int root = -1;\n    scanf(\"%d %d\", &n, &q);\n    \n    for (int i = 0; i < n; i++) {\n        int value;\n        scanf(\"%d\", &value);\n        int node = create_treap_node(value, keys, priority, size, left, right, &node_count);\n        root = merge_treap_nodes(root, node, priority, size, left, right);\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int l, r, left_part, mid_part, right_part;\n        scanf(\"%d %d\", &l, &r);\n        split_treap_by_position(root, l, &left_part, &right_part, size, left, right);\n        split_treap_by_position(right_part, r - l + 1, &mid_part, &right_part, size, left, right);\n        root = merge_treap_nodes(merge_treap_nodes(left_part, right_part, priority, size, left, right), mid_part, priority, size, left, right);\n    }\n    \n    printf(\"%d\\n\", (root == -1) ? 0 : size[root]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_treap_node",
+          "signature": "int create_treap_node(int value, int *keys, int *priority, int *size, int *left, int *right, int *node_count)",
+          "code": "int create_treap_node(int value, int *keys, int *priority, int *size, int *left, int *right, int *node_count) {\n    int node = (*node_count)++;\n    keys[node] = value;\n    priority[node] = rand();\n    size[node] = 1;\n    left[node] = right[node] = -1;\n    return node;\n}"
+        },
+        {
+          "clause_id": "update_treap_size",
+          "signature": "void update_treap_size(int node, int *size, int *left, int *right)",
+          "code": "void update_treap_size(int node, int *size, int *left, int *right) {\n    if (node == -1) return;\n    size[node] = 1;\n    if (left[node] != -1) size[node] += size[left[node]];\n    if (right[node] != -1) size[node] += size[right[node]];\n}"
+        },
+        {
+          "clause_id": "split_treap_by_position",
+          "signature": "void split_treap_by_position(int node, int pos, int *left_tree, int *right_tree, int *size, int *left, int *right)",
+          "code": "void split_treap_by_position(int node, int pos, int *left_tree, int *right_tree, int *size, int *left, int *right) {\n    if (node == -1) {\n        *left_tree = *right_tree = -1;\n        return;\n    }\n    \n    int left_size = (left[node] == -1) ? 0 : size[left[node]];\n    if (pos <= left_size) {\n        split_treap_by_position(left[node], pos, left_tree, &left[node], size, left, right);\n        *right_tree = node;\n    } else {\n        split_treap_by_position(right[node], pos - left_size - 1, &right[node], right_tree, size, left, right);\n        *left_tree = node;\n    }\n    update_treap_size(node, size, left, right);\n}"
+        },
+        {
+          "clause_id": "merge_treap_nodes",
+          "signature": "int merge_treap_nodes(int left_tree, int right_tree, int *priority, int *size, int *left, int *right)",
+          "code": "int merge_treap_nodes(int left_tree, int right_tree, int *priority, int *size, int *left, int *right) {\n    if (left_tree == -1) return right_tree;\n    if (right_tree == -1) return left_tree;\n    \n    if (priority[left_tree] > priority[right_tree]) {\n        right[left_tree] = merge_treap_nodes(right[left_tree], right_tree, priority, size, left, right);\n        update_treap_size(left_tree, size, left, right);\n        return left_tree;\n    } else {\n        left[right_tree] = merge_treap_nodes(left_tree, left[right_tree], priority, size, left, right);\n        update_treap_size(right_tree, size, left, right);\n        return right_tree;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, keys[100005], priority[100005], size[100005], left[100005], right[100005], node_count = 0;\n    int root = -1;\n    scanf(\"%d %d\", &n, &q);\n    \n    for (int i = 0; i < n; i++) {\n        int value;\n        scanf(\"%d\", &value);\n        int node = create_treap_node(value, keys, priority, size, left, right, &node_count);\n        root = merge_treap_nodes(root, node, priority, size, left, right);\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int l, r, left_part, mid_part, right_part;\n        scanf(\"%d %d\", &l, &r);\n        split_treap_by_position(root, l, &left_part, &right_part, size, left, right);\n        split_treap_by_position(right_part, r - l + 1, &mid_part, &right_part, size, left, right);\n        root = merge_treap_nodes(merge_treap_nodes(left_part, right_part, priority, size, left, right), mid_part, priority, size, left, right);\n    }\n    \n    printf(\"%d\\n\", (root == -1) ? 0 : size[root]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_treap_node",
+          "signature": "int create_treap_node(int value, int *keys, int *priority, int *size, int *left, int *right, int *node_count)",
+          "code": "int create_treap_node(int value, int *keys, int *priority, int *size, int *left, int *right, int *node_count) {\n    int node = (*node_count)++;\n    keys[node] = value;\n    priority[node] = rand();\n    size[node] = 1;\n    left[node] = right[node] = -1;\n    return node;\n}"
+        },
+        {
+          "clause_id": "update_treap_size",
+          "signature": "void update_treap_size(int node, int *size, int *left, int *right)",
+          "code": "void update_treap_size(int node, int *size, int *left, int *right) {\n    if (node == -1) return;\n    size[node] = 1;\n    if (left[node] != -1) size[node] += size[left[node]];\n    if (right[node] != -1) size[node] += size[right[node]];\n}"
+        },
+        {
+          "clause_id": "split_treap_by_position",
+          "signature": "void split_treap_by_position(int node, int pos, int *left_tree, int *right_tree, int *size, int *left, int *right)",
+          "code": "void split_treap_by_position(int node, int pos, int *left_tree, int *right_tree, int *size, int *left, int *right) {\n    if (node == -1) {\n        *left_tree = *right_tree = -1;\n        return;\n    }\n    \n    int left_size = (left[node] == -1) ? 0 : size[left[node]];\n    if (pos <= left_size) {\n        split_treap_by_position(left[node], pos, left_tree, &left[node], size, left, right);\n        *right_tree = node;\n    } else {\n        split_treap_by_position(right[node], pos - left_size - 1, &right[node], right_tree, size, left, right);\n        *left_tree = node;\n    }\n    update_treap_size(node, size, left, right);\n}"
+        },
+        {
+          "clause_id": "merge_treap_nodes",
+          "signature": "int merge_treap_nodes(int left_tree, int right_tree, int *priority, int *size, int *left, int *right)",
+          "code": "int merge_treap_nodes(int left_tree, int right_tree, int *priority, int *size, int *left, int *right) {\n    if (left_tree == -1) return right_tree;\n    if (right_tree == -1) return left_tree;\n    \n    if (priority[left_tree] > priority[right_tree]) {\n        right[left_tree] = merge_treap_nodes(right[left_tree], right_tree, priority, size, left, right);\n        update_treap_size(left_tree, size, left, right);\n        return left_tree;\n    } else {\n        left[right_tree] = merge_treap_nodes(left_tree, left[right_tree], priority, size, left, right);\n        update_treap_size(right_tree, size, left, right);\n        return right_tree;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, keys[100005], priority[100005], size[100005], left[100005], right[100005], node_count = 0;\n    int root = -1;\n    scanf(\"%d %d\", &n, &q);\n    \n    for (int i = 0; i < n; i++) {\n        int value;\n        scanf(\"%d\", &value);\n        int node = create_treap_node(value, keys, priority, size, left, right, &node_count);\n        root = merge_treap_nodes(root, node, priority, size, left, right);\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int l, r, left_part, mid_part, right_part;\n        scanf(\"%d %d\", &l, &r);\n        split_treap_by_position(root, l, &left_part, &right_part, size, left, right);\n        split_treap_by_position(right_part, r - l + 1, &mid_part, &right_part, size, left, right);\n        root = merge_treap_nodes(merge_treap_nodes(left_part, right_part, priority, size, left, right), mid_part, priority, size, left, right);\n    }\n    \n    printf(\"%d\\n\", (root == -1) ? 0 : size[root]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_treap_node",
+          "signature": "int create_treap_node(int value, int *keys, int *priority, int *size, int *left, int *right, int *node_count)",
+          "code": "int create_treap_node(int value, int *keys, int *priority, int *size, int *left, int *right, int *node_count) {\n    int node = (*node_count)++;\n    keys[node] = value;\n    priority[node] = rand();\n    size[node] = 1;\n    left[node] = right[node] = -1;\n    return node;\n}"
+        },
+        {
+          "clause_id": "update_treap_size",
+          "signature": "void update_treap_size(int node, int *size, int *left, int *right)",
+          "code": "void update_treap_size(int node, int *size, int *left, int *right) {\n    if (node == -1) return;\n    size[node] = 1;\n    if (left[node] != -1) size[node] += size[left[node]];\n    if (right[node] != -1) size[node] += size[right[node]];\n}"
+        },
+        {
+          "clause_id": "split_treap_by_position",
+          "signature": "void split_treap_by_position(int node, int pos, int *left_tree, int *right_tree, int *size, int *left, int *right)",
+          "code": "void split_treap_by_position(int node, int pos, int *left_tree, int *right_tree, int *size, int *left, int *right) {\n    if (node == -1) {\n        *left_tree = *right_tree = -1;\n        return;\n    }\n    \n    int left_size = (left[node] == -1) ? 0 : size[left[node]];\n    if (pos <= left_size) {\n        split_treap_by_position(left[node], pos, left_tree, &left[node], size, left, right);\n        *right_tree = node;\n    } else {\n        split_treap_by_position(right[node], pos - left_size - 1, &right[node], right_tree, size, left, right);\n        *left_tree = node;\n    }\n    update_treap_size(node, size, left, right);\n}"
+        },
+        {
+          "clause_id": "merge_treap_nodes",
+          "signature": "int merge_treap_nodes(int left_tree, int right_tree, int *priority, int *size, int *left, int *right)",
+          "code": "int merge_treap_nodes(int left_tree, int right_tree, int *priority, int *size, int *left, int *right) {\n    if (left_tree == -1) return right_tree;\n    if (right_tree == -1) return left_tree;\n    \n    if (priority[left_tree] > priority[right_tree]) {\n        right[left_tree] = merge_treap_nodes(right[left_tree], right_tree, priority, size, left, right);\n        update_treap_size(left_tree, size, left, right);\n        return left_tree;\n    } else {\n        left[right_tree] = merge_treap_nodes(left_tree, left[right_tree], priority, size, left, right);\n        update_treap_size(right_tree, size, left, right);\n        return right_tree;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, keys[100005], priority[100005], size[100005], left[100005], right[100005], node_count = 0;\n    int root = -1;\n    scanf(\"%d %d\", &n, &q);\n    \n    for (int i = 0; i < n; i++) {\n        int value;\n        scanf(\"%d\", &value);\n        int node = create_treap_node(value, keys, priority, size, left, right, &node_count);\n        root = merge_treap_nodes(root, node, priority, size, left, right);\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int l, r, left_part, mid_part, right_part;\n        scanf(\"%d %d\", &l, &r);\n        split_treap_by_position(root, l, &left_part, &right_part, size, left, right);\n        split_treap_by_position(right_part, r - l + 1, &mid_part, &right_part, size, left, right);\n        root = merge_treap_nodes(merge_treap_nodes(left_part, right_part, priority, size, left, right), mid_part, priority, size, left, right);\n    }\n    \n    printf(\"%d\\n\", (root == -1) ? 0 : size[root]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_treap_node",
+          "signature": "int create_treap_node(int value, int *keys, int *priority, int *size, int *left, int *right, int *node_count)",
+          "code": "int create_treap_node(int value, int *keys, int *priority, int *size, int *left, int *right, int *node_count) {\n    int node = (*node_count)++;\n    keys[node] = value;\n    priority[node] = rand();\n    size[node] = 1;\n    left[node] = right[node] = -1;\n    return node;\n}"
+        },
+        {
+          "clause_id": "update_treap_size",
+          "signature": "void update_treap_size(int node, int *size, int *left, int *right)",
+          "code": "void update_treap_size(int node, int *size, int *left, int *right) {\n    if (node == -1) return;\n    size[node] = 1;\n    if (left[node] != -1) size[node] += size[left[node]];\n    if (right[node] != -1) size[node] += size[right[node]];\n}"
+        },
+        {
+          "clause_id": "split_treap_by_position",
+          "signature": "void split_treap_by_position(int node, int pos, int *left_tree, int *right_tree, int *size, int *left, int *right)",
+          "code": "void split_treap_by_position(int node, int pos, int *left_tree, int *right_tree, int *size, int *left, int *right) {\n    if (node == -1) {\n        *left_tree = *right_tree = -1;\n        return;\n    }\n    \n    int left_size = (left[node] == -1) ? 0 : size[left[node]];\n    if (pos <= left_size) {\n        split_treap_by_position(left[node], pos, left_tree, &left[node], size, left, right);\n        *right_tree = node;\n    } else {\n        split_treap_by_position(right[node], pos - left_size - 1, &right[node], right_tree, size, left, right);\n        *left_tree = node;\n    }\n    update_treap_size(node, size, left, right);\n}"
+        },
+        {
+          "clause_id": "merge_treap_nodes",
+          "signature": "int merge_treap_nodes(int left_tree, int right_tree, int *priority, int *size, int *left, int *right)",
+          "code": "int merge_treap_nodes(int left_tree, int right_tree, int *priority, int *size, int *left, int *right) {\n    if (left_tree == -1) return right_tree;\n    if (right_tree == -1) return left_tree;\n    \n    if (priority[left_tree] > priority[right_tree]) {\n        right[left_tree] = merge_treap_nodes(right[left_tree], right_tree, priority, size, left, right);\n        update_treap_size(left_tree, size, left, right);\n        return left_tree;\n    } else {\n        left[right_tree] = merge_treap_nodes(left_tree, left[right_tree], priority, size, left, right);\n        update_treap_size(right_tree, size, left, right);\n        return right_tree;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, keys[100005], priority[100005], size[100005], left[100005], right[100005], node_count = 0;\n    int root = -1;\n    scanf(\"%d %d\", &n, &q);\n    \n    for (int i = 0; i < n; i++) {\n        int value;\n        scanf(\"%d\", &value);\n        int node = create_treap_node(value, keys, priority, size, left, right, &node_count);\n        root = merge_treap_nodes(root, node, priority, size, left, right);\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int l, r, left_part, mid_part, right_part;\n        scanf(\"%d %d\", &l, &r);\n        split_treap_by_position(root, l, &left_part, &right_part, size, left, right);\n        split_treap_by_position(right_part, r - l + 1, &mid_part, &right_part, size, left, right);\n        root = merge_treap_nodes(merge_treap_nodes(left_part, right_part, priority, size, left, right), mid_part, priority, size, left, right);\n    }\n    \n    printf(\"%d\\n\", (root == -1) ? 0 : size[root]);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

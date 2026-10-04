@@ -1,0 +1,154 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "cmp_u32",
+          "signature": "int cmp_u32(const void *a, const void *b)",
+          "code": "int cmp_u32(const void*a,const void*b){ unsigned x=*(const unsigned*)a, y=*(const unsigned*)b; return (x>y)-(x<y); }\n"
+        },
+        {
+          "clause_id": "h32",
+          "signature": "unsigned h32(unsigned x)",
+          "code": "unsigned h32(unsigned x){ x^=x>>16; x*=0x7feb352dU; x^=x>>15; x*=0x846ca68bU; x^=x>>16; return x; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N; scanf(\"%d\", &N); unsigned *m=(unsigned*)malloc((size_t)N*sizeof(unsigned)); for(int i=0;i<N;i++){ char s[16]; scanf(\"%10s\", s); unsigned mask=0; for(int k=0;s[k];k++) mask |= 1u<<(s[k]-'a'); m[i]=mask; } qsort(m,N,sizeof(unsigned),cmp_u32); unsigned *uniq=(unsigned*)malloc((size_t)N*sizeof(unsigned)); int *cnt=(int*)malloc((size_t)N*sizeof(int)); int D=0; for(int i=0;i<N;){ int j=i+1; while(j<N && m[j]==m[i]) j++; uniq[D]=m[i]; cnt[D]=j-i; D++; i=j; }\n  int cap=1; while(cap < D*256) cap<<=1; int maskh=cap-1; unsigned *hkey=(unsigned*)malloc((size_t)cap*sizeof(unsigned)); int *hval=(int*)malloc((size_t)cap*sizeof(int)); unsigned char *used=(unsigned char*)malloc((size_t)cap); memset(used,0,(size_t)cap);\n  for(int i=0;i<D;i++){ unsigned mm=uniq[i]; int c=cnt[i]; for(unsigned sub=mm; sub; sub=(sub-1)&mm){ unsigned idx=h32(sub)&(unsigned)maskh; while(used[idx] && hkey[idx]!=sub) idx=(idx+1)&(unsigned)maskh; if(!used[idx]){ used[idx]=1; hkey[idx]=sub; hval[idx]=c; } else hval[idx]+=c; } }\n  long long ordered=0; for(int i=0;i<D;i++){ unsigned mm=uniq[i]; int c=cnt[i]; long long u=0; for(unsigned sub=mm; sub; sub=(sub-1)&mm){ unsigned idx=h32(sub)&(unsigned)maskh; while(used[idx] && hkey[idx]!=sub) idx=(idx+1)&(unsigned)maskh; int cc=used[idx]?hval[idx]:0; int bits=__builtin_popcount(sub); u += (bits&1)?cc:-cc; } long long dis=(long long)N-u; ordered += (long long)c*dis; }\n  long long dis_pairs=ordered/2; long long total=(long long)N*(N-1)/2; printf(\"%lld\\n\", total-dis_pairs);\n  free(m); free(uniq); free(cnt); free(hkey); free(hval); free(used);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "cmp_u32",
+          "signature": "int cmp_u32(const void *a, const void *b)",
+          "code": "int cmp_u32(const void*a,const void*b){ unsigned x=*(const unsigned*)a, y=*(const unsigned*)b; return (x>y)-(x<y); }\n"
+        },
+        {
+          "clause_id": "h32",
+          "signature": "unsigned h32(unsigned x)",
+          "code": "unsigned h32(unsigned x){ x+=0x9e3779b9U; x^=x>>16; x*=0x85ebca6bU; x^=x>>13; x*=0xc2b2ae35U; x^=x>>16; return x; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N; scanf(\"%d\", &N); unsigned *m=(unsigned*)malloc((size_t)N*sizeof(unsigned)); for(int i=0;i<N;i++){ char s[16]; scanf(\"%10s\", s); unsigned mask=0; for(const char*p=s;*p;p++) mask |= 1u<<((unsigned)(*p-'a')); m[i]=mask; } qsort(m,N,sizeof(unsigned),cmp_u32); unsigned *uniq=(unsigned*)malloc((size_t)N*sizeof(unsigned)); int *cnt=(int*)malloc((size_t)N*sizeof(int)); int D=0; for(int i=0;i<N;){ int j=i+1; while(j<N && m[j]==m[i]) j++; uniq[D]=m[i]; cnt[D]=j-i; D++; i=j; }\n  int cap=1; while(cap < D*320) cap<<=1; int maskh=cap-1; unsigned *hkey=(unsigned*)malloc((size_t)cap*sizeof(unsigned)); int *hval=(int*)malloc((size_t)cap*sizeof(int)); unsigned char *used=(unsigned char*)malloc((size_t)cap); memset(used,0,(size_t)cap);\n  for(int i=0;i<D;i++){ unsigned mm=uniq[i]; int c=cnt[i]; unsigned sub=mm; while(sub){ unsigned idx=h32(sub)&(unsigned)maskh; while(used[idx] && hkey[idx]!=sub) idx=(idx+1)&(unsigned)maskh; if(!used[idx]){ used[idx]=1; hkey[idx]=sub; hval[idx]=c; } else hval[idx]+=c; sub=(sub-1)&mm; } }\n  long long ordered=0; for(int i=0;i<D;i++){ unsigned mm=uniq[i]; int c=cnt[i]; long long u=0; unsigned sub=mm; while(sub){ unsigned idx=h32(sub)&(unsigned)maskh; while(used[idx] && hkey[idx]!=sub) idx=(idx+1)&(unsigned)maskh; int cc=used[idx]?hval[idx]:0; int bits=__builtin_popcount(sub); u += (bits&1)?cc:-cc; sub=(sub-1)&mm; } long long dis=(long long)N-u; ordered += (long long)c*dis; }\n  long long dis_pairs=ordered/2; long long total=(long long)N*(N-1)/2; printf(\"%lld\\n\", total-dis_pairs);\n  free(m); free(uniq); free(cnt); free(hkey); free(hval); free(used);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "cmp_u32",
+          "signature": "int cmp_u32(const void *a, const void *b)",
+          "code": "int cmp_u32(const void*a,const void*b){ unsigned x=*(const unsigned*)a, y=*(const unsigned*)b; return (x>y)-(x<y); }\n"
+        },
+        {
+          "clause_id": "h32",
+          "signature": "unsigned h32(unsigned x)",
+          "code": "unsigned h32(unsigned x){ x^=x>>16; x*=0x7feb352dU; x^=x>>15; x*=0x846ca68bU; x^=x>>16; return x; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N; scanf(\"%d\", &N); unsigned *m=(unsigned*)malloc((size_t)N*sizeof(unsigned)); for(int i=0;i<N;i++){ char s[16]; scanf(\"%10s\", s); unsigned mask=0; for(int k=0;s[k];k++) mask |= 1u<<(s[k]-'a'); m[i]=mask; } qsort(m,N,sizeof(unsigned),cmp_u32); unsigned *uniq=(unsigned*)malloc((size_t)N*sizeof(unsigned)); int *cnt=(int*)malloc((size_t)N*sizeof(int)); int D=0; for(int i=0;i<N;){ int j=i+1; while(j<N && m[j]==m[i]) j++; uniq[D]=m[i]; cnt[D]=j-i; D++; i=j; }\n  int cap=1; while(cap < D*256) cap<<=1; int maskh=cap-1; unsigned *hkey=(unsigned*)malloc((size_t)cap*sizeof(unsigned)); int *hval=(int*)malloc((size_t)cap*sizeof(int)); unsigned char *used=(unsigned char*)malloc((size_t)cap); memset(used,0,(size_t)cap);\n  for(int i=0;i<D;i++){ unsigned mm=uniq[i]; int c=cnt[i]; for(unsigned sub=mm; sub; sub=(sub-1)&mm){ unsigned idx=h32(sub)&(unsigned)maskh; while(used[idx] && hkey[idx]!=sub) idx=(idx+1)&(unsigned)maskh; if(!used[idx]){ used[idx]=1; hkey[idx]=sub; hval[idx]=c; } else hval[idx]+=c; } }\n  long long ordered=0; for(int i=0;i<D;i++){ unsigned mm=uniq[i]; int c=cnt[i]; long long u=0; for(unsigned sub=mm; sub; sub=(sub-1)&mm){ unsigned idx=h32(sub)&(unsigned)maskh; while(used[idx] && hkey[idx]!=sub) idx=(idx+1)&(unsigned)maskh; int cc=used[idx]?hval[idx]:0; int bits=__builtin_popcount(sub); u += (bits&1)?cc:-cc; } long long dis=(long long)N-u; ordered += (long long)c*dis; }\n  long long dis_pairs=ordered/2; long long total=(long long)N*(N-1)/2; printf(\"%lld\\n\", total-dis_pairs);\n  free(m); free(uniq); free(cnt); free(hkey); free(hval); free(used);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "cmp_u32",
+          "signature": "int cmp_u32(const void *a, const void *b)",
+          "code": "int cmp_u32(const void*a,const void*b){ unsigned x=*(const unsigned*)a, y=*(const unsigned*)b; return (x>y)-(x<y); }\n"
+        },
+        {
+          "clause_id": "h32",
+          "signature": "unsigned h32(unsigned x)",
+          "code": "unsigned h32(unsigned x){ x+=0x9e3779b9U; x^=x>>16; x*=0x85ebca6bU; x^=x>>13; x*=0xc2b2ae35U; x^=x>>16; return x; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N; scanf(\"%d\", &N); unsigned *m=(unsigned*)malloc((size_t)N*sizeof(unsigned)); for(int i=0;i<N;i++){ char s[16]; scanf(\"%10s\", s); unsigned mask=0; for(const char*p=s;*p;p++) mask |= 1u<<((unsigned)(*p-'a')); m[i]=mask; } qsort(m,N,sizeof(unsigned),cmp_u32); unsigned *uniq=(unsigned*)malloc((size_t)N*sizeof(unsigned)); int *cnt=(int*)malloc((size_t)N*sizeof(int)); int D=0; for(int i=0;i<N;){ int j=i+1; while(j<N && m[j]==m[i]) j++; uniq[D]=m[i]; cnt[D]=j-i; D++; i=j; }\n  int cap=1; while(cap < D*320) cap<<=1; int maskh=cap-1; unsigned *hkey=(unsigned*)malloc((size_t)cap*sizeof(unsigned)); int *hval=(int*)malloc((size_t)cap*sizeof(int)); unsigned char *used=(unsigned char*)malloc((size_t)cap); memset(used,0,(size_t)cap);\n  for(int i=0;i<D;i++){ unsigned mm=uniq[i]; int c=cnt[i]; unsigned sub=mm; while(sub){ unsigned idx=h32(sub)&(unsigned)maskh; while(used[idx] && hkey[idx]!=sub) idx=(idx+1)&(unsigned)maskh; if(!used[idx]){ used[idx]=1; hkey[idx]=sub; hval[idx]=c; } else hval[idx]+=c; sub=(sub-1)&mm; } }\n  long long ordered=0; for(int i=0;i<D;i++){ unsigned mm=uniq[i]; int c=cnt[i]; long long u=0; unsigned sub=mm; while(sub){ unsigned idx=h32(sub)&(unsigned)maskh; while(used[idx] && hkey[idx]!=sub) idx=(idx+1)&(unsigned)maskh; int cc=used[idx]?hval[idx]:0; int bits=__builtin_popcount(sub); u += (bits&1)?cc:-cc; sub=(sub-1)&mm; } long long dis=(long long)N-u; ordered += (long long)c*dis; }\n  long long dis_pairs=ordered/2; long long total=(long long)N*(N-1)/2; printf(\"%lld\\n\", total-dis_pairs);\n  free(m); free(uniq); free(cnt); free(hkey); free(hval); free(used);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "cmp_u32",
+          "signature": "int cmp_u32(const void *a, const void *b)",
+          "code": "int cmp_u32(const void*a,const void*b){ unsigned x=*(const unsigned*)a, y=*(const unsigned*)b; return (x>y)-(x<y); }\n"
+        },
+        {
+          "clause_id": "h32",
+          "signature": "unsigned h32(unsigned x)",
+          "code": "unsigned h32(unsigned x){ x^=x>>16; x*=0x7feb352dU; x^=x>>15; x*=0x846ca68bU; x^=x>>16; return x; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N; scanf(\"%d\", &N); unsigned *m=(unsigned*)malloc((size_t)N*sizeof(unsigned)); for(int i=0;i<N;i++){ char s[16]; scanf(\"%10s\", s); unsigned mask=0; for(int k=0;s[k];k++) mask |= 1u<<(s[k]-'a'); m[i]=mask; } qsort(m,N,sizeof(unsigned),cmp_u32); unsigned *uniq=(unsigned*)malloc((size_t)N*sizeof(unsigned)); int *cnt=(int*)malloc((size_t)N*sizeof(int)); int D=0; for(int i=0;i<N;){ int j=i+1; while(j<N && m[j]==m[i]) j++; uniq[D]=m[i]; cnt[D]=j-i; D++; i=j; }\n  int cap=1; while(cap < D*256) cap<<=1; int maskh=cap-1; unsigned *hkey=(unsigned*)malloc((size_t)cap*sizeof(unsigned)); int *hval=(int*)malloc((size_t)cap*sizeof(int)); unsigned char *used=(unsigned char*)malloc((size_t)cap); memset(used,0,(size_t)cap);\n  for(int i=0;i<D;i++){ unsigned mm=uniq[i]; int c=cnt[i]; for(unsigned sub=mm; sub; sub=(sub-1)&mm){ unsigned idx=h32(sub)&(unsigned)maskh; while(used[idx] && hkey[idx]!=sub) idx=(idx+1)&(unsigned)maskh; if(!used[idx]){ used[idx]=1; hkey[idx]=sub; hval[idx]=c; } else hval[idx]+=c; } }\n  long long ordered=0; for(int i=0;i<D;i++){ unsigned mm=uniq[i]; int c=cnt[i]; long long u=0; for(unsigned sub=mm; sub; sub=(sub-1)&mm){ unsigned idx=h32(sub)&(unsigned)maskh; while(used[idx] && hkey[idx]!=sub) idx=(idx+1)&(unsigned)maskh; int cc=used[idx]?hval[idx]:0; int bits=__builtin_popcount(sub); u += (bits&1)?cc:-cc; } long long dis=(long long)N-u; ordered += (long long)c*dis; }\n  long long dis_pairs=ordered/2; long long total=(long long)N*(N-1)/2; printf(\"%lld\\n\", total-dis_pairs);\n  free(m); free(uniq); free(cnt); free(hkey); free(hval); free(used);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

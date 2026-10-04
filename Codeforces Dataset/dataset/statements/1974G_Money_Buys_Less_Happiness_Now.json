@@ -1,0 +1,28 @@
+{
+  "contestId": 1974,
+  "index": "G",
+  "problem_id": "1974G",
+  "name": "Money Buys Less Happiness Now ",
+  "rating": 2000,
+  "tags": [
+    "data structures",
+    "greedy",
+    "sortings"
+  ],
+  "points": null,
+  "solvedCount": 6117,
+  "source": "verbatim_cf_fetch",
+  "title": "G. Money Buys Less Happiness Now",
+  "legend": "You can never buy enough happiness, so here we go again! In this version, you can only buy hi=1 unit of happiness each month, but the number of months is hugely increased. We are in the realm of quantum happiness and time dilation.\n\nBeing a physicist, Charlie likes to plan his life in simple and precise terms.\n\nFor the next m months, starting with no money, Charlie will work hard and earn x pounds per month. For the i-th month (1≤i≤m), there'll be a single opportunity of paying cost ci pounds to obtain one unit of happiness. You cannot buy more than one unit each month.\n\nBorrowing is not allowed. Money earned in the i-th month can only be spent in a later j-th month (j>i).\n\nSince physicists don't code, help Charlie find the maximum reachable units of happiness.",
+  "input_spec": "The first line of the input contains t (1≤t≤104) — the number of test cases.\n\nThe first line of each test case contains two integers, m and x (1≤m≤2⋅105, 1≤x≤103) — the total number of months and the monthly salary.\n\nThe second line of each test case contains m integers c1,c2,…,cm (1≤ci≤103) — the cost of one unit of happiness for each month.\n\nIt is guaranteed that sum of m over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, output one integer — the maximal amount of happiness Charlie can get.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n3 3\n2 2 2\n6 5\n2 2 8 2 6 8\n6 4\n4 10 3 8 6 10\n2 1\n1 1\n4 1\n4 1 3 1\n4 2\n1 3 4 3\n",
+      "output": "2\n4\n3\n1\n2\n1"
+    }
+  ]
+}

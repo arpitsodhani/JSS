@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9895987654320987,
+  "clauses": [
+    {
+      "clause": "count_valid_assignments",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9762962962962962
+    },
+    {
+      "clause": "read_input",
+      "confidence": 0.9925
+    }
+  ]
+}

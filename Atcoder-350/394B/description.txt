@@ -1,0 +1,5 @@
+You are given N strings S_1, S_2, \ldots, S_N , each consisting of lowercase English letters. The lengths of these strings are all distinct. Sort these strings in ascending order of length, and then concatenate them in that order to form a single string.
+
+**Constraints:**
+- 1 <= A, B, C <= 100
+- All input values are integers

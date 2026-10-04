@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_items",
+          "signature": "void read_items(int *n, long long *X, long long *Y, long long *A, long long *B)",
+          "code": "scanf(\"%d %lld %lld\", n, X, Y); for(int i=0;i<*n;i++) scanf(\"%lld %lld\", &A[i], &B[i]);\n"
+        },
+        {
+          "clause_id": "best_satisfaction",
+          "signature": "long long best_satisfaction(int n, long long X, long long Y, const long long *A, const long long *B)",
+          "code": "// Heuristic: choose all items with positive (A - Y*B) for overspend case; compare with best single item and empty.\nlong long best=0;\nfor(int i=0;i<n;i++) if(A[i]>best) best=A[i];\nlong long sumv=0, sumc=0;\nfor(int i=0;i<n;i++){\n  __int128 d=(__int128)A[i] - (__int128)Y*B[i];\n  if(d>0){ sumv += (long long)d; sumc += B[i]; }\n}\nif(sumc > X){\n  long long cand = (long long)((__int128)X*Y + sumv);\n  if(cand>best) best=cand;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long X,Y; static long long A[200005], B[200005]; read_items(&n,&X,&Y,A,B); long long ans=best_satisfaction(n,X,Y,A,B); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_items",
+          "signature": "void read_items(int *n, long long *X, long long *Y, long long *A, long long *B)",
+          "code": "scanf(\"%d %lld %lld\", n, X, Y); for(int i=0;i<*n;i++) scanf(\"%lld %lld\", &A[i], &B[i]);\n"
+        },
+        {
+          "clause_id": "best_satisfaction",
+          "signature": "long long best_satisfaction(int n, long long X, long long Y, const long long *A, const long long *B)",
+          "code": "// Heuristic: choose all items with positive (A - Y*B) for overspend case; compare with best single item and empty.\nlong long best=0;\nfor(int i=0;i<n;i++) if(A[i]>best) best=A[i];\nlong long sumv=0, sumc=0;\nfor(int i=0;i<n;i++){\n  __int128 d=(__int128)A[i] - (__int128)Y*B[i];\n  if(d>0){ sumv += (long long)d; sumc += B[i]; }\n}\nif(sumc > X){\n  long long cand = (long long)((__int128)X*Y + sumv);\n  if(cand>best) best=cand;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long X,Y; static long long A[200005], B[200005]; read_items(&n,&X,&Y,A,B); long long ans=best_satisfaction(n,X,Y,A,B); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_items",
+          "signature": "void read_items(int *n, long long *X, long long *Y, long long *A, long long *B)",
+          "code": "scanf(\"%d %lld %lld\", n, X, Y); for(int i=0;i<*n;i++) scanf(\"%lld %lld\", &A[i], &B[i]);\n"
+        },
+        {
+          "clause_id": "best_satisfaction",
+          "signature": "long long best_satisfaction(int n, long long X, long long Y, const long long *A, const long long *B)",
+          "code": "// Heuristic: choose all items with positive (A - Y*B) for overspend case; compare with best single item and empty.\nlong long best=0;\nfor(int i=0;i<n;i++) if(A[i]>best) best=A[i];\nlong long sumv=0, sumc=0;\nfor(int i=0;i<n;i++){\n  __int128 d=(__int128)A[i] - (__int128)Y*B[i];\n  if(d>0){ sumv += (long long)d; sumc += B[i]; }\n}\nif(sumc > X){\n  long long cand = (long long)((__int128)X*Y + sumv);\n  if(cand>best) best=cand;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long X,Y; static long long A[200005], B[200005]; read_items(&n,&X,&Y,A,B); long long ans=best_satisfaction(n,X,Y,A,B); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_items",
+          "signature": "void read_items(int *n, long long *X, long long *Y, long long *A, long long *B)",
+          "code": "scanf(\"%d %lld %lld\", n, X, Y); for(int i=0;i<*n;i++) scanf(\"%lld %lld\", &A[i], &B[i]);\n"
+        },
+        {
+          "clause_id": "best_satisfaction",
+          "signature": "long long best_satisfaction(int n, long long X, long long Y, const long long *A, const long long *B)",
+          "code": "// Heuristic: choose all items with positive (A - Y*B) for overspend case; compare with best single item and empty.\nlong long best=0;\nfor(int i=0;i<n;i++) if(A[i]>best) best=A[i];\nlong long sumv=0, sumc=0;\nfor(int i=0;i<n;i++){\n  __int128 d=(__int128)A[i] - (__int128)Y*B[i];\n  if(d>0){ sumv += (long long)d; sumc += B[i]; }\n}\nif(sumc > X){\n  long long cand = (long long)((__int128)X*Y + sumv);\n  if(cand>best) best=cand;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long X,Y; static long long A[200005], B[200005]; read_items(&n,&X,&Y,A,B); long long ans=best_satisfaction(n,X,Y,A,B); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_items",
+          "signature": "void read_items(int *n, long long *X, long long *Y, long long *A, long long *B)",
+          "code": "scanf(\"%d %lld %lld\", n, X, Y); for(int i=0;i<*n;i++) scanf(\"%lld %lld\", &A[i], &B[i]);\n"
+        },
+        {
+          "clause_id": "best_satisfaction",
+          "signature": "long long best_satisfaction(int n, long long X, long long Y, const long long *A, const long long *B)",
+          "code": "// Heuristic: choose all items with positive (A - Y*B) for overspend case; compare with best single item and empty.\nlong long best=0;\nfor(int i=0;i<n;i++) if(A[i]>best) best=A[i];\nlong long sumv=0, sumc=0;\nfor(int i=0;i<n;i++){\n  __int128 d=(__int128)A[i] - (__int128)Y*B[i];\n  if(d>0){ sumv += (long long)d; sumc += B[i]; }\n}\nif(sumc > X){\n  long long cand = (long long)((__int128)X*Y + sumv);\n  if(cand>best) best=cand;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long X,Y; static long long A[200005], B[200005]; read_items(&n,&X,&Y,A,B); long long ans=best_satisfaction(n,X,Y,A,B); print_ll(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

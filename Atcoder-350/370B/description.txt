@@ -1,0 +1,6 @@
+There are N types of elements numbered 1, 2, \ldots, N . Elements can be combined with each other. When elements i and j are combined, they transform into element A_{i, j} if i \geq j , and into element A_{j, i} if i < j . Starting with element 1 , combine it with elements 1, 2, \ldots, N in this order. Find the final element obtained.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= A_{i,j} <= N
+- All input values are integers

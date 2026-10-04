@@ -1,0 +1,9 @@
+You are given three integer sequences of length N , namely A=(A_1,A_2,\ldots,A_N) , B=(B_1,B_2,\ldots,B_N) , and C=(C_1,C_2,\ldots,C_N) , and an integer K . For each of the N^3 choices of integers i,j,k ( 1\leq i,j,k\leq N ), compute the value A_iB_j + B_jC_k + C_kA_i . Among all these values, find the K -th largest value.
+
+**Constraints:**
+- 1 <= N <= 200
+- 1 <= M <= N(N-1)/2
+- 1 <= A_i < B_i <= N
+- All pairs (A_i, B_i) are distinct
+- 1 <= C_i <= 10^9
+- All input values are integers

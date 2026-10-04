@@ -1,0 +1,30 @@
+{
+  "contestId": 909,
+  "index": "C",
+  "problem_id": "909C",
+  "name": "Python Indentation",
+  "rating": 1800,
+  "tags": [
+    "dp"
+  ],
+  "points": 1500.0,
+  "solvedCount": 5530,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Python Indentation",
+  "legend": "In Python, code blocks don't have explicit begin/end or curly braces to mark beginning and end of the block. Instead, code blocks are defined by indentation.\n\nWe will consider an extremely simplified subset of Python with only two types of statements.\n\nSimple statements are written in a single line, one per line. An example of a simple statement is assignment.\n\nFor statements are compound statements: they contain one or several other statements. For statement consists of a header written in a separate line which starts with \"for\" prefix, and loop body. Loop body is a block of statements indented one level further than the header of the loop. Loop body can contain both types of statements. Loop body can't be empty.\n\nYou are given a sequence of statements without indentation. Find the number of ways in which the statements can be indented to form a valid Python program.",
+  "input_spec": "The first line contains a single integer N (1 ≤ N ≤ 5000) — the number of commands in the program. N lines of the program follow, each line describing a single command. Each command is either \"f\" (denoting \"for statement\") or \"s\" (\"simple statement\"). It is guaranteed that the last line is a simple statement.",
+  "output_spec": "Output one line containing an integer - the number of ways the given sequence of statements can be indented modulo 109 + 7.",
+  "note": "In the first test case, there is only one way to indent the program: the second for statement must be part of the body of the first one.\n\n\nsimple statement\nfor statement\n    for statement\n        simple statement\n\n\nIn the second test case, there are two ways to indent the program: the second for statement can either be part of the first one's body or a separate statement following the first one.\n\n\nfor statement\n    simple statement\n    for statement\n        simple statement\n\n\nor\n\n\nfor statement\n    simple statement\nfor statement\n    simple statement",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\ns\nf\nf\ns\n",
+      "output": "1"
+    },
+    {
+      "input": "4\nf\ns\nf\ns\n",
+      "output": "2"
+    }
+  ]
+}

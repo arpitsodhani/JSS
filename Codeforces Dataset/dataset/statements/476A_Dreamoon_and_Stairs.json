@@ -1,0 +1,31 @@
+{
+  "contestId": 476,
+  "index": "A",
+  "problem_id": "476A",
+  "name": "Dreamoon and Stairs",
+  "rating": 1000,
+  "tags": [
+    "implementation",
+    "math"
+  ],
+  "points": 500.0,
+  "solvedCount": 52498,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Dreamoon and Stairs",
+  "legend": "Dreamoon wants to climb up a stair of n steps. He can climb 1 or 2 steps at each move. Dreamoon wants the number of moves to be a multiple of an integer m.\n\nWhat is the minimal number of moves making him climb to the top of the stairs that satisfies his condition?",
+  "input_spec": "The single line contains two space separated integers n, m (0 < n ≤ 10000, 1 < m ≤ 10).",
+  "output_spec": "Print a single integer — the minimal number of moves being a multiple of m. If there is no way he can climb satisfying condition print  - 1 instead.",
+  "note": "For the first sample, Dreamoon could climb in 6 moves with following sequence of steps: {2, 2, 2, 2, 1, 1}.\n\nFor the second sample, there are only three valid sequence of steps {2, 1}, {1, 2}, {1, 1, 1} with 2, 2, and 3 steps respectively. All these numbers are not multiples of 5.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "10 2\n",
+      "output": "6"
+    },
+    {
+      "input": "3 5\n",
+      "output": "-1"
+    }
+  ]
+}

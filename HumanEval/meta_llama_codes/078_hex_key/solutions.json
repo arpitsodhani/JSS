@@ -1,0 +1,125 @@
+{
+  "problem_id": "078_hex_key",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "count_hex_primes",
+          "code": "int count_hex_primes(char *s) {\n    char primes[] = \"2357BD\";\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        for (int j = 0; primes[j]; j++) {\n            if (toupper(s[i]) == primes[j]) {\n                count++;\n                break;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = count_hex_primes(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "count_hex_primes",
+          "code": "int count_hex_primes(char *s) {\n    char primes[] = \"2357BD\";\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        for (int j = 0; primes[j]; j++) {\n            if (toupper(s[i]) == primes[j]) {\n                count++;\n                break;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = count_hex_primes(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "count_hex_primes",
+          "code": "int count_hex_primes(char *s) {\n    char primes[] = \"2357BD\";\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        for (int j = 0; primes[j]; j++) {\n            if (toupper(s[i]) == primes[j]) {\n                count++;\n                break;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = count_hex_primes(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "count_hex_primes",
+          "code": "int count_hex_primes(char *s) {\n    char primes[] = \"2357BD\";\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        for (int j = 0; primes[j]; j++) {\n            if (toupper(s[i]) == primes[j]) {\n                count++;\n                break;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = count_hex_primes(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "count_hex_primes",
+          "code": "int count_hex_primes(char *s) {\n    char primes[] = \"2357BD\";\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        for (int j = 0; primes[j]; j++) {\n            if (toupper(s[i]) == primes[j]) {\n                count++;\n                break;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = count_hex_primes(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>",
+    "<ctype.h>"
+  ]
+}

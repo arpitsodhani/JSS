@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "calculate_grundy_number",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_mex_from_set",
+      "confidence": 1.0
+    },
+    {
+      "clause": "evaluate_nim_game_positions",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    }
+  ]
+}

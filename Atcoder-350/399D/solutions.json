@@ -1,0 +1,124 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_case",
+          "signature": "void read_case(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<2*(*n);i++){ scanf(\"%d\", &a[i]); a[i]--; }\n"
+        },
+        {
+          "clause_id": "solve_case",
+          "signature": "long long solve_case(int n, const int *a)",
+          "code": "int N=n;\nint *p1=(int*)malloc((size_t)N*sizeof(int));\nint *p2=(int*)malloc((size_t)N*sizeof(int));\nfor(int i=0;i<N;i++){ p1[i]=-1; p2[i]=-1; }\nfor(int i=0;i<2*N;i++){\n  int x=a[i];\n  if(p1[x]==-1) p1[x]=i; else p2[x]=i;\n}\nchar *adj=(char*)calloc((size_t)N*(size_t)N,1);\nfor(int x=0;x<N;x++){\n  if(p2[x]==p1[x]+1) continue;\n  for(int y=x+1;y<N;y++){\n    if(p2[y]==p1[y]+1) continue;\n    int a1=p1[x], a2=p2[x], b1=p1[y], b2=p2[y];\n    if(a1>a2){ int t=a1;a1=a2;a2=t; }\n    if(b1>b2){ int t=b1;b1=b2;b2=t; }\n    int ok=0;\n    if(abs(a1-b1)==1 && abs(a2-b2)==1) ok=1;\n    if(ok) adj[x*N+y]=1;\n  }\n}\nlong long ans=0;\nfor(int i=0;i<N;i++) for(int j=i+1;j<N;j++) if(adj[i*N+j]) ans++;\nfree(p1); free(p2); free(adj);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; scanf(\"%d\", &T); while(T--){ int n; int *a=(int*)malloc((size_t)400000*sizeof(int)); read_case(&n,a); long long ans=solve_case(n,a); printf(\"%lld\\n\", ans); free(a); } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_case",
+          "signature": "void read_case(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<2*(*n);i++){ scanf(\"%d\", &a[i]); a[i]--; }\n"
+        },
+        {
+          "clause_id": "solve_case",
+          "signature": "long long solve_case(int n, const int *a)",
+          "code": "int N=n;\nint *p1=(int*)malloc((size_t)N*sizeof(int));\nint *p2=(int*)malloc((size_t)N*sizeof(int));\nfor(int i=0;i<N;i++){ p1[i]=-1; p2[i]=-1; }\nfor(int i=0;i<2*N;i++){\n  int x=a[i];\n  if(p1[x]==-1) p1[x]=i; else p2[x]=i;\n}\nchar *adj=(char*)calloc((size_t)N*(size_t)N,1);\nfor(int x=0;x<N;x++){\n  if(p2[x]==p1[x]+1) continue;\n  for(int y=x+1;y<N;y++){\n    if(p2[y]==p1[y]+1) continue;\n    int a1=p1[x], a2=p2[x], b1=p1[y], b2=p2[y];\n    if(a1>a2){ int t=a1;a1=a2;a2=t; }\n    if(b1>b2){ int t=b1;b1=b2;b2=t; }\n    int ok=0;\n    if(abs(a1-b1)==1 && abs(a2-b2)==1) ok=1;\n    if(ok) adj[x*N+y]=1;\n  }\n}\nlong long ans=0;\nfor(int i=0;i<N;i++) for(int j=i+1;j<N;j++) if(adj[i*N+j]) ans++;\nfree(p1); free(p2); free(adj);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; scanf(\"%d\", &T); while(T--){ int n; int *a=(int*)malloc((size_t)400000*sizeof(int)); read_case(&n,a); long long ans=solve_case(n,a); printf(\"%lld\\n\", ans); free(a); } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_case",
+          "signature": "void read_case(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<2*(*n);i++){ scanf(\"%d\", &a[i]); a[i]--; }\n"
+        },
+        {
+          "clause_id": "solve_case",
+          "signature": "long long solve_case(int n, const int *a)",
+          "code": "int N=n;\nint *p1=(int*)malloc((size_t)N*sizeof(int));\nint *p2=(int*)malloc((size_t)N*sizeof(int));\nfor(int i=0;i<N;i++){ p1[i]=-1; p2[i]=-1; }\nfor(int i=0;i<2*N;i++){\n  int x=a[i];\n  if(p1[x]==-1) p1[x]=i; else p2[x]=i;\n}\nchar *adj=(char*)calloc((size_t)N*(size_t)N,1);\nfor(int x=0;x<N;x++){\n  if(p2[x]==p1[x]+1) continue;\n  for(int y=x+1;y<N;y++){\n    if(p2[y]==p1[y]+1) continue;\n    int a1=p1[x], a2=p2[x], b1=p1[y], b2=p2[y];\n    if(a1>a2){ int t=a1;a1=a2;a2=t; }\n    if(b1>b2){ int t=b1;b1=b2;b2=t; }\n    int ok=0;\n    if(abs(a1-b1)==1 && abs(a2-b2)==1) ok=1;\n    if(ok) adj[x*N+y]=1;\n  }\n}\nlong long ans=0;\nfor(int i=0;i<N;i++) for(int j=i+1;j<N;j++) if(adj[i*N+j]) ans++;\nfree(p1); free(p2); free(adj);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; scanf(\"%d\", &T); while(T--){ int n; int *a=(int*)malloc((size_t)400000*sizeof(int)); read_case(&n,a); long long ans=solve_case(n,a); printf(\"%lld\\n\", ans); free(a); } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_case",
+          "signature": "void read_case(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<2*(*n);i++){ scanf(\"%d\", &a[i]); a[i]--; }\n"
+        },
+        {
+          "clause_id": "solve_case",
+          "signature": "long long solve_case(int n, const int *a)",
+          "code": "int N=n;\nint *p1=(int*)malloc((size_t)N*sizeof(int));\nint *p2=(int*)malloc((size_t)N*sizeof(int));\nfor(int i=0;i<N;i++){ p1[i]=-1; p2[i]=-1; }\nfor(int i=0;i<2*N;i++){\n  int x=a[i];\n  if(p1[x]==-1) p1[x]=i; else p2[x]=i;\n}\nchar *adj=(char*)calloc((size_t)N*(size_t)N,1);\nfor(int x=0;x<N;x++){\n  if(p2[x]==p1[x]+1) continue;\n  for(int y=x+1;y<N;y++){\n    if(p2[y]==p1[y]+1) continue;\n    int a1=p1[x], a2=p2[x], b1=p1[y], b2=p2[y];\n    if(a1>a2){ int t=a1;a1=a2;a2=t; }\n    if(b1>b2){ int t=b1;b1=b2;b2=t; }\n    int ok=0;\n    if(abs(a1-b1)==1 && abs(a2-b2)==1) ok=1;\n    if(ok) adj[x*N+y]=1;\n  }\n}\nlong long ans=0;\nfor(int i=0;i<N;i++) for(int j=i+1;j<N;j++) if(adj[i*N+j]) ans++;\nfree(p1); free(p2); free(adj);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; scanf(\"%d\", &T); while(T--){ int n; int *a=(int*)malloc((size_t)400000*sizeof(int)); read_case(&n,a); long long ans=solve_case(n,a); printf(\"%lld\\n\", ans); free(a); } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_case",
+          "signature": "void read_case(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<2*(*n);i++){ scanf(\"%d\", &a[i]); a[i]--; }\n"
+        },
+        {
+          "clause_id": "solve_case",
+          "signature": "long long solve_case(int n, const int *a)",
+          "code": "int N=n;\nint *p1=(int*)malloc((size_t)N*sizeof(int));\nint *p2=(int*)malloc((size_t)N*sizeof(int));\nfor(int i=0;i<N;i++){ p1[i]=-1; p2[i]=-1; }\nfor(int i=0;i<2*N;i++){\n  int x=a[i];\n  if(p1[x]==-1) p1[x]=i; else p2[x]=i;\n}\nchar *adj=(char*)calloc((size_t)N*(size_t)N,1);\nfor(int x=0;x<N;x++){\n  if(p2[x]==p1[x]+1) continue;\n  for(int y=x+1;y<N;y++){\n    if(p2[y]==p1[y]+1) continue;\n    int a1=p1[x], a2=p2[x], b1=p1[y], b2=p2[y];\n    if(a1>a2){ int t=a1;a1=a2;a2=t; }\n    if(b1>b2){ int t=b1;b1=b2;b2=t; }\n    int ok=0;\n    if(abs(a1-b1)==1 && abs(a2-b2)==1) ok=1;\n    if(ok) adj[x*N+y]=1;\n  }\n}\nlong long ans=0;\nfor(int i=0;i<N;i++) for(int j=i+1;j<N;j++) if(adj[i*N+j]) ans++;\nfree(p1); free(p2); free(adj);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; scanf(\"%d\", &T); while(T--){ int n; int *a=(int*)malloc((size_t)400000*sizeof(int)); read_case(&n,a); long long ans=solve_case(n,a); printf(\"%lld\\n\", ans); free(a); } return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

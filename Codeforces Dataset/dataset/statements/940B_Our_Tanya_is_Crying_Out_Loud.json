@@ -1,0 +1,35 @@
+{
+  "contestId": 940,
+  "index": "B",
+  "problem_id": "940B",
+  "name": "Our Tanya is Crying Out Loud",
+  "rating": 1400,
+  "tags": [
+    "dp",
+    "greedy"
+  ],
+  "points": 1250.0,
+  "solvedCount": 9568,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Our Tanya is Crying Out Loud",
+  "legend": "Right now she actually isn't. But she will be, if you don't solve this problem.\n\nYou are given integers n, k, A and B. There is a number x, which is initially equal to n. You are allowed to perform two types of operations:\n\nSubtract 1 from x. This operation costs you A coins.\nDivide x by k. Can be performed only if x is divisible by k. This operation costs you B coins.\nWhat is the minimum amount of coins you have to pay to make x equal to 1?",
+  "input_spec": "The first line contains a single integer n (1 ≤ n ≤ 2·109).\n\nThe second line contains a single integer k (1 ≤ k ≤ 2·109).\n\nThe third line contains a single integer A (1 ≤ A ≤ 2·109).\n\nThe fourth line contains a single integer B (1 ≤ B ≤ 2·109).",
+  "output_spec": "Output a single integer — the minimum amount of coins you have to pay to make x equal to 1.",
+  "note": "In the first testcase, the optimal strategy is as follows:\n\nSubtract 1 from x (9 → 8) paying 3 coins.\nDivide x by 2 (8 → 4) paying 1 coin.\nDivide x by 2 (4 → 2) paying 1 coin.\nDivide x by 2 (2 → 1) paying 1 coin.\n\nThe total cost is 6 coins.\n\nIn the second test case the optimal strategy is to subtract 1 from x 4 times paying 8 coins in total.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "9\n2\n3\n1\n",
+      "output": "6"
+    },
+    {
+      "input": "5\n5\n2\n20\n",
+      "output": "8"
+    },
+    {
+      "input": "19\n3\n4\n2\n",
+      "output": "12"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+There are N black balls and M white balls. Each ball has a value. The value of the i -th black ball ( 1 \le i \le N ) is B_i , and the value of the j -th white ball ( 1 \le j \le M ) is W_j . Choose zero or more balls so that the number of black balls chosen is at least the number of white balls chosen. Among all such choices, find the maximum possible sum of the values of the chosen balls.
+
+**Constraints:**
+- 1 <= N, Q <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- 1 <= L_i <= R_i <= N
+- 1 <= X_i <= 10^9
+- All input values are integers

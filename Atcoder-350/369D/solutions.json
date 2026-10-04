@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_augmenting_path_bfs",
+          "signature": "int find_augmenting_path_bfs(int n, int capacity[105][105], int *parent, int source, int sink)",
+          "code": "int find_augmenting_path_bfs(int n, int capacity[105][105], int *parent, int source, int sink) {\n    int visited[105] = {0};\n    int queue[105], front = 0, rear = 0;\n    queue[rear++] = source;\n    visited[source] = 1;\n    parent[source] = -1;\n    \n    while (front < rear) {\n        int u = queue[front++];\n        for (int v = 0; v < n; v++) {\n            if (!visited[v] && capacity[u][v] > 0) {\n                parent[v] = u;\n                visited[v] = 1;\n                if (v == sink) return 1;\n                queue[rear++] = v;\n            }\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_path_bottleneck",
+          "signature": "int compute_path_bottleneck(int capacity[105][105], int *parent, int sink)",
+          "code": "int compute_path_bottleneck(int capacity[105][105], int *parent, int sink) {\n    int min_capacity = 1000000000;\n    for (int v = sink; parent[v] != -1; v = parent[v]) {\n        int u = parent[v];\n        if (capacity[u][v] < min_capacity) {\n            min_capacity = capacity[u][v];\n        }\n    }\n    return min_capacity;\n}"
+        },
+        {
+          "clause_id": "compute_maximum_flow",
+          "signature": "int compute_maximum_flow(int n, int capacity[105][105], int source, int sink)",
+          "code": "int compute_maximum_flow(int n, int capacity[105][105], int source, int sink) {\n    int max_flow = 0;\n    int parent[105];\n    \n    while (find_augmenting_path_bfs(n, capacity, parent, source, sink)) {\n        int flow = compute_path_bottleneck(capacity, parent, sink);\n        for (int v = sink; parent[v] != -1; v = parent[v]) {\n            int u = parent[v];\n            capacity[u][v] -= flow;\n            capacity[v][u] += flow;\n        }\n        max_flow += flow;\n    }\n    return max_flow;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, source, sink, capacity[105][105] = {{0}};\n    scanf(\"%d %d %d %d\", &n, &m, &source, &sink);\n    source--; sink--;\n    for (int i = 0; i < m; i++) {\n        int u, v, cap;\n        scanf(\"%d %d %d\", &u, &v, &cap);\n        u--; v--;\n        capacity[u][v] = cap;\n    }\n    printf(\"%d\\n\", compute_maximum_flow(n, capacity, source, sink));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_augmenting_path_bfs",
+          "signature": "int find_augmenting_path_bfs(int n, int capacity[105][105], int *parent, int source, int sink)",
+          "code": "int find_augmenting_path_bfs(int n, int capacity[105][105], int *parent, int source, int sink) {\n    int visited[105] = {0};\n    int queue[105], front = 0, rear = 0;\n    queue[rear++] = source;\n    visited[source] = 1;\n    parent[source] = -1;\n    \n    while (front < rear) {\n        int u = queue[front++];\n        for (int v = 0; v < n; v++) {\n            if (!visited[v] && capacity[u][v] > 0) {\n                parent[v] = u;\n                visited[v] = 1;\n                if (v == sink) return 1;\n                queue[rear++] = v;\n            }\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_path_bottleneck",
+          "signature": "int compute_path_bottleneck(int capacity[105][105], int *parent, int sink)",
+          "code": "int compute_path_bottleneck(int capacity[105][105], int *parent, int sink) {\n    int min_capacity = 1000000000;\n    for (int v = sink; parent[v] != -1; v = parent[v]) {\n        int u = parent[v];\n        if (capacity[u][v] < min_capacity) {\n            min_capacity = capacity[u][v];\n        }\n    }\n    return min_capacity;\n}"
+        },
+        {
+          "clause_id": "compute_maximum_flow",
+          "signature": "int compute_maximum_flow(int n, int capacity[105][105], int source, int sink)",
+          "code": "int compute_maximum_flow(int n, int capacity[105][105], int source, int sink) {\n    int max_flow = 0;\n    int parent[105];\n    \n    while (find_augmenting_path_bfs(n, capacity, parent, source, sink)) {\n        int flow = compute_path_bottleneck(capacity, parent, sink);\n        for (int v = sink; parent[v] != -1; v = parent[v]) {\n            int u = parent[v];\n            capacity[u][v] -= flow;\n            capacity[v][u] += flow;\n        }\n        max_flow += flow;\n    }\n    return max_flow;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, source, sink, capacity[105][105] = {{0}};\n    scanf(\"%d %d %d %d\", &n, &m, &source, &sink);\n    source--; sink--;\n    for (int i = 0; i < m; i++) {\n        int u, v, cap;\n        scanf(\"%d %d %d\", &u, &v, &cap);\n        u--; v--;\n        capacity[u][v] = cap;\n    }\n    printf(\"%d\\n\", compute_maximum_flow(n, capacity, source, sink));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_augmenting_path_bfs",
+          "signature": "int find_augmenting_path_bfs(int n, int capacity[105][105], int *parent, int source, int sink)",
+          "code": "int find_augmenting_path_bfs(int n, int capacity[105][105], int *parent, int source, int sink) {\n    int visited[105] = {0};\n    int queue[105], front = 0, rear = 0;\n    queue[rear++] = source;\n    visited[source] = 1;\n    parent[source] = -1;\n    \n    while (front < rear) {\n        int u = queue[front++];\n        for (int v = 0; v < n; v++) {\n            if (!visited[v] && capacity[u][v] > 0) {\n                parent[v] = u;\n                visited[v] = 1;\n                if (v == sink) return 1;\n                queue[rear++] = v;\n            }\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_path_bottleneck",
+          "signature": "int compute_path_bottleneck(int capacity[105][105], int *parent, int sink)",
+          "code": "int compute_path_bottleneck(int capacity[105][105], int *parent, int sink) {\n    int min_capacity = 1000000000;\n    for (int v = sink; parent[v] != -1; v = parent[v]) {\n        int u = parent[v];\n        if (capacity[u][v] < min_capacity) {\n            min_capacity = capacity[u][v];\n        }\n    }\n    return min_capacity;\n}"
+        },
+        {
+          "clause_id": "compute_maximum_flow",
+          "signature": "int compute_maximum_flow(int n, int capacity[105][105], int source, int sink)",
+          "code": "int compute_maximum_flow(int n, int capacity[105][105], int source, int sink) {\n    int max_flow = 0;\n    int parent[105];\n    \n    while (find_augmenting_path_bfs(n, capacity, parent, source, sink)) {\n        int flow = compute_path_bottleneck(capacity, parent, sink);\n        for (int v = sink; parent[v] != -1; v = parent[v]) {\n            int u = parent[v];\n            capacity[u][v] -= flow;\n            capacity[v][u] += flow;\n        }\n        max_flow += flow;\n    }\n    return max_flow;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, source, sink, capacity[105][105] = {{0}};\n    scanf(\"%d %d %d %d\", &n, &m, &source, &sink);\n    source--; sink--;\n    for (int i = 0; i < m; i++) {\n        int u, v, cap;\n        scanf(\"%d %d %d\", &u, &v, &cap);\n        u--; v--;\n        capacity[u][v] = cap;\n    }\n    printf(\"%d\\n\", compute_maximum_flow(n, capacity, source, sink));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_augmenting_path_bfs",
+          "signature": "int find_augmenting_path_bfs(int n, int capacity[105][105], int *parent, int source, int sink)",
+          "code": "int find_augmenting_path_bfs(int n, int capacity[105][105], int *parent, int source, int sink) {\n    int visited[105] = {0};\n    int queue[105], front = 0, rear = 0;\n    queue[rear++] = source;\n    visited[source] = 1;\n    parent[source] = -1;\n    \n    while (front < rear) {\n        int u = queue[front++];\n        for (int v = 0; v < n; v++) {\n            if (!visited[v] && capacity[u][v] > 0) {\n                parent[v] = u;\n                visited[v] = 1;\n                if (v == sink) return 1;\n                queue[rear++] = v;\n            }\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_path_bottleneck",
+          "signature": "int compute_path_bottleneck(int capacity[105][105], int *parent, int sink)",
+          "code": "int compute_path_bottleneck(int capacity[105][105], int *parent, int sink) {\n    int min_capacity = 1000000000;\n    for (int v = sink; parent[v] != -1; v = parent[v]) {\n        int u = parent[v];\n        if (capacity[u][v] < min_capacity) {\n            min_capacity = capacity[u][v];\n        }\n    }\n    return min_capacity;\n}"
+        },
+        {
+          "clause_id": "compute_maximum_flow",
+          "signature": "int compute_maximum_flow(int n, int capacity[105][105], int source, int sink)",
+          "code": "int compute_maximum_flow(int n, int capacity[105][105], int source, int sink) {\n    int max_flow = 0;\n    int parent[105];\n    \n    while (find_augmenting_path_bfs(n, capacity, parent, source, sink)) {\n        int flow = compute_path_bottleneck(capacity, parent, sink);\n        for (int v = sink; parent[v] != -1; v = parent[v]) {\n            int u = parent[v];\n            capacity[u][v] -= flow;\n            capacity[v][u] += flow;\n        }\n        max_flow += flow;\n    }\n    return max_flow;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, source, sink, capacity[105][105] = {{0}};\n    scanf(\"%d %d %d %d\", &n, &m, &source, &sink);\n    source--; sink--;\n    for (int i = 0; i < m; i++) {\n        int u, v, cap;\n        scanf(\"%d %d %d\", &u, &v, &cap);\n        u--; v--;\n        capacity[u][v] = cap;\n    }\n    printf(\"%d\\n\", compute_maximum_flow(n, capacity, source, sink));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_augmenting_path_bfs",
+          "signature": "int find_augmenting_path_bfs(int n, int capacity[105][105], int *parent, int source, int sink)",
+          "code": "int find_augmenting_path_bfs(int n, int capacity[105][105], int *parent, int source, int sink) {\n    int visited[105] = {0};\n    int queue[105], front = 0, rear = 0;\n    queue[rear++] = source;\n    visited[source] = 1;\n    parent[source] = -1;\n    \n    while (front < rear) {\n        int u = queue[front++];\n        for (int v = 0; v < n; v++) {\n            if (!visited[v] && capacity[u][v] > 0) {\n                parent[v] = u;\n                visited[v] = 1;\n                if (v == sink) return 1;\n                queue[rear++] = v;\n            }\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_path_bottleneck",
+          "signature": "int compute_path_bottleneck(int capacity[105][105], int *parent, int sink)",
+          "code": "int compute_path_bottleneck(int capacity[105][105], int *parent, int sink) {\n    int min_capacity = 1000000000;\n    for (int v = sink; parent[v] != -1; v = parent[v]) {\n        int u = parent[v];\n        if (capacity[u][v] < min_capacity) {\n            min_capacity = capacity[u][v];\n        }\n    }\n    return min_capacity;\n}"
+        },
+        {
+          "clause_id": "compute_maximum_flow",
+          "signature": "int compute_maximum_flow(int n, int capacity[105][105], int source, int sink)",
+          "code": "int compute_maximum_flow(int n, int capacity[105][105], int source, int sink) {\n    int max_flow = 0;\n    int parent[105];\n    \n    while (find_augmenting_path_bfs(n, capacity, parent, source, sink)) {\n        int flow = compute_path_bottleneck(capacity, parent, sink);\n        for (int v = sink; parent[v] != -1; v = parent[v]) {\n            int u = parent[v];\n            capacity[u][v] -= flow;\n            capacity[v][u] += flow;\n        }\n        max_flow += flow;\n    }\n    return max_flow;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, source, sink, capacity[105][105] = {{0}};\n    scanf(\"%d %d %d %d\", &n, &m, &source, &sink);\n    source--; sink--;\n    for (int i = 0; i < m; i++) {\n        int u, v, cap;\n        scanf(\"%d %d %d\", &u, &v, &cap);\n        u--; v--;\n        capacity[u][v] = cap;\n    }\n    printf(\"%d\\n\", compute_maximum_flow(n, capacity, source, sink));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.97225,
+  "clauses": [
+    {
+      "clause": "count_valid_colors",
+      "confidence": 0.9899999999999999
+    },
+    {
+      "clause": "find_positions",
+      "confidence": 0.9640000000000001
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_colors",
+      "confidence": 0.9349999999999999
+    }
+  ]
+}

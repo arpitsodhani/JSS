@@ -1,0 +1,6 @@
+This problem fully contains Problem C (Operate 1), with K \le 20 . You can solve Problem C by submitting a correct solution to this problem for Problem C. Determine whether it is possible to perform the following operation on string S between 0 and K times, inclusive, to make it identical to string T . Choose one of the following three operations and execute it. Insert any one character at any position in S (possibly the beginning or end). Delete one character from S . Choose one character in S and replace it with another character.
+
+**Constraints:**
+- 1 <= N, K <= 5 * 10^5
+- S is a string of length N consisting of lowercase English letters
+- All input values are integers

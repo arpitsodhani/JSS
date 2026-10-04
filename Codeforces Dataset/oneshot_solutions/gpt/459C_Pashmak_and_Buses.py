@@ -1,0 +1,19 @@
+n, k, d = map(int, input().split())
+
+cnt = 1
+for _ in range(d):
+    cnt *= k
+    if cnt >= n:
+        break
+
+if cnt < n:
+    print(-1)
+else:
+    ans = []
+    for day in range(d):
+        div = k ** (d - day - 1)
+        row = []
+        for i in range(n):
+            row.append(str((i // div) % k + 1))
+        ans.append(" ".join(row))
+    print("\n".join(ans))

@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *K,int **U,int **V,int **W,int **A,int **B)",
+          "code": "void read_input(int *N,int *M,int *K,int **U,int **V,int **W,int **A,int **B){ scanf(\"%d%d%d\", N,M,K); *U=(int*)malloc((size_t)(*M)*sizeof(int)); *V=(int*)malloc((size_t)(*M)*sizeof(int)); *W=(int*)malloc((size_t)(*M)*sizeof(int)); for(int i=0;i<*M;i++) scanf(\"%d%d%d\", &(*U)[i], &(*V)[i], &(*W)[i]); *A=(int*)malloc((size_t)(*K)*sizeof(int)); *B=(int*)malloc((size_t)(*K)*sizeof(int)); for(int i=0;i<*K;i++) scanf(\"%d\", &(*A)[i]); for(int i=0;i<*K;i++) scanf(\"%d\", &(*B)[i]); }\n"
+        },
+        {
+          "clause_id": "solve_min_sum",
+          "signature": "long long solve_min_sum(int N,int M,int K,int *U,int *V,int *W,int *A,int *B)",
+          "code": "typedef struct Edge{ int to; int w; int next; } Edge;\nint dsu_find(int *par,int x){ while(par[x]!=x) x=par[x]; return x; }\nlong long solve_min_sum(int N,int M,int K,int *U,int *V,int *W,int *A,int *B){\n    // build MST by Kruskal (heuristic for minimax path)\n    int *idx=(int*)malloc((size_t)M*sizeof(int));\n    for(int i=0;i<M;i++) idx[i]=i;\n    for(int i=0;i<M;i++) for(int j=i+1;j<M;j++) if(W[idx[j]]<W[idx[i]]){ int t=idx[i]; idx[i]=idx[j]; idx[j]=t; }\n    int *par=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *sz=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++){ par[i]=i; sz[i]=1; }\n    int *head=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) head[i]=-1;\n    Edge *edges=(Edge*)malloc((size_t)2*M*sizeof(Edge));\n    int ec=0;\n    for(int ii=0; ii<M; ii++){\n        int e=idx[ii];\n        int a=dsu_find(par,U[e]), b=dsu_find(par,V[e]);\n        if(a!=b){\n            if(sz[a]<sz[b]){ int t=a; a=b; b=t; }\n            par[b]=a; sz[a]+=sz[b];\n            edges[ec]=(Edge){V[e], W[e], head[U[e]]}; head[U[e]]=ec++;\n            edges[ec]=(Edge){U[e], W[e], head[V[e]]}; head[V[e]]=ec++;\n        }\n    }\n    // simple pairing: sort A and B and pair in order\n    for(int i=0;i<K;i++) for(int j=i+1;j<K;j++) if(A[j]<A[i]){ int t=A[i]; A[i]=A[j]; A[j]=t; }\n    for(int i=0;i<K;i++) for(int j=i+1;j<K;j++) if(B[j]<B[i]){ int t=B[i]; B[i]=B[j]; B[j]=t; }\n    // BFS for each pair to compute max edge on path (slow but ok)\n    long long sum=0;\n    int *q=(int*)malloc((size_t)(N+5)*sizeof(int));\n    int *vis=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *mx=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=0;i<K;i++){\n        for(int v=1; v<=N; v++){ vis[v]=0; mx[v]=0; }\n        int s=A[i], t=B[i];\n        int headq=0, tail=0;\n        q[tail++]=s; vis[s]=1; mx[s]=0;\n        while(headq<tail){\n            int v=q[headq++];\n            if(v==t) break;\n            for(int e=head[v]; e!=-1; e=edges[e].next){\n                int u=edges[e].to;\n                if(!vis[u]){\n                    vis[u]=1;\n                    mx[u]=mx[v] > edges[e].w ? mx[v] : edges[e].w;\n                    q[tail++]=u;\n                }\n            }\n        }\n        sum += mx[t];\n    }\n    free(idx); free(par); free(sz); free(head); free(edges); free(q); free(vis); free(mx);\n    return sum;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M,K; int *U=NULL,*V=NULL,*W=NULL,*A=NULL,*B=NULL; read_input(&N,&M,&K,&U,&V,&W,&A,&B); long long ans=solve_min_sum(N,M,K,U,V,W,A,B); print_answer(ans); free(U); free(V); free(W); free(A); free(B); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *K,int **U,int **V,int **W,int **A,int **B)",
+          "code": "void read_input(int *N,int *M,int *K,int **U,int **V,int **W,int **A,int **B){ scanf(\"%d%d%d\", N,M,K); *U=(int*)malloc((size_t)(*M)*sizeof(int)); *V=(int*)malloc((size_t)(*M)*sizeof(int)); *W=(int*)malloc((size_t)(*M)*sizeof(int)); for(int i=0;i<*M;i++) scanf(\"%d%d%d\", &(*U)[i], &(*V)[i], &(*W)[i]); *A=(int*)malloc((size_t)(*K)*sizeof(int)); *B=(int*)malloc((size_t)(*K)*sizeof(int)); for(int i=0;i<*K;i++) scanf(\"%d\", &(*A)[i]); for(int i=0;i<*K;i++) scanf(\"%d\", &(*B)[i]); }\n"
+        },
+        {
+          "clause_id": "solve_min_sum",
+          "signature": "long long solve_min_sum(int N,int M,int K,int *U,int *V,int *W,int *A,int *B)",
+          "code": "typedef struct Edge{ int to; int w; int next; } Edge;\nint dsu_find(int *par,int x){ while(par[x]!=x) x=par[x]; return x; }\nlong long solve_min_sum(int N,int M,int K,int *U,int *V,int *W,int *A,int *B){\n    // build MST by Kruskal (heuristic for minimax path)\n    int *idx=(int*)malloc((size_t)M*sizeof(int));\n    for(int i=0;i<M;i++) idx[i]=i;\n    for(int i=0;i<M;i++) for(int j=i+1;j<M;j++) if(W[idx[j]]<W[idx[i]]){ int t=idx[i]; idx[i]=idx[j]; idx[j]=t; }\n    int *par=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *sz=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++){ par[i]=i; sz[i]=1; }\n    int *head=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) head[i]=-1;\n    Edge *edges=(Edge*)malloc((size_t)2*M*sizeof(Edge));\n    int ec=0;\n    for(int ii=0; ii<M; ii++){\n        int e=idx[ii];\n        int a=dsu_find(par,U[e]), b=dsu_find(par,V[e]);\n        if(a!=b){\n            if(sz[a]<sz[b]){ int t=a; a=b; b=t; }\n            par[b]=a; sz[a]+=sz[b];\n            edges[ec]=(Edge){V[e], W[e], head[U[e]]}; head[U[e]]=ec++;\n            edges[ec]=(Edge){U[e], W[e], head[V[e]]}; head[V[e]]=ec++;\n        }\n    }\n    // simple pairing: sort A and B and pair in order\n    for(int i=0;i<K;i++) for(int j=i+1;j<K;j++) if(A[j]<A[i]){ int t=A[i]; A[i]=A[j]; A[j]=t; }\n    for(int i=0;i<K;i++) for(int j=i+1;j<K;j++) if(B[j]<B[i]){ int t=B[i]; B[i]=B[j]; B[j]=t; }\n    // BFS for each pair to compute max edge on path (slow but ok)\n    long long sum=0;\n    int *q=(int*)malloc((size_t)(N+5)*sizeof(int));\n    int *vis=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *mx=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=0;i<K;i++){\n        for(int v=1; v<=N; v++){ vis[v]=0; mx[v]=0; }\n        int s=A[i], t=B[i];\n        int headq=0, tail=0;\n        q[tail++]=s; vis[s]=1; mx[s]=0;\n        while(headq<tail){\n            int v=q[headq++];\n            if(v==t) break;\n            for(int e=head[v]; e!=-1; e=edges[e].next){\n                int u=edges[e].to;\n                if(!vis[u]){\n                    vis[u]=1;\n                    mx[u]=mx[v] > edges[e].w ? mx[v] : edges[e].w;\n                    q[tail++]=u;\n                }\n            }\n        }\n        sum += mx[t];\n    }\n    free(idx); free(par); free(sz); free(head); free(edges); free(q); free(vis); free(mx);\n    return sum;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M,K; int *U=NULL,*V=NULL,*W=NULL,*A=NULL,*B=NULL; read_input(&N,&M,&K,&U,&V,&W,&A,&B); long long ans=solve_min_sum(N,M,K,U,V,W,A,B); print_answer(ans); free(U); free(V); free(W); free(A); free(B); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *K,int **U,int **V,int **W,int **A,int **B)",
+          "code": "void read_input(int *N,int *M,int *K,int **U,int **V,int **W,int **A,int **B){ scanf(\"%d%d%d\", N,M,K); *U=(int*)malloc((size_t)(*M)*sizeof(int)); *V=(int*)malloc((size_t)(*M)*sizeof(int)); *W=(int*)malloc((size_t)(*M)*sizeof(int)); for(int i=0;i<*M;i++) scanf(\"%d%d%d\", &(*U)[i], &(*V)[i], &(*W)[i]); *A=(int*)malloc((size_t)(*K)*sizeof(int)); *B=(int*)malloc((size_t)(*K)*sizeof(int)); for(int i=0;i<*K;i++) scanf(\"%d\", &(*A)[i]); for(int i=0;i<*K;i++) scanf(\"%d\", &(*B)[i]); }\n"
+        },
+        {
+          "clause_id": "solve_min_sum",
+          "signature": "long long solve_min_sum(int N,int M,int K,int *U,int *V,int *W,int *A,int *B)",
+          "code": "typedef struct Edge{ int to; int w; int next; } Edge;\nint dsu_find(int *par,int x){ while(par[x]!=x) x=par[x]; return x; }\nlong long solve_min_sum(int N,int M,int K,int *U,int *V,int *W,int *A,int *B){\n    // build MST by Kruskal (heuristic for minimax path)\n    int *idx=(int*)malloc((size_t)M*sizeof(int));\n    for(int i=0;i<M;i++) idx[i]=i;\n    for(int i=0;i<M;i++) for(int j=i+1;j<M;j++) if(W[idx[j]]<W[idx[i]]){ int t=idx[i]; idx[i]=idx[j]; idx[j]=t; }\n    int *par=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *sz=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++){ par[i]=i; sz[i]=1; }\n    int *head=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) head[i]=-1;\n    Edge *edges=(Edge*)malloc((size_t)2*M*sizeof(Edge));\n    int ec=0;\n    for(int ii=0; ii<M; ii++){\n        int e=idx[ii];\n        int a=dsu_find(par,U[e]), b=dsu_find(par,V[e]);\n        if(a!=b){\n            if(sz[a]<sz[b]){ int t=a; a=b; b=t; }\n            par[b]=a; sz[a]+=sz[b];\n            edges[ec]=(Edge){V[e], W[e], head[U[e]]}; head[U[e]]=ec++;\n            edges[ec]=(Edge){U[e], W[e], head[V[e]]}; head[V[e]]=ec++;\n        }\n    }\n    // simple pairing: sort A and B and pair in order\n    for(int i=0;i<K;i++) for(int j=i+1;j<K;j++) if(A[j]<A[i]){ int t=A[i]; A[i]=A[j]; A[j]=t; }\n    for(int i=0;i<K;i++) for(int j=i+1;j<K;j++) if(B[j]<B[i]){ int t=B[i]; B[i]=B[j]; B[j]=t; }\n    // BFS for each pair to compute max edge on path (slow but ok)\n    long long sum=0;\n    int *q=(int*)malloc((size_t)(N+5)*sizeof(int));\n    int *vis=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *mx=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=0;i<K;i++){\n        for(int v=1; v<=N; v++){ vis[v]=0; mx[v]=0; }\n        int s=A[i], t=B[i];\n        int headq=0, tail=0;\n        q[tail++]=s; vis[s]=1; mx[s]=0;\n        while(headq<tail){\n            int v=q[headq++];\n            if(v==t) break;\n            for(int e=head[v]; e!=-1; e=edges[e].next){\n                int u=edges[e].to;\n                if(!vis[u]){\n                    vis[u]=1;\n                    mx[u]=mx[v] > edges[e].w ? mx[v] : edges[e].w;\n                    q[tail++]=u;\n                }\n            }\n        }\n        sum += mx[t];\n    }\n    free(idx); free(par); free(sz); free(head); free(edges); free(q); free(vis); free(mx);\n    return sum;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M,K; int *U=NULL,*V=NULL,*W=NULL,*A=NULL,*B=NULL; read_input(&N,&M,&K,&U,&V,&W,&A,&B); long long ans=solve_min_sum(N,M,K,U,V,W,A,B); print_answer(ans); free(U); free(V); free(W); free(A); free(B); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *K,int **U,int **V,int **W,int **A,int **B)",
+          "code": "void read_input(int *N,int *M,int *K,int **U,int **V,int **W,int **A,int **B){ scanf(\"%d%d%d\", N,M,K); *U=(int*)malloc((size_t)(*M)*sizeof(int)); *V=(int*)malloc((size_t)(*M)*sizeof(int)); *W=(int*)malloc((size_t)(*M)*sizeof(int)); for(int i=0;i<*M;i++) scanf(\"%d%d%d\", &(*U)[i], &(*V)[i], &(*W)[i]); *A=(int*)malloc((size_t)(*K)*sizeof(int)); *B=(int*)malloc((size_t)(*K)*sizeof(int)); for(int i=0;i<*K;i++) scanf(\"%d\", &(*A)[i]); for(int i=0;i<*K;i++) scanf(\"%d\", &(*B)[i]); }\n"
+        },
+        {
+          "clause_id": "solve_min_sum",
+          "signature": "long long solve_min_sum(int N,int M,int K,int *U,int *V,int *W,int *A,int *B)",
+          "code": "typedef struct Edge{ int to; int w; int next; } Edge;\nint dsu_find(int *par,int x){ while(par[x]!=x) x=par[x]; return x; }\nlong long solve_min_sum(int N,int M,int K,int *U,int *V,int *W,int *A,int *B){\n    // build MST by Kruskal (heuristic for minimax path)\n    int *idx=(int*)malloc((size_t)M*sizeof(int));\n    for(int i=0;i<M;i++) idx[i]=i;\n    for(int i=0;i<M;i++) for(int j=i+1;j<M;j++) if(W[idx[j]]<W[idx[i]]){ int t=idx[i]; idx[i]=idx[j]; idx[j]=t; }\n    int *par=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *sz=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++){ par[i]=i; sz[i]=1; }\n    int *head=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) head[i]=-1;\n    Edge *edges=(Edge*)malloc((size_t)2*M*sizeof(Edge));\n    int ec=0;\n    for(int ii=0; ii<M; ii++){\n        int e=idx[ii];\n        int a=dsu_find(par,U[e]), b=dsu_find(par,V[e]);\n        if(a!=b){\n            if(sz[a]<sz[b]){ int t=a; a=b; b=t; }\n            par[b]=a; sz[a]+=sz[b];\n            edges[ec]=(Edge){V[e], W[e], head[U[e]]}; head[U[e]]=ec++;\n            edges[ec]=(Edge){U[e], W[e], head[V[e]]}; head[V[e]]=ec++;\n        }\n    }\n    // simple pairing: sort A and B and pair in order\n    for(int i=0;i<K;i++) for(int j=i+1;j<K;j++) if(A[j]<A[i]){ int t=A[i]; A[i]=A[j]; A[j]=t; }\n    for(int i=0;i<K;i++) for(int j=i+1;j<K;j++) if(B[j]<B[i]){ int t=B[i]; B[i]=B[j]; B[j]=t; }\n    // BFS for each pair to compute max edge on path (slow but ok)\n    long long sum=0;\n    int *q=(int*)malloc((size_t)(N+5)*sizeof(int));\n    int *vis=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *mx=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=0;i<K;i++){\n        for(int v=1; v<=N; v++){ vis[v]=0; mx[v]=0; }\n        int s=A[i], t=B[i];\n        int headq=0, tail=0;\n        q[tail++]=s; vis[s]=1; mx[s]=0;\n        while(headq<tail){\n            int v=q[headq++];\n            if(v==t) break;\n            for(int e=head[v]; e!=-1; e=edges[e].next){\n                int u=edges[e].to;\n                if(!vis[u]){\n                    vis[u]=1;\n                    mx[u]=mx[v] > edges[e].w ? mx[v] : edges[e].w;\n                    q[tail++]=u;\n                }\n            }\n        }\n        sum += mx[t];\n    }\n    free(idx); free(par); free(sz); free(head); free(edges); free(q); free(vis); free(mx);\n    return sum;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M,K; int *U=NULL,*V=NULL,*W=NULL,*A=NULL,*B=NULL; read_input(&N,&M,&K,&U,&V,&W,&A,&B); long long ans=solve_min_sum(N,M,K,U,V,W,A,B); print_answer(ans); free(U); free(V); free(W); free(A); free(B); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *K,int **U,int **V,int **W,int **A,int **B)",
+          "code": "void read_input(int *N,int *M,int *K,int **U,int **V,int **W,int **A,int **B){ scanf(\"%d%d%d\", N,M,K); *U=(int*)malloc((size_t)(*M)*sizeof(int)); *V=(int*)malloc((size_t)(*M)*sizeof(int)); *W=(int*)malloc((size_t)(*M)*sizeof(int)); for(int i=0;i<*M;i++) scanf(\"%d%d%d\", &(*U)[i], &(*V)[i], &(*W)[i]); *A=(int*)malloc((size_t)(*K)*sizeof(int)); *B=(int*)malloc((size_t)(*K)*sizeof(int)); for(int i=0;i<*K;i++) scanf(\"%d\", &(*A)[i]); for(int i=0;i<*K;i++) scanf(\"%d\", &(*B)[i]); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "solve_min_sum",
+          "signature": "long long solve_min_sum(int N,int M,int K,int *U,int *V,int *W,int *A,int *B)",
+          "code": "typedef struct Edge{ int to; int w; int next; } Edge;\nint dsu_find(int *par,int x){ while(par[x]!=x) x=par[x]; return x; }\nlong long solve_min_sum(int N,int M,int K,int *U,int *V,int *W,int *A,int *B){\n    // build MST by Kruskal (heuristic for minimax path)\n    int *idx=(int*)malloc((size_t)M*sizeof(int));\n    for(int i=0;i<M;i++) idx[i]=i;\n    for(int i=0;i<M;i++) for(int j=i+1;j<M;j++) if(W[idx[j]]<W[idx[i]]){ int t=idx[i]; idx[i]=idx[j]; idx[j]=t; }\n    int *par=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *sz=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++){ par[i]=i; sz[i]=1; }\n    int *head=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) head[i]=-1;\n    Edge *edges=(Edge*)malloc((size_t)2*M*sizeof(Edge));\n    int ec=0;\n    for(int ii=0; ii<M; ii++){\n        int e=idx[ii];\n        int a=dsu_find(par,U[e]), b=dsu_find(par,V[e]);\n        if(a!=b){\n            if(sz[a]<sz[b]){ int t=a; a=b; b=t; }\n            par[b]=a; sz[a]+=sz[b];\n            edges[ec]=(Edge){V[e], W[e], head[U[e]]}; head[U[e]]=ec++;\n            edges[ec]=(Edge){U[e], W[e], head[V[e]]}; head[V[e]]=ec++;\n        }\n    }\n    // simple pairing: sort A and B and pair in order\n    for(int i=0;i<K;i++) for(int j=i+1;j<K;j++) if(A[j]<A[i]){ int t=A[i]; A[i]=A[j]; A[j]=t; }\n    for(int i=0;i<K;i++) for(int j=i+1;j<K;j++) if(B[j]<B[i]){ int t=B[i]; B[i]=B[j]; B[j]=t; }\n    // BFS for each pair to compute max edge on path (slow but ok)\n    long long sum=0;\n    int *q=(int*)malloc((size_t)(N+5)*sizeof(int));\n    int *vis=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *mx=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=0;i<K;i++){\n        for(int v=1; v<=N; v++){ vis[v]=0; mx[v]=0; }\n        int s=A[i], t=B[i];\n        int headq=0, tail=0;\n        q[tail++]=s; vis[s]=1; mx[s]=0;\n        while(headq<tail){\n            int v=q[headq++];\n            if(v==t) break;\n            for(int e=head[v]; e!=-1; e=edges[e].next){\n                int u=edges[e].to;\n                if(!vis[u]){\n                    vis[u]=1;\n                    mx[u]=mx[v] > edges[e].w ? mx[v] : edges[e].w;\n                    q[tail++]=u;\n                }\n            }\n        }\n        sum += mx[t];\n    }\n    free(idx); free(par); free(sz); free(head); free(edges); free(q); free(vis); free(mx);\n    return sum;\n\n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M,K; int *U=NULL,*V=NULL,*W=NULL,*A=NULL,*B=NULL; read_input(&N,&M,&K,&U,&V,&W,&A,&B); long long ans=solve_min_sum(N,M,K,U,V,W,A,B); print_answer(ans); free(U); free(V); free(W); free(A); free(B); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

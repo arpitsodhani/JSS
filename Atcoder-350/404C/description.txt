@@ -1,0 +1,18 @@
+You are given N intervals. The i-th interval is [L_i, R_i].
+Find the minimum number of points you need to place such that every interval contains at least one point.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N
+L_1 R_1
+L_2 R_2
+...
+L_N R_N
+
+**Output:**
+Print the answer.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= L_i <= R_i <= 10^9
+- All input values are integers

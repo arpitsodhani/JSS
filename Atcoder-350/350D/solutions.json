@@ -1,0 +1,154 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "prog1_initialize_dsu",
+          "signature": "void initialize_dsu()",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint parent[200005];\nint rank_arr[200005];\nint n, m;\n\nvoid initialize_dsu() {\n    for (int i = 1; i <= n; i++) {\n        parent[i] = i;\n        rank_arr[i] = 0;\n    }\n}\n\nint find_root(int x) {\n    if (parent[x] != x) {\n        parent[x] = find_root(parent[x]);\n    }\n    return parent[x];\n}\n\nvoid union_sets(int x, int y) {\n    int rx = find_root(x);\n    int ry = find_root(y);\n    if (rx == ry) return;\n    \n    if (rank_arr[rx] < rank_arr[ry]) {\n        parent[rx] = ry;\n    } else if (rank_arr[rx] > rank_arr[ry]) {\n        parent[ry] = rx;\n    } else {\n        parent[ry] = rx;\n        rank_arr[rx]++;\n    }\n}\n\nlong long calculate_result() {\n    int component_sizes[200005] = {0};\n    for (int i = 1; i <= n; i++) {\n        component_sizes[find_root(i)]++;\n    }\n    \n    long long total_pairs = (long long)n * (n - 1) / 2;\n    long long connected_pairs = m;\n    \n    for (int i = 1; i <= n; i++) {\n        if (component_sizes[i] > 0) {\n            long long sz = component_sizes[i];\n            connected_pairs += sz * (sz - 1) / 2;\n        }\n    }\n    \n    return total_pairs - connected_pairs;\n}\n\nint main() {\n    scanf(\"%d %d\", &n, &m);\n    initialize_dsu();\n    \n    for (int i = 0; i < m; i++) {\n        int a, b;\n        scanf(\"%d %d\", &a, &b);\n        union_sets(a, b);\n    }\n    \n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog1_find_root",
+          "signature": "int find_root(int x)",
+          "code": "int find_root(int x) {\n    if (parent[x] != x) {\n        parent[x] = find_root(parent[x]);\n    }"
+        },
+        {
+          "clause_id": "prog1_union_sets",
+          "signature": "void union_sets(int x, int y)",
+          "code": "void union_sets(int x, int y) {\n    int rx = find_root(x);\n    int ry = find_root(y);\n    if (rx == ry) return;\n    \n    if (rank_arr[rx] < rank_arr[ry]) {\n        parent[rx] = ry;\n    }"
+        },
+        {
+          "clause_id": "prog1_calculate_result",
+          "signature": "long long calculate_result()",
+          "code": "long long calculate_result() {\n    int component_sizes[200005] = {0}"
+        },
+        {
+          "clause_id": "prog1_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%d %d\", &n, &m);\n    initialize_dsu();\n    \n    for (int i = 0; i < m; i++) {\n        int a, b;\n        scanf(\"%d %d\", &a, &b);\n        union_sets(a, b);\n    }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "prog2_initialize_dsu",
+          "signature": "void initialize_dsu()",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint parent[200005];\nint size[200005];\nint n, m;\n\nvoid initialize_dsu() {\n    for (int i = 1; i <= n; i++) {\n        parent[i] = i;\n        size[i] = 1;\n    }\n}\n\nint find_root(int x) {\n    if (parent[x] == x) return x;\n    return parent[x] = find_root(parent[x]);\n}\n\nvoid union_sets(int x, int y) {\n    int rx = find_root(x);\n    int ry = find_root(y);\n    if (rx == ry) return;\n    \n    if (size[rx] < size[ry]) {\n        parent[rx] = ry;\n        size[ry] += size[rx];\n    } else {\n        parent[ry] = rx;\n        size[rx] += size[ry];\n    }\n}\n\nlong long calculate_result() {\n    long long total_possible = (long long)n * (n - 1) / 2;\n    long long already_connected = 0;\n    \n    int visited[200005] = {0};\n    for (int i = 1; i <= n; i++) {\n        int root = find_root(i);\n        if (!visited[root]) {\n            visited[root] = 1;\n            long long comp_size = size[root];\n            already_connected += comp_size * (comp_size - 1) / 2;\n        }\n    }\n    \n    return total_possible - already_connected;\n}\n\nint main() {\n    scanf(\"%d %d\", &n, &m);\n    initialize_dsu();\n    \n    for (int i = 0; i < m; i++) {\n        int a, b;\n        scanf(\"%d %d\", &a, &b);\n        union_sets(a, b);\n    }\n    \n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog2_find_root",
+          "signature": "int find_root(int x)",
+          "code": "int find_root(int x) {\n    if (parent[x] == x) return x;\n    return parent[x] = find_root(parent[x]);\n}"
+        },
+        {
+          "clause_id": "prog2_union_sets",
+          "signature": "void union_sets(int x, int y)",
+          "code": "void union_sets(int x, int y) {\n    int rx = find_root(x);\n    int ry = find_root(y);\n    if (rx == ry) return;\n    \n    if (size[rx] < size[ry]) {\n        parent[rx] = ry;\n        size[ry] += size[rx];\n    }"
+        },
+        {
+          "clause_id": "prog2_calculate_result",
+          "signature": "long long calculate_result()",
+          "code": "long long calculate_result() {\n    long long total_possible = (long long)n * (n - 1) / 2;\n    long long already_connected = 0;\n    \n    int visited[200005] = {0}"
+        },
+        {
+          "clause_id": "prog2_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%d %d\", &n, &m);\n    initialize_dsu();\n    \n    for (int i = 0; i < m; i++) {\n        int a, b;\n        scanf(\"%d %d\", &a, &b);\n        union_sets(a, b);\n    }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "prog3_initialize_dsu",
+          "signature": "void initialize_dsu()",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint parent[200005];\nint rank_arr[200005];\nint n, m;\n\nvoid initialize_dsu() {\n    int i = 1;\n    while (i <= n) {\n        parent[i] = i;\n        rank_arr[i] = 0;\n        i++;\n    }\n}\n\nint find_root(int x) {\n    int root = x;\n    while (parent[root] != root) {\n        root = parent[root];\n    }\n    while (x != root) {\n        int next = parent[x];\n        parent[x] = root;\n        x = next;\n    }\n    return root;\n}\n\nvoid union_sets(int x, int y) {\n    int rx = find_root(x);\n    int ry = find_root(y);\n    if (rx != ry) {\n        if (rank_arr[rx] < rank_arr[ry]) {\n            parent[rx] = ry;\n        } else if (rank_arr[rx] > rank_arr[ry]) {\n            parent[ry] = rx;\n        } else {\n            parent[ry] = rx;\n            rank_arr[rx]++;\n        }\n    }\n}\n\nlong long calculate_result() {\n    int comp_count[200005] = {0};\n    for (int i = 1; i <= n; i++) {\n        comp_count[find_root(i)]++;\n    }\n    \n    long long max_friends = (long long)n * (n - 1) / 2;\n    long long current_friends = 0;\n    \n    for (int i = 1; i <= n; i++) {\n        if (comp_count[i] > 1) {\n            long long s = comp_count[i];\n            current_friends += s * (s - 1) / 2;\n        }\n    }\n    \n    return max_friends - current_friends;\n}\n\nint main() {\n    scanf(\"%d %d\", &n, &m);\n    initialize_dsu();\n    \n    for (int i = 0; i < m; i++) {\n        int a, b;\n        scanf(\"%d %d\", &a, &b);\n        union_sets(a, b);\n    }\n    \n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog3_find_root",
+          "signature": "int find_root(int x)",
+          "code": "int find_root(int x) {\n    int root = x;\n    while (parent[root] != root) {\n        root = parent[root];\n    }"
+        },
+        {
+          "clause_id": "prog3_union_sets",
+          "signature": "void union_sets(int x, int y)",
+          "code": "void union_sets(int x, int y) {\n    int rx = find_root(x);\n    int ry = find_root(y);\n    if (rx != ry) {\n        if (rank_arr[rx] < rank_arr[ry]) {\n            parent[rx] = ry;\n        }"
+        },
+        {
+          "clause_id": "prog3_calculate_result",
+          "signature": "long long calculate_result()",
+          "code": "long long calculate_result() {\n    int comp_count[200005] = {0}"
+        },
+        {
+          "clause_id": "prog3_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%d %d\", &n, &m);\n    initialize_dsu();\n    \n    for (int i = 0; i < m; i++) {\n        int a, b;\n        scanf(\"%d %d\", &a, &b);\n        union_sets(a, b);\n    }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "prog4_initialize_dsu",
+          "signature": "void initialize_dsu()",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint parent[200005];\nint rank_arr[200005];\nint n, m;\n\nvoid initialize_dsu() {\n    for (int i = 1; i <= n; i++) {\n        parent[i] = i;\n        rank_arr[i] = 1;\n    }\n}\n\nint find_root(int x) {\n    if (parent[x] == x) {\n        return x;\n    }\n    int root = find_root(parent[x]);\n    parent[x] = root;\n    return root;\n}\n\nvoid union_sets(int x, int y) {\n    int rootX = find_root(x);\n    int rootY = find_root(y);\n    \n    if (rootX == rootY) return;\n    \n    if (rank_arr[rootX] >= rank_arr[rootY]) {\n        parent[rootY] = rootX;\n        rank_arr[rootX] += rank_arr[rootY];\n    } else {\n        parent[rootX] = rootY;\n        rank_arr[rootY] += rank_arr[rootX];\n    }\n}\n\nlong long calculate_result() {\n    long long answer = 0;\n    long long total = (long long)n * (n - 1) / 2;\n    \n    int seen[200005] = {0};\n    for (int i = 1; i <= n; i++) {\n        int r = find_root(i);\n        if (seen[r] == 0) {\n            seen[r] = rank_arr[r];\n        }\n    }\n    \n    for (int i = 1; i <= n; i++) {\n        if (seen[i] > 0) {\n            long long cnt = seen[i];\n            answer += cnt * (cnt - 1) / 2;\n        }\n    }\n    \n    return total - answer;\n}\n\nint main() {\n    scanf(\"%d %d\", &n, &m);\n    initialize_dsu();\n    \n    for (int i = 0; i < m; i++) {\n        int a, b;\n        scanf(\"%d %d\", &a, &b);\n        union_sets(a, b);\n    }\n    \n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog4_find_root",
+          "signature": "int find_root(int x)",
+          "code": "int find_root(int x) {\n    if (parent[x] == x) {\n        return x;\n    }"
+        },
+        {
+          "clause_id": "prog4_union_sets",
+          "signature": "void union_sets(int x, int y)",
+          "code": "void union_sets(int x, int y) {\n    int rootX = find_root(x);\n    int rootY = find_root(y);\n    \n    if (rootX == rootY) return;\n    \n    if (rank_arr[rootX] >= rank_arr[rootY]) {\n        parent[rootY] = rootX;\n        rank_arr[rootX] += rank_arr[rootY];\n    }"
+        },
+        {
+          "clause_id": "prog4_calculate_result",
+          "signature": "long long calculate_result()",
+          "code": "long long calculate_result() {\n    long long answer = 0;\n    long long total = (long long)n * (n - 1) / 2;\n    \n    int seen[200005] = {0}"
+        },
+        {
+          "clause_id": "prog4_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%d %d\", &n, &m);\n    initialize_dsu();\n    \n    for (int i = 0; i < m; i++) {\n        int a, b;\n        scanf(\"%d %d\", &a, &b);\n        union_sets(a, b);\n    }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "prog5_initialize_dsu",
+          "signature": "void initialize_dsu()",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint parent[200005];\nint rank_arr[200005];\nint n, m;\n\nvoid initialize_dsu() {\n    for (int i = 0; i <= n; i++) {\n        parent[i] = i;\n        rank_arr[i] = 0;\n    }\n}\n\nint find_root(int x) {\n    return parent[x] == x ? x : (parent[x] = find_root(parent[x]));\n}\n\nvoid union_sets(int x, int y) {\n    x = find_root(x);\n    y = find_root(y);\n    if (x == y) return;\n    \n    if (rank_arr[x] < rank_arr[y]) {\n        int temp = x; x = y; y = temp;\n    }\n    parent[y] = x;\n    if (rank_arr[x] == rank_arr[y]) rank_arr[x]++;\n}\n\nlong long calculate_result() {\n    int sz[200005] = {0};\n    for (int i = 1; i <= n; i++) {\n        sz[find_root(i)]++;\n    }\n    \n    long long total = (long long)n * (n - 1) / 2;\n    long long connected = 0;\n    for (int i = 1; i <= n; i++) {\n        if (sz[i] > 0) {\n            connected += (long long)sz[i] * (sz[i] - 1) / 2;\n        }\n    }\n    \n    return total - connected;\n}\n\nint main() {\n    scanf(\"%d %d\", &n, &m);\n    initialize_dsu();\n    \n    for (int i = 0; i < m; i++) {\n        int a, b;\n        scanf(\"%d %d\", &a, &b);\n        union_sets(a, b);\n    }\n    \n    printf(\"%lld\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog5_find_root",
+          "signature": "int find_root(int x)",
+          "code": "int find_root(int x) {\n    return parent[x] == x ? x : (parent[x] = find_root(parent[x]));\n}"
+        },
+        {
+          "clause_id": "prog5_union_sets",
+          "signature": "void union_sets(int x, int y)",
+          "code": "void union_sets(int x, int y) {\n    x = find_root(x);\n    y = find_root(y);\n    if (x == y) return;\n    \n    if (rank_arr[x] < rank_arr[y]) {\n        int temp = x; x = y; y = temp;\n    }"
+        },
+        {
+          "clause_id": "prog5_calculate_result",
+          "signature": "long long calculate_result()",
+          "code": "long long calculate_result() {\n    int sz[200005] = {0}"
+        },
+        {
+          "clause_id": "prog5_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%d %d\", &n, &m);\n    initialize_dsu();\n    \n    for (int i = 0; i < m; i++) {\n        int a, b;\n        scanf(\"%d %d\", &a, &b);\n        union_sets(a, b);\n    }"
+        }
+      ]
+    }
+  ]
+}

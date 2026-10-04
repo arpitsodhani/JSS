@@ -1,0 +1,6 @@
+You are given two sequences of positive integers of length N , L=(L_1,L_2,\ldots,L_N) and R=(R_1,R_2,\ldots,R_N) , and an integer M . Find the number of pairs of integers (l,r) that satisfy both of the following conditions: 1\le l \le r \le M For every 1\le i\le N , the interval [l,r] does not completely contain the interval [L_i,R_i] .
+
+**Constraints:**
+- 1 <= N, M <= 2 * 10^5
+- 1 <= L_i <= R_i <= M
+- All input values are integers

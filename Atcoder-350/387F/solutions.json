@@ -1,0 +1,151 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *A)",
+          "code": "scanf(\"%d%d\", N,M); for(int i=1;i<=*N;i++) scanf(\"%d\", &A[i]);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,int M,int *A)",
+          "code": "const long long MOD=998244353LL;\nint Nn=N; int *indeg=(int*)calloc((size_t)(N+1),sizeof(int));\nfor(int i=1;i<=N;i++) indeg[A[i]]++;\nint *inq=(int*)malloc((size_t)(N+1)*sizeof(int)); int qh=0,qt=0; for(int i=1;i<=N;i++) if(indeg[i]==0) inq[qt++]=i;\nint *isCycle=(int*)calloc((size_t)(N+1),sizeof(int));\nwhile(qh<qt){ int v=inq[qh++]; int p=A[v]; indeg[p]--; if(indeg[p]==0) inq[qt++]=p; }\nfor(int i=1;i<=N;i++) if(indeg[i]>0) isCycle[i]=1;\n/* build children list */\nint *deg=(int*)calloc((size_t)(N+1),sizeof(int)); for(int i=1;i<=N;i++) if(!isCycle[i]) deg[A[i]]++;\nint **child=(int**)malloc((size_t)(N+1)*sizeof(int*)); for(int i=1;i<=N;i++){ child[i]=(deg[i]? (int*)malloc((size_t)deg[i]*sizeof(int)) : NULL); deg[i]=0; }\nfor(int i=1;i<=N;i++) if(!isCycle[i]) child[A[i]][deg[A[i]]++]=i;\n/* dp[node][x] */\nlong long **dp=(long long**)malloc((size_t)(N+1)*sizeof(long long*));\nfor(int i=1;i<=N;i++) dp[i]=(long long*)calloc((size_t)(M+1),sizeof(long long));\n/* postorder of non-cycle nodes: do simple stack order by topo from leaves */\nint *order=(int*)malloc((size_t)(N+1)*sizeof(int)); int ord=0;\nfor(int i=1;i<=N;i++) if(!isCycle[i]) order[ord++]=i;\nfor(int idx=ord-1; idx>=0; idx--){ int v=order[idx]; for(int x=1;x<=M;x++){ long long prod=1; for(int k=0;k<deg[v];k++){ int ch=child[v][k]; long long sum=0; for(int t=1;t<=x;t++){ sum=(sum+dp[ch][t])%MOD; } prod=(prod*sum)%MOD; } dp[v][x]=prod; if(deg[v]==0) dp[v][x]=1; } }\nlong long ans=1;\nint *vis=(int*)calloc((size_t)(N+1),sizeof(int));\nfor(int i=1;i<=N;i++) if(isCycle[i] && !vis[i]){\n  /* traverse cycle */\n  int v=i; int cyc[3000]; int clen=0; while(!vis[v]){ vis[v]=1; cyc[clen++]=v; v=A[v]; }\n  long long comp=0; for(int x=1;x<=M;x++){\n    long long prod=1; for(int k=0;k<clen;k++){ int node=cyc[k]; long long sum=1; /* node value fixed x */\n      for(int c=0;c<deg[node];c++){ int ch=child[node][c]; long long s=0; for(int t=1;t<=x;t++) s=(s+dp[ch][t])%MOD; sum=(sum*s)%MOD; }\n      prod=(prod*sum)%MOD;\n    }\n    comp=(comp+prod)%MOD;\n  }\n  ans=(ans*comp)%MOD;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x%998244353LL);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; static int A[200005]; read_input(&N,&M,A); long long ans=solve(N,M,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *A)",
+          "code": "scanf(\"%d%d\", N,M); for(int i=1;i<=*N;i++) scanf(\"%d\", &A[i]);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,int M,int *A)",
+          "code": "const long long MOD=998244353LL;\nint Nn=N; int *indeg=(int*)calloc((size_t)(N+1),sizeof(int));\nfor(int i=1;i<=N;i++) indeg[A[i]]++;\nint *inq=(int*)malloc((size_t)(N+1)*sizeof(int)); int qh=0,qt=0; for(int i=1;i<=N;i++) if(indeg[i]==0) inq[qt++]=i;\nint *isCycle=(int*)calloc((size_t)(N+1),sizeof(int));\nwhile(qh<qt){ int v=inq[qh++]; int p=A[v]; indeg[p]--; if(indeg[p]==0) inq[qt++]=p; }\nfor(int i=1;i<=N;i++) if(indeg[i]>0) isCycle[i]=1;\n/* build children list */\nint *deg=(int*)calloc((size_t)(N+1),sizeof(int)); for(int i=1;i<=N;i++) if(!isCycle[i]) deg[A[i]]++;\nint **child=(int**)malloc((size_t)(N+1)*sizeof(int*)); for(int i=1;i<=N;i++){ child[i]=(deg[i]? (int*)malloc((size_t)deg[i]*sizeof(int)) : NULL); deg[i]=0; }\nfor(int i=1;i<=N;i++) if(!isCycle[i]) child[A[i]][deg[A[i]]++]=i;\n/* dp[node][x] */\nlong long **dp=(long long**)malloc((size_t)(N+1)*sizeof(long long*));\nfor(int i=1;i<=N;i++) dp[i]=(long long*)calloc((size_t)(M+1),sizeof(long long));\n/* postorder of non-cycle nodes: do simple stack order by topo from leaves */\nint *order=(int*)malloc((size_t)(N+1)*sizeof(int)); int ord=0;\nfor(int i=1;i<=N;i++) if(!isCycle[i]) order[ord++]=i;\nfor(int idx=ord-1; idx>=0; idx--){ int v=order[idx]; for(int x=1;x<=M;x++){ long long prod=1; for(int k=0;k<deg[v];k++){ int ch=child[v][k]; long long sum=0; for(int t=1;t<=x;t++){ sum=(sum+dp[ch][t])%MOD; } prod=(prod*sum)%MOD; } dp[v][x]=prod; if(deg[v]==0) dp[v][x]=1; } }\nlong long ans=1;\nint *vis=(int*)calloc((size_t)(N+1),sizeof(int));\nfor(int i=1;i<=N;i++) if(isCycle[i] && !vis[i]){\n  /* traverse cycle */\n  int v=i; int cyc[3000]; int clen=0; while(!vis[v]){ vis[v]=1; cyc[clen++]=v; v=A[v]; }\n  long long comp=0; for(int x=1;x<=M;x++){\n    long long prod=1; for(int k=0;k<clen;k++){ int node=cyc[k]; long long sum=1; /* node value fixed x */\n      for(int c=0;c<deg[node];c++){ int ch=child[node][c]; long long s=0; for(int t=1;t<=x;t++) s=(s+dp[ch][t])%MOD; sum=(sum*s)%MOD; }\n      prod=(prod*sum)%MOD;\n    }\n    comp=(comp+prod)%MOD;\n  }\n  ans=(ans*comp)%MOD;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x%998244353LL);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; static int A[200005]; read_input(&N,&M,A); long long ans=solve(N,M,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *A)",
+          "code": "scanf(\"%d%d\", N,M); for(int i=1;i<=*N;i++) scanf(\"%d\", &A[i]);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,int M,int *A)",
+          "code": "const long long MOD=998244353LL;\nint Nn=N; int *indeg=(int*)calloc((size_t)(N+1),sizeof(int));\nfor(int i=1;i<=N;i++) indeg[A[i]]++;\nint *inq=(int*)malloc((size_t)(N+1)*sizeof(int)); int qh=0,qt=0; for(int i=1;i<=N;i++) if(indeg[i]==0) inq[qt++]=i;\nint *isCycle=(int*)calloc((size_t)(N+1),sizeof(int));\nwhile(qh<qt){ int v=inq[qh++]; int p=A[v]; indeg[p]--; if(indeg[p]==0) inq[qt++]=p; }\nfor(int i=1;i<=N;i++) if(indeg[i]>0) isCycle[i]=1;\n/* build children list */\nint *deg=(int*)calloc((size_t)(N+1),sizeof(int)); for(int i=1;i<=N;i++) if(!isCycle[i]) deg[A[i]]++;\nint **child=(int**)malloc((size_t)(N+1)*sizeof(int*)); for(int i=1;i<=N;i++){ child[i]=(deg[i]? (int*)malloc((size_t)deg[i]*sizeof(int)) : NULL); deg[i]=0; }\nfor(int i=1;i<=N;i++) if(!isCycle[i]) child[A[i]][deg[A[i]]++]=i;\n/* dp[node][x] */\nlong long **dp=(long long**)malloc((size_t)(N+1)*sizeof(long long*));\nfor(int i=1;i<=N;i++) dp[i]=(long long*)calloc((size_t)(M+1),sizeof(long long));\n/* postorder of non-cycle nodes: do simple stack order by topo from leaves */\nint *order=(int*)malloc((size_t)(N+1)*sizeof(int)); int ord=0;\nfor(int i=1;i<=N;i++) if(!isCycle[i]) order[ord++]=i;\nfor(int idx=ord-1; idx>=0; idx--){ int v=order[idx]; for(int x=1;x<=M;x++){ long long prod=1; for(int k=0;k<deg[v];k++){ int ch=child[v][k]; long long sum=0; for(int t=1;t<=x;t++){ sum=(sum+dp[ch][t])%MOD; } prod=(prod*sum)%MOD; } dp[v][x]=prod; if(deg[v]==0) dp[v][x]=1; } }\nlong long ans=1;\nint *vis=(int*)calloc((size_t)(N+1),sizeof(int));\nfor(int i=1;i<=N;i++) if(isCycle[i] && !vis[i]){\n  /* traverse cycle */\n  int v=i; int cyc[3000]; int clen=0; while(!vis[v]){ vis[v]=1; cyc[clen++]=v; v=A[v]; }\n  long long comp=0; for(int x=1;x<=M;x++){\n    long long prod=1; for(int k=0;k<clen;k++){ int node=cyc[k]; long long sum=1; /* node value fixed x */\n      for(int c=0;c<deg[node];c++){ int ch=child[node][c]; long long s=0; for(int t=1;t<=x;t++) s=(s+dp[ch][t])%MOD; sum=(sum*s)%MOD; }\n      prod=(prod*sum)%MOD;\n    }\n    comp=(comp+prod)%MOD;\n  }\n  ans=(ans*comp)%MOD;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x%998244353LL);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; static int A[200005]; read_input(&N,&M,A); long long ans=solve(N,M,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *A)",
+          "code": "scanf(\"%d%d\", N,M); for(int i=1;i<=*N;i++) scanf(\"%d\", &A[i]);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,int M,int *A)",
+          "code": "const long long MOD=998244353LL;\nint Nn=N; int *indeg=(int*)calloc((size_t)(N+1),sizeof(int));\nfor(int i=1;i<=N;i++) indeg[A[i]]++;\nint *inq=(int*)malloc((size_t)(N+1)*sizeof(int)); int qh=0,qt=0; for(int i=1;i<=N;i++) if(indeg[i]==0) inq[qt++]=i;\nint *isCycle=(int*)calloc((size_t)(N+1),sizeof(int));\nwhile(qh<qt){ int v=inq[qh++]; int p=A[v]; indeg[p]--; if(indeg[p]==0) inq[qt++]=p; }\nfor(int i=1;i<=N;i++) if(indeg[i]>0) isCycle[i]=1;\n/* build children list */\nint *deg=(int*)calloc((size_t)(N+1),sizeof(int)); for(int i=1;i<=N;i++) if(!isCycle[i]) deg[A[i]]++;\nint **child=(int**)malloc((size_t)(N+1)*sizeof(int*)); for(int i=1;i<=N;i++){ child[i]=(deg[i]? (int*)malloc((size_t)deg[i]*sizeof(int)) : NULL); deg[i]=0; }\nfor(int i=1;i<=N;i++) if(!isCycle[i]) child[A[i]][deg[A[i]]++]=i;\n/* dp[node][x] */\nlong long **dp=(long long**)malloc((size_t)(N+1)*sizeof(long long*));\nfor(int i=1;i<=N;i++) dp[i]=(long long*)calloc((size_t)(M+1),sizeof(long long));\n/* postorder of non-cycle nodes: do simple stack order by topo from leaves */\nint *order=(int*)malloc((size_t)(N+1)*sizeof(int)); int ord=0;\nfor(int i=1;i<=N;i++) if(!isCycle[i]) order[ord++]=i;\nfor(int idx=ord-1; idx>=0; idx--){ int v=order[idx]; for(int x=1;x<=M;x++){ long long prod=1; for(int k=0;k<deg[v];k++){ int ch=child[v][k]; long long sum=0; for(int t=1;t<=x;t++){ sum=(sum+dp[ch][t])%MOD; } prod=(prod*sum)%MOD; } dp[v][x]=prod; if(deg[v]==0) dp[v][x]=1; } }\nlong long ans=1;\nint *vis=(int*)calloc((size_t)(N+1),sizeof(int));\nfor(int i=1;i<=N;i++) if(isCycle[i] && !vis[i]){\n  /* traverse cycle */\n  int v=i; int cyc[3000]; int clen=0; while(!vis[v]){ vis[v]=1; cyc[clen++]=v; v=A[v]; }\n  long long comp=0; for(int x=1;x<=M;x++){\n    long long prod=1; for(int k=0;k<clen;k++){ int node=cyc[k]; long long sum=1; /* node value fixed x */\n      for(int c=0;c<deg[node];c++){ int ch=child[node][c]; long long s=0; for(int t=1;t<=x;t++) s=(s+dp[ch][t])%MOD; sum=(sum*s)%MOD; }\n      prod=(prod*sum)%MOD;\n    }\n    comp=(comp+prod)%MOD;\n  }\n  ans=(ans*comp)%MOD;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x%998244353LL);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; static int A[200005]; read_input(&N,&M,A); long long ans=solve(N,M,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *A)",
+          "code": "scanf(\"%d%d\", N,M); for(int i=1;i<=*N;i++) scanf(\"%d\", &A[i]);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,int M,int *A)",
+          "code": "const long long MOD=998244353LL;\nint Nn=N; int *indeg=(int*)calloc((size_t)(N+1),sizeof(int));\nfor(int i=1;i<=N;i++) indeg[A[i]]++;\nint *inq=(int*)malloc((size_t)(N+1)*sizeof(int)); int qh=0,qt=0; for(int i=1;i<=N;i++) if(indeg[i]==0) inq[qt++]=i;\nint *isCycle=(int*)calloc((size_t)(N+1),sizeof(int));\nwhile(qh<qt){ int v=inq[qh++]; int p=A[v]; indeg[p]--; if(indeg[p]==0) inq[qt++]=p; }\nfor(int i=1;i<=N;i++) if(indeg[i]>0) isCycle[i]=1;\n/* build children list */\nint *deg=(int*)calloc((size_t)(N+1),sizeof(int)); for(int i=1;i<=N;i++) if(!isCycle[i]) deg[A[i]]++;\nint **child=(int**)malloc((size_t)(N+1)*sizeof(int*)); for(int i=1;i<=N;i++){ child[i]=(deg[i]? (int*)malloc((size_t)deg[i]*sizeof(int)) : NULL); deg[i]=0; }\nfor(int i=1;i<=N;i++) if(!isCycle[i]) child[A[i]][deg[A[i]]++]=i;\n/* dp[node][x] */\nlong long **dp=(long long**)malloc((size_t)(N+1)*sizeof(long long*));\nfor(int i=1;i<=N;i++) dp[i]=(long long*)calloc((size_t)(M+1),sizeof(long long));\n/* postorder of non-cycle nodes: do simple stack order by topo from leaves */\nint *order=(int*)malloc((size_t)(N+1)*sizeof(int)); int ord=0;\nfor(int i=1;i<=N;i++) if(!isCycle[i]) order[ord++]=i;\nfor(int idx=ord-1; idx>=0; idx--){ int v=order[idx]; for(int x=1;x<=M;x++){ long long prod=1; for(int k=0;k<deg[v];k++){ int ch=child[v][k]; long long sum=0; for(int t=1;t<=x;t++){ sum=(sum+dp[ch][t])%MOD; } prod=(prod*sum)%MOD; } dp[v][x]=prod; if(deg[v]==0) dp[v][x]=1; } }\nlong long ans=1;\nint *vis=(int*)calloc((size_t)(N+1),sizeof(int));\nfor(int i=1;i<=N;i++) if(isCycle[i] && !vis[i]){\n  /* traverse cycle */\n  int v=i; int cyc[3000]; int clen=0; while(!vis[v]){ vis[v]=1; cyc[clen++]=v; v=A[v]; }\n  long long comp=0; for(int x=1;x<=M;x++){\n    long long prod=1; for(int k=0;k<clen;k++){ int node=cyc[k]; long long sum=1; /* node value fixed x */\n      for(int c=0;c<deg[node];c++){ int ch=child[node][c]; long long s=0; for(int t=1;t<=x;t++) s=(s+dp[ch][t])%MOD; sum=(sum*s)%MOD; }\n      prod=(prod*sum)%MOD;\n    }\n    comp=(comp+prod)%MOD;\n  }\n  ans=(ans*comp)%MOD;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x%998244353LL);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; static int A[200005]; read_input(&N,&M,A); long long ans=solve(N,M,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "387F",
+  "total_programs": 5
+}

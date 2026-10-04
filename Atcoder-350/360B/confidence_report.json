@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9725747377622377,
+  "clauses": [
+    {
+      "clause": "find_valid_pair",
+      "confidence": 0.9717307692307692
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9498181818181817
+    },
+    {
+      "clause": "read_strings",
+      "confidence": 1.0
+    },
+    {
+      "clause": "try_extraction",
+      "confidence": 0.96875
+    }
+  ]
+}

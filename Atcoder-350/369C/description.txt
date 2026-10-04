@@ -1,0 +1,6 @@
+You are given a sequence of N positive integers A=(A_1,A_2,\dots,A_N) . Find the number of pairs of integers (l,r) satisfying 1\leq l\leq r\leq N such that the subsequence (A_l,A_{l+1},\dots,A_r) forms an arithmetic progression. A sequence (x_1,x_2,\dots,x_{|x|}) is an arithmetic progression if and only if there exists a d such that x_{i+1}-x_i=d\ (1\leq i < |x|) . In particular, a sequence of length 1 is always an arithmetic progression.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

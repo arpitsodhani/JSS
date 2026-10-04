@@ -1,0 +1,4 @@
+A string T is called a 1122 string if and only if it satisfies all of the following three conditions: \lvert T \rvert is even. Here, \lvert T \rvert denotes the length of T . For each integer i satisfying 1\leq i\leq \frac{|T|}{2} , the (2i-1) -th and 2i -th characters of T are equal. Each character appears in T exactly zero or two times. That is, every character contained in T appears exactly twice in T . Given a string S consisting of lowercase English letters, print Yes if S is a 1122 string, and No otherwise.
+
+**Constraints:**
+- S is a string of length between 1 and 100 consisting of lowercase English letters

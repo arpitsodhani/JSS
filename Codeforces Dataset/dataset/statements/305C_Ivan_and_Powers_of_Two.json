@@ -1,0 +1,31 @@
+{
+  "contestId": 305,
+  "index": "C",
+  "problem_id": "305C",
+  "name": "Ivan and Powers of Two",
+  "rating": 1600,
+  "tags": [
+    "greedy",
+    "implementation"
+  ],
+  "points": 1500.0,
+  "solvedCount": 2673,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Ivan and Powers of Two",
+  "legend": "Ivan has got an array of n non-negative integers a1, a2, ..., an. Ivan knows that the array is sorted in the non-decreasing order.\n\nIvan wrote out integers 2a1, 2a2, ..., 2an on a piece of paper. Now he wonders, what minimum number of integers of form 2b (b ≥ 0) need to be added to the piece of paper so that the sum of all integers written on the paper equalled 2v - 1 for some integer v (v ≥ 0).\n\nHelp Ivan, find the required quantity of numbers.",
+  "input_spec": "The first line contains integer n (1 ≤ n ≤ 105). The second input line contains n space-separated integers a1, a2, ..., an (0 ≤ ai ≤ 2·109). It is guaranteed that a1 ≤ a2 ≤ ... ≤ an.",
+  "output_spec": "Print a single integer — the answer to the problem.",
+  "note": "In the first sample you do not need to add anything, the sum of numbers already equals 23 - 1 = 7.\n\nIn the second sample you need to add numbers 20, 21, 22.",
+  "time_limit": "0.5 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n0 1 1 1\n",
+      "output": "0"
+    },
+    {
+      "input": "1\n3\n",
+      "output": "3"
+    }
+  ]
+}

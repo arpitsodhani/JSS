@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9567953278990512,
+  "clauses": [
+    {
+      "clause": "check_nutrients",
+      "confidence": 0.9349107142857143
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9611895551257252
+    },
+    {
+      "clause": "read_input",
+      "confidence": 0.9742857142857144
+    }
+  ]
+}

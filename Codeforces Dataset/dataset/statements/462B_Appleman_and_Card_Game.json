@@ -1,0 +1,30 @@
+{
+  "contestId": 462,
+  "index": "B",
+  "problem_id": "462B",
+  "name": "Appleman and Card Game",
+  "rating": 1300,
+  "tags": [
+    "greedy"
+  ],
+  "points": 1000.0,
+  "solvedCount": 15685,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Appleman and Card Game",
+  "legend": "Appleman has n cards. Each card has an uppercase letter written on it. Toastman must choose k cards from Appleman's cards. Then Appleman should give Toastman some coins depending on the chosen cards. Formally, for each Toastman's card i you should calculate how much Toastman's cards have the letter equal to letter on ith, then sum up all these quantities, such a number of coins Appleman should give to Toastman.\n\nGiven the description of Appleman's cards. What is the maximum number of coins Toastman can get?",
+  "input_spec": "The first line contains two integers n and k (1 ≤ k ≤ n ≤ 105). The next line contains n uppercase letters without spaces — the i-th letter describes the i-th card of the Appleman.",
+  "output_spec": "Print a single integer – the answer to the problem.",
+  "note": "In the first test example Toastman can choose nine cards with letter D and one additional card with any letter. For each card with D he will get 9 coins and for the additional card he will get 1 coin.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "15 10\nDZFDFZDFDDDDDDF\n",
+      "output": "82"
+    },
+    {
+      "input": "6 4\nYJSNPI\n",
+      "output": "4"
+    }
+  ]
+}

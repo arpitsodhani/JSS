@@ -1,0 +1,124 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "void read_q(int *Q)",
+          "code": "void read_q(int *Q){ scanf(\"%d\", Q); }\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int Q)",
+          "code": "void process_queries(int Q){\n    long long *arr=(long long*)malloc((size_t)Q*sizeof(long long));\n    int n=0;\n    long long offset=0;\n    for(int i=0;i<Q;i++){\n        int t; scanf(\"%d\", &t);\n        if(t==1){\n            arr[n++]=-offset;\n        } else if(t==2){\n            long long T; scanf(\"%lld\", &T); offset+=T;\n        } else {\n            long long H; scanf(\"%lld\", &H);\n            long long thresh = H - offset;\n            int write=0; long long cnt=0;\n            for(int j=0;j<n;j++){\n                if(arr[j]>=thresh) cnt++;\n                else arr[write++]=arr[j];\n            }\n            n=write;\n            printf(\"%lld\\n\", cnt);\n        }\n    }\n    free(arr);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int Q; read_q(&Q); process_queries(Q); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "void read_q(int *Q)",
+          "code": "void read_q(int *Q){ scanf(\"%d\", Q); }\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int Q)",
+          "code": "void process_queries(int Q){\n    long long *arr=(long long*)malloc((size_t)Q*sizeof(long long));\n    int n=0;\n    long long offset=0;\n    for(int i=0;i<Q;i++){\n        int t; scanf(\"%d\", &t);\n        if(t==1){\n            arr[n++]=-offset;\n        } else if(t==2){\n            long long T; scanf(\"%lld\", &T); offset+=T;\n        } else {\n            long long H; scanf(\"%lld\", &H);\n            long long thresh = H - offset;\n            int write=0; long long cnt=0;\n            for(int j=0;j<n;j++){\n                if(arr[j]>=thresh) cnt++;\n                else arr[write++]=arr[j];\n            }\n            n=write;\n            printf(\"%lld\\n\", cnt);\n        }\n    }\n    free(arr);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int Q; read_q(&Q); process_queries(Q); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "void read_q(int *Q)",
+          "code": "void read_q(int *Q){ scanf(\"%d\", Q); }\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int Q)",
+          "code": "void process_queries(int Q){\n    long long *arr=(long long*)malloc((size_t)Q*sizeof(long long));\n    int n=0;\n    long long offset=0;\n    for(int i=0;i<Q;i++){\n        int t; scanf(\"%d\", &t);\n        if(t==1){\n            arr[n++]=-offset;\n        } else if(t==2){\n            long long T; scanf(\"%lld\", &T); offset+=T;\n        } else {\n            long long H; scanf(\"%lld\", &H);\n            long long thresh = H - offset;\n            int write=0; long long cnt=0;\n            for(int j=0;j<n;j++){\n                if(arr[j]>=thresh) cnt++;\n                else arr[write++]=arr[j];\n            }\n            n=write;\n            printf(\"%lld\\n\", cnt);\n        }\n    }\n    free(arr);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int Q; read_q(&Q); process_queries(Q); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "void read_q(int *Q)",
+          "code": "void read_q(int *Q){ scanf(\"%d\", Q); }\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int Q)",
+          "code": "void process_queries(int Q){\n    long long *arr=(long long*)malloc((size_t)Q*sizeof(long long));\n    int n=0;\n    long long offset=0;\n    for(int i=0;i<Q;i++){\n        int t; scanf(\"%d\", &t);\n        if(t==1){\n            arr[n++]=-offset;\n        } else if(t==2){\n            long long T; scanf(\"%lld\", &T); offset+=T;\n        } else {\n            long long H; scanf(\"%lld\", &H);\n            long long thresh = H - offset;\n            int write=0; long long cnt=0;\n            for(int j=0;j<n;j++){\n                if(arr[j]>=thresh) cnt++;\n                else arr[write++]=arr[j];\n            }\n            n=write;\n            printf(\"%lld\\n\", cnt);\n        }\n    }\n    free(arr);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int Q; read_q(&Q); process_queries(Q); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "void read_q(int *Q)",
+          "code": "void read_q(int *Q){ scanf(\"%d\", Q); }\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int Q)",
+          "code": "void process_queries(int Q){\n    long long *arr=(long long*)malloc((size_t)Q*sizeof(long long));\n    int n=0;\n    long long offset=0;\n    for(int i=0;i<Q;i++){\n        int t; scanf(\"%d\", &t);\n        if(t==1){\n            arr[n++]=-offset;\n        } else if(t==2){\n            long long T; scanf(\"%lld\", &T); offset+=T;\n        } else {\n            long long H; scanf(\"%lld\", &H);\n            long long thresh = H - offset;\n            int write=0; long long cnt=0;\n            for(int j=0;j<n;j++){\n                if(arr[j]>=thresh) cnt++;\n                else arr[write++]=arr[j];\n            }\n            n=write;\n            printf(\"%lld\\n\", cnt);\n        }\n    }\n    free(arr);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int Q; read_q(&Q); process_queries(Q); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "problem_id": "041_car_race_collision",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", n * n);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int num;\n    scanf(\"%d\", &num);\n    int result = num * num;\n    printf(\"%d\\n\", result);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int cars;\n    scanf(\"%d\", &cars);\n    printf(\"%d\\n\", cars * cars);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int collisions = n * n;\n    printf(\"%d\\n\", collisions);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    printf(\"%d\\n\", count * count);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

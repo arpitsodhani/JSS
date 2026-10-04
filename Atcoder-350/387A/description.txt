@@ -1,0 +1,5 @@
+You are given integers A and B. Let C = A + B. Output C^2.
+
+**Constraints:**
+- 1 <= A, B <= 100
+- All input values are integers

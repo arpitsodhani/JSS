@@ -1,0 +1,123 @@
+{
+  "problem_id": "356C",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *n, int *k, int tests[][20], int outcomes[], int counts[])",
+          "code": "int read_input(int *n, int *k, int tests[][20], int outcomes[], int counts[]) { int m; scanf(\"%d%d%d\", n, k, &m); for(int i = 0; i < m; i++) { int c; char r; scanf(\"%d\", &c); counts[i] = c; for(int j = 0; j < c; j++) scanf(\"%d\", &tests[i][j]); scanf(\" %c\", &r); outcomes[i] = (r == 'o'); } return m; }"
+        },
+        {
+          "clause_id": "count_valid_assignments",
+          "signature": "int count_valid_assignments(int n, int k, int m, int tests[][20], int outcomes[], int counts[])",
+          "code": "int count_valid_assignments(int n, int k, int m, int tests[][20], int outcomes[], int counts[]) { int valid = 0; for(int mask = 0; mask < (1 << n); mask++) { int ok = 1; for(int i = 0; i < m && ok; i++) { int real_count = 0; for(int j = 0; j < counts[i]; j++) if(mask & (1 << (tests[i][j] - 1))) real_count++; ok = ((real_count >= k) == outcomes[i]); } if(ok) valid++; } return valid; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k, tests[105][20], outcomes[105], counts[105]; int m = read_input(&n, &k, tests, outcomes, counts); printf(\"%d\\n\", count_valid_assignments(n, k, m, tests, outcomes, counts)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *n, int *k, int tests[][20], int outcomes[], int counts[])",
+          "code": "int read_input(int *n, int *k, int tests[][20], int outcomes[], int counts[]) { int m; scanf(\"%d %d %d\", n, k, &m); for(int i = 0; i < m; i++) { scanf(\"%d\", &counts[i]); for(int j = 0; j < counts[i]; j++) scanf(\"%d\", &tests[i][j]); char result[5]; scanf(\"%s\", result); outcomes[i] = (result[0] == 'o'); } return m; }"
+        },
+        {
+          "clause_id": "count_valid_assignments",
+          "signature": "int count_valid_assignments(int n, int k, int m, int tests[][20], int outcomes[], int counts[])",
+          "code": "int count_valid_assignments(int n, int k, int m, int tests[][20], int outcomes[], int counts[]) { int ans = 0; for(int pattern = 0; pattern < (1 << n); pattern++) { int valid = 1; for(int t = 0; t < m; t++) { int reals = 0; for(int j = 0; j < counts[t]; j++) if(pattern & (1 << (tests[t][j] - 1))) reals++; if((reals >= k) != outcomes[t]) { valid = 0; break; } } ans += valid; } return ans; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k, test_keys[105][20], results[105], key_counts[105]; int m = read_input(&n, &k, test_keys, results, key_counts); int answer = count_valid_assignments(n, k, m, test_keys, results, key_counts); printf(\"%d\\n\", answer); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *n, int *k, int tests[][20], int outcomes[], int counts[])",
+          "code": "int read_input(int *n, int *k, int tests[][20], int outcomes[], int counts[]) { int m; scanf(\"%d%d%d\", n, k, &m); int i, j; for(i = 0; i < m; i++) { scanf(\"%d\", &counts[i]); for(j = 0; j < counts[i]; j++) scanf(\"%d\", &tests[i][j]); char res; scanf(\" %c\", &res); outcomes[i] = (res == 'o' ? 1 : 0); } return m; }"
+        },
+        {
+          "clause_id": "count_valid_assignments",
+          "signature": "int count_valid_assignments(int n, int k, int m, int tests[][20], int outcomes[], int counts[])",
+          "code": "int count_valid_assignments(int n, int k, int m, int tests[][20], int outcomes[], int counts[]) { int count = 0; for(int config = 0; config < (1 << n); config++) { int works = 1; for(int test_idx = 0; test_idx < m; test_idx++) { int num_real = 0; for(int key_idx = 0; key_idx < counts[test_idx]; key_idx++) { int key = tests[test_idx][key_idx] - 1; if(config & (1 << key)) num_real++; } int opened = (num_real >= k); if(opened != outcomes[test_idx]) { works = 0; break; } } count += works; } return count; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k, test_data[105][20], test_results[105], test_sizes[105]; int num_tests = read_input(&n, &k, test_data, test_results, test_sizes); printf(\"%d\\n\", count_valid_assignments(n, k, num_tests, test_data, test_results, test_sizes)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *n, int *k, int tests[][20], int outcomes[], int counts[])",
+          "code": "int read_input(int *n, int *k, int tests[][20], int outcomes[], int counts[]) { int m; scanf(\"%d %d %d\", n, k, &m); for(int test = 0; test < m; test++) { scanf(\"%d\", &counts[test]); for(int idx = 0; idx < counts[test]; idx++) scanf(\"%d\", &tests[test][idx]); char outcome[10]; scanf(\"%s\", outcome); outcomes[test] = (outcome[0] == 'o'); } return m; }"
+        },
+        {
+          "clause_id": "count_valid_assignments",
+          "signature": "int count_valid_assignments(int n, int k, int m, int tests[][20], int outcomes[], int counts[])",
+          "code": "int count_valid_assignments(int n, int k, int m, int tests[][20], int outcomes[], int counts[]) { int total = 0; for(int bitmask = 0; bitmask < (1 << n); bitmask++) { int consistent = 1; for(int i = 0; i < m; i++) { int real_keys = 0; for(int j = 0; j < counts[i]; j++) { int key_num = tests[i][j] - 1; if((bitmask >> key_num) & 1) real_keys++; } int should_open = (real_keys >= k); if(should_open != outcomes[i]) { consistent = 0; break; } } total += consistent; } return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k, test_keys[105][20], opened[105], num_keys[105]; int m = read_input(&n, &k, test_keys, opened, num_keys); printf(\"%d\\n\", count_valid_assignments(n, k, m, test_keys, opened, num_keys)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *n, int *k, int tests[][20], int outcomes[], int counts[])",
+          "code": "int read_input(int *n, int *k, int tests[][20], int outcomes[], int counts[]) { int m; scanf(\"%d%d%d\", n, k, &m); for(int i = 0; i < m; i++) { int c; scanf(\"%d\", &c); counts[i] = c; for(int j = 0; j < c; j++) { int key; scanf(\"%d\", &key); tests[i][j] = key; } char r; scanf(\" %c\", &r); outcomes[i] = (r == 'o' ? 1 : 0); } return m; }"
+        },
+        {
+          "clause_id": "count_valid_assignments",
+          "signature": "int count_valid_assignments(int n, int k, int m, int tests[][20], int outcomes[], int counts[])",
+          "code": "int count_valid_assignments(int n, int k, int m, int tests[][20], int outcomes[], int counts[]) { int possibilities = 0; for(int assignment = 0; assignment < (1 << n); assignment++) { int valid = 1; for(int test = 0; test < m; test++) { int real = 0; for(int idx = 0; idx < counts[test]; idx++) { if(assignment & (1 << (tests[test][idx] - 1))) real++; } if((real >= k) != outcomes[test]) { valid = 0; break; } } if(valid) possibilities++; } return possibilities; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k, keys_used[105][20], door_opened[105], keys_per_test[105]; int m = read_input(&n, &k, keys_used, door_opened, keys_per_test); printf(\"%d\\n\", count_valid_assignments(n, k, m, keys_used, door_opened, keys_per_test)); return 0; }"
+        }
+      ]
+    }
+  ]
+}

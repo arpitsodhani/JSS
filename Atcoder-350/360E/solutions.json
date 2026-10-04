@@ -1,0 +1,159 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_parameters",
+          "signature": "void read_parameters(long long *n, long long *k)",
+          "code": "void read_parameters(long long *n, long long *k) {\n    scanf(\"%lld %lld\", n, k);\n}"
+        },
+        {
+          "clause_id": "compute_modular_inverse",
+          "signature": "long long compute_modular_inverse(long long a, long long m)",
+          "code": "long long compute_modular_inverse(long long a, long long m) {\n    long long m0 = m, x0 = 0, x1 = 1;\n    while (a > 1) {\n        long long q = a / m;\n        long long t = m;\n        m = a % m;\n        a = t;\n        t = x0;\n        x0 = x1 - q * x0;\n        x1 = t;\n    }\n    return (x1 % m0 + m0) % m0;\n}"
+        },
+        {
+          "clause_id": "compute_expected_position",
+          "signature": "long long compute_expected_position(long long n, long long k)",
+          "code": "long long compute_expected_position(long long n, long long k) {\n    const long long MOD = 998244353;\n    long long prob_stay = (n * n - n + 2) % MOD;\n    prob_stay = (prob_stay * compute_modular_inverse(n * n % MOD, MOD)) % MOD;\n    long long prob_move = (n - 1) % MOD;\n    prob_move = (prob_move * compute_modular_inverse(n * n % MOD, MOD)) % MOD;\n    long long power = 1;\n    long long base = prob_stay;\n    long long exp = k;\n    while (exp > 0) {\n        if (exp % 2) power = (power * base) % MOD;\n        base = (base * base) % MOD;\n        exp /= 2;\n    }\n    long long ans = (1 + (n - 1) % MOD * ((1 - power + MOD) % MOD) % MOD * compute_modular_inverse((1 - prob_stay + MOD) % MOD, MOD) % MOD) % MOD;\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, k;\n    read_parameters(&n, &k);\n    printf(\"%lld\\n\", compute_expected_position(n, k));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_parameters",
+          "signature": "int read_parameters(long long *n, long long *k)",
+          "code": "int read_parameters(long long *n, long long *k) {\n    scanf(\"%lld %lld\", n, k);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_modular_inverse",
+          "signature": "long long compute_modular_inverse(long long x, long long mod)",
+          "code": "long long compute_modular_inverse(long long x, long long mod) {\n    long long res = 1, base = x, exp = mod - 2;\n    while (exp > 0) {\n        if (exp % 2 == 1) res = (res * base) % mod;\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return res;\n}"
+        },
+        {
+          "clause_id": "compute_expected_position",
+          "signature": "long long compute_expected_position(long long n, long long k)",
+          "code": "long long compute_expected_position(long long n, long long k) {\n    const long long MOD = 998244353;\n    long long n2 = n * n % MOD;\n    long long p_stay = ((n2 - n + 2) % MOD + MOD) % MOD;\n    long long p_move = (n - 1 + MOD) % MOD;\n    long long inv_n2 = compute_modular_inverse(n2, MOD);\n    p_stay = p_stay * inv_n2 % MOD;\n    p_move = p_move * inv_n2 % MOD;\n    long long pk = 1, base = p_stay, exp = k;\n    while (exp) {\n        if (exp & 1) pk = pk * base % MOD;\n        base = base * base % MOD;\n        exp >>= 1;\n    }\n    long long result = (1 + (n - 1) * ((1 - pk + MOD) % MOD) % MOD * compute_modular_inverse((1 - p_stay + MOD) % MOD, MOD) % MOD) % MOD;\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, k;\n    read_parameters(&n, &k);\n    long long result = compute_expected_position(n, k);\n    printf(\"%lld\\n\", result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_parameters",
+          "signature": "void read_parameters(long long *n, long long *k)",
+          "code": "void read_parameters(long long *n, long long *k) {\n    scanf(\"%lld\", n);\n    scanf(\"%lld\", k);\n}"
+        },
+        {
+          "clause_id": "compute_modular_inverse",
+          "signature": "long long compute_modular_inverse(long long a, long long p)",
+          "code": "long long compute_modular_inverse(long long a, long long p) {\n    long long result = 1;\n    long long power = p - 2;\n    a %= p;\n    while (power) {\n        if (power & 1) result = result * a % p;\n        a = a * a % p;\n        power >>= 1;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "compute_expected_position",
+          "signature": "long long compute_expected_position(long long n, long long k)",
+          "code": "long long compute_expected_position(long long n, long long k) {\n    const long long MOD = 998244353;\n    long long n_sq = (n % MOD) * (n % MOD) % MOD;\n    long long prob_no_move = ((n_sq - n + 2) % MOD + MOD) % MOD;\n    long long inv = compute_modular_inverse(n_sq, MOD);\n    prob_no_move = prob_no_move * inv % MOD;\n    long long pow_val = 1, b = prob_no_move, e = k;\n    while (e) {\n        if (e % 2) pow_val = pow_val * b % MOD;\n        b = b * b % MOD;\n        e /= 2;\n    }\n    long long ans = 1;\n    long long numerator = ((1 - pow_val) % MOD + MOD) % MOD;\n    long long denominator = ((1 - prob_no_move) % MOD + MOD) % MOD;\n    ans = (ans + (n - 1) % MOD * numerator % MOD * compute_modular_inverse(denominator, MOD) % MOD) % MOD;\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, k;\n    read_parameters(&n, &k);\n    long long ans = compute_expected_position(n, k);\n    printf(\"%lld\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_parameters",
+          "signature": "long long read_parameters(long long *n, long long *k)",
+          "code": "long long read_parameters(long long *n, long long *k) {\n    scanf(\"%lld %lld\", n, k);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "compute_modular_inverse",
+          "signature": "long long compute_modular_inverse(long long num, long long mod)",
+          "code": "long long compute_modular_inverse(long long num, long long mod) {\n    long long ans = 1, b = num, e = mod - 2;\n    while (e > 0) {\n        if (e & 1) ans = (ans * b) % mod;\n        b = (b * b) % mod;\n        e >>= 1;\n    }\n    return ans;\n}"
+        },
+        {
+          "clause_id": "compute_expected_position",
+          "signature": "long long compute_expected_position(long long n, long long k)",
+          "code": "long long compute_expected_position(long long n, long long k) {\n    const long long MOD = 998244353;\n    long long n2 = n % MOD * (n % MOD) % MOD;\n    long long ps = (n2 - n + 2 + MOD) % MOD * compute_modular_inverse(n2, MOD) % MOD;\n    long long power = 1, base = ps;\n    for (long long exp = k; exp; exp >>= 1) {\n        if (exp & 1) power = power * base % MOD;\n        base = base * base % MOD;\n    }\n    long long res = (1 + (n - 1 + MOD) % MOD * ((1 - power + MOD) % MOD) % MOD * compute_modular_inverse((1 - ps + MOD) % MOD, MOD) % MOD) % MOD;\n    return res;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, k;\n    read_parameters(&n, &k);\n    printf(\"%lld\\n\", compute_expected_position(n, k));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_parameters",
+          "signature": "void read_parameters(long long *n, long long *k)",
+          "code": "void read_parameters(long long *n, long long *k) {\n    int res = scanf(\"%lld %lld\", n, k);\n}"
+        },
+        {
+          "clause_id": "compute_modular_inverse",
+          "signature": "long long compute_modular_inverse(long long a, long long mod)",
+          "code": "long long compute_modular_inverse(long long a, long long mod) {\n    long long res = 1;\n    long long exp = mod - 2;\n    a %= mod;\n    while (exp) {\n        if (exp % 2) res = res * a % mod;\n        a = a * a % mod;\n        exp /= 2;\n    }\n    return res;\n}"
+        },
+        {
+          "clause_id": "compute_expected_position",
+          "signature": "long long compute_expected_position(long long n, long long k)",
+          "code": "long long compute_expected_position(long long n, long long k) {\n    const long long MOD = 998244353;\n    long long nsq = (n * n) % MOD;\n    long long p = ((nsq - n + 2) % MOD + MOD) % MOD;\n    p = p * compute_modular_inverse(nsq, MOD) % MOD;\n    long long pk = 1;\n    long long b = p;\n    for (long long e = k; e; e >>= 1) {\n        if (e & 1) pk = pk * b % MOD;\n        b = b * b % MOD;\n    }\n    long long answer = (1 + (n - 1) % MOD * ((1 - pk + MOD) % MOD) % MOD * compute_modular_inverse((1 - p + MOD) % MOD, MOD) % MOD) % MOD;\n    return answer;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, k;\n    read_parameters(&n, &k);\n    long long expected = compute_expected_position(n, k);\n    printf(\"%lld\\n\", expected);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

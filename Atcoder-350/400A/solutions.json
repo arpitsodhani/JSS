@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_a",
+          "signature": "int read_a(void)",
+          "code": "int a; scanf(\"%d\", &a); return a;\n"
+        },
+        {
+          "clause_id": "calc_b",
+          "signature": "int calc_b(int a)",
+          "code": "if(400%a!=0) return -1; return 400/a;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a=read_a(); printf(\"%d\\n\", calc_b(a)); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_a",
+          "signature": "int read_a(void)",
+          "code": "int a; scanf(\"%d\", &a); return a;\n"
+        },
+        {
+          "clause_id": "calc_b",
+          "signature": "int calc_b(int a)",
+          "code": "if(400%a!=0) return -1; return 400/a;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a=read_a(); printf(\"%d\\n\", calc_b(a)); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_a",
+          "signature": "int read_a(void)",
+          "code": "int a; scanf(\"%d\", &a); return a;\n"
+        },
+        {
+          "clause_id": "calc_b",
+          "signature": "int calc_b(int a)",
+          "code": "if(400%a!=0) return -1; return 400/a;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a=read_a(); printf(\"%d\\n\", calc_b(a)); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_a",
+          "signature": "int read_a(void)",
+          "code": "int a; scanf(\"%d\", &a); return a;\n"
+        },
+        {
+          "clause_id": "calc_b",
+          "signature": "int calc_b(int a)",
+          "code": "if(400%a!=0) return -1; return 400/a;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a=read_a(); printf(\"%d\\n\", calc_b(a)); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_a",
+          "signature": "int read_a(void)",
+          "code": "int a; scanf(\"%d\", &a); return a;\n"
+        },
+        {
+          "clause_id": "calc_b",
+          "signature": "int calc_b(int a)",
+          "code": "if(400%a!=0) return -1; return 400/a;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a=read_a(); printf(\"%d\\n\", calc_b(a)); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

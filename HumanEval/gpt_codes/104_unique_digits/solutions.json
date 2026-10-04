@@ -1,0 +1,189 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "has_even_digit",
+          "code": "int has_even_digit(int n) {\n    while (n > 0) {\n        if ((n % 10) % 2 == 0) return 1;\n        n /= 10;\n    }\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "compare_int",
+          "code": "int compare_int(const void *a, const void *b) {\n    return *(int*)a - *(int*)b;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "unique_digits",
+          "code": "void unique_digits(int n, int x[], int *result, int *result_size) {\n    *result_size = 0;\n    for (int i = 0; i < n; i++) {\n        if (!has_even_digit(x[i])) {\n            result[(*result_size)++] = x[i];\n        }\n    }\n    qsort(result, *result_size, sizeof(int), compare_int);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int x[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &x[i]);\n    }\n    int result[n], result_size;\n    unique_digits(n, x, result, &result_size);\n    for (int i = 0; i < result_size; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "has_even_digit",
+          "code": "int has_even_digit(int n) {\n    while (n > 0) {\n        if ((n % 10) % 2 == 0) return 1;\n        n /= 10;\n    }\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "compare_int",
+          "code": "int compare_int(const void *a, const void *b) {\n    return *(int*)a - *(int*)b;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "unique_digits",
+          "code": "void unique_digits(int n, int x[], int *result, int *result_size) {\n    *result_size = 0;\n    for (int i = 0; i < n; i++) {\n        if (!has_even_digit(x[i])) {\n            result[(*result_size)++] = x[i];\n        }\n    }\n    qsort(result, *result_size, sizeof(int), compare_int);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int x[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &x[i]);\n    }\n    int result[n], result_size;\n    unique_digits(n, x, result, &result_size);\n    for (int i = 0; i < result_size; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "has_even_digit",
+          "code": "int has_even_digit(int n) {\n    while (n > 0) {\n        if ((n % 10) % 2 == 0) return 1;\n        n /= 10;\n    }\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "compare_int",
+          "code": "int compare_int(const void *a, const void *b) {\n    return *(int*)a - *(int*)b;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "unique_digits",
+          "code": "void unique_digits(int n, int x[], int *result, int *result_size) {\n    *result_size = 0;\n    for (int i = 0; i < n; i++) {\n        if (!has_even_digit(x[i])) {\n            result[(*result_size)++] = x[i];\n        }\n    }\n    qsort(result, *result_size, sizeof(int), compare_int);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int x[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &x[i]);\n    }\n    int result[n], result_size;\n    unique_digits(n, x, result, &result_size);\n    for (int i = 0; i < result_size; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "has_even_digit",
+          "code": "int has_even_digit(int n) {\n    while (n > 0) {\n        if ((n % 10) % 2 == 0) return 1;\n        n /= 10;\n    }\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "compare_int",
+          "code": "int compare_int(const void *a, const void *b) {\n    return *(int*)a - *(int*)b;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "unique_digits",
+          "code": "void unique_digits(int n, int x[], int *result, int *result_size) {\n    *result_size = 0;\n    for (int i = 0; i < n; i++) {\n        if (!has_even_digit(x[i])) {\n            result[(*result_size)++] = x[i];\n        }\n    }\n    qsort(result, *result_size, sizeof(int), compare_int);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int x[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &x[i]);\n    }\n    int result[n], result_size;\n    unique_digits(n, x, result, &result_size);\n    for (int i = 0; i < result_size; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "has_even_digit",
+          "code": "int has_even_digit(int n) {\n    while (n > 0) {\n        if ((n % 10) % 2 == 0) return 1;\n        n /= 10;\n    }\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "compare_int",
+          "code": "int compare_int(const void *a, const void *b) {\n    return *(int*)a - *(int*)b;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "unique_digits",
+          "code": "void unique_digits(int n, int x[], int *result, int *result_size) {\n    *result_size = 0;\n    for (int i = 0; i < n; i++) {\n        if (!has_even_digit(x[i])) {\n            result[(*result_size)++] = x[i];\n        }\n    }\n    qsort(result, *result_size, sizeof(int), compare_int);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int x[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &x[i]);\n    }\n    int result[n], result_size;\n    unique_digits(n, x, result, &result_size);\n    for (int i = 0; i < result_size; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+You are given a tree with N vertices. Each edge has a color, either red or blue.
+Process Q queries. For each query, given two vertices u and v, determine if there exists a path from u to v that uses only red edges.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N
+a_1 b_1 c_1
+...
+a_{N-1} b_{N-1} c_{N-1}
+Q
+u_1 v_1
+...
+u_Q v_Q
+
+**Output:**
+Print Q lines. For the i-th query, print `Yes` if such a path exists, and `No` otherwise.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= a_i, b_i <= N
+- a_i != b_i
+- c_i is 'R' (red) or 'B' (blue)
+- The given edges form a tree
+- 1 <= Q <= 2 * 10^5
+- 1 <= u_i, v_i <= N
+- All input values are integers

@@ -1,0 +1,12 @@
+You are given a simple connected undirected graph with N vertices and M edges. Each vertex i\,(1\leq i \leq N) has a weight A_i . Each edge j\,(1\leq j \leq M) connects vertices U_j and V_j bidirectionally and has a weight B_j . The weight of a path in this graph is defined as the sum of the weights of the vertices and edges that appear on the path. For each i=2,3,\dots,N , solve the following problem: Find the minimum weight of a path from vertex 1 to vertex i .
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= A_i <= 10^9
+- 1 <= u_i, v_i <= N
+- 1 <= B_i <= 10^9
+- u_i != v_i
+- The graph is simple (no multi-edges)
+- The graph is connected
+- All input values are integers

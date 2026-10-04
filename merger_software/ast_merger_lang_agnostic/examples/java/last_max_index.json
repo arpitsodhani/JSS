@@ -1,0 +1,69 @@
+{
+  "programs": [
+    {
+      "id": "P1",
+      "clauses": [
+        {
+          "clause_id": "C1",
+          "code": "if (a == null || n <= 0) {\n    return -1;\n}"
+        },
+        {
+          "clause_id": "C2",
+          "code": "int max_val = a[0];\nint last_idx = 0;\nfor (int i = 1; i < n; i++) {\n    if (a[i] >= max_val) {\n        max_val = a[i];\n        last_idx = i;\n    }\n}\nreturn last_idx;"
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "clauses": [
+        {
+          "clause_id": "C1",
+          "code": "if (a == null || n <= 0) {\n    return -1;\n}"
+        },
+        {
+          "clause_id": "C2",
+          "code": "int maximum = a[0];\nint pos = 0;\nfor (int idx = 1; idx < n; idx++) {\n    if (a[idx] >= maximum) {\n        maximum = a[idx];\n        pos = idx;\n    }\n}\nreturn pos;"
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "clauses": [
+        {
+          "clause_id": "C1",
+          "code": "if (a == null || n == 0) {\n    return -1;\n}"
+        },
+        {
+          "clause_id": "C2",
+          "code": "int m = a[0];\nint last = 0;\nfor (int i = 1; i < n; i++) {\n    if (a[i] > m) {\n        m = a[i];\n        last = i;\n    }\n}\nreturn last;"
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "clauses": [
+        {
+          "clause_id": "C1",
+          "code": "if (n <= 0) {\n    return -1;\n}"
+        },
+        {
+          "clause_id": "C2",
+          "code": "int max_val = a[0];\nint idx = 0;\nfor (int i = 1; i < n; i++) {\n    if (a[i] >= max_val) {\n        max_val = a[i];\n        idx = i;\n    }\n}\nreturn idx;"
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "clauses": [
+        {
+          "clause_id": "C1",
+          "code": "if (n <= 0) {\n    return -1;\n}"
+        },
+        {
+          "clause_id": "C2",
+          "code": "int best_val = a[0];\nint best_idx = 0;\nfor (int j = 1; j < n; j++) {\n    if (a[j] >= best_val) {\n        best_val = a[j];\n        best_idx = j;\n    }\n}\nreturn best_idx;"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "contestId": 1883,
+  "index": "G2",
+  "problem_id": "1883G2",
+  "name": "Dances (Hard Version)",
+  "rating": 1900,
+  "tags": [
+    "binary search",
+    "greedy",
+    "sortings",
+    "two pointers"
+  ],
+  "points": 2000.0,
+  "solvedCount": 6889,
+  "source": "verbatim_cf_fetch",
+  "title": "G2. Dances (Hard Version)",
+  "legend": "This is the hard version of the problem. The only difference is that in this version m≤109.\n\nYou are given two arrays of integers a1,a2,…,an and b1,b2,…,bn. Before applying any operations, you can reorder the elements of each array as you wish. Then, in one operation, you will perform both of the following actions, if the arrays are not empty:\n\nChoose any element from array a and remove it (all remaining elements are shifted to a new array a),\nChoose any element from array b and remove it (all remaining elements are shifted to a new array b).\n\nLet k be the final size of both arrays. You need to find the minimum number of operations required to satisfy ai<bi for all 1≤i≤k.\n\nThis problem was too easy, so the problem author decided to make it more challenging. You are also given a positive integer m. Now, you need to find the sum of answers to the problem for m pairs of arrays (c[i],b), where 1≤i≤m. Array c[i] is obtained from a as follows:\n\nc[i]1=i,\nc[i]j=aj, for 2≤j≤n.",
+  "input_spec": "Each test consists of multiple test cases. The first line contains a single integer t (1≤t≤104) - the number of sets of input data. This is followed by their description.\n\nThe first line of each test case contains two integers n and m (2≤n≤105, 1≤m≤109) - the size of arrays a and b and the constraints on the value of element a1.\n\nThe second line of each test case contains n−1 integers a2,…,an (1≤ai≤109).\n\nThe third line of each test case contains n integers b1,b2,…,bn (1≤bi≤109).\n\nIt is guaranteed that the sum of n over all test cases does not exceed 105.",
+  "output_spec": "For each test case, output the total number of minimum operations for all pairs of arrays (ci,b).",
+  "note": "In the first test case:\n\nFor the pair of arrays ([1,1],[3,2]), the answer is 0. No operations or reordering of elements are needed.\nFor the pair of arrays ([2,1],[3,2]), the answer is 0. The elements of the first array can be rearranged to obtain [1,2). No operations are needed.\nFor the pair of arrays ([3,1],[3,2]), the answer is 1. The element 3 can be removed from the first array and the element 2 can be removed from the second array.\nFor the pair of arrays ([4,1],[3,2]), the answer is 1. The element 4 can be removed from the first array and the element 3 can be removed from the second array.",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n2 4\n1\n3 2\n4 7\n5 1 5\n3 8 3 3\n8 4\n4 3 3 2 2 1 1\n1 1 1 1 3 3 3 3\n9 1\n9 2 8 3 7 4 6 5\n1 2 3 2 1 4 5 6 5\n",
+      "output": "2\n12\n16\n4"
+    }
+  ]
+}

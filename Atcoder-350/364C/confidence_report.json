@@ -1,0 +1,29 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "accumulate_until_saltiness_threshold",
+      "confidence": 1.0
+    },
+    {
+      "clause": "accumulate_until_sweetness_threshold",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "select_minimum_count",
+      "confidence": 1.0
+    },
+    {
+      "clause": "sort_dishes_by_saltiness_descending",
+      "confidence": 1.0
+    },
+    {
+      "clause": "sort_dishes_by_sweetness_descending",
+      "confidence": 1.0
+    }
+  ]
+}

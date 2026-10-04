@@ -1,0 +1,6 @@
+For positive integers x and y , define f(x, y) as the remainder of (x + y) divided by 10^8 . You are given a sequence of positive integers A = (A_1, \ldots, A_N) of length N . Find the value of the following expression: \displaystyle \sum_{i=1}^{N-1}\sum_{j=i+1}^N f(A_i,A_j) .
+
+**Constraints:**
+- 2\leq N\leq 3\times 10^5
+- 1\leq A_i < 10^8
+- integers

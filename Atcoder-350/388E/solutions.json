@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "max_pairs",
+          "signature": "int max_pairs(int n,long long *A)",
+          "code": "int mid=n/2; int i=0,j=mid,ans=0;\nwhile(i<mid && j<n){\n  if(A[i]*2<=A[j]){ ans++; i++; j++; }\n  else j++;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); int ans=max_pairs(n,A); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "max_pairs",
+          "signature": "int max_pairs(int n,long long *A)",
+          "code": "int mid=n/2; int i=0,j=mid,ans=0;\nwhile(i<mid && j<n){\n  if(A[i]*2<=A[j]){ ans++; i++; j++; }\n  else j++;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); int ans=max_pairs(n,A); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "max_pairs",
+          "signature": "int max_pairs(int n,long long *A)",
+          "code": "int mid=n/2; int i=0,j=mid,ans=0;\nwhile(i<mid && j<n){\n  if(A[i]*2<=A[j]){ ans++; i++; j++; }\n  else j++;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); int ans=max_pairs(n,A); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "max_pairs",
+          "signature": "int max_pairs(int n,long long *A)",
+          "code": "int mid=n/2; int i=0,j=mid,ans=0;\nwhile(i<mid && j<n){\n  if(A[i]*2<=A[j]){ ans++; i++; j++; }\n  else j++;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); int ans=max_pairs(n,A); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "max_pairs",
+          "signature": "int max_pairs(int n,long long *A)",
+          "code": "int mid=n/2; int i=0,j=mid,ans=0;\nwhile(i<mid && j<n){\n  if(A[i]*2<=A[j]){ ans++; i++; j++; }\n  else j++;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); int ans=max_pairs(n,A); print_int(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "388E",
+  "total_programs": 5
+}

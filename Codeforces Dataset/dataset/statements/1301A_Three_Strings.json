@@ -1,0 +1,27 @@
+{
+  "contestId": 1301,
+  "index": "A",
+  "problem_id": "1301A",
+  "name": "Three Strings",
+  "rating": 800,
+  "tags": [
+    "implementation",
+    "strings"
+  ],
+  "points": 500.0,
+  "solvedCount": 20163,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Three Strings",
+  "legend": "You are given three strings a, b and c of the same length n. The strings consist of lowercase English letters only. The i-th letter of a is ai, the i-th letter of b is bi, the i-th letter of c is ci.\n\nFor every i (1≤i≤n) you must swap (i.e. exchange) ci with either ai or bi. So in total you'll perform exactly n swap operations, each of them either ci↔ai or ci↔bi (i iterates over all integers between 1 and n, inclusive).\n\nFor example, if a is \"code\", b is \"true\", and c is \"help\", you can make c equal to \"crue\" taking the 1-st and the 4-th letters from a and the others from b. In this way a becomes \"hodp\" and b becomes \"tele\".\n\nIs it possible that after these swaps the string a becomes exactly the same as the string b?",
+  "input_spec": "The input consists of multiple test cases. The first line contains a single integer t (1≤t≤100)  — the number of test cases. The description of the test cases follows.\n\nThe first line of each test case contains a string of lowercase English letters a.\n\nThe second line of each test case contains a string of lowercase English letters b.\n\nThe third line of each test case contains a string of lowercase English letters c.\n\nIt is guaranteed that in each test case these three strings are non-empty and have the same length, which is not exceeding 100.",
+  "output_spec": "Print t lines with answers for all test cases. For each test case:\n\nIf it is possible to make string a equal to string b print \"YES\" (without quotes), otherwise print \"NO\" (without quotes).\n\nYou can print either lowercase or uppercase letters in the answers.",
+  "note": "In the first test case, it is impossible to do the swaps so that string a becomes exactly the same as string b.\n\nIn the second test case, you should swap ci with ai for all possible i. After the swaps a becomes \"bca\", b becomes \"bca\" and c becomes \"abc\". Here the strings a and b are equal.\n\nIn the third test case, you should swap c1 with a1, c2 with b2, c3 with b3 and c4 with a4. Then string a becomes \"baba\", string b becomes \"baba\" and string c becomes \"abab\". Here the strings a and b are equal.\n\nIn the fourth test case, it is impossible to do the swaps so that string a becomes exactly the same as string b.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\naaa\nbbb\nccc\nabc\nbca\nbca\naabb\nbbaa\nbaba\nimi\nmii\niim\n",
+      "output": "NO\nYES\nYES\nNO"
+    }
+  ]
+}

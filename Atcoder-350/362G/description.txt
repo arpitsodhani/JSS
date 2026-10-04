@@ -1,0 +1,5 @@
+You are given a string S consisting of lowercase English letters. You are also given Q queries to process sequentially. The i -th query is described as follows: A string T_i consisting of lowercase English letters is given. Print the number of substrings of S that equal T_i . Two substrings are distinguished if they are taken from different positions, even if they are equal as strings.
+
+**Constraints:**
+- 1 <= N <= 18
+- S is a string of length N consisting of lowercase English letters

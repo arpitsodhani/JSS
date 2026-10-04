@@ -1,0 +1,173 @@
+{
+  "problem_id": "358E",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_counts",
+          "signature": "void read_counts(int counts[])",
+          "code": "void read_counts(int counts[]) { for(int i = 0; i < 26; i++) scanf(\"%d\", &counts[i]); }"
+        },
+        {
+          "clause_id": "compute_factorial",
+          "signature": "long long compute_factorial(int n, long long mod)",
+          "code": "long long compute_factorial(int n, long long mod) { long long result = 1; for(int i = 1; i <= n; i++) result = (result * i) % mod; return result; }"
+        },
+        {
+          "clause_id": "power_mod",
+          "signature": "long long power_mod(long long base, long long exp, long long mod)",
+          "code": "long long power_mod(long long base, long long exp, long long mod) { long long result = 1; base %= mod; while(exp > 0) { if(exp & 1) result = (result * base) % mod; base = (base * base) % mod; exp >>= 1; } return result; }"
+        },
+        {
+          "clause_id": "count_arrangements",
+          "signature": "long long count_arrangements(int counts[])",
+          "code": "long long count_arrangements(int counts[]) { long long MOD = 998244353; int total = 0; for(int i = 0; i < 26; i++) total += counts[i]; long long numerator = compute_factorial(total - 1, MOD); long long denominator = 1; for(int i = 0; i < 26; i++) { if(counts[i] > 0) { long long fact = compute_factorial(counts[i], MOD); denominator = (denominator * fact) % MOD; } } long long inv = power_mod(denominator, MOD - 2, MOD); return (numerator * inv) % MOD; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int counts[26]; read_counts(counts); printf(\"%lld\\n\", count_arrangements(counts)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_counts",
+          "signature": "void read_counts(int counts[])",
+          "code": "void read_counts(int counts[]) { int i; for(i = 0; i < 26; i++) scanf(\"%d\", &counts[i]); }"
+        },
+        {
+          "clause_id": "compute_factorial",
+          "signature": "long long compute_factorial(int n, long long mod)",
+          "code": "long long compute_factorial(int n, long long mod) { long long res = 1; for(int j = 1; j <= n; j++) res = (res * j) % mod; return res; }"
+        },
+        {
+          "clause_id": "power_mod",
+          "signature": "long long power_mod(long long base, long long exp, long long mod)",
+          "code": "long long power_mod(long long base, long long exp, long long mod) { long long ans = 1; base %= mod; while(exp) { if(exp % 2) ans = (ans * base) % mod; base = (base * base) % mod; exp /= 2; } return ans; }"
+        },
+        {
+          "clause_id": "count_arrangements",
+          "signature": "long long count_arrangements(int counts[])",
+          "code": "long long count_arrangements(int counts[]) { long long P = 998244353; int sum = 0; int k; for(k = 0; k < 26; k++) sum += counts[k]; long long top = compute_factorial(sum - 1, P); long long bottom = 1; for(k = 0; k < 26; k++) { if(counts[k] > 0) bottom = (bottom * compute_factorial(counts[k], P)) % P; } long long inverse = power_mod(bottom, P - 2, P); return (top * inverse) % P; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int letter_counts[26]; read_counts(letter_counts); printf(\"%lld\\n\", count_arrangements(letter_counts)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_counts",
+          "signature": "void read_counts(int counts[])",
+          "code": "void read_counts(int counts[]) { for(int idx = 0; idx < 26; idx++) scanf(\"%d\", counts + idx); }"
+        },
+        {
+          "clause_id": "compute_factorial",
+          "signature": "long long compute_factorial(int n, long long mod)",
+          "code": "long long compute_factorial(int n, long long mod) { long long product = 1; int i; for(i = 1; i <= n; i++) product = (product * i) % mod; return product; }"
+        },
+        {
+          "clause_id": "power_mod",
+          "signature": "long long power_mod(long long base, long long exp, long long mod)",
+          "code": "long long power_mod(long long base, long long exp, long long mod) { long long ret = 1; base %= mod; for(; exp > 0; exp >>= 1) { if(exp & 1) ret = (ret * base) % mod; base = (base * base) % mod; } return ret; }"
+        },
+        {
+          "clause_id": "count_arrangements",
+          "signature": "long long count_arrangements(int counts[])",
+          "code": "long long count_arrangements(int counts[]) { long long M = 998244353; int total_tiles = 0; int i; for(i = 0; i < 26; i++) total_tiles += counts[i]; long long num = compute_factorial(total_tiles - 1, M); long long denom = 1; for(i = 0; i < 26; i++) { if(counts[i] > 0) denom = (denom * compute_factorial(counts[i], M)) % M; } long long inv_denom = power_mod(denom, M - 2, M); return (num * inv_denom) % M; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int tile_counts[26]; read_counts(tile_counts); printf(\"%lld\\n\", count_arrangements(tile_counts)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_counts",
+          "signature": "void read_counts(int counts[])",
+          "code": "void read_counts(int counts[]) { for(int p = 0; p < 26; p++) scanf(\"%d\", &counts[p]); }"
+        },
+        {
+          "clause_id": "compute_factorial",
+          "signature": "long long compute_factorial(int n, long long mod)",
+          "code": "long long compute_factorial(int n, long long mod) { long long val = 1; for(int q = 2; q <= n; q++) val = (val * q) % mod; return val; }"
+        },
+        {
+          "clause_id": "power_mod",
+          "signature": "long long power_mod(long long base, long long exp, long long mod)",
+          "code": "long long power_mod(long long base, long long exp, long long mod) { long long output = 1; base %= mod; while(exp != 0) { if(exp & 1) output = (output * base) % mod; base = (base * base) % mod; exp >>= 1; } return output; }"
+        },
+        {
+          "clause_id": "count_arrangements",
+          "signature": "long long count_arrangements(int counts[])",
+          "code": "long long count_arrangements(int counts[]) { long long MODULO = 998244353; int n = 0; for(int r = 0; r < 26; r++) n += counts[r]; long long numer = compute_factorial(n - 1, MODULO); long long denom = 1; for(int s = 0; s < 26; s++) { if(counts[s] > 0) denom = (denom * compute_factorial(counts[s], MODULO)) % MODULO; } long long inv = power_mod(denom, MODULO - 2, MODULO); return (numer * inv) % MODULO; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int frequencies[26]; read_counts(frequencies); printf(\"%lld\\n\", count_arrangements(frequencies)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_counts",
+          "signature": "void read_counts(int counts[])",
+          "code": "void read_counts(int counts[]) { int t; for(t = 0; t < 26; t++) scanf(\"%d\", &counts[t]); }"
+        },
+        {
+          "clause_id": "compute_factorial",
+          "signature": "long long compute_factorial(int n, long long mod)",
+          "code": "long long compute_factorial(int n, long long mod) { long long answer = 1; for(int u = 1; u <= n; u++) answer = (answer * u) % mod; return answer; }"
+        },
+        {
+          "clause_id": "power_mod",
+          "signature": "long long power_mod(long long base, long long exp, long long mod)",
+          "code": "long long power_mod(long long base, long long exp, long long mod) { long long result = 1; base %= mod; while(exp > 0) { if(exp % 2 == 1) result = (result * base) % mod; base = (base * base) % mod; exp /= 2; } return result; }"
+        },
+        {
+          "clause_id": "count_arrangements",
+          "signature": "long long count_arrangements(int counts[])",
+          "code": "long long count_arrangements(int counts[]) { long long MOD = 998244353; int length = 0; int v; for(v = 0; v < 26; v++) length += counts[v]; long long numerator = compute_factorial(length - 1, MOD); long long denominator = 1; for(v = 0; v < 26; v++) { if(counts[v] > 0) denominator = (denominator * compute_factorial(counts[v], MOD)) % MOD; } long long modular_inverse = power_mod(denominator, MOD - 2, MOD); return (numerator * modular_inverse) % MOD; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int letter_frequencies[26]; read_counts(letter_frequencies); printf(\"%lld\\n\", count_arrangements(letter_frequencies)); return 0; }"
+        }
+      ]
+    }
+  ]
+}

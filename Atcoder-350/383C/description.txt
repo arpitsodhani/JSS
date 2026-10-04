@@ -1,0 +1,7 @@
+The AtCoder company office is represented as a grid of H rows and W columns. Let (i, j) denote the cell at the i -th row from the top and j -th column from the left. The state of each cell is represented by a character S_{i,j} . If S_{i,j} is # , that cell has a wall; if S_{i,j} is . , that cell is a floor; if S_{i,j} is H , that cell has a humidifier placed on a floor cell. A certain cell is considered humidified if it can be reached from at least one humidifier cell by at most D moves up, down, left, or right without passing through a wall. Note that any cell with a humidifier is always humidified. Find the number of humidified floor cells.
+
+**Constraints:**
+- 2 <= H, W <= 1000
+- 1 <= D <= 2500
+- S_{i,j} is '.', '#', or 'H'
+- There is at least one 'H' in the grid

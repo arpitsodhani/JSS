@@ -1,0 +1,29 @@
+{
+  "average_confidence": 0.9314927082503436,
+  "clauses": [
+    {
+      "clause": "compute",
+      "confidence": 0.8821630094043889
+    },
+    {
+      "clause": "main",
+      "confidence": 0.8880134717587442
+    },
+    {
+      "clause": "output",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_input",
+      "confidence": 0.8187797683389283
+    },
+    {
+      "clause": "read_n",
+      "confidence": 1.0
+    },
+    {
+      "clause": "sum_scores",
+      "confidence": 1.0
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *M)",
+          "code": "scanf(\"%d%lld\", N,M);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,long long M)",
+          "code": "return 0;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x%998244353LL);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long M; read_input(&N,&M); long long ans=solve(N,M); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *M)",
+          "code": "scanf(\"%d%lld\", N,M);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,long long M)",
+          "code": "return 0;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x%998244353LL);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long M; read_input(&N,&M); long long ans=solve(N,M); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *M)",
+          "code": "scanf(\"%d%lld\", N,M);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,long long M)",
+          "code": "return 0;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x%998244353LL);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long M; read_input(&N,&M); long long ans=solve(N,M); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *M)",
+          "code": "scanf(\"%d%lld\", N,M);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,long long M)",
+          "code": "return 0;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x%998244353LL);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long M; read_input(&N,&M); long long ans=solve(N,M); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *M)",
+          "code": "scanf(\"%d%lld\", N,M);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,long long M)",
+          "code": "return 0;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x%998244353LL);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long M; read_input(&N,&M); long long ans=solve(N,M); print_ll(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "386G",
+  "total_programs": 5
+}

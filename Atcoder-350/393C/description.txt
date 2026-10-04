@@ -1,0 +1,6 @@
+You are given an undirected graph with N vertices and M edges, where the vertices are numbered 1 through N and the edges are numbered 1 through M . Edge i connects vertices u_i and v_i . To make the graph simple by removing edges, what is the minimum number of edges that must be removed? Here, a graph is called simple if and only if it does not contain self-loops or multi-edges.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

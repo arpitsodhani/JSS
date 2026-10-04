@@ -1,0 +1,22 @@
+# CLAUSE: setup_environment
+import sys
+
+# CLAUSE: solve_logic
+def _run_case_program():
+    import sys
+    import math
+
+    x = int(sys.stdin.readline())
+
+    for k in range(1, 1000000):
+        n2 = x + k * k
+        n = math.isqrt(n2)
+        if n * n == n2 and n // k >= 2:
+            print(n, n // k)
+            break
+    else:
+        print(-1)
+
+# CLAUSE: finish_program
+if __name__ == "__main__":
+    _run_case_program()

@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *S,long long **A)",
+          "code": "void read_input(int *N,long long *S,long long **A){ scanf(\"%d%lld\", N,S); *A=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "exists_subsequence",
+          "signature": "int exists_subsequence(int N,long long S,long long *A)",
+          "code": "int exists_subsequence(int N,long long S,long long *A){\n    long long total=0; for(int i=0;i<N;i++) total+=A[i];\n    if(S%total==0) return 1;\n    long long target = S%total;\n    int M=2*N;\n    long long *B=(long long*)malloc((size_t)M*sizeof(long long));\n    for(int i=0;i<M;i++) B[i]=A[i%N];\n    int l=0; long long sum=0;\n    for(int r=0;r<M;r++){\n        sum+=B[r];\n        while(sum>target && l<=r){ sum-=B[l++]; }\n        if(sum==target){ free(B); return 1; }\n    }\n    free(B);\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long S; long long *A=NULL; read_input(&N,&S,&A); int ok=exists_subsequence(N,S,A); print_answer(ok); free(A); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *S,long long **A)",
+          "code": "void read_input(int *N,long long *S,long long **A){ scanf(\"%d%lld\", N,S); *A=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "exists_subsequence",
+          "signature": "int exists_subsequence(int N,long long S,long long *A)",
+          "code": "int exists_subsequence(int N,long long S,long long *A){\n    long long total=0; for(int i=0;i<N;i++) total+=A[i];\n    if(S%total==0) return 1;\n    long long target = S%total;\n    int M=2*N; long long *B=(long long*)malloc((size_t)M*sizeof(long long));\n    for(int i=0;i<M;i++) B[i]=A[i%N];\n    int l=0; long long sum=0;\n    for(int r=0;r<M;r++){\n        sum += B[r];\n        while(sum>target && l<=r){ sum -= B[l]; l++; }\n        if(sum==target){ free(B); return 1; }\n    }\n    free(B);\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long S; long long *A=NULL; read_input(&N,&S,&A); int ok=exists_subsequence(N,S,A); print_answer(ok); free(A); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *S,long long **A)",
+          "code": "void read_input(int *N,long long *S,long long **A){ scanf(\"%d%lld\", N,S); *A=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "exists_subsequence",
+          "signature": "int exists_subsequence(int N,long long S,long long *A)",
+          "code": "int exists_subsequence(int N,long long S,long long *A){\n    long long total=0; for(int i=0;i<N;i++) total+=A[i];\n    if(S%total==0) return 1;\n    long long target = S%total;\n    int M=2*N;\n    long long *B=(long long*)malloc((size_t)M*sizeof(long long));\n    for(int i=0;i<M;i++) B[i]=A[i%N];\n    int l=0; long long sum=0;\n    for(int r=0;r<M;r++){\n        sum+=B[r];\n        while(sum>target && l<=r){ sum-=B[l++]; }\n        if(sum==target){ free(B); return 1; }\n    }\n    free(B);\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long S; long long *A=NULL; read_input(&N,&S,&A); int ok=exists_subsequence(N,S,A); print_answer(ok); free(A); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *S,long long **A)",
+          "code": "void read_input(int *N,long long *S,long long **A){ scanf(\"%d%lld\", N,S); *A=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "exists_subsequence",
+          "signature": "int exists_subsequence(int N,long long S,long long *A)",
+          "code": "int exists_subsequence(int N,long long S,long long *A){\n    long long total=0; for(int i=0;i<N;i++) total+=A[i];\n    if(S%total==0) return 1;\n    long long target = S%total;\n    int M=2*N; long long *B=(long long*)malloc((size_t)M*sizeof(long long));\n    for(int i=0;i<M;i++) B[i]=A[i%N];\n    int l=0; long long sum=0;\n    for(int r=0;r<M;r++){\n        sum += B[r];\n        while(sum>target && l<=r){ sum -= B[l]; l++; }\n        if(sum==target){ free(B); return 1; }\n    }\n    free(B);\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long S; long long *A=NULL; read_input(&N,&S,&A); int ok=exists_subsequence(N,S,A); print_answer(ok); free(A); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *S,long long **A)",
+          "code": "void read_input(int *N,long long *S,long long **A){ scanf(\"%d%lld\", N,S); *A=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "exists_subsequence",
+          "signature": "int exists_subsequence(int N,long long S,long long *A)",
+          "code": "int exists_subsequence(int N,long long S,long long *A){\n    long long total=0; for(int i=0;i<N;i++) total+=A[i];\n    if(S%total==0) return 1;\n    long long target = S%total;\n    int M=2*N;\n    long long *B=(long long*)malloc((size_t)M*sizeof(long long));\n    for(int i=0;i<M;i++) B[i]=A[i%N];\n    int l=0; long long sum=0;\n    for(int r=0;r<M;r++){\n        sum+=B[r];\n        while(sum>target && l<=r){ sum-=B[l++]; }\n        if(sum==target){ free(B); return 1; }\n    }\n    free(B);\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long S; long long *A=NULL; read_input(&N,&S,&A); int ok=exists_subsequence(N,S,A); print_answer(ok); free(A); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

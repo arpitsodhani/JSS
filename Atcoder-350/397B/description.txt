@@ -1,0 +1,5 @@
+Takahashi aggregated usage records from ticket gates. However, he accidentally erased some records of entering and exiting stations. He is trying to restore the erased records. You are given a string S consisting of i and o . We want to insert zero or more characters at arbitrary positions in S so that the resulting string satisfies the following conditions: Its length is even, and every odd-numbered (1st, 3rd, ...) character is i while every even-numbered (2nd, 4th, ...) character is o . Find the minimum number of characters that need to be inserted. It can be proved under the of this problem that by inserting an appropriate finite number of characters, S can be made to satisfy the conditions.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- S is a string of length N consisting of 'R' and 'L'

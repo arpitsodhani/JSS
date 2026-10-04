@@ -1,0 +1,6 @@
+You are given two grids, each with N rows and N columns, referred to as grid A and grid B . Each cell in the grids contains a lowercase English letter. The character at the i -th row and j -th column of grid A is A_{i, j} . The character at the i -th row and j -th column of grid B is B_{i, j} . The two grids differ in exactly one cell. That is, there exists exactly one pair (i, j) of positive integers not greater than N such that A_{i, j} \neq B_{i, j} . Find this (i, j) .
+
+**Constraints:**
+- 1 \leq N \leq 100
+- A_{i, j}, B_{i, j}
+- A_{i, j} \neq B_{i, j} (i, j) 1

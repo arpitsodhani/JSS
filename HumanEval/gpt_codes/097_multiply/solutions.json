@@ -1,0 +1,139 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "multiply",
+          "code": "int multiply(int a, int b) {\n    a = abs(a) % 10;\n    b = abs(b) % 10;\n    return a * b;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", multiply(a, b));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "multiply",
+          "code": "int multiply(int a, int b) {\n    a = abs(a) % 10;\n    b = abs(b) % 10;\n    return a * b;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", multiply(a, b));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "multiply",
+          "code": "int multiply(int a, int b) {\n    a = abs(a) % 10;\n    b = abs(b) % 10;\n    return a * b;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", multiply(a, b));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "multiply",
+          "code": "int multiply(int a, int b) {\n    a = abs(a) % 10;\n    b = abs(b) % 10;\n    return a * b;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", multiply(a, b));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "multiply",
+          "code": "int multiply(int a, int b) {\n    a = abs(a) % 10;\n    b = abs(b) % 10;\n    return a * b;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", multiply(a, b));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

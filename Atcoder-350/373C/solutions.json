@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "extended_gcd_recursive",
+          "signature": "long long extended_gcd_recursive(long long a, long long b, long long *x, long long *y)",
+          "code": "long long extended_gcd_recursive(long long a, long long b, long long *x, long long *y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    long long x1, y1;\n    long long gcd = extended_gcd_recursive(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return gcd;\n}"
+        },
+        {
+          "clause_id": "find_modular_inverse",
+          "signature": "long long find_modular_inverse(long long a, long long m)",
+          "code": "long long find_modular_inverse(long long a, long long m) {\n    long long x, y;\n    long long gcd = extended_gcd_recursive(a, m, &x, &y);\n    if (gcd != 1) return -1;\n    return (x % m + m) % m;\n}"
+        },
+        {
+          "clause_id": "solve_linear_diophantine",
+          "signature": "int solve_linear_diophantine(long long a, long long b, long long c, long long *x, long long *y)",
+          "code": "int solve_linear_diophantine(long long a, long long b, long long c, long long *x, long long *y) {\n    long long gcd = extended_gcd_recursive(a, b, x, y);\n    if (c % gcd != 0) return 0;\n    *x *= c / gcd;\n    *y *= c / gcd;\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long a, b, c, x, y;\n    scanf(\"%lld %lld %lld\", &a, &b, &c);\n    \n    if (solve_linear_diophantine(a, b, c, &x, &y)) {\n        printf(\"%lld %lld\\n\", x, y);\n    } else {\n        printf(\"No solution\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "extended_gcd_recursive",
+          "signature": "long long extended_gcd_recursive(long long a, long long b, long long *x, long long *y)",
+          "code": "long long extended_gcd_recursive(long long a, long long b, long long *x, long long *y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    long long x1, y1;\n    long long gcd = extended_gcd_recursive(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return gcd;\n}"
+        },
+        {
+          "clause_id": "find_modular_inverse",
+          "signature": "long long find_modular_inverse(long long a, long long m)",
+          "code": "long long find_modular_inverse(long long a, long long m) {\n    long long x, y;\n    long long gcd = extended_gcd_recursive(a, m, &x, &y);\n    if (gcd != 1) return -1;\n    return (x % m + m) % m;\n}"
+        },
+        {
+          "clause_id": "solve_linear_diophantine",
+          "signature": "int solve_linear_diophantine(long long a, long long b, long long c, long long *x, long long *y)",
+          "code": "int solve_linear_diophantine(long long a, long long b, long long c, long long *x, long long *y) {\n    long long gcd = extended_gcd_recursive(a, b, x, y);\n    if (c % gcd != 0) return 0;\n    *x *= c / gcd;\n    *y *= c / gcd;\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long a, b, c, x, y;\n    scanf(\"%lld %lld %lld\", &a, &b, &c);\n    \n    if (solve_linear_diophantine(a, b, c, &x, &y)) {\n        printf(\"%lld %lld\\n\", x, y);\n    } else {\n        printf(\"No solution\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "extended_gcd_recursive",
+          "signature": "long long extended_gcd_recursive(long long a, long long b, long long *x, long long *y)",
+          "code": "long long extended_gcd_recursive(long long a, long long b, long long *x, long long *y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    long long x1, y1;\n    long long gcd = extended_gcd_recursive(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return gcd;\n}"
+        },
+        {
+          "clause_id": "find_modular_inverse",
+          "signature": "long long find_modular_inverse(long long a, long long m)",
+          "code": "long long find_modular_inverse(long long a, long long m) {\n    long long x, y;\n    long long gcd = extended_gcd_recursive(a, m, &x, &y);\n    if (gcd != 1) return -1;\n    return (x % m + m) % m;\n}"
+        },
+        {
+          "clause_id": "solve_linear_diophantine",
+          "signature": "int solve_linear_diophantine(long long a, long long b, long long c, long long *x, long long *y)",
+          "code": "int solve_linear_diophantine(long long a, long long b, long long c, long long *x, long long *y) {\n    long long gcd = extended_gcd_recursive(a, b, x, y);\n    if (c % gcd != 0) return 0;\n    *x *= c / gcd;\n    *y *= c / gcd;\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long a, b, c, x, y;\n    scanf(\"%lld %lld %lld\", &a, &b, &c);\n    \n    if (solve_linear_diophantine(a, b, c, &x, &y)) {\n        printf(\"%lld %lld\\n\", x, y);\n    } else {\n        printf(\"No solution\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "extended_gcd_recursive",
+          "signature": "long long extended_gcd_recursive(long long a, long long b, long long *x, long long *y)",
+          "code": "long long extended_gcd_recursive(long long a, long long b, long long *x, long long *y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    long long x1, y1;\n    long long gcd = extended_gcd_recursive(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return gcd;\n}"
+        },
+        {
+          "clause_id": "find_modular_inverse",
+          "signature": "long long find_modular_inverse(long long a, long long m)",
+          "code": "long long find_modular_inverse(long long a, long long m) {\n    long long x, y;\n    long long gcd = extended_gcd_recursive(a, m, &x, &y);\n    if (gcd != 1) return -1;\n    return (x % m + m) % m;\n}"
+        },
+        {
+          "clause_id": "solve_linear_diophantine",
+          "signature": "int solve_linear_diophantine(long long a, long long b, long long c, long long *x, long long *y)",
+          "code": "int solve_linear_diophantine(long long a, long long b, long long c, long long *x, long long *y) {\n    long long gcd = extended_gcd_recursive(a, b, x, y);\n    if (c % gcd != 0) return 0;\n    *x *= c / gcd;\n    *y *= c / gcd;\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long a, b, c, x, y;\n    scanf(\"%lld %lld %lld\", &a, &b, &c);\n    \n    if (solve_linear_diophantine(a, b, c, &x, &y)) {\n        printf(\"%lld %lld\\n\", x, y);\n    } else {\n        printf(\"No solution\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "extended_gcd_recursive",
+          "signature": "long long extended_gcd_recursive(long long a, long long b, long long *x, long long *y)",
+          "code": "long long extended_gcd_recursive(long long a, long long b, long long *x, long long *y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    long long x1, y1;\n    long long gcd = extended_gcd_recursive(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return gcd;\n}"
+        },
+        {
+          "clause_id": "find_modular_inverse",
+          "signature": "long long find_modular_inverse(long long a, long long m)",
+          "code": "long long find_modular_inverse(long long a, long long m) {\n    long long x, y;\n    long long gcd = extended_gcd_recursive(a, m, &x, &y);\n    if (gcd != 1) return -1;\n    return (x % m + m) % m;\n}"
+        },
+        {
+          "clause_id": "solve_linear_diophantine",
+          "signature": "int solve_linear_diophantine(long long a, long long b, long long c, long long *x, long long *y)",
+          "code": "int solve_linear_diophantine(long long a, long long b, long long c, long long *x, long long *y) {\n    long long gcd = extended_gcd_recursive(a, b, x, y);\n    if (c % gcd != 0) return 0;\n    *x *= c / gcd;\n    *y *= c / gcd;\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long a, b, c, x, y;\n    scanf(\"%lld %lld %lld\", &a, &b, &c);\n    \n    if (solve_linear_diophantine(a, b, c, &x, &y)) {\n        printf(\"%lld %lld\\n\", x, y);\n    } else {\n        printf(\"No solution\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

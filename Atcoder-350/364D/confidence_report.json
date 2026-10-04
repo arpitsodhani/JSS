@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_distances_to_query_point",
+      "confidence": 1.0
+    },
+    {
+      "clause": "extract_kth_smallest_distance",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "process_distance_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "sort_distances_ascending",
+      "confidence": 1.0
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *D,char *S)",
+          "code": "void read_input(int *N,int *D,char *S){ scanf(\"%d%d\", N,D); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "eat_rightmost",
+          "signature": "void eat_rightmost(int N,int D,char *S)",
+          "code": "void eat_rightmost(int N,int D,char *S){\n    for(int k=0;k<D;k++){\n        for(int i=N-1;i>=0;i--){\n            if(S[i]=='@'){ S[i]='.'; break; }\n        }\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *S)",
+          "code": "void print_answer(char *S){ printf(\"%s\\n\", S); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,D; char S[205]; read_input(&N,&D,S); eat_rightmost(N,D,S); print_answer(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *D,char *S)",
+          "code": "void read_input(int *N,int *D,char *S){ scanf(\"%d%d\", N,D); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "eat_rightmost",
+          "signature": "void eat_rightmost(int N,int D,char *S)",
+          "code": "void eat_rightmost(int N,int D,char *S){\n    for(int k=0;k<D;k++){\n        for(int i=N-1;i>=0;i--){\n            if(S[i]=='@'){ S[i]='.'; break; }\n        }\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *S)",
+          "code": "void print_answer(char *S){ printf(\"%s\\n\", S); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,D; char S[205]; read_input(&N,&D,S); eat_rightmost(N,D,S); print_answer(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *D,char *S)",
+          "code": "void read_input(int *N,int *D,char *S){ scanf(\"%d%d\", N,D); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "eat_rightmost",
+          "signature": "void eat_rightmost(int N,int D,char *S)",
+          "code": "void eat_rightmost(int N,int D,char *S){\n    for(int k=0;k<D;k++){\n        for(int i=N-1;i>=0;i--){\n            if(S[i]=='@'){ S[i]='.'; break; }\n        }\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *S)",
+          "code": "void print_answer(char *S){ printf(\"%s\\n\", S); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,D; char S[205]; read_input(&N,&D,S); eat_rightmost(N,D,S); print_answer(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *D,char *S)",
+          "code": "void read_input(int *N,int *D,char *S){ scanf(\"%d%d\", N,D); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "eat_rightmost",
+          "signature": "void eat_rightmost(int N,int D,char *S)",
+          "code": "void eat_rightmost(int N,int D,char *S){\n    for(int k=0;k<D;k++){\n        for(int i=N-1;i>=0;i--){\n            if(S[i]=='@'){ S[i]='.'; break; }\n        }\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *S)",
+          "code": "void print_answer(char *S){ printf(\"%s\\n\", S); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,D; char S[205]; read_input(&N,&D,S); eat_rightmost(N,D,S); print_answer(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *D,char *S)",
+          "code": "void read_input(int *N,int *D,char *S){ scanf(\"%d%d\", N,D); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "eat_rightmost",
+          "signature": "void eat_rightmost(int N,int D,char *S)",
+          "code": "void eat_rightmost(int N,int D,char *S){\n    for(int k=0;k<D;k++){\n        for(int i=N-1;i>=0;i--){\n            if(S[i]=='@'){ S[i]='.'; break; }\n        }\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *S)",
+          "code": "void print_answer(char *S){ printf(\"%s\\n\", S); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,D; char S[205]; read_input(&N,&D,S); eat_rightmost(N,D,S); print_answer(S); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

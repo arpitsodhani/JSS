@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "fib4",
+          "code": "int fib4(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 2;\n    if (n == 3) return 0;\n    int a = 0, b = 0, c = 2, d = 0;\n    for (int i = 4; i <= n; i++) {\n        int next = a + b + c + d;\n        a = b; b = c; c = d; d = next;\n    }\n    return d;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fib4(n));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "fib4_seq",
+          "code": "int fib4_seq(int n) {\n    if(n<2) return 0;\n    if(n==2) return 2;\n    if(n==3) return 0;\n    int w=0,x=0,y=2,z=0;\n    for(int i=4;i<=n;i++){int nxt=w+x+y+z;w=x;x=y;y=z;z=nxt;}\n    return z;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    printf(\"%d\\n\",fib4_seq(n));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "compute_fib4",
+          "code": "int compute_fib4(int idx) {\n    if(idx==0||idx==1||idx==3) return 0;\n    if(idx==2) return 2;\n    int a=0,b=0,c=2,d=0;\n    int i=4;\n    while(i<=idx){int nxt=a+b+c+d;a=b;b=c;c=d;d=nxt;i++;}\n    return d;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int idx;\n    scanf(\"%d\",&idx);\n    printf(\"%d\\n\",compute_fib4(idx));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "fib4_value",
+          "code": "int fib4_value(int n) {\n    int f[1001];\n    f[0]=0;f[1]=0;f[2]=2;f[3]=0;\n    for(int i=4;i<=n;i++) f[i]=f[i-1]+f[i-2]+f[i-3]+f[i-4];\n    return f[n];\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    printf(\"%d\\n\",fib4_value(n));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "four_fib",
+          "code": "int four_fib(int n) {\n    if(n<2) return 0;\n    if(n==2) return 2;\n    if(n==3) return 0;\n    int p=0,q=0,r=2,s=0;\n    for(int k=4;k<=n;k++){int t=p+q+r+s;p=q;q=r;r=s;s=t;}\n    return s;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    printf(\"%d\\n\",four_fib(n));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,long long *sx,long long *sy,char *D,long long *C,long long *X,long long *Y)",
+          "code": "void read_input(int *N,int *M,long long *sx,long long *sy,char *D,long long *C,long long *X,long long *Y){\n    scanf(\"%d%d%lld%lld\", N,M,sx,sy);\n    for(int i=0;i<*N;i++) scanf(\"%lld%lld\", &X[i], &Y[i]);\n    for(int i=0;i<*M;i++) scanf(\" %c%lld\", &D[i], &C[i]);\n}\n"
+        },
+        {
+          "clause_id": "count_houses",
+          "signature": "int count_houses(int N,int M,long long sx,long long sy,char *D,long long *C,long long *X,long long *Y,long long *fx,long long *fy)",
+          "code": "int count_houses(int N,int M,long long sx,long long sy,char *D,long long *C,long long *X,long long *Y,long long *fx,long long *fy){\n    char *vis = (char*)calloc((size_t)N,1);\n    int visited=0;\n    for(int i=0;i<M;i++){\n        long long nx=sx, ny=sy;\n        if(D[i]=='U') ny+=C[i];\n        else if(D[i]=='D') ny-=C[i];\n        else if(D[i]=='L') nx-=C[i];\n        else if(D[i]=='R') nx+=C[i];\n        long long x1=sx, y1=sy, x2=nx, y2=ny;\n        for(int h=0; h<N; h++){\n            if(vis[h]) continue;\n            long long hx=X[h], hy=Y[h];\n            if(x1==x2 && hx==x1){\n                long long lo = y1<y2?y1:y2;\n                long long hi = y1<y2?y2:y1;\n                if(hy>=lo && hy<=hi){ vis[h]=1; visited++; }\n            } else if(y1==y2 && hy==y1){\n                long long lo = x1<x2?x1:x2;\n                long long hi = x1<x2?x2:x1;\n                if(hx>=lo && hx<=hi){ vis[h]=1; visited++; }\n            }\n        }\n        sx=nx; sy=ny;\n    }\n    free(vis);\n    *fx=sx; *fy=sy;\n    return visited;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long x,long long y,int cnt)",
+          "code": "void print_answer(long long x,long long y,int cnt){ printf(\"%lld %lld %d\\n\", x,y,cnt); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int N,M;\n    long long sx,sy;\n    char *D = (char*)malloc(300000);\n    long long *C = (long long*)malloc((size_t)300000*sizeof(long long));\n    long long *X = (long long*)malloc((size_t)300000*sizeof(long long));\n    long long *Y = (long long*)malloc((size_t)300000*sizeof(long long));\n    read_input(&N,&M,&sx,&sy,D,C,X,Y);\n    long long fx,fy;\n    int cnt = count_houses(N,M,sx,sy,D,C,X,Y,&fx,&fy);\n    print_answer(fx,fy,cnt);\n    free(D); free(C); free(X); free(Y);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,long long *sx,long long *sy,char *D,long long *C,long long *X,long long *Y)",
+          "code": "void read_input(int *N,int *M,long long *sx,long long *sy,char *D,long long *C,long long *X,long long *Y){\n    scanf(\"%d%d%lld%lld\", N,M,sx,sy);\n    for(int i=0;i<*N;i++) scanf(\"%lld%lld\", &X[i], &Y[i]);\n    for(int i=0;i<*M;i++) scanf(\" %c%lld\", &D[i], &C[i]);\n}\n"
+        },
+        {
+          "clause_id": "count_houses",
+          "signature": "int count_houses(int N,int M,long long sx,long long sy,char *D,long long *C,long long *X,long long *Y,long long *fx,long long *fy)",
+          "code": "int count_houses(int N,int M,long long sx,long long sy,char *D,long long *C,long long *X,long long *Y,long long *fx,long long *fy){\n    char *vis = (char*)calloc((size_t)N,1);\n    int visited=0;\n    for(int i=0;i<M;i++){\n        long long nx=sx, ny=sy;\n        if(D[i]=='U') ny+=C[i];\n        else if(D[i]=='D') ny-=C[i];\n        else if(D[i]=='L') nx-=C[i];\n        else if(D[i]=='R') nx+=C[i];\n        long long x1=sx, y1=sy, x2=nx, y2=ny;\n        for(int h=0; h<N; h++){\n            if(vis[h]) continue;\n            long long hx=X[h], hy=Y[h];\n            if(x1==x2 && hx==x1){\n                long long lo = y1<y2?y1:y2;\n                long long hi = y1<y2?y2:y1;\n                if(hy>=lo && hy<=hi){ vis[h]=1; visited++; }\n            } else if(y1==y2 && hy==y1){\n                long long lo = x1<x2?x1:x2;\n                long long hi = x1<x2?x2:x1;\n                if(hx>=lo && hx<=hi){ vis[h]=1; visited++; }\n            }\n        }\n        sx=nx; sy=ny;\n    }\n    free(vis);\n    *fx=sx; *fy=sy;\n    return visited;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long x,long long y,int cnt)",
+          "code": "void print_answer(long long x,long long y,int cnt){ printf(\"%lld %lld %d\\n\", x,y,cnt); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int N,M;\n    long long sx,sy;\n    char *D = (char*)malloc(300000);\n    long long *C = (long long*)malloc((size_t)300000*sizeof(long long));\n    long long *X = (long long*)malloc((size_t)300000*sizeof(long long));\n    long long *Y = (long long*)malloc((size_t)300000*sizeof(long long));\n    read_input(&N,&M,&sx,&sy,D,C,X,Y);\n    long long fx,fy;\n    int cnt = count_houses(N,M,sx,sy,D,C,X,Y,&fx,&fy);\n    print_answer(fx,fy,cnt);\n    free(D); free(C); free(X); free(Y);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,long long *sx,long long *sy,char *D,long long *C,long long *X,long long *Y)",
+          "code": "void read_input(int *N,int *M,long long *sx,long long *sy,char *D,long long *C,long long *X,long long *Y){\n    scanf(\"%d%d%lld%lld\", N,M,sx,sy);\n    for(int i=0;i<*N;i++) scanf(\"%lld%lld\", &X[i], &Y[i]);\n    for(int i=0;i<*M;i++) scanf(\" %c%lld\", &D[i], &C[i]);\n}\n"
+        },
+        {
+          "clause_id": "count_houses",
+          "signature": "int count_houses(int N,int M,long long sx,long long sy,char *D,long long *C,long long *X,long long *Y,long long *fx,long long *fy)",
+          "code": "int count_houses(int N,int M,long long sx,long long sy,char *D,long long *C,long long *X,long long *Y,long long *fx,long long *fy){\n    char *vis = (char*)calloc((size_t)N,1);\n    int visited=0;\n    for(int i=0;i<M;i++){\n        long long nx=sx, ny=sy;\n        if(D[i]=='U') ny+=C[i];\n        else if(D[i]=='D') ny-=C[i];\n        else if(D[i]=='L') nx-=C[i];\n        else if(D[i]=='R') nx+=C[i];\n        long long x1=sx, y1=sy, x2=nx, y2=ny;\n        for(int h=0; h<N; h++){\n            if(vis[h]) continue;\n            long long hx=X[h], hy=Y[h];\n            if(x1==x2 && hx==x1){\n                long long lo = y1<y2?y1:y2;\n                long long hi = y1<y2?y2:y1;\n                if(hy>=lo && hy<=hi){ vis[h]=1; visited++; }\n            } else if(y1==y2 && hy==y1){\n                long long lo = x1<x2?x1:x2;\n                long long hi = x1<x2?x2:x1;\n                if(hx>=lo && hx<=hi){ vis[h]=1; visited++; }\n            }\n        }\n        sx=nx; sy=ny;\n    }\n    free(vis);\n    *fx=sx; *fy=sy;\n    return visited;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long x,long long y,int cnt)",
+          "code": "void print_answer(long long x,long long y,int cnt){ printf(\"%lld %lld %d\\n\", x,y,cnt); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int N,M;\n    long long sx,sy;\n    char *D = (char*)malloc(300000);\n    long long *C = (long long*)malloc((size_t)300000*sizeof(long long));\n    long long *X = (long long*)malloc((size_t)300000*sizeof(long long));\n    long long *Y = (long long*)malloc((size_t)300000*sizeof(long long));\n    read_input(&N,&M,&sx,&sy,D,C,X,Y);\n    long long fx,fy;\n    int cnt = count_houses(N,M,sx,sy,D,C,X,Y,&fx,&fy);\n    print_answer(fx,fy,cnt);\n    free(D); free(C); free(X); free(Y);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,long long *sx,long long *sy,char *D,long long *C,long long *X,long long *Y)",
+          "code": "void read_input(int *N,int *M,long long *sx,long long *sy,char *D,long long *C,long long *X,long long *Y){\n    scanf(\"%d%d%lld%lld\", N,M,sx,sy);\n    for(int i=0;i<*N;i++) scanf(\"%lld%lld\", &X[i], &Y[i]);\n    for(int i=0;i<*M;i++) scanf(\" %c%lld\", &D[i], &C[i]);\n}\n"
+        },
+        {
+          "clause_id": "count_houses",
+          "signature": "int count_houses(int N,int M,long long sx,long long sy,char *D,long long *C,long long *X,long long *Y,long long *fx,long long *fy)",
+          "code": "int count_houses(int N,int M,long long sx,long long sy,char *D,long long *C,long long *X,long long *Y,long long *fx,long long *fy){\n    char *vis = (char*)calloc((size_t)N,1);\n    int visited=0;\n    for(int i=0;i<M;i++){\n        long long nx=sx, ny=sy;\n        if(D[i]=='U') ny+=C[i];\n        else if(D[i]=='D') ny-=C[i];\n        else if(D[i]=='L') nx-=C[i];\n        else if(D[i]=='R') nx+=C[i];\n        long long x1=sx, y1=sy, x2=nx, y2=ny;\n        for(int h=0; h<N; h++){\n            if(vis[h]) continue;\n            long long hx=X[h], hy=Y[h];\n            if(x1==x2 && hx==x1){\n                long long lo = y1<y2?y1:y2;\n                long long hi = y1<y2?y2:y1;\n                if(hy>=lo && hy<=hi){ vis[h]=1; visited++; }\n            } else if(y1==y2 && hy==y1){\n                long long lo = x1<x2?x1:x2;\n                long long hi = x1<x2?x2:x1;\n                if(hx>=lo && hx<=hi){ vis[h]=1; visited++; }\n            }\n        }\n        sx=nx; sy=ny;\n    }\n    free(vis);\n    *fx=sx; *fy=sy;\n    return visited;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long x,long long y,int cnt)",
+          "code": "void print_answer(long long x,long long y,int cnt){ printf(\"%lld %lld %d\\n\", x,y,cnt); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int N,M;\n    long long sx,sy;\n    char *D = (char*)malloc(300000);\n    long long *C = (long long*)malloc((size_t)300000*sizeof(long long));\n    long long *X = (long long*)malloc((size_t)300000*sizeof(long long));\n    long long *Y = (long long*)malloc((size_t)300000*sizeof(long long));\n    read_input(&N,&M,&sx,&sy,D,C,X,Y);\n    long long fx,fy;\n    int cnt = count_houses(N,M,sx,sy,D,C,X,Y,&fx,&fy);\n    print_answer(fx,fy,cnt);\n    free(D); free(C); free(X); free(Y);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,long long *sx,long long *sy,char *D,long long *C,long long *X,long long *Y)",
+          "code": "void read_input(int *N,int *M,long long *sx,long long *sy,char *D,long long *C,long long *X,long long *Y){\n    scanf(\"%d%d%lld%lld\", N,M,sx,sy);\n    for(int i=0;i<*N;i++) scanf(\"%lld%lld\", &X[i], &Y[i]);\n    for(int i=0;i<*M;i++) scanf(\" %c%lld\", &D[i], &C[i]);\n}\n"
+        },
+        {
+          "clause_id": "count_houses",
+          "signature": "int count_houses(int N,int M,long long sx,long long sy,char *D,long long *C,long long *X,long long *Y,long long *fx,long long *fy)",
+          "code": "int count_houses(int N,int M,long long sx,long long sy,char *D,long long *C,long long *X,long long *Y,long long *fx,long long *fy){\n    char *vis = (char*)calloc((size_t)N,1);\n    int visited=0;\n    for(int i=0;i<M;i++){\n        long long nx=sx, ny=sy;\n        if(D[i]=='U') ny+=C[i];\n        else if(D[i]=='D') ny-=C[i];\n        else if(D[i]=='L') nx-=C[i];\n        else if(D[i]=='R') nx+=C[i];\n        long long x1=sx, y1=sy, x2=nx, y2=ny;\n        for(int h=0; h<N; h++){\n            if(vis[h]) continue;\n            long long hx=X[h], hy=Y[h];\n            if(x1==x2 && hx==x1){\n                long long lo = y1<y2?y1:y2;\n                long long hi = y1<y2?y2:y1;\n                if(hy>=lo && hy<=hi){ vis[h]=1; visited++; }\n            } else if(y1==y2 && hy==y1){\n                long long lo = x1<x2?x1:x2;\n                long long hi = x1<x2?x2:x1;\n                if(hx>=lo && hx<=hi){ vis[h]=1; visited++; }\n            }\n        }\n        sx=nx; sy=ny;\n    }\n    free(vis);\n    *fx=sx; *fy=sy;\n    return visited;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long x,long long y,int cnt)",
+          "code": "void print_answer(long long x,long long y,int cnt){ printf(\"%lld %lld %d\\n\", x,y,cnt); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int N,M;\n    long long sx,sy;\n    char *D = (char*)malloc(300000);\n    long long *C = (long long*)malloc((size_t)300000*sizeof(long long));\n    long long *X = (long long*)malloc((size_t)300000*sizeof(long long));\n    long long *Y = (long long*)malloc((size_t)300000*sizeof(long long));\n    read_input(&N,&M,&sx,&sy,D,C,X,Y);\n    long long fx,fy;\n    int cnt = count_houses(N,M,sx,sy,D,C,X,Y,&fx,&fy);\n    print_answer(fx,fy,cnt);\n    free(D); free(C); free(X); free(Y);\n    return 0;\n}\n"
+        }
+      ]
+    }
+  ]
+}

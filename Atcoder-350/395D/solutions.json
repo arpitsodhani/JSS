@@ -1,0 +1,199 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nq",
+          "signature": "void read_nq(int *n, int *q)",
+          "code": "scanf(\"%d %d\", n, q);\n"
+        },
+        {
+          "clause_id": "init_maps",
+          "signature": "void init_maps(int n, int *nest_id, int *label_of, int *pigeon_id)",
+          "code": "for(int i=1;i<=n;i++){ nest_id[i]=i; label_of[i]=i; pigeon_id[i]=i; }\n"
+        },
+        {
+          "clause_id": "move_pigeon",
+          "signature": "void move_pigeon(int a, int b, const int *nest_id, int *pigeon_id)",
+          "code": "pigeon_id[a]=nest_id[b];\n"
+        },
+        {
+          "clause_id": "swap_nests",
+          "signature": "void swap_nests(int a, int b, int *nest_id, int *label_of)",
+          "code": "int ida=nest_id[a], idb=nest_id[b]; nest_id[a]=idb; nest_id[b]=ida; label_of[ida]=b; label_of[idb]=a;\n"
+        },
+        {
+          "clause_id": "query_pigeon",
+          "signature": "int query_pigeon(int a, const int *pigeon_id, const int *label_of)",
+          "code": "return label_of[pigeon_id[a]];\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,q; read_nq(&n,&q);\nint *nest_id=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *label_of=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *pigeon_id=(int*)malloc((size_t)(n+1)*sizeof(int));\ninit_maps(n,nest_id,label_of,pigeon_id);\nfor(int i=0;i<q;i++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int a,b; scanf(\"%d %d\", &a,&b); move_pigeon(a,b,nest_id,pigeon_id); }\n  else if(t==2){ int a,b; scanf(\"%d %d\", &a,&b); swap_nests(a,b,nest_id,label_of); }\n  else { int a; scanf(\"%d\", &a); int ans=query_pigeon(a,pigeon_id,label_of); printf(\"%d\\n\", ans); }\n}\nfree(nest_id); free(label_of); free(pigeon_id);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nq",
+          "signature": "void read_nq(int *n, int *q)",
+          "code": "scanf(\"%d %d\", n, q);\n"
+        },
+        {
+          "clause_id": "init_maps",
+          "signature": "void init_maps(int n, int *nest_id, int *label_of, int *pigeon_id)",
+          "code": "for(int i=1;i<=n;i++){ nest_id[i]=i; label_of[i]=i; pigeon_id[i]=i; }\n"
+        },
+        {
+          "clause_id": "move_pigeon",
+          "signature": "void move_pigeon(int a, int b, const int *nest_id, int *pigeon_id)",
+          "code": "pigeon_id[a]=nest_id[b];\n"
+        },
+        {
+          "clause_id": "swap_nests",
+          "signature": "void swap_nests(int a, int b, int *nest_id, int *label_of)",
+          "code": "int ida=nest_id[a], idb=nest_id[b]; nest_id[a]=idb; nest_id[b]=ida; label_of[ida]=b; label_of[idb]=a;\n"
+        },
+        {
+          "clause_id": "query_pigeon",
+          "signature": "int query_pigeon(int a, const int *pigeon_id, const int *label_of)",
+          "code": "return label_of[pigeon_id[a]];\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,q; read_nq(&n,&q);\nint *nest_id=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *label_of=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *pigeon_id=(int*)malloc((size_t)(n+1)*sizeof(int));\ninit_maps(n,nest_id,label_of,pigeon_id);\nfor(int i=0;i<q;i++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int a,b; scanf(\"%d %d\", &a,&b); move_pigeon(a,b,nest_id,pigeon_id); }\n  else if(t==2){ int a,b; scanf(\"%d %d\", &a,&b); swap_nests(a,b,nest_id,label_of); }\n  else { int a; scanf(\"%d\", &a); int ans=query_pigeon(a,pigeon_id,label_of); printf(\"%d\\n\", ans); }\n}\nfree(nest_id); free(label_of); free(pigeon_id);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nq",
+          "signature": "void read_nq(int *n, int *q)",
+          "code": "scanf(\"%d %d\", n, q);\n"
+        },
+        {
+          "clause_id": "init_maps",
+          "signature": "void init_maps(int n, int *nest_id, int *label_of, int *pigeon_id)",
+          "code": "for(int i=1;i<=n;i++){ nest_id[i]=i; label_of[i]=i; pigeon_id[i]=i; }\n"
+        },
+        {
+          "clause_id": "move_pigeon",
+          "signature": "void move_pigeon(int a, int b, const int *nest_id, int *pigeon_id)",
+          "code": "pigeon_id[a]=nest_id[b];\n"
+        },
+        {
+          "clause_id": "swap_nests",
+          "signature": "void swap_nests(int a, int b, int *nest_id, int *label_of)",
+          "code": "int ida=nest_id[a], idb=nest_id[b]; nest_id[a]=idb; nest_id[b]=ida; label_of[ida]=b; label_of[idb]=a;\n"
+        },
+        {
+          "clause_id": "query_pigeon",
+          "signature": "int query_pigeon(int a, const int *pigeon_id, const int *label_of)",
+          "code": "return label_of[pigeon_id[a]];\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,q; read_nq(&n,&q);\nint *nest_id=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *label_of=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *pigeon_id=(int*)malloc((size_t)(n+1)*sizeof(int));\ninit_maps(n,nest_id,label_of,pigeon_id);\nfor(int i=0;i<q;i++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int a,b; scanf(\"%d %d\", &a,&b); move_pigeon(a,b,nest_id,pigeon_id); }\n  else if(t==2){ int a,b; scanf(\"%d %d\", &a,&b); swap_nests(a,b,nest_id,label_of); }\n  else { int a; scanf(\"%d\", &a); int ans=query_pigeon(a,pigeon_id,label_of); printf(\"%d\\n\", ans); }\n}\nfree(nest_id); free(label_of); free(pigeon_id);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nq",
+          "signature": "void read_nq(int *n, int *q)",
+          "code": "scanf(\"%d %d\", n, q);\n"
+        },
+        {
+          "clause_id": "init_maps",
+          "signature": "void init_maps(int n, int *nest_id, int *label_of, int *pigeon_id)",
+          "code": "for(int i=1;i<=n;i++){ nest_id[i]=i; label_of[i]=i; pigeon_id[i]=i; }\n"
+        },
+        {
+          "clause_id": "move_pigeon",
+          "signature": "void move_pigeon(int a, int b, const int *nest_id, int *pigeon_id)",
+          "code": "pigeon_id[a]=nest_id[b];\n"
+        },
+        {
+          "clause_id": "swap_nests",
+          "signature": "void swap_nests(int a, int b, int *nest_id, int *label_of)",
+          "code": "int ida=nest_id[a], idb=nest_id[b]; nest_id[a]=idb; nest_id[b]=ida; label_of[ida]=b; label_of[idb]=a;\n"
+        },
+        {
+          "clause_id": "query_pigeon",
+          "signature": "int query_pigeon(int a, const int *pigeon_id, const int *label_of)",
+          "code": "return label_of[pigeon_id[a]];\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,q; read_nq(&n,&q);\nint *nest_id=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *label_of=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *pigeon_id=(int*)malloc((size_t)(n+1)*sizeof(int));\ninit_maps(n,nest_id,label_of,pigeon_id);\nfor(int i=0;i<q;i++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int a,b; scanf(\"%d %d\", &a,&b); move_pigeon(a,b,nest_id,pigeon_id); }\n  else if(t==2){ int a,b; scanf(\"%d %d\", &a,&b); swap_nests(a,b,nest_id,label_of); }\n  else { int a; scanf(\"%d\", &a); int ans=query_pigeon(a,pigeon_id,label_of); printf(\"%d\\n\", ans); }\n}\nfree(nest_id); free(label_of); free(pigeon_id);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nq",
+          "signature": "void read_nq(int *n, int *q)",
+          "code": "scanf(\"%d %d\", n, q);\n"
+        },
+        {
+          "clause_id": "init_maps",
+          "signature": "void init_maps(int n, int *nest_id, int *label_of, int *pigeon_id)",
+          "code": "for(int i=1;i<=n;i++){ nest_id[i]=i; label_of[i]=i; pigeon_id[i]=i; }\n"
+        },
+        {
+          "clause_id": "move_pigeon",
+          "signature": "void move_pigeon(int a, int b, const int *nest_id, int *pigeon_id)",
+          "code": "pigeon_id[a]=nest_id[b];\n"
+        },
+        {
+          "clause_id": "swap_nests",
+          "signature": "void swap_nests(int a, int b, int *nest_id, int *label_of)",
+          "code": "int ida=nest_id[a], idb=nest_id[b]; nest_id[a]=idb; nest_id[b]=ida; label_of[ida]=b; label_of[idb]=a;\n"
+        },
+        {
+          "clause_id": "query_pigeon",
+          "signature": "int query_pigeon(int a, const int *pigeon_id, const int *label_of)",
+          "code": "return label_of[pigeon_id[a]];\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,q; read_nq(&n,&q);\nint *nest_id=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *label_of=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *pigeon_id=(int*)malloc((size_t)(n+1)*sizeof(int));\ninit_maps(n,nest_id,label_of,pigeon_id);\nfor(int i=0;i<q;i++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int a,b; scanf(\"%d %d\", &a,&b); move_pigeon(a,b,nest_id,pigeon_id); }\n  else if(t==2){ int a,b; scanf(\"%d %d\", &a,&b); swap_nests(a,b,nest_id,label_of); }\n  else { int a; scanf(\"%d\", &a); int ans=query_pigeon(a,pigeon_id,label_of); printf(\"%d\\n\", ans); }\n}\nfree(nest_id); free(label_of); free(pigeon_id);\nreturn 0; }\n"
+        }
+      ]
+    }
+  ]
+}

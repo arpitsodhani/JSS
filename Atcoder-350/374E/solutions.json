@@ -1,0 +1,220 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "generate_primes_up_to",
+          "signature": "int generate_primes_up_to(int n, int *primes)",
+          "implementations": [
+            {
+              "code": "int generate_primes_up_to(int n, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    for (int i = 2; i * i <= n; i++) {\n        if (is_prime[i]) {\n            for (int j = i * i; j <= n; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    \n    int count = 0;\n    for (int i = 2; i <= n; i++) {\n        if (is_prime[i]) primes[count++] = i;\n    }\n    return count;\n}"
+            },
+            {
+              "code": "int generate_primes_up_to(int n, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    for (int i = 2; i * i <= n; i++) {\n        if (is_prime[i]) {\n            for (int j = i * i; j <= n; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    \n    int count = 0;\n    for (int i = 2; i <= n; i++) {\n        if (is_prime[i]) primes[count++] = i;\n    }\n    return count;\n}"
+            },
+            {
+              "code": "int generate_primes_up_to(int n, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    for (int i = 2; i * i <= n; i++) {\n        if (is_prime[i]) {\n            for (int j = i * i; j <= n; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    \n    int count = 0;\n    for (int i = 2; i <= n; i++) {\n        if (is_prime[i]) primes[count++] = i;\n    }\n    return count;\n}"
+            },
+            {
+              "code": "int generate_primes_up_to(int n, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    for (int i = 2; i * i <= n; i++) {\n        if (is_prime[i]) {\n            for (int j = i * i; j <= n; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    \n    int count = 0;\n    for (int i = 2; i <= n; i++) {\n        if (is_prime[i]) primes[count++] = i;\n    }\n    return count;\n}"
+            },
+            {
+              "code": "int generate_primes_up_to(int n, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    for (int i = 2; i * i <= n; i++) {\n        if (is_prime[i]) {\n            for (int j = i * i; j <= n; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    \n    int count = 0;\n    for (int i = 2; i <= n; i++) {\n        if (is_prime[i]) primes[count++] = i;\n    }\n    return count;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "compute_prime_exponent_factorial",
+          "signature": "long long compute_prime_exponent_factorial(long long n, long long p)",
+          "implementations": [
+            {
+              "code": "long long compute_prime_exponent_factorial(long long n, long long p) {\n    long long exponent = 0;\n    long long power = p;\n    while (power <= n) {\n        exponent += n / power;\n        power *= p;\n    }\n    return exponent;\n}"
+            },
+            {
+              "code": "long long compute_prime_exponent_factorial(long long n, long long p) {\n    long long exponent = 0;\n    long long power = p;\n    while (power <= n) {\n        exponent += n / power;\n        power *= p;\n    }\n    return exponent;\n}"
+            },
+            {
+              "code": "long long compute_prime_exponent_factorial(long long n, long long p) {\n    long long exponent = 0;\n    long long power = p;\n    while (power <= n) {\n        exponent += n / power;\n        power *= p;\n    }\n    return exponent;\n}"
+            },
+            {
+              "code": "long long compute_prime_exponent_factorial(long long n, long long p) {\n    long long exponent = 0;\n    long long power = p;\n    while (power <= n) {\n        exponent += n / power;\n        power *= p;\n    }\n    return exponent;\n}"
+            },
+            {
+              "code": "long long compute_prime_exponent_factorial(long long n, long long p) {\n    long long exponent = 0;\n    long long power = p;\n    while (power <= n) {\n        exponent += n / power;\n        power *= p;\n    }\n    return exponent;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "factorize_factorial",
+          "signature": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents)",
+          "implementations": [
+            {
+              "code": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents) {\n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        exponents[i] = compute_prime_exponent_factorial(n, primes[i]);\n    }\n}"
+            },
+            {
+              "code": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents) {\n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        exponents[i] = compute_prime_exponent_factorial(n, primes[i]);\n    }\n}"
+            },
+            {
+              "code": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents) {\n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        exponents[i] = compute_prime_exponent_factorial(n, primes[i]);\n    }\n}"
+            },
+            {
+              "code": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents) {\n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        exponents[i] = compute_prime_exponent_factorial(n, primes[i]);\n    }\n}"
+            },
+            {
+              "code": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents) {\n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        exponents[i] = compute_prime_exponent_factorial(n, primes[i]);\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "sieve_primes_optimized",
+          "signature": "int sieve_primes_optimized(int limit, int *primes)",
+          "implementations": [
+            {
+              "code": "int sieve_primes_optimized(int limit, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= limit; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    int count = 0;\n    for (int i = 2; i <= limit; i++) {\n        if (is_prime[i]) {\n            primes[count++] = i;\n            for (int j = i * 2; j <= limit; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    return count;\n}"
+            },
+            {
+              "code": "int sieve_primes_optimized(int limit, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= limit; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    int count = 0;\n    for (int i = 2; i <= limit; i++) {\n        if (is_prime[i]) {\n            primes[count++] = i;\n            for (int j = i * 2; j <= limit; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    return count;\n}"
+            },
+            {
+              "code": "int sieve_primes_optimized(int limit, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= limit; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    int count = 0;\n    for (int i = 2; i <= limit; i++) {\n        if (is_prime[i]) {\n            primes[count++] = i;\n            for (int j = i * 2; j <= limit; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    return count;\n}"
+            },
+            {
+              "code": "int sieve_primes_optimized(int limit, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= limit; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    int count = 0;\n    for (int i = 2; i <= limit; i++) {\n        if (is_prime[i]) {\n            primes[count++] = i;\n            for (int j = i * 2; j <= limit; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    return count;\n}"
+            },
+            {
+              "code": "int sieve_primes_optimized(int limit, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= limit; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    int count = 0;\n    for (int i = 2; i <= limit; i++) {\n        if (is_prime[i]) {\n            primes[count++] = i;\n            for (int j = i * 2; j <= limit; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    return count;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    long long n;\n    int primes[100005];\n    long long exponents[100005] = {0};\n    scanf(\"%lld\", &n);\n    \n    int prime_count = generate_primes_up_to(n, primes);\n    factorize_factorial(n, primes, prime_count, exponents);\n    \n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        if (exponents[i] > 0) {\n            printf(\"%d^%lld \", primes[i], exponents[i]);\n        }\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n;\n    int primes[100005];\n    long long exponents[100005] = {0};\n    scanf(\"%lld\", &n);\n    \n    int prime_count = generate_primes_up_to(n, primes);\n    factorize_factorial(n, primes, prime_count, exponents);\n    \n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        if (exponents[i] > 0) {\n            printf(\"%d^%lld \", primes[i], exponents[i]);\n        }\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n;\n    int primes[100005];\n    long long exponents[100005] = {0};\n    scanf(\"%lld\", &n);\n    \n    int prime_count = generate_primes_up_to(n, primes);\n    factorize_factorial(n, primes, prime_count, exponents);\n    \n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        if (exponents[i] > 0) {\n            printf(\"%d^%lld \", primes[i], exponents[i]);\n        }\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n;\n    int primes[100005];\n    long long exponents[100005] = {0};\n    scanf(\"%lld\", &n);\n    \n    int prime_count = generate_primes_up_to(n, primes);\n    factorize_factorial(n, primes, prime_count, exponents);\n    \n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        if (exponents[i] > 0) {\n            printf(\"%d^%lld \", primes[i], exponents[i]);\n        }\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n;\n    int primes[100005];\n    long long exponents[100005] = {0};\n    scanf(\"%lld\", &n);\n    \n    int prime_count = generate_primes_up_to(n, primes);\n    factorize_factorial(n, primes, prime_count, exponents);\n    \n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        if (exponents[i] > 0) {\n            printf(\"%d^%lld \", primes[i], exponents[i]);\n        }\n    }\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "generate_primes_up_to",
+          "signature": "int generate_primes_up_to(int n, int *primes)",
+          "code": "int generate_primes_up_to(int n, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    for (int i = 2; i * i <= n; i++) {\n        if (is_prime[i]) {\n            for (int j = i * i; j <= n; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    \n    int count = 0;\n    for (int i = 2; i <= n; i++) {\n        if (is_prime[i]) primes[count++] = i;\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "compute_prime_exponent_factorial",
+          "signature": "long long compute_prime_exponent_factorial(long long n, long long p)",
+          "code": "long long compute_prime_exponent_factorial(long long n, long long p) {\n    long long exponent = 0;\n    long long power = p;\n    while (power <= n) {\n        exponent += n / power;\n        power *= p;\n    }\n    return exponent;\n}"
+        },
+        {
+          "clause_id": "factorize_factorial",
+          "signature": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents)",
+          "code": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents) {\n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        exponents[i] = compute_prime_exponent_factorial(n, primes[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    int primes[100005];\n    long long exponents[100005] = {0};\n    scanf(\"%lld\", &n);\n    \n    int prime_count = generate_primes_up_to(n, primes);\n    factorize_factorial(n, primes, prime_count, exponents);\n    \n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        if (exponents[i] > 0) {\n            printf(\"%d^%lld \", primes[i], exponents[i]);\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "generate_primes_up_to",
+          "signature": "int generate_primes_up_to(int n, int *primes)",
+          "code": "int generate_primes_up_to(int n, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    for (int i = 2; i * i <= n; i++) {\n        if (is_prime[i]) {\n            for (int j = i * i; j <= n; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    \n    int count = 0;\n    for (int i = 2; i <= n; i++) {\n        if (is_prime[i]) primes[count++] = i;\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "compute_prime_exponent_factorial",
+          "signature": "long long compute_prime_exponent_factorial(long long n, long long p)",
+          "code": "long long compute_prime_exponent_factorial(long long n, long long p) {\n    long long exponent = 0;\n    long long power = p;\n    while (power <= n) {\n        exponent += n / power;\n        power *= p;\n    }\n    return exponent;\n}"
+        },
+        {
+          "clause_id": "factorize_factorial",
+          "signature": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents)",
+          "code": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents) {\n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        exponents[i] = compute_prime_exponent_factorial(n, primes[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    int primes[100005];\n    long long exponents[100005] = {0};\n    scanf(\"%lld\", &n);\n    \n    int prime_count = generate_primes_up_to(n, primes);\n    factorize_factorial(n, primes, prime_count, exponents);\n    \n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        if (exponents[i] > 0) {\n            printf(\"%d^%lld \", primes[i], exponents[i]);\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "generate_primes_up_to",
+          "signature": "int generate_primes_up_to(int n, int *primes)",
+          "code": "int generate_primes_up_to(int n, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    for (int i = 2; i * i <= n; i++) {\n        if (is_prime[i]) {\n            for (int j = i * i; j <= n; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    \n    int count = 0;\n    for (int i = 2; i <= n; i++) {\n        if (is_prime[i]) primes[count++] = i;\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "compute_prime_exponent_factorial",
+          "signature": "long long compute_prime_exponent_factorial(long long n, long long p)",
+          "code": "long long compute_prime_exponent_factorial(long long n, long long p) {\n    long long exponent = 0;\n    long long power = p;\n    while (power <= n) {\n        exponent += n / power;\n        power *= p;\n    }\n    return exponent;\n}"
+        },
+        {
+          "clause_id": "factorize_factorial",
+          "signature": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents)",
+          "code": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents) {\n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        exponents[i] = compute_prime_exponent_factorial(n, primes[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    int primes[100005];\n    long long exponents[100005] = {0};\n    scanf(\"%lld\", &n);\n    \n    int prime_count = generate_primes_up_to(n, primes);\n    factorize_factorial(n, primes, prime_count, exponents);\n    \n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        if (exponents[i] > 0) {\n            printf(\"%d^%lld \", primes[i], exponents[i]);\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "generate_primes_up_to",
+          "signature": "int generate_primes_up_to(int n, int *primes)",
+          "code": "int generate_primes_up_to(int n, int *primes) {\n    int is_prime[100005];\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = is_prime[1] = 0;\n    \n    for (int i = 2; i * i <= n; i++) {\n        if (is_prime[i]) {\n            for (int j = i * i; j <= n; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    \n    int count = 0;\n    for (int i = 2; i <= n; i++) {\n        if (is_prime[i]) primes[count++] = i;\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "compute_prime_exponent_factorial",
+          "signature": "long long compute_prime_exponent_factorial(long long n, long long p)",
+          "code": "long long compute_prime_exponent_factorial(long long n, long long p) {\n    long long exponent = 0;\n    long long power = p;\n    while (power <= n) {\n        exponent += n / power;\n        power *= p;\n    }\n    return exponent;\n}"
+        },
+        {
+          "clause_id": "factorize_factorial",
+          "signature": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents)",
+          "code": "void factorize_factorial(long long n, int *primes, int prime_count, long long *exponents) {\n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        exponents[i] = compute_prime_exponent_factorial(n, primes[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    int primes[100005];\n    long long exponents[100005] = {0};\n    scanf(\"%lld\", &n);\n    \n    int prime_count = generate_primes_up_to(n, primes);\n    factorize_factorial(n, primes, prime_count, exponents);\n    \n    for (int i = 0; i < prime_count && primes[i] <= n; i++) {\n        if (exponents[i] > 0) {\n            printf(\"%d^%lld \", primes[i], exponents[i]);\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

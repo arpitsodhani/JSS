@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_segment_tree",
+          "signature": "void build_segment_tree(int *array, int *tree, int node, int start, int end)",
+          "code": "void build_segment_tree(int *array, int *tree, int node, int start, int end) {\n    if (start == end) {\n        tree[node] = array[start];\n    } else {\n        int mid = (start + end) / 2;\n        build_segment_tree(array, tree, 2*node, start, mid);\n        build_segment_tree(array, tree, 2*node+1, mid+1, end);\n        tree[node] = tree[2*node] < tree[2*node+1] ? tree[2*node] : tree[2*node+1];\n    }\n}"
+        },
+        {
+          "clause_id": "query_range_minimum",
+          "signature": "int query_range_minimum(int *tree, int node, int start, int end, int left, int right)",
+          "code": "int query_range_minimum(int *tree, int node, int start, int end, int left, int right) {\n    if (right < start || end < left) return 1000000000;\n    if (left <= start && end <= right) return tree[node];\n    int mid = (start + end) / 2;\n    int left_min = query_range_minimum(tree, 2*node, start, mid, left, right);\n    int right_min = query_range_minimum(tree, 2*node+1, mid+1, end, left, right);\n    return left_min < right_min ? left_min : right_min;\n}"
+        },
+        {
+          "clause_id": "update_segment_tree_point",
+          "signature": "void update_segment_tree_point(int *tree, int node, int start, int end, int idx, int value)",
+          "code": "void update_segment_tree_point(int *tree, int node, int start, int end, int idx, int value) {\n    if (start == end) {\n        tree[node] = value;\n    } else {\n        int mid = (start + end) / 2;\n        if (idx <= mid) {\n            update_segment_tree_point(tree, 2*node, start, mid, idx, value);\n        } else {\n            update_segment_tree_point(tree, 2*node+1, mid+1, end, idx, value);\n        }\n        tree[node] = tree[2*node] < tree[2*node+1] ? tree[2*node] : tree[2*node+1];\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, array[100005], tree[400005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    build_segment_tree(array, tree, 1, 0, n-1);\n    \n    for (int i = 0; i < q; i++) {\n        int type, a, b;\n        scanf(\"%d %d %d\", &type, &a, &b);\n        if (type == 1) {\n            update_segment_tree_point(tree, 1, 0, n-1, a, b);\n        } else {\n            printf(\"%d\\n\", query_range_minimum(tree, 1, 0, n-1, a, b));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_segment_tree",
+          "signature": "void build_segment_tree(int *array, int *tree, int node, int start, int end)",
+          "code": "void build_segment_tree(int *array, int *tree, int node, int start, int end) {\n    if (start == end) {\n        tree[node] = array[start];\n    } else {\n        int mid = (start + end) / 2;\n        build_segment_tree(array, tree, 2*node, start, mid);\n        build_segment_tree(array, tree, 2*node+1, mid+1, end);\n        tree[node] = tree[2*node] < tree[2*node+1] ? tree[2*node] : tree[2*node+1];\n    }\n}"
+        },
+        {
+          "clause_id": "query_range_minimum",
+          "signature": "int query_range_minimum(int *tree, int node, int start, int end, int left, int right)",
+          "code": "int query_range_minimum(int *tree, int node, int start, int end, int left, int right) {\n    if (right < start || end < left) return 1000000000;\n    if (left <= start && end <= right) return tree[node];\n    int mid = (start + end) / 2;\n    int left_min = query_range_minimum(tree, 2*node, start, mid, left, right);\n    int right_min = query_range_minimum(tree, 2*node+1, mid+1, end, left, right);\n    return left_min < right_min ? left_min : right_min;\n}"
+        },
+        {
+          "clause_id": "update_segment_tree_point",
+          "signature": "void update_segment_tree_point(int *tree, int node, int start, int end, int idx, int value)",
+          "code": "void update_segment_tree_point(int *tree, int node, int start, int end, int idx, int value) {\n    if (start == end) {\n        tree[node] = value;\n    } else {\n        int mid = (start + end) / 2;\n        if (idx <= mid) {\n            update_segment_tree_point(tree, 2*node, start, mid, idx, value);\n        } else {\n            update_segment_tree_point(tree, 2*node+1, mid+1, end, idx, value);\n        }\n        tree[node] = tree[2*node] < tree[2*node+1] ? tree[2*node] : tree[2*node+1];\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, array[100005], tree[400005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    build_segment_tree(array, tree, 1, 0, n-1);\n    \n    for (int i = 0; i < q; i++) {\n        int type, a, b;\n        scanf(\"%d %d %d\", &type, &a, &b);\n        if (type == 1) {\n            update_segment_tree_point(tree, 1, 0, n-1, a, b);\n        } else {\n            printf(\"%d\\n\", query_range_minimum(tree, 1, 0, n-1, a, b));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_segment_tree",
+          "signature": "void build_segment_tree(int *array, int *tree, int node, int start, int end)",
+          "code": "void build_segment_tree(int *array, int *tree, int node, int start, int end) {\n    if (start == end) {\n        tree[node] = array[start];\n    } else {\n        int mid = (start + end) / 2;\n        build_segment_tree(array, tree, 2*node, start, mid);\n        build_segment_tree(array, tree, 2*node+1, mid+1, end);\n        tree[node] = tree[2*node] < tree[2*node+1] ? tree[2*node] : tree[2*node+1];\n    }\n}"
+        },
+        {
+          "clause_id": "query_range_minimum",
+          "signature": "int query_range_minimum(int *tree, int node, int start, int end, int left, int right)",
+          "code": "int query_range_minimum(int *tree, int node, int start, int end, int left, int right) {\n    if (right < start || end < left) return 1000000000;\n    if (left <= start && end <= right) return tree[node];\n    int mid = (start + end) / 2;\n    int left_min = query_range_minimum(tree, 2*node, start, mid, left, right);\n    int right_min = query_range_minimum(tree, 2*node+1, mid+1, end, left, right);\n    return left_min < right_min ? left_min : right_min;\n}"
+        },
+        {
+          "clause_id": "update_segment_tree_point",
+          "signature": "void update_segment_tree_point(int *tree, int node, int start, int end, int idx, int value)",
+          "code": "void update_segment_tree_point(int *tree, int node, int start, int end, int idx, int value) {\n    if (start == end) {\n        tree[node] = value;\n    } else {\n        int mid = (start + end) / 2;\n        if (idx <= mid) {\n            update_segment_tree_point(tree, 2*node, start, mid, idx, value);\n        } else {\n            update_segment_tree_point(tree, 2*node+1, mid+1, end, idx, value);\n        }\n        tree[node] = tree[2*node] < tree[2*node+1] ? tree[2*node] : tree[2*node+1];\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, array[100005], tree[400005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    build_segment_tree(array, tree, 1, 0, n-1);\n    \n    for (int i = 0; i < q; i++) {\n        int type, a, b;\n        scanf(\"%d %d %d\", &type, &a, &b);\n        if (type == 1) {\n            update_segment_tree_point(tree, 1, 0, n-1, a, b);\n        } else {\n            printf(\"%d\\n\", query_range_minimum(tree, 1, 0, n-1, a, b));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_segment_tree",
+          "signature": "void build_segment_tree(int *array, int *tree, int node, int start, int end)",
+          "code": "void build_segment_tree(int *array, int *tree, int node, int start, int end) {\n    if (start == end) {\n        tree[node] = array[start];\n    } else {\n        int mid = (start + end) / 2;\n        build_segment_tree(array, tree, 2*node, start, mid);\n        build_segment_tree(array, tree, 2*node+1, mid+1, end);\n        tree[node] = tree[2*node] < tree[2*node+1] ? tree[2*node] : tree[2*node+1];\n    }\n}"
+        },
+        {
+          "clause_id": "query_range_minimum",
+          "signature": "int query_range_minimum(int *tree, int node, int start, int end, int left, int right)",
+          "code": "int query_range_minimum(int *tree, int node, int start, int end, int left, int right) {\n    if (right < start || end < left) return 1000000000;\n    if (left <= start && end <= right) return tree[node];\n    int mid = (start + end) / 2;\n    int left_min = query_range_minimum(tree, 2*node, start, mid, left, right);\n    int right_min = query_range_minimum(tree, 2*node+1, mid+1, end, left, right);\n    return left_min < right_min ? left_min : right_min;\n}"
+        },
+        {
+          "clause_id": "update_segment_tree_point",
+          "signature": "void update_segment_tree_point(int *tree, int node, int start, int end, int idx, int value)",
+          "code": "void update_segment_tree_point(int *tree, int node, int start, int end, int idx, int value) {\n    if (start == end) {\n        tree[node] = value;\n    } else {\n        int mid = (start + end) / 2;\n        if (idx <= mid) {\n            update_segment_tree_point(tree, 2*node, start, mid, idx, value);\n        } else {\n            update_segment_tree_point(tree, 2*node+1, mid+1, end, idx, value);\n        }\n        tree[node] = tree[2*node] < tree[2*node+1] ? tree[2*node] : tree[2*node+1];\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, array[100005], tree[400005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    build_segment_tree(array, tree, 1, 0, n-1);\n    \n    for (int i = 0; i < q; i++) {\n        int type, a, b;\n        scanf(\"%d %d %d\", &type, &a, &b);\n        if (type == 1) {\n            update_segment_tree_point(tree, 1, 0, n-1, a, b);\n        } else {\n            printf(\"%d\\n\", query_range_minimum(tree, 1, 0, n-1, a, b));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_segment_tree",
+          "signature": "void build_segment_tree(int *array, int *tree, int node, int start, int end)",
+          "code": "void build_segment_tree(int *array, int *tree, int node, int start, int end) {\n    if (start == end) {\n        tree[node] = array[start];\n    } else {\n        int mid = (start + end) / 2;\n        build_segment_tree(array, tree, 2*node, start, mid);\n        build_segment_tree(array, tree, 2*node+1, mid+1, end);\n        tree[node] = tree[2*node] < tree[2*node+1] ? tree[2*node] : tree[2*node+1];\n    }\n}"
+        },
+        {
+          "clause_id": "query_range_minimum",
+          "signature": "int query_range_minimum(int *tree, int node, int start, int end, int left, int right)",
+          "code": "int query_range_minimum(int *tree, int node, int start, int end, int left, int right) {\n    if (right < start || end < left) return 1000000000;\n    if (left <= start && end <= right) return tree[node];\n    int mid = (start + end) / 2;\n    int left_min = query_range_minimum(tree, 2*node, start, mid, left, right);\n    int right_min = query_range_minimum(tree, 2*node+1, mid+1, end, left, right);\n    return left_min < right_min ? left_min : right_min;\n}"
+        },
+        {
+          "clause_id": "update_segment_tree_point",
+          "signature": "void update_segment_tree_point(int *tree, int node, int start, int end, int idx, int value)",
+          "code": "void update_segment_tree_point(int *tree, int node, int start, int end, int idx, int value) {\n    if (start == end) {\n        tree[node] = value;\n    } else {\n        int mid = (start + end) / 2;\n        if (idx <= mid) {\n            update_segment_tree_point(tree, 2*node, start, mid, idx, value);\n        } else {\n            update_segment_tree_point(tree, 2*node+1, mid+1, end, idx, value);\n        }\n        tree[node] = tree[2*node] < tree[2*node+1] ? tree[2*node] : tree[2*node+1];\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, array[100005], tree[400005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    build_segment_tree(array, tree, 1, 0, n-1);\n    \n    for (int i = 0; i < q; i++) {\n        int type, a, b;\n        scanf(\"%d %d %d\", &type, &a, &b);\n        if (type == 1) {\n            update_segment_tree_point(tree, 1, 0, n-1, a, b);\n        } else {\n            printf(\"%d\\n\", query_range_minimum(tree, 1, 0, n-1, a, b));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

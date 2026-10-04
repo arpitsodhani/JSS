@@ -1,0 +1,8 @@
+There are N buildings, building 1 , building 2 , \ldots , building N , arranged in this order in a straight line from west to east. Building 1 is the westernmost, and building N is the easternmost. The height of building i\ (1\leq i\leq N) is H_i . For a pair of integers (i,j)\ (1\leq i\lt j\leq N) , building j can be seen from building i if the following condition is satisfied. There is no building taller than building j between buildings i and j . In other words, there is no integer k\ (i\lt k\lt j) such that H_k > H_j . You are given Q queries. In the i -th query, given a pair of integers (l_i,r_i)\ (l_i\lt r_i) , find the number of buildings to the east of building r_i (that is, buildings r_i + 1 , r_i + 2 , \ldots , N ) that can be seen from both buildings l_i and r_i .
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= Q <= 2 * 10^5
+- 1 <= H_i <= 10^9
+- 1 <= L_i < R_i <= N
+- All input values are integers

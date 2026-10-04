@@ -1,0 +1,38 @@
+import sys
+
+
+# --- clause: read_input :: () -> tuple[int, int, int] ---
+def read_input():
+    raw = list(map(int, sys.stdin.buffer.read().split()))
+    return raw[0], raw[1], raw[2]
+
+
+# --- clause: fewest_bars :: (n: int, a: int, b: int) -> int ---
+def fewest_bars(n, a, b):
+    sides = [a, a, a, a, b, b]
+    champion = 6
+    for bits in range(6 ** 6):
+        code = bits
+        used = [0] * 6
+        for i in range(6):
+            used[code % 6] += sides[i]
+            code //= 6
+        if max(used) > n:
+            continue
+        bars = 0
+        for value in used:
+            if value:
+                bars += 1
+        if bars < champion:
+            champion = bars
+    return champion
+
+
+# --- clause: main :: () -> None ---
+def main():
+    n, a, b = read_input()
+    sys.stdout.write("%d\n" % fewest_bars(n, a, b))
+
+
+if __name__ == "__main__":
+    main()

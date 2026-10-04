@@ -1,0 +1,129 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "prog1_initialize_dp",
+          "signature": "void initialize_dp()",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nlong long n, a, x, y;\ndouble memo[1000006];\nint visited[1000006];\n\nvoid initialize_dp() {\n    memset(visited, 0, sizeof(visited));\n    memo[0] = 0.0;\n    visited[0] = 1;\n}\n\ndouble solve_dp(long long k) {\n    if (k == 0) return 0.0;\n    if (visited[k]) return memo[k];\n    \n    double choice1 = x + solve_dp(k / a);\n    \n    double choice2 = y;\n    for (int b = 1; b <= 6; b++) {\n        choice2 += solve_dp(k / b) / 6.0;\n    }\n    \n    double result = (choice1 < choice2) ? choice1 : choice2;\n    memo[k] = result;\n    visited[k] = 1;\n    return result;\n}\n\ndouble calculate_result() {\n    return solve_dp(n);\n}\n\nint main() {\n    scanf(\"%lld %lld %lld %lld\", &n, &a, &x, &y);\n    initialize_dp();\n    printf(\"%.10f\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog1_solve_dp",
+          "signature": "double solve_dp(long long)",
+          "code": "double solve_dp(long long k) {\n    if (k == 0) return 0.0;\n    if (visited[k]) return memo[k];\n    \n    double choice1 = x + solve_dp(k / a);\n    \n    double choice2 = y;\n    for (int b = 1; b <= 6; b++) {\n        choice2 += solve_dp(k / b) / 6.0;\n    }\n    \n    double result = (choice1 < choice2) ? choice1 : choice2;\n    memo[k] = result;\n    visited[k] = 1;\n    return result;\n}"
+        },
+        {
+          "clause_id": "prog1_calculate_result",
+          "signature": "double calculate_result()",
+          "code": "double calculate_result() {\n    return solve_dp(n);\n}"
+        },
+        {
+          "clause_id": "prog1_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%lld %lld %lld %lld\", &n, &a, &x, &y);\n    initialize_dp();\n    printf(\"%.10f\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "prog2_initialize_dp",
+          "signature": "void initialize_dp()",
+          "code": "#include <stdio.h>\n#include <string.h>\n\nlong long n, a, x, y;\ndouble dp[1000006];\nint computed[1000006];\n\nvoid initialize_dp() {\n    for (int i = 0; i <= 1000005; i++) {\n        computed[i] = 0;\n        dp[i] = 0.0;\n    }\n    dp[0] = 0.0;\n    computed[0] = 1;\n}\n\ndouble get_value(long long k);\n\ndouble solve_dp(long long k) {\n    if (computed[k]) return dp[k];\n    \n    double opt1 = x + get_value(k / a);\n    \n    double opt2 = y;\n    for (int dice = 1; dice <= 6; dice++) {\n        opt2 += get_value(k / dice) / 6.0;\n    }\n    \n    dp[k] = (opt1 < opt2) ? opt1 : opt2;\n    computed[k] = 1;\n    return dp[k];\n}\n\ndouble get_value(long long k) {\n    if (k == 0) return 0.0;\n    return solve_dp(k);\n}\n\ndouble calculate_result() {\n    return solve_dp(n);\n}\n\nint main() {\n    scanf(\"%lld %lld %lld %lld\", &n, &a, &x, &y);\n    initialize_dp();\n    printf(\"%.10f\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog2_solve_dp",
+          "signature": "double solve_dp(long long)",
+          "code": "double solve_dp(long long k) {\n    if (computed[k]) return dp[k];\n    \n    double opt1 = x + get_value(k / a);\n    \n    double opt2 = y;\n    for (int dice = 1; dice <= 6; dice++) {\n        opt2 += get_value(k / dice) / 6.0;\n    }\n    \n    dp[k] = (opt1 < opt2) ? opt1 : opt2;\n    computed[k] = 1;\n    return dp[k];\n}"
+        },
+        {
+          "clause_id": "prog2_calculate_result",
+          "signature": "double calculate_result()",
+          "code": "double calculate_result() {\n    return solve_dp(n);\n}"
+        },
+        {
+          "clause_id": "prog2_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%lld %lld %lld %lld\", &n, &a, &x, &y);\n    initialize_dp();\n    printf(\"%.10f\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "prog3_initialize_dp",
+          "signature": "void initialize_dp()",
+          "code": "#include <stdio.h>\n#include <string.h>\n\nlong long n, a, x, y;\ndouble cache[1000006];\nint cached[1000006];\n\nvoid initialize_dp() {\n    int i;\n    for (i = 0; i <= 1000000; i++) {\n        cached[i] = 0;\n    }\n    cache[0] = 0.0;\n    cached[0] = 1;\n}\n\ndouble solve_dp(long long val) {\n    if (val == 0) return 0.0;\n    if (cached[val]) return cache[val];\n    \n    double pay_cost = x + solve_dp(val / a);\n    \n    double roll_dice = y;\n    int b;\n    for (b = 1; b <= 6; b++) {\n        roll_dice += solve_dp(val / b) / 6.0;\n    }\n    \n    double best = pay_cost;\n    if (roll_dice < best) best = roll_dice;\n    \n    cache[val] = best;\n    cached[val] = 1;\n    return best;\n}\n\ndouble calculate_result() {\n    return solve_dp(n);\n}\n\nint main() {\n    scanf(\"%lld %lld %lld %lld\", &n, &a, &x, &y);\n    initialize_dp();\n    printf(\"%.10f\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog3_solve_dp",
+          "signature": "double solve_dp(long long)",
+          "code": "double solve_dp(long long val) {\n    if (val == 0) return 0.0;\n    if (cached[val]) return cache[val];\n    \n    double pay_cost = x + solve_dp(val / a);\n    \n    double roll_dice = y;\n    int b;\n    for (b = 1; b <= 6; b++) {\n        roll_dice += solve_dp(val / b) / 6.0;\n    }\n    \n    double best = pay_cost;\n    if (roll_dice < best) best = roll_dice;\n    \n    cache[val] = best;\n    cached[val] = 1;\n    return best;\n}"
+        },
+        {
+          "clause_id": "prog3_calculate_result",
+          "signature": "double calculate_result()",
+          "code": "double calculate_result() {\n    return solve_dp(n);\n}"
+        },
+        {
+          "clause_id": "prog3_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%lld %lld %lld %lld\", &n, &a, &x, &y);\n    initialize_dp();\n    printf(\"%.10f\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "prog4_initialize_dp",
+          "signature": "void initialize_dp()",
+          "code": "#include <stdio.h>\n#include <string.h>\n\nlong long n, a, x, y;\ndouble mem[1000006];\nint done[1000006];\n\nvoid initialize_dp() {\n    memset(done, 0, sizeof(done));\n    memset(mem, 0, sizeof(mem));\n    done[0] = 1;\n}\n\ndouble solve_dp(long long num) {\n    if (num == 0) return 0.0;\n    if (done[num]) return mem[num];\n    \n    double path1 = x + solve_dp(num / a);\n    double path2 = y;\n    \n    for (int i = 1; i <= 6; i++) {\n        path2 += solve_dp(num / i) / 6.0;\n    }\n    \n    mem[num] = (path1 < path2) ? path1 : path2;\n    done[num] = 1;\n    return mem[num];\n}\n\ndouble calculate_result() {\n    return solve_dp(n);\n}\n\nint main() {\n    scanf(\"%lld %lld %lld %lld\", &n, &a, &x, &y);\n    initialize_dp();\n    printf(\"%.10f\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog4_solve_dp",
+          "signature": "double solve_dp(long long)",
+          "code": "double solve_dp(long long num) {\n    if (num == 0) return 0.0;\n    if (done[num]) return mem[num];\n    \n    double path1 = x + solve_dp(num / a);\n    double path2 = y;\n    \n    for (int i = 1; i <= 6; i++) {\n        path2 += solve_dp(num / i) / 6.0;\n    }\n    \n    mem[num] = (path1 < path2) ? path1 : path2;\n    done[num] = 1;\n    return mem[num];\n}"
+        },
+        {
+          "clause_id": "prog4_calculate_result",
+          "signature": "double calculate_result()",
+          "code": "double calculate_result() {\n    return solve_dp(n);\n}"
+        },
+        {
+          "clause_id": "prog4_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%lld %lld %lld %lld\", &n, &a, &x, &y);\n    initialize_dp();\n    printf(\"%.10f\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "prog5_initialize_dp",
+          "signature": "void initialize_dp()",
+          "code": "#include <stdio.h>\n#include <string.h>\n\nlong long n, a, x, y;\ndouble table[1000006];\nint ready[1000006];\n\nvoid initialize_dp() {\n    for (int idx = 0; idx <= 1000000; idx++) {\n        ready[idx] = 0;\n        table[idx] = 0.0;\n    }\n    table[0] = 0.0;\n    ready[0] = 1;\n}\n\ndouble solve_dp(long long state) {\n    if (state == 0) return 0.0;\n    if (ready[state]) return table[state];\n    \n    double action_a = x + solve_dp(state / a);\n    double action_b = y;\n    \n    for (int d = 1; d <= 6; d++) {\n        action_b += solve_dp(state / d) / 6.0;\n    }\n    \n    double min_cost = action_a;\n    if (action_b < min_cost) min_cost = action_b;\n    \n    table[state] = min_cost;\n    ready[state] = 1;\n    return min_cost;\n}\n\ndouble calculate_result() {\n    return solve_dp(n);\n}\n\nint main() {\n    scanf(\"%lld %lld %lld %lld\", &n, &a, &x, &y);\n    initialize_dp();\n    printf(\"%.10f\\n\", calculate_result());\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog5_solve_dp",
+          "signature": "double solve_dp(long long)",
+          "code": "double solve_dp(long long state) {\n    if (state == 0) return 0.0;\n    if (ready[state]) return table[state];\n    \n    double action_a = x + solve_dp(state / a);\n    double action_b = y;\n    \n    for (int d = 1; d <= 6; d++) {\n        action_b += solve_dp(state / d) / 6.0;\n    }\n    \n    double min_cost = action_a;\n    if (action_b < min_cost) min_cost = action_b;\n    \n    table[state] = min_cost;\n    ready[state] = 1;\n    return min_cost;\n}"
+        },
+        {
+          "clause_id": "prog5_calculate_result",
+          "signature": "double calculate_result()",
+          "code": "double calculate_result() {\n    return solve_dp(n);\n}"
+        },
+        {
+          "clause_id": "prog5_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%lld %lld %lld %lld\", &n, &a, &x, &y);\n    initialize_dp();\n    printf(\"%.10f\\n\", calculate_result());\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+There is an SNS used by N users, labeled with numbers from 1 to N . In this SNS, two users can become friends with each other. Friendship is bidirectional; if user X is a friend of user Y, user Y is always a friend of user X. Currently, there are M pairs of friendships on the SNS, with the i -th pair consisting of users A_i and B_i . Determine the maximum number of times the following operation can be performed: Operation: Choose three users X, Y, and Z such that X and Y are friends, Y and Z are friends, but X and Z are not. Make X and Z friends.
+
+**Constraints:**
+- 2 \leq N \leq 2\times 10^5
+- 0 \leq M \leq 2\times 10^5
+- 1\leq A_i < B_i \leq N
+- (A_i,B_i) distinct
+- integers

@@ -1,0 +1,5 @@
+For integers L and R (1 <= L <= R <= 10^18), count how many integers in [L, R] are "snake numbers". A snake number has at least two digits and its first digit is strictly greater than every other digit.
+
+**Constraints:**
+- 1 <= L <= R <= 10^18
+- All input values are integers

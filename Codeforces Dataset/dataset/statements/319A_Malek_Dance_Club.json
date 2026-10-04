@@ -1,0 +1,35 @@
+{
+  "contestId": 319,
+  "index": "A",
+  "problem_id": "319A",
+  "name": "Malek Dance Club",
+  "rating": 1600,
+  "tags": [
+    "combinatorics",
+    "math"
+  ],
+  "points": 500.0,
+  "solvedCount": 3038,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Malek Dance Club",
+  "legend": "As a tradition, every year before IOI all the members of Natalia Fan Club are invited to Malek Dance Club to have a fun night together. Malek Dance Club has 2n members and coincidentally Natalia Fan Club also has 2n members. Each member of MDC is assigned a unique id i from 0 to 2n - 1. The same holds for each member of NFC.\n\nOne of the parts of this tradition is one by one dance, where each member of MDC dances with a member of NFC. A dance pair is a pair of numbers (a, b) such that member a from MDC dances with member b from NFC.\n\nThe complexity of a pairs' assignment is the number of pairs of dancing pairs (a, b) and (c, d) such that a < c and b > d.\n\nYou are given a binary number of length n named x. We know that member i from MDC dances with member  from NFC. Your task is to calculate the complexity of this assignment modulo 1000000007 (109 + 7).\n\nExpression  denotes applying «XOR» to numbers x and y. This operation exists in all modern programming languages, for example, in C++ and Java it denotes as «^», in Pascal — «xor».",
+  "input_spec": "The first line of input contains a binary number x of lenght n, (1 ≤ n ≤ 100).\n\nThis number may contain leading zeros.",
+  "output_spec": "Print the complexity of the given dance assignent modulo 1000000007 (109 + 7).",
+  "note": "",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "11\n",
+      "output": "6"
+    },
+    {
+      "input": "01\n",
+      "output": "2"
+    },
+    {
+      "input": "1\n",
+      "output": "1"
+    }
+  ]
+}

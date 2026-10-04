@@ -1,0 +1,29 @@
+{
+  "contestId": 2002,
+  "index": "C",
+  "problem_id": "2002C",
+  "name": "Black Circles",
+  "rating": 1200,
+  "tags": [
+    "brute force",
+    "geometry",
+    "greedy",
+    "math"
+  ],
+  "points": 1000.0,
+  "solvedCount": 17959,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Black Circles",
+  "legend": "There are n circles on a two-dimensional plane. The i-th circle is centered at (xi,yi). Initially, all circles have a radius of 0.\n\nThe circles' radii increase at a rate of 1 unit per second.\n\nYou are currently at (xs,ys); your goal is to reach (xt,yt) without touching the circumference of any circle (including the moment you reach (xt,yt)). You can move in any direction you want. However, your speed is limited to 1 unit per second.\n\nPlease determine whether this is possible.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe first line of each test case contains a single integer n (1≤n≤105) — the number of circles.\n\nThe next n lines each contain two integers xi, yi (1≤xi,yi≤109) — the center of each circle.\n\nThe final line contains four integers xs, ys, xt, yt (1≤xs,ys,xt,yt≤109) — the coordinates of the starting point and the goal, respectively.\n\nIt is guaranteed that these n+2 points are distinct.\n\nIt is guaranteed that the sum of n over all testcases does not exceed 105.",
+  "output_spec": "For each test case, output YES if it is possible to reach the goal without touching the circle boundaries, and output NO otherwise.\n\nYou can output Yes and No in any case (for example, strings yEs, yes, Yes, and YES will be recognized as a positive response).",
+  "note": "In the first test case, a feasible way of movement is as follows.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "7\n3\n2 5\n2 14\n10 13\n4 9 9 7\n3\n10 11\n6 9\n12 12\n14 13 4 8\n1\n5 7\n12 6 11 13\n2\n1000000000 2\n2 1000000000\n1 1 2 2\n1\n999999998 1000000000\n999999999 999999999 1 1\n1\n1000000000 1\n1 1000000000 1 1\n10\n989237121 2397081\n206669655 527238537\n522705783 380636165\n532545346 320061691\n207818728 199485303\n884520552 315781807\n992311437 802563521\n205138355 324818663\n223575704 395073023\n281560523 236279118\n216941610 572010615 323956540 794523071\n",
+      "output": "YES\nNO\nYES\nYES\nYES\nNO\nYES"
+    }
+  ]
+}

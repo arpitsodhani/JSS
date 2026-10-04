@@ -1,0 +1,33 @@
+{
+  "contestId": 1278,
+  "index": "E",
+  "problem_id": "1278E",
+  "name": "Tests for problem D",
+  "rating": 2200,
+  "tags": [
+    "constructive algorithms",
+    "dfs and similar",
+    "divide and conquer",
+    "trees"
+  ],
+  "points": null,
+  "solvedCount": 2071,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Tests for problem D",
+  "legend": "We had a really tough time generating tests for problem D. In order to prepare strong tests, we had to solve the following problem.\n\nGiven an undirected labeled tree consisting of n vertices, find a set of segments such that:\n\nboth endpoints of each segment are integers from 1 to 2n, and each integer from 1 to 2n should appear as an endpoint of exactly one segment;\nall segments are non-degenerate;\nfor each pair (i,j) such that i≠j, i∈[1,n] and j∈[1,n], the vertices i and j are connected with an edge if and only if the segments i and j intersect, but neither segment i is fully contained in segment j, nor segment j is fully contained in segment i.\n\nCan you solve this problem too?",
+  "input_spec": "The first line contains one integer n (1≤n≤5⋅105) — the number of vertices in the tree.\n\nThen n−1 lines follow, each containing two integers xi and yi (1≤xi,yi≤n, xi≠yi) denoting the endpoints of the i-th edge.\n\nIt is guaranteed that the given graph is a tree.",
+  "output_spec": "Print n pairs of integers, the i-th pair should contain two integers li and ri (1≤li<ri≤2n) — the endpoints of the i-th segment. All 2n integers you print should be unique.\n\nIt is guaranteed that the answer always exists.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n1 2\n1 3\n3 4\n3 5\n2 6\n",
+      "output": "9 12\n7 10\n3 11\n1 5\n2 4\n6 8"
+    },
+    {
+      "input": "1\n",
+      "output": "1 2"
+    }
+  ]
+}

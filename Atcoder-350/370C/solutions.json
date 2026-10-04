@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "relax_edge_distance",
+          "signature": "int relax_edge_distance(long long *dist, int u, int v, int weight)",
+          "code": "int relax_edge_distance(long long *dist, int u, int v, int weight) {\n    if (dist[u] != LLONG_MAX && dist[u] + weight < dist[v]) {\n        dist[v] = dist[u] + weight;\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "detect_negative_cycle",
+          "signature": "int detect_negative_cycle(int n, int m, int *u, int *v, int *weight, long long *dist)",
+          "code": "int detect_negative_cycle(int n, int m, int *u, int *v, int *weight, long long *dist) {\n    for (int i = 0; i < m; i++) {\n        if (relax_edge_distance(dist, u[i], v[i], weight[i])) {\n            return 1;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_shortest_paths_bellman_ford",
+          "signature": "int compute_shortest_paths_bellman_ford(int n, int m, int *u, int *v, int *weight, int source, long long *dist)",
+          "code": "int compute_shortest_paths_bellman_ford(int n, int m, int *u, int *v, int *weight, int source, long long *dist) {\n    for (int i = 0; i < n; i++) {\n        dist[i] = LLONG_MAX;\n    }\n    dist[source] = 0;\n    \n    for (int iter = 0; iter < n - 1; iter++) {\n        for (int i = 0; i < m; i++) {\n            relax_edge_distance(dist, u[i], v[i], weight[i]);\n        }\n    }\n    \n    return detect_negative_cycle(n, m, u, v, weight, dist);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, source, u[10005], v[10005], weight[10005];\n    long long dist[1005];\n    scanf(\"%d %d %d\", &n, &m, &source);\n    source--;\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d %d\", &u[i], &v[i], &weight[i]);\n        u[i]--; v[i]--;\n    }\n    \n    if (compute_shortest_paths_bellman_ford(n, m, u, v, weight, source, dist)) {\n        printf(\"NEGATIVE CYCLE\\n\");\n    } else {\n        for (int i = 0; i < n; i++) {\n            if (dist[i] == LLONG_MAX) {\n                printf(\"INF\\n\");\n            } else {\n                printf(\"%lld\\n\", dist[i]);\n            }\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "relax_edge_distance",
+          "signature": "int relax_edge_distance(long long *dist, int u, int v, int weight)",
+          "code": "int relax_edge_distance(long long *dist, int u, int v, int weight) {\n    if (dist[u] != LLONG_MAX && dist[u] + weight < dist[v]) {\n        dist[v] = dist[u] + weight;\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "detect_negative_cycle",
+          "signature": "int detect_negative_cycle(int n, int m, int *u, int *v, int *weight, long long *dist)",
+          "code": "int detect_negative_cycle(int n, int m, int *u, int *v, int *weight, long long *dist) {\n    for (int i = 0; i < m; i++) {\n        if (relax_edge_distance(dist, u[i], v[i], weight[i])) {\n            return 1;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_shortest_paths_bellman_ford",
+          "signature": "int compute_shortest_paths_bellman_ford(int n, int m, int *u, int *v, int *weight, int source, long long *dist)",
+          "code": "int compute_shortest_paths_bellman_ford(int n, int m, int *u, int *v, int *weight, int source, long long *dist) {\n    for (int i = 0; i < n; i++) {\n        dist[i] = LLONG_MAX;\n    }\n    dist[source] = 0;\n    \n    for (int iter = 0; iter < n - 1; iter++) {\n        for (int i = 0; i < m; i++) {\n            relax_edge_distance(dist, u[i], v[i], weight[i]);\n        }\n    }\n    \n    return detect_negative_cycle(n, m, u, v, weight, dist);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, source, u[10005], v[10005], weight[10005];\n    long long dist[1005];\n    scanf(\"%d %d %d\", &n, &m, &source);\n    source--;\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d %d\", &u[i], &v[i], &weight[i]);\n        u[i]--; v[i]--;\n    }\n    \n    if (compute_shortest_paths_bellman_ford(n, m, u, v, weight, source, dist)) {\n        printf(\"NEGATIVE CYCLE\\n\");\n    } else {\n        for (int i = 0; i < n; i++) {\n            if (dist[i] == LLONG_MAX) {\n                printf(\"INF\\n\");\n            } else {\n                printf(\"%lld\\n\", dist[i]);\n            }\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "relax_edge_distance",
+          "signature": "int relax_edge_distance(long long *dist, int u, int v, int weight)",
+          "code": "int relax_edge_distance(long long *dist, int u, int v, int weight) {\n    if (dist[u] != LLONG_MAX && dist[u] + weight < dist[v]) {\n        dist[v] = dist[u] + weight;\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "detect_negative_cycle",
+          "signature": "int detect_negative_cycle(int n, int m, int *u, int *v, int *weight, long long *dist)",
+          "code": "int detect_negative_cycle(int n, int m, int *u, int *v, int *weight, long long *dist) {\n    for (int i = 0; i < m; i++) {\n        if (relax_edge_distance(dist, u[i], v[i], weight[i])) {\n            return 1;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_shortest_paths_bellman_ford",
+          "signature": "int compute_shortest_paths_bellman_ford(int n, int m, int *u, int *v, int *weight, int source, long long *dist)",
+          "code": "int compute_shortest_paths_bellman_ford(int n, int m, int *u, int *v, int *weight, int source, long long *dist) {\n    for (int i = 0; i < n; i++) {\n        dist[i] = LLONG_MAX;\n    }\n    dist[source] = 0;\n    \n    for (int iter = 0; iter < n - 1; iter++) {\n        for (int i = 0; i < m; i++) {\n            relax_edge_distance(dist, u[i], v[i], weight[i]);\n        }\n    }\n    \n    return detect_negative_cycle(n, m, u, v, weight, dist);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, source, u[10005], v[10005], weight[10005];\n    long long dist[1005];\n    scanf(\"%d %d %d\", &n, &m, &source);\n    source--;\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d %d\", &u[i], &v[i], &weight[i]);\n        u[i]--; v[i]--;\n    }\n    \n    if (compute_shortest_paths_bellman_ford(n, m, u, v, weight, source, dist)) {\n        printf(\"NEGATIVE CYCLE\\n\");\n    } else {\n        for (int i = 0; i < n; i++) {\n            if (dist[i] == LLONG_MAX) {\n                printf(\"INF\\n\");\n            } else {\n                printf(\"%lld\\n\", dist[i]);\n            }\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "relax_edge_distance",
+          "signature": "int relax_edge_distance(long long *dist, int u, int v, int weight)",
+          "code": "int relax_edge_distance(long long *dist, int u, int v, int weight) {\n    if (dist[u] != LLONG_MAX && dist[u] + weight < dist[v]) {\n        dist[v] = dist[u] + weight;\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "detect_negative_cycle",
+          "signature": "int detect_negative_cycle(int n, int m, int *u, int *v, int *weight, long long *dist)",
+          "code": "int detect_negative_cycle(int n, int m, int *u, int *v, int *weight, long long *dist) {\n    for (int i = 0; i < m; i++) {\n        if (relax_edge_distance(dist, u[i], v[i], weight[i])) {\n            return 1;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_shortest_paths_bellman_ford",
+          "signature": "int compute_shortest_paths_bellman_ford(int n, int m, int *u, int *v, int *weight, int source, long long *dist)",
+          "code": "int compute_shortest_paths_bellman_ford(int n, int m, int *u, int *v, int *weight, int source, long long *dist) {\n    for (int i = 0; i < n; i++) {\n        dist[i] = LLONG_MAX;\n    }\n    dist[source] = 0;\n    \n    for (int iter = 0; iter < n - 1; iter++) {\n        for (int i = 0; i < m; i++) {\n            relax_edge_distance(dist, u[i], v[i], weight[i]);\n        }\n    }\n    \n    return detect_negative_cycle(n, m, u, v, weight, dist);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, source, u[10005], v[10005], weight[10005];\n    long long dist[1005];\n    scanf(\"%d %d %d\", &n, &m, &source);\n    source--;\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d %d\", &u[i], &v[i], &weight[i]);\n        u[i]--; v[i]--;\n    }\n    \n    if (compute_shortest_paths_bellman_ford(n, m, u, v, weight, source, dist)) {\n        printf(\"NEGATIVE CYCLE\\n\");\n    } else {\n        for (int i = 0; i < n; i++) {\n            if (dist[i] == LLONG_MAX) {\n                printf(\"INF\\n\");\n            } else {\n                printf(\"%lld\\n\", dist[i]);\n            }\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "relax_edge_distance",
+          "signature": "int relax_edge_distance(long long *dist, int u, int v, int weight)",
+          "code": "int relax_edge_distance(long long *dist, int u, int v, int weight) {\n    if (dist[u] != LLONG_MAX && dist[u] + weight < dist[v]) {\n        dist[v] = dist[u] + weight;\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "detect_negative_cycle",
+          "signature": "int detect_negative_cycle(int n, int m, int *u, int *v, int *weight, long long *dist)",
+          "code": "int detect_negative_cycle(int n, int m, int *u, int *v, int *weight, long long *dist) {\n    for (int i = 0; i < m; i++) {\n        if (relax_edge_distance(dist, u[i], v[i], weight[i])) {\n            return 1;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_shortest_paths_bellman_ford",
+          "signature": "int compute_shortest_paths_bellman_ford(int n, int m, int *u, int *v, int *weight, int source, long long *dist)",
+          "code": "int compute_shortest_paths_bellman_ford(int n, int m, int *u, int *v, int *weight, int source, long long *dist) {\n    for (int i = 0; i < n; i++) {\n        dist[i] = LLONG_MAX;\n    }\n    dist[source] = 0;\n    \n    for (int iter = 0; iter < n - 1; iter++) {\n        for (int i = 0; i < m; i++) {\n            relax_edge_distance(dist, u[i], v[i], weight[i]);\n        }\n    }\n    \n    return detect_negative_cycle(n, m, u, v, weight, dist);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, source, u[10005], v[10005], weight[10005];\n    long long dist[1005];\n    scanf(\"%d %d %d\", &n, &m, &source);\n    source--;\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d %d\", &u[i], &v[i], &weight[i]);\n        u[i]--; v[i]--;\n    }\n    \n    if (compute_shortest_paths_bellman_ford(n, m, u, v, weight, source, dist)) {\n        printf(\"NEGATIVE CYCLE\\n\");\n    } else {\n        for (int i = 0; i < n; i++) {\n            if (dist[i] == LLONG_MAX) {\n                printf(\"INF\\n\");\n            } else {\n                printf(\"%lld\\n\", dist[i]);\n            }\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

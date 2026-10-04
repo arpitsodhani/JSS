@@ -1,0 +1,151 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s)",
+          "code": "scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "make",
+          "signature": "void make(char *s,char *out)",
+          "code": "out[0]=s[0]; strcpy(out+1,\"UPC\");\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205],out[205]; read_input(s); make(s,out); print_str(out); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s)",
+          "code": "scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "make",
+          "signature": "void make(char *s,char *out)",
+          "code": "out[0]=s[0]; strcpy(out+1,\"UPC\");\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205],out[205]; read_input(s); make(s,out); print_str(out); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s)",
+          "code": "scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "make",
+          "signature": "void make(char *s,char *out)",
+          "code": "out[0]=s[0]; strcpy(out+1,\"UPC\");\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205],out[205]; read_input(s); make(s,out); print_str(out); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s)",
+          "code": "scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "make",
+          "signature": "void make(char *s,char *out)",
+          "code": "out[0]=s[0]; strcpy(out+1,\"UPC\");\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205],out[205]; read_input(s); make(s,out); print_str(out); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s)",
+          "code": "scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "make",
+          "signature": "void make(char *s,char *out)",
+          "code": "out[0]=s[0]; strcpy(out+1,\"UPC\");\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205],out[205]; read_input(s); make(s,out); print_str(out); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "388A",
+  "total_programs": 5
+}

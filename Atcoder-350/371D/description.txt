@@ -1,0 +1,10 @@
+There are N villages on a number line. The i -th village is located at coordinate X_i , and has P_i villagers. Answer Q queries. The i -th query is in the following format: Given integers L_i and R_i , find the total number of villagers living in villages located between coordinates L_i and R_i , inclusive.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- -10^9 <= X_i <= 10^9
+- X_i < X_{i+1}
+- 1 <= P_i <= 10^9
+- 1 <= Q <= 2 * 10^5
+- -10^9 <= L_i <= R_i <= 10^9
+- All input values are integers

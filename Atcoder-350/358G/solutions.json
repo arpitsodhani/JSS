@@ -1,0 +1,123 @@
+{
+  "problem_id": "358G",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(int h, int w, int grid[][55], int *start_r, int *start_c)",
+          "code": "void read_grid(int h, int w, int grid[][55], int *start_r, int *start_c) { scanf(\"%d%d%d\", &h, &w, start_r); scanf(\"%d%d\", start_r, start_c); (*start_r)--; (*start_c)--; for(int i = 0; i < h; i++) { for(int j = 0; j < w; j++) { scanf(\"%d\", &grid[i][j]); } } }"
+        },
+        {
+          "clause_id": "simulate_movement",
+          "signature": "long long simulate_movement(int h, int w, int grid[][55], int sr, int sc, long long k)",
+          "code": "long long simulate_movement(int h, int w, int grid[][55], int sr, int sc, long long k) { int dr[] = {-1, 1, 0, 0}; int dc[] = {0, 0, -1, 1}; int r = sr, c = sc; long long total = grid[r][c]; long long moves = 0; int visited[55][55] = {0}; while(moves < k) { int best_r = r, best_c = c, best_val = -1; for(int d = 0; d < 4; d++) { int nr = r + dr[d], nc = c + dc[d]; if(nr >= 0 && nr < h && nc >= 0 && nc < w && grid[nr][nc] > best_val) { best_val = grid[nr][nc]; best_r = nr; best_c = nc; } } if(best_val <= grid[r][c]) break; r = best_r; c = best_c; total += grid[r][c]; moves++; } return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int h, w, grid[55][55], sr, sc; long long k; read_grid(h, w, grid, &sr, &sc); scanf(\"%lld\", &k); printf(\"%lld\\n\", simulate_movement(h, w, grid, sr, sc, k)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(int h, int w, int grid[][55], int *start_r, int *start_c)",
+          "code": "void read_grid(int h, int w, int grid[][55], int *start_r, int *start_c) { scanf(\"%d %d %d\", &h, &w, start_r); scanf(\"%d %d\", start_r, start_c); *start_r -= 1; *start_c -= 1; int i, j; for(i = 0; i < h; i++) { for(j = 0; j < w; j++) { scanf(\"%d\", &grid[i][j]); } } }"
+        },
+        {
+          "clause_id": "simulate_movement",
+          "signature": "long long simulate_movement(int h, int w, int grid[][55], int sr, int sc, long long k)",
+          "code": "long long simulate_movement(int h, int w, int grid[][55], int sr, int sc, long long k) { int dirs[4][2] = {{-1,0}, {1,0}, {0,-1}, {0,1}}; int row = sr, col = sc; long long fun = grid[row][col]; long long step = 0; while(step < k) { int next_r = row, next_c = col, max_fun = grid[row][col]; int d; for(d = 0; d < 4; d++) { int nr = row + dirs[d][0], nc = col + dirs[d][1]; if(nr >= 0 && nr < h && nc >= 0 && nc < w && grid[nr][nc] > max_fun) { max_fun = grid[nr][nc]; next_r = nr; next_c = nc; } } if(next_r == row && next_c == col) break; row = next_r; col = next_c; fun += grid[row][col]; step++; } return fun; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int h, w, matrix[55][55], r0, c0; long long k; read_grid(h, w, matrix, &r0, &c0); scanf(\"%lld\", &k); printf(\"%lld\\n\", simulate_movement(h, w, matrix, r0, c0, k)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(int h, int w, int grid[][55], int *start_r, int *start_c)",
+          "code": "void read_grid(int h, int w, int grid[][55], int *start_r, int *start_c) { scanf(\"%d%d%d\", &h, &w, start_r); scanf(\"%d%d\", start_r, start_c); *start_r = *start_r - 1; *start_c = *start_c - 1; for(int p = 0; p < h; p++) { for(int q = 0; q < w; q++) { scanf(\"%d\", &grid[p][q]); } } }"
+        },
+        {
+          "clause_id": "simulate_movement",
+          "signature": "long long simulate_movement(int h, int w, int grid[][55], int sr, int sc, long long k)",
+          "code": "long long simulate_movement(int h, int w, int grid[][55], int sr, int sc, long long k) { int delta_r[4] = {-1, 1, 0, 0}, delta_c[4] = {0, 0, -1, 1}; int pos_r = sr, pos_c = sc; long long collected = grid[pos_r][pos_c]; for(long long i = 0; i < k; i++) { int candidate_r = pos_r, candidate_c = pos_c, candidate_val = grid[pos_r][pos_c]; for(int dir = 0; dir < 4; dir++) { int new_r = pos_r + delta_r[dir], new_c = pos_c + delta_c[dir]; if(new_r >= 0 && new_r < h && new_c >= 0 && new_c < w && grid[new_r][new_c] > candidate_val) { candidate_val = grid[new_r][new_c]; candidate_r = new_r; candidate_c = new_c; } } if(candidate_r == pos_r && candidate_c == pos_c) break; pos_r = candidate_r; pos_c = candidate_c; collected += grid[pos_r][pos_c]; } return collected; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int h, w, cells[55][55], start_row, start_col; long long k; read_grid(h, w, cells, &start_row, &start_col); scanf(\"%lld\", &k); printf(\"%lld\\n\", simulate_movement(h, w, cells, start_row, start_col, k)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(int h, int w, int grid[][55], int *start_r, int *start_c)",
+          "code": "void read_grid(int h, int w, int grid[][55], int *start_r, int *start_c) { scanf(\"%d %d %d\", &h, &w, start_r); scanf(\"%d %d\", start_r, start_c); (*start_r)--; (*start_c)--; for(int a = 0; a < h; a++) { for(int b = 0; b < w; b++) { scanf(\"%d\", &grid[a][b]); } } }"
+        },
+        {
+          "clause_id": "simulate_movement",
+          "signature": "long long simulate_movement(int h, int w, int grid[][55], int sr, int sc, long long k)",
+          "code": "long long simulate_movement(int h, int w, int grid[][55], int sr, int sc, long long k) { int offsets[4][2] = {{-1,0}, {1,0}, {0,-1}, {0,1}}; int current_r = sr, current_c = sc; long long sum = grid[current_r][current_c]; long long count = 0; while(count < k) { int target_r = current_r, target_c = current_c, target_fun = grid[current_r][current_c]; for(int idx = 0; idx < 4; idx++) { int adj_r = current_r + offsets[idx][0], adj_c = current_c + offsets[idx][1]; if(adj_r >= 0 && adj_r < h && adj_c >= 0 && adj_c < w && grid[adj_r][adj_c] > target_fun) { target_fun = grid[adj_r][adj_c]; target_r = adj_r; target_c = adj_c; } } if(target_r == current_r && target_c == current_c) break; current_r = target_r; current_c = target_c; sum += grid[current_r][current_c]; count++; } return sum; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int h, w, fun_grid[55][55], initial_r, initial_c; long long k; read_grid(h, w, fun_grid, &initial_r, &initial_c); scanf(\"%lld\", &k); printf(\"%lld\\n\", simulate_movement(h, w, fun_grid, initial_r, initial_c, k)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(int h, int w, int grid[][55], int *start_r, int *start_c)",
+          "code": "void read_grid(int h, int w, int grid[][55], int *start_r, int *start_c) { scanf(\"%d%d%d\", &h, &w, start_r); scanf(\"%d%d\", start_r, start_c); *start_r = (*start_r) - 1; *start_c = (*start_c) - 1; for(int y = 0; y < h; y++) { for(int x = 0; x < w; x++) { scanf(\"%d\", &grid[y][x]); } } }"
+        },
+        {
+          "clause_id": "simulate_movement",
+          "signature": "long long simulate_movement(int h, int w, int grid[][55], int sr, int sc, long long k)",
+          "code": "long long simulate_movement(int h, int w, int grid[][55], int sr, int sc, long long k) { int move_r[] = {-1, 1, 0, 0}, move_c[] = {0, 0, -1, 1}; int loc_r = sr, loc_c = sc; long long total_fun = grid[loc_r][loc_c]; for(long long turn = 0; turn < k; turn++) { int best_r = loc_r, best_c = loc_c, best_value = grid[loc_r][loc_c]; for(int direction = 0; direction < 4; direction++) { int test_r = loc_r + move_r[direction], test_c = loc_c + move_c[direction]; if(test_r >= 0 && test_r < h && test_c >= 0 && test_c < w && grid[test_r][test_c] > best_value) { best_value = grid[test_r][test_c]; best_r = test_r; best_c = test_c; } } if(best_r == loc_r && best_c == loc_c) break; loc_r = best_r; loc_c = best_c; total_fun += grid[loc_r][loc_c]; } return total_fun; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int h, w, game_grid[55][55], origin_r, origin_c; long long k; read_grid(h, w, game_grid, &origin_r, &origin_c); scanf(\"%lld\", &k); printf(\"%lld\\n\", simulate_movement(h, w, game_grid, origin_r, origin_c, k)); return 0; }"
+        }
+      ]
+    }
+  ]
+}

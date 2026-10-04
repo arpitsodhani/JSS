@@ -1,0 +1,28 @@
+{
+  "problem_id": "394A",
+  "average_confidence": 0.9935714285714285,
+  "clauses": {
+    "read_input": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "filter_twos": {
+      "confidence": 0.9742857142857142,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "print_str": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    }
+  },
+  "total_clauses": 4,
+  "compile_success": true
+}

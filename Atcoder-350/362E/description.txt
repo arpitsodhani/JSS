@@ -1,0 +1,7 @@
+You are given a sequence A = (A_1, A_2, \dots, A_N) of length N . For each k = 1, 2, \dots, N , find the number, modulo 998244353 , of (not necessarily contiguous) subsequences of A of length k that are arithmetic sequences. Two subsequences are distinguished if they are taken from different positions, even if they are equal as sequences. What is a subsequence? A subsequence of a sequence A is a sequence obtained by deleting zero or more elements from A and arranging the remaining elements without changing the order.
+
+**Constraints:**
+- 1 <= N <= 80
+- 1 <= A_i <= 10^9
+- All A_i are distinct
+- All input values are integers

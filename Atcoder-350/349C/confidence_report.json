@@ -1,0 +1,69 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "check_airport",
+      "confidence": 1.0
+    },
+    {
+      "clause": "check_match",
+      "confidence": 1.0
+    },
+    {
+      "clause": "get_strings",
+      "confidence": 1.0
+    },
+    {
+      "clause": "input_data",
+      "confidence": 1.0
+    },
+    {
+      "clause": "is_airport_code",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "match_subsequence",
+      "confidence": 1.0
+    },
+    {
+      "clause": "output",
+      "confidence": 1.0
+    },
+    {
+      "clause": "output_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_yn",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_two_strings",
+      "confidence": 1.0
+    },
+    {
+      "clause": "scan_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "validate_code",
+      "confidence": 1.0
+    },
+    {
+      "clause": "write_ans",
+      "confidence": 1.0
+    }
+  ]
+}

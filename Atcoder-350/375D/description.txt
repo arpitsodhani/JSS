@@ -1,0 +1,4 @@
+You are given a string S consisting of uppercase English letters. Find the number of integer triples (i, j, k) satisfying both of the following conditions: 1 \leq i < j < k \leq |S| The length- 3 string formed by concatenating S_i , S_j , and S_k in this order is a palindrome. Here, |S| denotes the length of S , and S_x denotes the x -th character of S .
+
+**Constraints:**
+- S is a string of length between 1 and 2 * 10^5 consisting of uppercase English letters

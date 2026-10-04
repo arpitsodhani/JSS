@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "count_distinct_chars",
+          "code": "int count_distinct_chars(char *s) {\n    int seen[256] = {0};\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        char c = tolower(s[i]);\n        if (!seen[(unsigned char)c]) {\n            seen[(unsigned char)c] = 1;\n            count++;\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = count_distinct_chars(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "count_distinct_chars",
+          "code": "int count_distinct_chars(char *s) {\n    int seen[256] = {0};\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        char c = tolower(s[i]);\n        if (!seen[(unsigned char)c]) {\n            seen[(unsigned char)c] = 1;\n            count++;\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = count_distinct_chars(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "count_distinct_chars",
+          "code": "int count_distinct_chars(char *s) {\n    int seen[256] = {0};\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        char c = tolower(s[i]);\n        if (!seen[(unsigned char)c]) {\n            seen[(unsigned char)c] = 1;\n            count++;\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = count_distinct_chars(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "count_distinct_chars",
+          "code": "int count_distinct_chars(char *s) {\n    int seen[256] = {0};\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        char c = tolower(s[i]);\n        if (!seen[(unsigned char)c]) {\n            seen[(unsigned char)c] = 1;\n            count++;\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = count_distinct_chars(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "count_distinct_chars",
+          "code": "int count_distinct_chars(char *s) {\n    int seen[256] = {0};\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        char c = tolower(s[i]);\n        if (!seen[(unsigned char)c]) {\n            seen[(unsigned char)c] = 1;\n            count++;\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int result = count_distinct_chars(s);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>",
+    "<ctype.h>"
+  ]
+}

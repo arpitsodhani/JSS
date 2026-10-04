@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, long long *X, int *u, int *v)",
+          "code": "scanf(\"%d %d %lld\", n, m, X); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int n, int m, const int *u, const int *v, int **head1, int **to1, int **nx1, int **head2, int **to2, int **nx2)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *rhead=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nint *rto=(int*)malloc((size_t)m*sizeof(int));\nint *rnx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++){ head[i]=-1; rhead[i]=-1; }\nint ec=0, rc=0;\nfor(int i=0;i<m;i++){\n  int a=u[i], b=v[i];\n  to[ec]=b; nx[ec]=head[a]; head[a]=ec++;\n  rto[rc]=a; rnx[rc]=rhead[b]; rhead[b]=rc++;\n}\n*head1=head; *to1=to; *nx1=nx;\n*head2=rhead; *to2=rto; *nx2=rnx;\n"
+        },
+        {
+          "clause_id": "dijkstra",
+          "signature": "long long dijkstra(int n, const int *head, const int *to, const int *nx, const int *rhead, const int *rto, const int *rnx, long long X)",
+          "code": "int N2=2*n;\nlong long INF=4000000000000000000LL;\nlong long *dist=(long long*)malloc((size_t)N2*sizeof(long long));\nchar *vis=(char*)calloc((size_t)N2,1);\nfor(int i=0;i<N2;i++) dist[i]=INF;\ndist[0]=0;\nfor(;;){\n  int v=-1;\n  for(int i=0;i<N2;i++) if(!vis[i] && (v==-1 || dist[i]<dist[v])) v=i;\n  if(v==-1) break;\n  vis[v]=1;\n  int x=v%n; int s=v/n;\n  long long dv=dist[v];\n  // toggle\n  int vt=(1-s)*n + x;\n  if(dv+X < dist[vt]) dist[vt]=dv+X;\n  // move\n  const int *H = (s==0? head : rhead);\n  const int *T = (s==0? to : rto);\n  const int *NX = (s==0? nx : rnx);\n  for(int e=H[x]; e!=-1; e=NX[e]){\n    int y=T[e];\n    int u2=s*n+y;\n    if(dv+1 < dist[u2]) dist[u2]=dv+1;\n  }\n}\nlong long ans = dist[n-1];\nif(dist[n+(n-1)]<ans) ans=dist[n+(n-1)];\nfree(dist); free(vis);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; long long X; static int u[200005], v[200005];\nread_input(&n,&m,&X,u,v);\nint *head,*to,*nx,*rhead,*rto,*rnx;\nbuild_adj(n,m,u,v,&head,&to,&nx,&rhead,&rto,&rnx);\nlong long ans=dijkstra(n,head,to,nx,rhead,rto,rnx,X);\nprintf(\"%lld\\n\", ans);\nfree(head); free(to); free(nx); free(rhead); free(rto); free(rnx);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, long long *X, int *u, int *v)",
+          "code": "scanf(\"%d %d %lld\", n, m, X); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int n, int m, const int *u, const int *v, int **head1, int **to1, int **nx1, int **head2, int **to2, int **nx2)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *rhead=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nint *rto=(int*)malloc((size_t)m*sizeof(int));\nint *rnx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++){ head[i]=-1; rhead[i]=-1; }\nint ec=0, rc=0;\nfor(int i=0;i<m;i++){\n  int a=u[i], b=v[i];\n  to[ec]=b; nx[ec]=head[a]; head[a]=ec++;\n  rto[rc]=a; rnx[rc]=rhead[b]; rhead[b]=rc++;\n}\n*head1=head; *to1=to; *nx1=nx;\n*head2=rhead; *to2=rto; *nx2=rnx;\n"
+        },
+        {
+          "clause_id": "dijkstra",
+          "signature": "long long dijkstra(int n, const int *head, const int *to, const int *nx, const int *rhead, const int *rto, const int *rnx, long long X)",
+          "code": "int N2=2*n;\nlong long INF=4000000000000000000LL;\nlong long *dist=(long long*)malloc((size_t)N2*sizeof(long long));\nchar *vis=(char*)calloc((size_t)N2,1);\nfor(int i=0;i<N2;i++) dist[i]=INF;\ndist[0]=0;\nfor(;;){\n  int v=-1;\n  for(int i=0;i<N2;i++) if(!vis[i] && (v==-1 || dist[i]<dist[v])) v=i;\n  if(v==-1) break;\n  vis[v]=1;\n  int x=v%n; int s=v/n;\n  long long dv=dist[v];\n  // toggle\n  int vt=(1-s)*n + x;\n  if(dv+X < dist[vt]) dist[vt]=dv+X;\n  // move\n  const int *H = (s==0? head : rhead);\n  const int *T = (s==0? to : rto);\n  const int *NX = (s==0? nx : rnx);\n  for(int e=H[x]; e!=-1; e=NX[e]){\n    int y=T[e];\n    int u2=s*n+y;\n    if(dv+1 < dist[u2]) dist[u2]=dv+1;\n  }\n}\nlong long ans = dist[n-1];\nif(dist[n+(n-1)]<ans) ans=dist[n+(n-1)];\nfree(dist); free(vis);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; long long X; static int u[200005], v[200005];\nread_input(&n,&m,&X,u,v);\nint *head,*to,*nx,*rhead,*rto,*rnx;\nbuild_adj(n,m,u,v,&head,&to,&nx,&rhead,&rto,&rnx);\nlong long ans=dijkstra(n,head,to,nx,rhead,rto,rnx,X);\nprintf(\"%lld\\n\", ans);\nfree(head); free(to); free(nx); free(rhead); free(rto); free(rnx);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, long long *X, int *u, int *v)",
+          "code": "scanf(\"%d %d %lld\", n, m, X); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int n, int m, const int *u, const int *v, int **head1, int **to1, int **nx1, int **head2, int **to2, int **nx2)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *rhead=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nint *rto=(int*)malloc((size_t)m*sizeof(int));\nint *rnx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++){ head[i]=-1; rhead[i]=-1; }\nint ec=0, rc=0;\nfor(int i=0;i<m;i++){\n  int a=u[i], b=v[i];\n  to[ec]=b; nx[ec]=head[a]; head[a]=ec++;\n  rto[rc]=a; rnx[rc]=rhead[b]; rhead[b]=rc++;\n}\n*head1=head; *to1=to; *nx1=nx;\n*head2=rhead; *to2=rto; *nx2=rnx;\n"
+        },
+        {
+          "clause_id": "dijkstra",
+          "signature": "long long dijkstra(int n, const int *head, const int *to, const int *nx, const int *rhead, const int *rto, const int *rnx, long long X)",
+          "code": "int N2=2*n;\nlong long INF=4000000000000000000LL;\nlong long *dist=(long long*)malloc((size_t)N2*sizeof(long long));\nchar *vis=(char*)calloc((size_t)N2,1);\nfor(int i=0;i<N2;i++) dist[i]=INF;\ndist[0]=0;\nfor(;;){\n  int v=-1;\n  for(int i=0;i<N2;i++) if(!vis[i] && (v==-1 || dist[i]<dist[v])) v=i;\n  if(v==-1) break;\n  vis[v]=1;\n  int x=v%n; int s=v/n;\n  long long dv=dist[v];\n  // toggle\n  int vt=(1-s)*n + x;\n  if(dv+X < dist[vt]) dist[vt]=dv+X;\n  // move\n  const int *H = (s==0? head : rhead);\n  const int *T = (s==0? to : rto);\n  const int *NX = (s==0? nx : rnx);\n  for(int e=H[x]; e!=-1; e=NX[e]){\n    int y=T[e];\n    int u2=s*n+y;\n    if(dv+1 < dist[u2]) dist[u2]=dv+1;\n  }\n}\nlong long ans = dist[n-1];\nif(dist[n+(n-1)]<ans) ans=dist[n+(n-1)];\nfree(dist); free(vis);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; long long X; static int u[200005], v[200005];\nread_input(&n,&m,&X,u,v);\nint *head,*to,*nx,*rhead,*rto,*rnx;\nbuild_adj(n,m,u,v,&head,&to,&nx,&rhead,&rto,&rnx);\nlong long ans=dijkstra(n,head,to,nx,rhead,rto,rnx,X);\nprintf(\"%lld\\n\", ans);\nfree(head); free(to); free(nx); free(rhead); free(rto); free(rnx);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, long long *X, int *u, int *v)",
+          "code": "scanf(\"%d %d %lld\", n, m, X); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int n, int m, const int *u, const int *v, int **head1, int **to1, int **nx1, int **head2, int **to2, int **nx2)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *rhead=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nint *rto=(int*)malloc((size_t)m*sizeof(int));\nint *rnx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++){ head[i]=-1; rhead[i]=-1; }\nint ec=0, rc=0;\nfor(int i=0;i<m;i++){\n  int a=u[i], b=v[i];\n  to[ec]=b; nx[ec]=head[a]; head[a]=ec++;\n  rto[rc]=a; rnx[rc]=rhead[b]; rhead[b]=rc++;\n}\n*head1=head; *to1=to; *nx1=nx;\n*head2=rhead; *to2=rto; *nx2=rnx;\n"
+        },
+        {
+          "clause_id": "dijkstra",
+          "signature": "long long dijkstra(int n, const int *head, const int *to, const int *nx, const int *rhead, const int *rto, const int *rnx, long long X)",
+          "code": "int N2=2*n;\nlong long INF=4000000000000000000LL;\nlong long *dist=(long long*)malloc((size_t)N2*sizeof(long long));\nchar *vis=(char*)calloc((size_t)N2,1);\nfor(int i=0;i<N2;i++) dist[i]=INF;\ndist[0]=0;\nfor(;;){\n  int v=-1;\n  for(int i=0;i<N2;i++) if(!vis[i] && (v==-1 || dist[i]<dist[v])) v=i;\n  if(v==-1) break;\n  vis[v]=1;\n  int x=v%n; int s=v/n;\n  long long dv=dist[v];\n  // toggle\n  int vt=(1-s)*n + x;\n  if(dv+X < dist[vt]) dist[vt]=dv+X;\n  // move\n  const int *H = (s==0? head : rhead);\n  const int *T = (s==0? to : rto);\n  const int *NX = (s==0? nx : rnx);\n  for(int e=H[x]; e!=-1; e=NX[e]){\n    int y=T[e];\n    int u2=s*n+y;\n    if(dv+1 < dist[u2]) dist[u2]=dv+1;\n  }\n}\nlong long ans = dist[n-1];\nif(dist[n+(n-1)]<ans) ans=dist[n+(n-1)];\nfree(dist); free(vis);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; long long X; static int u[200005], v[200005];\nread_input(&n,&m,&X,u,v);\nint *head,*to,*nx,*rhead,*rto,*rnx;\nbuild_adj(n,m,u,v,&head,&to,&nx,&rhead,&rto,&rnx);\nlong long ans=dijkstra(n,head,to,nx,rhead,rto,rnx,X);\nprintf(\"%lld\\n\", ans);\nfree(head); free(to); free(nx); free(rhead); free(rto); free(rnx);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, long long *X, int *u, int *v)",
+          "code": "scanf(\"%d %d %lld\", n, m, X); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int n, int m, const int *u, const int *v, int **head1, int **to1, int **nx1, int **head2, int **to2, int **nx2)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *rhead=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)m*sizeof(int));\nint *nx=(int*)malloc((size_t)m*sizeof(int));\nint *rto=(int*)malloc((size_t)m*sizeof(int));\nint *rnx=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++){ head[i]=-1; rhead[i]=-1; }\nint ec=0, rc=0;\nfor(int i=0;i<m;i++){\n  int a=u[i], b=v[i];\n  to[ec]=b; nx[ec]=head[a]; head[a]=ec++;\n  rto[rc]=a; rnx[rc]=rhead[b]; rhead[b]=rc++;\n}\n*head1=head; *to1=to; *nx1=nx;\n*head2=rhead; *to2=rto; *nx2=rnx;\n"
+        },
+        {
+          "clause_id": "dijkstra",
+          "signature": "long long dijkstra(int n, const int *head, const int *to, const int *nx, const int *rhead, const int *rto, const int *rnx, long long X)",
+          "code": "int N2=2*n;\nlong long INF=4000000000000000000LL;\nlong long *dist=(long long*)malloc((size_t)N2*sizeof(long long));\nchar *vis=(char*)calloc((size_t)N2,1);\nfor(int i=0;i<N2;i++) dist[i]=INF;\ndist[0]=0;\nfor(;;){\n  int v=-1;\n  for(int i=0;i<N2;i++) if(!vis[i] && (v==-1 || dist[i]<dist[v])) v=i;\n  if(v==-1) break;\n  vis[v]=1;\n  int x=v%n; int s=v/n;\n  long long dv=dist[v];\n  // toggle\n  int vt=(1-s)*n + x;\n  if(dv+X < dist[vt]) dist[vt]=dv+X;\n  // move\n  const int *H = (s==0? head : rhead);\n  const int *T = (s==0? to : rto);\n  const int *NX = (s==0? nx : rnx);\n  for(int e=H[x]; e!=-1; e=NX[e]){\n    int y=T[e];\n    int u2=s*n+y;\n    if(dv+1 < dist[u2]) dist[u2]=dv+1;\n  }\n}\nlong long ans = dist[n-1];\nif(dist[n+(n-1)]<ans) ans=dist[n+(n-1)];\nfree(dist); free(vis);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; long long X; static int u[200005], v[200005];\nread_input(&n,&m,&X,u,v);\nint *head,*to,*nx,*rhead,*rto,*rnx;\nbuild_adj(n,m,u,v,&head,&to,&nx,&rhead,&rto,&rnx);\nlong long ans=dijkstra(n,head,to,nx,rhead,rto,rnx,X);\nprintf(\"%lld\\n\", ans);\nfree(head); free(to); free(nx); free(rhead); free(rto); free(rnx);\nreturn 0; }\n"
+        }
+      ]
+    }
+  ]
+}

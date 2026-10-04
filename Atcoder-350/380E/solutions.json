@@ -1,0 +1,224 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int **A)",
+          "code": "void read_input(int *N,int **A){ scanf(\"%d\", N); *A=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "init_max",
+          "signature": "int init_max(int *A)",
+          "code": "int init_max(int *A){ return A[0]; }\n"
+        },
+        {
+          "clause_id": "update_max",
+          "signature": "int update_max(int cur,int val)",
+          "code": "int update_max(int cur,int val){ return val>cur?val:cur; }\n"
+        },
+        {
+          "clause_id": "finalize_max",
+          "signature": "int finalize_max(int mx)",
+          "code": "int finalize_max(int mx){ return mx; }\n"
+        },
+        {
+          "clause_id": "find_max",
+          "signature": "int find_max(int N,int *A)",
+          "code": "int find_max(int N,int *A){\n    int mx=init_max(A);\n    for(int i=1;i<N;i++) mx=update_max(mx,A[i]);\n    return finalize_max(mx);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int *A=NULL; read_input(&N,&A); int ans=find_max(N,A); print_answer(ans); free(A); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int **A)",
+          "code": "void read_input(int *N,int **A){ scanf(\"%d\", N); *A=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "init_max",
+          "signature": "int init_max(int *A)",
+          "code": "int init_max(int *A){ return A[0]; }\n"
+        },
+        {
+          "clause_id": "update_max",
+          "signature": "int update_max(int cur,int val)",
+          "code": "int update_max(int cur,int val){ return val>cur?val:cur; }\n"
+        },
+        {
+          "clause_id": "finalize_max",
+          "signature": "int finalize_max(int mx)",
+          "code": "int finalize_max(int mx){ return mx; }\n"
+        },
+        {
+          "clause_id": "find_max",
+          "signature": "int find_max(int N,int *A)",
+          "code": "int find_max(int N,int *A){\n    int mx=init_max(A);\n    for(int i=1;i<N;i++) mx=update_max(mx,A[i]);\n    return finalize_max(mx);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int *A=NULL; read_input(&N,&A); int ans=find_max(N,A); print_answer(ans); free(A); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int **A)",
+          "code": "void read_input(int *N,int **A){ scanf(\"%d\", N); *A=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "init_max",
+          "signature": "int init_max(int *A)",
+          "code": "int init_max(int *A){ return A[0]; }\n"
+        },
+        {
+          "clause_id": "update_max",
+          "signature": "int update_max(int cur,int val)",
+          "code": "int update_max(int cur,int val){ return val>cur?val:cur; }\n"
+        },
+        {
+          "clause_id": "finalize_max",
+          "signature": "int finalize_max(int mx)",
+          "code": "int finalize_max(int mx){ return mx; }\n"
+        },
+        {
+          "clause_id": "find_max",
+          "signature": "int find_max(int N,int *A)",
+          "code": "int find_max(int N,int *A){\n    int mx=init_max(A);\n    for(int i=1;i<N;i++) mx=update_max(mx,A[i]);\n    return finalize_max(mx);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int *A=NULL; read_input(&N,&A); int ans=find_max(N,A); print_answer(ans); free(A); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int **A)",
+          "code": "void read_input(int *N,int **A){ scanf(\"%d\", N); *A=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "init_max",
+          "signature": "int init_max(int *A)",
+          "code": "int init_max(int *A){ return A[0]; }\n"
+        },
+        {
+          "clause_id": "update_max",
+          "signature": "int update_max(int cur,int val)",
+          "code": "int update_max(int cur,int val){ return val>cur?val:cur; }\n"
+        },
+        {
+          "clause_id": "finalize_max",
+          "signature": "int finalize_max(int mx)",
+          "code": "int finalize_max(int mx){ return mx; }\n"
+        },
+        {
+          "clause_id": "find_max",
+          "signature": "int find_max(int N,int *A)",
+          "code": "int find_max(int N,int *A){\n    int mx=init_max(A);\n    for(int i=1;i<N;i++) mx=update_max(mx,A[i]);\n    return finalize_max(mx);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int *A=NULL; read_input(&N,&A); int ans=find_max(N,A); print_answer(ans); free(A); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int **A)",
+          "code": "void read_input(int *N,int **A){ scanf(\"%d\", N); *A=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "init_max",
+          "signature": "int init_max(int *A)",
+          "code": "int init_max(int *A){ return A[0]; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "update_max",
+          "signature": "int update_max(int cur,int val)",
+          "code": "int update_max(int cur,int val){ return val>cur?val:cur; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "finalize_max",
+          "signature": "int finalize_max(int mx)",
+          "code": "int finalize_max(int mx){ return mx; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "find_max",
+          "signature": "int find_max(int N,int *A)",
+          "code": "int find_max(int N,int *A){\n    int mx=init_max(A);\n    for(int i=1;i<N;i++) mx=update_max(mx,A[i]);\n    return finalize_max(mx);\n\n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int *A=NULL; read_input(&N,&A); int ans=find_max(N,A); print_answer(ans); free(A); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

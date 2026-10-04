@@ -1,0 +1,176 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *X,long long *H)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld%lld\", &X[i], &H[i]); return n;\n"
+        },
+        {
+          "clause_id": "can_see_all",
+          "signature": "int can_see_all(int n,long long *X,long long *H,long long h)",
+          "code": "for(int i=0;i<n;i++){\n  int ok=1;\n  for(int j=0;j<n;j++) if(X[j]>0 && X[j]<X[i]){\n    long double y = (long double)h + (long double)(H[i]-h)*(long double)X[j]/(long double)X[i];\n    if(y <= H[j]+1e-12L){ ok=0; break; }\n  }\n  if(!ok) return 0;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int n,long long *X,long long *H)",
+          "code": "if(can_see_all(n,X,H,0)) return -1;\nlong long lo=0, hi=1000000000LL, ans=0;\nwhile(lo<=hi){ long long mid=(lo+hi)/2; if(can_see_all(n,X,H,mid)){ hi=mid-1; } else { ans=mid; lo=mid+1; } }\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long X[200005],H[200005]; int n=read_input(X,H); long long ans=solve(n,X,H); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *X,long long *H)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld%lld\", &X[i], &H[i]); return n;\n"
+        },
+        {
+          "clause_id": "can_see_all",
+          "signature": "int can_see_all(int n,long long *X,long long *H,long long h)",
+          "code": "for(int i=0;i<n;i++){\n  int ok=1;\n  for(int j=0;j<n;j++) if(X[j]>0 && X[j]<X[i]){\n    long double y = (long double)h + (long double)(H[i]-h)*(long double)X[j]/(long double)X[i];\n    if(y <= H[j]+1e-12L){ ok=0; break; }\n  }\n  if(!ok) return 0;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int n,long long *X,long long *H)",
+          "code": "if(can_see_all(n,X,H,0)) return -1;\nlong long lo=0, hi=1000000000LL, ans=0;\nwhile(lo<=hi){ long long mid=(lo+hi)/2; if(can_see_all(n,X,H,mid)){ hi=mid-1; } else { ans=mid; lo=mid+1; } }\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long X[200005],H[200005]; int n=read_input(X,H); long long ans=solve(n,X,H); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *X,long long *H)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld%lld\", &X[i], &H[i]); return n;\n"
+        },
+        {
+          "clause_id": "can_see_all",
+          "signature": "int can_see_all(int n,long long *X,long long *H,long long h)",
+          "code": "for(int i=0;i<n;i++){\n  int ok=1;\n  for(int j=0;j<n;j++) if(X[j]>0 && X[j]<X[i]){\n    long double y = (long double)h + (long double)(H[i]-h)*(long double)X[j]/(long double)X[i];\n    if(y <= H[j]+1e-12L){ ok=0; break; }\n  }\n  if(!ok) return 0;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int n,long long *X,long long *H)",
+          "code": "if(can_see_all(n,X,H,0)) return -1;\nlong long lo=0, hi=1000000000LL, ans=0;\nwhile(lo<=hi){ long long mid=(lo+hi)/2; if(can_see_all(n,X,H,mid)){ hi=mid-1; } else { ans=mid; lo=mid+1; } }\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long X[200005],H[200005]; int n=read_input(X,H); long long ans=solve(n,X,H); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *X,long long *H)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld%lld\", &X[i], &H[i]); return n;\n"
+        },
+        {
+          "clause_id": "can_see_all",
+          "signature": "int can_see_all(int n,long long *X,long long *H,long long h)",
+          "code": "for(int i=0;i<n;i++){\n  int ok=1;\n  for(int j=0;j<n;j++) if(X[j]>0 && X[j]<X[i]){\n    long double y = (long double)h + (long double)(H[i]-h)*(long double)X[j]/(long double)X[i];\n    if(y <= H[j]+1e-12L){ ok=0; break; }\n  }\n  if(!ok) return 0;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int n,long long *X,long long *H)",
+          "code": "if(can_see_all(n,X,H,0)) return -1;\nlong long lo=0, hi=1000000000LL, ans=0;\nwhile(lo<=hi){ long long mid=(lo+hi)/2; if(can_see_all(n,X,H,mid)){ hi=mid-1; } else { ans=mid; lo=mid+1; } }\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long X[200005],H[200005]; int n=read_input(X,H); long long ans=solve(n,X,H); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *X,long long *H)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld%lld\", &X[i], &H[i]); return n;\n"
+        },
+        {
+          "clause_id": "can_see_all",
+          "signature": "int can_see_all(int n,long long *X,long long *H,long long h)",
+          "code": "for(int i=0;i<n;i++){\n  int ok=1;\n  for(int j=0;j<n;j++) if(X[j]>0 && X[j]<X[i]){\n    long double y = (long double)h + (long double)(H[i]-h)*(long double)X[j]/(long double)X[i];\n    if(y <= H[j]+1e-12L){ ok=0; break; }\n  }\n  if(!ok) return 0;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int n,long long *X,long long *H)",
+          "code": "if(can_see_all(n,X,H,0)) return -1;\nlong long lo=0, hi=1000000000LL, ans=0;\nwhile(lo<=hi){ long long mid=(lo+hi)/2; if(can_see_all(n,X,H,mid)){ hi=mid-1; } else { ans=mid; lo=mid+1; } }\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long X[200005],H[200005]; int n=read_input(X,H); long long ans=solve(n,X,H); print_ll(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "385F",
+  "total_programs": 5
+}

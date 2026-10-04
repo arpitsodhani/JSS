@@ -1,0 +1,32 @@
+{
+  "contestId": 1201,
+  "index": "E1",
+  "problem_id": "1201E1",
+  "name": "Knightmare (easy)",
+  "rating": 2900,
+  "tags": [
+    "graphs",
+    "interactive",
+    "shortest paths"
+  ],
+  "points": 2000.0,
+  "solvedCount": 226,
+  "source": "verbatim_cf_fetch",
+  "title": "E1. Knightmare (easy)",
+  "legend": "This problem only differs from the next problem in constraints.\n\nThis is an interactive problem.\n\nAlice and Bob are playing a game on the chessboard of size n×m where n and m are even. The rows are numbered from 1 to n and the columns are numbered from 1 to m. There are two knights on the chessboard. A white one initially is on the position (x1,y1), while the black one is on the position (x2,y2). Alice will choose one of the knights to play with, and Bob will use the other one.\n\nThe Alice and Bob will play in turns and whoever controls the white knight starts the game. During a turn, the player must move their knight adhering the chess rules. That is, if the knight is currently on the position (x,y), it can be moved to any of those positions (as long as they are inside the chessboard):\n\n(x+1,y+2), (x+1,y−2), (x−1,y+2), (x−1,y−2),\n\n(x+2,y+1), (x+2,y−1), (x−2,y+1), (x−2,y−1).\n\nWe all know that knights are strongest in the middle of the board. Both knight have a single position they want to reach:\n\nthe owner of the white knight wins if it captures the black knight or if the white knight is at (n/2,m/2) and this position is not under attack of the black knight at this moment;\nThe owner of the black knight wins if it captures the white knight or if the black knight is at (n/2+1,m/2) and this position is not under attack of the white knight at this moment.\n\nFormally, the player who captures the other knight wins. The player who is at its target square ((n/2,m/2) for white, (n/2+1,m/2) for black) and this position is not under opponent's attack, also wins.\n\nA position is under attack of a knight if it can move into this position. Capturing a knight means that a player moves their knight to the cell where the opponent's knight is.\n\nIf Alice made 350 moves and nobody won, the game is a draw.\n\nAlice is unsure in her chess skills, so she asks you for a help. Choose a knight and win the game for her. It can be shown, that Alice always has a winning strategy.",
+  "input_spec": "",
+  "output_spec": "",
+  "note": "In the first example, the white knight can reach it's target square in one move.\n\nIn the second example black knight wins, no matter what white knight moves.",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "8 8\n2 3 1 8\n",
+      "output": "WHITE\n4 4"
+    },
+    {
+      "input": "6 6\n4 4 2 2\n6 3\n",
+      "output": "BLACK\n4 3"
+    }
+  ]
+}

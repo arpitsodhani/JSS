@@ -1,0 +1,174 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *r, int *c, char *s)",
+          "code": "scanf(\"%d %d %d\", n, r, c); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "apply_move",
+          "signature": "void apply_move(char mv, int *dx, int *dy)",
+          "code": "if(mv=='N') (*dx)--;\nelse if(mv=='S') (*dx)++;\nelse if(mv=='W') (*dy)--;\nelse (*dy)++;\n"
+        },
+        {
+          "clause_id": "pack",
+          "signature": "unsigned long long pack(int x, int y)",
+          "code": "return ((unsigned long long)(unsigned int)(x+1000000) << 32) ^ (unsigned int)(y+1000000);\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "void simulate(int n, int r, int c, const char *s)",
+          "code": "int dx=0, dy=0;\nint cap=n+5; unsigned long long *set=(unsigned long long*)malloc((size_t)cap*sizeof(unsigned long long)); int sz=0;\nset[sz++]=pack(0,0);\nfor(int t=1;t<=n;t++){\n  apply_move(s[t-1], &dx, &dy);\n  int ox=-dx, oy=-dy;\n  unsigned long long key0=pack(ox,oy);\n  int has0=0;\n  for(int i=0;i<sz;i++) if(set[i]==key0){ has0=1; break; }\n  if(!has0){ if(sz==cap){ cap*=2; set=(unsigned long long*)realloc(set,(size_t)cap*sizeof(unsigned long long)); }\n    set[sz++]=key0;\n  }\n  unsigned long long q=pack(r-dx,c-dy);\n  int has=0;\n  for(int i=0;i<sz;i++) if(set[i]==q){ has=1; break; }\n  putchar(has?'1':'0');\n}\nputchar('\\n');\nfree(set);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,r,c; static char s[300005]; read_input(&n,&r,&c,s); simulate(n,r,c,s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *r, int *c, char *s)",
+          "code": "scanf(\"%d %d %d\", n, r, c); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "apply_move",
+          "signature": "void apply_move(char mv, int *dx, int *dy)",
+          "code": "if(mv=='N') (*dx)--;\nelse if(mv=='S') (*dx)++;\nelse if(mv=='W') (*dy)--;\nelse (*dy)++;\n"
+        },
+        {
+          "clause_id": "pack",
+          "signature": "unsigned long long pack(int x, int y)",
+          "code": "return ((unsigned long long)(unsigned int)(x+1000000) << 32) ^ (unsigned int)(y+1000000);\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "void simulate(int n, int r, int c, const char *s)",
+          "code": "int dx=0, dy=0;\nint cap=n+5; unsigned long long *set=(unsigned long long*)malloc((size_t)cap*sizeof(unsigned long long)); int sz=0;\nset[sz++]=pack(0,0);\nfor(int t=1;t<=n;t++){\n  apply_move(s[t-1], &dx, &dy);\n  int ox=-dx, oy=-dy;\n  unsigned long long key0=pack(ox,oy);\n  int has0=0;\n  for(int i=0;i<sz;i++) if(set[i]==key0){ has0=1; break; }\n  if(!has0){ if(sz==cap){ cap*=2; set=(unsigned long long*)realloc(set,(size_t)cap*sizeof(unsigned long long)); }\n    set[sz++]=key0;\n  }\n  unsigned long long q=pack(r-dx,c-dy);\n  int has=0;\n  for(int i=0;i<sz;i++) if(set[i]==q){ has=1; break; }\n  putchar(has?'1':'0');\n}\nputchar('\\n');\nfree(set);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,r,c; static char s[300005]; read_input(&n,&r,&c,s); simulate(n,r,c,s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *r, int *c, char *s)",
+          "code": "scanf(\"%d %d %d\", n, r, c); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "apply_move",
+          "signature": "void apply_move(char mv, int *dx, int *dy)",
+          "code": "if(mv=='N') (*dx)--;\nelse if(mv=='S') (*dx)++;\nelse if(mv=='W') (*dy)--;\nelse (*dy)++;\n"
+        },
+        {
+          "clause_id": "pack",
+          "signature": "unsigned long long pack(int x, int y)",
+          "code": "return ((unsigned long long)(unsigned int)(x+1000000) << 32) ^ (unsigned int)(y+1000000);\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "void simulate(int n, int r, int c, const char *s)",
+          "code": "int dx=0, dy=0;\nint cap=n+5; unsigned long long *set=(unsigned long long*)malloc((size_t)cap*sizeof(unsigned long long)); int sz=0;\nset[sz++]=pack(0,0);\nfor(int t=1;t<=n;t++){\n  apply_move(s[t-1], &dx, &dy);\n  int ox=-dx, oy=-dy;\n  unsigned long long key0=pack(ox,oy);\n  int has0=0;\n  for(int i=0;i<sz;i++) if(set[i]==key0){ has0=1; break; }\n  if(!has0){ if(sz==cap){ cap*=2; set=(unsigned long long*)realloc(set,(size_t)cap*sizeof(unsigned long long)); }\n    set[sz++]=key0;\n  }\n  unsigned long long q=pack(r-dx,c-dy);\n  int has=0;\n  for(int i=0;i<sz;i++) if(set[i]==q){ has=1; break; }\n  putchar(has?'1':'0');\n}\nputchar('\\n');\nfree(set);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,r,c; static char s[300005]; read_input(&n,&r,&c,s); simulate(n,r,c,s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *r, int *c, char *s)",
+          "code": "scanf(\"%d %d %d\", n, r, c); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "apply_move",
+          "signature": "void apply_move(char mv, int *dx, int *dy)",
+          "code": "if(mv=='N') (*dx)--;\nelse if(mv=='S') (*dx)++;\nelse if(mv=='W') (*dy)--;\nelse (*dy)++;\n"
+        },
+        {
+          "clause_id": "pack",
+          "signature": "unsigned long long pack(int x, int y)",
+          "code": "return ((unsigned long long)(unsigned int)(x+1000000) << 32) ^ (unsigned int)(y+1000000);\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "void simulate(int n, int r, int c, const char *s)",
+          "code": "int dx=0, dy=0;\nint cap=n+5; unsigned long long *set=(unsigned long long*)malloc((size_t)cap*sizeof(unsigned long long)); int sz=0;\nset[sz++]=pack(0,0);\nfor(int t=1;t<=n;t++){\n  apply_move(s[t-1], &dx, &dy);\n  int ox=-dx, oy=-dy;\n  unsigned long long key0=pack(ox,oy);\n  int has0=0;\n  for(int i=0;i<sz;i++) if(set[i]==key0){ has0=1; break; }\n  if(!has0){ if(sz==cap){ cap*=2; set=(unsigned long long*)realloc(set,(size_t)cap*sizeof(unsigned long long)); }\n    set[sz++]=key0;\n  }\n  unsigned long long q=pack(r-dx,c-dy);\n  int has=0;\n  for(int i=0;i<sz;i++) if(set[i]==q){ has=1; break; }\n  putchar(has?'1':'0');\n}\nputchar('\\n');\nfree(set);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,r,c; static char s[300005]; read_input(&n,&r,&c,s); simulate(n,r,c,s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *r, int *c, char *s)",
+          "code": "scanf(\"%d %d %d\", n, r, c); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "apply_move",
+          "signature": "void apply_move(char mv, int *dx, int *dy)",
+          "code": "if(mv=='N') (*dx)--;\nelse if(mv=='S') (*dx)++;\nelse if(mv=='W') (*dy)--;\nelse (*dy)++;\n"
+        },
+        {
+          "clause_id": "pack",
+          "signature": "unsigned long long pack(int x, int y)",
+          "code": "return ((unsigned long long)(unsigned int)(x+1000000) << 32) ^ (unsigned int)(y+1000000);\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "void simulate(int n, int r, int c, const char *s)",
+          "code": "int dx=0, dy=0;\nint cap=n+5; unsigned long long *set=(unsigned long long*)malloc((size_t)cap*sizeof(unsigned long long)); int sz=0;\nset[sz++]=pack(0,0);\nfor(int t=1;t<=n;t++){\n  apply_move(s[t-1], &dx, &dy);\n  int ox=-dx, oy=-dy;\n  unsigned long long key0=pack(ox,oy);\n  int has0=0;\n  for(int i=0;i<sz;i++) if(set[i]==key0){ has0=1; break; }\n  if(!has0){ if(sz==cap){ cap*=2; set=(unsigned long long*)realloc(set,(size_t)cap*sizeof(unsigned long long)); }\n    set[sz++]=key0;\n  }\n  unsigned long long q=pack(r-dx,c-dy);\n  int has=0;\n  for(int i=0;i<sz;i++) if(set[i]==q){ has=1; break; }\n  putchar(has?'1':'0');\n}\nputchar('\\n');\nfree(set);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,r,c; static char s[300005]; read_input(&n,&r,&c,s); simulate(n,r,c,s); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

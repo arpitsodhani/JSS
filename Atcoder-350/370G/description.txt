@@ -1,0 +1,5 @@
+We call a positive integer n a good integer if and only if the sum of its positive divisors is divisible by 3 . You are given two positive integers N and M . Find the number, modulo 998244353 , of length- M sequences A of positive integers such that the product of the elements in A is a good integer not exceeding N .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- S is a string of length N consisting of lowercase English letters

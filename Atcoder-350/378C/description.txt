@@ -1,0 +1,6 @@
+You are given a sequence of N positive numbers, A = (A_1, A_2, \dots, A_N) . Find the sequence B = (B_1, B_2, \dots, B_N) of length N defined as follows. For i = 1, 2, \dots, N , define B_i as follows: Let B_i be the most recent position before i where an element equal to A_i appeared. If such a position does not exist, let B_i = -1 . More precisely, if there exists a positive integer j such that A_i = A_j and j < i , let B_i be the largest such j . If no such j exists, let B_i = -1 .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 2 * 10^5
+- All input values are integers

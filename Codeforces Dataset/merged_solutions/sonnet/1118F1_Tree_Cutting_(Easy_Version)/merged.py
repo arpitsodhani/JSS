@@ -1,0 +1,72 @@
+import sys
+
+# Clause read_input [Confidence: 1.00]
+def read_input():
+    data = list(map(int, sys.stdin.buffer.read().split()))
+    n = data[0]
+    colours = data[1:1 + n]
+    edges = []
+    pos = 1 + n
+    for _ in range(n - 1):
+        edges.append((data[pos], data[pos + 1]))
+        pos += 2
+    return colours, edges
+
+# Clause subtree_counts [Confidence: 1.00]
+def subtree_counts(colours, edges):
+    n = len(colours)
+    adj = [[] for _ in range(n + 1)]
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+    parent = [0] * (n + 1)
+    parent[1] = 1
+    order = [1]
+    seen = [False] * (n + 1)
+    seen[1] = True
+    front = 0
+    while front < len(order):
+        v = order[front]
+        front += 1
+        for u in adj[v]:
+            if not seen[u]:
+                seen[u] = True
+                parent[u] = v
+                order.append(u)
+    red = [0] * (n + 1)
+    blue = [0] * (n + 1)
+    for v in range(1, n + 1):
+        if colours[v - 1] == 1:
+            red[v] = 1
+        elif colours[v - 1] == 2:
+            blue[v] = 1
+    for i in range(len(order) - 1, 0, -1):
+        v = order[i]
+        red[parent[v]] += red[v]
+        blue[parent[v]] += blue[v]
+    return order, parent, red, blue
+
+# Clause nice_edges [Confidence: 0.80]
+def nice_edges(order, parent, red, blue):
+    total_red = red[1]
+    total_blue = blue[1]
+    count = 0
+    for v in order[1:]:
+        inside_red = red[v]
+        inside_blue = blue[v]
+        outside_red = total_red - inside_red
+        outside_blue = total_blue - inside_blue
+        if (inside_red == 0 and outside_blue == 0) or (inside_blue == 0 and outside_red == 0):
+            count += 1
+    return count
+
+# Clause main [Confidence: 1.00]
+def main():
+    colours, edges = read_input()
+    order, parent, red, blue = subtree_counts(colours, edges)
+    sys.stdout.write("%d\n" % nice_edges(order, parent, red, blue))
+
+
+if __name__ == "__main__":
+    main()
+

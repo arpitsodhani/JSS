@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "binomial_coefficient_lucas",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_factorial_mod",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "modular_inverse_fermat",
+      "confidence": 1.0
+    },
+    {
+      "clause": "precompute_small_factorials",
+      "confidence": 1.0
+    }
+  ]
+}

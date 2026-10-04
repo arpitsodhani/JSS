@@ -1,0 +1,5 @@
+Takahashi eats three plates for breakfast: rice, miso soup, and salad. His table is long and narrow, so he arranged the three plates in a row. The arrangement is given by a string S , where the i -th plate from the left is rice if S_i is R , miso soup if S_i is M , and salad if S_i is S . Determine whether the plate of rice is to the left of the plate of miso soup.
+
+**Constraints:**
+- S is a string of length 3 consisting of 'R', 'M', and 'B'
+- Each of 'R', 'M', and 'B' appears exactly once in S

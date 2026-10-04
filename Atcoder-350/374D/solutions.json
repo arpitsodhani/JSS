@@ -1,0 +1,220 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_legendre_symbol",
+          "signature": "int compute_legendre_symbol(long long a, long long p)",
+          "implementations": [
+            {
+              "code": "int compute_legendre_symbol(long long a, long long p) {\n    long long result = 1, base = a % p, exp = (p - 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result == 1 ? 1 : -1;\n}"
+            },
+            {
+              "code": "int compute_legendre_symbol(long long a, long long p) {\n    long long result = 1, base = a % p, exp = (p - 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result == 1 ? 1 : -1;\n}"
+            },
+            {
+              "code": "int compute_legendre_symbol(long long a, long long p) {\n    long long result = 1, base = a % p, exp = (p - 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result == 1 ? 1 : -1;\n}"
+            },
+            {
+              "code": "int compute_legendre_symbol(long long a, long long p) {\n    long long result = 1, base = a % p, exp = (p - 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result == 1 ? 1 : -1;\n}"
+            },
+            {
+              "code": "int compute_legendre_symbol(long long a, long long p) {\n    long long result = 1, base = a % p, exp = (p - 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result == 1 ? 1 : -1;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "find_quadratic_nonresidue",
+          "signature": "long long find_quadratic_nonresidue(long long p)",
+          "implementations": [
+            {
+              "code": "long long find_quadratic_nonresidue(long long p) {\n    for (long long n = 2; n < p; n++) {\n        if (compute_legendre_symbol(n, p) == -1) {\n            return n;\n        }\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long find_quadratic_nonresidue(long long p) {\n    for (long long n = 2; n < p; n++) {\n        if (compute_legendre_symbol(n, p) == -1) {\n            return n;\n        }\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long find_quadratic_nonresidue(long long p) {\n    for (long long n = 2; n < p; n++) {\n        if (compute_legendre_symbol(n, p) == -1) {\n            return n;\n        }\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long find_quadratic_nonresidue(long long p) {\n    for (long long n = 2; n < p; n++) {\n        if (compute_legendre_symbol(n, p) == -1) {\n            return n;\n        }\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long find_quadratic_nonresidue(long long p) {\n    for (long long n = 2; n < p; n++) {\n        if (compute_legendre_symbol(n, p) == -1) {\n            return n;\n        }\n    }\n    return -1;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "tonelli_shanks_sqrt",
+          "signature": "long long tonelli_shanks_sqrt(long long n, long long p)",
+          "implementations": [
+            {
+              "code": "long long tonelli_shanks_sqrt(long long n, long long p) {\n    if (compute_legendre_symbol(n, p) != 1) return -1;\n    \n    long long q = p - 1, s = 0;\n    while (q % 2 == 0) {\n        q /= 2;\n        s++;\n    }\n    \n    if (s == 1) {\n        long long result = 1, base = n, exp = (p + 1) / 4;\n        while (exp > 0) {\n            if (exp & 1) result = (result * base) % p;\n            base = (base * base) % p;\n            exp >>= 1;\n        }\n        return result;\n    }\n    \n    long long z = find_quadratic_nonresidue(p);\n    long long c = 1, base = z, exp = q;\n    while (exp > 0) {\n        if (exp & 1) c = (c * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long r = 1;\n    base = n;\n    exp = (q + 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) r = (r * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long t = 1;\n    base = n;\n    exp = q;\n    while (exp > 0) {\n        if (exp & 1) t = (t * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long m = s;\n    while (t != 1) {\n        long long temp = t;\n        int i;\n        for (i = 1; i < m; i++) {\n            temp = (temp * temp) % p;\n            if (temp == 1) break;\n        }\n        \n        long long b = c;\n        for (int j = 0; j < m - i - 1; j++) {\n            b = (b * b) % p;\n        }\n        \n        r = (r * b) % p;\n        c = (b * b) % p;\n        t = (t * c) % p;\n        m = i;\n    }\n    \n    return r;\n}"
+            },
+            {
+              "code": "long long tonelli_shanks_sqrt(long long n, long long p) {\n    if (compute_legendre_symbol(n, p) != 1) return -1;\n    \n    long long q = p - 1, s = 0;\n    while (q % 2 == 0) {\n        q /= 2;\n        s++;\n    }\n    \n    if (s == 1) {\n        long long result = 1, base = n, exp = (p + 1) / 4;\n        while (exp > 0) {\n            if (exp & 1) result = (result * base) % p;\n            base = (base * base) % p;\n            exp >>= 1;\n        }\n        return result;\n    }\n    \n    long long z = find_quadratic_nonresidue(p);\n    long long c = 1, base = z, exp = q;\n    while (exp > 0) {\n        if (exp & 1) c = (c * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long r = 1;\n    base = n;\n    exp = (q + 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) r = (r * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long t = 1;\n    base = n;\n    exp = q;\n    while (exp > 0) {\n        if (exp & 1) t = (t * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long m = s;\n    while (t != 1) {\n        long long temp = t;\n        int i;\n        for (i = 1; i < m; i++) {\n            temp = (temp * temp) % p;\n            if (temp == 1) break;\n        }\n        \n        long long b = c;\n        for (int j = 0; j < m - i - 1; j++) {\n            b = (b * b) % p;\n        }\n        \n        r = (r * b) % p;\n        c = (b * b) % p;\n        t = (t * c) % p;\n        m = i;\n    }\n    \n    return r;\n}"
+            },
+            {
+              "code": "long long tonelli_shanks_sqrt(long long n, long long p) {\n    if (compute_legendre_symbol(n, p) != 1) return -1;\n    \n    long long q = p - 1, s = 0;\n    while (q % 2 == 0) {\n        q /= 2;\n        s++;\n    }\n    \n    if (s == 1) {\n        long long result = 1, base = n, exp = (p + 1) / 4;\n        while (exp > 0) {\n            if (exp & 1) result = (result * base) % p;\n            base = (base * base) % p;\n            exp >>= 1;\n        }\n        return result;\n    }\n    \n    long long z = find_quadratic_nonresidue(p);\n    long long c = 1, base = z, exp = q;\n    while (exp > 0) {\n        if (exp & 1) c = (c * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long r = 1;\n    base = n;\n    exp = (q + 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) r = (r * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long t = 1;\n    base = n;\n    exp = q;\n    while (exp > 0) {\n        if (exp & 1) t = (t * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long m = s;\n    while (t != 1) {\n        long long temp = t;\n        int i;\n        for (i = 1; i < m; i++) {\n            temp = (temp * temp) % p;\n            if (temp == 1) break;\n        }\n        \n        long long b = c;\n        for (int j = 0; j < m - i - 1; j++) {\n            b = (b * b) % p;\n        }\n        \n        r = (r * b) % p;\n        c = (b * b) % p;\n        t = (t * c) % p;\n        m = i;\n    }\n    \n    return r;\n}"
+            },
+            {
+              "code": "long long tonelli_shanks_sqrt(long long n, long long p) {\n    if (compute_legendre_symbol(n, p) != 1) return -1;\n    \n    long long q = p - 1, s = 0;\n    while (q % 2 == 0) {\n        q /= 2;\n        s++;\n    }\n    \n    if (s == 1) {\n        long long result = 1, base = n, exp = (p + 1) / 4;\n        while (exp > 0) {\n            if (exp & 1) result = (result * base) % p;\n            base = (base * base) % p;\n            exp >>= 1;\n        }\n        return result;\n    }\n    \n    long long z = find_quadratic_nonresidue(p);\n    long long c = 1, base = z, exp = q;\n    while (exp > 0) {\n        if (exp & 1) c = (c * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long r = 1;\n    base = n;\n    exp = (q + 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) r = (r * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long t = 1;\n    base = n;\n    exp = q;\n    while (exp > 0) {\n        if (exp & 1) t = (t * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long m = s;\n    while (t != 1) {\n        long long temp = t;\n        int i;\n        for (i = 1; i < m; i++) {\n            temp = (temp * temp) % p;\n            if (temp == 1) break;\n        }\n        \n        long long b = c;\n        for (int j = 0; j < m - i - 1; j++) {\n            b = (b * b) % p;\n        }\n        \n        r = (r * b) % p;\n        c = (b * b) % p;\n        t = (t * c) % p;\n        m = i;\n    }\n    \n    return r;\n}"
+            },
+            {
+              "code": "long long tonelli_shanks_sqrt(long long n, long long p) {\n    if (compute_legendre_symbol(n, p) != 1) return -1;\n    \n    long long q = p - 1, s = 0;\n    while (q % 2 == 0) {\n        q /= 2;\n        s++;\n    }\n    \n    if (s == 1) {\n        long long result = 1, base = n, exp = (p + 1) / 4;\n        while (exp > 0) {\n            if (exp & 1) result = (result * base) % p;\n            base = (base * base) % p;\n            exp >>= 1;\n        }\n        return result;\n    }\n    \n    long long z = find_quadratic_nonresidue(p);\n    long long c = 1, base = z, exp = q;\n    while (exp > 0) {\n        if (exp & 1) c = (c * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long r = 1;\n    base = n;\n    exp = (q + 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) r = (r * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long t = 1;\n    base = n;\n    exp = q;\n    while (exp > 0) {\n        if (exp & 1) t = (t * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long m = s;\n    while (t != 1) {\n        long long temp = t;\n        int i;\n        for (i = 1; i < m; i++) {\n            temp = (temp * temp) % p;\n            if (temp == 1) break;\n        }\n        \n        long long b = c;\n        for (int j = 0; j < m - i - 1; j++) {\n            b = (b * b) % p;\n        }\n        \n        r = (r * b) % p;\n        c = (b * b) % p;\n        t = (t * c) % p;\n        m = i;\n    }\n    \n    return r;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "modular_power_fast",
+          "signature": "long long modular_power_fast(long long base, long long exp, long long p)",
+          "implementations": [
+            {
+              "code": "long long modular_power_fast(long long base, long long exp, long long p) {\n    long long result = 1;\n    base %= p;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_power_fast(long long base, long long exp, long long p) {\n    long long result = 1;\n    base %= p;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_power_fast(long long base, long long exp, long long p) {\n    long long result = 1;\n    base %= p;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_power_fast(long long base, long long exp, long long p) {\n    long long result = 1;\n    base %= p;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_power_fast(long long base, long long exp, long long p) {\n    long long result = 1;\n    base %= p;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    long long n, p;\n    scanf(\"%lld %lld\", &n, &p);\n    long long result = tonelli_shanks_sqrt(n, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n, p;\n    scanf(\"%lld %lld\", &n, &p);\n    long long result = tonelli_shanks_sqrt(n, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n, p;\n    scanf(\"%lld %lld\", &n, &p);\n    long long result = tonelli_shanks_sqrt(n, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n, p;\n    scanf(\"%lld %lld\", &n, &p);\n    long long result = tonelli_shanks_sqrt(n, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n, p;\n    scanf(\"%lld %lld\", &n, &p);\n    long long result = tonelli_shanks_sqrt(n, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_legendre_symbol",
+          "signature": "int compute_legendre_symbol(long long a, long long p)",
+          "code": "int compute_legendre_symbol(long long a, long long p) {\n    long long result = 1, base = a % p, exp = (p - 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result == 1 ? 1 : -1;\n}"
+        },
+        {
+          "clause_id": "find_quadratic_nonresidue",
+          "signature": "long long find_quadratic_nonresidue(long long p)",
+          "code": "long long find_quadratic_nonresidue(long long p) {\n    for (long long n = 2; n < p; n++) {\n        if (compute_legendre_symbol(n, p) == -1) {\n            return n;\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "tonelli_shanks_sqrt",
+          "signature": "long long tonelli_shanks_sqrt(long long n, long long p)",
+          "code": "long long tonelli_shanks_sqrt(long long n, long long p) {\n    if (compute_legendre_symbol(n, p) != 1) return -1;\n    \n    long long q = p - 1, s = 0;\n    while (q % 2 == 0) {\n        q /= 2;\n        s++;\n    }\n    \n    if (s == 1) {\n        long long result = 1, base = n, exp = (p + 1) / 4;\n        while (exp > 0) {\n            if (exp & 1) result = (result * base) % p;\n            base = (base * base) % p;\n            exp >>= 1;\n        }\n        return result;\n    }\n    \n    long long z = find_quadratic_nonresidue(p);\n    long long c = 1, base = z, exp = q;\n    while (exp > 0) {\n        if (exp & 1) c = (c * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long r = 1;\n    base = n;\n    exp = (q + 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) r = (r * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long t = 1;\n    base = n;\n    exp = q;\n    while (exp > 0) {\n        if (exp & 1) t = (t * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long m = s;\n    while (t != 1) {\n        long long temp = t;\n        int i;\n        for (i = 1; i < m; i++) {\n            temp = (temp * temp) % p;\n            if (temp == 1) break;\n        }\n        \n        long long b = c;\n        for (int j = 0; j < m - i - 1; j++) {\n            b = (b * b) % p;\n        }\n        \n        r = (r * b) % p;\n        c = (b * b) % p;\n        t = (t * c) % p;\n        m = i;\n    }\n    \n    return r;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, p;\n    scanf(\"%lld %lld\", &n, &p);\n    long long result = tonelli_shanks_sqrt(n, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_legendre_symbol",
+          "signature": "int compute_legendre_symbol(long long a, long long p)",
+          "code": "int compute_legendre_symbol(long long a, long long p) {\n    long long result = 1, base = a % p, exp = (p - 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result == 1 ? 1 : -1;\n}"
+        },
+        {
+          "clause_id": "find_quadratic_nonresidue",
+          "signature": "long long find_quadratic_nonresidue(long long p)",
+          "code": "long long find_quadratic_nonresidue(long long p) {\n    for (long long n = 2; n < p; n++) {\n        if (compute_legendre_symbol(n, p) == -1) {\n            return n;\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "tonelli_shanks_sqrt",
+          "signature": "long long tonelli_shanks_sqrt(long long n, long long p)",
+          "code": "long long tonelli_shanks_sqrt(long long n, long long p) {\n    if (compute_legendre_symbol(n, p) != 1) return -1;\n    \n    long long q = p - 1, s = 0;\n    while (q % 2 == 0) {\n        q /= 2;\n        s++;\n    }\n    \n    if (s == 1) {\n        long long result = 1, base = n, exp = (p + 1) / 4;\n        while (exp > 0) {\n            if (exp & 1) result = (result * base) % p;\n            base = (base * base) % p;\n            exp >>= 1;\n        }\n        return result;\n    }\n    \n    long long z = find_quadratic_nonresidue(p);\n    long long c = 1, base = z, exp = q;\n    while (exp > 0) {\n        if (exp & 1) c = (c * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long r = 1;\n    base = n;\n    exp = (q + 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) r = (r * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long t = 1;\n    base = n;\n    exp = q;\n    while (exp > 0) {\n        if (exp & 1) t = (t * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long m = s;\n    while (t != 1) {\n        long long temp = t;\n        int i;\n        for (i = 1; i < m; i++) {\n            temp = (temp * temp) % p;\n            if (temp == 1) break;\n        }\n        \n        long long b = c;\n        for (int j = 0; j < m - i - 1; j++) {\n            b = (b * b) % p;\n        }\n        \n        r = (r * b) % p;\n        c = (b * b) % p;\n        t = (t * c) % p;\n        m = i;\n    }\n    \n    return r;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, p;\n    scanf(\"%lld %lld\", &n, &p);\n    long long result = tonelli_shanks_sqrt(n, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_legendre_symbol",
+          "signature": "int compute_legendre_symbol(long long a, long long p)",
+          "code": "int compute_legendre_symbol(long long a, long long p) {\n    long long result = 1, base = a % p, exp = (p - 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result == 1 ? 1 : -1;\n}"
+        },
+        {
+          "clause_id": "find_quadratic_nonresidue",
+          "signature": "long long find_quadratic_nonresidue(long long p)",
+          "code": "long long find_quadratic_nonresidue(long long p) {\n    for (long long n = 2; n < p; n++) {\n        if (compute_legendre_symbol(n, p) == -1) {\n            return n;\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "tonelli_shanks_sqrt",
+          "signature": "long long tonelli_shanks_sqrt(long long n, long long p)",
+          "code": "long long tonelli_shanks_sqrt(long long n, long long p) {\n    if (compute_legendre_symbol(n, p) != 1) return -1;\n    \n    long long q = p - 1, s = 0;\n    while (q % 2 == 0) {\n        q /= 2;\n        s++;\n    }\n    \n    if (s == 1) {\n        long long result = 1, base = n, exp = (p + 1) / 4;\n        while (exp > 0) {\n            if (exp & 1) result = (result * base) % p;\n            base = (base * base) % p;\n            exp >>= 1;\n        }\n        return result;\n    }\n    \n    long long z = find_quadratic_nonresidue(p);\n    long long c = 1, base = z, exp = q;\n    while (exp > 0) {\n        if (exp & 1) c = (c * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long r = 1;\n    base = n;\n    exp = (q + 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) r = (r * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long t = 1;\n    base = n;\n    exp = q;\n    while (exp > 0) {\n        if (exp & 1) t = (t * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long m = s;\n    while (t != 1) {\n        long long temp = t;\n        int i;\n        for (i = 1; i < m; i++) {\n            temp = (temp * temp) % p;\n            if (temp == 1) break;\n        }\n        \n        long long b = c;\n        for (int j = 0; j < m - i - 1; j++) {\n            b = (b * b) % p;\n        }\n        \n        r = (r * b) % p;\n        c = (b * b) % p;\n        t = (t * c) % p;\n        m = i;\n    }\n    \n    return r;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, p;\n    scanf(\"%lld %lld\", &n, &p);\n    long long result = tonelli_shanks_sqrt(n, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_legendre_symbol",
+          "signature": "int compute_legendre_symbol(long long a, long long p)",
+          "code": "int compute_legendre_symbol(long long a, long long p) {\n    long long result = 1, base = a % p, exp = (p - 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result == 1 ? 1 : -1;\n}"
+        },
+        {
+          "clause_id": "find_quadratic_nonresidue",
+          "signature": "long long find_quadratic_nonresidue(long long p)",
+          "code": "long long find_quadratic_nonresidue(long long p) {\n    for (long long n = 2; n < p; n++) {\n        if (compute_legendre_symbol(n, p) == -1) {\n            return n;\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "tonelli_shanks_sqrt",
+          "signature": "long long tonelli_shanks_sqrt(long long n, long long p)",
+          "code": "long long tonelli_shanks_sqrt(long long n, long long p) {\n    if (compute_legendre_symbol(n, p) != 1) return -1;\n    \n    long long q = p - 1, s = 0;\n    while (q % 2 == 0) {\n        q /= 2;\n        s++;\n    }\n    \n    if (s == 1) {\n        long long result = 1, base = n, exp = (p + 1) / 4;\n        while (exp > 0) {\n            if (exp & 1) result = (result * base) % p;\n            base = (base * base) % p;\n            exp >>= 1;\n        }\n        return result;\n    }\n    \n    long long z = find_quadratic_nonresidue(p);\n    long long c = 1, base = z, exp = q;\n    while (exp > 0) {\n        if (exp & 1) c = (c * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long r = 1;\n    base = n;\n    exp = (q + 1) / 2;\n    while (exp > 0) {\n        if (exp & 1) r = (r * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long t = 1;\n    base = n;\n    exp = q;\n    while (exp > 0) {\n        if (exp & 1) t = (t * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    \n    long long m = s;\n    while (t != 1) {\n        long long temp = t;\n        int i;\n        for (i = 1; i < m; i++) {\n            temp = (temp * temp) % p;\n            if (temp == 1) break;\n        }\n        \n        long long b = c;\n        for (int j = 0; j < m - i - 1; j++) {\n            b = (b * b) % p;\n        }\n        \n        r = (r * b) % p;\n        c = (b * b) % p;\n        t = (t * c) % p;\n        m = i;\n    }\n    \n    return r;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, p;\n    scanf(\"%lld %lld\", &n, &p);\n    long long result = tonelli_shanks_sqrt(n, p);\n    if (result == -1) {\n        printf(\"No solution\\n\");\n    } else {\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

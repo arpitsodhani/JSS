@@ -1,0 +1,38 @@
+{
+  "contestId": 1041,
+  "index": "B",
+  "problem_id": "1041B",
+  "name": "Buying a TV Set",
+  "rating": 1000,
+  "tags": [
+    "math"
+  ],
+  "points": 1000.0,
+  "solvedCount": 15127,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Buying a TV Set",
+  "legend": "Monocarp has decided to buy a new TV set and hang it on the wall in his flat. The wall has enough free space so Monocarp can buy a TV set with screen width not greater than a and screen height not greater than b. Monocarp is also used to TV sets with a certain aspect ratio: formally, if the width of the screen is w, and the height of the screen is h, then the following condition should be met: \nw\n\n\nh\n=\nx\n\n\ny\n.\n\nThere are many different TV sets in the shop. Monocarp is sure that for any pair of positive integers w and h there is a TV set with screen width w and height h in the shop.\n\nMonocarp isn't ready to choose the exact TV set he is going to buy. Firstly he wants to determine the optimal screen resolution. He has decided to try all possible variants of screen size. But he must count the number of pairs of positive integers w and h, beforehand, such that (w≤a), (h≤b) and (\nw\n\n\nh\n=\nx\n\n\ny\n).\n\nIn other words, Monocarp wants to determine the number of TV sets having aspect ratio \nx\n\n\ny\n, screen width not exceeding a, and screen height not exceeding b. Two TV sets are considered different if they have different screen width or different screen height.",
+  "input_spec": "The first line contains four integers a, b, x, y (1≤a,b,x,y≤1018) — the constraints on the screen width and height, and on the aspect ratio.",
+  "output_spec": "Print one integer — the number of different variants to choose TV screen width and screen height so that they meet the aforementioned constraints.",
+  "note": "In the first example, there are 3 possible variants: (5,3), (10,6), (15,9).\n\nIn the second example, there is no TV set meeting the constraints.\n\nIn the third example, there is only one variant: (3,2).",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "17 15 5 3\n",
+      "output": "3"
+    },
+    {
+      "input": "14 16 7 22\n",
+      "output": "0"
+    },
+    {
+      "input": "4 2 6 4\n",
+      "output": "1"
+    },
+    {
+      "input": "1000000000000000000 1000000000000000000 999999866000004473 999999822000007597\n",
+      "output": "1000000063"
+    }
+  ]
+}

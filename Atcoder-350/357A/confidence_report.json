@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9843703703703705,
+  "clauses": [
+    {
+      "clause": "count_aliens",
+      "confidence": 0.9899999999999999
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9711111111111113
+    },
+    {
+      "clause": "read_input",
+      "confidence": 0.992
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(char s[][300001])",
+          "code": "int read_input(char s[][300001]) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%s\", s[i]); return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int lcp(char *a, char *b)",
+          "code": "int lcp(char *a, char *b) { int len = 0; while(a[len] && b[len] && a[len] == b[len]) len++; return len; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long sum_all(char s[][300001], int n)",
+          "code": "long long sum_all(char s[][300001], int n) { long long total = 0; for(int i = 0; i < n - 1; i++) { for(int j = i + 1; j < n; j++) { total += lcp(s[i], s[j]); } } return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[300000][300001]; int n = read_input(s); printf(\"%lld\\n\", sum_all(s, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_data(int *n, char strs[][300001])",
+          "code": "void get_data(int *n, char strs[][300001]) { scanf(\"%d\", n); for(int i = 0; i < *n; i++) scanf(\"%s\", strs[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int common_prefix(char *x, char *y)",
+          "code": "int common_prefix(char *x, char *y) { int i = 0; while(x[i] && y[i] && x[i] == y[i]) i++; return i; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long calc_sum(char strs[][300001], int n)",
+          "code": "long long calc_sum(char strs[][300001], int n) { long long ans = 0; for(int i = 0; i < n; i++) { for(int j = i + 1; j < n; j++) { ans += common_prefix(strs[i], strs[j]); } } return ans; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n; char strs[300000][300001]; get_data(&n, strs); printf(\"%lld\\n\", calc_sum(strs, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(char s[][300001])",
+          "code": "int read_input(char s[][300001]) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%s\", s[i]); return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int lcp(char *a, char *b)",
+          "code": "int lcp(char *a, char *b) { int len = 0; while(a[len] && b[len] && a[len] == b[len]) len++; return len; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long sum_all(char s[][300001], int n)",
+          "code": "long long sum_all(char s[][300001], int n) { long long total = 0; for(int i = 0; i < n - 1; i++) { for(int j = i + 1; j < n; j++) { total += lcp(s[i], s[j]); } } return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[300000][300001]; int n = read_input(s); printf(\"%lld\\n\", sum_all(s, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_data(int *n, char strs[][300001])",
+          "code": "void get_data(int *n, char strs[][300001]) { scanf(\"%d\", n); for(int i = 0; i < *n; i++) scanf(\"%s\", strs[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int common_prefix(char *x, char *y)",
+          "code": "int common_prefix(char *x, char *y) { int i = 0; while(x[i] && y[i] && x[i] == y[i]) i++; return i; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long calc_sum(char strs[][300001], int n)",
+          "code": "long long calc_sum(char strs[][300001], int n) { long long ans = 0; for(int i = 0; i < n; i++) { for(int j = i + 1; j < n; j++) { ans += common_prefix(strs[i], strs[j]); } } return ans; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n; char strs[300000][300001]; get_data(&n, strs); printf(\"%lld\\n\", calc_sum(strs, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(char s[][300001])",
+          "code": "int read_input(char s[][300001]) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%s\", s[i]); return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int lcp(char *a, char *b)",
+          "code": "int lcp(char *a, char *b) { int len = 0; while(a[len] && b[len] && a[len] == b[len]) len++; return len; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long sum_all(char s[][300001], int n)",
+          "code": "long long sum_all(char s[][300001], int n) { long long total = 0; for(int i = 0; i < n - 1; i++) { for(int j = i + 1; j < n; j++) { total += lcp(s[i], s[j]); } } return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[300000][300001]; int n = read_input(s); printf(\"%lld\\n\", sum_all(s, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

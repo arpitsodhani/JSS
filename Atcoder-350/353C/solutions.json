@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *arr)",
+          "code": "int read_input(int *arr) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%d\", &arr[i]); return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long compute_mod(long long x, long long y)",
+          "code": "long long compute_mod(long long x, long long y) { long long sum = x + y; if(sum >= 100000000LL) sum -= 100000000LL; return sum; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long count_pairs(int *arr, int n)",
+          "code": "long long count_pairs(int *arr, int n) { long long result = 0; for(int i = 0; i < n - 1; i++) { for(int j = i + 1; j < n; j++) { result += compute_mod(arr[i], arr[j]); } } return result; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int arr[300000]; int n = read_input(arr); printf(\"%lld\\n\", count_pairs(arr, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_data(int *n, int *a)",
+          "code": "void get_data(int *n, int *a) { scanf(\"%d\", n); for(int i = 0; i < *n; i++) scanf(\"%d\", &a[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long apply_modulo(int a, int b)",
+          "code": "long long apply_modulo(int a, int b) { return (a + b) % 100000000LL; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long sum_all_pairs(int *a, int n)",
+          "code": "long long sum_all_pairs(int *a, int n) { long long total = 0; for(int i = 0; i < n; i++) { for(int j = i + 1; j < n; j++) { total += apply_modulo(a[i], a[j]); } } return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, a[300000]; get_data(&n, a); printf(\"%lld\\n\", sum_all_pairs(a, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int input(int arr[])",
+          "code": "int input(int arr[]) { int n; scanf(\"%d\", &n); int i = 0; while(i < n) { scanf(\"%d\", &arr[i]); i++; } return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long modulo_sum(int x, int y)",
+          "code": "long long modulo_sum(int x, int y) { long long res = (long long)x + y; return res >= 100000000LL ? res - 100000000LL : res; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long iterate_pairs(int arr[], int n)",
+          "code": "long long iterate_pairs(int arr[], int n) { long long answer = 0; for(int i = 0; i < n - 1; i++) { for(int j = i + 1; j < n; j++) { answer += modulo_sum(arr[i], arr[j]); } } return answer; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int arr[300000], n = input(arr); printf(\"%lld\\n\", iterate_pairs(arr, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_arr(int *size, int *data)",
+          "code": "void read_arr(int *size, int *data) { scanf(\"%d\", size); for(int idx = 0; idx < *size; idx++) scanf(\"%d\", data + idx); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long calc_f(long long a, long long b)",
+          "code": "long long calc_f(long long a, long long b) { return (a + b) % 100000000LL; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long process_pairs(int *data, int size)",
+          "code": "long long process_pairs(int *data, int size) { long long ans = 0; for(int i = 0; i < size - 1; i++) { for(int j = i + 1; j < size; j++) { ans += calc_f(data[i], data[j]); } } return ans; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int size, data[300000]; read_arr(&size, data); printf(\"%lld\\n\", process_pairs(data, size)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int scan_input(int *vals)",
+          "code": "int scan_input(int *vals) { int cnt; scanf(\"%d\", &cnt); for(int k = 0; k < cnt; k++) scanf(\"%d\", vals + k); return cnt; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long f_modulo(int v1, int v2)",
+          "code": "long long f_modulo(int v1, int v2) { long long temp = v1; temp += v2; if(temp >= 100000000LL) temp %= 100000000LL; return temp; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long compute_result(int *vals, int cnt)",
+          "code": "long long compute_result(int *vals, int cnt) { long long sum = 0; for(int i = 0; i < cnt; i++) { for(int j = i + 1; j < cnt; j++) { sum += f_modulo(vals[i], vals[j]); } } return sum; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int vals[300000]; int cnt = scan_input(vals); printf(\"%lld\\n\", compute_result(vals, cnt)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "count_pairs",
+          "signature": "long long count_pairs(int n,long long *A)",
+          "code": "long long ans=0;\nfor(int j=0;j<n;j++){\n  long long lo=0, hi=j-1, pos=-1;\n  while(lo<=hi){ long long mid=(lo+hi)/2; if(A[mid]*2<=A[j]){ pos=mid; lo=mid+1; } else hi=mid-1; }\n  if(pos>=0) ans += (pos+1);\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); long long ans=count_pairs(n,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "count_pairs",
+          "signature": "long long count_pairs(int n,long long *A)",
+          "code": "long long ans=0;\nfor(int j=0;j<n;j++){\n  long long lo=0, hi=j-1, pos=-1;\n  while(lo<=hi){ long long mid=(lo+hi)/2; if(A[mid]*2<=A[j]){ pos=mid; lo=mid+1; } else hi=mid-1; }\n  if(pos>=0) ans += (pos+1);\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); long long ans=count_pairs(n,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "count_pairs",
+          "signature": "long long count_pairs(int n,long long *A)",
+          "code": "long long ans=0;\nfor(int j=0;j<n;j++){\n  long long lo=0, hi=j-1, pos=-1;\n  while(lo<=hi){ long long mid=(lo+hi)/2; if(A[mid]*2<=A[j]){ pos=mid; lo=mid+1; } else hi=mid-1; }\n  if(pos>=0) ans += (pos+1);\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); long long ans=count_pairs(n,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "count_pairs",
+          "signature": "long long count_pairs(int n,long long *A)",
+          "code": "long long ans=0;\nfor(int j=0;j<n;j++){\n  long long lo=0, hi=j-1, pos=-1;\n  while(lo<=hi){ long long mid=(lo+hi)/2; if(A[mid]*2<=A[j]){ pos=mid; lo=mid+1; } else hi=mid-1; }\n  if(pos>=0) ans += (pos+1);\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); long long ans=count_pairs(n,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "count_pairs",
+          "signature": "long long count_pairs(int n,long long *A)",
+          "code": "long long ans=0;\nfor(int j=0;j<n;j++){\n  long long lo=0, hi=j-1, pos=-1;\n  while(lo<=hi){ long long mid=(lo+hi)/2; if(A[mid]*2<=A[j]){ pos=mid; lo=mid+1; } else hi=mid-1; }\n  if(pos>=0) ans += (pos+1);\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); long long ans=count_pairs(n,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "388C",
+  "total_programs": 5
+}

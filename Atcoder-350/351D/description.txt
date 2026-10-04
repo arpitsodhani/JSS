@@ -1,0 +1,7 @@
+There is a grid of H rows and W columns. Some cells (possibly zero) contain magnets. The state of the grid is represented by H strings S_1, S_2, \ldots, S_H of length W . If the j -th character of S_i is # , it indicates that there is a magnet in the cell at the i -th row from the top and j -th column from the left; if it is . , it indicates that the cell is empty. Takahashi, wearing an iron armor, can move in the grid as follows: If any of the cells vertically or horizontally adjacent to the current cell contains a magnet, he cannot move at all. Otherwise, he can move to any one of the vertically or horizontally adjacent cells. However, he cannot exit the grid. For each cell without a magnet, define its degree of freedom as the number of cells he can reach by repeatedly moving from that cell. Find the maximum degree of freedom among all cells without magnets in the grid. Here, in the definition of degree of freedom, "cells he can reach by repeatedly moving" mean cells that can be reached from the initial cell by some sequence of moves (possibly zero moves). It is not necessary that there is a sequence of moves that visits all such reachable cells starting from the initial cell. Specifically, each cell itself (without a magnet) is always included in the cells reachable from that cell.
+
+**Constraints:**
+- 1\leq H,W\leq 1000
+- H,W integers
+- S_i . and # W string
+- and 1 .

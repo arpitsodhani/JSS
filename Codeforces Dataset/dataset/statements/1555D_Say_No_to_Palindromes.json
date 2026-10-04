@@ -1,0 +1,29 @@
+{
+  "contestId": 1555,
+  "index": "D",
+  "problem_id": "1555D",
+  "name": "Say No to Palindromes",
+  "rating": 1600,
+  "tags": [
+    "brute force",
+    "constructive algorithms",
+    "dp",
+    "strings"
+  ],
+  "points": null,
+  "solvedCount": 15949,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Say No to Palindromes",
+  "legend": "Let's call the string beautiful if it does not contain a substring of length at least 2, which is a palindrome. Recall that a palindrome is a string that reads the same way from the first character to the last and from the last character to the first. For example, the strings a, bab, acca, bcabcbacb are palindromes, but the strings ab, abbbaa, cccb are not.\n\nLet's define cost of a string as the minimum number of operations so that the string becomes beautiful, if in one operation it is allowed to change any character of the string to one of the first 3 letters of the Latin alphabet (in lowercase).\n\nYou are given a string s of length n, each character of the string is one of the first 3 letters of the Latin alphabet (in lowercase).\n\nYou have to answer m queries — calculate the cost of the substring of the string s from li-th to ri-th position, inclusive.",
+  "input_spec": "The first line contains two integers n and m (1≤n,m≤2⋅105) — the length of the string s and the number of queries.\n\nThe second line contains the string s, it consists of n characters, each character one of the first 3 Latin letters.\n\nThe following m lines contain two integers li and ri (1≤li≤ri≤n) — parameters of the i-th query.",
+  "output_spec": "For each query, print a single integer — the cost of the substring of the string s from li-th to ri-th position, inclusive.",
+  "note": "Consider the queries of the example test.\n\nin the first query, the substring is baa, which can be changed to bac in one operation;\nin the second query, the substring is baacb, which can be changed to cbacb in two operations;\nin the third query, the substring is cb, which can be left unchanged;\nin the fourth query, the substring is aa, which can be changed to ba in one operation.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5 4\nbaacb\n1 3\n1 5\n4 5\n2 3\n",
+      "output": "1\n2\n0\n1"
+    }
+  ]
+}

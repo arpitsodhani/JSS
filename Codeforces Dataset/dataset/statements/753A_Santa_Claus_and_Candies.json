@@ -1,0 +1,36 @@
+{
+  "contestId": 753,
+  "index": "A",
+  "problem_id": "753A",
+  "name": "Santa Claus and Candies",
+  "rating": 1000,
+  "tags": [
+    "dp",
+    "greedy",
+    "math"
+  ],
+  "points": 500.0,
+  "solvedCount": 10015,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Santa Claus and Candies",
+  "legend": "Santa Claus has n candies, he dreams to give them as gifts to children.\n\nWhat is the maximal number of children for whose he can give candies if Santa Claus want each kid should get distinct positive integer number of candies. Santa Class wants to give all n candies he has.",
+  "input_spec": "The only line contains positive integer number n (1 ≤ n ≤ 1000) — number of candies Santa Claus has.",
+  "output_spec": "Print to the first line integer number k — maximal number of kids which can get candies.\n\nPrint to the second line k distinct integer numbers: number of candies for each of k kid. The sum of k printed numbers should be exactly n.\n\nIf there are many solutions, print any of them.",
+  "note": "",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n",
+      "output": "2\n2 3"
+    },
+    {
+      "input": "9\n",
+      "output": "3\n3 5 1"
+    },
+    {
+      "input": "2\n",
+      "output": "1\n2"
+    }
+  ]
+}

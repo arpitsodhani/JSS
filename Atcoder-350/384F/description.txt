@@ -1,0 +1,6 @@
+For a positive integer x , define f(x) as follows: "While x is even, keep dividing it by 2 . The final value of x after these divisions is f(x) ." For example, f(4)=f(2)=f(1)=1 , and f(12)=f(6)=f(3)=3 . Given an integer sequence A=(A_1,A_2,\ldots,A_N) of length N , find \displaystyle \sum_{i=1}^N \sum_{j=i}^N f(A_i+A_j) .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

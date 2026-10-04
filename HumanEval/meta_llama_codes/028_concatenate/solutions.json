@@ -1,0 +1,119 @@
+{
+  "problem_id": "028_concatenate",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "concatenate_strings",
+          "code": "void concatenate_strings(char strs[][1000], int n, char *result) {\n    result[0] = '\\0';\n    for (int i = 0; i < n; i++) {\n        strcat(result, strs[i]);\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    char strs[n][1000];\n    for (int i = 0; i < n; i++) {\n        fgets(strs[i], sizeof(strs[i]), stdin);\n        strs[i][strcspn(strs[i], \"\\n\")] = 0;\n    }\n    char result[10000] = \"\";\n    concatenate_strings(strs, n, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "concatenate_strings",
+          "code": "void concatenate_strings(char strs[][1000], int n, char *result) {\n    result[0] = '\\0';\n    for (int i = 0; i < n; i++) {\n        strcat(result, strs[i]);\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    char strs[n][1000];\n    for (int i = 0; i < n; i++) {\n        fgets(strs[i], sizeof(strs[i]), stdin);\n        strs[i][strcspn(strs[i], \"\\n\")] = 0;\n    }\n    char result[10000] = \"\";\n    concatenate_strings(strs, n, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "concatenate_strings",
+          "code": "void concatenate_strings(char strs[][1000], int n, char *result) {\n    result[0] = '\\0';\n    for (int i = 0; i < n; i++) {\n        strcat(result, strs[i]);\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    char strs[n][1000];\n    for (int i = 0; i < n; i++) {\n        fgets(strs[i], sizeof(strs[i]), stdin);\n        strs[i][strcspn(strs[i], \"\\n\")] = 0;\n    }\n    char result[10000] = \"\";\n    concatenate_strings(strs, n, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "concatenate_strings",
+          "code": "void concatenate_strings(char strs[][1000], int n, char *result) {\n    result[0] = '\\0';\n    for (int i = 0; i < n; i++) {\n        strcat(result, strs[i]);\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    char strs[n][1000];\n    for (int i = 0; i < n; i++) {\n        fgets(strs[i], sizeof(strs[i]), stdin);\n        strs[i][strcspn(strs[i], \"\\n\")] = 0;\n    }\n    char result[10000] = \"\";\n    concatenate_strings(strs, n, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "concatenate_strings",
+          "code": "void concatenate_strings(char strs[][1000], int n, char *result) {\n    result[0] = '\\0';\n    for (int i = 0; i < n; i++) {\n        strcat(result, strs[i]);\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    char strs[n][1000];\n    for (int i = 0; i < n; i++) {\n        fgets(strs[i], sizeof(strs[i]), stdin);\n        strs[i][strcspn(strs[i], \"\\n\")] = 0;\n    }\n    char result[10000] = \"\";\n    concatenate_strings(strs, n, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>"
+  ]
+}

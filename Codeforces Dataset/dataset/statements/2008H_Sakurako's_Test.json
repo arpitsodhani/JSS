@@ -1,0 +1,30 @@
+{
+  "contestId": 2008,
+  "index": "H",
+  "problem_id": "2008H",
+  "name": "Sakurako's Test",
+  "rating": 2100,
+  "tags": [
+    "binary search",
+    "brute force",
+    "greedy",
+    "math",
+    "number theory"
+  ],
+  "points": null,
+  "solvedCount": 3653,
+  "source": "verbatim_cf_fetch",
+  "title": "H. Sakurako's Test",
+  "legend": "Sakurako will soon take a test. The test can be described as an array of integers n and a task on it:\n\nGiven an integer x, Sakurako can perform the following operation any number of times:\n\nChoose an integer i (1≤i≤n) such that ai≥x;\nChange the value of ai to ai−x.\n\nUsing this operation any number of times, she must find the minimum possible median∗ of the array a.\n\nSakurako knows the array but does not know the integer x. Someone let it slip that one of the q values of x will be in the next test, so Sakurako is asking you what the answer is for each such x.\n\n∗The median of an array of length n is the element that stands in the middle of the sorted array (at the \nn+2\n\n\n2\n-th position for even n, and at the \nn+1\n\n\n2\n-th for odd)",
+  "input_spec": "The first line contains one integer t (1≤t≤104)  — the number of test cases.\n\nThe first line of each test case contains two integers n and q (1≤n,q≤105)  — the number of elements in the array and the number of queries.\n\nThe second line of each test case contains n integers a1,a2,…,an (1≤ai≤n)  — the elements of the array.\n\nThe following q lines each contain one integer x (1≤x≤n).\n\nIt is guaranteed that the sum of n across all test cases does not exceed 105. The same guarantee applies to the sum of q across all test cases.",
+  "output_spec": "For each test case, output q integers  — the answer for each query.",
+  "note": "",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n5 5\n1 2 3 4 5\n1\n2\n3\n4\n5\n6 3\n1 2 6 4 1 3\n2\n1\n5\n",
+      "output": "0 1 1 1 2\n1 0 2"
+    }
+  ]
+}

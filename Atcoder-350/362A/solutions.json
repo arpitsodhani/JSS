@@ -1,0 +1,134 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_prices",
+          "signature": "void read_prices(int *r, int *g, int *b, char *c)",
+          "code": "void read_prices(int *r, int *g, int *b, char *c) {\n    scanf(\"%d %d %d\", r, g, b);\n    scanf(\"%s\", c);\n}"
+        },
+        {
+          "clause_id": "find_minimum_cost",
+          "signature": "int find_minimum_cost(int r, int g, int b, char *c)",
+          "code": "int find_minimum_cost(int r, int g, int b, char *c) {\n    int min = 1000;\n    if (strcmp(c, \"Red\") != 0 && r < min) min = r;\n    if (strcmp(c, \"Green\") != 0 && g < min) min = g;\n    if (strcmp(c, \"Blue\") != 0 && b < min) min = b;\n    return min;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int r, g, b;\n    char c[10];\n    read_prices(&r, &g, &b, c);\n    printf(\"%d\\n\", find_minimum_cost(r, g, b, c));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_prices",
+          "signature": "int read_prices(int *r, int *g, int *b, char color[])",
+          "code": "int read_prices(int *r, int *g, int *b, char color[]) {\n    scanf(\"%d %d %d %s\", r, g, b, color);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "find_minimum_cost",
+          "signature": "int find_minimum_cost(int r, int g, int b, char color[])",
+          "code": "int find_minimum_cost(int r, int g, int b, char color[]) {\n    int ans = 101;\n    if (strcmp(color, \"Red\") != 0 && r < ans) ans = r;\n    if (strcmp(color, \"Green\") != 0 && g < ans) ans = g;\n    if (strcmp(color, \"Blue\") != 0 && b < ans) ans = b;\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int r, g, b;\n    char color[10];\n    read_prices(&r, &g, &b, color);\n    int ans = find_minimum_cost(r, g, b, color);\n    printf(\"%d\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_prices",
+          "signature": "void read_prices(int *red, int *green, int *blue, char *dislike)",
+          "code": "void read_prices(int *red, int *green, int *blue, char *dislike) {\n    scanf(\"%d %d %d %s\", red, green, blue, dislike);\n}"
+        },
+        {
+          "clause_id": "find_minimum_cost",
+          "signature": "int find_minimum_cost(int red, int green, int blue, char *dislike)",
+          "code": "int find_minimum_cost(int red, int green, int blue, char *dislike) {\n    int result = 1000;\n    if (strcmp(dislike, \"Red\") != 0) result = (red < result) ? red : result;\n    if (strcmp(dislike, \"Green\") != 0) result = (green < result) ? green : result;\n    if (strcmp(dislike, \"Blue\") != 0) result = (blue < result) ? blue : result;\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int red, green, blue;\n    char dislike[10];\n    read_prices(&red, &green, &blue, dislike);\n    int result = find_minimum_cost(red, green, blue, dislike);\n    printf(\"%d\\n\", result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_prices",
+          "signature": "long long read_prices(int *r, int *g, int *b, char *forbidden)",
+          "code": "long long read_prices(int *r, int *g, int *b, char *forbidden) {\n    scanf(\"%d %d %d %s\", r, g, b, forbidden);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "find_minimum_cost",
+          "signature": "int find_minimum_cost(int r, int g, int b, char *forbidden)",
+          "code": "int find_minimum_cost(int r, int g, int b, char *forbidden) {\n    int best = 200;\n    if (strcmp(forbidden, \"Red\") != 0 && r < best) best = r;\n    if (strcmp(forbidden, \"Green\") != 0 && g < best) best = g;\n    if (strcmp(forbidden, \"Blue\") != 0 && b < best) best = b;\n    return best;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int r, g, b;\n    char forbidden[10];\n    read_prices(&r, &g, &b, forbidden);\n    printf(\"%d\\n\", find_minimum_cost(r, g, b, forbidden));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_prices",
+          "signature": "void read_prices(int *r_cost, int *g_cost, int *b_cost, char c[])",
+          "code": "void read_prices(int *r_cost, int *g_cost, int *b_cost, char c[]) {\n    scanf(\"%d %d %d %s\", r_cost, g_cost, b_cost, c);\n}"
+        },
+        {
+          "clause_id": "find_minimum_cost",
+          "signature": "int find_minimum_cost(int r_cost, int g_cost, int b_cost, char c[])",
+          "code": "int find_minimum_cost(int r_cost, int g_cost, int b_cost, char c[]) {\n    int min_price = 999;\n    if (strcmp(c, \"Red\") != 0 && r_cost < min_price) min_price = r_cost;\n    if (strcmp(c, \"Green\") != 0 && g_cost < min_price) min_price = g_cost;\n    if (strcmp(c, \"Blue\") != 0 && b_cost < min_price) min_price = b_cost;\n    return min_price;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int r_cost, g_cost, b_cost;\n    char c[10];\n    read_prices(&r_cost, &g_cost, &b_cost, c);\n    printf(\"%d\\n\", find_minimum_cost(r_cost, g_cost, b_cost, c));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

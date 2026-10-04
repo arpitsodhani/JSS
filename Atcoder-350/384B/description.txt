@@ -1,0 +1,6 @@
+AtCoder Regular Contest (ARC) is divided into two divisions. In ARC Div. 1 , participants whose rating at the start of the contest is between 1600 and 2799 , inclusive, are subject to rating updates. In ARC Div. 2 , participants whose rating at the start of the contest is between 1200 and 2399 , inclusive, are subject to rating updates. Takahashi decided to participate in N ARCs. Initially, his rating is R . The i -th (1\leq i\leq N) ARC is Div. D _ i , and his performance in that contest is represented by an integer A _ i . If he is subject to a rating update in the i -th ARC, let T be his rating at the start of that contest. Then, after the contest, his rating becomes T+A _ i . If his is not subject to a rating update, his rating does not change. Rating updates for ARCs are performed immediately after the contest ends, and whether he is subject to rating updates in the next contest is determined based on his rating after the update. Find his rating after finishing the N ARCs. He does not participate in any contests other than these N ARCs, and his rating does not change in other ways.
+
+**Constraints:**
+- 1 <= N <= 100
+- R is an integer
+- 1600 <= R <= 2799

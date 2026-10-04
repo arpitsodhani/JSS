@@ -1,0 +1,8 @@
+You are given three length- N sequences of positive integers: A=(A_1,A_2,\ldots,A_N) , B=(B_1,B_2,\ldots,B_N) , and C=(C_1,C_2,\ldots,C_N) . Find the number of pairs of positive integers (x, y) that satisfy the following condition: A_i \times x + B_i \times y < C_i for all 1 \leq i \leq N . It can be proved that the number of such pairs of positive integers satisfying the condition is finite. You are given T test cases, each of which should be solved.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= M <= N(N-1)/2
+- 1 <= u_i < v_i <= N
+- All pairs (u_i, v_i) are distinct
+- All input values are integers

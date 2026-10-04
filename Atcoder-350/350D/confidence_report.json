@@ -1,0 +1,105 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "prog1_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_find_root",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_initialize_dsu",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_union_sets",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_find_root",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_initialize_dsu",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_union_sets",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_find_root",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_initialize_dsu",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_union_sets",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_find_root",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_initialize_dsu",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_union_sets",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_find_root",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_initialize_dsu",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_union_sets",
+      "confidence": 1.0
+    }
+  ]
+}

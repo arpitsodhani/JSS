@@ -1,0 +1,5 @@
+You have a row of N cells. The i -th cell from the left contains an integer A_i . You also have \lfloor \frac{N}{K} \rfloor tiles, each of which covers K consecutive cells. For each i = 1, \ldots, \lfloor \frac{N}{K} \rfloor , solve the following problem: When placing exactly i tiles without overlap, find the maximum possible sum of the numbers in the covered cells.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- S is a string of length N consisting of lowercase English letters

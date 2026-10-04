@@ -1,0 +1,114 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char text[10000];\n    scanf(\" %[^\\n]\", text);\n    \n    int has_space = 0, has_comma = 0;\n    for (int i = 0; text[i]; i++) {\n        if (text[i] == ' ') has_space = 1;\n        if (text[i] == ',') has_comma = 1;\n    }\n    \n    if (has_space) {\n        char *token = strtok(text, \" \");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \" \");\n        }\n    } else if (has_comma) {\n        char *token = strtok(text, \",\");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \",\");\n        }\n    } else {\n        int count = 0;\n        for (int i = 0; text[i]; i++) {\n            if (islower(text[i])) {\n                int order = text[i] - 'a';\n                if (order % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        printf(\"%d\\n\", count);\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char text[10000];\n    scanf(\" %[^\\n]\", text);\n    \n    int has_space = 0, has_comma = 0;\n    for (int i = 0; text[i]; i++) {\n        if (text[i] == ' ') has_space = 1;\n        if (text[i] == ',') has_comma = 1;\n    }\n    \n    if (has_space) {\n        char *token = strtok(text, \" \");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \" \");\n        }\n    } else if (has_comma) {\n        char *token = strtok(text, \",\");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \",\");\n        }\n    } else {\n        int count = 0;\n        for (int i = 0; text[i]; i++) {\n            if (islower(text[i])) {\n                int order = text[i] - 'a';\n                if (order % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        printf(\"%d\\n\", count);\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char text[10000];\n    scanf(\" %[^\\n]\", text);\n    \n    int has_space = 0, has_comma = 0;\n    for (int i = 0; text[i]; i++) {\n        if (text[i] == ' ') has_space = 1;\n        if (text[i] == ',') has_comma = 1;\n    }\n    \n    if (has_space) {\n        char *token = strtok(text, \" \");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \" \");\n        }\n    } else if (has_comma) {\n        char *token = strtok(text, \",\");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \",\");\n        }\n    } else {\n        int count = 0;\n        for (int i = 0; text[i]; i++) {\n            if (islower(text[i])) {\n                int order = text[i] - 'a';\n                if (order % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        printf(\"%d\\n\", count);\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char text[10000];\n    scanf(\" %[^\\n]\", text);\n    \n    int has_space = 0, has_comma = 0;\n    for (int i = 0; text[i]; i++) {\n        if (text[i] == ' ') has_space = 1;\n        if (text[i] == ',') has_comma = 1;\n    }\n    \n    if (has_space) {\n        char *token = strtok(text, \" \");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \" \");\n        }\n    } else if (has_comma) {\n        char *token = strtok(text, \",\");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \",\");\n        }\n    } else {\n        int count = 0;\n        for (int i = 0; text[i]; i++) {\n            if (islower(text[i])) {\n                int order = text[i] - 'a';\n                if (order % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        printf(\"%d\\n\", count);\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char text[10000];\n    scanf(\" %[^\\n]\", text);\n    \n    int has_space = 0, has_comma = 0;\n    for (int i = 0; text[i]; i++) {\n        if (text[i] == ' ') has_space = 1;\n        if (text[i] == ',') has_comma = 1;\n    }\n    \n    if (has_space) {\n        char *token = strtok(text, \" \");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \" \");\n        }\n    } else if (has_comma) {\n        char *token = strtok(text, \",\");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \",\");\n        }\n    } else {\n        int count = 0;\n        for (int i = 0; text[i]; i++) {\n            if (islower(text[i])) {\n                int order = text[i] - 'a';\n                if (order % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        printf(\"%d\\n\", count);\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

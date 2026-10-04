@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.825,
+  "clauses": [
+    {
+      "clause": "compute_maximum_weighted_matching",
+      "confidence": 0.29999999999999993
+    },
+    {
+      "clause": "find_augmenting_path_hungarian",
+      "confidence": 1.0
+    },
+    {
+      "clause": "initialize_hungarian_state",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    }
+  ]
+}

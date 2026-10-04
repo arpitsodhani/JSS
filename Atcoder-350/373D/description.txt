@@ -1,0 +1,9 @@
+You are given a directed graph with N vertices and M edges. The j -th directed edge goes from vertex u_j to vertex v_j and has a weight of w_j . Find one way to write an integer between -10^{18} and 10^{18} , inclusive, to each vertex such that the following condition is satisfied. Let x_i be the value written on vertex i . For all edges j=1,2,\dots,M , it holds that x_{v_j} - x_{u_j} = w_j . It is guaranteed that at least one such assignment exists for the given input.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= 2 * 10^5
+- 1 <= u_i, v_i <= N
+- -10^9 <= w_i <= 10^9
+- The graph is connected
+- All input values are integers

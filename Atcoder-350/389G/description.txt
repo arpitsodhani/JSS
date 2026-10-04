@@ -1,0 +1,9 @@
+You are given a positive even integer N and a prime number P . For M = N-1, \ldots, \frac{N(N-1)}{2} , solve the following problem. How many undirected connected simple graphs with N vertices labeled from 1 to N and M edges satisfy this: the number of vertices whose shortest distance from vertex 1 is even is equal to the number of vertices whose shortest distance from vertex 1 is odd? Find this number modulo P .
+
+**Constraints:**
+- 1 <= N <= 500
+- 1 <= M <= N(N-1)/2
+- 1 <= A_i < B_i <= N
+- All pairs (A_i, B_i) are distinct
+- 1 <= C_i <= 10^9
+- All input values are integers

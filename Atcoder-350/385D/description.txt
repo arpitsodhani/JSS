@@ -1,0 +1,9 @@
+There are N houses at (X_1,Y_1),\ldots,(X_N,Y_N) on a two-dimensional plane. Initially, Santa Claus is at (S_x,S_y) . He will act according to the sequence (D_1,C_1),\ldots,(D_M,C_M) as follows: For i=1,2,\ldots,M in order, he moves as follows: Let (x,y) be the where he currently is. If D_i is U , move in a straight line from (x,y) to (x,y+C_i) . If D_i is D , move in a straight line from (x,y) to (x,y-C_i) . If D_i is L , move in a straight line from (x,y) to (x-C_i,y) . If D_i is R , move in a straight line from (x,y) to (x+C_i,y) . Find the where he is after completing all actions, and the number of distinct houses he passed through or arrived at during his actions. If the same house is passed multiple times, it is only counted once.
+
+**Constraints:**
+- 1 <= N, M <= 2 * 10^5
+- -10^9 <= X_i, Y_i <= 10^9
+- All pairs (X_i, Y_i) are distinct
+- C_i is 'U', 'D', 'L', or 'R'
+- 1 <= L_i <= 2 * 10^9
+- All input values are integers

@@ -1,0 +1,7 @@
+The AtCoder company office can be represented as a grid of H rows and W columns. Let (i, j) denote the cell at the i -th row from the top and j -th column from the left. The state of each cell is represented by a character S_{i,j} . If S_{i,j} is # , that cell contains a desk; if S_{i,j} is . , that cell is a floor. It is guaranteed that there are at least two floor cells. You will choose two distinct floor cells and place a humidifier on each. After placing the humidifiers, a cell (i,j) is humidified if and only if it is within a Manhattan distance D from at least one of the humidifier cells (i',j') . The Manhattan distance between (i,j) and (i',j') is defined as |i - i'| + |j - j'| . Note that any floor cell on which a humidifier is placed is always humidified. Find the maximum possible number of humidified floor cells.
+
+**Constraints:**
+- 2 <= H, W <= 10
+- D is an integer
+- 1 <= D <= H + W
+- S_{i,j} is '#' or '.'

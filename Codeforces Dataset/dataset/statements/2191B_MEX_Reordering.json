@@ -1,0 +1,27 @@
+{
+  "contestId": 2191,
+  "index": "B",
+  "problem_id": "2191B",
+  "name": "MEX Reordering",
+  "rating": 1000,
+  "tags": [
+    "constructive algorithms",
+    "sortings"
+  ],
+  "points": 1000.0,
+  "solvedCount": 20799,
+  "source": "verbatim_cf_fetch",
+  "title": "B. MEX Reordering",
+  "legend": "You are given an integer array a consisting of n elements. Denote f(l,r)=MEX([al,al+1,…,ar])∗.\n\nDetermine if there is a way to reorder the array a such that for every i (1≤i≤n−1), f(1,i)≠f(i+1,n). In other words, for every split point i, the MEX of the prefix must be different from the MEX of the suffix.\n\n∗The minimum excluded (MEX) of a collection of integers c1,c2,…,ck is defined as the smallest non-negative integer x which does not occur in the collection c.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤500). The description of the test cases follows.\n\nThe first line of each test case contains a single integer n (2≤n≤100) — the length of the array.\n\nThe second line of each test case contains n integers a1,a2,…,an (0≤ai≤n).",
+  "output_spec": "Output \"YES\" if you can reorder a so that the condition from the statement is satisfied, and \"NO\" otherwise. You can output the answer in any case (upper or lower). For example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will be recognized as positive responses.",
+  "note": "In the first example, the initial ordering of a already satisfies the condition. The only choice for i is i=1. Then f(1,i)=f(1,1)=MEX([a1])=MEX([1])=0, and f(i+1,n)=f(2,2)=MEX([a2])=MEX([0])=1. Since 0≠1, the condition is satisfied.\n\nIn the second example, it can be shown that there is no way to reorder a to satisfy the condition. As an example, consider the order a=[3,0,0] and i=2. We have f(1,i)=f(1,2)=MEX([a1,a2])=MEX([3,0])=1, and f(i+1,n)=f(3,3)=MEX([a3])=MEX([0])=1, hence f(1,i)=f(i+1,n), so the choice of reordering is invalid.\n\nIn the third example, we can reorder a into [1,6,1,0,0,5]. When i=4, f(1,i)=f(1,4)=MEX([a1,a2,a3,a4])=MEX([1,6,1,0])=2, f(i+1,n)=f(5,6)=MEX([a5,a6])=MEX([0,5])=1, so the condition is satisfied for this i. It can be verified that the condition is also satisfied for all other i.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n2\n1 0\n3\n0 3 0\n6\n1 0 5 0 6 1\n",
+      "output": "YES\nNO\nYES"
+    }
+  ]
+}

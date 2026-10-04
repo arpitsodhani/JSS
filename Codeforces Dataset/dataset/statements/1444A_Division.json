@@ -1,0 +1,28 @@
+{
+  "contestId": 1444,
+  "index": "A",
+  "problem_id": "1444A",
+  "name": "Division",
+  "rating": 1500,
+  "tags": [
+    "brute force",
+    "math",
+    "number theory"
+  ],
+  "points": 500.0,
+  "solvedCount": 14538,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Division",
+  "legend": "Oleg's favorite subjects are History and Math, and his favorite branch of mathematics is division.\n\nTo improve his division skills, Oleg came up with t pairs of integers pi and qi and for each pair decided to find the greatest integer xi, such that:\n\npi is divisible by xi;\nxi is not divisible by qi.\nOleg is really good at division and managed to find all the answers quickly, how about you?",
+  "input_spec": "The first line contains an integer t (1≤t≤50) — the number of pairs.\n\nEach of the following t lines contains two integers pi and qi (1≤pi≤1018; 2≤qi≤109) — the i-th pair of integers.",
+  "output_spec": "Print t integers: the i-th integer is the largest xi such that pi is divisible by xi, but xi is not divisible by qi.\n\nOne can show that there is always at least one value of xi satisfying the divisibility conditions for the given constraints.",
+  "note": "For the first pair, where p1=10 and q1=4, the answer is x1=10, since it is the greatest divisor of 10 and 10 is not divisible by 4.\n\nFor the second pair, where p2=12 and q2=6, note that\n\n12 is not a valid x2, since 12 is divisible by q2=6;\n6 is not valid x2 as well: 6 is also divisible by q2=6.\nThe next available divisor of p2=12 is 4, which is the answer, since 4 is not divisible by 6.",
+  "time_limit": "1 second",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "3\n10 4\n12 6\n179 822\n",
+      "output": "10\n4\n179"
+    }
+  ]
+}

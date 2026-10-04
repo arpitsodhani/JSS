@@ -1,0 +1,141 @@
+{
+  "problem_num": 154,
+  "problem_name": "cycpattern_check",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "check_cyclic_pattern",
+          "code": "int check_cyclic_pattern(char* a, char* b) {\n    int len_a = strlen(a);\n    int len_b = strlen(b);\n    \n    if (len_b > len_a) return 0;\n    \n    // Generate all rotations of b and check if any is substring of a\n    for (int rot = 0; rot < len_b; rot++) {\n        char rotated[1000];\n        for (int i = 0; i < len_b; i++) {\n            rotated[i] = b[(rot + i) % len_b];\n        }\n        rotated[len_b] = '\\0';\n        \n        // Check if rotated is substring of a\n        if (strstr(a, rotated) != NULL) {\n            return 1;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char a[1000], b[1000];\n    scanf(\"%s %s\", a, b);\n    \n    if (check_cyclic_pattern(a, b)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "check_cyclic_pattern",
+          "code": "int check_cyclic_pattern(char* a, char* b) {\n    int len_a = strlen(a);\n    int len_b = strlen(b);\n    \n    if (len_b > len_a) return 0;\n    \n    // Generate all rotations of b and check if any is substring of a\n    for (int rot = 0; rot < len_b; rot++) {\n        char rotated[1000];\n        for (int i = 0; i < len_b; i++) {\n            rotated[i] = b[(rot + i) % len_b];\n        }\n        rotated[len_b] = '\\0';\n        \n        // Check if rotated is substring of a\n        if (strstr(a, rotated) != NULL) {\n            return 1;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char a[1000], b[1000];\n    scanf(\"%s %s\", a, b);\n    \n    if (check_cyclic_pattern(a, b)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "check_cyclic_pattern",
+          "code": "int check_cyclic_pattern(char* a, char* b) {\n    int len_a = strlen(a);\n    int len_b = strlen(b);\n    \n    if (len_b > len_a) return 0;\n    \n    // Generate all rotations of b and check if any is substring of a\n    for (int rot = 0; rot < len_b; rot++) {\n        char rotated[1000];\n        for (int i = 0; i < len_b; i++) {\n            rotated[i] = b[(rot + i) % len_b];\n        }\n        rotated[len_b] = '\\0';\n        \n        // Check if rotated is substring of a\n        if (strstr(a, rotated) != NULL) {\n            return 1;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char a[1000], b[1000];\n    scanf(\"%s %s\", a, b);\n    \n    if (check_cyclic_pattern(a, b)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "check_cyclic_pattern",
+          "code": "int check_cyclic_pattern(char* a, char* b) {\n    int len_a = strlen(a);\n    int len_b = strlen(b);\n    \n    if (len_b > len_a) return 0;\n    \n    // Generate all rotations of b and check if any is substring of a\n    for (int rot = 0; rot < len_b; rot++) {\n        char rotated[1000];\n        for (int i = 0; i < len_b; i++) {\n            rotated[i] = b[(rot + i) % len_b];\n        }\n        rotated[len_b] = '\\0';\n        \n        // Check if rotated is substring of a\n        if (strstr(a, rotated) != NULL) {\n            return 1;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char a[1000], b[1000];\n    scanf(\"%s %s\", a, b);\n    \n    if (check_cyclic_pattern(a, b)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "check_cyclic_pattern",
+          "code": "int check_cyclic_pattern(char* a, char* b) {\n    int len_a = strlen(a);\n    int len_b = strlen(b);\n    \n    if (len_b > len_a) return 0;\n    \n    // Generate all rotations of b and check if any is substring of a\n    for (int rot = 0; rot < len_b; rot++) {\n        char rotated[1000];\n        for (int i = 0; i < len_b; i++) {\n            rotated[i] = b[(rot + i) % len_b];\n        }\n        rotated[len_b] = '\\0';\n        \n        // Check if rotated is substring of a\n        if (strstr(a, rotated) != NULL) {\n            return 1;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char a[1000], b[1000];\n    scanf(\"%s %s\", a, b);\n    \n    if (check_cyclic_pattern(a, b)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

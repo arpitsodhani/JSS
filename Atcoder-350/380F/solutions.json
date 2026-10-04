@@ -1,0 +1,224 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *L,int **A,int **B,int **C)",
+          "code": "void read_input(int *N,int *M,int *L,int **A,int **B,int **C){ scanf(\"%d%d%d\", N,M,L); *A=(int*)malloc((size_t)(*N)*sizeof(int)); *B=(int*)malloc((size_t)(*M)*sizeof(int)); *C=(int*)malloc((size_t)(*L)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); for(int i=0;i<*M;i++) scanf(\"%d\", &(*B)[i]); for(int i=0;i<*L;i++) scanf(\"%d\", &(*C)[i]); }\n"
+        },
+        {
+          "clause_id": "make_value_array",
+          "signature": "int make_value_array(int N,int M,int L,int *A,int *B,int *C,int *val)",
+          "code": "int make_value_array(int N,int M,int L,int *A,int *B,int *C,int *val){ int idx=0; for(int i=0;i<N;i++) val[idx++]=A[i]; for(int i=0;i<M;i++) val[idx++]=B[i]; for(int i=0;i<L;i++) val[idx++]=C[i]; return idx; }\n"
+        },
+        {
+          "clause_id": "count_bits",
+          "signature": "int count_bits(int mask,int total)",
+          "code": "int count_bits(int mask,int total){ int c=0; for(int i=0;i<total;i++) if(mask>>i &1) c++; return c; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int maskA,int maskB,int total,int *val)",
+          "code": "int solve(int maskA,int maskB,int total,int *val){\n    static int memo[1<<20];\n    static char vis[1<<20];\n    int key = (maskA<<10) ^ maskB;\n    if(vis[key]) return memo[key];\n    vis[key]=1;\n    int win=0;\n    // current player is A if depth even (maskA^maskB parity)\n    int cntA=count_bits(maskA,total), cntB=count_bits(maskB,total);\n    int turnA = ( (cntA+cntB)%2==0 );\n    int maskT = ((1<<total)-1) & (~maskA) & (~maskB);\n    int cur = turnA? maskA: maskB;\n    for(int i=0;i<total;i++){\n        if(cur>>i &1){\n            int newMaskA=maskA, newMaskB=maskB;\n            if(turnA) newMaskA &= ~(1<<i); else newMaskB &= ~(1<<i);\n            int best=0;\n            // option: take none\n            if(!solve(newMaskA, newMaskB, total, val)) best=1;\n            // option: take one lower table card\n            for(int j=0;j<total && !best;j++){\n                if(maskT>>j &1){\n                    if(val[j] < val[i]){\n                        int nmA=newMaskA, nmB=newMaskB;\n                        if(turnA) nmA |= (1<<j); else nmB |= (1<<j);\n                        if(!solve(nmA,nmB,total,val)) best=1;\n                    }\n                }\n            }\n            if(best){ win=1; break; }\n        }\n    }\n    memo[key]=win;\n    return win;\n}\n"
+        },
+        {
+          "clause_id": "determine_winner",
+          "signature": "int determine_winner(int N,int M,int L,int *A,int *B,int *C)",
+          "code": "int determine_winner(int N,int M,int L,int *A,int *B,int *C){ int total=N+M+L; int *val=(int*)malloc((size_t)total*sizeof(int)); make_value_array(N,M,L,A,B,C,val); int maskA=0,maskB=0; for(int i=0;i<N;i++) maskA |= (1<<i); for(int i=0;i<M;i++) maskB |= (1<<(N+i)); int win=solve(maskA,maskB,total,val); free(val); return win; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int win)",
+          "code": "void print_answer(int win){ printf(\"%s\\n\", win?\"Takahashi\":\"Aoki\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M,L; int *A=NULL,*B=NULL,*C=NULL; read_input(&N,&M,&L,&A,&B,&C); int win=determine_winner(N,M,L,A,B,C); print_answer(win); free(A); free(B); free(C); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *L,int **A,int **B,int **C)",
+          "code": "void read_input(int *N,int *M,int *L,int **A,int **B,int **C){ scanf(\"%d%d%d\", N,M,L); *A=(int*)malloc((size_t)(*N)*sizeof(int)); *B=(int*)malloc((size_t)(*M)*sizeof(int)); *C=(int*)malloc((size_t)(*L)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); for(int i=0;i<*M;i++) scanf(\"%d\", &(*B)[i]); for(int i=0;i<*L;i++) scanf(\"%d\", &(*C)[i]); }\n"
+        },
+        {
+          "clause_id": "make_value_array",
+          "signature": "int make_value_array(int N,int M,int L,int *A,int *B,int *C,int *val)",
+          "code": "int make_value_array(int N,int M,int L,int *A,int *B,int *C,int *val){ int idx=0; for(int i=0;i<N;i++) val[idx++]=A[i]; for(int i=0;i<M;i++) val[idx++]=B[i]; for(int i=0;i<L;i++) val[idx++]=C[i]; return idx; }\n"
+        },
+        {
+          "clause_id": "count_bits",
+          "signature": "int count_bits(int mask,int total)",
+          "code": "int count_bits(int mask,int total){ int c=0; for(int i=0;i<total;i++) if(mask>>i &1) c++; return c; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int maskA,int maskB,int total,int *val)",
+          "code": "int solve(int maskA,int maskB,int total,int *val){\n    static int memo[1<<20];\n    static char vis[1<<20];\n    int key = (maskA<<10) ^ maskB;\n    if(vis[key]) return memo[key];\n    vis[key]=1;\n    int win=0;\n    // current player is A if depth even (maskA^maskB parity)\n    int cntA=count_bits(maskA,total), cntB=count_bits(maskB,total);\n    int turnA = ( (cntA+cntB)%2==0 );\n    int maskT = ((1<<total)-1) & (~maskA) & (~maskB);\n    int cur = turnA? maskA: maskB;\n    for(int i=0;i<total;i++){\n        if(cur>>i &1){\n            int newMaskA=maskA, newMaskB=maskB;\n            if(turnA) newMaskA &= ~(1<<i); else newMaskB &= ~(1<<i);\n            int best=0;\n            // option: take none\n            if(!solve(newMaskA, newMaskB, total, val)) best=1;\n            // option: take one lower table card\n            for(int j=0;j<total && !best;j++){\n                if(maskT>>j &1){\n                    if(val[j] < val[i]){\n                        int nmA=newMaskA, nmB=newMaskB;\n                        if(turnA) nmA |= (1<<j); else nmB |= (1<<j);\n                        if(!solve(nmA,nmB,total,val)) best=1;\n                    }\n                }\n            }\n            if(best){ win=1; break; }\n        }\n    }\n    memo[key]=win;\n    return win;\n}\n"
+        },
+        {
+          "clause_id": "determine_winner",
+          "signature": "int determine_winner(int N,int M,int L,int *A,int *B,int *C)",
+          "code": "int determine_winner(int N,int M,int L,int *A,int *B,int *C){ int total=N+M+L; int *val=(int*)malloc((size_t)total*sizeof(int)); make_value_array(N,M,L,A,B,C,val); int maskA=0,maskB=0; for(int i=0;i<N;i++) maskA |= (1<<i); for(int i=0;i<M;i++) maskB |= (1<<(N+i)); int win=solve(maskA,maskB,total,val); free(val); return win; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int win)",
+          "code": "void print_answer(int win){ printf(\"%s\\n\", win?\"Takahashi\":\"Aoki\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M,L; int *A=NULL,*B=NULL,*C=NULL; read_input(&N,&M,&L,&A,&B,&C); int win=determine_winner(N,M,L,A,B,C); print_answer(win); free(A); free(B); free(C); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *L,int **A,int **B,int **C)",
+          "code": "void read_input(int *N,int *M,int *L,int **A,int **B,int **C){ scanf(\"%d%d%d\", N,M,L); *A=(int*)malloc((size_t)(*N)*sizeof(int)); *B=(int*)malloc((size_t)(*M)*sizeof(int)); *C=(int*)malloc((size_t)(*L)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); for(int i=0;i<*M;i++) scanf(\"%d\", &(*B)[i]); for(int i=0;i<*L;i++) scanf(\"%d\", &(*C)[i]); }\n"
+        },
+        {
+          "clause_id": "make_value_array",
+          "signature": "int make_value_array(int N,int M,int L,int *A,int *B,int *C,int *val)",
+          "code": "int make_value_array(int N,int M,int L,int *A,int *B,int *C,int *val){ int idx=0; for(int i=0;i<N;i++) val[idx++]=A[i]; for(int i=0;i<M;i++) val[idx++]=B[i]; for(int i=0;i<L;i++) val[idx++]=C[i]; return idx; }\n"
+        },
+        {
+          "clause_id": "count_bits",
+          "signature": "int count_bits(int mask,int total)",
+          "code": "int count_bits(int mask,int total){ int c=0; for(int i=0;i<total;i++) if(mask>>i &1) c++; return c; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int maskA,int maskB,int total,int *val)",
+          "code": "int solve(int maskA,int maskB,int total,int *val){\n    static int memo[1<<20];\n    static char vis[1<<20];\n    int key = (maskA<<10) ^ maskB;\n    if(vis[key]) return memo[key];\n    vis[key]=1;\n    int win=0;\n    // current player is A if depth even (maskA^maskB parity)\n    int cntA=count_bits(maskA,total), cntB=count_bits(maskB,total);\n    int turnA = ( (cntA+cntB)%2==0 );\n    int maskT = ((1<<total)-1) & (~maskA) & (~maskB);\n    int cur = turnA? maskA: maskB;\n    for(int i=0;i<total;i++){\n        if(cur>>i &1){\n            int newMaskA=maskA, newMaskB=maskB;\n            if(turnA) newMaskA &= ~(1<<i); else newMaskB &= ~(1<<i);\n            int best=0;\n            // option: take none\n            if(!solve(newMaskA, newMaskB, total, val)) best=1;\n            // option: take one lower table card\n            for(int j=0;j<total && !best;j++){\n                if(maskT>>j &1){\n                    if(val[j] < val[i]){\n                        int nmA=newMaskA, nmB=newMaskB;\n                        if(turnA) nmA |= (1<<j); else nmB |= (1<<j);\n                        if(!solve(nmA,nmB,total,val)) best=1;\n                    }\n                }\n            }\n            if(best){ win=1; break; }\n        }\n    }\n    memo[key]=win;\n    return win;\n}\n"
+        },
+        {
+          "clause_id": "determine_winner",
+          "signature": "int determine_winner(int N,int M,int L,int *A,int *B,int *C)",
+          "code": "int determine_winner(int N,int M,int L,int *A,int *B,int *C){ int total=N+M+L; int *val=(int*)malloc((size_t)total*sizeof(int)); make_value_array(N,M,L,A,B,C,val); int maskA=0,maskB=0; for(int i=0;i<N;i++) maskA |= (1<<i); for(int i=0;i<M;i++) maskB |= (1<<(N+i)); int win=solve(maskA,maskB,total,val); free(val); return win; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int win)",
+          "code": "void print_answer(int win){ printf(\"%s\\n\", win?\"Takahashi\":\"Aoki\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M,L; int *A=NULL,*B=NULL,*C=NULL; read_input(&N,&M,&L,&A,&B,&C); int win=determine_winner(N,M,L,A,B,C); print_answer(win); free(A); free(B); free(C); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *L,int **A,int **B,int **C)",
+          "code": "void read_input(int *N,int *M,int *L,int **A,int **B,int **C){ scanf(\"%d%d%d\", N,M,L); *A=(int*)malloc((size_t)(*N)*sizeof(int)); *B=(int*)malloc((size_t)(*M)*sizeof(int)); *C=(int*)malloc((size_t)(*L)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); for(int i=0;i<*M;i++) scanf(\"%d\", &(*B)[i]); for(int i=0;i<*L;i++) scanf(\"%d\", &(*C)[i]); }\n"
+        },
+        {
+          "clause_id": "make_value_array",
+          "signature": "int make_value_array(int N,int M,int L,int *A,int *B,int *C,int *val)",
+          "code": "int make_value_array(int N,int M,int L,int *A,int *B,int *C,int *val){ int idx=0; for(int i=0;i<N;i++) val[idx++]=A[i]; for(int i=0;i<M;i++) val[idx++]=B[i]; for(int i=0;i<L;i++) val[idx++]=C[i]; return idx; }\n"
+        },
+        {
+          "clause_id": "count_bits",
+          "signature": "int count_bits(int mask,int total)",
+          "code": "int count_bits(int mask,int total){ int c=0; for(int i=0;i<total;i++) if(mask>>i &1) c++; return c; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int maskA,int maskB,int total,int *val)",
+          "code": "int solve(int maskA,int maskB,int total,int *val){\n    static int memo[1<<20];\n    static char vis[1<<20];\n    int key = (maskA<<10) ^ maskB;\n    if(vis[key]) return memo[key];\n    vis[key]=1;\n    int win=0;\n    // current player is A if depth even (maskA^maskB parity)\n    int cntA=count_bits(maskA,total), cntB=count_bits(maskB,total);\n    int turnA = ( (cntA+cntB)%2==0 );\n    int maskT = ((1<<total)-1) & (~maskA) & (~maskB);\n    int cur = turnA? maskA: maskB;\n    for(int i=0;i<total;i++){\n        if(cur>>i &1){\n            int newMaskA=maskA, newMaskB=maskB;\n            if(turnA) newMaskA &= ~(1<<i); else newMaskB &= ~(1<<i);\n            int best=0;\n            // option: take none\n            if(!solve(newMaskA, newMaskB, total, val)) best=1;\n            // option: take one lower table card\n            for(int j=0;j<total && !best;j++){\n                if(maskT>>j &1){\n                    if(val[j] < val[i]){\n                        int nmA=newMaskA, nmB=newMaskB;\n                        if(turnA) nmA |= (1<<j); else nmB |= (1<<j);\n                        if(!solve(nmA,nmB,total,val)) best=1;\n                    }\n                }\n            }\n            if(best){ win=1; break; }\n        }\n    }\n    memo[key]=win;\n    return win;\n}\n"
+        },
+        {
+          "clause_id": "determine_winner",
+          "signature": "int determine_winner(int N,int M,int L,int *A,int *B,int *C)",
+          "code": "int determine_winner(int N,int M,int L,int *A,int *B,int *C){ int total=N+M+L; int *val=(int*)malloc((size_t)total*sizeof(int)); make_value_array(N,M,L,A,B,C,val); int maskA=0,maskB=0; for(int i=0;i<N;i++) maskA |= (1<<i); for(int i=0;i<M;i++) maskB |= (1<<(N+i)); int win=solve(maskA,maskB,total,val); free(val); return win; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int win)",
+          "code": "void print_answer(int win){ printf(\"%s\\n\", win?\"Takahashi\":\"Aoki\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M,L; int *A=NULL,*B=NULL,*C=NULL; read_input(&N,&M,&L,&A,&B,&C); int win=determine_winner(N,M,L,A,B,C); print_answer(win); free(A); free(B); free(C); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int *L,int **A,int **B,int **C)",
+          "code": "void read_input(int *N,int *M,int *L,int **A,int **B,int **C){ scanf(\"%d%d%d\", N,M,L); *A=(int*)malloc((size_t)(*N)*sizeof(int)); *B=(int*)malloc((size_t)(*M)*sizeof(int)); *C=(int*)malloc((size_t)(*L)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*A)[i]); for(int i=0;i<*M;i++) scanf(\"%d\", &(*B)[i]); for(int i=0;i<*L;i++) scanf(\"%d\", &(*C)[i]); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "make_value_array",
+          "signature": "int make_value_array(int N,int M,int L,int *A,int *B,int *C,int *val)",
+          "code": "int make_value_array(int N,int M,int L,int *A,int *B,int *C,int *val){ int idx=0; for(int i=0;i<N;i++) val[idx++]=A[i]; for(int i=0;i<M;i++) val[idx++]=B[i]; for(int i=0;i<L;i++) val[idx++]=C[i]; return idx; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "count_bits",
+          "signature": "int count_bits(int mask,int total)",
+          "code": "int count_bits(int mask,int total){ int c=0; for(int i=0;i<total;i++) if(mask>>i &1) c++; return c; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int maskA,int maskB,int total,int *val)",
+          "code": "int solve(int maskA,int maskB,int total,int *val){\n    static int memo[1<<20];\n    static char vis[1<<20];\n    int key = (maskA<<10) ^ maskB;\n    if(vis[key]) return memo[key];\n    vis[key]=1;\n    int win=0;\n    // current player is A if depth even (maskA^maskB parity)\n    int cntA=count_bits(maskA,total), cntB=count_bits(maskB,total);\n    int turnA = ( (cntA+cntB)%2==0 );\n    int maskT = ((1<<total)-1) & (~maskA) & (~maskB);\n    int cur = turnA? maskA: maskB;\n    for(int i=0;i<total;i++){\n        if(cur>>i &1){\n            int newMaskA=maskA, newMaskB=maskB;\n            if(turnA) newMaskA &= ~(1<<i); else newMaskB &= ~(1<<i);\n            int best=0;\n            // option: take none\n            if(!solve(newMaskA, newMaskB, total, val)) best=1;\n            // option: take one lower table card\n            for(int j=0;j<total && !best;j++){\n                if(maskT>>j &1){\n                    if(val[j] < val[i]){\n                        int nmA=newMaskA, nmB=newMaskB;\n                        if(turnA) nmA |= (1<<j); else nmB |= (1<<j);\n                        if(!solve(nmA,nmB,total,val)) best=1;\n                    }\n                }\n            }\n            if(best){ win=1; break; }\n        }\n    }\n    memo[key]=win;\n    return win;\n\n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "determine_winner",
+          "signature": "int determine_winner(int N,int M,int L,int *A,int *B,int *C)",
+          "code": "int determine_winner(int N,int M,int L,int *A,int *B,int *C){ int total=N+M+L; int *val=(int*)malloc((size_t)total*sizeof(int)); make_value_array(N,M,L,A,B,C,val); int maskA=0,maskB=0; for(int i=0;i<N;i++) maskA |= (1<<i); for(int i=0;i<M;i++) maskB |= (1<<(N+i)); int win=solve(maskA,maskB,total,val); free(val); return win; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int win)",
+          "code": "void print_answer(int win){ printf(\"%s\\n\", win?\"Takahashi\":\"Aoki\"); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M,L; int *A=NULL,*B=NULL,*C=NULL; read_input(&N,&M,&L,&A,&B,&C); int win=determine_winner(N,M,L,A,B,C); print_answer(win); free(A); free(B); free(C); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

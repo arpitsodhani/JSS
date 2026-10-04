@@ -1,0 +1,29 @@
+{
+  "clause_wise_confidence": {
+    "sum_array": {
+      "confidence_score": 0.9359999999999999,
+      "cluster_info": {
+        "programs_in_consensus": 4,
+        "total_programs": 5
+      }
+    },
+    "max_array": {
+      "confidence_score": 0.9359999999999999,
+      "cluster_info": {
+        "programs_in_consensus": 4,
+        "total_programs": 5
+      }
+    },
+    "main": {
+      "confidence_score": 0.9925792391581865,
+      "cluster_info": {
+        "programs_in_consensus": 4,
+        "total_programs": 5
+      }
+    }
+  },
+  "overall_metrics": {
+    "average_confidence": 0.9548597463860622,
+    "total_clauses": 3
+  }
+}

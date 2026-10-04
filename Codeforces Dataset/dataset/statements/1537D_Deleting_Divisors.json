@@ -1,0 +1,28 @@
+{
+  "contestId": 1537,
+  "index": "D",
+  "problem_id": "1537D",
+  "name": "Deleting Divisors",
+  "rating": 1700,
+  "tags": [
+    "games",
+    "math",
+    "number theory"
+  ],
+  "points": 1500.0,
+  "solvedCount": 13770,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Deleting Divisors",
+  "legend": "Alice and Bob are playing a game.\n\nThey start with a positive integer n and take alternating turns doing operations on it. Each turn a player can subtract from n one of its divisors that isn't 1 or n. The player who cannot make a move on his/her turn loses. Alice always moves first.\n\nNote that they subtract a divisor of the current number in each turn.\n\nYou are asked to find out who will win the game if both players play optimally.",
+  "input_spec": "The first line contains a single integer t (1≤t≤104) — the number of test cases. Then t test cases follow.\n\nEach test case contains a single integer n (1≤n≤109) — the initial number.",
+  "output_spec": "For each test case output \"Alice\" if Alice will win the game or \"Bob\" if Bob will win, if both players play optimally.",
+  "note": "In the first test case, the game ends immediately because Alice cannot make a move.\n\nIn the second test case, Alice can subtract 2 making n=2, then Bob cannot make a move so Alice wins.\n\nIn the third test case, Alice can subtract 3 so that n=9. Bob's only move is to subtract 3 and make n=6. Now, Alice can subtract 3 again and n=3. Then Bob cannot make a move, so Alice wins.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n1\n4\n12\n69\n",
+      "output": "Bob\nAlice\nAlice\nBob"
+    }
+  ]
+}

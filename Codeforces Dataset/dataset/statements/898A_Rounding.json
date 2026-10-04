@@ -1,0 +1,39 @@
+{
+  "contestId": 898,
+  "index": "A",
+  "problem_id": "898A",
+  "name": "Rounding",
+  "rating": 800,
+  "tags": [
+    "implementation",
+    "math"
+  ],
+  "points": 500.0,
+  "solvedCount": 17666,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Rounding",
+  "legend": "Vasya has a non-negative integer n. He wants to round it to nearest integer, which ends up with 0. If n already ends up with 0, Vasya considers it already rounded.\n\nFor example, if n = 4722 answer is 4720. If n = 5 Vasya can round it to 0 or to 10. Both ways are correct.\n\nFor given n find out to which integer will Vasya round it.",
+  "input_spec": "The first line contains single integer n (0 ≤ n ≤ 109) — number that Vasya has.",
+  "output_spec": "Print result of rounding n. Pay attention that in some cases answer isn't unique. In that case print any correct answer.",
+  "note": "In the first example n = 5. Nearest integers, that ends up with zero are 0 and 10. Any of these answers is correct, so you can print 0 or 10.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n",
+      "output": "0"
+    },
+    {
+      "input": "113\n",
+      "output": "110"
+    },
+    {
+      "input": "1000000000\n",
+      "output": "1000000000"
+    },
+    {
+      "input": "5432359\n",
+      "output": "5432360"
+    }
+  ]
+}

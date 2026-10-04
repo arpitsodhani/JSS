@@ -1,0 +1,299 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char **S)",
+          "code": "void read_input(int *H,int *W,char **S){ scanf(\"%d%d\", H,W); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "idx",
+          "signature": "int idx(int r,int c,int W)",
+          "code": "int idx(int r,int c,int W){ return r*W+c; }\n"
+        },
+        {
+          "clause_id": "cell_value",
+          "signature": "int cell_value(char ch)",
+          "code": "int cell_value(char ch){ if(ch=='?') return 0; return ch-'0'; }\n"
+        },
+        {
+          "clause_id": "check_fixed",
+          "signature": "int check_fixed(char ch,int val)",
+          "code": "int check_fixed(char ch,int val){ int f=cell_value(ch); return (f==0 || f==val); }\n"
+        },
+        {
+          "clause_id": "can_place",
+          "signature": "int can_place(int r,int c,int W,char *S,int *assign,int val)",
+          "code": "int can_place(int r,int c,int W,char *S,int *assign,int val){ char ch=S[idx(r,c,W)]; if(!check_fixed(ch,val)) return 0; if(r>0 && assign[idx(r-1,c,W)]==val) return 0; if(c>0 && assign[idx(r,c-1,W)]==val) return 0; return 1; }\n"
+        },
+        {
+          "clause_id": "dfs_count",
+          "signature": "long long dfs_count(int pos,int H,int W,char *S,int *assign)",
+          "code": "long long dfs_count(int pos,int H,int W,char *S,int *assign){\n    const long long MOD=998244353;\n    if(pos==H*W) return 1;\n    int r=pos/W, c=pos%W;\n    long long ans=0;\n    for(int val=1; val<=3; val++){\n        if(can_place(r,c,W,S,assign,val)){\n            assign[pos]=val;\n            ans=(ans+dfs_count(pos+1,H,W,S,assign))%MOD;\n            assign[pos]=0;\n        }\n    }\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "small_enough",
+          "signature": "int small_enough(int H,int W)",
+          "code": "int small_enough(int H,int W){ return H*W<=12; }\n"
+        },
+        {
+          "clause_id": "count_colorings",
+          "signature": "long long count_colorings(int H,int W,char *S)",
+          "code": "long long count_colorings(int H,int W,char *S){\n    if(!small_enough(H,W)) return 0;\n    int *assign=(int*)calloc((size_t)H*W,sizeof(int));\n    long long ans=dfs_count(0,H,W,S,assign);\n    free(assign);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; char *S=NULL; read_input(&H,&W,&S); long long ans=count_colorings(H,W,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char **S)",
+          "code": "void read_input(int *H,int *W,char **S){ scanf(\"%d%d\", H,W); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "idx",
+          "signature": "int idx(int r,int c,int W)",
+          "code": "int idx(int r,int c,int W){ return r*W+c; }\n"
+        },
+        {
+          "clause_id": "cell_value",
+          "signature": "int cell_value(char ch)",
+          "code": "int cell_value(char ch){ if(ch=='?') return 0; return ch-'0'; }\n"
+        },
+        {
+          "clause_id": "check_fixed",
+          "signature": "int check_fixed(char ch,int val)",
+          "code": "int check_fixed(char ch,int val){ int f=cell_value(ch); return (f==0 || f==val); }\n"
+        },
+        {
+          "clause_id": "can_place",
+          "signature": "int can_place(int r,int c,int W,char *S,int *assign,int val)",
+          "code": "int can_place(int r,int c,int W,char *S,int *assign,int val){ char ch=S[idx(r,c,W)]; if(!check_fixed(ch,val)) return 0; if(r>0 && assign[idx(r-1,c,W)]==val) return 0; if(c>0 && assign[idx(r,c-1,W)]==val) return 0; return 1; }\n"
+        },
+        {
+          "clause_id": "dfs_count",
+          "signature": "long long dfs_count(int pos,int H,int W,char *S,int *assign)",
+          "code": "long long dfs_count(int pos,int H,int W,char *S,int *assign){\n    const long long MOD=998244353;\n    if(pos==H*W) return 1;\n    int r=pos/W, c=pos%W;\n    long long ans=0;\n    for(int val=1; val<=3; val++){\n        if(can_place(r,c,W,S,assign,val)){\n            assign[pos]=val;\n            ans=(ans+dfs_count(pos+1,H,W,S,assign))%MOD;\n            assign[pos]=0;\n        }\n    }\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "small_enough",
+          "signature": "int small_enough(int H,int W)",
+          "code": "int small_enough(int H,int W){ return H*W<=12; }\n"
+        },
+        {
+          "clause_id": "count_colorings",
+          "signature": "long long count_colorings(int H,int W,char *S)",
+          "code": "long long count_colorings(int H,int W,char *S){\n    if(!small_enough(H,W)) return 0;\n    int *assign=(int*)calloc((size_t)H*W,sizeof(int));\n    long long ans=dfs_count(0,H,W,S,assign);\n    free(assign);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; char *S=NULL; read_input(&H,&W,&S); long long ans=count_colorings(H,W,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char **S)",
+          "code": "void read_input(int *H,int *W,char **S){ scanf(\"%d%d\", H,W); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "idx",
+          "signature": "int idx(int r,int c,int W)",
+          "code": "int idx(int r,int c,int W){ return r*W+c; }\n"
+        },
+        {
+          "clause_id": "cell_value",
+          "signature": "int cell_value(char ch)",
+          "code": "int cell_value(char ch){ if(ch=='?') return 0; return ch-'0'; }\n"
+        },
+        {
+          "clause_id": "check_fixed",
+          "signature": "int check_fixed(char ch,int val)",
+          "code": "int check_fixed(char ch,int val){ int f=cell_value(ch); return (f==0 || f==val); }\n"
+        },
+        {
+          "clause_id": "can_place",
+          "signature": "int can_place(int r,int c,int W,char *S,int *assign,int val)",
+          "code": "int can_place(int r,int c,int W,char *S,int *assign,int val){ char ch=S[idx(r,c,W)]; if(!check_fixed(ch,val)) return 0; if(r>0 && assign[idx(r-1,c,W)]==val) return 0; if(c>0 && assign[idx(r,c-1,W)]==val) return 0; return 1; }\n"
+        },
+        {
+          "clause_id": "dfs_count",
+          "signature": "long long dfs_count(int pos,int H,int W,char *S,int *assign)",
+          "code": "long long dfs_count(int pos,int H,int W,char *S,int *assign){\n    const long long MOD=998244353;\n    if(pos==H*W) return 1;\n    int r=pos/W, c=pos%W;\n    long long ans=0;\n    for(int val=1; val<=3; val++){\n        if(can_place(r,c,W,S,assign,val)){\n            assign[pos]=val;\n            ans=(ans+dfs_count(pos+1,H,W,S,assign))%MOD;\n            assign[pos]=0;\n        }\n    }\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "small_enough",
+          "signature": "int small_enough(int H,int W)",
+          "code": "int small_enough(int H,int W){ return H*W<=12; }\n"
+        },
+        {
+          "clause_id": "count_colorings",
+          "signature": "long long count_colorings(int H,int W,char *S)",
+          "code": "long long count_colorings(int H,int W,char *S){\n    if(!small_enough(H,W)) return 0;\n    int *assign=(int*)calloc((size_t)H*W,sizeof(int));\n    long long ans=dfs_count(0,H,W,S,assign);\n    free(assign);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; char *S=NULL; read_input(&H,&W,&S); long long ans=count_colorings(H,W,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char **S)",
+          "code": "void read_input(int *H,int *W,char **S){ scanf(\"%d%d\", H,W); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "idx",
+          "signature": "int idx(int r,int c,int W)",
+          "code": "int idx(int r,int c,int W){ return r*W+c; }\n"
+        },
+        {
+          "clause_id": "cell_value",
+          "signature": "int cell_value(char ch)",
+          "code": "int cell_value(char ch){ if(ch=='?') return 0; return ch-'0'; }\n"
+        },
+        {
+          "clause_id": "check_fixed",
+          "signature": "int check_fixed(char ch,int val)",
+          "code": "int check_fixed(char ch,int val){ int f=cell_value(ch); return (f==0 || f==val); }\n"
+        },
+        {
+          "clause_id": "can_place",
+          "signature": "int can_place(int r,int c,int W,char *S,int *assign,int val)",
+          "code": "int can_place(int r,int c,int W,char *S,int *assign,int val){ char ch=S[idx(r,c,W)]; if(!check_fixed(ch,val)) return 0; if(r>0 && assign[idx(r-1,c,W)]==val) return 0; if(c>0 && assign[idx(r,c-1,W)]==val) return 0; return 1; }\n"
+        },
+        {
+          "clause_id": "dfs_count",
+          "signature": "long long dfs_count(int pos,int H,int W,char *S,int *assign)",
+          "code": "long long dfs_count(int pos,int H,int W,char *S,int *assign){\n    const long long MOD=998244353;\n    if(pos==H*W) return 1;\n    int r=pos/W, c=pos%W;\n    long long ans=0;\n    for(int val=1; val<=3; val++){\n        if(can_place(r,c,W,S,assign,val)){\n            assign[pos]=val;\n            ans=(ans+dfs_count(pos+1,H,W,S,assign))%MOD;\n            assign[pos]=0;\n        }\n    }\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "small_enough",
+          "signature": "int small_enough(int H,int W)",
+          "code": "int small_enough(int H,int W){ return H*W<=12; }\n"
+        },
+        {
+          "clause_id": "count_colorings",
+          "signature": "long long count_colorings(int H,int W,char *S)",
+          "code": "long long count_colorings(int H,int W,char *S){\n    if(!small_enough(H,W)) return 0;\n    int *assign=(int*)calloc((size_t)H*W,sizeof(int));\n    long long ans=dfs_count(0,H,W,S,assign);\n    free(assign);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; char *S=NULL; read_input(&H,&W,&S); long long ans=count_colorings(H,W,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char **S)",
+          "code": "void read_input(int *H,int *W,char **S){ scanf(\"%d%d\", H,W); *S=(char*)malloc((size_t)(*H)*(*W+1)); for(int i=0;i<*H;i++) scanf(\"%s\", (*S)+i*(*W+1)); }\n"
+        },
+        {
+          "clause_id": "idx",
+          "signature": "int idx(int r,int c,int W)",
+          "code": "int idx(int r,int c,int W){ return r*W+c; }\n"
+        },
+        {
+          "clause_id": "cell_value",
+          "signature": "int cell_value(char ch)",
+          "code": "int cell_value(char ch){ if(ch=='?') return 0; return ch-'0'; }\n"
+        },
+        {
+          "clause_id": "check_fixed",
+          "signature": "int check_fixed(char ch,int val)",
+          "code": "int check_fixed(char ch,int val){ int f=cell_value(ch); return (f==0 || f==val); }\n"
+        },
+        {
+          "clause_id": "can_place",
+          "signature": "int can_place(int r,int c,int W,char *S,int *assign,int val)",
+          "code": "int can_place(int r,int c,int W,char *S,int *assign,int val){ char ch=S[idx(r,c,W)]; if(!check_fixed(ch,val)) return 0; if(r>0 && assign[idx(r-1,c,W)]==val) return 0; if(c>0 && assign[idx(r,c-1,W)]==val) return 0; return 1; }\n"
+        },
+        {
+          "clause_id": "dfs_count",
+          "signature": "long long dfs_count(int pos,int H,int W,char *S,int *assign)",
+          "code": "long long dfs_count(int pos,int H,int W,char *S,int *assign){\n    const long long MOD=998244353;\n    if(pos==H*W) return 1;\n    int r=pos/W, c=pos%W;\n    long long ans=0;\n    for(int val=1; val<=3; val++){\n        if(can_place(r,c,W,S,assign,val)){\n            assign[pos]=val;\n            ans=(ans+dfs_count(pos+1,H,W,S,assign))%MOD;\n            assign[pos]=0;\n        }\n    }\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "small_enough",
+          "signature": "int small_enough(int H,int W)",
+          "code": "int small_enough(int H,int W){ return H*W<=12; }\n"
+        },
+        {
+          "clause_id": "count_colorings",
+          "signature": "long long count_colorings(int H,int W,char *S)",
+          "code": "long long count_colorings(int H,int W,char *S){\n    if(!small_enough(H,W)) return 0;\n    int *assign=(int*)calloc((size_t)H*W,sizeof(int));\n    long long ans=dfs_count(0,H,W,S,assign);\n    free(assign);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; char *S=NULL; read_input(&H,&W,&S); long long ans=count_colorings(H,W,S); print_answer(ans); free(S); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

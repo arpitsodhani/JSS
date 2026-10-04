@@ -1,0 +1,6 @@
+You are given N pairs of integers (L_1, R_1), (L_2, R_2), \ldots, (L_N, R_N) . Determine whether there exists a sequence of N integers X = (X_1, X_2, \ldots, X_N) that satisfies the following conditions, and print one such sequence if it exists. L_i \leq X_i \leq R_i for each i = 1, 2, \ldots, N . \displaystyle \sum_{i=1}^N X_i = 0 .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- -10^9 <= L_i <= R_i <= 10^9
+- All input values are integers

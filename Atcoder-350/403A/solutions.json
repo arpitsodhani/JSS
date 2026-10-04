@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_abc",
+          "signature": "void read_abc(int *a, int *b, int *c)",
+          "code": "scanf(\"%d %d %d\", a, b, c);\n"
+        },
+        {
+          "clause_id": "can_reach",
+          "signature": "int can_reach(int a, int b, int c)",
+          "code": "int d=c-a; if(d<0) d=-d; if(b==0) return (a==c);\nint r=d%b; return r==0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c; read_abc(&a,&b,&c); int ok=can_reach(a,b,c); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_abc",
+          "signature": "void read_abc(int *a, int *b, int *c)",
+          "code": "scanf(\"%d %d %d\", a, b, c);\n"
+        },
+        {
+          "clause_id": "can_reach",
+          "signature": "int can_reach(int a, int b, int c)",
+          "code": "int d=c-a; if(d<0) d=-d; if(b==0) return (a==c);\nint r=d%b; return r==0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c; read_abc(&a,&b,&c); int ok=can_reach(a,b,c); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_abc",
+          "signature": "void read_abc(int *a, int *b, int *c)",
+          "code": "scanf(\"%d %d %d\", a, b, c);\n"
+        },
+        {
+          "clause_id": "can_reach",
+          "signature": "int can_reach(int a, int b, int c)",
+          "code": "int d=c-a; if(d<0) d=-d; if(b==0) return (a==c);\nint r=d%b; return r==0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c; read_abc(&a,&b,&c); int ok=can_reach(a,b,c); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_abc",
+          "signature": "void read_abc(int *a, int *b, int *c)",
+          "code": "scanf(\"%d %d %d\", a, b, c);\n"
+        },
+        {
+          "clause_id": "can_reach",
+          "signature": "int can_reach(int a, int b, int c)",
+          "code": "int d=c-a; if(d<0) d=-d; if(b==0) return (a==c);\nint r=d%b; return r==0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c; read_abc(&a,&b,&c); int ok=can_reach(a,b,c); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_abc",
+          "signature": "void read_abc(int *a, int *b, int *c)",
+          "code": "scanf(\"%d %d %d\", a, b, c);\n"
+        },
+        {
+          "clause_id": "can_reach",
+          "signature": "int can_reach(int a, int b, int c)",
+          "code": "int d=c-a; if(d<0) d=-d; if(b==0) return (a==c);\nint r=d%b; return r==0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c; read_abc(&a,&b,&c); int ok=can_reach(a,b,c); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

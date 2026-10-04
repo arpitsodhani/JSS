@@ -1,0 +1,199 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, int *k, int *u, int *v)",
+          "code": "int N,K; scanf(\"%d %d\", &N, &K);\n*n=N*K; *k=K;\nfor(int i=0;i<*n-1;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "add_edge",
+          "signature": "void add_edge(int a, int b, int *head, int *to, int *nx, int *ec)",
+          "code": "to[*ec]=b; nx[*ec]=head[a]; head[a]=(*ec)++;\n"
+        },
+        {
+          "clause_id": "dfs_paths",
+          "signature": "int dfs_paths(int x, int p, int k, const int *head, const int *to, const int *nx, int *ok)",
+          "code": "int buf_sz=0;\nstatic int buf[200005];\nfor(int e=head[x]; e!=-1; e=nx[e]){\n  int y=to[e]; if(y==p) continue;\n  int r=dfs_paths(y,x,k,head,to,nx,ok);\n  if(!*ok) return -1;\n  r++; if(r==k-1) continue; buf[buf_sz++]=r;\n}\nif(buf_sz==0) return 0;\nfor(int i=0;i<buf_sz;i++){\n  for(int j=i+1;j<buf_sz;j++){\n    if(buf[i]>buf[j]){ int t=buf[i]; buf[i]=buf[j]; buf[j]=t; }\n  }\n}\nint used=0; int l=0,r=buf_sz-1;\nint remain=-1;\nwhile(l<=r){\n  if(l==r){ remain=buf[l]; break; }\n  int a=buf[l], b=buf[r];\n  if(a+b==k-1){ used+=2; l++; r--; }\n  else if(a+b<k-1){ l++; }\n  else { r--; }\n}\nif(remain==-1 && used!=buf_sz) { *ok=0; return -1; }\nif(remain!=-1 && used!=buf_sz-1) { *ok=0; return -1; }\nreturn (remain==-1)?0:remain;\n"
+        },
+        {
+          "clause_id": "can_decompose",
+          "signature": "int can_decompose(int n, int k, const int *u, const int *v)",
+          "code": "if(k==1) return 1;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<n-1;i++){\n  add_edge(u[i],v[i],head,to,nx,&ec);\n  add_edge(v[i],u[i],head,to,nx,&ec);\n}\nint ok=1;\nint rem=dfs_paths(0,-1,k,head,to,nx,&ok);\nint ans = ok && (rem==0);\nfree(head); free(to); free(nx);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static int u[200005], v[200005]; read_tree(&n,&k,u,v); int ok=can_decompose(n,k,u,v); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, int *k, int *u, int *v)",
+          "code": "int N,K; scanf(\"%d %d\", &N, &K);\n*n=N*K; *k=K;\nfor(int i=0;i<*n-1;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "add_edge",
+          "signature": "void add_edge(int a, int b, int *head, int *to, int *nx, int *ec)",
+          "code": "to[*ec]=b; nx[*ec]=head[a]; head[a]=(*ec)++;\n"
+        },
+        {
+          "clause_id": "dfs_paths",
+          "signature": "int dfs_paths(int x, int p, int k, const int *head, const int *to, const int *nx, int *ok)",
+          "code": "int *buf=(int*)malloc( (size_t)32 * sizeof(int));\nint cap=32, sz=0;\nfor(int e=head[x]; e!=-1; e=nx[e]){\n  int y=to[e]; if(y==p) continue;\n  int r=dfs_paths(y,x,k,head,to,nx,ok);\n  if(!*ok){ free(buf); return -1; }\n  r++; if(r==k-1) continue;\n  if(sz==cap){ cap*=2; buf=(int*)realloc(buf,(size_t)cap*sizeof(int)); }\n  buf[sz++]=r;\n}\nif(sz==0){ free(buf); return 0; }\nfor(int i=0;i<sz;i++) for(int j=i+1;j<sz;j++) if(buf[j]<buf[i]){ int t=buf[i]; buf[i]=buf[j]; buf[j]=t; }\nint l=0,r=sz-1; int remain=-1; int paired=0;\nwhile(l<=r){\n  if(l==r){ remain=buf[l]; break; }\n  int s=buf[l]+buf[r];\n  if(s==k-1){ paired+=2; l++; r--; }\n  else if(s<k-1) l++; else r--;\n}\nint ok2 = (remain==-1? paired==sz : paired==sz-1);\nif(!ok2) *ok=0;\nfree(buf);\nreturn (remain==-1)?0:remain;\n"
+        },
+        {
+          "clause_id": "can_decompose",
+          "signature": "int can_decompose(int n, int k, const int *u, const int *v)",
+          "code": "if(k==1) return 1;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<n-1;i++){\n  add_edge(u[i],v[i],head,to,nx,&ec);\n  add_edge(v[i],u[i],head,to,nx,&ec);\n}\nint ok=1;\nint rem=dfs_paths(0,-1,k,head,to,nx,&ok);\nint ans = ok && (rem==0);\nfree(head); free(to); free(nx);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static int u[200005], v[200005]; read_tree(&n,&k,u,v); int ok=can_decompose(n,k,u,v); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, int *k, int *u, int *v)",
+          "code": "int N,K; scanf(\"%d %d\", &N, &K);\n*n=N*K; *k=K;\nfor(int i=0;i<*n-1;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "add_edge",
+          "signature": "void add_edge(int a, int b, int *head, int *to, int *nx, int *ec)",
+          "code": "to[*ec]=b; nx[*ec]=head[a]; head[a]=(*ec)++;\n"
+        },
+        {
+          "clause_id": "dfs_paths",
+          "signature": "int dfs_paths(int x, int p, int k, const int *head, const int *to, const int *nx, int *ok)",
+          "code": "int buf_sz=0;\nstatic int buf[200005];\nfor(int e=head[x]; e!=-1; e=nx[e]){\n  int y=to[e]; if(y==p) continue;\n  int r=dfs_paths(y,x,k,head,to,nx,ok);\n  if(!*ok) return -1;\n  r++; if(r==k-1) continue; buf[buf_sz++]=r;\n}\nif(buf_sz==0) return 0;\nfor(int i=0;i<buf_sz;i++){\n  int mi=i;\n  for(int j=i+1;j<buf_sz;j++) if(buf[j]<buf[mi]) mi=j;\n  int t=buf[i]; buf[i]=buf[mi]; buf[mi]=t;\n}\nint l=0,r=buf_sz-1;\nint remain=-1; int paired=0;\nwhile(l<=r){\n  if(l==r){ remain=buf[l]; break; }\n  int s=buf[l]+buf[r];\n  if(s==k-1){ paired+=2; l++; r--; }\n  else if(s<k-1) l++; else r--;\n}\nif(remain==-1){ if(paired!=buf_sz){ *ok=0; return -1; } return 0; }\nif(paired!=buf_sz-1){ *ok=0; return -1; }\nreturn remain;\n"
+        },
+        {
+          "clause_id": "can_decompose",
+          "signature": "int can_decompose(int n, int k, const int *u, const int *v)",
+          "code": "if(k==1) return 1;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<n-1;i++){\n  add_edge(u[i],v[i],head,to,nx,&ec);\n  add_edge(v[i],u[i],head,to,nx,&ec);\n}\nint ok=1;\nint rem=dfs_paths(0,-1,k,head,to,nx,&ok);\nint ans = ok && (rem==0);\nfree(head); free(to); free(nx);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static int u[200005], v[200005]; read_tree(&n,&k,u,v); int ok=can_decompose(n,k,u,v); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, int *k, int *u, int *v)",
+          "code": "int N,K; scanf(\"%d %d\", &N, &K);\n*n=N*K; *k=K;\nfor(int i=0;i<*n-1;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "add_edge",
+          "signature": "void add_edge(int a, int b, int *head, int *to, int *nx, int *ec)",
+          "code": "to[*ec]=b; nx[*ec]=head[a]; head[a]=(*ec)++;\n"
+        },
+        {
+          "clause_id": "dfs_paths",
+          "signature": "int dfs_paths(int x, int p, int k, const int *head, const int *to, const int *nx, int *ok)",
+          "code": "int buf_sz=0;\nstatic int buf[200005];\nfor(int e=head[x]; e!=-1; e=nx[e]){\n  int y=to[e]; if(y==p) continue;\n  int r=dfs_paths(y,x,k,head,to,nx,ok);\n  if(!*ok) return -1;\n  r++; if(r==k-1) continue; buf[buf_sz++]=r;\n}\nif(buf_sz==0) return 0;\nfor(int i=0;i<buf_sz;i++) for(int j=i+1;j<buf_sz;j++) if(buf[j]<buf[i]){ int t=buf[i]; buf[i]=buf[j]; buf[j]=t; }\nint l=0,r=buf_sz-1; int remain=-1; int paired=0;\nfor(; l<=r; ){\n  if(l==r){ remain=buf[l]; break; }\n  int s=buf[l]+buf[r];\n  if(s==k-1){ paired+=2; l++; r--; }\n  else if(s<k-1) l++; else r--;\n}\nif(remain==-1 && paired!=buf_sz){ *ok=0; return -1; }\nif(remain!=-1 && paired!=buf_sz-1){ *ok=0; return -1; }\nreturn (remain==-1)?0:remain;\n"
+        },
+        {
+          "clause_id": "can_decompose",
+          "signature": "int can_decompose(int n, int k, const int *u, const int *v)",
+          "code": "if(k==1) return 1;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<n-1;i++){\n  add_edge(u[i],v[i],head,to,nx,&ec);\n  add_edge(v[i],u[i],head,to,nx,&ec);\n}\nint ok=1;\nint rem=dfs_paths(0,-1,k,head,to,nx,&ok);\nint ans = ok && (rem==0);\nfree(head); free(to); free(nx);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static int u[200005], v[200005]; read_tree(&n,&k,u,v); int ok=can_decompose(n,k,u,v); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, int *k, int *u, int *v)",
+          "code": "int N,K; scanf(\"%d %d\", &N, &K);\n*n=N*K; *k=K;\nfor(int i=0;i<*n-1;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "add_edge",
+          "signature": "void add_edge(int a, int b, int *head, int *to, int *nx, int *ec)",
+          "code": "to[*ec]=b; nx[*ec]=head[a]; head[a]=(*ec)++;\n"
+        },
+        {
+          "clause_id": "dfs_paths",
+          "signature": "int dfs_paths(int x, int p, int k, const int *head, const int *to, const int *nx, int *ok)",
+          "code": "int buf_sz=0;\nstatic int buf[200005];\nfor(int e=head[x]; e!=-1; e=nx[e]){\n  int y=to[e]; if(y==p) continue;\n  int r=dfs_paths(y,x,k,head,to,nx,ok);\n  if(!*ok) return -1;\n  r++; if(r==k-1) continue; buf[buf_sz++]=r;\n}\nif(buf_sz==0) return 0;\nfor(int i=0;i<buf_sz;i++) for(int j=i+1;j<buf_sz;j++) if(buf[j]<buf[i]){ int t=buf[i]; buf[i]=buf[j]; buf[j]=t; }\nint l=0,r=buf_sz-1; int remain=-1; int paired=0;\nwhile(l<r){\n  int s=buf[l]+buf[r];\n  if(s==k-1){ paired+=2; l++; r--; }\n  else if(s<k-1) l++; else r--;\n}\nif(l==r) remain=buf[l];\nif(buf_sz==1){ return remain; }\nif(remain!=-1){ if(paired!=buf_sz-1){ *ok=0; return -1; } return remain; }\nif(paired!=buf_sz){ *ok=0; return -1; }\nreturn 0;\n"
+        },
+        {
+          "clause_id": "can_decompose",
+          "signature": "int can_decompose(int n, int k, const int *u, const int *v)",
+          "code": "if(k==1) return 1;\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<n-1;i++){\n  add_edge(u[i],v[i],head,to,nx,&ec);\n  add_edge(v[i],u[i],head,to,nx,&ec);\n}\nint ok=1;\nint rem=dfs_paths(0,-1,k,head,to,nx,&ok);\nint ans = ok && (rem==0);\nfree(head); free(to); free(nx);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static int u[200005], v[200005]; read_tree(&n,&k,u,v); int ok=can_decompose(n,k,u,v); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

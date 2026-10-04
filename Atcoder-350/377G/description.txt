@@ -1,0 +1,6 @@
+You are given N strings S_1,S_2,\ldots,S_N . Each string consists of lowercase English letters. For each k=1,2,\ldots,N , solve the following problem. Let T=S_k and consider performing the following two types of operations any number of times in any order: Pay a cost of 1 to delete the last character of T . This operation is possible when T is not empty. Pay a cost of 1 to add any lowercase English letter to the end of T . Find the minimum total cost needed to make T either empty or match one of S_1,S_2,\ldots,S_{k-1} .
+
+**Constraints:**
+- 1 <= N <= 60
+- S_i is a non-empty string consisting of lowercase English letters
+- The total length of all S_i is at most 10^5

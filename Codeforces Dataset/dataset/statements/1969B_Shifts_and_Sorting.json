@@ -1,0 +1,27 @@
+{
+  "contestId": 1969,
+  "index": "B",
+  "problem_id": "1969B",
+  "name": "Shifts and Sorting",
+  "rating": 1000,
+  "tags": [
+    "constructive algorithms",
+    "greedy"
+  ],
+  "points": null,
+  "solvedCount": 22551,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Shifts and Sorting",
+  "legend": "Let's define a cyclic shift of some string s as a transformation from s1s2…sn−1sn into sns1s2…sn−1. In other words, you take one last character sn and place it before the first character while moving all other characters to the right.\n\nYou are given a binary string s (a string consisting of only 0-s and/or 1-s).\n\nIn one operation, you can choose any substring slsl+1…sr (1≤l<r≤|s|) and cyclically shift it. The cost of such operation is equal to r−l+1 (or the length of the chosen substring).\n\nYou can perform the given operation any number of times. What is the minimum total cost to make s sorted in non-descending order?",
+  "input_spec": "The first line contains a single integer t (1≤t≤104) — the number of test cases.\n\nThe first and only line of each test case contains a binary string s (2≤|s|≤2⋅105; si∈ {0, 1}) — the string you need to sort.\n\nAdditional constraint on the input: the sum of lengths of strings over all test cases doesn't exceed 2⋅105.",
+  "output_spec": "For each test case, print the single integer — the minimum total cost to make string sorted using operation above any number of times.",
+  "note": "In the first test case, you can choose the whole string and perform a cyclic shift: 10 → 01. The length of the substring is 2, so the cost is 2.\n\nIn the second test case, the string is already sorted, so you don't need to perform any operations.\n\nIn the third test case, one of the optimal strategies is the next:\n\nchoose substring [1,3]: 11000 → 01100;\nchoose substring [2,4]: 01100 → 00110;\nchoose substring [3,5]: 00110 → 00011.\nThe total cost is 3+3+3=9.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n10\n0000\n11000\n101011\n01101001\n",
+      "output": "2\n0\n9\n5\n11"
+    }
+  ]
+}

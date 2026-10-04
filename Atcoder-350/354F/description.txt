@@ -1,0 +1,7 @@
+You are given an integer sequence A of length N . For each t = 1, 2, \dots, N , determine whether A_t is included in a longest increasing subsequence of A . Here, A_t is included in a longest increasing subsequence of A if and only if the following holds: Let L be the length of a longest increasing subsequence of A . There exists a strictly increasing integer sequence i = (i_1, i_2, \dots, i_L) \ (i_1 < i_2 < \dots < i_L) , where each element is between 1 and N , inclusive, that satisfies all of the following conditions: A_{i_1} < A_{i_2} < \dots < A_{i_L} . i_k = t for some k \ (1 \leq k \leq L) . You are given T test cases; solve each of them. What is a longest increasing subsequence? A subsequence of a sequence A is a sequence that can be derived by extracting some elements from A without changing the order. A longest increasing subsequence of a sequence A is a subsequence of A that is strictly increasing with the greatest possible length.
+
+**Constraints:**
+- 1 \leq T \leq 2 \times 10^5
+- 1 \leq N \leq 2 \times 10^5
+- 1 \leq A_i \leq 10^9
+- ー N 2 \times 10^5

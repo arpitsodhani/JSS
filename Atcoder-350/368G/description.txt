@@ -1,0 +1,6 @@
+You are given sequences of positive integers A and B of length N . Process Q queries given in the following forms in the order they are given. Each query is of one of the following three types. Type 1 : Given in the form 1 i x . Replace A_i with x . Type 2 : Given in the form 2 i x . Replace B_i with x . Type 3 : Given in the form 3 l r . Solve the following problem and print the answer. Initially, set v = 0 . For i = l, l+1, ..., r in this order, replace v with either v + A_i or v \times B_i . Find the maximum possible value of v at the end. It is guaranteed that the answers to the given type 3 queries are at most 10^{18} .
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

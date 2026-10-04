@@ -1,0 +1,124 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "shortest_dup",
+          "signature": "int shortest_dup(int n, const int *a)",
+          "code": "int *last=(int*)malloc((size_t)1000005*sizeof(int));\nfor(int i=0;i<=1000000;i++) last[i]=-1;\nint ans=1e9;\nfor(int i=0;i<n;i++){\n  int x=a[i];\n  if(last[x]!=-1){\n    int len=i-last[x]+1;\n    if(len<ans) ans=len;\n  }\n  last[x]=i;\n}\nfree(last);\nif(ans==1e9) return -1;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int a[200005]; read_input(&n,a); int ans=shortest_dup(n,a); printf(\"%d\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "shortest_dup",
+          "signature": "int shortest_dup(int n, const int *a)",
+          "code": "int *last=(int*)malloc((size_t)1000005*sizeof(int));\nfor(int i=0;i<=1000000;i++) last[i]=-1;\nint ans=1e9;\nfor(int i=0;i<n;i++){\n  int x=a[i];\n  if(last[x]!=-1){\n    int len=i-last[x]+1;\n    if(len<ans) ans=len;\n  }\n  last[x]=i;\n}\nfree(last);\nif(ans==1e9) return -1;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int a[200005]; read_input(&n,a); int ans=shortest_dup(n,a); printf(\"%d\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "shortest_dup",
+          "signature": "int shortest_dup(int n, const int *a)",
+          "code": "int *last=(int*)malloc((size_t)1000005*sizeof(int));\nfor(int i=0;i<=1000000;i++) last[i]=-1;\nint ans=1e9;\nfor(int i=0;i<n;i++){\n  int x=a[i];\n  if(last[x]!=-1){\n    int len=i-last[x]+1;\n    if(len<ans) ans=len;\n  }\n  last[x]=i;\n}\nfree(last);\nif(ans==1e9) return -1;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int a[200005]; read_input(&n,a); int ans=shortest_dup(n,a); printf(\"%d\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "shortest_dup",
+          "signature": "int shortest_dup(int n, const int *a)",
+          "code": "int *last=(int*)malloc((size_t)1000005*sizeof(int));\nfor(int i=0;i<=1000000;i++) last[i]=-1;\nint ans=1e9;\nfor(int i=0;i<n;i++){\n  int x=a[i];\n  if(last[x]!=-1){\n    int len=i-last[x]+1;\n    if(len<ans) ans=len;\n  }\n  last[x]=i;\n}\nfree(last);\nif(ans==1e9) return -1;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int a[200005]; read_input(&n,a); int ans=shortest_dup(n,a); printf(\"%d\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "shortest_dup",
+          "signature": "int shortest_dup(int n, const int *a)",
+          "code": "int *last=(int*)malloc((size_t)1000005*sizeof(int));\nfor(int i=0;i<=1000000;i++) last[i]=-1;\nint ans=1e9;\nfor(int i=0;i<n;i++){\n  int x=a[i];\n  if(last[x]!=-1){\n    int len=i-last[x]+1;\n    if(len<ans) ans=len;\n  }\n  last[x]=i;\n}\nfree(last);\nif(ans==1e9) return -1;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int a[200005]; read_input(&n,a); int ans=shortest_dup(n,a); printf(\"%d\\n\", ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

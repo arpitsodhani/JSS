@@ -1,0 +1,36 @@
+{
+  "contestId": 461,
+  "index": "B",
+  "problem_id": "461B",
+  "name": "Appleman and Tree",
+  "rating": 2000,
+  "tags": [
+    "dfs and similar",
+    "dp",
+    "trees"
+  ],
+  "points": 1000.0,
+  "solvedCount": 7256,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Appleman and Tree",
+  "legend": "Appleman has a tree with n vertices. Some of the vertices (at least one) are colored black and other vertices are colored white.\n\nConsider a set consisting of k (0 ≤ k < n) edges of Appleman's tree. If Appleman deletes these edges from the tree, then it will split into (k + 1) parts. Note, that each part will be a tree with colored vertices.\n\nNow Appleman wonders, what is the number of sets splitting the tree in such a way that each resulting part will have exactly one black vertex? Find this number modulo 1000000007 (109 + 7).",
+  "input_spec": "The first line contains an integer n (2  ≤ n ≤ 105) — the number of tree vertices.\n\nThe second line contains the description of the tree: n - 1 integers p0, p1, ..., pn - 2 (0 ≤ pi ≤ i). Where pi means that there is an edge connecting vertex (i + 1) of the tree and vertex pi. Consider tree vertices are numbered from 0 to n - 1.\n\nThe third line contains the description of the colors of the vertices: n integers x0, x1, ..., xn - 1 (xi is either 0 or 1). If xi is equal to 1, vertex i is colored black. Otherwise, vertex i is colored white.",
+  "output_spec": "Output a single integer — the number of ways to split the tree modulo 1000000007 (109 + 7).",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n0 0\n0 1 1\n",
+      "output": "2"
+    },
+    {
+      "input": "6\n0 1 1 0 4\n1 1 0 0 1 0\n",
+      "output": "1"
+    },
+    {
+      "input": "10\n0 1 2 1 4 4 4 0 8\n0 0 0 1 0 1 1 0 0 1\n",
+      "output": "27"
+    }
+  ]
+}

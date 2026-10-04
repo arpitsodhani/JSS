@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "max_value",
+          "signature": "int max_value(int n)",
+          "code": "int best=0; for(int i=0;i<n;i++){ int x; scanf(\"%d\", &x); if(x>best) best=x; } return best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); int ans=max_value(n); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "max_value",
+          "signature": "int max_value(int n)",
+          "code": "int best=-1; for(int i=0;i<n;i++){ int x; scanf(\"%d\", &x); if(i==0||x>best) best=x; } return best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); int ans=max_value(n); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "max_value",
+          "signature": "int max_value(int n)",
+          "code": "int best=0; int i=0; while(i<n){ int x; scanf(\"%d\", &x); if(x>best) best=x; i++; } return best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); int ans=max_value(n); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "max_value",
+          "signature": "int max_value(int n)",
+          "code": "int best=0; for(int i=0;i<n;i++){ int x; scanf(\"%d\", &x); best = (x>best)?x:best; } return best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); int ans=max_value(n); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "max_value",
+          "signature": "int max_value(int n)",
+          "code": "int best=0; for(int i=0;i<n;i++){ int x; scanf(\"%d\", &x); if(best<x) best=x; } return best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); int ans=max_value(n); print_int(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

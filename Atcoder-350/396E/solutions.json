@@ -1,0 +1,199 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int *x, int *y, int *z)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d %d\", &x[i], &y[i], &z[i]); x[i]--; y[i]--; }\n"
+        },
+        {
+          "clause_id": "add_edge",
+          "signature": "void add_edge(int a, int b, int w, int *head, int *to, int *nx, int *ew, int *ec)",
+          "code": "to[*ec]=b; ew[*ec]=w; nx[*ec]=head[a]; head[a]=(*ec)++;\n"
+        },
+        {
+          "clause_id": "build_values",
+          "signature": "int build_values(int n, int m, const int *x, const int *y, const int *z, int *val, int *comp, int *comp_sz, int *comp_cnt)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *ew=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++){ head[i]=-1; val[i]=0; comp[i]=-1; }\nint ec=0;\nfor(int i=0;i<m;i++){\n  add_edge(x[i],y[i],z[i],head,to,nx,ew,&ec);\n  add_edge(y[i],x[i],z[i],head,to,nx,ew,&ec);\n}\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint cid=0;\nfor(int s=0;s<n;s++) if(comp[s]==-1){\n  int qh=0,qt=0; q[qt++]=s; comp[s]=cid; val[s]=0;\n  int sz=0;\n  while(qh<qt){\n    int v=q[qh++]; sz++;\n    for(int e=head[v]; e!=-1; e=nx[e]){\n      int u=to[e]; int w=ew[e];\n      if(comp[u]==-1){ comp[u]=cid; val[u]=val[v]^w; q[qt++]=u; }\n      else { if((val[u]^val[v])!=w){ free(head); free(to); free(nx); free(ew); free(q); return 0; } }\n    }\n  }\n  comp_sz[cid]=sz;\n  cid++;\n}\n*comp_cnt=cid;\nfree(head); free(to); free(nx); free(ew); free(q);\nreturn 1;\n"
+        },
+        {
+          "clause_id": "choose_masks",
+          "signature": "void choose_masks(int comp_cnt, const int *comp_sz, const int *comp_bit1, int *mask)",
+          "code": "(void)comp_bit1;\nfor(int i=0;i<comp_cnt;i++) mask[i]=0; (void)comp_sz;\n"
+        },
+        {
+          "clause_id": "output_ans",
+          "signature": "void output_ans(int n, const int *val)",
+          "code": "for(int i=0;i<n;i++){ printf(\"%d%c\", val[i], (i+1==n?'\\n':' ')); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int x[100005], y[100005], z[100005];\nread_input(&n,&m,x,y,z);\nint *val=(int*)malloc((size_t)n*sizeof(int));\nint *comp=(int*)malloc((size_t)n*sizeof(int));\nint *comp_sz=(int*)malloc((size_t)(n+1)*sizeof(int));\nint comp_cnt=0;\nif(!build_values(n,m,x,y,z,val,comp,comp_sz,&comp_cnt)){\n  puts(\"-1\");\n  free(val); free(comp); free(comp_sz);\n  return 0;\n}\nint *mask=(int*)calloc((size_t)comp_cnt,sizeof(int));\nfor(int bit=0;bit<31;bit++){\n  long long ones0[300005];\n  for(int c=0;c<comp_cnt;c++) ones0[c]=0;\n  for(int i=0;i<n;i++) if((val[i]>>bit)&1) ones0[comp[i]]++;\n  for(int c=0;c<comp_cnt;c++){\n    long long sz=comp_sz[c];\n    if(ones0[c] > sz-ones0[c]) mask[c] |= (1<<bit);\n  }\n}\nfor(int i=0;i<n;i++) val[i] ^= mask[comp[i]];\noutput_ans(n,val);\nfree(val); free(comp); free(comp_sz); free(mask);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int *x, int *y, int *z)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d %d\", &x[i], &y[i], &z[i]); x[i]--; y[i]--; }\n"
+        },
+        {
+          "clause_id": "add_edge",
+          "signature": "void add_edge(int a, int b, int w, int *head, int *to, int *nx, int *ew, int *ec)",
+          "code": "to[*ec]=b; ew[*ec]=w; nx[*ec]=head[a]; head[a]=(*ec)++;\n"
+        },
+        {
+          "clause_id": "build_values",
+          "signature": "int build_values(int n, int m, const int *x, const int *y, const int *z, int *val, int *comp, int *comp_sz, int *comp_cnt)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *ew=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++){ head[i]=-1; val[i]=0; comp[i]=-1; }\nint ec=0;\nfor(int i=0;i<m;i++){\n  add_edge(x[i],y[i],z[i],head,to,nx,ew,&ec);\n  add_edge(y[i],x[i],z[i],head,to,nx,ew,&ec);\n}\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint cid=0;\nfor(int s=0;s<n;s++) if(comp[s]==-1){\n  int qh=0,qt=0; q[qt++]=s; comp[s]=cid; val[s]=0;\n  int sz=0;\n  while(qh<qt){\n    int v=q[qh++]; sz++;\n    for(int e=head[v]; e!=-1; e=nx[e]){\n      int u=to[e]; int w=ew[e];\n      if(comp[u]==-1){ comp[u]=cid; val[u]=val[v]^w; q[qt++]=u; }\n      else { if((val[u]^val[v])!=w){ free(head); free(to); free(nx); free(ew); free(q); return 0; } }\n    }\n  }\n  comp_sz[cid]=sz;\n  cid++;\n}\n*comp_cnt=cid;\nfree(head); free(to); free(nx); free(ew); free(q);\nreturn 1;\n"
+        },
+        {
+          "clause_id": "choose_masks",
+          "signature": "void choose_masks(int comp_cnt, const int *comp_sz, const int *comp_bit1, int *mask)",
+          "code": "(void)comp_bit1;\nfor(int i=0;i<comp_cnt;i++) mask[i]=0; (void)comp_sz;\n"
+        },
+        {
+          "clause_id": "output_ans",
+          "signature": "void output_ans(int n, const int *val)",
+          "code": "for(int i=0;i<n;i++){ printf(\"%d%c\", val[i], (i+1==n?'\\n':' ')); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int x[100005], y[100005], z[100005];\nread_input(&n,&m,x,y,z);\nint *val=(int*)malloc((size_t)n*sizeof(int));\nint *comp=(int*)malloc((size_t)n*sizeof(int));\nint *comp_sz=(int*)malloc((size_t)(n+1)*sizeof(int));\nint comp_cnt=0;\nif(!build_values(n,m,x,y,z,val,comp,comp_sz,&comp_cnt)){\n  puts(\"-1\");\n  free(val); free(comp); free(comp_sz);\n  return 0;\n}\nint *mask=(int*)calloc((size_t)comp_cnt,sizeof(int));\nfor(int bit=0;bit<31;bit++){\n  long long ones0[300005];\n  for(int c=0;c<comp_cnt;c++) ones0[c]=0;\n  for(int i=0;i<n;i++) if((val[i]>>bit)&1) ones0[comp[i]]++;\n  for(int c=0;c<comp_cnt;c++){\n    long long sz=comp_sz[c];\n    if(ones0[c] > sz-ones0[c]) mask[c] |= (1<<bit);\n  }\n}\nfor(int i=0;i<n;i++) val[i] ^= mask[comp[i]];\noutput_ans(n,val);\nfree(val); free(comp); free(comp_sz); free(mask);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int *x, int *y, int *z)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d %d\", &x[i], &y[i], &z[i]); x[i]--; y[i]--; }\n"
+        },
+        {
+          "clause_id": "add_edge",
+          "signature": "void add_edge(int a, int b, int w, int *head, int *to, int *nx, int *ew, int *ec)",
+          "code": "to[*ec]=b; ew[*ec]=w; nx[*ec]=head[a]; head[a]=(*ec)++;\n"
+        },
+        {
+          "clause_id": "build_values",
+          "signature": "int build_values(int n, int m, const int *x, const int *y, const int *z, int *val, int *comp, int *comp_sz, int *comp_cnt)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *ew=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++){ head[i]=-1; val[i]=0; comp[i]=-1; }\nint ec=0;\nfor(int i=0;i<m;i++){\n  add_edge(x[i],y[i],z[i],head,to,nx,ew,&ec);\n  add_edge(y[i],x[i],z[i],head,to,nx,ew,&ec);\n}\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint cid=0;\nfor(int s=0;s<n;s++) if(comp[s]==-1){\n  int qh=0,qt=0; q[qt++]=s; comp[s]=cid; val[s]=0;\n  int sz=0;\n  while(qh<qt){\n    int v=q[qh++]; sz++;\n    for(int e=head[v]; e!=-1; e=nx[e]){\n      int u=to[e]; int w=ew[e];\n      if(comp[u]==-1){ comp[u]=cid; val[u]=val[v]^w; q[qt++]=u; }\n      else { if((val[u]^val[v])!=w){ free(head); free(to); free(nx); free(ew); free(q); return 0; } }\n    }\n  }\n  comp_sz[cid]=sz;\n  cid++;\n}\n*comp_cnt=cid;\nfree(head); free(to); free(nx); free(ew); free(q);\nreturn 1;\n"
+        },
+        {
+          "clause_id": "choose_masks",
+          "signature": "void choose_masks(int comp_cnt, const int *comp_sz, const int *comp_bit1, int *mask)",
+          "code": "(void)comp_bit1;\nfor(int i=0;i<comp_cnt;i++) mask[i]=0; (void)comp_sz;\n"
+        },
+        {
+          "clause_id": "output_ans",
+          "signature": "void output_ans(int n, const int *val)",
+          "code": "for(int i=0;i<n;i++){ printf(\"%d%c\", val[i], (i+1==n?'\\n':' ')); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int x[100005], y[100005], z[100005];\nread_input(&n,&m,x,y,z);\nint *val=(int*)malloc((size_t)n*sizeof(int));\nint *comp=(int*)malloc((size_t)n*sizeof(int));\nint *comp_sz=(int*)malloc((size_t)(n+1)*sizeof(int));\nint comp_cnt=0;\nif(!build_values(n,m,x,y,z,val,comp,comp_sz,&comp_cnt)){\n  puts(\"-1\");\n  free(val); free(comp); free(comp_sz);\n  return 0;\n}\nint *mask=(int*)calloc((size_t)comp_cnt,sizeof(int));\nfor(int bit=0;bit<31;bit++){\n  long long ones0[300005];\n  for(int c=0;c<comp_cnt;c++) ones0[c]=0;\n  for(int i=0;i<n;i++) if((val[i]>>bit)&1) ones0[comp[i]]++;\n  for(int c=0;c<comp_cnt;c++){\n    long long sz=comp_sz[c];\n    if(ones0[c] > sz-ones0[c]) mask[c] |= (1<<bit);\n  }\n}\nfor(int i=0;i<n;i++) val[i] ^= mask[comp[i]];\noutput_ans(n,val);\nfree(val); free(comp); free(comp_sz); free(mask);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int *x, int *y, int *z)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d %d\", &x[i], &y[i], &z[i]); x[i]--; y[i]--; }\n"
+        },
+        {
+          "clause_id": "add_edge",
+          "signature": "void add_edge(int a, int b, int w, int *head, int *to, int *nx, int *ew, int *ec)",
+          "code": "to[*ec]=b; ew[*ec]=w; nx[*ec]=head[a]; head[a]=(*ec)++;\n"
+        },
+        {
+          "clause_id": "build_values",
+          "signature": "int build_values(int n, int m, const int *x, const int *y, const int *z, int *val, int *comp, int *comp_sz, int *comp_cnt)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *ew=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++){ head[i]=-1; val[i]=0; comp[i]=-1; }\nint ec=0;\nfor(int i=0;i<m;i++){\n  add_edge(x[i],y[i],z[i],head,to,nx,ew,&ec);\n  add_edge(y[i],x[i],z[i],head,to,nx,ew,&ec);\n}\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint cid=0;\nfor(int s=0;s<n;s++) if(comp[s]==-1){\n  int qh=0,qt=0; q[qt++]=s; comp[s]=cid; val[s]=0;\n  int sz=0;\n  while(qh<qt){\n    int v=q[qh++]; sz++;\n    for(int e=head[v]; e!=-1; e=nx[e]){\n      int u=to[e]; int w=ew[e];\n      if(comp[u]==-1){ comp[u]=cid; val[u]=val[v]^w; q[qt++]=u; }\n      else { if((val[u]^val[v])!=w){ free(head); free(to); free(nx); free(ew); free(q); return 0; } }\n    }\n  }\n  comp_sz[cid]=sz;\n  cid++;\n}\n*comp_cnt=cid;\nfree(head); free(to); free(nx); free(ew); free(q);\nreturn 1;\n"
+        },
+        {
+          "clause_id": "choose_masks",
+          "signature": "void choose_masks(int comp_cnt, const int *comp_sz, const int *comp_bit1, int *mask)",
+          "code": "(void)comp_bit1;\nfor(int i=0;i<comp_cnt;i++) mask[i]=0; (void)comp_sz;\n"
+        },
+        {
+          "clause_id": "output_ans",
+          "signature": "void output_ans(int n, const int *val)",
+          "code": "for(int i=0;i<n;i++){ printf(\"%d%c\", val[i], (i+1==n?'\\n':' ')); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int x[100005], y[100005], z[100005];\nread_input(&n,&m,x,y,z);\nint *val=(int*)malloc((size_t)n*sizeof(int));\nint *comp=(int*)malloc((size_t)n*sizeof(int));\nint *comp_sz=(int*)malloc((size_t)(n+1)*sizeof(int));\nint comp_cnt=0;\nif(!build_values(n,m,x,y,z,val,comp,comp_sz,&comp_cnt)){\n  puts(\"-1\");\n  free(val); free(comp); free(comp_sz);\n  return 0;\n}\nint *mask=(int*)calloc((size_t)comp_cnt,sizeof(int));\nfor(int bit=0;bit<31;bit++){\n  long long ones0[300005];\n  for(int c=0;c<comp_cnt;c++) ones0[c]=0;\n  for(int i=0;i<n;i++) if((val[i]>>bit)&1) ones0[comp[i]]++;\n  for(int c=0;c<comp_cnt;c++){\n    long long sz=comp_sz[c];\n    if(ones0[c] > sz-ones0[c]) mask[c] |= (1<<bit);\n  }\n}\nfor(int i=0;i<n;i++) val[i] ^= mask[comp[i]];\noutput_ans(n,val);\nfree(val); free(comp); free(comp_sz); free(mask);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int *x, int *y, int *z)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d %d\", &x[i], &y[i], &z[i]); x[i]--; y[i]--; }\n"
+        },
+        {
+          "clause_id": "add_edge",
+          "signature": "void add_edge(int a, int b, int w, int *head, int *to, int *nx, int *ew, int *ec)",
+          "code": "to[*ec]=b; ew[*ec]=w; nx[*ec]=head[a]; head[a]=(*ec)++;\n"
+        },
+        {
+          "clause_id": "build_values",
+          "signature": "int build_values(int n, int m, const int *x, const int *y, const int *z, int *val, int *comp, int *comp_sz, int *comp_cnt)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *ew=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++){ head[i]=-1; val[i]=0; comp[i]=-1; }\nint ec=0;\nfor(int i=0;i<m;i++){\n  add_edge(x[i],y[i],z[i],head,to,nx,ew,&ec);\n  add_edge(y[i],x[i],z[i],head,to,nx,ew,&ec);\n}\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint cid=0;\nfor(int s=0;s<n;s++) if(comp[s]==-1){\n  int qh=0,qt=0; q[qt++]=s; comp[s]=cid; val[s]=0;\n  int sz=0;\n  while(qh<qt){\n    int v=q[qh++]; sz++;\n    for(int e=head[v]; e!=-1; e=nx[e]){\n      int u=to[e]; int w=ew[e];\n      if(comp[u]==-1){ comp[u]=cid; val[u]=val[v]^w; q[qt++]=u; }\n      else { if((val[u]^val[v])!=w){ free(head); free(to); free(nx); free(ew); free(q); return 0; } }\n    }\n  }\n  comp_sz[cid]=sz;\n  cid++;\n}\n*comp_cnt=cid;\nfree(head); free(to); free(nx); free(ew); free(q);\nreturn 1;\n"
+        },
+        {
+          "clause_id": "choose_masks",
+          "signature": "void choose_masks(int comp_cnt, const int *comp_sz, const int *comp_bit1, int *mask)",
+          "code": "(void)comp_bit1;\nfor(int i=0;i<comp_cnt;i++) mask[i]=0; (void)comp_sz;\n"
+        },
+        {
+          "clause_id": "output_ans",
+          "signature": "void output_ans(int n, const int *val)",
+          "code": "for(int i=0;i<n;i++){ printf(\"%d%c\", val[i], (i+1==n?'\\n':' ')); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int x[100005], y[100005], z[100005];\nread_input(&n,&m,x,y,z);\nint *val=(int*)malloc((size_t)n*sizeof(int));\nint *comp=(int*)malloc((size_t)n*sizeof(int));\nint *comp_sz=(int*)malloc((size_t)(n+1)*sizeof(int));\nint comp_cnt=0;\nif(!build_values(n,m,x,y,z,val,comp,comp_sz,&comp_cnt)){\n  puts(\"-1\");\n  free(val); free(comp); free(comp_sz);\n  return 0;\n}\nint *mask=(int*)calloc((size_t)comp_cnt,sizeof(int));\nfor(int bit=0;bit<31;bit++){\n  long long ones0[300005];\n  for(int c=0;c<comp_cnt;c++) ones0[c]=0;\n  for(int i=0;i<n;i++) if((val[i]>>bit)&1) ones0[comp[i]]++;\n  for(int c=0;c<comp_cnt;c++){\n    long long sz=comp_sz[c];\n    if(ones0[c] > sz-ones0[c]) mask[c] |= (1<<bit);\n  }\n}\nfor(int i=0;i<n;i++) val[i] ^= mask[comp[i]];\noutput_ans(n,val);\nfree(val); free(comp); free(comp_sz); free(mask);\nreturn 0; }\n"
+        }
+      ]
+    }
+  ]
+}

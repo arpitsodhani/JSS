@@ -1,0 +1,5 @@
+You are given a sequence of integers A = (A_1, A_2, A_3) . Let B = (B_1, B_2, B_3) be any permutation of A . Determine whether it is possible that B_1 \times B_2 = B_3 .
+
+**Constraints:**
+- 1 <= N <= 100
+- S is a string of length N consisting of lowercase English letters

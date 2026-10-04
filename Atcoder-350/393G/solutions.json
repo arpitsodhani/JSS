@@ -1,0 +1,176 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,long long *P,long long *Q,long long *A)",
+          "code": "scanf(\"%d%lld%lld\", n,P,Q); for(int i=0;i<(*n)*(*n);i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "median_cost",
+          "signature": "long long median_cost(int n,long long *A,long long *med)",
+          "code": "long long *tmp=(long long*)malloc((size_t)n*n*sizeof(long long));\nfor(int i=0;i<n*n;i++) tmp[i]=A[i];\nfor(int i=0;i<n*n;i++) for(int j=i+1;j<n*n;j++) if(tmp[j]<tmp[i]){ long long t=tmp[i]; tmp[i]=tmp[j]; tmp[j]=t; }\nlong long m=tmp[(n*n)/2]; *med=m; long long cost=0; for(int i=0;i<n*n;i++) cost += llabs(A[i]-m);\nfree(tmp); return cost;\n"
+        },
+        {
+          "clause_id": "solve_grid",
+          "signature": "void solve_grid(int n,long long P,long long Q,long long *A,long long *U,long long *B)",
+          "code": "long long med=0; long long cost=median_cost(n,A,&med);\nlong long budget = P/Q; // rough\nif(cost<=budget){\n  for(int i=0;i<n*n;i++) B[i]=med; *U=0;\n} else {\n  for(int i=0;i<n*n;i++) B[i]=A[i];\n  long long u=0; for(int i=0;i<n;i++) for(int j=0;j<n;j++){\n    if(j+1<n) u+= llabs(B[i*n+j]-B[i*n+j+1]);\n    if(i+1<n) u+= llabs(B[i*n+j]-B[(i+1)*n+j]);\n  }\n  *U=u;\n}\n"
+        },
+        {
+          "clause_id": "print_grid",
+          "signature": "void print_grid(int n,long long U,long long *B)",
+          "code": "printf(\"%lld\\n\", U);\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){ if(j) printf(\" \"); printf(\"%lld\", B[i*n+j]); }\n  printf(\"\\n\");\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long P,Q; static long long A[400],B[400]; long long U; read_input(&n,&P,&Q,A); solve_grid(n,P,Q,A,&U,B); print_grid(n,U,B); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,long long *P,long long *Q,long long *A)",
+          "code": "scanf(\"%d%lld%lld\", n,P,Q); for(int i=0;i<(*n)*(*n);i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "median_cost",
+          "signature": "long long median_cost(int n,long long *A,long long *med)",
+          "code": "long long *tmp=(long long*)malloc((size_t)n*n*sizeof(long long));\nfor(int i=0;i<n*n;i++) tmp[i]=A[i];\nfor(int i=0;i<n*n;i++) for(int j=i+1;j<n*n;j++) if(tmp[j]<tmp[i]){ long long t=tmp[i]; tmp[i]=tmp[j]; tmp[j]=t; }\nlong long m=tmp[(n*n)/2]; *med=m; long long cost=0; for(int i=0;i<n*n;i++) cost += llabs(A[i]-m);\nfree(tmp); return cost;\n"
+        },
+        {
+          "clause_id": "solve_grid",
+          "signature": "void solve_grid(int n,long long P,long long Q,long long *A,long long *U,long long *B)",
+          "code": "long long med=0; long long cost=median_cost(n,A,&med);\nlong long budget = P/Q; // rough\nif(cost<=budget){\n  for(int i=0;i<n*n;i++) B[i]=med; *U=0;\n} else {\n  for(int i=0;i<n*n;i++) B[i]=A[i];\n  long long u=0; for(int i=0;i<n;i++) for(int j=0;j<n;j++){\n    if(j+1<n) u+= llabs(B[i*n+j]-B[i*n+j+1]);\n    if(i+1<n) u+= llabs(B[i*n+j]-B[(i+1)*n+j]);\n  }\n  *U=u;\n}\n"
+        },
+        {
+          "clause_id": "print_grid",
+          "signature": "void print_grid(int n,long long U,long long *B)",
+          "code": "printf(\"%lld\\n\", U);\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){ if(j) printf(\" \"); printf(\"%lld\", B[i*n+j]); }\n  printf(\"\\n\");\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long P,Q; static long long A[400],B[400]; long long U; read_input(&n,&P,&Q,A); solve_grid(n,P,Q,A,&U,B); print_grid(n,U,B); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,long long *P,long long *Q,long long *A)",
+          "code": "scanf(\"%d%lld%lld\", n,P,Q); for(int i=0;i<(*n)*(*n);i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "median_cost",
+          "signature": "long long median_cost(int n,long long *A,long long *med)",
+          "code": "long long *tmp=(long long*)malloc((size_t)n*n*sizeof(long long));\nfor(int i=0;i<n*n;i++) tmp[i]=A[i];\nfor(int i=0;i<n*n;i++) for(int j=i+1;j<n*n;j++) if(tmp[j]<tmp[i]){ long long t=tmp[i]; tmp[i]=tmp[j]; tmp[j]=t; }\nlong long m=tmp[(n*n)/2]; *med=m; long long cost=0; for(int i=0;i<n*n;i++) cost += llabs(A[i]-m);\nfree(tmp); return cost;\n"
+        },
+        {
+          "clause_id": "solve_grid",
+          "signature": "void solve_grid(int n,long long P,long long Q,long long *A,long long *U,long long *B)",
+          "code": "long long med=0; long long cost=median_cost(n,A,&med);\nlong long budget = P/Q; // rough\nif(cost<=budget){\n  for(int i=0;i<n*n;i++) B[i]=med; *U=0;\n} else {\n  for(int i=0;i<n*n;i++) B[i]=A[i];\n  long long u=0; for(int i=0;i<n;i++) for(int j=0;j<n;j++){\n    if(j+1<n) u+= llabs(B[i*n+j]-B[i*n+j+1]);\n    if(i+1<n) u+= llabs(B[i*n+j]-B[(i+1)*n+j]);\n  }\n  *U=u;\n}\n"
+        },
+        {
+          "clause_id": "print_grid",
+          "signature": "void print_grid(int n,long long U,long long *B)",
+          "code": "printf(\"%lld\\n\", U);\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){ if(j) printf(\" \"); printf(\"%lld\", B[i*n+j]); }\n  printf(\"\\n\");\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long P,Q; static long long A[400],B[400]; long long U; read_input(&n,&P,&Q,A); solve_grid(n,P,Q,A,&U,B); print_grid(n,U,B); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,long long *P,long long *Q,long long *A)",
+          "code": "scanf(\"%d%lld%lld\", n,P,Q); for(int i=0;i<(*n)*(*n);i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "median_cost",
+          "signature": "long long median_cost(int n,long long *A,long long *med)",
+          "code": "long long *tmp=(long long*)malloc((size_t)n*n*sizeof(long long));\nfor(int i=0;i<n*n;i++) tmp[i]=A[i];\nfor(int i=0;i<n*n;i++) for(int j=i+1;j<n*n;j++) if(tmp[j]<tmp[i]){ long long t=tmp[i]; tmp[i]=tmp[j]; tmp[j]=t; }\nlong long m=tmp[(n*n)/2]; *med=m; long long cost=0; for(int i=0;i<n*n;i++) cost += llabs(A[i]-m);\nfree(tmp); return cost;\n"
+        },
+        {
+          "clause_id": "solve_grid",
+          "signature": "void solve_grid(int n,long long P,long long Q,long long *A,long long *U,long long *B)",
+          "code": "long long med=0; long long cost=median_cost(n,A,&med);\nlong long budget = P/Q; // rough\nif(cost<=budget){\n  for(int i=0;i<n*n;i++) B[i]=med; *U=0;\n} else {\n  for(int i=0;i<n*n;i++) B[i]=A[i];\n  long long u=0; for(int i=0;i<n;i++) for(int j=0;j<n;j++){\n    if(j+1<n) u+= llabs(B[i*n+j]-B[i*n+j+1]);\n    if(i+1<n) u+= llabs(B[i*n+j]-B[(i+1)*n+j]);\n  }\n  *U=u;\n}\n"
+        },
+        {
+          "clause_id": "print_grid",
+          "signature": "void print_grid(int n,long long U,long long *B)",
+          "code": "printf(\"%lld\\n\", U);\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){ if(j) printf(\" \"); printf(\"%lld\", B[i*n+j]); }\n  printf(\"\\n\");\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long P,Q; static long long A[400],B[400]; long long U; read_input(&n,&P,&Q,A); solve_grid(n,P,Q,A,&U,B); print_grid(n,U,B); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,long long *P,long long *Q,long long *A)",
+          "code": "scanf(\"%d%lld%lld\", n,P,Q); for(int i=0;i<(*n)*(*n);i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "median_cost",
+          "signature": "long long median_cost(int n,long long *A,long long *med)",
+          "code": "long long *tmp=(long long*)malloc((size_t)n*n*sizeof(long long));\nfor(int i=0;i<n*n;i++) tmp[i]=A[i];\nfor(int i=0;i<n*n;i++) for(int j=i+1;j<n*n;j++) if(tmp[j]<tmp[i]){ long long t=tmp[i]; tmp[i]=tmp[j]; tmp[j]=t; }\nlong long m=tmp[(n*n)/2]; *med=m; long long cost=0; for(int i=0;i<n*n;i++) cost += llabs(A[i]-m);\nfree(tmp); return cost;\n"
+        },
+        {
+          "clause_id": "solve_grid",
+          "signature": "void solve_grid(int n,long long P,long long Q,long long *A,long long *U,long long *B)",
+          "code": "long long med=0; long long cost=median_cost(n,A,&med);\nlong long budget = P/Q; // rough\nif(cost<=budget){\n  for(int i=0;i<n*n;i++) B[i]=med; *U=0;\n} else {\n  for(int i=0;i<n*n;i++) B[i]=A[i];\n  long long u=0; for(int i=0;i<n;i++) for(int j=0;j<n;j++){\n    if(j+1<n) u+= llabs(B[i*n+j]-B[i*n+j+1]);\n    if(i+1<n) u+= llabs(B[i*n+j]-B[(i+1)*n+j]);\n  }\n  *U=u;\n}\n"
+        },
+        {
+          "clause_id": "print_grid",
+          "signature": "void print_grid(int n,long long U,long long *B)",
+          "code": "printf(\"%lld\\n\", U);\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){ if(j) printf(\" \"); printf(\"%lld\", B[i*n+j]); }\n  printf(\"\\n\");\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long P,Q; static long long A[400],B[400]; long long U; read_input(&n,&P,&Q,A); solve_grid(n,P,Q,A,&U,B); print_grid(n,U,B); return 0; }\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "393G",
+  "total_programs": 5
+}

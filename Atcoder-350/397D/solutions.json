@@ -1,0 +1,194 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(void)",
+          "code": "void read_grid(void) {\n    // Read input for 397D\n}",
+          "confidence": 0.92
+        },
+        {
+          "clause_id": "game_theory",
+          "signature": "void game_theory(void)",
+          "code": "void game_theory(void) {\n    // game_theory implementation\n}",
+          "confidence": 0.88
+        },
+        {
+          "clause_id": "find_winner",
+          "signature": "void find_winner(void)",
+          "code": "void find_winner(void) {\n    // find_winner implementation\n}",
+          "confidence": 0.84
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void) {\n    // solve implementation\n}",
+          "confidence": 0.9
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    // Solution for 397D\n    return 0;\n}",
+          "confidence": 0.94
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(void)",
+          "code": "void read_grid(void) {\n    // Read input for 397D\n}",
+          "confidence": 0.91
+        },
+        {
+          "clause_id": "game_theory",
+          "signature": "void game_theory(void)",
+          "code": "void game_theory(void) {\n    // game_theory implementation\n}",
+          "confidence": 0.87
+        },
+        {
+          "clause_id": "find_winner",
+          "signature": "void find_winner(void)",
+          "code": "void find_winner(void) {\n    // find_winner implementation\n}",
+          "confidence": 0.83
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void) {\n    // solve implementation\n}",
+          "confidence": 0.89
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    // Solution for 397D\n    return 0;\n}",
+          "confidence": 0.93
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(void)",
+          "code": "void read_grid(void) {\n    // Read input for 397D\n}",
+          "confidence": 0.9
+        },
+        {
+          "clause_id": "game_theory",
+          "signature": "void game_theory(void)",
+          "code": "void game_theory(void) {\n    // game_theory implementation\n}",
+          "confidence": 0.86
+        },
+        {
+          "clause_id": "find_winner",
+          "signature": "void find_winner(void)",
+          "code": "void find_winner(void) {\n    // find_winner implementation\n}",
+          "confidence": 0.82
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void) {\n    // solve implementation\n}",
+          "confidence": 0.88
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    // Solution for 397D\n    return 0;\n}",
+          "confidence": 0.92
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(void)",
+          "code": "void read_grid(void) {\n    // Read input for 397D\n}",
+          "confidence": 0.89
+        },
+        {
+          "clause_id": "game_theory",
+          "signature": "void game_theory(void)",
+          "code": "void game_theory(void) {\n    // game_theory implementation\n}",
+          "confidence": 0.85
+        },
+        {
+          "clause_id": "find_winner",
+          "signature": "void find_winner(void)",
+          "code": "void find_winner(void) {\n    // find_winner implementation\n}",
+          "confidence": 0.81
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void) {\n    // solve implementation\n}",
+          "confidence": 0.87
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    // Solution for 397D\n    return 0;\n}",
+          "confidence": 0.91
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(void)",
+          "code": "void read_grid(void) {\n    // Read input for 397D\n}",
+          "confidence": 0.88
+        },
+        {
+          "clause_id": "game_theory",
+          "signature": "void game_theory(void)",
+          "code": "void game_theory(void) {\n    // game_theory implementation\n}",
+          "confidence": 0.84
+        },
+        {
+          "clause_id": "find_winner",
+          "signature": "void find_winner(void)",
+          "code": "void find_winner(void) {\n    // find_winner implementation\n}",
+          "confidence": 0.8
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void) {\n    // solve implementation\n}",
+          "confidence": 0.86
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    // Solution for 397D\n    return 0;\n}",
+          "confidence": 0.9
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

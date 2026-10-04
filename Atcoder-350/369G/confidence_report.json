@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "build_segment_tree",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "query_range_minimum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "update_segment_tree_point",
+      "confidence": 1.0
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+The manufacturing of a certain product requires N processes numbered 1,2,\dots,N . For each process i , there are two types of machines S_i and T_i available for purchase to handle it. Machine S_i : Can process A_i products per day per unit, and costs P_i yen per unit. Machine T_i : Can process B_i products per day per unit, and costs Q_i yen per unit. You can purchase any number of each machine, possibly zero. Suppose that process i can handle W_i products per day as a result of introducing machines. Here, we define the production capacity as the minimum of W , that is, \displaystyle \min^{N}_{i=1} W_i . Given a total budget of X yen, find the maximum achievable production capacity.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= X <= 10^9
+- 1 <= P_i, Q_i <= 10^4
+- 1 <= A_i, B_i <= 100
+- All input values are integers

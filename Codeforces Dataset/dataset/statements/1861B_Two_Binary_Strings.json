@@ -1,0 +1,28 @@
+{
+  "contestId": 1861,
+  "index": "B",
+  "problem_id": "1861B",
+  "name": "Two Binary Strings",
+  "rating": 1000,
+  "tags": [
+    "constructive algorithms",
+    "dp",
+    "greedy"
+  ],
+  "points": null,
+  "solvedCount": 24241,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Two Binary Strings",
+  "legend": "You are given two strings a and b of equal length, consisting of only characters 0 and/or 1; both strings start with character 0 and end with character 1.\n\nYou can perform the following operation any number of times (possibly zero):\n\nchoose one of the strings and two equal characters in it; then turn all characters between them into those characters.\n\nFormally, you choose one of these two strings (let the chosen string be s), then pick two integers l and r such that 1≤l<r≤|s| and sl=sr, then replace every character si such that l<i<r with sl.\n\nFor example, if the chosen string is 010101, you can transform it into one of the following strings by applying one operation:\n\n000101 if you choose l=1 and r=3;\n000001 if you choose l=1 and r=5;\n010001 if you choose l=3 and r=5;\n010111 if you choose l=4 and r=6;\n011111 if you choose l=2 and r=6;\n011101 if you choose l=2 and r=4.\n\nYou have to determine if it's possible to make the given strings equal by applying this operation any number of times.",
+  "input_spec": "The first line contains a single integer t (1≤t≤2000)  — the number of test cases.\n\nEach test case consists of two lines:\n\nthe first line contains the string a (2≤|a|≤5000), consisting of only characters 0 and/or 1.\nthe second line contains the string b (2≤|b|≤5000), consisting of only characters 0 and/or 1.\n\nAdditional constraints on the input:\n\nin each test case, |a|=|b| (the strings have equal length);\nin each test case, both strings start with 0 and end with 1;\nthe total length of all strings a in all test cases does not exceed 5000.",
+  "output_spec": "For each test case, print YES if it is possible to make the strings equal. Otherwise, print NO. You can print each letter in any register.",
+  "note": "In the first test case, we can perform the following operations:\n\nchoose the string a, l=2, r=4; after this operation, a is 01110001, b is 01110101;\nchoose the string b, l=5, r=7; after this operation, a is 01110001, b is 01110001.\n\nIn the second test case, the strings are already equal.\n\nIn the third test case, we can perform the following operations:\n\nchoose the string a, l=4, r=6; after this operation, a is 000111, b is 010111;\nchoose the string b, l=1, r=3; after this operation, a is 000111, b is 000111;\n\nIn the fourth and fifth test cases, it's impossible to make the given strings equal.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "7\n01010001\n01110101\n01001\n01001\n000101\n010111\n00001\n01111\n011\n001\n001001\n011011\n010001\n011011\n",
+      "output": "YES\nYES\nYES\nNO\nNO\nNO\nYES"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *s)",
+          "code": "scanf(\"%d%d\", N,K); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "can_make",
+          "signature": "int can_make(int N,int K,const char *s,const char *t)",
+          "code": "int n=strlen(s), m=strlen(t); if(n-m> K || m-n> K) return 0;\nint W=2*K+1; int *dp=(int*)malloc((size_t)(W+2)*sizeof(int)); int *ndp=(int*)malloc((size_t)(W+2)*sizeof(int));\nfor(int i=0;i<=W;i++) dp[i]=1e9; dp[K]=0;\nfor(int i=0;i<=n;i++){\n  for(int j=0;j<=W;j++) ndp[j]=1e9;\n  int jmin=i-K; if(jmin<0) jmin=0; int jmax=i+K; if(jmax>m) jmax=m;\n  for(int j=jmin;j<=jmax;j++){\n    int d=j-i+K; if(dp[d]>=1e9) continue;\n    if(i<n && j<m){ int cost= (s[i]==t[j])?0:1; if(dp[d]+cost<ndp[d]) ndp[d]=dp[d]+cost; }\n    if(i<n && d+1<=W) if(dp[d]+1<ndp[d+1]) ndp[d+1]=dp[d]+1; /* delete */\n    if(j<m && d-1>=0) if(dp[d]+1<ndp[d-1]) ndp[d-1]=dp[d]+1; /* insert */\n  }\n  int *tmp=dp; dp=ndp; ndp=tmp;\n}\nint ok= dp[m-n+K] <= K; free(dp); free(ndp); return ok;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; static char s[600005],t[600005]; read_input(&N,&K,s); scanf(\"%s\", t); int ok=can_make(N,K,s,t); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *s)",
+          "code": "scanf(\"%d%d\", N,K); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "can_make",
+          "signature": "int can_make(int N,int K,const char *s,const char *t)",
+          "code": "int n=strlen(s), m=strlen(t); if(n-m> K || m-n> K) return 0;\nint W=2*K+1; int *dp=(int*)malloc((size_t)(W+2)*sizeof(int)); int *ndp=(int*)malloc((size_t)(W+2)*sizeof(int));\nfor(int i=0;i<=W;i++) dp[i]=1e9; dp[K]=0;\nfor(int i=0;i<=n;i++){\n  for(int j=0;j<=W;j++) ndp[j]=1e9;\n  int jmin=i-K; if(jmin<0) jmin=0; int jmax=i+K; if(jmax>m) jmax=m;\n  for(int j=jmin;j<=jmax;j++){\n    int d=j-i+K; if(dp[d]>=1e9) continue;\n    if(i<n && j<m){ int cost= (s[i]==t[j])?0:1; if(dp[d]+cost<ndp[d]) ndp[d]=dp[d]+cost; }\n    if(i<n && d+1<=W) if(dp[d]+1<ndp[d+1]) ndp[d+1]=dp[d]+1; /* delete */\n    if(j<m && d-1>=0) if(dp[d]+1<ndp[d-1]) ndp[d-1]=dp[d]+1; /* insert */\n  }\n  int *tmp=dp; dp=ndp; ndp=tmp;\n}\nint ok= dp[m-n+K] <= K; free(dp); free(ndp); return ok;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; static char s[600005],t[600005]; read_input(&N,&K,s); scanf(\"%s\", t); int ok=can_make(N,K,s,t); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *s)",
+          "code": "scanf(\"%d%d\", N,K); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "can_make",
+          "signature": "int can_make(int N,int K,const char *s,const char *t)",
+          "code": "int n=strlen(s), m=strlen(t); if(n-m> K || m-n> K) return 0;\nint W=2*K+1; int *dp=(int*)malloc((size_t)(W+2)*sizeof(int)); int *ndp=(int*)malloc((size_t)(W+2)*sizeof(int));\nfor(int i=0;i<=W;i++) dp[i]=1e9; dp[K]=0;\nfor(int i=0;i<=n;i++){\n  for(int j=0;j<=W;j++) ndp[j]=1e9;\n  int jmin=i-K; if(jmin<0) jmin=0; int jmax=i+K; if(jmax>m) jmax=m;\n  for(int j=jmin;j<=jmax;j++){\n    int d=j-i+K; if(dp[d]>=1e9) continue;\n    if(i<n && j<m){ int cost= (s[i]==t[j])?0:1; if(dp[d]+cost<ndp[d]) ndp[d]=dp[d]+cost; }\n    if(i<n && d+1<=W) if(dp[d]+1<ndp[d+1]) ndp[d+1]=dp[d]+1; /* delete */\n    if(j<m && d-1>=0) if(dp[d]+1<ndp[d-1]) ndp[d-1]=dp[d]+1; /* insert */\n  }\n  int *tmp=dp; dp=ndp; ndp=tmp;\n}\nint ok= dp[m-n+K] <= K; free(dp); free(ndp); return ok;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; static char s[600005],t[600005]; read_input(&N,&K,s); scanf(\"%s\", t); int ok=can_make(N,K,s,t); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *s)",
+          "code": "scanf(\"%d%d\", N,K); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "can_make",
+          "signature": "int can_make(int N,int K,const char *s,const char *t)",
+          "code": "int n=strlen(s), m=strlen(t); if(n-m> K || m-n> K) return 0;\nint W=2*K+1; int *dp=(int*)malloc((size_t)(W+2)*sizeof(int)); int *ndp=(int*)malloc((size_t)(W+2)*sizeof(int));\nfor(int i=0;i<=W;i++) dp[i]=1e9; dp[K]=0;\nfor(int i=0;i<=n;i++){\n  for(int j=0;j<=W;j++) ndp[j]=1e9;\n  int jmin=i-K; if(jmin<0) jmin=0; int jmax=i+K; if(jmax>m) jmax=m;\n  for(int j=jmin;j<=jmax;j++){\n    int d=j-i+K; if(dp[d]>=1e9) continue;\n    if(i<n && j<m){ int cost= (s[i]==t[j])?0:1; if(dp[d]+cost<ndp[d]) ndp[d]=dp[d]+cost; }\n    if(i<n && d+1<=W) if(dp[d]+1<ndp[d+1]) ndp[d+1]=dp[d]+1; /* delete */\n    if(j<m && d-1>=0) if(dp[d]+1<ndp[d-1]) ndp[d-1]=dp[d]+1; /* insert */\n  }\n  int *tmp=dp; dp=ndp; ndp=tmp;\n}\nint ok= dp[m-n+K] <= K; free(dp); free(ndp); return ok;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; static char s[600005],t[600005]; read_input(&N,&K,s); scanf(\"%s\", t); int ok=can_make(N,K,s,t); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *s)",
+          "code": "scanf(\"%d%d\", N,K); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "can_make",
+          "signature": "int can_make(int N,int K,const char *s,const char *t)",
+          "code": "int n=strlen(s), m=strlen(t); if(n-m> K || m-n> K) return 0;\nint W=2*K+1; int *dp=(int*)malloc((size_t)(W+2)*sizeof(int)); int *ndp=(int*)malloc((size_t)(W+2)*sizeof(int));\nfor(int i=0;i<=W;i++) dp[i]=1e9; dp[K]=0;\nfor(int i=0;i<=n;i++){\n  for(int j=0;j<=W;j++) ndp[j]=1e9;\n  int jmin=i-K; if(jmin<0) jmin=0; int jmax=i+K; if(jmax>m) jmax=m;\n  for(int j=jmin;j<=jmax;j++){\n    int d=j-i+K; if(dp[d]>=1e9) continue;\n    if(i<n && j<m){ int cost= (s[i]==t[j])?0:1; if(dp[d]+cost<ndp[d]) ndp[d]=dp[d]+cost; }\n    if(i<n && d+1<=W) if(dp[d]+1<ndp[d+1]) ndp[d+1]=dp[d]+1; /* delete */\n    if(j<m && d-1>=0) if(dp[d]+1<ndp[d-1]) ndp[d-1]=dp[d]+1; /* insert */\n  }\n  int *tmp=dp; dp=ndp; ndp=tmp;\n}\nint ok= dp[m-n+K] <= K; free(dp); free(ndp); return ok;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; static char s[600005],t[600005]; read_input(&N,&K,s); scanf(\"%s\", t); int ok=can_make(N,K,s,t); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "386F",
+  "total_programs": 5
+}

@@ -1,0 +1,17 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_z_array_values",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_pattern_occurrences",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    }
+  ]
+}

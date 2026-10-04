@@ -1,0 +1,6 @@
+There are N giants, named 1 to N . When giant i stands on the ground, their shoulder height is A_i , and their head height is B_i . You can choose a permutation (P_1, P_2, \ldots, P_N) of (1, 2, \ldots, N) and stack the N giants according to the following rules: First, place giant P_1 on the ground. The giant P_1 's shoulder will be at a height of A_{P_1} from the ground, and their head will be at a height of B_{P_1} from the ground. For i = 1, 2, \ldots, N - 1 in order, place giant P_{i + 1} on the shoulders of giant P_i . If giant P_i 's shoulders are at a height of t from the ground, then giant P_{i + 1} 's shoulders will be at a height of t + A_{P_{i + 1}} from the ground, and their head will be at a height of t + B_{P_{i + 1}} from the ground. Find the maximum possible height of the head of the topmost giant P_N from the ground.
+
+**Constraints:**
+- 2 \leq N \leq 2 \times 10^5
+- 1 \leq A_i \leq B_i \leq 10^9
+- allintegers

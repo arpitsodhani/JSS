@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "initialize_selection_dp",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "optimize_k_element_selection",
+      "confidence": 1.0
+    },
+    {
+      "clause": "update_selection_state",
+      "confidence": 1.0
+    }
+  ]
+}

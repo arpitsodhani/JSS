@@ -1,0 +1,4 @@
+You are given an integer sequence A=(A_1,A_2,A_3,A_4,A_5) obtained by permuting (1,2,3,4,5) . Determine whether A can be sorted in ascending order by performing exactly one operation of swapping two adjacent elements in A .
+
+**Constraints:**
+- S is a string of length 5 consisting of '0' and '1'

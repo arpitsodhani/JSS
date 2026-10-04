@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,char S[][105],char T[][105])",
+          "code": "scanf(\"%d%d\", N,M); for(int i=0;i<*N;i++) scanf(\"%s\", S[i]); for(int i=0;i<*M;i++) scanf(\"%s\", T[i]);\n"
+        },
+        {
+          "clause_id": "find_pos",
+          "signature": "void find_pos(int N,int M,char S[][105],char T[][105],int *a,int *b)",
+          "code": "for(int i=0;i+M<=N;i++) for(int j=0;j+M<=N;j++){\n  int ok=1; for(int x=0;x<M;x++) for(int y=0;y<M;y++) if(S[i+x][j+y]!=T[x][y]) ok=0;\n  if(ok){ *a=i+1; *b=j+1; return; }\n}\n*a=1; *b=1;\n"
+        },
+        {
+          "clause_id": "print_pos",
+          "signature": "void print_pos(int a,int b)",
+          "code": "printf(\"%d %d\\n\", a,b);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; char S[105][105],T[105][105]; read_input(&N,&M,S,T); int a,b; find_pos(N,M,S,T,&a,&b); print_pos(a,b); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,char S[][105],char T[][105])",
+          "code": "scanf(\"%d%d\", N,M); for(int i=0;i<*N;i++) scanf(\"%s\", S[i]); for(int i=0;i<*M;i++) scanf(\"%s\", T[i]);\n"
+        },
+        {
+          "clause_id": "find_pos",
+          "signature": "void find_pos(int N,int M,char S[][105],char T[][105],int *a,int *b)",
+          "code": "for(int i=0;i+M<=N;i++) for(int j=0;j+M<=N;j++){\n  int ok=1; for(int x=0;x<M;x++) for(int y=0;y<M;y++) if(S[i+x][j+y]!=T[x][y]) ok=0;\n  if(ok){ *a=i+1; *b=j+1; return; }\n}\n*a=1; *b=1;\n"
+        },
+        {
+          "clause_id": "print_pos",
+          "signature": "void print_pos(int a,int b)",
+          "code": "printf(\"%d %d\\n\", a,b);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; char S[105][105],T[105][105]; read_input(&N,&M,S,T); int a,b; find_pos(N,M,S,T,&a,&b); print_pos(a,b); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,char S[][105],char T[][105])",
+          "code": "scanf(\"%d%d\", N,M); for(int i=0;i<*N;i++) scanf(\"%s\", S[i]); for(int i=0;i<*M;i++) scanf(\"%s\", T[i]);\n"
+        },
+        {
+          "clause_id": "find_pos",
+          "signature": "void find_pos(int N,int M,char S[][105],char T[][105],int *a,int *b)",
+          "code": "for(int i=0;i+M<=N;i++) for(int j=0;j+M<=N;j++){\n  int ok=1; for(int x=0;x<M;x++) for(int y=0;y<M;y++) if(S[i+x][j+y]!=T[x][y]) ok=0;\n  if(ok){ *a=i+1; *b=j+1; return; }\n}\n*a=1; *b=1;\n"
+        },
+        {
+          "clause_id": "print_pos",
+          "signature": "void print_pos(int a,int b)",
+          "code": "printf(\"%d %d\\n\", a,b);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; char S[105][105],T[105][105]; read_input(&N,&M,S,T); int a,b; find_pos(N,M,S,T,&a,&b); print_pos(a,b); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,char S[][105],char T[][105])",
+          "code": "scanf(\"%d%d\", N,M); for(int i=0;i<*N;i++) scanf(\"%s\", S[i]); for(int i=0;i<*M;i++) scanf(\"%s\", T[i]);\n"
+        },
+        {
+          "clause_id": "find_pos",
+          "signature": "void find_pos(int N,int M,char S[][105],char T[][105],int *a,int *b)",
+          "code": "for(int i=0;i+M<=N;i++) for(int j=0;j+M<=N;j++){\n  int ok=1; for(int x=0;x<M;x++) for(int y=0;y<M;y++) if(S[i+x][j+y]!=T[x][y]) ok=0;\n  if(ok){ *a=i+1; *b=j+1; return; }\n}\n*a=1; *b=1;\n"
+        },
+        {
+          "clause_id": "print_pos",
+          "signature": "void print_pos(int a,int b)",
+          "code": "printf(\"%d %d\\n\", a,b);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; char S[105][105],T[105][105]; read_input(&N,&M,S,T); int a,b; find_pos(N,M,S,T,&a,&b); print_pos(a,b); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,char S[][105],char T[][105])",
+          "code": "scanf(\"%d%d\", N,M); for(int i=0;i<*N;i++) scanf(\"%s\", S[i]); for(int i=0;i<*M;i++) scanf(\"%s\", T[i]);\n"
+        },
+        {
+          "clause_id": "find_pos",
+          "signature": "void find_pos(int N,int M,char S[][105],char T[][105],int *a,int *b)",
+          "code": "for(int i=0;i+M<=N;i++) for(int j=0;j+M<=N;j++){\n  int ok=1; for(int x=0;x<M;x++) for(int y=0;y<M;y++) if(S[i+x][j+y]!=T[x][y]) ok=0;\n  if(ok){ *a=i+1; *b=j+1; return; }\n}\n*a=1; *b=1;\n"
+        },
+        {
+          "clause_id": "print_pos",
+          "signature": "void print_pos(int a,int b)",
+          "code": "printf(\"%d %d\\n\", a,b);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; char S[105][105],T[105][105]; read_input(&N,&M,S,T); int a,b; find_pos(N,M,S,T,&a,&b); print_pos(a,b); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "391B",
+  "total_programs": 5
+}

@@ -1,0 +1,240 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_subtree_size_centroid",
+          "signature": "int compute_subtree_size_centroid(int node, int parent)",
+          "implementations": [
+            {
+              "code": "int compute_subtree_size_centroid(int node, int parent) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        subtree_size[node] += compute_subtree_size_centroid(child, node);\n    }\n    return subtree_size[node];\n}"
+            },
+            {
+              "code": "int compute_subtree_size_centroid(int node, int parent) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        subtree_size[node] += compute_subtree_size_centroid(child, node);\n    }\n    return subtree_size[node];\n}"
+            },
+            {
+              "code": "int compute_subtree_size_centroid(int node, int parent) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        subtree_size[node] += compute_subtree_size_centroid(child, node);\n    }\n    return subtree_size[node];\n}"
+            },
+            {
+              "code": "int compute_subtree_size_centroid(int node, int parent) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        subtree_size[node] += compute_subtree_size_centroid(child, node);\n    }\n    return subtree_size[node];\n}"
+            },
+            {
+              "code": "int compute_subtree_size_centroid(int node, int parent) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        subtree_size[node] += compute_subtree_size_centroid(child, node);\n    }\n    return subtree_size[node];\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "find_tree_centroid",
+          "signature": "int find_tree_centroid(int node, int parent, int tree_size)",
+          "implementations": [
+            {
+              "code": "int find_tree_centroid(int node, int parent, int tree_size) {\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        if (subtree_size[child] * 2 > tree_size)\n            return find_tree_centroid(child, node, tree_size);\n    }\n    return node;\n}"
+            },
+            {
+              "code": "int find_tree_centroid(int node, int parent, int tree_size) {\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        if (subtree_size[child] * 2 > tree_size)\n            return find_tree_centroid(child, node, tree_size);\n    }\n    return node;\n}"
+            },
+            {
+              "code": "int find_tree_centroid(int node, int parent, int tree_size) {\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        if (subtree_size[child] * 2 > tree_size)\n            return find_tree_centroid(child, node, tree_size);\n    }\n    return node;\n}"
+            },
+            {
+              "code": "int find_tree_centroid(int node, int parent, int tree_size) {\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        if (subtree_size[child] * 2 > tree_size)\n            return find_tree_centroid(child, node, tree_size);\n    }\n    return node;\n}"
+            },
+            {
+              "code": "int find_tree_centroid(int node, int parent, int tree_size) {\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        if (subtree_size[child] * 2 > tree_size)\n            return find_tree_centroid(child, node, tree_size);\n    }\n    return node;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "decompose_centroid_recursive",
+          "signature": "void decompose_centroid_recursive(int node, int parent_centroid)",
+          "implementations": [
+            {
+              "code": "void decompose_centroid_recursive(int node, int parent_centroid) {\n    int tree_size = compute_subtree_size_centroid(node, -1);\n    int centroid = find_tree_centroid(node, -1, tree_size);\n    removed[centroid] = 1;\n    centroid_parent[centroid] = parent_centroid;\n    for (int i = 0; i < adj_count[centroid]; i++) {\n        int child = adj[centroid][i];\n        if (!removed[child])\n            decompose_centroid_recursive(child, centroid);\n    }\n}"
+            },
+            {
+              "code": "void decompose_centroid_recursive(int node, int parent_centroid) {\n    int tree_size = compute_subtree_size_centroid(node, -1);\n    int centroid = find_tree_centroid(node, -1, tree_size);\n    removed[centroid] = 1;\n    centroid_parent[centroid] = parent_centroid;\n    for (int i = 0; i < adj_count[centroid]; i++) {\n        int child = adj[centroid][i];\n        if (!removed[child])\n            decompose_centroid_recursive(child, centroid);\n    }\n}"
+            },
+            {
+              "code": "void decompose_centroid_recursive(int node, int parent_centroid) {\n    int tree_size = compute_subtree_size_centroid(node, -1);\n    int centroid = find_tree_centroid(node, -1, tree_size);\n    removed[centroid] = 1;\n    centroid_parent[centroid] = parent_centroid;\n    for (int i = 0; i < adj_count[centroid]; i++) {\n        int child = adj[centroid][i];\n        if (!removed[child])\n            decompose_centroid_recursive(child, centroid);\n    }\n}"
+            },
+            {
+              "code": "void decompose_centroid_recursive(int node, int parent_centroid) {\n    int tree_size = compute_subtree_size_centroid(node, -1);\n    int centroid = find_tree_centroid(node, -1, tree_size);\n    removed[centroid] = 1;\n    centroid_parent[centroid] = parent_centroid;\n    for (int i = 0; i < adj_count[centroid]; i++) {\n        int child = adj[centroid][i];\n        if (!removed[child])\n            decompose_centroid_recursive(child, centroid);\n    }\n}"
+            },
+            {
+              "code": "void decompose_centroid_recursive(int node, int parent_centroid) {\n    int tree_size = compute_subtree_size_centroid(node, -1);\n    int centroid = find_tree_centroid(node, -1, tree_size);\n    removed[centroid] = 1;\n    centroid_parent[centroid] = parent_centroid;\n    for (int i = 0; i < adj_count[centroid]; i++) {\n        int child = adj[centroid][i];\n        if (!removed[child])\n            decompose_centroid_recursive(child, centroid);\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "mark_removed_subtree",
+          "signature": "void mark_removed_subtree(int node)",
+          "implementations": [
+            {
+              "code": "void mark_removed_subtree(int node) {\n    removed[node] = 1;\n}"
+            },
+            {
+              "code": "void mark_removed_subtree(int node) {\n    removed[node] = 1;\n}"
+            },
+            {
+              "code": "void mark_removed_subtree(int node) {\n    removed[node] = 1;\n}"
+            },
+            {
+              "code": "void mark_removed_subtree(int node) {\n    removed[node] = 1;\n}"
+            },
+            {
+              "code": "void mark_removed_subtree(int node) {\n    removed[node] = 1;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    decompose_centroid_recursive(0, -1);\n    printf(\"%d\\n\", centroid_parent[0]);\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    decompose_centroid_recursive(0, -1);\n    printf(\"%d\\n\", centroid_parent[0]);\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    decompose_centroid_recursive(0, -1);\n    printf(\"%d\\n\", centroid_parent[0]);\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    decompose_centroid_recursive(0, -1);\n    printf(\"%d\\n\", centroid_parent[0]);\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    decompose_centroid_recursive(0, -1);\n    printf(\"%d\\n\", centroid_parent[0]);\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_subtree_size_centroid",
+          "signature": "int compute_subtree_size_centroid(int node, int parent)",
+          "code": "int compute_subtree_size_centroid(int node, int parent) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        subtree_size[node] += compute_subtree_size_centroid(child, node);\n    }\n    return subtree_size[node];\n}"
+        },
+        {
+          "clause_id": "find_tree_centroid",
+          "signature": "int find_tree_centroid(int node, int parent, int tree_size)",
+          "code": "int find_tree_centroid(int node, int parent, int tree_size) {\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        if (subtree_size[child] * 2 > tree_size)\n            return find_tree_centroid(child, node, tree_size);\n    }\n    return node;\n}"
+        },
+        {
+          "clause_id": "decompose_centroid_recursive",
+          "signature": "void decompose_centroid_recursive(int node, int parent_centroid)",
+          "code": "void decompose_centroid_recursive(int node, int parent_centroid) {\n    int tree_size = compute_subtree_size_centroid(node, -1);\n    int centroid = find_tree_centroid(node, -1, tree_size);\n    removed[centroid] = 1;\n    centroid_parent[centroid] = parent_centroid;\n    for (int i = 0; i < adj_count[centroid]; i++) {\n        int child = adj[centroid][i];\n        if (!removed[child])\n            decompose_centroid_recursive(child, centroid);\n    }\n}"
+        },
+        {
+          "clause_id": "mark_removed_subtree",
+          "signature": "void mark_removed_subtree(int node)",
+          "code": "void mark_removed_subtree(int node) {\n    removed[node] = 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    decompose_centroid_recursive(0, -1);\n    printf(\"%d\\n\", centroid_parent[0]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_subtree_size_centroid",
+          "signature": "int compute_subtree_size_centroid(int node, int parent)",
+          "code": "int compute_subtree_size_centroid(int node, int parent) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        subtree_size[node] += compute_subtree_size_centroid(child, node);\n    }\n    return subtree_size[node];\n}"
+        },
+        {
+          "clause_id": "find_tree_centroid",
+          "signature": "int find_tree_centroid(int node, int parent, int tree_size)",
+          "code": "int find_tree_centroid(int node, int parent, int tree_size) {\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        if (subtree_size[child] * 2 > tree_size)\n            return find_tree_centroid(child, node, tree_size);\n    }\n    return node;\n}"
+        },
+        {
+          "clause_id": "decompose_centroid_recursive",
+          "signature": "void decompose_centroid_recursive(int node, int parent_centroid)",
+          "code": "void decompose_centroid_recursive(int node, int parent_centroid) {\n    int tree_size = compute_subtree_size_centroid(node, -1);\n    int centroid = find_tree_centroid(node, -1, tree_size);\n    removed[centroid] = 1;\n    centroid_parent[centroid] = parent_centroid;\n    for (int i = 0; i < adj_count[centroid]; i++) {\n        int child = adj[centroid][i];\n        if (!removed[child])\n            decompose_centroid_recursive(child, centroid);\n    }\n}"
+        },
+        {
+          "clause_id": "mark_removed_subtree",
+          "signature": "void mark_removed_subtree(int node)",
+          "code": "void mark_removed_subtree(int node) {\n    removed[node] = 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    decompose_centroid_recursive(0, -1);\n    printf(\"%d\\n\", centroid_parent[0]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_subtree_size_centroid",
+          "signature": "int compute_subtree_size_centroid(int node, int parent)",
+          "code": "int compute_subtree_size_centroid(int node, int parent) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        subtree_size[node] += compute_subtree_size_centroid(child, node);\n    }\n    return subtree_size[node];\n}"
+        },
+        {
+          "clause_id": "find_tree_centroid",
+          "signature": "int find_tree_centroid(int node, int parent, int tree_size)",
+          "code": "int find_tree_centroid(int node, int parent, int tree_size) {\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        if (subtree_size[child] * 2 > tree_size)\n            return find_tree_centroid(child, node, tree_size);\n    }\n    return node;\n}"
+        },
+        {
+          "clause_id": "decompose_centroid_recursive",
+          "signature": "void decompose_centroid_recursive(int node, int parent_centroid)",
+          "code": "void decompose_centroid_recursive(int node, int parent_centroid) {\n    int tree_size = compute_subtree_size_centroid(node, -1);\n    int centroid = find_tree_centroid(node, -1, tree_size);\n    removed[centroid] = 1;\n    centroid_parent[centroid] = parent_centroid;\n    for (int i = 0; i < adj_count[centroid]; i++) {\n        int child = adj[centroid][i];\n        if (!removed[child])\n            decompose_centroid_recursive(child, centroid);\n    }\n}"
+        },
+        {
+          "clause_id": "mark_removed_subtree",
+          "signature": "void mark_removed_subtree(int node)",
+          "code": "void mark_removed_subtree(int node) {\n    removed[node] = 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    decompose_centroid_recursive(0, -1);\n    printf(\"%d\\n\", centroid_parent[0]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_subtree_size_centroid",
+          "signature": "int compute_subtree_size_centroid(int node, int parent)",
+          "code": "int compute_subtree_size_centroid(int node, int parent) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        subtree_size[node] += compute_subtree_size_centroid(child, node);\n    }\n    return subtree_size[node];\n}"
+        },
+        {
+          "clause_id": "find_tree_centroid",
+          "signature": "int find_tree_centroid(int node, int parent, int tree_size)",
+          "code": "int find_tree_centroid(int node, int parent, int tree_size) {\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child == parent || removed[child]) continue;\n        if (subtree_size[child] * 2 > tree_size)\n            return find_tree_centroid(child, node, tree_size);\n    }\n    return node;\n}"
+        },
+        {
+          "clause_id": "decompose_centroid_recursive",
+          "signature": "void decompose_centroid_recursive(int node, int parent_centroid)",
+          "code": "void decompose_centroid_recursive(int node, int parent_centroid) {\n    int tree_size = compute_subtree_size_centroid(node, -1);\n    int centroid = find_tree_centroid(node, -1, tree_size);\n    removed[centroid] = 1;\n    centroid_parent[centroid] = parent_centroid;\n    for (int i = 0; i < adj_count[centroid]; i++) {\n        int child = adj[centroid][i];\n        if (!removed[child])\n            decompose_centroid_recursive(child, centroid);\n    }\n}"
+        },
+        {
+          "clause_id": "mark_removed_subtree",
+          "signature": "void mark_removed_subtree(int node)",
+          "code": "void mark_removed_subtree(int node) {\n    removed[node] = 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n    }\n    decompose_centroid_recursive(0, -1);\n    printf(\"%d\\n\", centroid_parent[0]);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+You are given integers A , B , and M . How many permutations P = (P_1, \dots, P_{AB-1}) of (1, 2, \ldots, AB - 1) satisfy all of the following conditions? Find the count modulo M . The length of a longest increasing subsequence of P is A . The length of a longest decreasing subsequence of P is B . There exists an integer n such that appending n + 0.5 to the end of P does not change either of the lengths of a longest increasing subsequence and a longest decreasing subsequence.
+
+**Constraints:**
+- 1 <= H, W <= 1000
+- A_{i,j} is '#' or '.'
+- There is at least one '#' in the grid

@@ -1,0 +1,126 @@
+{
+  "problem_num": 150,
+  "problem_name": "x_or_y",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n, x, y;\n    scanf(\"%d %d %d\", &n, &x, &y);\n    \n    if (is_prime(n)) {\n        printf(\"%d\\n\", x);\n    } else {\n        printf(\"%d\\n\", y);\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n, x, y;\n    scanf(\"%d %d %d\", &n, &x, &y);\n    \n    if (is_prime(n)) {\n        printf(\"%d\\n\", x);\n    } else {\n        printf(\"%d\\n\", y);\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n, x, y;\n    scanf(\"%d %d %d\", &n, &x, &y);\n    \n    if (is_prime(n)) {\n        printf(\"%d\\n\", x);\n    } else {\n        printf(\"%d\\n\", y);\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n, x, y;\n    scanf(\"%d %d %d\", &n, &x, &y);\n    \n    if (is_prime(n)) {\n        printf(\"%d\\n\", x);\n    } else {\n        printf(\"%d\\n\", y);\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n, x, y;\n    scanf(\"%d %d %d\", &n, &x, &y);\n    \n    if (is_prime(n)) {\n        printf(\"%d\\n\", x);\n    } else {\n        printf(\"%d\\n\", y);\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

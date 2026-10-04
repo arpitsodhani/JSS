@@ -1,0 +1,29 @@
+{
+  "contestId": 1943,
+  "index": "B",
+  "problem_id": "1943B",
+  "name": "Non-Palindromic Substring",
+  "rating": 2000,
+  "tags": [
+    "hashing",
+    "implementation",
+    "math",
+    "strings"
+  ],
+  "points": 1250.0,
+  "solvedCount": 4657,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Non-Palindromic Substring",
+  "legend": "A string t is said to be k-good if there exists at least one substring† of length k which is not a palindrome‡. Let f(t) denote the sum of all values of k such that the string t is k-good.\n\nYou are given a string s of length n. You will have to answer q of the following queries:\n\nGiven l and r (l<r), find the value of f(slsl+1…sr).\n\n† A substring of a string z is a contiguous segment of characters from z. For example, \"defor\", \"code\" and \"o\" are all substrings of \"codeforces\" while \"codes\" and \"aaa\" are not.\n\n‡ A palindrome is a string that reads the same backwards as forwards. For example, the strings \"z\", \"aa\" and \"tacocat\" are palindromes while \"codeforces\" and \"ab\" are not.",
+  "input_spec": "Each test contains multiple test cases. The first line contains a single integer t (1≤t≤2⋅104) — the number of test cases. The description of the test cases follows.\n\nThe first line of each test case contains two integers n and q (2≤n≤2⋅105,1≤q≤2⋅105), the size of the string and the number of queries respectively.\n\nThe second line of each test case contains the string s. It is guaranteed the string s only contains lowercase English characters.\n\nThe next q lines each contain two integers, l and r (1≤l<r≤n).\n\nIt is guaranteed the sum of n and the sum of q both do not exceed 2⋅105.",
+  "output_spec": "For each query, output f(slsl+1…sr).",
+  "note": "In the first query of the first test case, the string is aaab. aaab, aab and ab are all substrings that are not palindromes, and they have lengths 4, 3 and 2 respectively. Thus, the string is 2-good, 3-good and 4-good. Hence, f(aaab)=2+3+4=9.\n\nIn the second query of the first test case, the string is aaa. There are no non-palindromic substrings. Hence, f(aaa)=0.\n\nIn the first query of the second test case, the string is abc. ab, bc and abc are all substrings that are not palindromes, and they have lengths 2, 2 and 3 respectively. Thus, the string is 2-good and 3-good. Hence, f(abc)=2+3=5. Note that even though there are 2 non-palindromic substrings of length 2, we count it only once.",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n4 4\naaab\n1 4\n1 3\n3 4\n2 4\n3 2\nabc\n1 3\n1 2\n5 4\npqpcc\n1 5\n4 5\n1 3\n2 4\n2 1\naa\n1 2\n12 1\nsteponnopets\n1 12\n",
+      "output": "9\n0\n2\n5\n5\n2\n14\n0\n2\n5\n0\n65"
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "problem_num": 143,
+  "problem_name": "words_in_sentence",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char sentence[10000];\n    fgets(sentence, 10000, stdin);\n    \n    char words[1000][100];\n    int word_count = 0;\n    int idx = 0;\n    \n    for (int i = 0; sentence[i] != '\\0' && sentence[i] != '\\n'; i++) {\n        if (sentence[i] == ' ') {\n            if (idx > 0) {\n                words[word_count][idx] = '\\0';\n                word_count++;\n                idx = 0;\n            }\n        } else {\n            words[word_count][idx++] = sentence[i];\n        }\n    }\n    if (idx > 0) {\n        words[word_count][idx] = '\\0';\n        word_count++;\n    }\n    \n    int first = 1;\n    for (int i = 0; i < word_count; i++) {\n        int len = strlen(words[i]);\n        if (is_prime(len)) {\n            if (!first) printf(\" \");\n            printf(\"%s\", words[i]);\n            first = 0;\n        }\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char sentence[10000];\n    fgets(sentence, 10000, stdin);\n    \n    char words[1000][100];\n    int word_count = 0;\n    int idx = 0;\n    \n    for (int i = 0; sentence[i] != '\\0' && sentence[i] != '\\n'; i++) {\n        if (sentence[i] == ' ') {\n            if (idx > 0) {\n                words[word_count][idx] = '\\0';\n                word_count++;\n                idx = 0;\n            }\n        } else {\n            words[word_count][idx++] = sentence[i];\n        }\n    }\n    if (idx > 0) {\n        words[word_count][idx] = '\\0';\n        word_count++;\n    }\n    \n    int first = 1;\n    for (int i = 0; i < word_count; i++) {\n        int len = strlen(words[i]);\n        if (is_prime(len)) {\n            if (!first) printf(\" \");\n            printf(\"%s\", words[i]);\n            first = 0;\n        }\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char sentence[10000];\n    fgets(sentence, 10000, stdin);\n    \n    char words[1000][100];\n    int word_count = 0;\n    int idx = 0;\n    \n    for (int i = 0; sentence[i] != '\\0' && sentence[i] != '\\n'; i++) {\n        if (sentence[i] == ' ') {\n            if (idx > 0) {\n                words[word_count][idx] = '\\0';\n                word_count++;\n                idx = 0;\n            }\n        } else {\n            words[word_count][idx++] = sentence[i];\n        }\n    }\n    if (idx > 0) {\n        words[word_count][idx] = '\\0';\n        word_count++;\n    }\n    \n    int first = 1;\n    for (int i = 0; i < word_count; i++) {\n        int len = strlen(words[i]);\n        if (is_prime(len)) {\n            if (!first) printf(\" \");\n            printf(\"%s\", words[i]);\n            first = 0;\n        }\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char sentence[10000];\n    fgets(sentence, 10000, stdin);\n    \n    char words[1000][100];\n    int word_count = 0;\n    int idx = 0;\n    \n    for (int i = 0; sentence[i] != '\\0' && sentence[i] != '\\n'; i++) {\n        if (sentence[i] == ' ') {\n            if (idx > 0) {\n                words[word_count][idx] = '\\0';\n                word_count++;\n                idx = 0;\n            }\n        } else {\n            words[word_count][idx++] = sentence[i];\n        }\n    }\n    if (idx > 0) {\n        words[word_count][idx] = '\\0';\n        word_count++;\n    }\n    \n    int first = 1;\n    for (int i = 0; i < word_count; i++) {\n        int len = strlen(words[i]);\n        if (is_prime(len)) {\n            if (!first) printf(\" \");\n            printf(\"%s\", words[i]);\n            first = 0;\n        }\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char sentence[10000];\n    fgets(sentence, 10000, stdin);\n    \n    char words[1000][100];\n    int word_count = 0;\n    int idx = 0;\n    \n    for (int i = 0; sentence[i] != '\\0' && sentence[i] != '\\n'; i++) {\n        if (sentence[i] == ' ') {\n            if (idx > 0) {\n                words[word_count][idx] = '\\0';\n                word_count++;\n                idx = 0;\n            }\n        } else {\n            words[word_count][idx++] = sentence[i];\n        }\n    }\n    if (idx > 0) {\n        words[word_count][idx] = '\\0';\n        word_count++;\n    }\n    \n    int first = 1;\n    for (int i = 0; i < word_count; i++) {\n        int len = strlen(words[i]);\n        if (is_prime(len)) {\n            if (!first) printf(\" \");\n            printf(\"%s\", words[i]);\n            first = 0;\n        }\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

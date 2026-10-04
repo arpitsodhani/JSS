@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *x,int *y,char *T,char **grid)",
+          "code": "void read_input(int *H,int *W,int *x,int *y,char *T,char **grid){\n    scanf(\"%d%d%d%d\", H,W,x,y);\n    scanf(\"%s\", T);\n    *grid = (char*)malloc((size_t)(*H)*(*W+1));\n    for(int i=0;i<*H;i++){\n        scanf(\"%s\", (*grid)+i*(*W+1));\n    }\n}\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "int simulate(int H,int W,int x,int y,char *T,char *grid,int *fx,int *fy)",
+          "code": "int simulate(int H,int W,int x,int y,char *T,char *grid,int *fx,int *fy){\n    int visited = 0;\n    char *mark = (char*)calloc((size_t)H*W,1);\n    int len = 0; while(T[len]) len++;\n    int r = x-1, c = y-1;\n    if(grid[r*(W+1)+c]=='@' && !mark[r*W+c]){ mark[r*W+c]=1; visited++; }\n    for(int i=0;i<len;i++){\n        int nr=r, nc=c;\n        if(T[i]=='U') nr--;\n        else if(T[i]=='D') nr++;\n        else if(T[i]=='L') nc--;\n        else if(T[i]=='R') nc++;\n        if(nr>=0 && nr<H && nc>=0 && nc<W && grid[nr*(W+1)+nc]!='#'){ r=nr; c=nc; }\n        if(grid[r*(W+1)+c]=='@' && !mark[r*W+c]){ mark[r*W+c]=1; visited++; }\n    }\n    free(mark);\n    *fx=r+1; *fy=c+1;\n    return visited;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int fx,int fy,int cnt)",
+          "code": "void print_answer(int fx,int fy,int cnt){\n    printf(\"%d %d %d\\n\", fx, fy, cnt);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int H,W,x,y;\n    char T[200005];\n    char *grid=NULL;\n    read_input(&H,&W,&x,&y,T,&grid);\n    int fx,fy;\n    int cnt = simulate(H,W,x,y,T,grid,&fx,&fy);\n    print_answer(fx,fy,cnt);\n    free(grid);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *x,int *y,char *T,char **grid)",
+          "code": "void read_input(int *H,int *W,int *x,int *y,char *T,char **grid){\n    scanf(\"%d%d%d%d\", H,W,x,y);\n    scanf(\"%s\", T);\n    *grid = (char*)malloc((size_t)(*H)*(*W+1));\n    for(int i=0;i<*H;i++){\n        scanf(\"%s\", (*grid)+i*(*W+1));\n    }\n}\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "int simulate(int H,int W,int x,int y,char *T,char *grid,int *fx,int *fy)",
+          "code": "int simulate(int H,int W,int x,int y,char *T,char *grid,int *fx,int *fy){\n    int visited = 0;\n    char *mark = (char*)calloc((size_t)H*W,1);\n    int r=x-1,c=y-1;\n    if(grid[r*(W+1)+c]=='@'){ mark[r*W+c]=1; visited++; }\n    for(int i=0; T[i]; i++){\n        int nr=r, nc=c;\n        switch(T[i]){\n            case 'U': nr--; break;\n            case 'D': nr++; break;\n            case 'L': nc--; break;\n            case 'R': nc++; break;\n        }\n        if(nr>=0 && nr<H && nc>=0 && nc<W && grid[nr*(W+1)+nc]!='#'){ r=nr; c=nc; }\n        if(grid[r*(W+1)+c]=='@' && !mark[r*W+c]){ mark[r*W+c]=1; visited++; }\n    }\n    free(mark);\n    *fx=r+1; *fy=c+1;\n    return visited;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int fx,int fy,int cnt)",
+          "code": "void print_answer(int fx,int fy,int cnt){\n    printf(\"%d %d %d\\n\", fx, fy, cnt);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int H,W,x,y;\n    char T[200005];\n    char *grid=NULL;\n    read_input(&H,&W,&x,&y,T,&grid);\n    int fx,fy;\n    int cnt = simulate(H,W,x,y,T,grid,&fx,&fy);\n    print_answer(fx,fy,cnt);\n    free(grid);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *x,int *y,char *T,char **grid)",
+          "code": "void read_input(int *H,int *W,int *x,int *y,char *T,char **grid){\n    scanf(\"%d%d%d%d\", H,W,x,y);\n    scanf(\"%s\", T);\n    *grid = (char*)malloc((size_t)(*H)*(*W+1));\n    for(int i=0;i<*H;i++){\n        scanf(\"%s\", (*grid)+i*(*W+1));\n    }\n}\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "int simulate(int H,int W,int x,int y,char *T,char *grid,int *fx,int *fy)",
+          "code": "int simulate(int H,int W,int x,int y,char *T,char *grid,int *fx,int *fy){\n    int visited = 0;\n    char *mark = (char*)calloc((size_t)H*W,1);\n    int len = 0; while(T[len]) len++;\n    int r = x-1, c = y-1;\n    if(grid[r*(W+1)+c]=='@' && !mark[r*W+c]){ mark[r*W+c]=1; visited++; }\n    for(int i=0;i<len;i++){\n        int nr=r, nc=c;\n        if(T[i]=='U') nr--;\n        else if(T[i]=='D') nr++;\n        else if(T[i]=='L') nc--;\n        else if(T[i]=='R') nc++;\n        if(nr>=0 && nr<H && nc>=0 && nc<W && grid[nr*(W+1)+nc]!='#'){ r=nr; c=nc; }\n        if(grid[r*(W+1)+c]=='@' && !mark[r*W+c]){ mark[r*W+c]=1; visited++; }\n    }\n    free(mark);\n    *fx=r+1; *fy=c+1;\n    return visited;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int fx,int fy,int cnt)",
+          "code": "void print_answer(int fx,int fy,int cnt){\n    printf(\"%d %d %d\\n\", fx, fy, cnt);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int H,W,x,y;\n    char T[200005];\n    char *grid=NULL;\n    read_input(&H,&W,&x,&y,T,&grid);\n    int fx,fy;\n    int cnt = simulate(H,W,x,y,T,grid,&fx,&fy);\n    print_answer(fx,fy,cnt);\n    free(grid);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *x,int *y,char *T,char **grid)",
+          "code": "void read_input(int *H,int *W,int *x,int *y,char *T,char **grid){\n    scanf(\"%d%d%d%d\", H,W,x,y);\n    scanf(\"%s\", T);\n    *grid = (char*)malloc((size_t)(*H)*(*W+1));\n    for(int i=0;i<*H;i++){\n        scanf(\"%s\", (*grid)+i*(*W+1));\n    }\n}\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "int simulate(int H,int W,int x,int y,char *T,char *grid,int *fx,int *fy)",
+          "code": "int simulate(int H,int W,int x,int y,char *T,char *grid,int *fx,int *fy){\n    int visited = 0;\n    char *mark = (char*)calloc((size_t)H*W,1);\n    int r=x-1,c=y-1;\n    if(grid[r*(W+1)+c]=='@'){ mark[r*W+c]=1; visited++; }\n    for(int i=0; T[i]; i++){\n        int nr=r, nc=c;\n        switch(T[i]){\n            case 'U': nr--; break;\n            case 'D': nr++; break;\n            case 'L': nc--; break;\n            case 'R': nc++; break;\n        }\n        if(nr>=0 && nr<H && nc>=0 && nc<W && grid[nr*(W+1)+nc]!='#'){ r=nr; c=nc; }\n        if(grid[r*(W+1)+c]=='@' && !mark[r*W+c]){ mark[r*W+c]=1; visited++; }\n    }\n    free(mark);\n    *fx=r+1; *fy=c+1;\n    return visited;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int fx,int fy,int cnt)",
+          "code": "void print_answer(int fx,int fy,int cnt){\n    printf(\"%d %d %d\\n\", fx, fy, cnt);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int H,W,x,y;\n    char T[200005];\n    char *grid=NULL;\n    read_input(&H,&W,&x,&y,T,&grid);\n    int fx,fy;\n    int cnt = simulate(H,W,x,y,T,grid,&fx,&fy);\n    print_answer(fx,fy,cnt);\n    free(grid);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,int *x,int *y,char *T,char **grid)",
+          "code": "void read_input(int *H,int *W,int *x,int *y,char *T,char **grid){\n    scanf(\"%d%d%d%d\", H,W,x,y);\n    scanf(\"%s\", T);\n    *grid = (char*)malloc((size_t)(*H)*(*W+1));\n    for(int i=0;i<*H;i++){\n        scanf(\"%s\", (*grid)+i*(*W+1));\n    }\n}\n"
+        },
+        {
+          "clause_id": "simulate",
+          "signature": "int simulate(int H,int W,int x,int y,char *T,char *grid,int *fx,int *fy)",
+          "code": "int simulate(int H,int W,int x,int y,char *T,char *grid,int *fx,int *fy){\n    int visited = 0;\n    char *mark = (char*)calloc((size_t)H*W,1);\n    int len = 0; while(T[len]) len++;\n    int r = x-1, c = y-1;\n    if(grid[r*(W+1)+c]=='@' && !mark[r*W+c]){ mark[r*W+c]=1; visited++; }\n    for(int i=0;i<len;i++){\n        int nr=r, nc=c;\n        if(T[i]=='U') nr--;\n        else if(T[i]=='D') nr++;\n        else if(T[i]=='L') nc--;\n        else if(T[i]=='R') nc++;\n        if(nr>=0 && nr<H && nc>=0 && nc<W && grid[nr*(W+1)+nc]!='#'){ r=nr; c=nc; }\n        if(grid[r*(W+1)+c]=='@' && !mark[r*W+c]){ mark[r*W+c]=1; visited++; }\n    }\n    free(mark);\n    *fx=r+1; *fy=c+1;\n    return visited;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int fx,int fy,int cnt)",
+          "code": "void print_answer(int fx,int fy,int cnt){\n    printf(\"%d %d %d\\n\", fx, fy, cnt);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int H,W,x,y;\n    char T[200005];\n    char *grid=NULL;\n    read_input(&H,&W,&x,&y,T,&grid);\n    int fx,fy;\n    int cnt = simulate(H,W,x,y,T,grid,&fx,&fy);\n    print_answer(fx,fy,cnt);\n    free(grid);\n    return 0;\n}\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+In the nation of Atcoder, there are N cities numbered 1 to N , and M trains numbered 1 to M . Train i departs from city A_i at time S_i and arrives at city B_i at time T_i . Given a positive integer X_1 , find a way to set non-negative integers X_2,\ldots,X_M that satisfies the following condition with the minimum possible value of X_2+\ldots+X_M . Condition: For all pairs (i,j) satisfying 1 \leq i,j \leq M , if B_i=A_j and T_i \leq S_j , then T_i+X_i \leq S_j+X_j . In other words, for any pair of trains that are originally possible to transfer between, it is still possible to transfer even after delaying the departure and arrival times of each train i by X_i . It can be proved that such a way to set X_2,\ldots,X_M with the minimum possible value of X_2+\ldots+X_M is unique.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= 2 * 10^5
+- 1 <= A_i, B_i <= N
+- A_i != B_i
+- 1 <= S_i <= 10^8
+- 1 <= T_i <= 10^8
+- S_i + T_i <= 10^8
+- 1 <= X_1 <= 10^8
+- All input values are integers

@@ -1,0 +1,5 @@
+There are four balls, and the color of the i -th ball is A_i . Find the maximum number of times you can perform this operation: choose two balls of the same color and discard both.
+
+**Constraints:**
+- 1 <= A_i <= 4
+- All input values are integers

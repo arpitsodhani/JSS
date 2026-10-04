@@ -1,0 +1,28 @@
+{
+  "contestId": 1809,
+  "index": "C",
+  "problem_id": "1809C",
+  "name": "Sum on Subarrays",
+  "rating": 1500,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 15381,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Sum on Subarrays",
+  "legend": "For an array a=[a1,a2,…,an], let's denote its subarray a[l,r] as the array [al,al+1,…,ar].\n\nFor example, the array a=[1,−3,1] has 6 non-empty subarrays:\n\na[1,1]=[1];\na[1,2]=[1,−3];\na[1,3]=[1,−3,1];\na[2,2]=[−3];\na[2,3]=[−3,1];\na[3,3]=[1].\n\nYou are given two integers n and k. Construct an array a consisting of n integers such that:\n\nall elements of a are from −1000 to 1000;\na has exactly k subarrays with positive sums;\nthe rest \n(n+1)⋅n\n\n\n2\n−k subarrays of a have negative sums.",
+  "input_spec": "The first line contains one integer t (1≤t≤5000) — the number of test cases.\n\nEach test case consists of one line containing two integers n and k (2≤n≤30; 0≤k≤\n(n+1)⋅n\n\n\n2\n).",
+  "output_spec": "For each test case, print n integers — the elements of the array meeting the constraints. It can be shown that the answer always exists. If there are multiple answers, print any of them.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "4\n3 2\n2 0\n2 2\n4 6\n",
+      "output": "1 -3 1\n-13 -42\n-13 42\n-3 -4 10 -2"
+    }
+  ]
+}

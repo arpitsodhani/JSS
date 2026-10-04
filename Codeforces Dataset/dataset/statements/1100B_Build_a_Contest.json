@@ -1,0 +1,31 @@
+{
+  "contestId": 1100,
+  "index": "B",
+  "problem_id": "1100B",
+  "name": "Build a Contest",
+  "rating": 1300,
+  "tags": [
+    "data structures",
+    "implementation"
+  ],
+  "points": 1000.0,
+  "solvedCount": 11848,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Build a Contest",
+  "legend": "Arkady coordinates rounds on some not really famous competitive programming platform. Each round features n problems of distinct difficulty, the difficulties are numbered from 1 to n.\n\nTo hold a round Arkady needs n new (not used previously) problems, one for each difficulty. As for now, Arkady creates all the problems himself, but unfortunately, he can't just create a problem of a desired difficulty. Instead, when he creates a problem, he evaluates its difficulty from 1 to n and puts it into the problems pool.\n\nAt each moment when Arkady can choose a set of n new problems of distinct difficulties from the pool, he holds a round with these problems and removes them from the pool. Arkady always creates one problem at a time, so if he can hold a round after creating a problem, he immediately does it.\n\nYou are given a sequence of problems' difficulties in the order Arkady created them. For each problem, determine whether Arkady held the round right after creating this problem, or not. Initially the problems pool is empty.",
+  "input_spec": "The first line contains two integers n and m (1≤n,m≤105) — the number of difficulty levels and the number of problems Arkady created.\n\nThe second line contains m integers a1,a2,…,am (1≤ai≤n) — the problems' difficulties in the order Arkady created them.",
+  "output_spec": "Print a line containing m digits. The i-th digit should be 1 if Arkady held the round after creation of the i-th problem, and 0 otherwise.",
+  "note": "In the first example Arkady held the round after the first three problems, because they are of distinct difficulties, and then only after the last problem.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3 11\n2 3 1 2 2 2 3 2 2 3 1\n",
+      "output": "00100000001"
+    },
+    {
+      "input": "4 8\n4 1 3 3 2 3 3 3\n",
+      "output": "00001000"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "contestId": 1316,
+  "index": "B",
+  "problem_id": "1316B",
+  "name": "String Modification",
+  "rating": 1400,
+  "tags": [
+    "brute force",
+    "constructive algorithms",
+    "implementation",
+    "sortings",
+    "strings"
+  ],
+  "points": 1000.0,
+  "solvedCount": 11814,
+  "source": "verbatim_cf_fetch",
+  "title": "B. String Modification",
+  "legend": "Vasya has a string s of length n. He decides to make the following modification to the string:\n\nPick an integer k, (1≤k≤n).\nFor i from 1 to n−k+1, reverse the substring s[i:i+k−1] of s. For example, if string s is qwer and k=2, below is the series of transformations the string goes through:\nqwer (original string)\nwqer (after reversing the first substring of length 2)\nweqr (after reversing the second substring of length 2)\nwerq (after reversing the last substring of length 2)\nHence, the resulting string after modifying s with k=2 is werq.\n\nVasya wants to choose a k such that the string obtained after the above-mentioned modification is lexicographically smallest possible among all choices of k. Among all such k, he wants to choose the smallest one. Since he is busy attending Felicity 2020, he asks for your help.\n\nA string a is lexicographically smaller than a string b if and only if one of the following holds:\n\na is a prefix of b, but a≠b;\nin the first position where a and b differ, the string a has a letter that appears earlier in the alphabet than the corresponding letter in b.",
+  "input_spec": "Each test contains multiple test cases.\n\nThe first line contains the number of test cases t (1≤t≤5000). The description of the test cases follows.\n\nThe first line of each test case contains a single integer n (1≤n≤5000) — the length of the string s.\n\nThe second line of each test case contains the string s of n lowercase latin letters.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 5000.",
+  "output_spec": "For each testcase output two lines:\n\nIn the first line output the lexicographically smallest string s′ achievable after the above-mentioned modification.\n\nIn the second line output the appropriate value of k (1≤k≤n) that you chose for performing the modification. If there are multiple values of k that give the lexicographically smallest string, output the smallest value of k among them.",
+  "note": "In the first testcase of the first sample, the string modification results for the sample abab are as follows :\n\nfor k=1 : abab\nfor k=2 : baba\nfor k=3 : abab\nfor k=4 : baba\n\nThe lexicographically smallest string achievable through modification is abab for k=1 and 3. Smallest value of k needed to achieve is hence 1.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n4\nabab\n6\nqwerty\n5\naaaaa\n6\nalaska\n9\nlfpbavjsm\n1\np\n",
+      "output": "abab\n1\nertyqw\n3\naaaaa\n1\naksala\n6\navjsmbpfl\n5\np\n1"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+You are given an integer L. Find the number of pairs of integers (l, r) that satisfy all of the following conditions:
+- 0 <= l < r
+- There exists a non-negative integer n such that l = n * 2^i and r = (n+1) * 2^i for some non-negative integer i
+- l < L <= r
+
+**Input:**
+The input is given from Standard Input in the following format:
+L
+
+**Output:**
+Print the number of pairs that satisfy the conditions. Then, print each pair (l, r) in ascending order of l.
+
+**Constraints:**
+- 1 <= L <= 10^{18}
+- All input values are integers

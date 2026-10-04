@@ -1,0 +1,189 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "number_to_word",
+          "code": "const char* number_to_word(int n) {\n    switch(n) {\n        case 1: return \"One\";\n        case 2: return \"Two\";\n        case 3: return \"Three\";\n        case 4: return \"Four\";\n        case 5: return \"Five\";\n        case 6: return \"Six\";\n        case 7: return \"Seven\";\n        case 8: return \"Eight\";\n        case 9: return \"Nine\";\n        default: return NULL;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "compare_desc",
+          "code": "int compare_desc(const void *a, const void *b) {\n    return *(int*)b - *(int*)a;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "by_length",
+          "code": "void by_length(int n, int arr[], char result[][20], int *result_size) {\n    int valid[n];\n    int valid_count = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] >= 1 && arr[i] <= 9) {\n            valid[valid_count++] = arr[i];\n        }\n    }\n    \n    qsort(valid, valid_count, sizeof(int), compare_desc);\n    \n    *result_size = 0;\n    for (int i = 0; i < valid_count; i++) {\n        const char *word = number_to_word(valid[i]);\n        if (word) {\n            strcpy(result[(*result_size)++], word);\n        }\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    char result[n][20];\n    int result_size;\n    by_length(n, arr, result, &result_size);\n    for (int i = 0; i < result_size; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "number_to_word",
+          "code": "const char* number_to_word(int n) {\n    switch(n) {\n        case 1: return \"One\";\n        case 2: return \"Two\";\n        case 3: return \"Three\";\n        case 4: return \"Four\";\n        case 5: return \"Five\";\n        case 6: return \"Six\";\n        case 7: return \"Seven\";\n        case 8: return \"Eight\";\n        case 9: return \"Nine\";\n        default: return NULL;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "compare_desc",
+          "code": "int compare_desc(const void *a, const void *b) {\n    return *(int*)b - *(int*)a;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "by_length",
+          "code": "void by_length(int n, int arr[], char result[][20], int *result_size) {\n    int valid[n];\n    int valid_count = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] >= 1 && arr[i] <= 9) {\n            valid[valid_count++] = arr[i];\n        }\n    }\n    \n    qsort(valid, valid_count, sizeof(int), compare_desc);\n    \n    *result_size = 0;\n    for (int i = 0; i < valid_count; i++) {\n        const char *word = number_to_word(valid[i]);\n        if (word) {\n            strcpy(result[(*result_size)++], word);\n        }\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    char result[n][20];\n    int result_size;\n    by_length(n, arr, result, &result_size);\n    for (int i = 0; i < result_size; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "number_to_word",
+          "code": "const char* number_to_word(int n) {\n    switch(n) {\n        case 1: return \"One\";\n        case 2: return \"Two\";\n        case 3: return \"Three\";\n        case 4: return \"Four\";\n        case 5: return \"Five\";\n        case 6: return \"Six\";\n        case 7: return \"Seven\";\n        case 8: return \"Eight\";\n        case 9: return \"Nine\";\n        default: return NULL;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "compare_desc",
+          "code": "int compare_desc(const void *a, const void *b) {\n    return *(int*)b - *(int*)a;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "by_length",
+          "code": "void by_length(int n, int arr[], char result[][20], int *result_size) {\n    int valid[n];\n    int valid_count = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] >= 1 && arr[i] <= 9) {\n            valid[valid_count++] = arr[i];\n        }\n    }\n    \n    qsort(valid, valid_count, sizeof(int), compare_desc);\n    \n    *result_size = 0;\n    for (int i = 0; i < valid_count; i++) {\n        const char *word = number_to_word(valid[i]);\n        if (word) {\n            strcpy(result[(*result_size)++], word);\n        }\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    char result[n][20];\n    int result_size;\n    by_length(n, arr, result, &result_size);\n    for (int i = 0; i < result_size; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "number_to_word",
+          "code": "const char* number_to_word(int n) {\n    switch(n) {\n        case 1: return \"One\";\n        case 2: return \"Two\";\n        case 3: return \"Three\";\n        case 4: return \"Four\";\n        case 5: return \"Five\";\n        case 6: return \"Six\";\n        case 7: return \"Seven\";\n        case 8: return \"Eight\";\n        case 9: return \"Nine\";\n        default: return NULL;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "compare_desc",
+          "code": "int compare_desc(const void *a, const void *b) {\n    return *(int*)b - *(int*)a;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "by_length",
+          "code": "void by_length(int n, int arr[], char result[][20], int *result_size) {\n    int valid[n];\n    int valid_count = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] >= 1 && arr[i] <= 9) {\n            valid[valid_count++] = arr[i];\n        }\n    }\n    \n    qsort(valid, valid_count, sizeof(int), compare_desc);\n    \n    *result_size = 0;\n    for (int i = 0; i < valid_count; i++) {\n        const char *word = number_to_word(valid[i]);\n        if (word) {\n            strcpy(result[(*result_size)++], word);\n        }\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    char result[n][20];\n    int result_size;\n    by_length(n, arr, result, &result_size);\n    for (int i = 0; i < result_size; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "number_to_word",
+          "code": "const char* number_to_word(int n) {\n    switch(n) {\n        case 1: return \"One\";\n        case 2: return \"Two\";\n        case 3: return \"Three\";\n        case 4: return \"Four\";\n        case 5: return \"Five\";\n        case 6: return \"Six\";\n        case 7: return \"Seven\";\n        case 8: return \"Eight\";\n        case 9: return \"Nine\";\n        default: return NULL;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "compare_desc",
+          "code": "int compare_desc(const void *a, const void *b) {\n    return *(int*)b - *(int*)a;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "by_length",
+          "code": "void by_length(int n, int arr[], char result[][20], int *result_size) {\n    int valid[n];\n    int valid_count = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] >= 1 && arr[i] <= 9) {\n            valid[valid_count++] = arr[i];\n        }\n    }\n    \n    qsort(valid, valid_count, sizeof(int), compare_desc);\n    \n    *result_size = 0;\n    for (int i = 0; i < valid_count; i++) {\n        const char *word = number_to_word(valid[i]);\n        if (word) {\n            strcpy(result[(*result_size)++], word);\n        }\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    char result[n][20];\n    int result_size;\n    by_length(n, arr, result, &result_size);\n    for (int i = 0; i < result_size; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

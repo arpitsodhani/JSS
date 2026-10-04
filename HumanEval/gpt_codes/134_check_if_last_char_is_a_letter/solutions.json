@@ -1,0 +1,89 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main_prog1",
+          "code": "int check_if_last_char_is_a_letter(char *txt) {\n    int n = strlen(txt);\n    if (n == 0) return 0;\n    \n    char last = txt[n-1];\n    if (!isalpha(last)) return 0;\n    \n    if (n == 1) return 1;\n    \n    if (txt[n-2] == ' ') return 1;\n    \n    return 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char txt[10000];\n    scanf(\" %[^\\n]\", txt);\n    \n    if (check_if_last_char_is_a_letter(txt)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main_prog2",
+          "code": "int check_if_last_char_is_a_letter(char *txt) {\n    int n = strlen(txt);\n    if (n == 0) return 0;\n    \n    char last = txt[n-1];\n    if (!isalpha(last)) return 0;\n    \n    if (n == 1) return 1;\n    \n    if (txt[n-2] == ' ') return 1;\n    \n    return 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char txt[10000];\n    scanf(\" %[^\\n]\", txt);\n    \n    if (check_if_last_char_is_a_letter(txt)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main_prog3",
+          "code": "int check_if_last_char_is_a_letter(char *txt) {\n    int n = strlen(txt);\n    if (n == 0) return 0;\n    \n    char last = txt[n-1];\n    if (!isalpha(last)) return 0;\n    \n    if (n == 1) return 1;\n    \n    if (txt[n-2] == ' ') return 1;\n    \n    return 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char txt[10000];\n    scanf(\" %[^\\n]\", txt);\n    \n    if (check_if_last_char_is_a_letter(txt)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main_prog4",
+          "code": "int check_if_last_char_is_a_letter(char *txt) {\n    int n = strlen(txt);\n    if (n == 0) return 0;\n    \n    char last = txt[n-1];\n    if (!isalpha(last)) return 0;\n    \n    if (n == 1) return 1;\n    \n    if (txt[n-2] == ' ') return 1;\n    \n    return 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char txt[10000];\n    scanf(\" %[^\\n]\", txt);\n    \n    if (check_if_last_char_is_a_letter(txt)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main_prog5",
+          "code": "int check_if_last_char_is_a_letter(char *txt) {\n    int n = strlen(txt);\n    if (n == 0) return 0;\n    \n    char last = txt[n-1];\n    if (!isalpha(last)) return 0;\n    \n    if (n == 1) return 1;\n    \n    if (txt[n-2] == ' ') return 1;\n    \n    return 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char txt[10000];\n    scanf(\" %[^\\n]\", txt);\n    \n    if (check_if_last_char_is_a_letter(txt)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

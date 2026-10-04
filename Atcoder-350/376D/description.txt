@@ -1,0 +1,7 @@
+There is a simple directed graph with N vertices numbered from 1 to N and M edges. The i -th edge (1 \leq i \leq M) is a directed edge from vertex a_i to vertex b_i . Determine whether there exists a cycle that contains vertex 1 , and if it exists, find the minimum number of edges among such cycles.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= 2 * 10^5
+- 1 <= a_i, b_i <= N
+- All input values are integers

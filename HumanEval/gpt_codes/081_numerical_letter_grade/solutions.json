@@ -1,0 +1,164 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "get_letter_grade",
+          "code": "const char* get_letter_grade(double gpa) {\n    if (gpa == 4.0) return \"A+\";\n    if (gpa > 3.7) return \"A\";\n    if (gpa > 3.3) return \"A-\";\n    if (gpa > 3.0) return \"B+\";\n    if (gpa > 2.7) return \"B\";\n    if (gpa > 2.3) return \"B-\";\n    if (gpa > 2.0) return \"C+\";\n    if (gpa > 1.7) return \"C\";\n    if (gpa > 1.3) return \"C-\";\n    if (gpa > 1.0) return \"D+\";\n    if (gpa > 0.7) return \"D\";\n    if (gpa > 0.0) return \"D-\";\n    return \"E\";\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "numerical_letter_grade",
+          "code": "void numerical_letter_grade(int n, double grades[]) {\n    for (int i = 0; i < n; i++) {\n        printf(\"%s\", get_letter_grade(grades[i]));\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    double grades[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf\", &grades[i]);\n    }\n    numerical_letter_grade(n, grades);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "get_letter_grade",
+          "code": "const char* get_letter_grade(double gpa) {\n    if (gpa == 4.0) return \"A+\";\n    if (gpa > 3.7) return \"A\";\n    if (gpa > 3.3) return \"A-\";\n    if (gpa > 3.0) return \"B+\";\n    if (gpa > 2.7) return \"B\";\n    if (gpa > 2.3) return \"B-\";\n    if (gpa > 2.0) return \"C+\";\n    if (gpa > 1.7) return \"C\";\n    if (gpa > 1.3) return \"C-\";\n    if (gpa > 1.0) return \"D+\";\n    if (gpa > 0.7) return \"D\";\n    if (gpa > 0.0) return \"D-\";\n    return \"E\";\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "numerical_letter_grade",
+          "code": "void numerical_letter_grade(int n, double grades[]) {\n    for (int i = 0; i < n; i++) {\n        printf(\"%s\", get_letter_grade(grades[i]));\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    double grades[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf\", &grades[i]);\n    }\n    numerical_letter_grade(n, grades);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "get_letter_grade",
+          "code": "const char* get_letter_grade(double gpa) {\n    if (gpa == 4.0) return \"A+\";\n    if (gpa > 3.7) return \"A\";\n    if (gpa > 3.3) return \"A-\";\n    if (gpa > 3.0) return \"B+\";\n    if (gpa > 2.7) return \"B\";\n    if (gpa > 2.3) return \"B-\";\n    if (gpa > 2.0) return \"C+\";\n    if (gpa > 1.7) return \"C\";\n    if (gpa > 1.3) return \"C-\";\n    if (gpa > 1.0) return \"D+\";\n    if (gpa > 0.7) return \"D\";\n    if (gpa > 0.0) return \"D-\";\n    return \"E\";\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "numerical_letter_grade",
+          "code": "void numerical_letter_grade(int n, double grades[]) {\n    for (int i = 0; i < n; i++) {\n        printf(\"%s\", get_letter_grade(grades[i]));\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    double grades[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf\", &grades[i]);\n    }\n    numerical_letter_grade(n, grades);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "get_letter_grade",
+          "code": "const char* get_letter_grade(double gpa) {\n    if (gpa == 4.0) return \"A+\";\n    if (gpa > 3.7) return \"A\";\n    if (gpa > 3.3) return \"A-\";\n    if (gpa > 3.0) return \"B+\";\n    if (gpa > 2.7) return \"B\";\n    if (gpa > 2.3) return \"B-\";\n    if (gpa > 2.0) return \"C+\";\n    if (gpa > 1.7) return \"C\";\n    if (gpa > 1.3) return \"C-\";\n    if (gpa > 1.0) return \"D+\";\n    if (gpa > 0.7) return \"D\";\n    if (gpa > 0.0) return \"D-\";\n    return \"E\";\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "numerical_letter_grade",
+          "code": "void numerical_letter_grade(int n, double grades[]) {\n    for (int i = 0; i < n; i++) {\n        printf(\"%s\", get_letter_grade(grades[i]));\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    double grades[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf\", &grades[i]);\n    }\n    numerical_letter_grade(n, grades);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "get_letter_grade",
+          "code": "const char* get_letter_grade(double gpa) {\n    if (gpa == 4.0) return \"A+\";\n    if (gpa > 3.7) return \"A\";\n    if (gpa > 3.3) return \"A-\";\n    if (gpa > 3.0) return \"B+\";\n    if (gpa > 2.7) return \"B\";\n    if (gpa > 2.3) return \"B-\";\n    if (gpa > 2.0) return \"C+\";\n    if (gpa > 1.7) return \"C\";\n    if (gpa > 1.3) return \"C-\";\n    if (gpa > 1.0) return \"D+\";\n    if (gpa > 0.7) return \"D\";\n    if (gpa > 0.0) return \"D-\";\n    return \"E\";\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "numerical_letter_grade",
+          "code": "void numerical_letter_grade(int n, double grades[]) {\n    for (int i = 0; i < n; i++) {\n        printf(\"%s\", get_letter_grade(grades[i]));\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    double grades[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf\", &grades[i]);\n    }\n    numerical_letter_grade(n, grades);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+import sys
+
+
+# --- clause: read_input :: () -> tuple[int, int, int, int] ---
+def read_input():
+    numbers = sys.stdin.buffer.read().split()
+    return int(numbers[0]), int(numbers[1]), int(numbers[2]), int(numbers[3])
+
+
+# --- clause: gcd_of :: (a: int, b: int) -> int ---
+def gcd_of(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+
+# --- clause: candidate_lengths :: (n: int, k: int, a: int, b: int) -> list[int] ---
+def candidate_lengths(n, k, a, b):
+    bases = set()
+    for base in (b - a, b + a, -a - b, a - b):
+        bases.add(base % k)
+    total = n * k
+    lengths = []
+    for base in bases:
+        for i in range(n + 1):
+            jump = base + i * k
+            if 0 < jump <= total:
+                lengths.append(jump)
+    return lengths
+
+
+# --- clause: stop_range :: (n: int, k: int, lengths: list[int]) -> tuple[int, int] ---
+def stop_range(n, k, lengths):
+    total = n * k
+    low = total
+    high = 1
+    for jump in lengths:
+        stops = total // gcd_of(total, jump)
+        if stops < low:
+            low = stops
+        if stops > high:
+            high = stops
+    return low, high
+
+
+# --- clause: main :: () -> None ---
+def main():
+    n, k, a, b = read_input()
+    lengths = candidate_lengths(n, k, a, b)
+    low, high = stop_range(n, k, lengths)
+    sys.stdout.write("%d %d\n" % (low, high))
+
+
+if __name__ == "__main__":
+    main()

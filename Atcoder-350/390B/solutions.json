@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "is_geo",
+          "signature": "int is_geo(int n,long long *A)",
+          "code": "if(n<=2) return 1;\nfor(int i=2;i<n;i++){\n  if(A[i-1]*A[i-1]!=A[i-2]*A[i]) return 0;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); int ok=is_geo(n,A); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "is_geo",
+          "signature": "int is_geo(int n,long long *A)",
+          "code": "if(n<=2) return 1;\nfor(int i=2;i<n;i++){\n  if(A[i-1]*A[i-1]!=A[i-2]*A[i]) return 0;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); int ok=is_geo(n,A); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "is_geo",
+          "signature": "int is_geo(int n,long long *A)",
+          "code": "if(n<=2) return 1;\nfor(int i=2;i<n;i++){\n  if(A[i-1]*A[i-1]!=A[i-2]*A[i]) return 0;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); int ok=is_geo(n,A); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "is_geo",
+          "signature": "int is_geo(int n,long long *A)",
+          "code": "if(n<=2) return 1;\nfor(int i=2;i<n;i++){\n  if(A[i-1]*A[i-1]!=A[i-2]*A[i]) return 0;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); int ok=is_geo(n,A); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(long long *A)",
+          "code": "int n; scanf(\"%d\", &n); for(int i=0;i<n;i++) scanf(\"%lld\", &A[i]); return n;\n"
+        },
+        {
+          "clause_id": "is_geo",
+          "signature": "int is_geo(int n,long long *A)",
+          "code": "if(n<=2) return 1;\nfor(int i=2;i<n;i++){\n  if(A[i-1]*A[i-1]!=A[i-2]*A[i]) return 0;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ static long long A[200005]; int n=read_input(A); int ok=is_geo(n,A); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "390B",
+  "total_programs": 5
+}

@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "check_composite_witness",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "modular_multiply_safe",
+      "confidence": 1.0
+    },
+    {
+      "clause": "modular_power_binary",
+      "confidence": 1.0
+    },
+    {
+      "clause": "test_primality_miller_rabin",
+      "confidence": 1.0
+    }
+  ]
+}

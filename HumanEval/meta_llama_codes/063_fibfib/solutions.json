@@ -1,0 +1,70 @@
+{
+  "problem_id": "063_fibfib",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    if (n == 1 || n == 2) {\n        printf(\"%d\\n\", n == 1 ? 0 : 1);\n        return 0;\n    }\n    int a = 0, b = 0, c = 1;\n    for (int i = 3; i <= n; i++) {\n        int next = a + b + c;\n        a = b;\n        b = c;\n        c = next;\n    }\n    printf(\"%d\\n\", c);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int num;\n    scanf(\"%d\", &num);\n    int fib[num + 1];\n    fib[0] = 0;\n    if (num > 0) fib[1] = 0;\n    if (num > 1) fib[2] = 1;\n    for (int k = 3; k <= num; k++) {\n        fib[k] = fib[k-1] + fib[k-2] + fib[k-3];\n    }\n    printf(\"%d\\n\", fib[num]);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int prev1 = 0, prev2 = 0, curr = 0;\n    if (n == 0) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    if (n == 1) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    if (n == 2) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    prev2 = 0;\n    prev1 = 0;\n    curr = 1;\n    for (int i = 3; i <= n; i++) {\n        int next = curr + prev1 + prev2;\n        prev2 = prev1;\n        prev1 = curr;\n        curr = next;\n    }\n    printf(\"%d\\n\", curr);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int target;\n    scanf(\"%d\", &target);\n    if (target <= 1) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    if (target == 2) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    int f0 = 0, f1 = 0, f2 = 1;\n    for (int j = 3; j <= target; j++) {\n        int sum = f0 + f1 + f2;\n        f0 = f1;\n        f1 = f2;\n        f2 = sum;\n    }\n    printf(\"%d\\n\", f2);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int index;\n    scanf(\"%d\", &index);\n    int seq[index + 3];\n    seq[0] = 0;\n    seq[1] = 0;\n    seq[2] = 1;\n    for (int p = 3; p <= index; p++) {\n        seq[p] = seq[p-1] + seq[p-2] + seq[p-3];\n    }\n    printf(\"%d\\n\", seq[index]);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

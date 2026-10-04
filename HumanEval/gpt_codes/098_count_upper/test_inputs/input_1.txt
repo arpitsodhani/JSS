@@ -1,0 +1,2 @@
+'aBCdEf')  == 1
+    assert candidate('abcdefg'

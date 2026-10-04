@@ -1,0 +1,29 @@
+{
+  "contestId": 2032,
+  "index": "B",
+  "problem_id": "2032B",
+  "name": "Medians",
+  "rating": 1100,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "implementation",
+    "math"
+  ],
+  "points": 750.0,
+  "solvedCount": 21027,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Medians",
+  "legend": "You are given an array a=[1,2,…,n], where n is odd, and an integer k.\n\nYour task is to choose an odd positive integer m and to split a into m subarrays† b1,b2,…,bm such that:\n\nEach element of the array a belongs to exactly one subarray.\nFor all 1≤i≤m, |bi| is odd, i.e., the length of each subarray is odd.\nmedian([median(b1),median(b2),…,median(bm)])=k, i.e., the median‡ of the array of medians of all subarrays must equal k. median(c) denotes the median of the array c.\n\n†A subarray of the array a of length n is the array [al,al+1,…,ar] for some integers 1≤l≤r≤n.\n\n‡A median of the array of odd length is the middle element after the array is sorted in non-decreasing order. For example: median([1,2,5,4,3])=3, median([3,2,1])=2, median([2,1,2,1,2,2,2])=2.",
+  "input_spec": "Each test consists of multiple test cases. The first line contains a single integer t (1≤t≤5000) — the number of test cases. The description of the test cases follows.\n\nThe first line of each test case contains two integers n and k (1≤k≤n<2⋅105, n is odd) — the length of array a and the desired median of the array of medians of all subarrays.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case:\n\nIf there is no suitable partition, output −1 in a single line.\nOtherwise, in the first line, output an odd integer m (1≤m≤n), and in the second line, output m distinct integers p1,p2,p3,…,pm (1=p1<p2<p3<…<pm≤n) — denoting the left borders of each subarray.\n\nIn detail, for a valid answer [p1,p2,…,pm]:\n\nb1=[ap1,ap1+1,…,ap2−1]\nb2=[ap2,ap2+1,…,ap3−1]\n…\nbm=[apm,apm+1,…,an].\n\nIf there are multiple solutions, you can output any of them.",
+  "note": "In the first test case, the given partition has m=1 and b1=[1]. It is obvious that median([median([1])])=median([1])=1.\n\nIn the second test case, the given partition has m=3 and:\n\nb1=[1]\nb2=[2]\nb3=[3]\n\nTherefore, median([median([1]),median([2]),median([3])])=median([1,2,3])=2.\n\nIn the third test case, there is no valid partition for k=3.\n\nIn the fourth test case, the given partition has m=5 and:\n\nb1=[1,2,3]\nb2=[4,5,6]\nb3=[7,8,9]\nb4=[10,11,12]\nb5=[13,14,15]\n\nTherefore, median([median([1,2,3]),median([4,5,6]),median([7,8,9]),median([10,11,12]),median([13,14,15])])=median([2,5,8,11,14])=8.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n1 1\n3 2\n3 3\n15 8\n",
+      "output": "1\n1\n3\n1 2 3\n-1\n5\n1 4 7 10 13"
+    }
+  ]
+}

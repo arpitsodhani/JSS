@@ -1,0 +1,8 @@
+You are given N intervals numbered 1 to N . Interval i is [L_i, R_i] . Two intervals [l_a, r_a] and [l_b, r_b] are said to intersect if and only if they satisfy either (l_a < l_b < r_a < r_b) or (l_b < l_a < r_b < r_a) . Define f(l, r) as the number of intervals i ( 1 \leq i \leq N ) that intersect with the interval [l, r] . Among all pairs of integers (l, r) satisfying 0 \leq l < r \leq 10^{9} , find the pair (l, r) that maximizes f(l, r) . If there are multiple such pairs, choose the one with the smallest l . If there are still multiple pairs, choose the one with the smallest r among them. (Since 0 \leq l < r , the pair (l, r) to be answered is uniquely determined.)
+
+**Constraints:**
+- 1 <= N <= 500
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= a_i, b_i <= N
+- a_i != b_i
+- All input values are integers

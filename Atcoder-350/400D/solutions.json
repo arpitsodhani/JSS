@@ -1,0 +1,154 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *h, int *w, int *a, int *b, int *c, int *d, char *grid)",
+          "code": "scanf(\"%d %d\", h, w);\nfor(int i=0;i<*h;i++){\n  scanf(\"%s\", &grid[i*(*w)]);\n}\nscanf(\"%d %d %d %d\", a, b, c, d);\n*a -= 1; *b -= 1; *c -= 1; *d -= 1;\n"
+        },
+        {
+          "clause_id": "min_kicks",
+          "signature": "int min_kicks(int h, int w, int a, int b, int c, int d, const char *grid)",
+          "code": "int n=h*w;\nint *dist=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) dist[i]=n+5;\nint *dq=(int*)malloc((size_t)(n*2+5)*sizeof(int));\nint head=n, tail=n;\nint s=a*w+b, t=c*w+d;\ndist[s]=0; dq[head]=s;\nconst int dx[4]={-1,1,0,0};\nconst int dy[4]={0,0,-1,1};\nwhile(head<=tail){\n  int v=dq[head++];\n  if(v==t) break;\n  int x=v/w, y=v%w;\n  for(int dir=0;dir<4;dir++){\n    int wall=0;\n    for(int step=1;step<=2;step++){\n      int nx=x+dx[dir]*step;\n      int ny=y+dy[dir]*step;\n      if(nx<0||nx>=h||ny<0||ny>=w) break;\n      char ch=grid[nx*w+ny];\n      if(ch=='#') wall=1;\n      int to=nx*w+ny;\n      if(!wall){\n        if(step==1){\n          if(ch=='.' && dist[to]>dist[v]){ dist[to]=dist[v]; dq[--head]=to; }\n        }\n      } else {\n        if(dist[to]>dist[v]+1){ dist[to]=dist[v]+1; dq[++tail]=to; }\n      }\n    }\n  }\n}\nint ans=dist[t];\nfree(dist); free(dq);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int h,w,a,b,c,d; static char grid[2005*2005]; read_input(&h,&w,&a,&b,&c,&d,grid); int ans=min_kicks(h,w,a,b,c,d,grid); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *h, int *w, int *a, int *b, int *c, int *d, char *grid)",
+          "code": "scanf(\"%d %d\", h, w);\nfor(int i=0;i<*h;i++){\n  scanf(\"%s\", &grid[i*(*w)]);\n}\nscanf(\"%d %d %d %d\", a, b, c, d);\n*a -= 1; *b -= 1; *c -= 1; *d -= 1;\n"
+        },
+        {
+          "clause_id": "min_kicks",
+          "signature": "int min_kicks(int h, int w, int a, int b, int c, int d, const char *grid)",
+          "code": "int n=h*w;\nint INF=n+7;\nint *dist=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) dist[i]=INF;\nint *dq=(int*)malloc((size_t)(2*n+10)*sizeof(int));\nint head=n, tail=n-1;\nint s=a*w+b, t=c*w+d;\ndist[s]=0; dq[++tail]=s;\nint dx[4]={-1,1,0,0}; int dy[4]={0,0,-1,1};\nwhile(head<=tail){\n  int v=dq[head++];\n  int x=v/w, y=v%w;\n  int dv=dist[v];\n  for(int dir=0;dir<4;dir++){\n    int wall=0;\n    for(int step=1;step<=2;step++){\n      int nx=x+dx[dir]*step, ny=y+dy[dir]*step;\n      if((unsigned)nx>=(unsigned)h||(unsigned)ny>=(unsigned)w) break;\n      int to=nx*w+ny;\n      char ch=grid[to];\n      if(ch=='#') wall=1;\n      if(!wall && step==1 && ch=='.'){\n        if(dist[to]>dv){ dist[to]=dv; dq[--head]=to; }\n      }\n      if(wall){\n        if(dist[to]>dv+1){ dist[to]=dv+1; dq[++tail]=to; }\n      }\n    }\n  }\n}\nint ans=dist[t];\nfree(dist); free(dq);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int h,w,a,b,c,d; static char grid[2005*2005]; read_input(&h,&w,&a,&b,&c,&d,grid); int ans=min_kicks(h,w,a,b,c,d,grid); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *h, int *w, int *a, int *b, int *c, int *d, char *grid)",
+          "code": "scanf(\"%d %d\", h, w);\nfor(int i=0;i<*h;i++){\n  scanf(\"%s\", &grid[i*(*w)]);\n}\nscanf(\"%d %d %d %d\", a, b, c, d);\n*a -= 1; *b -= 1; *c -= 1; *d -= 1;\n"
+        },
+        {
+          "clause_id": "min_kicks",
+          "signature": "int min_kicks(int h, int w, int a, int b, int c, int d, const char *grid)",
+          "code": "int n=h*w;\nint *dist=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) dist[i]=n+5;\nint *dq=(int*)malloc((size_t)(n*2+5)*sizeof(int));\nint head=n, tail=n;\nint s=a*w+b, t=c*w+d;\ndist[s]=0; dq[head]=s;\nconst int dx[4]={-1,1,0,0};\nconst int dy[4]={0,0,-1,1};\nwhile(head<=tail){\n  int v=dq[head++];\n  int dv=dist[v];\n  int x=v/w, y=v%w;\n  for(int dir=0;dir<4;dir++){\n    int wall=0;\n    for(int step=1;step<=2;step++){\n      int nx=x+dx[dir]*step, ny=y+dy[dir]*step;\n      if(nx<0||nx>=h||ny<0||ny>=w) break;\n      int to=nx*w+ny;\n      char ch=grid[to];\n      if(ch=='#') wall=1;\n      if(wall){\n        if(dist[to]>dv+1){ dist[to]=dv+1; dq[++tail]=to; }\n      } else {\n        if(step==1 && ch=='.' && dist[to]>dv){ dist[to]=dv; dq[--head]=to; }\n      }\n    }\n  }\n}\nint ans=dist[t];\nfree(dist); free(dq);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int h,w,a,b,c,d; static char grid[2005*2005]; read_input(&h,&w,&a,&b,&c,&d,grid); int ans=min_kicks(h,w,a,b,c,d,grid); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *h, int *w, int *a, int *b, int *c, int *d, char *grid)",
+          "code": "scanf(\"%d %d\", h, w);\nfor(int i=0;i<*h;i++){\n  scanf(\"%s\", &grid[i*(*w)]);\n}\nscanf(\"%d %d %d %d\", a, b, c, d);\n*a -= 1; *b -= 1; *c -= 1; *d -= 1;\n"
+        },
+        {
+          "clause_id": "min_kicks",
+          "signature": "int min_kicks(int h, int w, int a, int b, int c, int d, const char *grid)",
+          "code": "int n=h*w;\nint *dist=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) dist[i]=n+5;\nint *dq=(int*)malloc((size_t)(n*2+5)*sizeof(int));\nint head=n, tail=n;\nint s=a*w+b, t=c*w+d;\ndist[s]=0; dq[head]=s;\nint dx[4]={-1,1,0,0}; int dy[4]={0,0,-1,1};\nfor(; head<=tail; ){\n  int v=dq[head++];\n  int x=v/w, y=v%w;\n  for(int dir=0;dir<4;dir++){\n    int wall=0;\n    for(int step=1;step<=2;step++){\n      int nx=x+dx[dir]*step, ny=y+dy[dir]*step;\n      if(nx<0||nx>=h||ny<0||ny>=w) break;\n      int to=nx*w+ny;\n      char ch=grid[to];\n      wall |= (ch=='#');\n      if(!wall){\n        if(step==1 && ch=='.' && dist[to]>dist[v]){ dist[to]=dist[v]; dq[--head]=to; }\n      } else {\n        if(dist[to]>dist[v]+1){ dist[to]=dist[v]+1; dq[++tail]=to; }\n      }\n    }\n  }\n}\nint ans=dist[t];\nfree(dist); free(dq);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int h,w,a,b,c,d; static char grid[2005*2005]; read_input(&h,&w,&a,&b,&c,&d,grid); int ans=min_kicks(h,w,a,b,c,d,grid); print_int(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *h, int *w, int *a, int *b, int *c, int *d, char *grid)",
+          "code": "scanf(\"%d %d\", h, w);\nfor(int i=0;i<*h;i++){\n  scanf(\"%s\", &grid[i*(*w)]);\n}\nscanf(\"%d %d %d %d\", a, b, c, d);\n*a -= 1; *b -= 1; *c -= 1; *d -= 1;\n"
+        },
+        {
+          "clause_id": "min_kicks",
+          "signature": "int min_kicks(int h, int w, int a, int b, int c, int d, const char *grid)",
+          "code": "int n=h*w;\nint *dist=(int*)malloc((size_t)n*sizeof(int));\nfor(int i=0;i<n;i++) dist[i]=n+5;\nint *dq=(int*)malloc((size_t)(n*2+5)*sizeof(int));\nint head=n, tail=n;\nint s=a*w+b, t=c*w+d;\ndist[s]=0; dq[head]=s;\nconst int dx[4]={-1,1,0,0};\nconst int dy[4]={0,0,-1,1};\nwhile(head<=tail){\n  int v=dq[head++];\n  int x=v/w, y=v%w;\n  for(int dir=0;dir<4;dir++){\n    int wall=0;\n    for(int step=1;step<=2;step++){\n      int nx=x+dx[dir]*step, ny=y+dy[dir]*step;\n      if(nx<0||nx>=h||ny<0||ny>=w) break;\n      int to=nx*w+ny;\n      char ch=grid[to];\n      if(ch=='#') wall=1;\n      if(wall){\n        int nd=dist[v]+1;\n        if(dist[to]>nd){ dist[to]=nd; dq[++tail]=to; }\n      } else if(step==1 && ch=='.'){\n        if(dist[to]>dist[v]){ dist[to]=dist[v]; dq[--head]=to; }\n      }\n    }\n  }\n}\nint ans=dist[t];\nfree(dist); free(dq);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int h,w,a,b,c,d; static char grid[2005*2005]; read_input(&h,&w,&a,&b,&c,&d,grid); int ans=min_kicks(h,w,a,b,c,d,grid); print_int(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

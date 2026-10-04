@@ -1,0 +1,6 @@
+There are N mochi (rice cakes) arranged in ascending order of size. The size of the i -th mochi (1 \leq i \leq N) is A_i . Given two mochi A and B , with sizes a and b respectively, you can make one kagamimochi (a stacked rice cake) by placing mochi A on top of mochi B if and only if a is at most half of b . You choose two mochi out of the N mochi, and place one on top of the other to form one kagamimochi. Find how many different kinds of kagamimochi can be made. Two kagamimochi are distinguished if at least one of the mochi is different, even if the sizes of the mochi are the same.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

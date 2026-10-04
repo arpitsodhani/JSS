@@ -1,0 +1,139 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main_prog1",
+          "code": "int digits(int n) {\n    int product = 1;\n    int has_odd = 0;\n    \n    if (n < 0) n = -n;\n    \n    while (n > 0) {\n        int digit = n % 10;\n        if (digit % 2 == 1) {\n            product *= digit;\n            has_odd = 1;\n        }\n        n /= 10;\n    }\n    \n    return has_odd ? product : 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    int result = digits(n);\n    printf(\"%d\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main_prog2",
+          "code": "int digits(int n) {\n    int product = 1;\n    int has_odd = 0;\n    \n    if (n < 0) n = -n;\n    \n    while (n > 0) {\n        int digit = n % 10;\n        if (digit % 2 == 1) {\n            product *= digit;\n            has_odd = 1;\n        }\n        n /= 10;\n    }\n    \n    return has_odd ? product : 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    int result = digits(n);\n    printf(\"%d\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main_prog3",
+          "code": "int digits(int n) {\n    int product = 1;\n    int has_odd = 0;\n    \n    if (n < 0) n = -n;\n    \n    while (n > 0) {\n        int digit = n % 10;\n        if (digit % 2 == 1) {\n            product *= digit;\n            has_odd = 1;\n        }\n        n /= 10;\n    }\n    \n    return has_odd ? product : 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    int result = digits(n);\n    printf(\"%d\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main_prog4",
+          "code": "int digits(int n) {\n    int product = 1;\n    int has_odd = 0;\n    \n    if (n < 0) n = -n;\n    \n    while (n > 0) {\n        int digit = n % 10;\n        if (digit % 2 == 1) {\n            product *= digit;\n            has_odd = 1;\n        }\n        n /= 10;\n    }\n    \n    return has_odd ? product : 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    int result = digits(n);\n    printf(\"%d\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main_prog5",
+          "code": "int digits(int n) {\n    int product = 1;\n    int has_odd = 0;\n    \n    if (n < 0) n = -n;\n    \n    while (n > 0) {\n        int digit = n % 10;\n        if (digit % 2 == 1) {\n            product *= digit;\n            has_odd = 1;\n        }\n        n /= 10;\n    }\n    \n    return has_odd ? product : 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    int result = digits(n);\n    printf(\"%d\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

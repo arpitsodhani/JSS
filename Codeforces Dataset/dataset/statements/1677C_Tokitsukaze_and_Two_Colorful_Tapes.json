@@ -1,0 +1,29 @@
+{
+  "contestId": 1677,
+  "index": "C",
+  "problem_id": "1677C",
+  "name": "Tokitsukaze and Two Colorful Tapes",
+  "rating": 1900,
+  "tags": [
+    "constructive algorithms",
+    "dfs and similar",
+    "graphs",
+    "greedy"
+  ],
+  "points": 1250.0,
+  "solvedCount": 4133,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Tokitsukaze and Two Colorful Tapes",
+  "legend": "Tokitsukaze has two colorful tapes. There are n distinct colors, numbered 1 through n, and each color appears exactly once on each of the two tapes. Denote the color of the i-th position of the first tape as cai, and the color of the i-th position of the second tape as cbi.\n\nNow Tokitsukaze wants to select each color an integer value from 1 to n, distinct for all the colors. After that she will put down the color values in each colored position on the tapes. Denote the number of the i-th position of the first tape as numai, and the number of the i-th position of the second tape as numbi.\n\nFor example, for the above picture, assuming that the color red has value x (1≤x≤n), it appears at the 1-st position of the first tape and the 3-rd position of the second tape, so numa1=numb3=x.\n\nNote that each color i from 1 to n should have a distinct value, and the same color which appears in both tapes has the same value.\n\nAfter labeling each color, the beauty of the two tapes is calculated as\nn\n∑\n\ni=1|numai−numbi|.\n\nPlease help Tokitsukaze to find the highest possible beauty.",
+  "input_spec": "The first contains a single positive integer t (1≤t≤104) — the number of test cases.\n\nFor each test case, the first line contains a single integer n (1≤n≤105) — the number of colors.\n\nThe second line contains n integers ca1,ca2,…,can (1≤cai≤n) — the color of each position of the first tape. It is guaranteed that ca is a permutation.\n\nThe third line contains n integers cb1,cb2,…,cbn (1≤cbi≤n) — the color of each position of the second tape. It is guaranteed that cb is a permutation.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, print a single integer — the highest possible beauty.",
+  "note": "An optimal solution for the first test case is shown in the following figure:\n\nThe beauty is |4−3|+|3−5|+|2−4|+|5−2|+|1−6|+|6−1|=18.\n\nAn optimal solution for the second test case is shown in the following figure:\n\nThe beauty is |2−2|+|1−6|+|3−3|+|6−1|+|4−4|+|5−5|=10.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n6\n1 5 4 3 2 6\n5 3 1 4 6 2\n6\n3 5 4 6 2 1\n3 6 4 5 2 1\n1\n1\n1\n",
+      "output": "18\n10\n0"
+    }
+  ]
+}

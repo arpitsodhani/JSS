@@ -1,0 +1,5 @@
+In the ceremony commemorating ABC400, we want to arrange 400 people in a rectangular formation of A rows and B columns without any gaps. You are given a positive integer A . Print the value of a positive integer B for which such an arrangement is possible. If there is no such positive integer B , print -1 .
+
+**Constraints:**
+- 1 <= N <= 100
+- S is a string of length N consisting of 'o' and 'x'

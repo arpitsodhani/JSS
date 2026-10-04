@@ -1,0 +1,5 @@
+You are given a string D representing one of the eight directions (north, east, west, south, northeast, northwest, southeast, southwest). The correspondence between the directions and their representing strings is as follows. North: N East: E West: W South: S Northeast: NE Northwest: NW Southeast: SE Southwest: SW Print the string representing the direction opposite to the direction denoted by D .
+
+**Constraints:**
+- 1 <= N <= 100
+- S is a string of length N consisting of '0' and '1'

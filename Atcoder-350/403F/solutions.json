@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "gcd_int",
+          "signature": "int gcd_int(int a, int b)",
+          "code": "int gcd_int(int a,int b){ while(b){ int t=a%b; a=b; b=t; } return a; }\n"
+        },
+        {
+          "clause_id": "lcm_int",
+          "signature": "int lcm_int(int a, int b)",
+          "code": "int lcm_int(int a,int b){ int g=gcd_int(a,b); return a/g*b; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N,K,M; scanf(\"%d %d %d\", &N, &K, &M); int L=lcm_int(K,M); long long *freq=(long long*)calloc((size_t)L, sizeof(long long)); long long s=0; freq[0]=1; for(int i=0;i<N;i++){ long long x; scanf(\"%lld\", &x); s=(s+x)%L; freq[s]++; } long long ans=0; for(int r=0;r<L;r++){ long long c=freq[r]; ans += c*(c-1)/2; } printf(\"%lld\\n\", ans); free(freq); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "gcd_int",
+          "signature": "int gcd_int(int a, int b)",
+          "code": "int gcd_int(int a,int b){ for(;;){ if(b==0) return a; int t=a%b; a=b; b=t; } }\n"
+        },
+        {
+          "clause_id": "lcm_int",
+          "signature": "int lcm_int(int a, int b)",
+          "code": "int lcm_int(int a,int b){ int g=gcd_int(a,b); return (a/g)*b; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N,K,M; scanf(\"%d %d %d\", &N, &K, &M); int L=lcm_int(K,M); long long *freq=(long long*)calloc((size_t)L, sizeof(long long)); long long pre=0; freq[0]=1; for(int i=0;i<N;i++){ long long x; scanf(\"%lld\", &x); pre+=x; pre%=L; freq[pre]++; } long long ans=0; for(int r=0;r<L;r++){ long long c=freq[r]; if(c>=2) ans += c*(c-1)/2; } printf(\"%lld\\n\", ans); free(freq); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "gcd_int",
+          "signature": "int gcd_int(int a, int b)",
+          "code": "int gcd_int(int a,int b){ return b?gcd_int(b,a%b):a; }\n"
+        },
+        {
+          "clause_id": "lcm_int",
+          "signature": "int lcm_int(int a, int b)",
+          "code": "int lcm_int(int a,int b){ int g=gcd_int(a,b); long long x=(long long)a/g*b; return (int)x; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N,K,M; scanf(\"%d %d %d\", &N, &K, &M); int L=lcm_int(K,M); long long *freq=(long long*)calloc((size_t)L, sizeof(long long)); long long pre=0; freq[0]=1; for(int i=0;i<N;i++){ long long x; scanf(\"%lld\", &x); pre = (pre + (x%L))%L; freq[pre]++; } long long ans=0; for(int r=0;r<L;r++){ long long c=freq[r]; ans += (c*(c-1))/2; } printf(\"%lld\\n\", ans); free(freq); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "gcd_int",
+          "signature": "int gcd_int(int a, int b)",
+          "code": "int gcd_int(int a,int b){ while(a&&b){ if(a>b) a%=b; else b%=a; } return a?a:b; }\n"
+        },
+        {
+          "clause_id": "lcm_int",
+          "signature": "int lcm_int(int a, int b)",
+          "code": "int lcm_int(int a,int b){ int g=gcd_int(a,b); return (int)((long long)a/g*b); }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N,K,M; scanf(\"%d %d %d\", &N, &K, &M); int L=lcm_int(K,M); long long *freq=(long long*)calloc((size_t)L, sizeof(long long)); long long s=0; freq[0]=1; for(int i=0;i<N;i++){ long long x; scanf(\"%lld\", &x); s+=x; s%=L; freq[s]++; } long long ans=0; for(int r=0;r<L;r++){ long long c=freq[r]; ans += c*(c-1)/2; } printf(\"%lld\\n\", ans); free(freq); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "gcd_int",
+          "signature": "int gcd_int(int a, int b)",
+          "code": "int gcd_int(int a,int b){ while(b){ a%=b; int t=a; a=b; b=t; } return a; }\n"
+        },
+        {
+          "clause_id": "lcm_int",
+          "signature": "int lcm_int(int a, int b)",
+          "code": "int lcm_int(int a,int b){ int g=gcd_int(a,b); return (a/g)*b; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N,K,M; scanf(\"%d %d %d\", &N, &K, &M); int L=lcm_int(K,M); long long *freq=(long long*)calloc((size_t)L, sizeof(long long)); long long s=0; freq[0]=1; for(int i=0;i<N;i++){ long long x; scanf(\"%lld\", &x); s=(s+x)%L; freq[s]++; } long long ans=0; for(int r=0;r<L;r++){ long long c=freq[r]; ans += (c*(c-1))/2; } printf(\"%lld\\n\", ans); free(freq); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

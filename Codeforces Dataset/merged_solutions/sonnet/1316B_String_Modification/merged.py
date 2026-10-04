@@ -1,0 +1,48 @@
+import sys
+
+# Clause read_input [Confidence: 1.00]
+def read_input():
+    data = sys.stdin.buffer.read().split()
+    pos = 0
+    t = int(data[pos])
+    pos += 1
+    cases = []
+    for _ in range(t):
+        n = int(data[pos])
+        s = data[pos + 1].decode()
+        pos += 2
+        cases.append((n, s))
+    return cases
+
+# Clause shifted [Confidence: 1.00]
+def shifted(n, s, k):
+    head = s[k - 1:]
+    tail = s[:k - 1]
+    if (n - k) % 2 == 0:
+        tail = tail[::-1]
+    return head + tail
+
+# Clause best_choice [Confidence: 1.00]
+def best_choice(n, s):
+    best = None
+    pick = 1
+    for k in range(1, n + 1):
+        candidate = shifted(n, s, k)
+        if best is None or candidate < best:
+            best = candidate
+            pick = k
+    return best, pick
+
+# Clause main [Confidence: 1.00]
+def main():
+    out = []
+    for n, s in read_input():
+        text, k = best_choice(n, s)
+        out.append(text)
+        out.append(str(k))
+    sys.stdout.write("\n".join(out) + "\n")
+
+
+if __name__ == "__main__":
+    main()
+

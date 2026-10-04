@@ -1,0 +1,220 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_factorial_mod",
+          "signature": "long long compute_factorial_mod(int n, long long p)",
+          "implementations": [
+            {
+              "code": "long long compute_factorial_mod(int n, long long p) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result = (result * i) % p;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long compute_factorial_mod(int n, long long p) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result = (result * i) % p;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long compute_factorial_mod(int n, long long p) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result = (result * i) % p;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long compute_factorial_mod(int n, long long p) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result = (result * i) % p;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long compute_factorial_mod(int n, long long p) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result = (result * i) % p;\n    }\n    return result;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "modular_inverse_fermat",
+          "signature": "long long modular_inverse_fermat(long long a, long long p)",
+          "implementations": [
+            {
+              "code": "long long modular_inverse_fermat(long long a, long long p) {\n    long long result = 1, base = a % p, exp = p - 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_inverse_fermat(long long a, long long p) {\n    long long result = 1, base = a % p, exp = p - 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_inverse_fermat(long long a, long long p) {\n    long long result = 1, base = a % p, exp = p - 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_inverse_fermat(long long a, long long p) {\n    long long result = 1, base = a % p, exp = p - 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long modular_inverse_fermat(long long a, long long p) {\n    long long result = 1, base = a % p, exp = p - 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "binomial_coefficient_lucas",
+          "signature": "long long binomial_coefficient_lucas(long long n, long long k, long long p)",
+          "implementations": [
+            {
+              "code": "long long binomial_coefficient_lucas(long long n, long long k, long long p) {\n    if (k > n) return 0;\n    if (k == 0 || n == k) return 1;\n    \n    long long result = 1;\n    while (n > 0 && k > 0) {\n        long long ni = n % p, ki = k % p;\n        if (ki > ni) return 0;\n        \n        long long num = compute_factorial_mod(ni, p);\n        long long den = (compute_factorial_mod(ki, p) * compute_factorial_mod(ni - ki, p)) % p;\n        result = (result * num % p * modular_inverse_fermat(den, p)) % p;\n        \n        n /= p;\n        k /= p;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long binomial_coefficient_lucas(long long n, long long k, long long p) {\n    if (k > n) return 0;\n    if (k == 0 || n == k) return 1;\n    \n    long long result = 1;\n    while (n > 0 && k > 0) {\n        long long ni = n % p, ki = k % p;\n        if (ki > ni) return 0;\n        \n        long long num = compute_factorial_mod(ni, p);\n        long long den = (compute_factorial_mod(ki, p) * compute_factorial_mod(ni - ki, p)) % p;\n        result = (result * num % p * modular_inverse_fermat(den, p)) % p;\n        \n        n /= p;\n        k /= p;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long binomial_coefficient_lucas(long long n, long long k, long long p) {\n    if (k > n) return 0;\n    if (k == 0 || n == k) return 1;\n    \n    long long result = 1;\n    while (n > 0 && k > 0) {\n        long long ni = n % p, ki = k % p;\n        if (ki > ni) return 0;\n        \n        long long num = compute_factorial_mod(ni, p);\n        long long den = (compute_factorial_mod(ki, p) * compute_factorial_mod(ni - ki, p)) % p;\n        result = (result * num % p * modular_inverse_fermat(den, p)) % p;\n        \n        n /= p;\n        k /= p;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long binomial_coefficient_lucas(long long n, long long k, long long p) {\n    if (k > n) return 0;\n    if (k == 0 || n == k) return 1;\n    \n    long long result = 1;\n    while (n > 0 && k > 0) {\n        long long ni = n % p, ki = k % p;\n        if (ki > ni) return 0;\n        \n        long long num = compute_factorial_mod(ni, p);\n        long long den = (compute_factorial_mod(ki, p) * compute_factorial_mod(ni - ki, p)) % p;\n        result = (result * num % p * modular_inverse_fermat(den, p)) % p;\n        \n        n /= p;\n        k /= p;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long binomial_coefficient_lucas(long long n, long long k, long long p) {\n    if (k > n) return 0;\n    if (k == 0 || n == k) return 1;\n    \n    long long result = 1;\n    while (n > 0 && k > 0) {\n        long long ni = n % p, ki = k % p;\n        if (ki > ni) return 0;\n        \n        long long num = compute_factorial_mod(ni, p);\n        long long den = (compute_factorial_mod(ki, p) * compute_factorial_mod(ni - ki, p)) % p;\n        result = (result * num % p * modular_inverse_fermat(den, p)) % p;\n        \n        n /= p;\n        k /= p;\n    }\n    return result;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "precompute_small_factorials",
+          "signature": "void precompute_small_factorials(long long *fact, int limit, long long p)",
+          "implementations": [
+            {
+              "code": "void precompute_small_factorials(long long *fact, int limit, long long p) {\n    fact[0] = 1;\n    for (int i = 1; i <= limit && i < p; i++) {\n        fact[i] = (fact[i - 1] * i) % p;\n    }\n}"
+            },
+            {
+              "code": "void precompute_small_factorials(long long *fact, int limit, long long p) {\n    fact[0] = 1;\n    for (int i = 1; i <= limit && i < p; i++) {\n        fact[i] = (fact[i - 1] * i) % p;\n    }\n}"
+            },
+            {
+              "code": "void precompute_small_factorials(long long *fact, int limit, long long p) {\n    fact[0] = 1;\n    for (int i = 1; i <= limit && i < p; i++) {\n        fact[i] = (fact[i - 1] * i) % p;\n    }\n}"
+            },
+            {
+              "code": "void precompute_small_factorials(long long *fact, int limit, long long p) {\n    fact[0] = 1;\n    for (int i = 1; i <= limit && i < p; i++) {\n        fact[i] = (fact[i - 1] * i) % p;\n    }\n}"
+            },
+            {
+              "code": "void precompute_small_factorials(long long *fact, int limit, long long p) {\n    fact[0] = 1;\n    for (int i = 1; i <= limit && i < p; i++) {\n        fact[i] = (fact[i - 1] * i) % p;\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    long long n, k, p;\n    scanf(\"%lld %lld %lld\", &n, &k, &p);\n    printf(\"%lld\\n\", binomial_coefficient_lucas(n, k, p));\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n, k, p;\n    scanf(\"%lld %lld %lld\", &n, &k, &p);\n    printf(\"%lld\\n\", binomial_coefficient_lucas(n, k, p));\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n, k, p;\n    scanf(\"%lld %lld %lld\", &n, &k, &p);\n    printf(\"%lld\\n\", binomial_coefficient_lucas(n, k, p));\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n, k, p;\n    scanf(\"%lld %lld %lld\", &n, &k, &p);\n    printf(\"%lld\\n\", binomial_coefficient_lucas(n, k, p));\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    long long n, k, p;\n    scanf(\"%lld %lld %lld\", &n, &k, &p);\n    printf(\"%lld\\n\", binomial_coefficient_lucas(n, k, p));\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_factorial_mod",
+          "signature": "long long compute_factorial_mod(int n, long long p)",
+          "code": "long long compute_factorial_mod(int n, long long p) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result = (result * i) % p;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "modular_inverse_fermat",
+          "signature": "long long modular_inverse_fermat(long long a, long long p)",
+          "code": "long long modular_inverse_fermat(long long a, long long p) {\n    long long result = 1, base = a % p, exp = p - 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "binomial_coefficient_lucas",
+          "signature": "long long binomial_coefficient_lucas(long long n, long long k, long long p)",
+          "code": "long long binomial_coefficient_lucas(long long n, long long k, long long p) {\n    if (k > n) return 0;\n    if (k == 0 || n == k) return 1;\n    \n    long long result = 1;\n    while (n > 0 && k > 0) {\n        long long ni = n % p, ki = k % p;\n        if (ki > ni) return 0;\n        \n        long long num = compute_factorial_mod(ni, p);\n        long long den = (compute_factorial_mod(ki, p) * compute_factorial_mod(ni - ki, p)) % p;\n        result = (result * num % p * modular_inverse_fermat(den, p)) % p;\n        \n        n /= p;\n        k /= p;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, k, p;\n    scanf(\"%lld %lld %lld\", &n, &k, &p);\n    printf(\"%lld\\n\", binomial_coefficient_lucas(n, k, p));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_factorial_mod",
+          "signature": "long long compute_factorial_mod(int n, long long p)",
+          "code": "long long compute_factorial_mod(int n, long long p) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result = (result * i) % p;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "modular_inverse_fermat",
+          "signature": "long long modular_inverse_fermat(long long a, long long p)",
+          "code": "long long modular_inverse_fermat(long long a, long long p) {\n    long long result = 1, base = a % p, exp = p - 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "binomial_coefficient_lucas",
+          "signature": "long long binomial_coefficient_lucas(long long n, long long k, long long p)",
+          "code": "long long binomial_coefficient_lucas(long long n, long long k, long long p) {\n    if (k > n) return 0;\n    if (k == 0 || n == k) return 1;\n    \n    long long result = 1;\n    while (n > 0 && k > 0) {\n        long long ni = n % p, ki = k % p;\n        if (ki > ni) return 0;\n        \n        long long num = compute_factorial_mod(ni, p);\n        long long den = (compute_factorial_mod(ki, p) * compute_factorial_mod(ni - ki, p)) % p;\n        result = (result * num % p * modular_inverse_fermat(den, p)) % p;\n        \n        n /= p;\n        k /= p;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, k, p;\n    scanf(\"%lld %lld %lld\", &n, &k, &p);\n    printf(\"%lld\\n\", binomial_coefficient_lucas(n, k, p));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_factorial_mod",
+          "signature": "long long compute_factorial_mod(int n, long long p)",
+          "code": "long long compute_factorial_mod(int n, long long p) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result = (result * i) % p;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "modular_inverse_fermat",
+          "signature": "long long modular_inverse_fermat(long long a, long long p)",
+          "code": "long long modular_inverse_fermat(long long a, long long p) {\n    long long result = 1, base = a % p, exp = p - 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "binomial_coefficient_lucas",
+          "signature": "long long binomial_coefficient_lucas(long long n, long long k, long long p)",
+          "code": "long long binomial_coefficient_lucas(long long n, long long k, long long p) {\n    if (k > n) return 0;\n    if (k == 0 || n == k) return 1;\n    \n    long long result = 1;\n    while (n > 0 && k > 0) {\n        long long ni = n % p, ki = k % p;\n        if (ki > ni) return 0;\n        \n        long long num = compute_factorial_mod(ni, p);\n        long long den = (compute_factorial_mod(ki, p) * compute_factorial_mod(ni - ki, p)) % p;\n        result = (result * num % p * modular_inverse_fermat(den, p)) % p;\n        \n        n /= p;\n        k /= p;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, k, p;\n    scanf(\"%lld %lld %lld\", &n, &k, &p);\n    printf(\"%lld\\n\", binomial_coefficient_lucas(n, k, p));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_factorial_mod",
+          "signature": "long long compute_factorial_mod(int n, long long p)",
+          "code": "long long compute_factorial_mod(int n, long long p) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result = (result * i) % p;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "modular_inverse_fermat",
+          "signature": "long long modular_inverse_fermat(long long a, long long p)",
+          "code": "long long modular_inverse_fermat(long long a, long long p) {\n    long long result = 1, base = a % p, exp = p - 2;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % p;\n        base = (base * base) % p;\n        exp >>= 1;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "binomial_coefficient_lucas",
+          "signature": "long long binomial_coefficient_lucas(long long n, long long k, long long p)",
+          "code": "long long binomial_coefficient_lucas(long long n, long long k, long long p) {\n    if (k > n) return 0;\n    if (k == 0 || n == k) return 1;\n    \n    long long result = 1;\n    while (n > 0 && k > 0) {\n        long long ni = n % p, ki = k % p;\n        if (ki > ni) return 0;\n        \n        long long num = compute_factorial_mod(ni, p);\n        long long den = (compute_factorial_mod(ki, p) * compute_factorial_mod(ni - ki, p)) % p;\n        result = (result * num % p * modular_inverse_fermat(den, p)) % p;\n        \n        n /= p;\n        k /= p;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, k, p;\n    scanf(\"%lld %lld %lld\", &n, &k, &p);\n    printf(\"%lld\\n\", binomial_coefficient_lucas(n, k, p));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

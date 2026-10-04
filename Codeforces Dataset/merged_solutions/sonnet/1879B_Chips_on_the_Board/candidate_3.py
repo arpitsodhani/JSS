@@ -1,0 +1,38 @@
+import sys
+
+
+# --- clause: read_input :: () -> list[tuple[list[int], list[int]]] ---
+def read_input():
+    fields = list(map(int, sys.stdin.buffer.read().split()))
+    t = fields[0]
+    offset = 1
+    cases = []
+    for _ in range(t):
+        n = fields[offset]
+        offset += 1
+        a = fields[offset:offset + n]
+        offset += n
+        b = fields[offset:offset + n]
+        offset += n
+        cases.append((a, b))
+    return cases
+
+
+# --- clause: cheapest_cover :: (a: list[int], b: list[int]) -> int ---
+def cheapest_cover(a, b):
+    n = len(a)
+    rows = min(a) * n + sum(b)
+    columns = min(b) * n + sum(a)
+    return rows if rows < columns else columns
+
+
+# --- clause: main :: () -> None ---
+def main():
+    pieces = []
+    for a, b in read_input():
+        pieces.append(cheapest_cover(a, b))
+    sys.stdout.write("\n".join(map(str, pieces)) + "\n")
+
+
+if __name__ == "__main__":
+    main()

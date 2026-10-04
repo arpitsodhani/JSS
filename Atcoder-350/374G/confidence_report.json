@@ -1,0 +1,25 @@
+{
+  "average_confidence": 0.86,
+  "clauses": [
+    {
+      "clause": "build_companion_matrix",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_nth_term_matrix",
+      "confidence": 0.29999999999999993
+    },
+    {
+      "clause": "initialize_base_vector",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "multiply_matrix_vector_mod",
+      "confidence": 1.0
+    }
+  ]
+}

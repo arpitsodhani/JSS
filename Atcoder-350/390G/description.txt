@@ -1,0 +1,10 @@
+You are given a positive integer N . For an integer sequence A=(A_1,A_2,\ldots,A_N) of length N . Let f(A) be the integer obtained as follows: Let S be an empty string. For i=1,2,\ldots,N in this order: Let T be the decimal representation of A_i without leading zeros. Append T to the end of S . Interpret S as a decimal integer, and let that be f(A) . For example, if A=(1,20,34) , then f(A)=12034 . There are N! permutations P of (1,2,\ldots,N) . Find the sum, modulo 998244353 , of f(P) over all such permutations P .
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple
+- The graph is connected
+- All input values are integers

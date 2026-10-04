@@ -1,0 +1,76 @@
+{
+  "problem_num": 149,
+  "problem_name": "sorted_list_sum",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    int n; scanf(\"%d\", &n);\n    char words[100][100]; int cnt=0;\n    for(int i=0; i<n; i++) {\n        char w[100]; scanf(\"%s\", w);\n        if(strlen(w)%2==0) strcpy(words[cnt++], w);\n    }\n    for(int i=0; i<cnt-1; i++)\n        for(int j=i+1; j<cnt; j++) {\n            int li=strlen(words[i]), lj=strlen(words[j]);\n            if(li>lj || (li==lj && strcmp(words[i],words[j])>0)) {\n                char t[100]; strcpy(t,words[i]); strcpy(words[i],words[j]); strcpy(words[j],t);\n            }\n        }\n    for(int i=0; i<cnt; i++) printf(\"%s\\\\n\", words[i]);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    int n; scanf(\"%d\", &n);\n    char words[100][100]; int cnt=0;\n    for(int i=0; i<n; i++) {\n        char w[100]; scanf(\"%s\", w);\n        if(strlen(w)%2==0) strcpy(words[cnt++], w);\n    }\n    for(int i=0; i<cnt-1; i++)\n        for(int j=i+1; j<cnt; j++) {\n            int li=strlen(words[i]), lj=strlen(words[j]);\n            if(li>lj || (li==lj && strcmp(words[i],words[j])>0)) {\n                char t[100]; strcpy(t,words[i]); strcpy(words[i],words[j]); strcpy(words[j],t);\n            }\n        }\n    for(int i=0; i<cnt; i++) printf(\"%s\\\\n\", words[i]);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    int n; scanf(\"%d\", &n);\n    char words[100][100]; int cnt=0;\n    for(int i=0; i<n; i++) {\n        char w[100]; scanf(\"%s\", w);\n        if(strlen(w)%2==0) strcpy(words[cnt++], w);\n    }\n    for(int i=0; i<cnt-1; i++)\n        for(int j=i+1; j<cnt; j++) {\n            int li=strlen(words[i]), lj=strlen(words[j]);\n            if(li>lj || (li==lj && strcmp(words[i],words[j])>0)) {\n                char t[100]; strcpy(t,words[i]); strcpy(words[i],words[j]); strcpy(words[j],t);\n            }\n        }\n    for(int i=0; i<cnt; i++) printf(\"%s\\\\n\", words[i]);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    int n; scanf(\"%d\", &n);\n    char words[100][100]; int cnt=0;\n    for(int i=0; i<n; i++) {\n        char w[100]; scanf(\"%s\", w);\n        if(strlen(w)%2==0) strcpy(words[cnt++], w);\n    }\n    for(int i=0; i<cnt-1; i++)\n        for(int j=i+1; j<cnt; j++) {\n            int li=strlen(words[i]), lj=strlen(words[j]);\n            if(li>lj || (li==lj && strcmp(words[i],words[j])>0)) {\n                char t[100]; strcpy(t,words[i]); strcpy(words[i],words[j]); strcpy(words[j],t);\n            }\n        }\n    for(int i=0; i<cnt; i++) printf(\"%s\\\\n\", words[i]);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    int n; scanf(\"%d\", &n);\n    char words[100][100]; int cnt=0;\n    for(int i=0; i<n; i++) {\n        char w[100]; scanf(\"%s\", w);\n        if(strlen(w)%2==0) strcpy(words[cnt++], w);\n    }\n    for(int i=0; i<cnt-1; i++)\n        for(int j=i+1; j<cnt; j++) {\n            int li=strlen(words[i]), lj=strlen(words[j]);\n            if(li>lj || (li==lj && strcmp(words[i],words[j])>0)) {\n                char t[100]; strcpy(t,words[i]); strcpy(words[i],words[j]); strcpy(words[j],t);\n            }\n        }\n    for(int i=0; i<cnt; i++) printf(\"%s\\\\n\", words[i]);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    }
+  ]
+}

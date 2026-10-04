@@ -1,0 +1,254 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,char *S,int **L,int **R)",
+          "code": "void read_input(int *N,int *Q,char *S,int **L,int **R){ scanf(\"%d%d\", N,Q); scanf(\"%s\", S); *L=(int*)malloc((size_t)(*Q)*sizeof(int)); *R=(int*)malloc((size_t)(*Q)*sizeof(int)); for(int i=0;i<*Q;i++) scanf(\"%d%d\", &(*L)[i], &(*R)[i]); }\n"
+        },
+        {
+          "clause_id": "count_left",
+          "signature": "int count_left(char *S,int l,int i)",
+          "code": "int count_left(char *S,int l,int i){ int c=0; for(int j=i-1;j>=l;j--) if(S[j]=='1') c++; return c; }\n"
+        },
+        {
+          "clause_id": "count_right",
+          "signature": "int count_right(char *S,int i,int r)",
+          "code": "int count_right(char *S,int i,int r){ int c=0; for(int j=i+1;j<=r;j++) if(S[j]=='2') c++; return c; }\n"
+        },
+        {
+          "clause_id": "best_for_slash",
+          "signature": "int best_for_slash(char *S,int l,int r,int i)",
+          "code": "int best_for_slash(char *S,int l,int r,int i){ int c1=count_left(S,l,i); int c2=count_right(S,i,r); int k=c1<c2?c1:c2; return 2*k+1; }\n"
+        },
+        {
+          "clause_id": "best_subseq",
+          "signature": "int best_subseq(char *S,int l,int r)",
+          "code": "int best_subseq(char *S,int l,int r){\n    int best=0;\n    for(int i=l;i<=r;i++){\n        if(S[i]!='/') continue;\n        int len=best_for_slash(S,l,r,i);\n        if(len>best) best=len;\n    }\n    return best;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int Q,char *S,int *L,int *R,int *out)",
+          "code": "void process_queries(int Q,char *S,int *L,int *R,int *out){ for(int i=0;i<Q;i++){ out[i]=best_subseq(S,L[i]-1,R[i]-1); } }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int Q,int *out)",
+          "code": "void print_answers(int Q,int *out){ for(int i=0;i<Q;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; char *S=(char*)malloc(300000); int *L=NULL,*R=NULL; read_input(&N,&Q,S,&L,&R); int *out=(int*)malloc((size_t)Q*sizeof(int)); process_queries(Q,S,L,R,out); print_answers(Q,out); free(S); free(L); free(R); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,char *S,int **L,int **R)",
+          "code": "void read_input(int *N,int *Q,char *S,int **L,int **R){ scanf(\"%d%d\", N,Q); scanf(\"%s\", S); *L=(int*)malloc((size_t)(*Q)*sizeof(int)); *R=(int*)malloc((size_t)(*Q)*sizeof(int)); for(int i=0;i<*Q;i++) scanf(\"%d%d\", &(*L)[i], &(*R)[i]); }\n"
+        },
+        {
+          "clause_id": "count_left",
+          "signature": "int count_left(char *S,int l,int i)",
+          "code": "int count_left(char *S,int l,int i){ int c=0; for(int j=i-1;j>=l;j--) if(S[j]=='1') c++; return c; }\n"
+        },
+        {
+          "clause_id": "count_right",
+          "signature": "int count_right(char *S,int i,int r)",
+          "code": "int count_right(char *S,int i,int r){ int c=0; for(int j=i+1;j<=r;j++) if(S[j]=='2') c++; return c; }\n"
+        },
+        {
+          "clause_id": "best_for_slash",
+          "signature": "int best_for_slash(char *S,int l,int r,int i)",
+          "code": "int best_for_slash(char *S,int l,int r,int i){ int c1=count_left(S,l,i); int c2=count_right(S,i,r); int k=c1<c2?c1:c2; return 2*k+1; }\n"
+        },
+        {
+          "clause_id": "best_subseq",
+          "signature": "int best_subseq(char *S,int l,int r)",
+          "code": "int best_subseq(char *S,int l,int r){\n    int best=0;\n    for(int i=l;i<=r;i++){\n        if(S[i]!='/') continue;\n        int len=best_for_slash(S,l,r,i);\n        if(len>best) best=len;\n    }\n    return best;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int Q,char *S,int *L,int *R,int *out)",
+          "code": "void process_queries(int Q,char *S,int *L,int *R,int *out){ for(int i=0;i<Q;i++){ out[i]=best_subseq(S,L[i]-1,R[i]-1); } }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int Q,int *out)",
+          "code": "void print_answers(int Q,int *out){ for(int i=0;i<Q;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; char *S=(char*)malloc(300000); int *L=NULL,*R=NULL; read_input(&N,&Q,S,&L,&R); int *out=(int*)malloc((size_t)Q*sizeof(int)); process_queries(Q,S,L,R,out); print_answers(Q,out); free(S); free(L); free(R); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,char *S,int **L,int **R)",
+          "code": "void read_input(int *N,int *Q,char *S,int **L,int **R){ scanf(\"%d%d\", N,Q); scanf(\"%s\", S); *L=(int*)malloc((size_t)(*Q)*sizeof(int)); *R=(int*)malloc((size_t)(*Q)*sizeof(int)); for(int i=0;i<*Q;i++) scanf(\"%d%d\", &(*L)[i], &(*R)[i]); }\n"
+        },
+        {
+          "clause_id": "count_left",
+          "signature": "int count_left(char *S,int l,int i)",
+          "code": "int count_left(char *S,int l,int i){ int c=0; for(int j=i-1;j>=l;j--) if(S[j]=='1') c++; return c; }\n"
+        },
+        {
+          "clause_id": "count_right",
+          "signature": "int count_right(char *S,int i,int r)",
+          "code": "int count_right(char *S,int i,int r){ int c=0; for(int j=i+1;j<=r;j++) if(S[j]=='2') c++; return c; }\n"
+        },
+        {
+          "clause_id": "best_for_slash",
+          "signature": "int best_for_slash(char *S,int l,int r,int i)",
+          "code": "int best_for_slash(char *S,int l,int r,int i){ int c1=count_left(S,l,i); int c2=count_right(S,i,r); int k=c1<c2?c1:c2; return 2*k+1; }\n"
+        },
+        {
+          "clause_id": "best_subseq",
+          "signature": "int best_subseq(char *S,int l,int r)",
+          "code": "int best_subseq(char *S,int l,int r){\n    int best=0;\n    for(int i=l;i<=r;i++){\n        if(S[i]!='/') continue;\n        int len=best_for_slash(S,l,r,i);\n        if(len>best) best=len;\n    }\n    return best;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int Q,char *S,int *L,int *R,int *out)",
+          "code": "void process_queries(int Q,char *S,int *L,int *R,int *out){ for(int i=0;i<Q;i++){ out[i]=best_subseq(S,L[i]-1,R[i]-1); } }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int Q,int *out)",
+          "code": "void print_answers(int Q,int *out){ for(int i=0;i<Q;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; char *S=(char*)malloc(300000); int *L=NULL,*R=NULL; read_input(&N,&Q,S,&L,&R); int *out=(int*)malloc((size_t)Q*sizeof(int)); process_queries(Q,S,L,R,out); print_answers(Q,out); free(S); free(L); free(R); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,char *S,int **L,int **R)",
+          "code": "void read_input(int *N,int *Q,char *S,int **L,int **R){ scanf(\"%d%d\", N,Q); scanf(\"%s\", S); *L=(int*)malloc((size_t)(*Q)*sizeof(int)); *R=(int*)malloc((size_t)(*Q)*sizeof(int)); for(int i=0;i<*Q;i++) scanf(\"%d%d\", &(*L)[i], &(*R)[i]); }\n"
+        },
+        {
+          "clause_id": "count_left",
+          "signature": "int count_left(char *S,int l,int i)",
+          "code": "int count_left(char *S,int l,int i){ int c=0; for(int j=i-1;j>=l;j--) if(S[j]=='1') c++; return c; }\n"
+        },
+        {
+          "clause_id": "count_right",
+          "signature": "int count_right(char *S,int i,int r)",
+          "code": "int count_right(char *S,int i,int r){ int c=0; for(int j=i+1;j<=r;j++) if(S[j]=='2') c++; return c; }\n"
+        },
+        {
+          "clause_id": "best_for_slash",
+          "signature": "int best_for_slash(char *S,int l,int r,int i)",
+          "code": "int best_for_slash(char *S,int l,int r,int i){ int c1=count_left(S,l,i); int c2=count_right(S,i,r); int k=c1<c2?c1:c2; return 2*k+1; }\n"
+        },
+        {
+          "clause_id": "best_subseq",
+          "signature": "int best_subseq(char *S,int l,int r)",
+          "code": "int best_subseq(char *S,int l,int r){\n    int best=0;\n    for(int i=l;i<=r;i++){\n        if(S[i]!='/') continue;\n        int len=best_for_slash(S,l,r,i);\n        if(len>best) best=len;\n    }\n    return best;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int Q,char *S,int *L,int *R,int *out)",
+          "code": "void process_queries(int Q,char *S,int *L,int *R,int *out){ for(int i=0;i<Q;i++){ out[i]=best_subseq(S,L[i]-1,R[i]-1); } }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int Q,int *out)",
+          "code": "void print_answers(int Q,int *out){ for(int i=0;i<Q;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; char *S=(char*)malloc(300000); int *L=NULL,*R=NULL; read_input(&N,&Q,S,&L,&R); int *out=(int*)malloc((size_t)Q*sizeof(int)); process_queries(Q,S,L,R,out); print_answers(Q,out); free(S); free(L); free(R); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,char *S,int **L,int **R)",
+          "code": "void read_input(int *N,int *Q,char *S,int **L,int **R){ scanf(\"%d%d\", N,Q); scanf(\"%s\", S); *L=(int*)malloc((size_t)(*Q)*sizeof(int)); *R=(int*)malloc((size_t)(*Q)*sizeof(int)); for(int i=0;i<*Q;i++) scanf(\"%d%d\", &(*L)[i], &(*R)[i]); }\n"
+        },
+        {
+          "clause_id": "count_left",
+          "signature": "int count_left(char *S,int l,int i)",
+          "code": "int count_left(char *S,int l,int i){ int c=0; for(int j=i-1;j>=l;j--) if(S[j]=='1') c++; return c; }\n"
+        },
+        {
+          "clause_id": "count_right",
+          "signature": "int count_right(char *S,int i,int r)",
+          "code": "int count_right(char *S,int i,int r){ int c=0; for(int j=i+1;j<=r;j++) if(S[j]=='2') c++; return c; }\n"
+        },
+        {
+          "clause_id": "best_for_slash",
+          "signature": "int best_for_slash(char *S,int l,int r,int i)",
+          "code": "int best_for_slash(char *S,int l,int r,int i){ int c1=count_left(S,l,i); int c2=count_right(S,i,r); int k=c1<c2?c1:c2; return 2*k+1; }\n"
+        },
+        {
+          "clause_id": "best_subseq",
+          "signature": "int best_subseq(char *S,int l,int r)",
+          "code": "int best_subseq(char *S,int l,int r){\n    int best=0;\n    for(int i=l;i<=r;i++){\n        if(S[i]!='/') continue;\n        int len=best_for_slash(S,l,r,i);\n        if(len>best) best=len;\n    }\n    return best;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int Q,char *S,int *L,int *R,int *out)",
+          "code": "void process_queries(int Q,char *S,int *L,int *R,int *out){ for(int i=0;i<Q;i++){ out[i]=best_subseq(S,L[i]-1,R[i]-1); } }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int Q,int *out)",
+          "code": "void print_answers(int Q,int *out){ for(int i=0;i<Q;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; char *S=(char*)malloc(300000); int *L=NULL,*R=NULL; read_input(&N,&Q,S,&L,&R); int *out=(int*)malloc((size_t)Q*sizeof(int)); process_queries(Q,S,L,R,out); print_answers(Q,out); free(S); free(L); free(R); free(out); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

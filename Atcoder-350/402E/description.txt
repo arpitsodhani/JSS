@@ -1,0 +1,28 @@
+You are given a tree with N vertices. The i-th edge connects vertices u_i and v_i.
+Each vertex has a value. The value of vertex i is initially A_i.
+Process Q queries in order. Each query is one of the following types:
+- Type 1: Change the value of vertex x to y
+- Type 2: Print the sum of values of all vertices in the subtree rooted at vertex x
+
+**Input:**
+The input is given from Standard Input in the following format:
+N
+A_1 A_2 ... A_N
+u_1 v_1
+...
+u_{N-1} v_{N-1}
+Q
+query_1
+...
+query_Q
+
+**Output:**
+For each type 2 query, print the answer.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- 1 <= u_i, v_i <= N
+- The given edges form a tree
+- 1 <= Q <= 2 * 10^5
+- All input values are integers

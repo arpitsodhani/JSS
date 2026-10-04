@@ -1,0 +1,7 @@
+5
+xx
+abc
+bcd
+cde
+aaa
+xxx

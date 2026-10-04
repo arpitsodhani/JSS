@@ -1,0 +1,9 @@
+There are N cells numbered from 1 to N in a row. Initially, M cells contain stones, and cell X_i contains A_i stones (1 \leq i \leq M) . You can perform the following operation any number of times (possibly zero): If cell i ( 1 \leq i \leq N-1 ) contains a stone, move one stone from cell i to cell i+1 . Find the minimum number of operations required to reach a state where each of the N cells contains exactly one stone. If it is impossible, print -1 .
+
+**Constraints:**
+- 1 <= N, M <= 2 * 10^5
+- 1 <= X_i <= N
+- All X_i are distinct
+- 1 <= A_i <= 10^9
+- The sum of all A_i equals N
+- All input values are integers

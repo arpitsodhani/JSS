@@ -1,0 +1,114 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "is_valid",
+          "code": "int is_valid(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') count++;\n        else if (s[i] == ')') count--;\n        if (count < 0) return 0;\n    }\n    return count == 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "match_parens",
+          "code": "const char* match_parens(const char *s1, const char *s2) {\n    char combined1[20000], combined2[20000];\n    strcpy(combined1, s1);\n    strcat(combined1, s2);\n    strcpy(combined2, s2);\n    strcat(combined2, s1);\n    \n    if (is_valid(combined1) || is_valid(combined2)) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\nint main() {\n    char s1[10000], s2[10000];\n    fgets(s1, sizeof(s1), stdin);\n    s1[strcspn(s1, \"\\n\")] = 0;\n    fgets(s2, sizeof(s2), stdin);\n    s2[strcspn(s2, \"\\n\")] = 0;\n    \n    printf(\"%s\\n\", match_parens(s1, s2));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "is_valid",
+          "code": "int is_valid(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') count++;\n        else if (s[i] == ')') count--;\n        if (count < 0) return 0;\n    }\n    return count == 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "match_parens",
+          "code": "const char* match_parens(const char *s1, const char *s2) {\n    char combined1[20000], combined2[20000];\n    strcpy(combined1, s1);\n    strcat(combined1, s2);\n    strcpy(combined2, s2);\n    strcat(combined2, s1);\n    \n    if (is_valid(combined1) || is_valid(combined2)) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\nint main() {\n    char s1[10000], s2[10000];\n    fgets(s1, sizeof(s1), stdin);\n    s1[strcspn(s1, \"\\n\")] = 0;\n    fgets(s2, sizeof(s2), stdin);\n    s2[strcspn(s2, \"\\n\")] = 0;\n    \n    printf(\"%s\\n\", match_parens(s1, s2));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "is_valid",
+          "code": "int is_valid(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') count++;\n        else if (s[i] == ')') count--;\n        if (count < 0) return 0;\n    }\n    return count == 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "match_parens",
+          "code": "const char* match_parens(const char *s1, const char *s2) {\n    char combined1[20000], combined2[20000];\n    strcpy(combined1, s1);\n    strcat(combined1, s2);\n    strcpy(combined2, s2);\n    strcat(combined2, s1);\n    \n    if (is_valid(combined1) || is_valid(combined2)) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\nint main() {\n    char s1[10000], s2[10000];\n    fgets(s1, sizeof(s1), stdin);\n    s1[strcspn(s1, \"\\n\")] = 0;\n    fgets(s2, sizeof(s2), stdin);\n    s2[strcspn(s2, \"\\n\")] = 0;\n    \n    printf(\"%s\\n\", match_parens(s1, s2));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "is_valid",
+          "code": "int is_valid(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') count++;\n        else if (s[i] == ')') count--;\n        if (count < 0) return 0;\n    }\n    return count == 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "match_parens",
+          "code": "const char* match_parens(const char *s1, const char *s2) {\n    char combined1[20000], combined2[20000];\n    strcpy(combined1, s1);\n    strcat(combined1, s2);\n    strcpy(combined2, s2);\n    strcat(combined2, s1);\n    \n    if (is_valid(combined1) || is_valid(combined2)) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\nint main() {\n    char s1[10000], s2[10000];\n    fgets(s1, sizeof(s1), stdin);\n    s1[strcspn(s1, \"\\n\")] = 0;\n    fgets(s2, sizeof(s2), stdin);\n    s2[strcspn(s2, \"\\n\")] = 0;\n    \n    printf(\"%s\\n\", match_parens(s1, s2));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "is_valid",
+          "code": "int is_valid(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') count++;\n        else if (s[i] == ')') count--;\n        if (count < 0) return 0;\n    }\n    return count == 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "match_parens",
+          "code": "const char* match_parens(const char *s1, const char *s2) {\n    char combined1[20000], combined2[20000];\n    strcpy(combined1, s1);\n    strcat(combined1, s2);\n    strcpy(combined2, s2);\n    strcat(combined2, s1);\n    \n    if (is_valid(combined1) || is_valid(combined2)) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\nint main() {\n    char s1[10000], s2[10000];\n    fgets(s1, sizeof(s1), stdin);\n    s1[strcspn(s1, \"\\n\")] = 0;\n    fgets(s2, sizeof(s2), stdin);\n    s2[strcspn(s2, \"\\n\")] = 0;\n    \n    printf(\"%s\\n\", match_parens(s1, s2));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

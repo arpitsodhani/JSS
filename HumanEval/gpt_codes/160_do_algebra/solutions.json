@@ -1,0 +1,126 @@
+{
+  "problem_num": 160,
+  "problem_name": "do_algebra",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "evaluate",
+          "code": "int evaluate(int* operand, char* operators, int n) {\n    // First pass: * and //\n    for (int i = 0; i < n - 1; i++) {\n        if (operators[i] == '*') {\n            operand[i + 1] = operand[i] * operand[i + 1];\n            operand[i] = 0;\n            operators[i] = '+';\n        } else if (operators[i] == '/') {\n            operand[i + 1] = operand[i] / operand[i + 1];\n            operand[i] = 0;\n            operators[i] = '+';\n        }\n    }\n    \n    // Second pass: + and -\n    int result = operand[0];\n    for (int i = 0; i < n - 1; i++) {\n        if (operators[i] == '+') {\n            result += operand[i + 1];\n        } else if (operators[i] == '-') {\n            result -= operand[i + 1];\n        }\n    }\n    \n    return result;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int operand[100];\n    char operators[100];\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &operand[i]);\n    }\n    \n    for (int i = 0; i < n - 1; i++) {\n        scanf(\" %c\", &operators[i]);\n    }\n    \n    printf(\"%d\\n\", evaluate(operand, operators, n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "evaluate",
+          "code": "int evaluate(int* operand, char* operators, int n) {\n    // First pass: * and //\n    for (int i = 0; i < n - 1; i++) {\n        if (operators[i] == '*') {\n            operand[i + 1] = operand[i] * operand[i + 1];\n            operand[i] = 0;\n            operators[i] = '+';\n        } else if (operators[i] == '/') {\n            operand[i + 1] = operand[i] / operand[i + 1];\n            operand[i] = 0;\n            operators[i] = '+';\n        }\n    }\n    \n    // Second pass: + and -\n    int result = operand[0];\n    for (int i = 0; i < n - 1; i++) {\n        if (operators[i] == '+') {\n            result += operand[i + 1];\n        } else if (operators[i] == '-') {\n            result -= operand[i + 1];\n        }\n    }\n    \n    return result;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int operand[100];\n    char operators[100];\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &operand[i]);\n    }\n    \n    for (int i = 0; i < n - 1; i++) {\n        scanf(\" %c\", &operators[i]);\n    }\n    \n    printf(\"%d\\n\", evaluate(operand, operators, n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "evaluate",
+          "code": "int evaluate(int* operand, char* operators, int n) {\n    // First pass: * and //\n    for (int i = 0; i < n - 1; i++) {\n        if (operators[i] == '*') {\n            operand[i + 1] = operand[i] * operand[i + 1];\n            operand[i] = 0;\n            operators[i] = '+';\n        } else if (operators[i] == '/') {\n            operand[i + 1] = operand[i] / operand[i + 1];\n            operand[i] = 0;\n            operators[i] = '+';\n        }\n    }\n    \n    // Second pass: + and -\n    int result = operand[0];\n    for (int i = 0; i < n - 1; i++) {\n        if (operators[i] == '+') {\n            result += operand[i + 1];\n        } else if (operators[i] == '-') {\n            result -= operand[i + 1];\n        }\n    }\n    \n    return result;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int operand[100];\n    char operators[100];\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &operand[i]);\n    }\n    \n    for (int i = 0; i < n - 1; i++) {\n        scanf(\" %c\", &operators[i]);\n    }\n    \n    printf(\"%d\\n\", evaluate(operand, operators, n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "evaluate",
+          "code": "int evaluate(int* operand, char* operators, int n) {\n    // First pass: * and //\n    for (int i = 0; i < n - 1; i++) {\n        if (operators[i] == '*') {\n            operand[i + 1] = operand[i] * operand[i + 1];\n            operand[i] = 0;\n            operators[i] = '+';\n        } else if (operators[i] == '/') {\n            operand[i + 1] = operand[i] / operand[i + 1];\n            operand[i] = 0;\n            operators[i] = '+';\n        }\n    }\n    \n    // Second pass: + and -\n    int result = operand[0];\n    for (int i = 0; i < n - 1; i++) {\n        if (operators[i] == '+') {\n            result += operand[i + 1];\n        } else if (operators[i] == '-') {\n            result -= operand[i + 1];\n        }\n    }\n    \n    return result;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int operand[100];\n    char operators[100];\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &operand[i]);\n    }\n    \n    for (int i = 0; i < n - 1; i++) {\n        scanf(\" %c\", &operators[i]);\n    }\n    \n    printf(\"%d\\n\", evaluate(operand, operators, n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "evaluate",
+          "code": "int evaluate(int* operand, char* operators, int n) {\n    // First pass: * and //\n    for (int i = 0; i < n - 1; i++) {\n        if (operators[i] == '*') {\n            operand[i + 1] = operand[i] * operand[i + 1];\n            operand[i] = 0;\n            operators[i] = '+';\n        } else if (operators[i] == '/') {\n            operand[i + 1] = operand[i] / operand[i + 1];\n            operand[i] = 0;\n            operators[i] = '+';\n        }\n    }\n    \n    // Second pass: + and -\n    int result = operand[0];\n    for (int i = 0; i < n - 1; i++) {\n        if (operators[i] == '+') {\n            result += operand[i + 1];\n        } else if (operators[i] == '-') {\n            result -= operand[i + 1];\n        }\n    }\n    \n    return result;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int operand[100];\n    char operators[100];\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &operand[i]);\n    }\n    \n    for (int i = 0; i < n - 1; i++) {\n        scanf(\" %c\", &operators[i]);\n    }\n    \n    printf(\"%d\\n\", evaluate(operand, operators, n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

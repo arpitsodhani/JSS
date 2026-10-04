@@ -1,0 +1,32 @@
+{
+  "contestId": 1950,
+  "index": "G",
+  "problem_id": "1950G",
+  "name": "Shuffling Songs",
+  "rating": 1900,
+  "tags": [
+    "bitmasks",
+    "dfs and similar",
+    "dp",
+    "graphs",
+    "hashing",
+    "implementation",
+    "strings"
+  ],
+  "points": null,
+  "solvedCount": 6291,
+  "source": "verbatim_cf_fetch",
+  "title": "G. Shuffling Songs",
+  "legend": "Vladislav has a playlist consisting of n songs, numbered from 1 to n. Song i has genre gi and writer wi. He wants to make a playlist in such a way that every pair of adjacent songs either have the same writer or are from the same genre (or both). He calls such a playlist exciting. Both gi and wi are strings of length no more than 104.\n\nIt might not always be possible to make an exciting playlist using all the songs, so the shuffling process occurs in two steps. First, some amount (possibly zero) of the songs are removed, and then the remaining songs in the playlist are rearranged to make it exciting.\n\nSince Vladislav doesn't like when songs get removed from his playlist, he wants the making playlist to perform as few removals as possible. Help him find the minimum number of removals that need to be performed in order to be able to rearrange the rest of the songs to make the playlist exciting.",
+  "input_spec": "The first line of the input contains a single integer t (1≤t≤1000) — the number of test cases. The description of test cases follows.\n\nThe first line of each test case contains a single integer n (1≤n≤16) — the number of songs in the original playlist.\n\nThen n lines follow, the i-th of which contains two strings of lowercase letters gi and wi (1≤|gi|,|wi|≤104) — the genre and the writer of the i-th song. Where |gi| and |wi| are lengths of the strings.\n\nThe sum of 2n over all test cases does not exceed 216.\n\nThe sum of |gi|+|wi| over all test cases does not exceed 4⋅105.",
+  "output_spec": "For each test case, output a single integer — the minimum number of removals necessary so that the resulting playlist can be made exciting.",
+  "note": "In the first test case, the playlist is already exciting.\n\nIn the second test case, if you have the songs in the order 4,3,1,2, it is exciting, so you don't need to remove any songs.\n\nIn the third test case, you can remove songs 4,5,6,7. Then the playlist with songs in the order 1,2,3 is exciting.",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n1\npop taylorswift\n4\nelectronic themotans\nelectronic carlasdreams\npop themotans\npop irinarimes\n7\nrap eminem\nrap drdre\nrap kanyewest\npop taylorswift\nindierock arcticmonkeys\nindierock arcticmonkeys\npunkrock theoffspring\n4\na b\nc d\ne f\ng h\n",
+      "output": "0\n0\n4\n3"
+    }
+  ]
+}

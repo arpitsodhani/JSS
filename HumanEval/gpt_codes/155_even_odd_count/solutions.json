@@ -1,0 +1,76 @@
+{
+  "problem_num": 155,
+  "problem_name": "even_odd_count",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int n, even=0, odd=0; scanf(\"%d\", &n);\n    n=abs(n);\n    while(n>0) { if((n%10)%2==0) even++; else odd++; n/=10; }\n    printf(\"%d\\\\n%d\\\\n\", even, odd);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int n, even=0, odd=0; scanf(\"%d\", &n);\n    n=abs(n);\n    while(n>0) { if((n%10)%2==0) even++; else odd++; n/=10; }\n    printf(\"%d\\\\n%d\\\\n\", even, odd);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int n, even=0, odd=0; scanf(\"%d\", &n);\n    n=abs(n);\n    while(n>0) { if((n%10)%2==0) even++; else odd++; n/=10; }\n    printf(\"%d\\\\n%d\\\\n\", even, odd);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int n, even=0, odd=0; scanf(\"%d\", &n);\n    n=abs(n);\n    while(n>0) { if((n%10)%2==0) even++; else odd++; n/=10; }\n    printf(\"%d\\\\n%d\\\\n\", even, odd);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int n, even=0, odd=0; scanf(\"%d\", &n);\n    n=abs(n);\n    while(n>0) { if((n%10)%2==0) even++; else odd++; n/=10; }\n    printf(\"%d\\\\n%d\\\\n\", even, odd);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    }
+  ]
+}

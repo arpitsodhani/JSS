@@ -1,0 +1,28 @@
+{
+  "contestId": 1832,
+  "index": "B",
+  "problem_id": "1832B",
+  "name": "Maximum Sum",
+  "rating": 1100,
+  "tags": [
+    "brute force",
+    "sortings",
+    "two pointers"
+  ],
+  "points": null,
+  "solvedCount": 37771,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Maximum Sum",
+  "legend": "You are given an array a1,a2,…,an, where all elements are different.\n\nYou have to perform exactly k operations with it. During each operation, you do exactly one of the following two actions (you choose which to do yourself):\n\nfind two minimum elements in the array, and delete them;\nfind the maximum element in the array, and delete it.\n\nYou have to calculate the maximum possible sum of elements in the resulting array.",
+  "input_spec": "The first line contains one integer t (1≤t≤104) — the number of test cases.\n\nEach test case consists of two lines:\n\nthe first line contains two integers n and k (3≤n≤2⋅105; 1≤k≤99999; 2k<n) — the number of elements and operations, respectively.\nthe second line contains n integers a1,a2,…,an (1≤ai≤109; all ai are different) — the elements of the array.\n\nAdditional constraint on the input: the sum of n does not exceed 2⋅105.",
+  "output_spec": "For each test case, print one integer — the maximum possible sum of elements in the resulting array.",
+  "note": "In the first testcase, applying the first operation produces the following outcome:\n\ntwo minimums are 1 and 2; removing them leaves the array as [5,10,6], with sum 21;\na maximum is 10; removing it leaves the array as [2,5,1,6], with sum 14.\n\n21 is the best answer.\n\nIn the second testcase, it's optimal to first erase two minimums, then a maximum.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n5 1\n2 5 1 10 6\n5 2\n2 5 1 10 6\n3 1\n1 2 3\n6 1\n15 22 12 10 13 11\n6 2\n15 22 12 10 13 11\n5 1\n999999996 999999999 999999997 999999998 999999995\n",
+      "output": "21\n11\n3\n62\n46\n3999999986"
+    }
+  ]
+}

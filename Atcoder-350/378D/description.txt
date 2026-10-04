@@ -1,0 +1,7 @@
+There is a grid of H \times W cells. Let (i, j) denote the cell at the i -th row from the top and the j -th column from the left. Cell (i, j) is empty if S_{i,j} is . , and blocked if it is # . Count the number of ways to start from an empty cell and make K moves to adjacent cells (up, down, left, or right), without passing through blocked squares and not visiting the same cell more than once. Specifically, count the number of sequences of length K+1 , ((i_0, j_0), (i_1, j_1), \dots, (i_K, j_K)) , satisfying the following. 1 \leq i_k \leq H , 1 \leq j_k \leq W , and S_{i_k, j_k} is . , for each 0 \leq k \leq K . |i_{k+1} - i_k| + |j_{k+1} - j_k| = 1 for each 0 \leq k \leq K-1 . (i_k, j_k) \neq (i_l, j_l) for each 0 \leq k < l \leq K .
+
+**Constraints:**
+- 1 <= H, W <= 10
+- 1 <= K <= H * W
+- S_{i,j} is '#' or '.'
+- All input values are integers

@@ -1,0 +1,21 @@
+{
+  "contestId": 1970,
+  "index": "B2",
+  "problem_id": "1970B2",
+  "name": "Exact Neighbours (Medium)",
+  "rating": 2100,
+  "tags": [
+    "constructive algorithms"
+  ],
+  "points": null,
+  "solvedCount": 1244,
+  "source": "verbatim_cf_fetch",
+  "title": null,
+  "legend": null,
+  "input_spec": null,
+  "output_spec": null,
+  "note": null,
+  "time_limit": null,
+  "mem_limit": null,
+  "samples": null
+}

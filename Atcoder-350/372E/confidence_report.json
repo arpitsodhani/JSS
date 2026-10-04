@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "build_level_graph_bfs",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_maximum_bipartite_matching",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_augmenting_path_dfs",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    }
+  ]
+}

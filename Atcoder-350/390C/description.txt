@@ -1,0 +1,6 @@
+You are given a grid of H rows and W columns. Let (i,j) denote the cell at row i ( 1 \leq i \leq H ) from the top and column j ( 1 \leq j \leq W ) from the left. The state of the grid is represented by H strings S_1, S_2, \ldots, S_H , each of length W , as follows: If the j -th character of S_i is # , cell (i,j) is painted black. If the j -th character of S_i is . , cell (i,j) is painted white. If the j -th character of S_i is ? , cell (i,j) is not yet painted. Takahashi wants to paint each not-yet-painted cell white or black so that all the black cells form a rectangle. More precisely, he wants there to exist a quadruple of integers (a,b,c,d) ( 1 \leq a \leq b \leq H , 1 \leq c \leq d \leq W ) such that: For each cell (i,j) ( 1 \leq i \leq H, 1 \leq j \leq W ), if a \leq i \leq b and c \leq j \leq d , the cell is black; otherwise, the cell is white. Determine whether this is possible.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

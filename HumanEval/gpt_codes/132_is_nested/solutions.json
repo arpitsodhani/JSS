@@ -1,0 +1,89 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main_prog1",
+          "code": "int is_nested(char *s) {\n    int n = strlen(s);\n    int open[1000], close[1000];\n    int open_cnt = 0, close_cnt = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (s[i] == '[') {\n            open[open_cnt++] = i;\n        } else if (s[i] == ']') {\n            close[close_cnt++] = i;\n        }\n    }\n    \n    for (int i = 0; i < open_cnt; i++) {\n        for (int j = 0; j < close_cnt; j++) {\n            if (open[i] < close[j]) {\n                for (int k = i+1; k < open_cnt; k++) {\n                    for (int l = 0; l < j; l++) {\n                        if (open[k] < close[l] && open[i] < open[k] && close[l] < close[j]) {\n                            return 1;\n                        }\n                    }\n                }\n            }\n        }\n    }\n    \n    return 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char s[10000];\n    scanf(\" %[^\\n]\", s);\n    \n    if (is_nested(s)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main_prog2",
+          "code": "int is_nested(char *s) {\n    int n = strlen(s);\n    int open[1000], close[1000];\n    int open_cnt = 0, close_cnt = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (s[i] == '[') {\n            open[open_cnt++] = i;\n        } else if (s[i] == ']') {\n            close[close_cnt++] = i;\n        }\n    }\n    \n    for (int i = 0; i < open_cnt; i++) {\n        for (int j = 0; j < close_cnt; j++) {\n            if (open[i] < close[j]) {\n                for (int k = i+1; k < open_cnt; k++) {\n                    for (int l = 0; l < j; l++) {\n                        if (open[k] < close[l] && open[i] < open[k] && close[l] < close[j]) {\n                            return 1;\n                        }\n                    }\n                }\n            }\n        }\n    }\n    \n    return 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char s[10000];\n    scanf(\" %[^\\n]\", s);\n    \n    if (is_nested(s)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main_prog3",
+          "code": "int is_nested(char *s) {\n    int n = strlen(s);\n    int open[1000], close[1000];\n    int open_cnt = 0, close_cnt = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (s[i] == '[') {\n            open[open_cnt++] = i;\n        } else if (s[i] == ']') {\n            close[close_cnt++] = i;\n        }\n    }\n    \n    for (int i = 0; i < open_cnt; i++) {\n        for (int j = 0; j < close_cnt; j++) {\n            if (open[i] < close[j]) {\n                for (int k = i+1; k < open_cnt; k++) {\n                    for (int l = 0; l < j; l++) {\n                        if (open[k] < close[l] && open[i] < open[k] && close[l] < close[j]) {\n                            return 1;\n                        }\n                    }\n                }\n            }\n        }\n    }\n    \n    return 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char s[10000];\n    scanf(\" %[^\\n]\", s);\n    \n    if (is_nested(s)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main_prog4",
+          "code": "int is_nested(char *s) {\n    int n = strlen(s);\n    int open[1000], close[1000];\n    int open_cnt = 0, close_cnt = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (s[i] == '[') {\n            open[open_cnt++] = i;\n        } else if (s[i] == ']') {\n            close[close_cnt++] = i;\n        }\n    }\n    \n    for (int i = 0; i < open_cnt; i++) {\n        for (int j = 0; j < close_cnt; j++) {\n            if (open[i] < close[j]) {\n                for (int k = i+1; k < open_cnt; k++) {\n                    for (int l = 0; l < j; l++) {\n                        if (open[k] < close[l] && open[i] < open[k] && close[l] < close[j]) {\n                            return 1;\n                        }\n                    }\n                }\n            }\n        }\n    }\n    \n    return 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char s[10000];\n    scanf(\" %[^\\n]\", s);\n    \n    if (is_nested(s)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main_prog5",
+          "code": "int is_nested(char *s) {\n    int n = strlen(s);\n    int open[1000], close[1000];\n    int open_cnt = 0, close_cnt = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (s[i] == '[') {\n            open[open_cnt++] = i;\n        } else if (s[i] == ']') {\n            close[close_cnt++] = i;\n        }\n    }\n    \n    for (int i = 0; i < open_cnt; i++) {\n        for (int j = 0; j < close_cnt; j++) {\n            if (open[i] < close[j]) {\n                for (int k = i+1; k < open_cnt; k++) {\n                    for (int l = 0; l < j; l++) {\n                        if (open[k] < close[l] && open[i] < open[k] && close[l] < close[j]) {\n                            return 1;\n                        }\n                    }\n                }\n            }\n        }\n    }\n    \n    return 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char s[10000];\n    scanf(\" %[^\\n]\", s);\n    \n    if (is_nested(s)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

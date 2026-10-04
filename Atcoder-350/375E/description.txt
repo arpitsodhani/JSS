@@ -1,0 +1,8 @@
+There are N people divided into three teams. The people are numbered 1, 2, \ldots, N , and the teams are numbered 1, 2, 3 . Currently, person i belongs to team A_i . Each person has a value called strength ; person i has a strength of B_i . The strength of a team is defined as the sum of the strengths of its members. Determine whether it is possible for zero or more people to switch teams so that all teams have equal strength. If it is possible, find the minimum number of people who need to switch teams to achieve this. You cannot create new teams other than teams 1 , 2 , 3 .
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= A_i <= 3
+- 1 <= B_i <= 500
+- Sum of all B_i <= 500
+- All input values are integers

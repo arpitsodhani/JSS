@@ -1,0 +1,28 @@
+{
+  "contestId": 1796,
+  "index": "A",
+  "problem_id": "1796A",
+  "name": "Typical Interview Problem",
+  "rating": 800,
+  "tags": [
+    "brute force",
+    "implementation",
+    "strings"
+  ],
+  "points": null,
+  "solvedCount": 19744,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Typical Interview Problem",
+  "legend": "The FB-string is formed as follows. Initially, it is empty. We go through all positive integers, starting from 1, in ascending order, and do the following for each integer:\n\nif the current integer is divisible by 3, append F to the end of the FB-string;\nif the current integer is divisible by 5, append B to the end of the FB-string.\n\nNote that if an integer is divisible by both 3 and 5, we append F, and then B, not in the opposite order.\n\nThe first 10 characters of the FB-string are FBFFBFFBFB: the first F comes from the integer 3, the next character (B) comes from 5, the next F comes from the integer 6, and so on. It's easy to see that this string is infinitely long. Let fi be the i-th character of FB-string; so, f1 is F, f2 is B, f3 is F, f4 is F, and so on.\n\nYou are given a string s, consisting of characters F and/or B. You have to determine whether it is a substring (contiguous subsequence) of the FB-string. In other words, determine if it is possible to choose two integers l and r (1≤l≤r) so that the string flfl+1fl+2…fr is exactly s.\n\nFor example:\n\nFFB is a substring of the FB-string: if we pick l=3 and r=5, the string f3f4f5 is exactly FFB;\nBFFBFFBF is a substring of the FB-string: if we pick l=2 and r=9, the string f2f3f4…f9 is exactly BFFBFFBF;\nBBB is not a substring of the FB-string.",
+  "input_spec": "The first line contains one integer t (1≤t≤2046) — the number of test cases.\n\nEach test case consists of two lines. The first line contains one integer k (1≤k≤10) — the number of characters in s. The second line contains s, which is a string of exactly k characters. Each character of s is either F or B.",
+  "output_spec": "For each test case, print YES if s is a substring of the FB-string, or NO otherwise.\n\nYou may print each letter in any case (YES, yes, Yes will all be recognized as positive answer, NO, no and nO will all be recognized as negative answer).",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "3\n3\nFFB\n8\nBFFBFFBF\n3\nBBB\n",
+      "output": "YES\nYES\nNO"
+    }
+  ]
+}

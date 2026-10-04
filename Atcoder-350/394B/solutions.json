@@ -1,0 +1,176 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,char s[][55])",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%s\", s[i]);\n"
+        },
+        {
+          "clause_id": "sort_by_len",
+          "signature": "void sort_by_len(int n,char s[][55])",
+          "code": "for(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(strlen(s[j])<strlen(s[i])){ char tmp[55]; strcpy(tmp,s[i]); strcpy(s[i],s[j]); strcpy(s[j],tmp); }\n"
+        },
+        {
+          "clause_id": "concat",
+          "signature": "void concat(int n,char s[][55],char *out)",
+          "code": "out[0]='\\0'; for(int i=0;i<n;i++) strcat(out,s[i]);\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; char s[55][55]; char out[3000]; read_input(&n,s); sort_by_len(n,s); concat(n,s,out); print_str(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,char s[][55])",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%s\", s[i]);\n"
+        },
+        {
+          "clause_id": "sort_by_len",
+          "signature": "void sort_by_len(int n,char s[][55])",
+          "code": "for(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(strlen(s[j])<strlen(s[i])){ char tmp[55]; strcpy(tmp,s[i]); strcpy(s[i],s[j]); strcpy(s[j],tmp); }\n"
+        },
+        {
+          "clause_id": "concat",
+          "signature": "void concat(int n,char s[][55],char *out)",
+          "code": "out[0]='\\0'; for(int i=0;i<n;i++) strcat(out,s[i]);\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; char s[55][55]; char out[3000]; read_input(&n,s); sort_by_len(n,s); concat(n,s,out); print_str(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,char s[][55])",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%s\", s[i]);\n"
+        },
+        {
+          "clause_id": "sort_by_len",
+          "signature": "void sort_by_len(int n,char s[][55])",
+          "code": "for(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(strlen(s[j])<strlen(s[i])){ char tmp[55]; strcpy(tmp,s[i]); strcpy(s[i],s[j]); strcpy(s[j],tmp); }\n"
+        },
+        {
+          "clause_id": "concat",
+          "signature": "void concat(int n,char s[][55],char *out)",
+          "code": "out[0]='\\0'; for(int i=0;i<n;i++) strcat(out,s[i]);\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; char s[55][55]; char out[3000]; read_input(&n,s); sort_by_len(n,s); concat(n,s,out); print_str(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,char s[][55])",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%s\", s[i]);\n"
+        },
+        {
+          "clause_id": "sort_by_len",
+          "signature": "void sort_by_len(int n,char s[][55])",
+          "code": "for(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(strlen(s[j])<strlen(s[i])){ char tmp[55]; strcpy(tmp,s[i]); strcpy(s[i],s[j]); strcpy(s[j],tmp); }\n"
+        },
+        {
+          "clause_id": "concat",
+          "signature": "void concat(int n,char s[][55],char *out)",
+          "code": "out[0]='\\0'; for(int i=0;i<n;i++) strcat(out,s[i]);\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; char s[55][55]; char out[3000]; read_input(&n,s); sort_by_len(n,s); concat(n,s,out); print_str(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,char s[][55])",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%s\", s[i]);\n"
+        },
+        {
+          "clause_id": "sort_by_len",
+          "signature": "void sort_by_len(int n,char s[][55])",
+          "code": "for(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(strlen(s[j])<strlen(s[i])){ char tmp[55]; strcpy(tmp,s[i]); strcpy(s[i],s[j]); strcpy(s[j],tmp); }\n"
+        },
+        {
+          "clause_id": "concat",
+          "signature": "void concat(int n,char s[][55],char *out)",
+          "code": "out[0]='\\0'; for(int i=0;i<n;i++) strcat(out,s[i]);\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; char s[55][55]; char out[3000]; read_input(&n,s); sort_by_len(n,s); concat(n,s,out); print_str(out); return 0; }\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "394B",
+  "total_programs": 5
+}

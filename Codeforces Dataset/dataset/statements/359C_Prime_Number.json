@@ -1,0 +1,39 @@
+{
+  "contestId": 359,
+  "index": "C",
+  "problem_id": "359C",
+  "name": "Prime Number",
+  "rating": 1900,
+  "tags": [
+    "math",
+    "number theory"
+  ],
+  "points": 1500.0,
+  "solvedCount": 3608,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Prime Number",
+  "legend": "Simon has a prime number x and an array of non-negative integers a1, a2, ..., an.\n\nSimon loves fractions very much. Today he wrote out number  on a piece of paper. After Simon led all fractions to a common denominator and summed them up, he got a fraction: , where number t equals xa1 + a2 + ... + an. Now Simon wants to reduce the resulting fraction.\n\nHelp him, find the greatest common divisor of numbers s and t. As GCD can be rather large, print it as a remainder after dividing it by number 1000000007 (109 + 7).",
+  "input_spec": "The first line contains two positive integers n and x (1 ≤ n ≤ 105, 2 ≤ x ≤ 109) — the size of the array and the prime number.\n\nThe second line contains n space-separated integers a1, a2, ..., an (0 ≤ a1 ≤ a2 ≤ ... ≤ an ≤ 109).",
+  "output_spec": "Print a single number — the answer to the problem modulo 1000000007 (109 + 7).",
+  "note": "In the first sample . Thus, the answer to the problem is 8.\n\nIn the second sample, . The answer to the problem is 27, as 351 = 13·27, 729 = 27·27.\n\nIn the third sample the answer to the problem is 1073741824 mod 1000000007 = 73741817.\n\nIn the fourth sample . Thus, the answer to the problem is 1.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2 2\n2 2\n",
+      "output": "8"
+    },
+    {
+      "input": "3 3\n1 2 3\n",
+      "output": "27"
+    },
+    {
+      "input": "2 2\n29 29\n",
+      "output": "73741817"
+    },
+    {
+      "input": "4 5\n0 0 0 0\n",
+      "output": "1"
+    }
+  ]
+}

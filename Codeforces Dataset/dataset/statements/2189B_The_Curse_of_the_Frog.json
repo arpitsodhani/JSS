@@ -1,0 +1,28 @@
+{
+  "contestId": 2189,
+  "index": "B",
+  "problem_id": "2189B",
+  "name": "The Curse of the Frog",
+  "rating": 1200,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "math"
+  ],
+  "points": 1000.0,
+  "solvedCount": 16106,
+  "source": "verbatim_cf_fetch",
+  "title": "B. The Curse of the Frog",
+  "legend": "On an infinite number line, at point 0, sits a frog. After many years of meditation, the frog has mastered n unique types of magical jumps. The i-th type of jump allows it to jump forward by no more than ai units. In other words, if it was at integer point k, after the jump it can land at any integer point from k to k+ai.\n\nBut magic always comes with a price; it has been cursed. Before each bi-th attempt (before bi-th, 2bi-th, 3bi-th etc. attempt among the jumps of type i) to use the i-th type of jump, the frog rolls back ci units! In other words, if it was at point k, it will first find itself at point k−ci, and after the jump, it can land at any integer point from k−ci to k−ci+ai.\n\nThe frog's goal is to reach the point with the number x, using jumps while minimizing the number of rollbacks. Help the frog — find the minimum number of rollbacks it will have to endure on its way to the goal, or determine that it cannot reach point x.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nIn the first line of each test case, there are 2 integers n and x (1≤n≤105, 1≤x≤1018) — the number of types of jumps the frog can make and its final target.\n\nIn the following n lines, the description of the jump types is provided; the i-th line contains 3 integers ai, bi, and ci (1≤ai,bi,ci≤106).\n\nIt is guaranteed that the sum of n across all test cases does not exceed 105.",
+  "output_spec": "For each test case, if the frog can reach point x, find the smallest number of rollbacks it must endure to do so. If it cannot reach point x, output −1.",
+  "note": "In the first test case, the frog can jump forward by 1 unit and will end up at point 1. Thus, the answer is 0.\n\nIn the third test case, it can be shown that the frog cannot reach point 4.\n\nIn the fourth test case, the frog can reach point 8, for example, as follows: jump using the 1-st type by 12, jump using the 4-th type by 1, and jump using the 2-nd type by 10. Then it will sequentially be at the following points 0→(rollback)−11→1→2→(rollback)−2→8.\n\nIn the sixth test case, the frog can reach point 10, for example, as follows: jump 6 times by 2 and 1 time by 1. Then it will sequentially be at the following points 0→2→(rollback)1→3→5→(rollback)4→6→8→(rollback)7→9→10.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n1 1\n3 3 3\n1 7\n4 2 5\n2 4\n1 2 3\n2 2 4\n5 8\n12 1 11\n10 1 4\n1 1 3\n1 2 5\n2 1 7\n1 1000000000000000000\n1000000 4 654321\n1 10\n2 2 1\n",
+      "output": "0\n1\n-1\n2\n298892990032\n3"
+    }
+  ]
+}

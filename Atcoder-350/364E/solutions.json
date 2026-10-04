@@ -1,0 +1,160 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_dp_table",
+          "signature": "void initialize_dp_table(int max_sweet, int max_salty, int dp[3005][3005])",
+          "code": "void initialize_dp_table(int max_sweet, int max_salty, int dp[3005][3005]) {\n    for (int i = 0; i <= max_sweet; i++) {\n        for (int j = 0; j <= max_salty; j++) {\n            dp[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "check_budget_constraints",
+          "signature": "int check_budget_constraints(int current_sweet, int current_salty, int dish_sweet, int dish_salty, int max_sweet, int max_salty)",
+          "code": "int check_budget_constraints(int current_sweet, int current_salty, int dish_sweet, int dish_salty, int max_sweet, int max_salty) {\n    return (current_sweet >= dish_sweet && current_salty >= dish_salty);\n}"
+        },
+        {
+          "clause_id": "update_dp_state_with_dish",
+          "signature": "void update_dp_state_with_dish(int max_sweet, int max_salty, int dp[3005][3005], int dish_sweet, int dish_salty)",
+          "code": "void update_dp_state_with_dish(int max_sweet, int max_salty, int dp[3005][3005], int dish_sweet, int dish_salty) {\n    for (int i = max_sweet; i >= dish_sweet; i--) {\n        for (int j = max_salty; j >= dish_salty; j--) {\n            int new_count = dp[i - dish_sweet][j - dish_salty] + 1;\n            if (new_count > dp[i][j]) {\n                dp[i][j] = new_count;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "execute_knapsack_optimization",
+          "signature": "int execute_knapsack_optimization(int n, int max_sweet, int max_salty, int *sweetness, int *saltiness)",
+          "code": "int execute_knapsack_optimization(int n, int max_sweet, int max_salty, int *sweetness, int *saltiness) {\n    int dp[3005][3005];\n    initialize_dp_table(max_sweet, max_salty, dp);\n    for (int dish = 0; dish < n; dish++) {\n        update_dp_state_with_dish(max_sweet, max_salty, dp, sweetness[dish], saltiness[dish]);\n    }\n    return dp[max_sweet][max_salty];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, x, y;\n    int sweetness[305], saltiness[305];\n    scanf(\"%d %d %d\", &n, &x, &y);\n    for (int i = 0; i < n; i++) scanf(\"%d %d\", &sweetness[i], &saltiness[i]);\n    printf(\"%d\\n\", execute_knapsack_optimization(n, x, y, sweetness, saltiness));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_dp_table",
+          "signature": "void initialize_dp_table(int max_sweet, int max_salty, int dp[3005][3005])",
+          "code": "void initialize_dp_table(int max_sweet, int max_salty, int dp[3005][3005]) {\n    for (int i = 0; i <= max_sweet; i++) {\n        for (int j = 0; j <= max_salty; j++) {\n            dp[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "check_budget_constraints",
+          "signature": "int check_budget_constraints(int current_sweet, int current_salty, int dish_sweet, int dish_salty, int max_sweet, int max_salty)",
+          "code": "int check_budget_constraints(int current_sweet, int current_salty, int dish_sweet, int dish_salty, int max_sweet, int max_salty) {\n    return (current_sweet >= dish_sweet && current_salty >= dish_salty);\n}"
+        },
+        {
+          "clause_id": "update_dp_state_with_dish",
+          "signature": "void update_dp_state_with_dish(int max_sweet, int max_salty, int dp[3005][3005], int dish_sweet, int dish_salty)",
+          "code": "void update_dp_state_with_dish(int max_sweet, int max_salty, int dp[3005][3005], int dish_sweet, int dish_salty) {\n    for (int i = max_sweet; i >= dish_sweet; i--) {\n        for (int j = max_salty; j >= dish_salty; j--) {\n            int new_count = dp[i - dish_sweet][j - dish_salty] + 1;\n            if (new_count > dp[i][j]) {\n                dp[i][j] = new_count;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "execute_knapsack_optimization",
+          "signature": "int execute_knapsack_optimization(int n, int max_sweet, int max_salty, int *sweetness, int *saltiness)",
+          "code": "int execute_knapsack_optimization(int n, int max_sweet, int max_salty, int *sweetness, int *saltiness) {\n    int dp[3005][3005];\n    initialize_dp_table(max_sweet, max_salty, dp);\n    for (int dish = 0; dish < n; dish++) {\n        update_dp_state_with_dish(max_sweet, max_salty, dp, sweetness[dish], saltiness[dish]);\n    }\n    return dp[max_sweet][max_salty];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, x, y;\n    int sweetness[305], saltiness[305];\n    scanf(\"%d %d %d\", &n, &x, &y);\n    for (int i = 0; i < n; i++) scanf(\"%d %d\", &sweetness[i], &saltiness[i]);\n    printf(\"%d\\n\", execute_knapsack_optimization(n, x, y, sweetness, saltiness));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_dp_table",
+          "signature": "void initialize_dp_table(int max_sweet, int max_salty, int dp[3005][3005])",
+          "code": "void initialize_dp_table(int max_sweet, int max_salty, int dp[3005][3005]) {\n    for (int i = 0; i <= max_sweet; i++) {\n        for (int j = 0; j <= max_salty; j++) {\n            dp[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "check_budget_constraints",
+          "signature": "int check_budget_constraints(int current_sweet, int current_salty, int dish_sweet, int dish_salty, int max_sweet, int max_salty)",
+          "code": "int check_budget_constraints(int current_sweet, int current_salty, int dish_sweet, int dish_salty, int max_sweet, int max_salty) {\n    return (current_sweet >= dish_sweet && current_salty >= dish_salty);\n}"
+        },
+        {
+          "clause_id": "update_dp_state_with_dish",
+          "signature": "void update_dp_state_with_dish(int max_sweet, int max_salty, int dp[3005][3005], int dish_sweet, int dish_salty)",
+          "code": "void update_dp_state_with_dish(int max_sweet, int max_salty, int dp[3005][3005], int dish_sweet, int dish_salty) {\n    for (int i = max_sweet; i >= dish_sweet; i--) {\n        for (int j = max_salty; j >= dish_salty; j--) {\n            int new_count = dp[i - dish_sweet][j - dish_salty] + 1;\n            if (new_count > dp[i][j]) {\n                dp[i][j] = new_count;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "execute_knapsack_optimization",
+          "signature": "int execute_knapsack_optimization(int n, int max_sweet, int max_salty, int *sweetness, int *saltiness)",
+          "code": "int execute_knapsack_optimization(int n, int max_sweet, int max_salty, int *sweetness, int *saltiness) {\n    int dp[3005][3005];\n    initialize_dp_table(max_sweet, max_salty, dp);\n    for (int dish = 0; dish < n; dish++) {\n        update_dp_state_with_dish(max_sweet, max_salty, dp, sweetness[dish], saltiness[dish]);\n    }\n    return dp[max_sweet][max_salty];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, x, y;\n    int sweetness[305], saltiness[305];\n    scanf(\"%d %d %d\", &n, &x, &y);\n    for (int i = 0; i < n; i++) scanf(\"%d %d\", &sweetness[i], &saltiness[i]);\n    printf(\"%d\\n\", execute_knapsack_optimization(n, x, y, sweetness, saltiness));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_dp_table",
+          "signature": "void initialize_dp_table(int max_sweet, int max_salty, int dp[3005][3005])",
+          "code": "void initialize_dp_table(int max_sweet, int max_salty, int dp[3005][3005]) {\n    for (int i = 0; i <= max_sweet; i++) {\n        for (int j = 0; j <= max_salty; j++) {\n            dp[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "check_budget_constraints",
+          "signature": "int check_budget_constraints(int current_sweet, int current_salty, int dish_sweet, int dish_salty, int max_sweet, int max_salty)",
+          "code": "int check_budget_constraints(int current_sweet, int current_salty, int dish_sweet, int dish_salty, int max_sweet, int max_salty) {\n    return (current_sweet >= dish_sweet && current_salty >= dish_salty);\n}"
+        },
+        {
+          "clause_id": "update_dp_state_with_dish",
+          "signature": "void update_dp_state_with_dish(int max_sweet, int max_salty, int dp[3005][3005], int dish_sweet, int dish_salty)",
+          "code": "void update_dp_state_with_dish(int max_sweet, int max_salty, int dp[3005][3005], int dish_sweet, int dish_salty) {\n    for (int i = max_sweet; i >= dish_sweet; i--) {\n        for (int j = max_salty; j >= dish_salty; j--) {\n            int new_count = dp[i - dish_sweet][j - dish_salty] + 1;\n            if (new_count > dp[i][j]) {\n                dp[i][j] = new_count;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "execute_knapsack_optimization",
+          "signature": "int execute_knapsack_optimization(int n, int max_sweet, int max_salty, int *sweetness, int *saltiness)",
+          "code": "int execute_knapsack_optimization(int n, int max_sweet, int max_salty, int *sweetness, int *saltiness) {\n    int dp[3005][3005];\n    initialize_dp_table(max_sweet, max_salty, dp);\n    for (int dish = 0; dish < n; dish++) {\n        update_dp_state_with_dish(max_sweet, max_salty, dp, sweetness[dish], saltiness[dish]);\n    }\n    return dp[max_sweet][max_salty];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, x, y;\n    int sweetness[305], saltiness[305];\n    scanf(\"%d %d %d\", &n, &x, &y);\n    for (int i = 0; i < n; i++) scanf(\"%d %d\", &sweetness[i], &saltiness[i]);\n    printf(\"%d\\n\", execute_knapsack_optimization(n, x, y, sweetness, saltiness));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_dp_table",
+          "signature": "void initialize_dp_table(int max_sweet, int max_salty, int dp[3005][3005])",
+          "code": "void initialize_dp_table(int max_sweet, int max_salty, int dp[3005][3005]) {\n    for (int i = 0; i <= max_sweet; i++) {\n        for (int j = 0; j <= max_salty; j++) {\n            dp[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "check_budget_constraints",
+          "signature": "int check_budget_constraints(int current_sweet, int current_salty, int dish_sweet, int dish_salty, int max_sweet, int max_salty)",
+          "code": "int check_budget_constraints(int current_sweet, int current_salty, int dish_sweet, int dish_salty, int max_sweet, int max_salty) {\n    return (current_sweet >= dish_sweet && current_salty >= dish_salty);\n}"
+        },
+        {
+          "clause_id": "update_dp_state_with_dish",
+          "signature": "void update_dp_state_with_dish(int max_sweet, int max_salty, int dp[3005][3005], int dish_sweet, int dish_salty)",
+          "code": "void update_dp_state_with_dish(int max_sweet, int max_salty, int dp[3005][3005], int dish_sweet, int dish_salty) {\n    for (int i = max_sweet; i >= dish_sweet; i--) {\n        for (int j = max_salty; j >= dish_salty; j--) {\n            int new_count = dp[i - dish_sweet][j - dish_salty] + 1;\n            if (new_count > dp[i][j]) {\n                dp[i][j] = new_count;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "execute_knapsack_optimization",
+          "signature": "int execute_knapsack_optimization(int n, int max_sweet, int max_salty, int *sweetness, int *saltiness)",
+          "code": "int execute_knapsack_optimization(int n, int max_sweet, int max_salty, int *sweetness, int *saltiness) {\n    int dp[3005][3005];\n    initialize_dp_table(max_sweet, max_salty, dp);\n    for (int dish = 0; dish < n; dish++) {\n        update_dp_state_with_dish(max_sweet, max_salty, dp, sweetness[dish], saltiness[dish]);\n    }\n    return dp[max_sweet][max_salty];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, x, y;\n    int sweetness[305], saltiness[305];\n    scanf(\"%d %d %d\", &n, &x, &y);\n    for (int i = 0; i < n; i++) scanf(\"%d %d\", &sweetness[i], &saltiness[i]);\n    printf(\"%d\\n\", execute_knapsack_optimization(n, x, y, sweetness, saltiness));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

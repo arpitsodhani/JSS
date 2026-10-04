@@ -1,0 +1,5 @@
+There is a calculator with the buttons 00 , 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 . When a string x is displayed on this calculator and you press a button b , the resulting displayed string becomes the string x with b appended to its end. Initially, the calculator displays the empty string (a string of length 0 ). Find the minimum number of button presses required to display the string S on this calculator.
+
+**Constraints:**
+- 1 <= N <= 100
+- S is a string of length N consisting of '0' and '1'

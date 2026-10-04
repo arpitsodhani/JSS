@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "long long read_input()",
+          "code": "long long read_input() { long long h; scanf(\"%lld\", &h); return h; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long growth(int day)",
+          "code": "long long growth(int day) { long long h = 0; for(int i = 0; i <= day; i++) { h += (1LL << i); } return h; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "int find_day(long long h)",
+          "code": "int find_day(long long h) { int day = 0; while(growth(day) <= h) day++; return day; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long h = read_input(); printf(\"%d\\n\", find_day(h)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_h(long long *h)",
+          "code": "void get_h(long long *h) { scanf(\"%lld\", h); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long calc_height(int d)",
+          "code": "long long calc_height(int d) { return (1LL << (d + 1)) - 1; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "int search_day(long long h)",
+          "code": "int search_day(long long h) { int d = 0; while(calc_height(d) <= h) d++; return d; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long h; get_h(&h); printf(\"%d\\n\", search_day(h)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "long long read_input()",
+          "code": "long long read_input() { long long h; scanf(\"%lld\", &h); return h; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long growth(int day)",
+          "code": "long long growth(int day) { long long h = 0; for(int i = 0; i <= day; i++) { h += (1LL << i); } return h; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "int find_day(long long h)",
+          "code": "int find_day(long long h) { int day = 0; while(growth(day) <= h) day++; return day; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long h = read_input(); printf(\"%d\\n\", find_day(h)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_h(long long *h)",
+          "code": "void get_h(long long *h) { scanf(\"%lld\", h); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long calc_height(int d)",
+          "code": "long long calc_height(int d) { return (1LL << (d + 1)) - 1; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "int search_day(long long h)",
+          "code": "int search_day(long long h) { int d = 0; while(calc_height(d) <= h) d++; return d; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long h; get_h(&h); printf(\"%d\\n\", search_day(h)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "long long read_input()",
+          "code": "long long read_input() { long long h; scanf(\"%lld\", &h); return h; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long growth(int day)",
+          "code": "long long growth(int day) { long long h = 0; for(int i = 0; i <= day; i++) { h += (1LL << i); } return h; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "int find_day(long long h)",
+          "code": "int find_day(long long h) { int day = 0; while(growth(day) <= h) day++; return day; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long h = read_input(); printf(\"%d\\n\", find_day(h)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

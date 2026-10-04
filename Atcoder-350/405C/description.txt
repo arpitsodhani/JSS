@@ -1,0 +1,15 @@
+You are given a sequence of N integers A_1, A_2, ..., A_N.
+Find the length of the longest contiguous subsequence where all elements are the same.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N
+A_1 A_2 ... A_N
+
+**Output:**
+Print the answer.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

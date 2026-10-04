@@ -1,0 +1,25 @@
+{
+  "average_confidence": 0.86,
+  "clauses": [
+    {
+      "clause": "bit_reverse_copy",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_power_mod",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_primitive_root",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "ntt_transform",
+      "confidence": 0.29999999999999993
+    }
+  ]
+}

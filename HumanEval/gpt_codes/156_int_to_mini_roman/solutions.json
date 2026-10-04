@@ -1,0 +1,141 @@
+{
+  "problem_num": 156,
+  "problem_name": "int_to_mini_roman",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "int_to_roman",
+          "code": "void int_to_roman(int num, char* result) {\n    char* numerals[] = {\"m\", \"cm\", \"d\", \"cd\", \"c\", \"xc\", \"l\", \"xl\", \"x\", \"ix\", \"v\", \"iv\", \"i\"};\n    int values[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};\n    \n    int idx = 0;\n    for (int i = 0; i < 13; i++) {\n        while (num >= values[i]) {\n            strcpy(result + idx, numerals[i]);\n            idx += strlen(numerals[i]);\n            num -= values[i];\n        }\n    }\n    result[idx] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int number;\n    scanf(\"%d\", &number);\n    \n    char result[1000];\n    int_to_roman(number, result);\n    \n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "int_to_roman",
+          "code": "void int_to_roman(int num, char* result) {\n    char* numerals[] = {\"m\", \"cm\", \"d\", \"cd\", \"c\", \"xc\", \"l\", \"xl\", \"x\", \"ix\", \"v\", \"iv\", \"i\"};\n    int values[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};\n    \n    int idx = 0;\n    for (int i = 0; i < 13; i++) {\n        while (num >= values[i]) {\n            strcpy(result + idx, numerals[i]);\n            idx += strlen(numerals[i]);\n            num -= values[i];\n        }\n    }\n    result[idx] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int number;\n    scanf(\"%d\", &number);\n    \n    char result[1000];\n    int_to_roman(number, result);\n    \n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "int_to_roman",
+          "code": "void int_to_roman(int num, char* result) {\n    char* numerals[] = {\"m\", \"cm\", \"d\", \"cd\", \"c\", \"xc\", \"l\", \"xl\", \"x\", \"ix\", \"v\", \"iv\", \"i\"};\n    int values[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};\n    \n    int idx = 0;\n    for (int i = 0; i < 13; i++) {\n        while (num >= values[i]) {\n            strcpy(result + idx, numerals[i]);\n            idx += strlen(numerals[i]);\n            num -= values[i];\n        }\n    }\n    result[idx] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int number;\n    scanf(\"%d\", &number);\n    \n    char result[1000];\n    int_to_roman(number, result);\n    \n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "int_to_roman",
+          "code": "void int_to_roman(int num, char* result) {\n    char* numerals[] = {\"m\", \"cm\", \"d\", \"cd\", \"c\", \"xc\", \"l\", \"xl\", \"x\", \"ix\", \"v\", \"iv\", \"i\"};\n    int values[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};\n    \n    int idx = 0;\n    for (int i = 0; i < 13; i++) {\n        while (num >= values[i]) {\n            strcpy(result + idx, numerals[i]);\n            idx += strlen(numerals[i]);\n            num -= values[i];\n        }\n    }\n    result[idx] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int number;\n    scanf(\"%d\", &number);\n    \n    char result[1000];\n    int_to_roman(number, result);\n    \n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "int_to_roman",
+          "code": "void int_to_roman(int num, char* result) {\n    char* numerals[] = {\"m\", \"cm\", \"d\", \"cd\", \"c\", \"xc\", \"l\", \"xl\", \"x\", \"ix\", \"v\", \"iv\", \"i\"};\n    int values[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};\n    \n    int idx = 0;\n    for (int i = 0; i < 13; i++) {\n        while (num >= values[i]) {\n            strcpy(result + idx, numerals[i]);\n            idx += strlen(numerals[i]);\n            num -= values[i];\n        }\n    }\n    result[idx] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int number;\n    scanf(\"%d\", &number);\n    \n    char result[1000];\n    int_to_roman(number, result);\n    \n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

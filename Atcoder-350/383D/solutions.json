@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *N)",
+          "code": "void read_input(long long *N){ scanf(\"%lld\", N); }\n"
+        },
+        {
+          "clause_id": "count_nine_divisors",
+          "signature": "long long count_nine_divisors(long long N)",
+          "code": "int is_prime(int x){\n    if(x<2) return 0;\n    for(int i=2; (long long)i*i<=x; i++) if(x%i==0) return 0;\n    return 1;\n}\nlong long count_nine_divisors(long long N){\n    long long ans=0;\n    int limit=2000000;\n    char *isprime=(char*)malloc((size_t)(limit+1));\n    for(int i=0;i<=limit;i++) isprime[i]=1;\n    isprime[0]=isprime[1]=0;\n    for(int i=2;i*i<=limit;i++) if(isprime[i]) for(int j=i*i;j<=limit;j+=i) isprime[j]=0;\n    int *pr=(int*)malloc((size_t)(limit+1)*sizeof(int));\n    int pc=0;\n    for(int i=2;i<=limit;i++) if(isprime[i]) pr[pc++]=i;\n    // p^8\n    for(int i=0;i<pc;i++){\n        long long p=pr[i];\n        long long v=1;\n        for(int k=0;k<8;k++){ if(v> N/p) { v=N+1; break; } v*=p; }\n        if(v<=N) ans++;\n        else break;\n    }\n    // p^2 q^2\n    for(int i=0;i<pc;i++){\n        long long p=pr[i];\n        long long p2=p*p;\n        if(p2> N) break;\n        for(int j=i+1;j<pc;j++){\n            long long q=pr[j];\n            long long q2=q*q;\n            if(p2> N/q2) break;\n            if(p2*q2<=N) ans++;\n        }\n    }\n    free(isprime); free(pr);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long N; read_input(&N); long long ans=count_nine_divisors(N); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *N)",
+          "code": "void read_input(long long *N){ scanf(\"%lld\", N); }\n"
+        },
+        {
+          "clause_id": "count_nine_divisors",
+          "signature": "long long count_nine_divisors(long long N)",
+          "code": "int is_prime(int x){\n    if(x<2) return 0;\n    for(int i=2; (long long)i*i<=x; i++) if(x%i==0) return 0;\n    return 1;\n}\nlong long count_nine_divisors(long long N){\n    long long ans=0;\n    int limit=2000000;\n    char *isprime=(char*)malloc((size_t)(limit+1));\n    for(int i=0;i<=limit;i++) isprime[i]=1;\n    isprime[0]=isprime[1]=0;\n    for(int i=2;i*i<=limit;i++) if(isprime[i]) for(int j=i*i;j<=limit;j+=i) isprime[j]=0;\n    int *pr=(int*)malloc((size_t)(limit+1)*sizeof(int));\n    int pc=0;\n    for(int i=2;i<=limit;i++) if(isprime[i]) pr[pc++]=i;\n    // p^8\n    for(int i=0;i<pc;i++){\n        long long p=pr[i];\n        long long v=1;\n        for(int k=0;k<8;k++){ if(v> N/p) { v=N+1; break; } v*=p; }\n        if(v<=N) ans++;\n        else break;\n    }\n    // p^2 q^2\n    for(int i=0;i<pc;i++){\n        long long p=pr[i];\n        long long p2=p*p;\n        if(p2> N) break;\n        for(int j=i+1;j<pc;j++){\n            long long q=pr[j];\n            long long q2=q*q;\n            if(p2> N/q2) break;\n            if(p2*q2<=N) ans++;\n        }\n    }\n    free(isprime); free(pr);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long N; read_input(&N); long long ans=count_nine_divisors(N); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *N)",
+          "code": "void read_input(long long *N){ scanf(\"%lld\", N); }\n"
+        },
+        {
+          "clause_id": "count_nine_divisors",
+          "signature": "long long count_nine_divisors(long long N)",
+          "code": "int is_prime(int x){\n    if(x<2) return 0;\n    for(int i=2; (long long)i*i<=x; i++) if(x%i==0) return 0;\n    return 1;\n}\nlong long count_nine_divisors(long long N){\n    long long ans=0;\n    int limit=2000000;\n    char *isprime=(char*)malloc((size_t)(limit+1));\n    for(int i=0;i<=limit;i++) isprime[i]=1;\n    isprime[0]=isprime[1]=0;\n    for(int i=2;i*i<=limit;i++) if(isprime[i]) for(int j=i*i;j<=limit;j+=i) isprime[j]=0;\n    int *pr=(int*)malloc((size_t)(limit+1)*sizeof(int));\n    int pc=0;\n    for(int i=2;i<=limit;i++) if(isprime[i]) pr[pc++]=i;\n    // p^8\n    for(int i=0;i<pc;i++){\n        long long p=pr[i];\n        long long v=1;\n        for(int k=0;k<8;k++){ if(v> N/p) { v=N+1; break; } v*=p; }\n        if(v<=N) ans++;\n        else break;\n    }\n    // p^2 q^2\n    for(int i=0;i<pc;i++){\n        long long p=pr[i];\n        long long p2=p*p;\n        if(p2> N) break;\n        for(int j=i+1;j<pc;j++){\n            long long q=pr[j];\n            long long q2=q*q;\n            if(p2> N/q2) break;\n            if(p2*q2<=N) ans++;\n        }\n    }\n    free(isprime); free(pr);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long N; read_input(&N); long long ans=count_nine_divisors(N); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *N)",
+          "code": "void read_input(long long *N){ scanf(\"%lld\", N); }\n"
+        },
+        {
+          "clause_id": "count_nine_divisors",
+          "signature": "long long count_nine_divisors(long long N)",
+          "code": "int is_prime(int x){\n    if(x<2) return 0;\n    for(int i=2; (long long)i*i<=x; i++) if(x%i==0) return 0;\n    return 1;\n}\nlong long count_nine_divisors(long long N){\n    long long ans=0;\n    int limit=2000000;\n    char *isprime=(char*)malloc((size_t)(limit+1));\n    for(int i=0;i<=limit;i++) isprime[i]=1;\n    isprime[0]=isprime[1]=0;\n    for(int i=2;i*i<=limit;i++) if(isprime[i]) for(int j=i*i;j<=limit;j+=i) isprime[j]=0;\n    int *pr=(int*)malloc((size_t)(limit+1)*sizeof(int));\n    int pc=0;\n    for(int i=2;i<=limit;i++) if(isprime[i]) pr[pc++]=i;\n    // p^8\n    for(int i=0;i<pc;i++){\n        long long p=pr[i];\n        long long v=1;\n        for(int k=0;k<8;k++){ if(v> N/p) { v=N+1; break; } v*=p; }\n        if(v<=N) ans++;\n        else break;\n    }\n    // p^2 q^2\n    for(int i=0;i<pc;i++){\n        long long p=pr[i];\n        long long p2=p*p;\n        if(p2> N) break;\n        for(int j=i+1;j<pc;j++){\n            long long q=pr[j];\n            long long q2=q*q;\n            if(p2> N/q2) break;\n            if(p2*q2<=N) ans++;\n        }\n    }\n    free(isprime); free(pr);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long N; read_input(&N); long long ans=count_nine_divisors(N); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *N)",
+          "code": "void read_input(long long *N){ scanf(\"%lld\", N); }\n"
+        },
+        {
+          "clause_id": "count_nine_divisors",
+          "signature": "long long count_nine_divisors(long long N)",
+          "code": "int is_prime(int x){\n    if(x<2) return 0;\n    for(int i=2; (long long)i*i<=x; i++) if(x%i==0) return 0;\n    return 1;\n}\nlong long count_nine_divisors(long long N){\n    long long ans=0;\n    int limit=2000000;\n    char *isprime=(char*)malloc((size_t)(limit+1));\n    for(int i=0;i<=limit;i++) isprime[i]=1;\n    isprime[0]=isprime[1]=0;\n    for(int i=2;i*i<=limit;i++) if(isprime[i]) for(int j=i*i;j<=limit;j+=i) isprime[j]=0;\n    int *pr=(int*)malloc((size_t)(limit+1)*sizeof(int));\n    int pc=0;\n    for(int i=2;i<=limit;i++) if(isprime[i]) pr[pc++]=i;\n    // p^8\n    for(int i=0;i<pc;i++){\n        long long p=pr[i];\n        long long v=1;\n        for(int k=0;k<8;k++){ if(v> N/p) { v=N+1; break; } v*=p; }\n        if(v<=N) ans++;\n        else break;\n    }\n    // p^2 q^2\n    for(int i=0;i<pc;i++){\n        long long p=pr[i];\n        long long p2=p*p;\n        if(p2> N) break;\n        for(int j=i+1;j<pc;j++){\n            long long q=pr[j];\n            long long q2=q*q;\n            if(p2> N/q2) break;\n            if(p2*q2<=N) ans++;\n        }\n    }\n    free(isprime); free(pr);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long N; read_input(&N); long long ans=count_nine_divisors(N); print_answer(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

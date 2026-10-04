@@ -1,0 +1,8 @@
+You are given positive integers N, K , and an N \times N matrix C=(C_{i,j}) (1\leq i,j\leq N) . It is guaranteed that C_{i,i} = 0 and C_{i,j} = C_{j,i} . There is a weighted complete graph with N vertices labeled 1,2,\dots,N . For each pair of vertices i and j with i\lt j , the weight of the edge connecting vertices i and j is C_{i,j} . You have Q queries. In the i -th query, you are given a pair of distinct integers s_i and t_i (both between K+1 and N , inclusive), for which you must solve the following problem. A good graph is a connected graph containing all of the vertices 1,2,\dots,K,s_i,t_i obtained by removing any number of edges and vertices (possibly zero) from the graph above. The cost of a good graph is the sum of the weights of its edges. Find the minimum possible cost of a good graph.
+
+**Constraints:**
+- 1 <= N <= 500
+- 1 <= M <= N(N-1)/2
+- 1 <= a_i < b_i <= N
+- All pairs (a_i, b_i) are distinct
+- All input values are integers

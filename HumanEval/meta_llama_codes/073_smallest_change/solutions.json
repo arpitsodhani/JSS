@@ -1,0 +1,118 @@
+{
+  "problem_id": "073_smallest_change",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "count_changes_needed",
+          "code": "int count_changes_needed(int *arr, int n) {\n    int changes = 0;\n    for (int i = 0; i < n / 2; i++) {\n        if (arr[i] != arr[n - 1 - i]) {\n            changes++;\n        }\n    }\n    return changes;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = count_changes_needed(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "count_changes_needed",
+          "code": "int count_changes_needed(int *arr, int n) {\n    int changes = 0;\n    for (int i = 0; i < n / 2; i++) {\n        if (arr[i] != arr[n - 1 - i]) {\n            changes++;\n        }\n    }\n    return changes;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = count_changes_needed(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "count_changes_needed",
+          "code": "int count_changes_needed(int *arr, int n) {\n    int changes = 0;\n    for (int i = 0; i < n / 2; i++) {\n        if (arr[i] != arr[n - 1 - i]) {\n            changes++;\n        }\n    }\n    return changes;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = count_changes_needed(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "count_changes_needed",
+          "code": "int count_changes_needed(int *arr, int n) {\n    int changes = 0;\n    for (int i = 0; i < n / 2; i++) {\n        if (arr[i] != arr[n - 1 - i]) {\n            changes++;\n        }\n    }\n    return changes;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = count_changes_needed(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "count_changes_needed",
+          "code": "int count_changes_needed(int *arr, int n) {\n    int changes = 0;\n    for (int i = 0; i < n / 2; i++) {\n        if (arr[i] != arr[n - 1 - i]) {\n            changes++;\n        }\n    }\n    return changes;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = count_changes_needed(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ],
+  "includes": [
+    "<stdio.h>"
+  ]
+}

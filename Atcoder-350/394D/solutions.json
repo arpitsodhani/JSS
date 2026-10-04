@@ -1,0 +1,126 @@
+ {
+  "problem_id": "394D",
+  "total_programs": 5,
+  "programs": [
+    {
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int arr[])",
+          "code": "void read_input(int *n, int arr[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "find_maximum",
+          "signature": "int find_maximum(int n, int arr[])",
+          "code": "int find_maximum(int n, int arr[]) {\n    int max = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] > max) {\n            max = arr[i];\n        }\n    }\n    return max;\n}"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(int max)",
+          "code": "void print_result(int max) {\n    printf(\"%d\\n\", max);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    int arr[1000];\n    read_input(&n, arr);\n    int max = find_maximum(n, arr);\n    print_result(max);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *size, int *array)",
+          "code": "void read_input(int *size, int *array) {\n    scanf(\"%d\", size);\n    int i = 0;\n    while (i < *size) {\n        scanf(\"%d\", &array[i]);\n        i++;\n    }\n}"
+        },
+        {
+          "clause_id": "find_maximum",
+          "signature": "int find_maximum(int size, int *array)",
+          "code": "int find_maximum(int size, int *array) {\n    int maximum = array[0];\n    int i = 1;\n    while (i < size) {\n        if (array[i] > maximum) {\n            maximum = array[i];\n        }\n        i++;\n    }\n    return maximum;\n}"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(int maximum)",
+          "code": "void print_result(int maximum) {\n    printf(\"%d\\n\", maximum);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int size;\n    int array[1000];\n    read_input(&size, array);\n    int maximum = find_maximum(size, array);\n    print_result(maximum);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *len, int numbers[])",
+          "code": "void read_input(int *len, int numbers[]) {\n    scanf(\"%d\", len);\n    for (int idx = 0; idx < *len; idx++) {\n        scanf(\"%d\", &numbers[idx]);\n    }\n}"
+        },
+        {
+          "clause_id": "find_maximum",
+          "signature": "int find_maximum(int len, int numbers[])",
+          "code": "int find_maximum(int len, int numbers[]) {\n    int peak = numbers[0];\n    for (int idx = 1; idx < len; idx++) {\n        peak = (numbers[idx] > peak) ? numbers[idx] : peak;\n    }\n    return peak;\n}"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(int peak)",
+          "code": "void print_result(int peak) {\n    printf(\"%d\\n\", peak);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int len;\n    int numbers[1000];\n    read_input(&len, numbers);\n    int peak = find_maximum(len, numbers);\n    print_result(peak);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int* read_input(int *count)",
+          "code": "int* read_input(int *count) {\n    scanf(\"%d\", count);\n    int *data = (int*)malloc(*count * sizeof(int));\n    for (int j = 0; j < *count; j++) {\n        scanf(\"%d\", &data[j]);\n    }\n    return data;\n}"
+        },
+        {
+          "clause_id": "find_maximum",
+          "signature": "int find_maximum(int count, int *data)",
+          "code": "int find_maximum(int count, int *data) {\n    int largest = data[0];\n    for (int j = 1; j < count; j++) {\n        if (data[j] > largest) {\n            largest = data[j];\n        }\n    }\n    return largest;\n}"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(int largest)",
+          "code": "void print_result(int largest) {\n    printf(\"%d\\n\", largest);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int count;\n    int *data = read_input(&count);\n    int largest = find_maximum(count, data);\n    print_result(largest);\n    free(data);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int vals[])",
+          "code": "void read_input(int *n, int vals[]) {\n    scanf(\"%d\", n);\n    int k = 0;\n    do {\n        scanf(\"%d\", &vals[k]);\n        k++;\n    } while (k < *n);\n}"
+        },
+        {
+          "clause_id": "find_maximum",
+          "signature": "int find_maximum(int n, int vals[])",
+          "code": "int find_maximum(int n, int vals[]) {\n    int top = vals[0];\n    int k = 1;\n    do {\n        if (vals[k] > top) {\n            top = vals[k];\n        }\n        k++;\n    } while (k < n);\n    return top;\n}"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(int top)",
+          "code": "void print_result(int top) {\n    printf(\"%d\\n\", top);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    int vals[1000];\n    read_input(&n, vals);\n    int top = find_maximum(n, vals);\n    print_result(top);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

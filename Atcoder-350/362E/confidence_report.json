@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.7427146720757266,
+  "clauses": [
+    {
+      "clause": "compute_arithmetic_subsequences",
+      "confidence": 0.29999999999999993
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9581440162271804
+    },
+    {
+      "clause": "read_sequence",
+      "confidence": 0.97
+    }
+  ]
+}

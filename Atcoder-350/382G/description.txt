@@ -1,0 +1,8 @@
+The plane is tiled by regular hexagons of side length K whose edges are parallel to the coordinate axes. For any point (x, y), define its distance to another point as the minimum number of hexagons one must pass through when moving from the hexagon containing (x, y) to the hexagon containing the other point, moving only to adjacent hexagons (sharing a side).
+
+Given two points (S_x, S_y) and (T_x, T_y), find their distance in this sense.
+
+**Constraints:**
+- 1 <= K <= 10^6
+- -10^9 <= S_x, S_y, T_x, T_y <= 10^9
+- All input values are integers

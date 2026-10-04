@@ -1,0 +1,7 @@
+You are given an integer sequence A=(A_1,\ldots,A_N) of length N . Here, A_1, A_2, \ldots, A_N are all distinct. Which element in A is the second largest?
+
+**Constraints:**
+- 2 <= N <= 100
+- 1 <= A_i <= 100
+- All A_i are distinct
+- All input values are integers

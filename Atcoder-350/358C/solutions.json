@@ -1,0 +1,123 @@
+{
+  "problem_id": "358C",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_stands",
+          "signature": "void read_stands(int n, int m, int stands[])",
+          "code": "void read_stands(int n, int m, int stands[]) { for(int i = 0; i < n; i++) { stands[i] = 0; char s[15]; scanf(\"%s\", s); for(int j = 0; j < m; j++) { if(s[j] == 'o') stands[i] |= (1 << j); } } }"
+        },
+        {
+          "clause_id": "find_minimum_stands",
+          "signature": "int find_minimum_stands(int n, int m, int stands[])",
+          "code": "int find_minimum_stands(int n, int m, int stands[]) { int all_flavors = (1 << m) - 1; int min_count = n + 1; for(int mask = 0; mask < (1 << n); mask++) { int covered = 0; int count = 0; for(int i = 0; i < n; i++) { if(mask & (1 << i)) { covered |= stands[i]; count++; } } if(covered == all_flavors && count < min_count) { min_count = count; } } return min_count; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m; scanf(\"%d%d\", &n, &m); int stands[15]; read_stands(n, m, stands); printf(\"%d\\n\", find_minimum_stands(n, m, stands)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_stands",
+          "signature": "void read_stands(int n, int m, int stands[])",
+          "code": "void read_stands(int n, int m, int stands[]) { int i; for(i = 0; i < n; i++) { stands[i] = 0; char line[15]; scanf(\"%s\", line); int j; for(j = 0; j < m; j++) { if(line[j] == 'o') { stands[i] = stands[i] | (1 << j); } } } }"
+        },
+        {
+          "clause_id": "find_minimum_stands",
+          "signature": "int find_minimum_stands(int n, int m, int stands[])",
+          "code": "int find_minimum_stands(int n, int m, int stands[]) { int target = (1 << m) - 1; int answer = n + 1; int subset; for(subset = 0; subset < (1 << n); subset++) { int flavor_mask = 0; int num_stands = 0; int k; for(k = 0; k < n; k++) { if(subset & (1 << k)) { flavor_mask |= stands[k]; num_stands++; } } if(flavor_mask == target) { if(num_stands < answer) answer = num_stands; } } return answer; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m; scanf(\"%d %d\", &n, &m); int flavors[15]; read_stands(n, m, flavors); printf(\"%d\\n\", find_minimum_stands(n, m, flavors)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_stands",
+          "signature": "void read_stands(int n, int m, int stands[])",
+          "code": "void read_stands(int n, int m, int stands[]) { for(int idx = 0; idx < n; idx++) { stands[idx] = 0; char buffer[15]; scanf(\"%s\", buffer); for(int pos = 0; pos < m; pos++) { if(buffer[pos] == 'o') stands[idx] |= (1 << pos); } } }"
+        },
+        {
+          "clause_id": "find_minimum_stands",
+          "signature": "int find_minimum_stands(int n, int m, int stands[])",
+          "code": "int find_minimum_stands(int n, int m, int stands[]) { int complete = (1 << m) - 1; int best = n + 1; for(int combination = 0; combination < (1 << n); combination++) { int total_flavors = 0; int selected = 0; for(int stand_idx = 0; stand_idx < n; stand_idx++) { if((combination >> stand_idx) & 1) { total_flavors |= stands[stand_idx]; selected++; } } if(total_flavors == complete && selected < best) best = selected; } return best; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m; scanf(\"%d%d\", &n, &m); int stand_flavors[15]; read_stands(n, m, stand_flavors); printf(\"%d\\n\", find_minimum_stands(n, m, stand_flavors)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_stands",
+          "signature": "void read_stands(int n, int m, int stands[])",
+          "code": "void read_stands(int n, int m, int stands[]) { for(int p = 0; p < n; p++) { stands[p] = 0; char input[15]; scanf(\"%s\", input); for(int q = 0; q < m; q++) { if(input[q] == 'o') stands[p] = stands[p] | (1 << q); } } }"
+        },
+        {
+          "clause_id": "find_minimum_stands",
+          "signature": "int find_minimum_stands(int n, int m, int stands[])",
+          "code": "int find_minimum_stands(int n, int m, int stands[]) { int full_set = (1 << m) - 1; int min_result = n + 1; for(int choice = 0; choice < (1 << n); choice++) { int coverage = 0; int count = 0; for(int i = 0; i < n; i++) { if(choice & (1 << i)) { coverage = coverage | stands[i]; count = count + 1; } } if(coverage == full_set && count < min_result) min_result = count; } return min_result; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m; scanf(\"%d %d\", &n, &m); int stand_data[15]; read_stands(n, m, stand_data); printf(\"%d\\n\", find_minimum_stands(n, m, stand_data)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_stands",
+          "signature": "void read_stands(int n, int m, int stands[])",
+          "code": "void read_stands(int n, int m, int stands[]) { int r; for(r = 0; r < n; r++) { stands[r] = 0; char str[15]; scanf(\"%s\", str); int c; for(c = 0; c < m; c++) { if(str[c] == 'o') stands[r] |= (1 << c); } } }"
+        },
+        {
+          "clause_id": "find_minimum_stands",
+          "signature": "int find_minimum_stands(int n, int m, int stands[])",
+          "code": "int find_minimum_stands(int n, int m, int stands[]) { int all_bits = (1 << m) - 1; int minimum = n + 1; int bitmask; for(bitmask = 0; bitmask < (1 << n); bitmask++) { int union_flavors = 0; int num = 0; int j; for(j = 0; j < n; j++) { if((bitmask >> j) & 1) { union_flavors |= stands[j]; num++; } } if(union_flavors == all_bits) { if(num < minimum) minimum = num; } } return minimum; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m; scanf(\"%d%d\", &n, &m); int available_flavors[15]; read_stands(n, m, available_flavors); printf(\"%d\\n\", find_minimum_stands(n, m, available_flavors)); return 0; }"
+        }
+      ]
+    }
+  ]
+}

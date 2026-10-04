@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *A,int *B,int *m,int *L,int *R)",
+          "code": "scanf(\"%d%d%d%d\", n,A,B,m); for(int i=0;i<*m;i++) scanf(\"%d%d\", &L[i], &R[i]);\n"
+        },
+        {
+          "clause_id": "can_reach",
+          "signature": "int can_reach(int n,int A,int B,int m,int *L,int *R)",
+          "code": "int bad[105]={0};\nfor(int i=0;i<m;i++) for(int j=L[i];j<=R[i];j++) bad[j]=1;\nint q[1000],qh=0,qt=0,vis[105]={0};\nif(bad[1]) return 0; q[qt++]=1; vis[1]=1;\nwhile(qh<qt){\n  int x=q[qh++]; if(x==n) return 1;\n  for(int d=A; d<=B; d++){\n    int y=x+d; if(y<1||y>n) continue; if(bad[y]) continue; if(!vis[y]){vis[y]=1; q[qt++]=y;}\n  }\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,A,B,m; int L[205],R[205]; read_input(&n,&A,&B,&m,L,R); int ok=can_reach(n,A,B,m,L,R); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *A,int *B,int *m,int *L,int *R)",
+          "code": "scanf(\"%d%d%d%d\", n,A,B,m); for(int i=0;i<*m;i++) scanf(\"%d%d\", &L[i], &R[i]);\n"
+        },
+        {
+          "clause_id": "can_reach",
+          "signature": "int can_reach(int n,int A,int B,int m,int *L,int *R)",
+          "code": "int bad[105]={0};\nfor(int i=0;i<m;i++) for(int j=L[i];j<=R[i];j++) bad[j]=1;\nint q[1000],qh=0,qt=0,vis[105]={0};\nif(bad[1]) return 0; q[qt++]=1; vis[1]=1;\nwhile(qh<qt){\n  int x=q[qh++]; if(x==n) return 1;\n  for(int d=A; d<=B; d++){\n    int y=x+d; if(y<1||y>n) continue; if(bad[y]) continue; if(!vis[y]){vis[y]=1; q[qt++]=y;}\n  }\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,A,B,m; int L[205],R[205]; read_input(&n,&A,&B,&m,L,R); int ok=can_reach(n,A,B,m,L,R); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *A,int *B,int *m,int *L,int *R)",
+          "code": "scanf(\"%d%d%d%d\", n,A,B,m); for(int i=0;i<*m;i++) scanf(\"%d%d\", &L[i], &R[i]);\n"
+        },
+        {
+          "clause_id": "can_reach",
+          "signature": "int can_reach(int n,int A,int B,int m,int *L,int *R)",
+          "code": "int bad[105]={0};\nfor(int i=0;i<m;i++) for(int j=L[i];j<=R[i];j++) bad[j]=1;\nint q[1000],qh=0,qt=0,vis[105]={0};\nif(bad[1]) return 0; q[qt++]=1; vis[1]=1;\nwhile(qh<qt){\n  int x=q[qh++]; if(x==n) return 1;\n  for(int d=A; d<=B; d++){\n    int y=x+d; if(y<1||y>n) continue; if(bad[y]) continue; if(!vis[y]){vis[y]=1; q[qt++]=y;}\n  }\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,A,B,m; int L[205],R[205]; read_input(&n,&A,&B,&m,L,R); int ok=can_reach(n,A,B,m,L,R); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *A,int *B,int *m,int *L,int *R)",
+          "code": "scanf(\"%d%d%d%d\", n,A,B,m); for(int i=0;i<*m;i++) scanf(\"%d%d\", &L[i], &R[i]);\n"
+        },
+        {
+          "clause_id": "can_reach",
+          "signature": "int can_reach(int n,int A,int B,int m,int *L,int *R)",
+          "code": "int bad[105]={0};\nfor(int i=0;i<m;i++) for(int j=L[i];j<=R[i];j++) bad[j]=1;\nint q[1000],qh=0,qt=0,vis[105]={0};\nif(bad[1]) return 0; q[qt++]=1; vis[1]=1;\nwhile(qh<qt){\n  int x=q[qh++]; if(x==n) return 1;\n  for(int d=A; d<=B; d++){\n    int y=x+d; if(y<1||y>n) continue; if(bad[y]) continue; if(!vis[y]){vis[y]=1; q[qt++]=y;}\n  }\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,A,B,m; int L[205],R[205]; read_input(&n,&A,&B,&m,L,R); int ok=can_reach(n,A,B,m,L,R); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *A,int *B,int *m,int *L,int *R)",
+          "code": "scanf(\"%d%d%d%d\", n,A,B,m); for(int i=0;i<*m;i++) scanf(\"%d%d\", &L[i], &R[i]);\n"
+        },
+        {
+          "clause_id": "can_reach",
+          "signature": "int can_reach(int n,int A,int B,int m,int *L,int *R)",
+          "code": "int bad[105]={0};\nfor(int i=0;i<m;i++) for(int j=L[i];j<=R[i];j++) bad[j]=1;\nint q[1000],qh=0,qt=0,vis[105]={0};\nif(bad[1]) return 0; q[qt++]=1; vis[1]=1;\nwhile(qh<qt){\n  int x=q[qh++]; if(x==n) return 1;\n  for(int d=A; d<=B; d++){\n    int y=x+d; if(y<1||y>n) continue; if(bad[y]) continue; if(!vis[y]){vis[y]=1; q[qt++]=y;}\n  }\n}\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,A,B,m; int L[205],R[205]; read_input(&n,&A,&B,&m,L,R); int ok=can_reach(n,A,B,m,L,R); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "388F",
+  "total_programs": 5
+}

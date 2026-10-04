@@ -1,0 +1,89 @@
+{
+  "average_confidence": 0.9990582010582012,
+  "clauses": [
+    {
+      "clause": "accumulate",
+      "confidence": 1.0
+    },
+    {
+      "clause": "bubble_sort",
+      "confidence": 1.0
+    },
+    {
+      "clause": "calc_sum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_sum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "get_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "input_data",
+      "confidence": 1.0
+    },
+    {
+      "clause": "insertion_sort",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9802222222222221
+    },
+    {
+      "clause": "output",
+      "confidence": 1.0
+    },
+    {
+      "clause": "output_ans",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_ans",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "qsort_desc",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_data",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "scan_values",
+      "confidence": 1.0
+    },
+    {
+      "clause": "selection_sort",
+      "confidence": 1.0
+    },
+    {
+      "clause": "sort_desc",
+      "confidence": 1.0
+    },
+    {
+      "clause": "sum_first_k",
+      "confidence": 1.0
+    },
+    {
+      "clause": "sum_top_k",
+      "confidence": 1.0
+    },
+    {
+      "clause": "write_ans",
+      "confidence": 1.0
+    }
+  ]
+}

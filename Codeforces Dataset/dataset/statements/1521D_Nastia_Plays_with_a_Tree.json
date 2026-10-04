@@ -1,0 +1,33 @@
+{
+  "contestId": 1521,
+  "index": "D",
+  "problem_id": "1521D",
+  "name": "Nastia Plays with a Tree",
+  "rating": 2500,
+  "tags": [
+    "constructive algorithms",
+    "data structures",
+    "dfs and similar",
+    "dp",
+    "dsu",
+    "greedy",
+    "implementation",
+    "trees"
+  ],
+  "points": 2250.0,
+  "solvedCount": 2371,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Nastia Plays with a Tree",
+  "legend": "Nastia has an unweighted tree with n vertices and wants to play with it!\n\nThe girl will perform the following operation with her tree, as long as she needs:\n\nRemove any existing edge.\nAdd an edge between any pair of vertices.\n\nWhat is the minimum number of operations Nastia needs to get a bamboo from a tree? A bamboo is a tree in which no node has a degree greater than 2.",
+  "input_spec": "The first line contains a single integer t (1≤t≤10000) — the number of test cases.\n\nThe first line of each test case contains a single integer n (2≤n≤105) — the number of vertices in the tree.\n\nNext n−1 lines of each test cases describe the edges of the tree in form ai, bi (1≤ai,bi≤n, ai≠bi).\n\nIt's guaranteed the given graph is a tree and the sum of n in one test doesn't exceed 2⋅105.",
+  "output_spec": "For each test case in the first line print a single integer k — the minimum number of operations required to obtain a bamboo from the initial tree.\n\nIn the next k lines print 4 integers x1, y1, x2, y2 (1≤x1,y1,x2,y2≤n, x1≠y1, x2≠y2) — this way you remove the edge (x1,y1) and add an undirected edge (x2,y2).\n\nNote that the edge (x1,y1) must be present in the graph at the moment of removing.",
+  "note": "Note the graph can be unconnected after a certain operation.\n\nConsider the first test case of the example:\n\nThe red edges are removed, and the green ones are added.",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n7\n1 2\n1 3\n2 4\n2 5\n3 6\n3 7\n4\n1 2\n1 3\n3 4\n",
+      "output": "2\n2 5 6 7\n3 6 4 5\n0"
+    }
+  ]
+}

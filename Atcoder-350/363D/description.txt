@@ -1,0 +1,4 @@
+A non-negative integer X is called a palindrome number if its decimal representation (without leading zeros) is a palindrome. For example, 363 , 12344321 , and 0 are all palindrome numbers. Find the N -th smallest palindrome number.
+
+**Constraints:**
+- 1 <= N <= 10^{18}

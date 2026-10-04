@@ -1,0 +1,114 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "count_consonants",
+          "code": "int count_consonants(const char *word) {\n    int count = 0;\n    for (int i = 0; word[i]; i++) {\n        char c = tolower(word[i]);\n        if (isalpha(c) && c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {\n            count++;\n        }\n    }\n    return count;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "select_words",
+          "code": "void select_words(const char *s, int n, char result[][100], int *result_size) {\n    *result_size = 0;\n    char temp[10000];\n    strcpy(temp, s);\n    \n    char *token = strtok(temp, \" \");\n    while (token != NULL) {\n        if (count_consonants(token) == n) {\n            strcpy(result[(*result_size)++], token);\n        }\n        token = strtok(NULL, \" \");\n    }\n}\n\nint main() {\n    char s[10000];\n    int n;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\"%d\", &n);\n    \n    char result[1000][100];\n    int result_size;\n    select_words(s, n, result, &result_size);\n    \n    for (int i = 0; i < result_size; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "count_consonants",
+          "code": "int count_consonants(const char *word) {\n    int count = 0;\n    for (int i = 0; word[i]; i++) {\n        char c = tolower(word[i]);\n        if (isalpha(c) && c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {\n            count++;\n        }\n    }\n    return count;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "select_words",
+          "code": "void select_words(const char *s, int n, char result[][100], int *result_size) {\n    *result_size = 0;\n    char temp[10000];\n    strcpy(temp, s);\n    \n    char *token = strtok(temp, \" \");\n    while (token != NULL) {\n        if (count_consonants(token) == n) {\n            strcpy(result[(*result_size)++], token);\n        }\n        token = strtok(NULL, \" \");\n    }\n}\n\nint main() {\n    char s[10000];\n    int n;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\"%d\", &n);\n    \n    char result[1000][100];\n    int result_size;\n    select_words(s, n, result, &result_size);\n    \n    for (int i = 0; i < result_size; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "count_consonants",
+          "code": "int count_consonants(const char *word) {\n    int count = 0;\n    for (int i = 0; word[i]; i++) {\n        char c = tolower(word[i]);\n        if (isalpha(c) && c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {\n            count++;\n        }\n    }\n    return count;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "select_words",
+          "code": "void select_words(const char *s, int n, char result[][100], int *result_size) {\n    *result_size = 0;\n    char temp[10000];\n    strcpy(temp, s);\n    \n    char *token = strtok(temp, \" \");\n    while (token != NULL) {\n        if (count_consonants(token) == n) {\n            strcpy(result[(*result_size)++], token);\n        }\n        token = strtok(NULL, \" \");\n    }\n}\n\nint main() {\n    char s[10000];\n    int n;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\"%d\", &n);\n    \n    char result[1000][100];\n    int result_size;\n    select_words(s, n, result, &result_size);\n    \n    for (int i = 0; i < result_size; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "count_consonants",
+          "code": "int count_consonants(const char *word) {\n    int count = 0;\n    for (int i = 0; word[i]; i++) {\n        char c = tolower(word[i]);\n        if (isalpha(c) && c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {\n            count++;\n        }\n    }\n    return count;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "select_words",
+          "code": "void select_words(const char *s, int n, char result[][100], int *result_size) {\n    *result_size = 0;\n    char temp[10000];\n    strcpy(temp, s);\n    \n    char *token = strtok(temp, \" \");\n    while (token != NULL) {\n        if (count_consonants(token) == n) {\n            strcpy(result[(*result_size)++], token);\n        }\n        token = strtok(NULL, \" \");\n    }\n}\n\nint main() {\n    char s[10000];\n    int n;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\"%d\", &n);\n    \n    char result[1000][100];\n    int result_size;\n    select_words(s, n, result, &result_size);\n    \n    for (int i = 0; i < result_size; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "count_consonants",
+          "code": "int count_consonants(const char *word) {\n    int count = 0;\n    for (int i = 0; word[i]; i++) {\n        char c = tolower(word[i]);\n        if (isalpha(c) && c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {\n            count++;\n        }\n    }\n    return count;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "select_words",
+          "code": "void select_words(const char *s, int n, char result[][100], int *result_size) {\n    *result_size = 0;\n    char temp[10000];\n    strcpy(temp, s);\n    \n    char *token = strtok(temp, \" \");\n    while (token != NULL) {\n        if (count_consonants(token) == n) {\n            strcpy(result[(*result_size)++], token);\n        }\n        token = strtok(NULL, \" \");\n    }\n}\n\nint main() {\n    char s[10000];\n    int n;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\"%d\", &n);\n    \n    char result[1000][100];\n    int result_size;\n    select_words(s, n, result, &result_size);\n    \n    for (int i = 0; i < result_size; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

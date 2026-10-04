@@ -1,0 +1,44 @@
+import sys
+
+# Clause read_input [Confidence: 1.00]
+def read_input():
+    data = list(map(int, sys.stdin.buffer.read().split()))
+    t = data[0]
+    pos = 1
+    cases = []
+    for _ in range(t):
+        n = data[pos]
+        m = data[pos + 1]
+        pos += 2
+        cases.append((m, data[pos:pos + n]))
+        pos += n
+    return cases
+
+# Clause chain_plan [Confidence: 1.00]
+def chain_plan(m, weights):
+    n = len(weights)
+    if n == 2 or m != n:
+        return None
+    chains = []
+    for i in range(n):
+        chains.append((i + 1, (i + 1) % n + 1))
+    return 2 * sum(weights), chains
+
+# Clause main [Confidence: 1.00]
+def main():
+    collected = []
+    for m, weights in read_input():
+        plan = chain_plan(m, weights)
+        if plan is None:
+            collected.append("-1")
+        else:
+            cost, chains = plan
+            collected.append(str(cost))
+            for u, v in chains:
+                collected.append("%d %d" % (u, v))
+    sys.stdout.write("\n".join(collected) + "\n")
+
+
+if __name__ == "__main__":
+    main()
+

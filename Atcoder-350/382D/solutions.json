@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M)",
+          "code": "void read_input(int *N,int *M){ scanf(\"%d%d\", N,M); }\n"
+        },
+        {
+          "clause_id": "dfs_generate",
+          "signature": "void dfs(int idx,int N,int M,int *A,int last)",
+          "code": "void dfs(int idx,int N,int M,int *A,int last){\n    if(idx==N){\n        for(int i=0;i<N;i++){ if(i) putchar(' '); printf(\"%d\", A[i]); }\n        putchar('\\n');\n        return;\n    }\n    int start = (idx==0? 1 : last+10);\n    for(int x=start; x<=M; x++){\n        A[idx]=x;\n        dfs(idx+1,N,M,A,x);\n    }\n}\n"
+        },
+        {
+          "clause_id": "generate_all",
+          "signature": "void generate_all(int N,int M)",
+          "code": "void generate_all(int N,int M){ int *A=(int*)malloc((size_t)N*sizeof(int)); dfs(0,N,M,A,0); free(A); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; read_input(&N,&M); generate_all(N,M); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M)",
+          "code": "void read_input(int *N,int *M){ scanf(\"%d%d\", N,M); }\n"
+        },
+        {
+          "clause_id": "dfs_generate",
+          "signature": "void dfs(int idx,int N,int M,int *A,int last)",
+          "code": "void dfs(int idx,int N,int M,int *A,int last){\n    if(idx==N){\n        for(int i=0;i<N;i++){ if(i) putchar(' '); printf(\"%d\", A[i]); }\n        putchar('\\n');\n        return;\n    }\n    int start = (idx==0? 1 : last+10);\n    for(int x=start; x<=M; x++){\n        A[idx]=x;\n        dfs(idx+1,N,M,A,x);\n    }\n}\n"
+        },
+        {
+          "clause_id": "generate_all",
+          "signature": "void generate_all(int N,int M)",
+          "code": "void generate_all(int N,int M){ int *A=(int*)malloc((size_t)N*sizeof(int)); dfs(0,N,M,A,0); free(A); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; read_input(&N,&M); generate_all(N,M); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M)",
+          "code": "void read_input(int *N,int *M){ scanf(\"%d%d\", N,M); }\n"
+        },
+        {
+          "clause_id": "dfs_generate",
+          "signature": "void dfs(int idx,int N,int M,int *A,int last)",
+          "code": "void dfs(int idx,int N,int M,int *A,int last){\n    if(idx==N){\n        for(int i=0;i<N;i++){ if(i) putchar(' '); printf(\"%d\", A[i]); }\n        putchar('\\n');\n        return;\n    }\n    int start = (idx==0? 1 : last+10);\n    for(int x=start; x<=M; x++){\n        A[idx]=x;\n        dfs(idx+1,N,M,A,x);\n    }\n}\n"
+        },
+        {
+          "clause_id": "generate_all",
+          "signature": "void generate_all(int N,int M)",
+          "code": "void generate_all(int N,int M){ int *A=(int*)malloc((size_t)N*sizeof(int)); dfs(0,N,M,A,0); free(A); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; read_input(&N,&M); generate_all(N,M); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M)",
+          "code": "void read_input(int *N,int *M){ scanf(\"%d%d\", N,M); }\n"
+        },
+        {
+          "clause_id": "dfs_generate",
+          "signature": "void dfs(int idx,int N,int M,int *A,int last)",
+          "code": "void dfs(int idx,int N,int M,int *A,int last){\n    if(idx==N){\n        for(int i=0;i<N;i++){ if(i) putchar(' '); printf(\"%d\", A[i]); }\n        putchar('\\n');\n        return;\n    }\n    int start = (idx==0? 1 : last+10);\n    for(int x=start; x<=M; x++){\n        A[idx]=x;\n        dfs(idx+1,N,M,A,x);\n    }\n}\n"
+        },
+        {
+          "clause_id": "generate_all",
+          "signature": "void generate_all(int N,int M)",
+          "code": "void generate_all(int N,int M){ int *A=(int*)malloc((size_t)N*sizeof(int)); dfs(0,N,M,A,0); free(A); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; read_input(&N,&M); generate_all(N,M); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M)",
+          "code": "void read_input(int *N,int *M){ scanf(\"%d%d\", N,M); }\n"
+        },
+        {
+          "clause_id": "dfs_generate",
+          "signature": "void dfs(int idx,int N,int M,int *A,int last)",
+          "code": "void dfs(int idx,int N,int M,int *A,int last){\n    if(idx==N){\n        for(int i=0;i<N;i++){ if(i) putchar(' '); printf(\"%d\", A[i]); }\n        putchar('\\n');\n        return;\n    }\n    int start = (idx==0? 1 : last+10);\n    for(int x=start; x<=M; x++){\n        A[idx]=x;\n        dfs(idx+1,N,M,A,x);\n    }\n}\n"
+        },
+        {
+          "clause_id": "generate_all",
+          "signature": "void generate_all(int N,int M)",
+          "code": "void generate_all(int N,int M){ int *A=(int*)malloc((size_t)N*sizeof(int)); dfs(0,N,M,A,0); free(A); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; read_input(&N,&M); generate_all(N,M); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

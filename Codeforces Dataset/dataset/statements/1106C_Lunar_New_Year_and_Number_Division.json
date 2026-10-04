@@ -1,0 +1,33 @@
+{
+  "contestId": 1106,
+  "index": "C",
+  "problem_id": "1106C",
+  "name": "Lunar New Year and Number Division",
+  "rating": 900,
+  "tags": [
+    "greedy",
+    "implementation",
+    "math",
+    "sortings"
+  ],
+  "points": 1250.0,
+  "solvedCount": 16086,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Lunar New Year and Number Division",
+  "legend": "Lunar New Year is approaching, and Bob is struggling with his homework – a number division problem.\n\nThere are n positive integers a1,a2,…,an on Bob's homework paper, where n is always an even number. Bob is asked to divide those numbers into groups, where each group must contain at least 2 numbers. Suppose the numbers are divided into m groups, and the sum of the numbers in the j-th group is sj. Bob's aim is to minimize the sum of the square of sj, that is\nm\n∑\n\nj=1s\n2\nj\n.\n\nBob is puzzled by this hard problem. Could you please help him solve it?",
+  "input_spec": "The first line contains an even integer n (2≤n≤3⋅105), denoting that there are n integers on Bob's homework paper.\n\nThe second line contains n integers a1,a2,…,an (1≤ai≤104), describing the numbers you need to deal with.",
+  "output_spec": "A single line containing one integer, denoting the minimum of the sum of the square of sj, which is\nm\n∑\n\ni=js\n2\nj\n,\nwhere m is the number of groups.",
+  "note": "In the first sample, one of the optimal solutions is to divide those 4 numbers into 2 groups {2,8},{5,3}. Thus the answer is (2+8)2+(5+3)2=164.\n\nIn the second sample, one of the optimal solutions is to divide those 6 numbers into 3 groups {1,2},{1,2},{1,2}. Thus the answer is (1+2)2+(1+2)2+(1+2)2=27.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n8 5 2 3\n",
+      "output": "164"
+    },
+    {
+      "input": "6\n1 1 1 2 2 2\n",
+      "output": "27"
+    }
+  ]
+}

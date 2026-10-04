@@ -1,0 +1,31 @@
+{
+  "contestId": 72,
+  "index": "C",
+  "problem_id": "72C",
+  "name": "Extraordinarily Nice Numbers",
+  "rating": 1200,
+  "tags": [
+    "*special",
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 1061,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Extraordinarily Nice Numbers",
+  "legend": "The positive integer a is a divisor of the positive integer b if and only if there exists a positive integer c such that a × c = b.\n\nKing Astyages thinks a positive integer x is extraordinarily nice if the number of its even divisors is equal to the number of its odd divisors.\n\nFor example 3 has two positive divisors 3 and 1, both of which are odd, so 3 is not extraordinarily nice. On the other hand 2 is only divisible by 2 and 1, so it has one odd and one even divisor. Therefore 2 is extraordinarily nice.\n\nGiven a positive integer x determine whether it's extraordinarily nice.",
+  "input_spec": "The input contains only a single integer x (1 ≤ x ≤ 103).",
+  "output_spec": "Write a single yes or no. Write yes if the number is extraordinarily nice and no otherwise.\n\nYou don't need to care about capital or small letters. The output is case-insensitive.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n",
+      "output": "yes"
+    },
+    {
+      "input": "3\n",
+      "output": "no"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "contestId": 1037,
+  "index": "A",
+  "problem_id": "1037A",
+  "name": "Packets",
+  "rating": 1300,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "math"
+  ],
+  "points": 500.0,
+  "solvedCount": 11877,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Packets",
+  "legend": "You have n coins, each of the same value of 1.\n\nDistribute them into packets such that any amount x (1≤x≤n) can be formed using some (possibly one or all) number of these packets.\n\nEach packet may only be used entirely or not used at all. No packet may be used more than once in the formation of the single x, however it may be reused for the formation of other x's.\n\nFind the minimum number of packets in such a distribution.",
+  "input_spec": "The only line contains a single integer n (1≤n≤109) — the number of coins you have.",
+  "output_spec": "Output a single integer — the minimum possible number of packets, satisfying the condition above.",
+  "note": "In the first example, three packets with 1, 2 and 3 coins can be made to get any amount x (1≤x≤6).\n\nTo get 1 use the packet with 1 coin.\nTo get 2 use the packet with 2 coins.\nTo get 3 use the packet with 3 coins.\nTo get 4 use packets with 1 and 3 coins.\nTo get 5 use packets with 2 and 3 coins\nTo get 6 use all packets.\n\nIn the second example, two packets with 1 and 1 coins can be made to get any amount x (1≤x≤2).",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n",
+      "output": "3"
+    },
+    {
+      "input": "2\n",
+      "output": "2"
+    }
+  ]
+}

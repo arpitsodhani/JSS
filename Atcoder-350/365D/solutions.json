@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_selection_dp",
+          "signature": "void initialize_selection_dp(int max_k, long long *dp)",
+          "code": "void initialize_selection_dp(int max_k, long long *dp) {\n    for (int i = 0; i <= max_k; i++) {\n        dp[i] = -1e18;\n    }\n    dp[0] = 0;\n}"
+        },
+        {
+          "clause_id": "update_selection_state",
+          "signature": "void update_selection_state(int max_k, long long *dp, int element)",
+          "code": "void update_selection_state(int max_k, long long *dp, int element) {\n    for (int selected = max_k; selected >= 1; selected--) {\n        long long new_value = dp[selected - 1] + element;\n        if (new_value > dp[selected]) {\n            dp[selected] = new_value;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "optimize_k_element_selection",
+          "signature": "long long optimize_k_element_selection(int n, int k, int *array)",
+          "code": "long long optimize_k_element_selection(int n, int k, int *array) {\n    long long dp[100005];\n    initialize_selection_dp(k, dp);\n    for (int i = 0; i < n; i++) {\n        update_selection_state(k, dp, array[i]);\n    }\n    return dp[k];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, array[100005];\n    scanf(\"%d %d\", &n, &k);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    printf(\"%lld\\n\", optimize_k_element_selection(n, k, array));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_selection_dp",
+          "signature": "void initialize_selection_dp(int max_k, long long *dp)",
+          "code": "void initialize_selection_dp(int max_k, long long *dp) {\n    for (int i = 0; i <= max_k; i++) {\n        dp[i] = -1e18;\n    }\n    dp[0] = 0;\n}"
+        },
+        {
+          "clause_id": "update_selection_state",
+          "signature": "void update_selection_state(int max_k, long long *dp, int element)",
+          "code": "void update_selection_state(int max_k, long long *dp, int element) {\n    for (int selected = max_k; selected >= 1; selected--) {\n        long long new_value = dp[selected - 1] + element;\n        if (new_value > dp[selected]) {\n            dp[selected] = new_value;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "optimize_k_element_selection",
+          "signature": "long long optimize_k_element_selection(int n, int k, int *array)",
+          "code": "long long optimize_k_element_selection(int n, int k, int *array) {\n    long long dp[100005];\n    initialize_selection_dp(k, dp);\n    for (int i = 0; i < n; i++) {\n        update_selection_state(k, dp, array[i]);\n    }\n    return dp[k];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, array[100005];\n    scanf(\"%d %d\", &n, &k);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    printf(\"%lld\\n\", optimize_k_element_selection(n, k, array));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_selection_dp",
+          "signature": "void initialize_selection_dp(int max_k, long long *dp)",
+          "code": "void initialize_selection_dp(int max_k, long long *dp) {\n    for (int i = 0; i <= max_k; i++) {\n        dp[i] = -1e18;\n    }\n    dp[0] = 0;\n}"
+        },
+        {
+          "clause_id": "update_selection_state",
+          "signature": "void update_selection_state(int max_k, long long *dp, int element)",
+          "code": "void update_selection_state(int max_k, long long *dp, int element) {\n    for (int selected = max_k; selected >= 1; selected--) {\n        long long new_value = dp[selected - 1] + element;\n        if (new_value > dp[selected]) {\n            dp[selected] = new_value;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "optimize_k_element_selection",
+          "signature": "long long optimize_k_element_selection(int n, int k, int *array)",
+          "code": "long long optimize_k_element_selection(int n, int k, int *array) {\n    long long dp[100005];\n    initialize_selection_dp(k, dp);\n    for (int i = 0; i < n; i++) {\n        update_selection_state(k, dp, array[i]);\n    }\n    return dp[k];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, array[100005];\n    scanf(\"%d %d\", &n, &k);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    printf(\"%lld\\n\", optimize_k_element_selection(n, k, array));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_selection_dp",
+          "signature": "void initialize_selection_dp(int max_k, long long *dp)",
+          "code": "void initialize_selection_dp(int max_k, long long *dp) {\n    for (int i = 0; i <= max_k; i++) {\n        dp[i] = -1e18;\n    }\n    dp[0] = 0;\n}"
+        },
+        {
+          "clause_id": "update_selection_state",
+          "signature": "void update_selection_state(int max_k, long long *dp, int element)",
+          "code": "void update_selection_state(int max_k, long long *dp, int element) {\n    for (int selected = max_k; selected >= 1; selected--) {\n        long long new_value = dp[selected - 1] + element;\n        if (new_value > dp[selected]) {\n            dp[selected] = new_value;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "optimize_k_element_selection",
+          "signature": "long long optimize_k_element_selection(int n, int k, int *array)",
+          "code": "long long optimize_k_element_selection(int n, int k, int *array) {\n    long long dp[100005];\n    initialize_selection_dp(k, dp);\n    for (int i = 0; i < n; i++) {\n        update_selection_state(k, dp, array[i]);\n    }\n    return dp[k];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, array[100005];\n    scanf(\"%d %d\", &n, &k);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    printf(\"%lld\\n\", optimize_k_element_selection(n, k, array));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_selection_dp",
+          "signature": "void initialize_selection_dp(int max_k, long long *dp)",
+          "code": "void initialize_selection_dp(int max_k, long long *dp) {\n    for (int i = 0; i <= max_k; i++) {\n        dp[i] = -1e18;\n    }\n    dp[0] = 0;\n}"
+        },
+        {
+          "clause_id": "update_selection_state",
+          "signature": "void update_selection_state(int max_k, long long *dp, int element)",
+          "code": "void update_selection_state(int max_k, long long *dp, int element) {\n    for (int selected = max_k; selected >= 1; selected--) {\n        long long new_value = dp[selected - 1] + element;\n        if (new_value > dp[selected]) {\n            dp[selected] = new_value;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "optimize_k_element_selection",
+          "signature": "long long optimize_k_element_selection(int n, int k, int *array)",
+          "code": "long long optimize_k_element_selection(int n, int k, int *array) {\n    long long dp[100005];\n    initialize_selection_dp(k, dp);\n    for (int i = 0; i < n; i++) {\n        update_selection_state(k, dp, array[i]);\n    }\n    return dp[k];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, array[100005];\n    scanf(\"%d %d\", &n, &k);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    printf(\"%lld\\n\", optimize_k_element_selection(n, k, array));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "problem_num": 139,
+  "problem_name": "special_factorial",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "compute_special_factorial",
+          "code": "long long compute_special_factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        long long fact = 1;\n        for (int j = 1; j <= i; j++) {\n            fact *= j;\n        }\n        result *= fact;\n    }\n    return result;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%lld\\n\", compute_special_factorial(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "compute_special_factorial",
+          "code": "long long compute_special_factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        long long fact = 1;\n        for (int j = 1; j <= i; j++) {\n            fact *= j;\n        }\n        result *= fact;\n    }\n    return result;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%lld\\n\", compute_special_factorial(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "compute_special_factorial",
+          "code": "long long compute_special_factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        long long fact = 1;\n        for (int j = 1; j <= i; j++) {\n            fact *= j;\n        }\n        result *= fact;\n    }\n    return result;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%lld\\n\", compute_special_factorial(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "compute_special_factorial",
+          "code": "long long compute_special_factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        long long fact = 1;\n        for (int j = 1; j <= i; j++) {\n            fact *= j;\n        }\n        result *= fact;\n    }\n    return result;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%lld\\n\", compute_special_factorial(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "compute_special_factorial",
+          "code": "long long compute_special_factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        long long fact = 1;\n        for (int j = 1; j <= i; j++) {\n            fact *= j;\n        }\n        result *= fact;\n    }\n    return result;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%lld\\n\", compute_special_factorial(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

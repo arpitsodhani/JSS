@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_distance_matrix",
+          "signature": "void initialize_distance_matrix(int n, long long dist[505][505])",
+          "code": "void initialize_distance_matrix(int n, long long dist[505][505]) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (i == j) {\n                dist[i][j] = 0;\n            } else {\n                dist[i][j] = 1000000000000LL;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "relax_path_through_intermediate",
+          "signature": "void relax_path_through_intermediate(int n, long long dist[505][505], int k)",
+          "code": "void relax_path_through_intermediate(int n, long long dist[505][505], int k) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (dist[i][k] + dist[k][j] < dist[i][j]) {\n                dist[i][j] = dist[i][k] + dist[k][j];\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "compute_all_pairs_shortest_paths",
+          "signature": "void compute_all_pairs_shortest_paths(int n, long long dist[505][505])",
+          "code": "void compute_all_pairs_shortest_paths(int n, long long dist[505][505]) {\n    for (int k = 0; k < n; k++) {\n        relax_path_through_intermediate(n, dist, k);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m;\n    long long dist[505][505];\n    scanf(\"%d %d\", &n, &m);\n    initialize_distance_matrix(n, dist);\n    \n    for (int i = 0; i < m; i++) {\n        int u, v;\n        long long w;\n        scanf(\"%d %d %lld\", &u, &v, &w);\n        u--; v--;\n        dist[u][v] = w;\n    }\n    \n    compute_all_pairs_shortest_paths(n, dist);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (dist[i][j] == 1000000000000LL) {\n                printf(\"INF \");\n            } else {\n                printf(\"%lld \", dist[i][j]);\n            }\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_distance_matrix",
+          "signature": "void initialize_distance_matrix(int n, long long dist[505][505])",
+          "code": "void initialize_distance_matrix(int n, long long dist[505][505]) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (i == j) {\n                dist[i][j] = 0;\n            } else {\n                dist[i][j] = 1000000000000LL;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "relax_path_through_intermediate",
+          "signature": "void relax_path_through_intermediate(int n, long long dist[505][505], int k)",
+          "code": "void relax_path_through_intermediate(int n, long long dist[505][505], int k) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (dist[i][k] + dist[k][j] < dist[i][j]) {\n                dist[i][j] = dist[i][k] + dist[k][j];\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "compute_all_pairs_shortest_paths",
+          "signature": "void compute_all_pairs_shortest_paths(int n, long long dist[505][505])",
+          "code": "void compute_all_pairs_shortest_paths(int n, long long dist[505][505]) {\n    for (int k = 0; k < n; k++) {\n        relax_path_through_intermediate(n, dist, k);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m;\n    long long dist[505][505];\n    scanf(\"%d %d\", &n, &m);\n    initialize_distance_matrix(n, dist);\n    \n    for (int i = 0; i < m; i++) {\n        int u, v;\n        long long w;\n        scanf(\"%d %d %lld\", &u, &v, &w);\n        u--; v--;\n        dist[u][v] = w;\n    }\n    \n    compute_all_pairs_shortest_paths(n, dist);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (dist[i][j] == 1000000000000LL) {\n                printf(\"INF \");\n            } else {\n                printf(\"%lld \", dist[i][j]);\n            }\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_distance_matrix",
+          "signature": "void initialize_distance_matrix(int n, long long dist[505][505])",
+          "code": "void initialize_distance_matrix(int n, long long dist[505][505]) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (i == j) {\n                dist[i][j] = 0;\n            } else {\n                dist[i][j] = 1000000000000LL;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "relax_path_through_intermediate",
+          "signature": "void relax_path_through_intermediate(int n, long long dist[505][505], int k)",
+          "code": "void relax_path_through_intermediate(int n, long long dist[505][505], int k) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (dist[i][k] + dist[k][j] < dist[i][j]) {\n                dist[i][j] = dist[i][k] + dist[k][j];\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "compute_all_pairs_shortest_paths",
+          "signature": "void compute_all_pairs_shortest_paths(int n, long long dist[505][505])",
+          "code": "void compute_all_pairs_shortest_paths(int n, long long dist[505][505]) {\n    for (int k = 0; k < n; k++) {\n        relax_path_through_intermediate(n, dist, k);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m;\n    long long dist[505][505];\n    scanf(\"%d %d\", &n, &m);\n    initialize_distance_matrix(n, dist);\n    \n    for (int i = 0; i < m; i++) {\n        int u, v;\n        long long w;\n        scanf(\"%d %d %lld\", &u, &v, &w);\n        u--; v--;\n        dist[u][v] = w;\n    }\n    \n    compute_all_pairs_shortest_paths(n, dist);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (dist[i][j] == 1000000000000LL) {\n                printf(\"INF \");\n            } else {\n                printf(\"%lld \", dist[i][j]);\n            }\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_distance_matrix",
+          "signature": "void initialize_distance_matrix(int n, long long dist[505][505])",
+          "code": "void initialize_distance_matrix(int n, long long dist[505][505]) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (i == j) {\n                dist[i][j] = 0;\n            } else {\n                dist[i][j] = 1000000000000LL;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "relax_path_through_intermediate",
+          "signature": "void relax_path_through_intermediate(int n, long long dist[505][505], int k)",
+          "code": "void relax_path_through_intermediate(int n, long long dist[505][505], int k) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (dist[i][k] + dist[k][j] < dist[i][j]) {\n                dist[i][j] = dist[i][k] + dist[k][j];\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "compute_all_pairs_shortest_paths",
+          "signature": "void compute_all_pairs_shortest_paths(int n, long long dist[505][505])",
+          "code": "void compute_all_pairs_shortest_paths(int n, long long dist[505][505]) {\n    for (int k = 0; k < n; k++) {\n        relax_path_through_intermediate(n, dist, k);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m;\n    long long dist[505][505];\n    scanf(\"%d %d\", &n, &m);\n    initialize_distance_matrix(n, dist);\n    \n    for (int i = 0; i < m; i++) {\n        int u, v;\n        long long w;\n        scanf(\"%d %d %lld\", &u, &v, &w);\n        u--; v--;\n        dist[u][v] = w;\n    }\n    \n    compute_all_pairs_shortest_paths(n, dist);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (dist[i][j] == 1000000000000LL) {\n                printf(\"INF \");\n            } else {\n                printf(\"%lld \", dist[i][j]);\n            }\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "initialize_distance_matrix",
+          "signature": "void initialize_distance_matrix(int n, long long dist[505][505])",
+          "code": "void initialize_distance_matrix(int n, long long dist[505][505]) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (i == j) {\n                dist[i][j] = 0;\n            } else {\n                dist[i][j] = 1000000000000LL;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "relax_path_through_intermediate",
+          "signature": "void relax_path_through_intermediate(int n, long long dist[505][505], int k)",
+          "code": "void relax_path_through_intermediate(int n, long long dist[505][505], int k) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (dist[i][k] + dist[k][j] < dist[i][j]) {\n                dist[i][j] = dist[i][k] + dist[k][j];\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "compute_all_pairs_shortest_paths",
+          "signature": "void compute_all_pairs_shortest_paths(int n, long long dist[505][505])",
+          "code": "void compute_all_pairs_shortest_paths(int n, long long dist[505][505]) {\n    for (int k = 0; k < n; k++) {\n        relax_path_through_intermediate(n, dist, k);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m;\n    long long dist[505][505];\n    scanf(\"%d %d\", &n, &m);\n    initialize_distance_matrix(n, dist);\n    \n    for (int i = 0; i < m; i++) {\n        int u, v;\n        long long w;\n        scanf(\"%d %d %lld\", &u, &v, &w);\n        u--; v--;\n        dist[u][v] = w;\n    }\n    \n    compute_all_pairs_shortest_paths(n, dist);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (dist[i][j] == 1000000000000LL) {\n                printf(\"INF \");\n            } else {\n                printf(\"%lld \", dist[i][j]);\n            }\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

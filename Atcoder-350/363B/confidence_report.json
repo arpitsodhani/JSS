@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.95759649122807,
+  "clauses": [
+    {
+      "clause": "compute_days_needed",
+      "confidence": 0.9377894736842105
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9649999999999999
+    },
+    {
+      "clause": "read_input",
+      "confidence": 0.97
+    }
+  ]
+}

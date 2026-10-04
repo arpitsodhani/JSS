@@ -1,0 +1,7 @@
+There is a printing machine that prints line segments on the xy -plane by emitting a laser. At the start of printing, the laser position is at coordinate (0, 0) . When printing a line segment, the procedure below is followed. First, move the laser position to one of the endpoints of the line segment. One may start drawing from either endpoint. Then, move the laser position in a straight line from the current endpoint to the other endpoint while emitting the laser. It is not allowed to stop printing in the middle of a line segment. When not emitting the laser, the laser position can move in any direction at a speed of S units per second. When emitting the laser, the laser position can move along the line segment being printed at a speed of T units per second. The time required for operations other than moving the laser position can be ignored. Takahashi wants to print N line segments using this printing machine. The i -th line segment connects coordinates (A_i, B_i) and (C_i, D_i) . Some line segments may overlap, in which case he needs to print the overlapping parts for each line segment separately. What is the minimum number of seconds required to complete printing all the line segments when he operates the printing machine optimally?
+
+**Constraints:**
+- 1 <= N <= 6
+- 1 <= S, T <= 1000
+- -1000 <= A_i, B_i, C_i, D_i <= 1000
+- All input values are integers

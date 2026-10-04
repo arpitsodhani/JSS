@@ -1,0 +1,110 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_rating",
+          "signature": "void read_rating(int *r)",
+          "code": "void read_rating(int *r) {\n    scanf(\"%d\", r);\n}"
+        },
+        {
+          "clause_id": "compute_needed_increase",
+          "signature": "int compute_needed_increase(int r)",
+          "code": "int compute_needed_increase(int r) {\n    int current_tier = (r - 1) / 100;\n    int next_tier_start = (current_tier + 1) * 100;\n    return next_tier_start - r;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int r;\n    read_rating(&r);\n    printf(\"%d\\n\", compute_needed_increase(r));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_rating",
+          "signature": "int read_rating(int *rating)",
+          "code": "int read_rating(int *rating) {\n    scanf(\"%d\", rating);\n    return *rating;\n}"
+        },
+        {
+          "clause_id": "compute_needed_increase",
+          "signature": "int compute_needed_increase(int rating)",
+          "code": "int compute_needed_increase(int rating) {\n    int tier = rating / 100;\n    return (tier + 1) * 100 - rating;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int rating;\n    read_rating(&rating);\n    int result = compute_needed_increase(rating);\n    printf(\"%d\\n\", result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_rating",
+          "signature": "void read_rating(int *r)",
+          "code": "void read_rating(int *r) {\n    scanf(\"%d\", r);\n}"
+        },
+        {
+          "clause_id": "compute_needed_increase",
+          "signature": "int compute_needed_increase(int r)",
+          "code": "int compute_needed_increase(int r) {\n    int bracket = (r - 1) / 100;\n    return (bracket + 1) * 100 - r;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int r;\n    read_rating(&r);\n    int ans = compute_needed_increase(r);\n    printf(\"%d\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_rating",
+          "signature": "long long read_rating(int *r)",
+          "code": "long long read_rating(int *r) {\n    scanf(\"%d\", r);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_needed_increase",
+          "signature": "int compute_needed_increase(int r)",
+          "code": "int compute_needed_increase(int r) {\n    int level = r / 100;\n    int next = (level + 1) * 100;\n    return next - r;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int r;\n    read_rating(&r);\n    printf(\"%d\\n\", compute_needed_increase(r));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_rating",
+          "signature": "void read_rating(int *current)",
+          "code": "void read_rating(int *current) {\n    scanf(\"%d\", current);\n}"
+        },
+        {
+          "clause_id": "compute_needed_increase",
+          "signature": "int compute_needed_increase(int current)",
+          "code": "int compute_needed_increase(int current) {\n    int current_level = (current - 1) / 100;\n    int next_level_rating = (current_level + 1) * 100;\n    return next_level_rating - current;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int current;\n    read_rating(&current);\n    printf(\"%d\\n\", compute_needed_increase(current));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

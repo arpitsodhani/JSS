@@ -1,0 +1,299 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *K,int **P)",
+          "code": "void read_input(int *N,long long *K,int **P){ scanf(\"%d%lld\", N,K); *P=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*P)[i]); }\n"
+        },
+        {
+          "clause_id": "bit_init",
+          "signature": "void bit_init(int N,long long *bit)",
+          "code": "void bit_init(int N,long long *bit){ for(int i=0;i<=N;i++) bit[i]=0; }\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(int N,long long *bit,int idx,long long val)",
+          "code": "void bit_add(int N,long long *bit,int idx,long long val){ for(int i=idx;i<=N;i+=i&-i) bit[i]+=val; }\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(long long *bit,int idx)",
+          "code": "long long bit_sum(long long *bit,int idx){ long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s; }\n"
+        },
+        {
+          "clause_id": "count_inversions",
+          "signature": "long long count_inversions(int N,int *P)",
+          "code": "long long count_inversions(int N,int *P){\n    long long inv=0;\n    long long *bit=(long long*)malloc((size_t)(N+2)*sizeof(long long));\n    bit_init(N,bit);\n    for(int i=0;i<N;i++){\n        int x=P[i];\n        long long le = bit_sum(bit,x);\n        inv += i - le;\n        bit_add(N,bit,x,1);\n    }\n    free(bit);\n    return inv;\n}\n"
+        },
+        {
+          "clause_id": "mod_norm",
+          "signature": "long long mod_norm(long long v)",
+          "code": "long long mod_norm(long long v){ const long long MOD=998244353; v%=MOD; if(v<0) v+=MOD; return v; }\n"
+        },
+        {
+          "clause_id": "clamp_mod",
+          "signature": "long long clamp_mod(long long v)",
+          "code": "long long clamp_mod(long long v){ return mod_norm(v); }\n"
+        },
+        {
+          "clause_id": "compute_expected",
+          "signature": "long long compute_expected(int N,long long K,int *P)",
+          "code": "long long compute_expected(int N,long long K,int *P){ long long inv=count_inversions(N,P); return clamp_mod(inv); }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long K; int *P=NULL; read_input(&N,&K,&P); long long ans=compute_expected(N,K,P); print_answer(ans); free(P); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *K,int **P)",
+          "code": "void read_input(int *N,long long *K,int **P){ scanf(\"%d%lld\", N,K); *P=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*P)[i]); }\n"
+        },
+        {
+          "clause_id": "bit_init",
+          "signature": "void bit_init(int N,long long *bit)",
+          "code": "void bit_init(int N,long long *bit){ for(int i=0;i<=N;i++) bit[i]=0; }\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(int N,long long *bit,int idx,long long val)",
+          "code": "void bit_add(int N,long long *bit,int idx,long long val){ for(int i=idx;i<=N;i+=i&-i) bit[i]+=val; }\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(long long *bit,int idx)",
+          "code": "long long bit_sum(long long *bit,int idx){ long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s; }\n"
+        },
+        {
+          "clause_id": "count_inversions",
+          "signature": "long long count_inversions(int N,int *P)",
+          "code": "long long count_inversions(int N,int *P){\n    long long inv=0;\n    long long *bit=(long long*)malloc((size_t)(N+2)*sizeof(long long));\n    bit_init(N,bit);\n    for(int i=0;i<N;i++){\n        int x=P[i];\n        long long le = bit_sum(bit,x);\n        inv += i - le;\n        bit_add(N,bit,x,1);\n    }\n    free(bit);\n    return inv;\n}\n"
+        },
+        {
+          "clause_id": "mod_norm",
+          "signature": "long long mod_norm(long long v)",
+          "code": "long long mod_norm(long long v){ const long long MOD=998244353; v%=MOD; if(v<0) v+=MOD; return v; }\n"
+        },
+        {
+          "clause_id": "clamp_mod",
+          "signature": "long long clamp_mod(long long v)",
+          "code": "long long clamp_mod(long long v){ return mod_norm(v); }\n"
+        },
+        {
+          "clause_id": "compute_expected",
+          "signature": "long long compute_expected(int N,long long K,int *P)",
+          "code": "long long compute_expected(int N,long long K,int *P){ long long inv=count_inversions(N,P); return clamp_mod(inv); }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long K; int *P=NULL; read_input(&N,&K,&P); long long ans=compute_expected(N,K,P); print_answer(ans); free(P); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *K,int **P)",
+          "code": "void read_input(int *N,long long *K,int **P){ scanf(\"%d%lld\", N,K); *P=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*P)[i]); }\n"
+        },
+        {
+          "clause_id": "bit_init",
+          "signature": "void bit_init(int N,long long *bit)",
+          "code": "void bit_init(int N,long long *bit){ for(int i=0;i<=N;i++) bit[i]=0; }\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(int N,long long *bit,int idx,long long val)",
+          "code": "void bit_add(int N,long long *bit,int idx,long long val){ for(int i=idx;i<=N;i+=i&-i) bit[i]+=val; }\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(long long *bit,int idx)",
+          "code": "long long bit_sum(long long *bit,int idx){ long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s; }\n"
+        },
+        {
+          "clause_id": "count_inversions",
+          "signature": "long long count_inversions(int N,int *P)",
+          "code": "long long count_inversions(int N,int *P){\n    long long inv=0;\n    long long *bit=(long long*)malloc((size_t)(N+2)*sizeof(long long));\n    bit_init(N,bit);\n    for(int i=0;i<N;i++){\n        int x=P[i];\n        long long le = bit_sum(bit,x);\n        inv += i - le;\n        bit_add(N,bit,x,1);\n    }\n    free(bit);\n    return inv;\n}\n"
+        },
+        {
+          "clause_id": "mod_norm",
+          "signature": "long long mod_norm(long long v)",
+          "code": "long long mod_norm(long long v){ const long long MOD=998244353; v%=MOD; if(v<0) v+=MOD; return v; }\n"
+        },
+        {
+          "clause_id": "clamp_mod",
+          "signature": "long long clamp_mod(long long v)",
+          "code": "long long clamp_mod(long long v){ return mod_norm(v); }\n"
+        },
+        {
+          "clause_id": "compute_expected",
+          "signature": "long long compute_expected(int N,long long K,int *P)",
+          "code": "long long compute_expected(int N,long long K,int *P){ long long inv=count_inversions(N,P); return clamp_mod(inv); }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long K; int *P=NULL; read_input(&N,&K,&P); long long ans=compute_expected(N,K,P); print_answer(ans); free(P); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *K,int **P)",
+          "code": "void read_input(int *N,long long *K,int **P){ scanf(\"%d%lld\", N,K); *P=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*P)[i]); }\n"
+        },
+        {
+          "clause_id": "bit_init",
+          "signature": "void bit_init(int N,long long *bit)",
+          "code": "void bit_init(int N,long long *bit){ for(int i=0;i<=N;i++) bit[i]=0; }\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(int N,long long *bit,int idx,long long val)",
+          "code": "void bit_add(int N,long long *bit,int idx,long long val){ for(int i=idx;i<=N;i+=i&-i) bit[i]+=val; }\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(long long *bit,int idx)",
+          "code": "long long bit_sum(long long *bit,int idx){ long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s; }\n"
+        },
+        {
+          "clause_id": "count_inversions",
+          "signature": "long long count_inversions(int N,int *P)",
+          "code": "long long count_inversions(int N,int *P){\n    long long inv=0;\n    long long *bit=(long long*)malloc((size_t)(N+2)*sizeof(long long));\n    bit_init(N,bit);\n    for(int i=0;i<N;i++){\n        int x=P[i];\n        long long le = bit_sum(bit,x);\n        inv += i - le;\n        bit_add(N,bit,x,1);\n    }\n    free(bit);\n    return inv;\n}\n"
+        },
+        {
+          "clause_id": "mod_norm",
+          "signature": "long long mod_norm(long long v)",
+          "code": "long long mod_norm(long long v){ const long long MOD=998244353; v%=MOD; if(v<0) v+=MOD; return v; }\n"
+        },
+        {
+          "clause_id": "clamp_mod",
+          "signature": "long long clamp_mod(long long v)",
+          "code": "long long clamp_mod(long long v){ return mod_norm(v); }\n"
+        },
+        {
+          "clause_id": "compute_expected",
+          "signature": "long long compute_expected(int N,long long K,int *P)",
+          "code": "long long compute_expected(int N,long long K,int *P){ long long inv=count_inversions(N,P); return clamp_mod(inv); }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long K; int *P=NULL; read_input(&N,&K,&P); long long ans=compute_expected(N,K,P); print_answer(ans); free(P); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *K,int **P)",
+          "code": "void read_input(int *N,long long *K,int **P){ scanf(\"%d%lld\", N,K); *P=(int*)malloc((size_t)(*N)*sizeof(int)); for(int i=0;i<*N;i++) scanf(\"%d\", &(*P)[i]); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "bit_init",
+          "signature": "void bit_init(int N,long long *bit)",
+          "code": "void bit_init(int N,long long *bit){ for(int i=0;i<=N;i++) bit[i]=0; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(int N,long long *bit,int idx,long long val)",
+          "code": "void bit_add(int N,long long *bit,int idx,long long val){ for(int i=idx;i<=N;i+=i&-i) bit[i]+=val; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(long long *bit,int idx)",
+          "code": "long long bit_sum(long long *bit,int idx){ long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "count_inversions",
+          "signature": "long long count_inversions(int N,int *P)",
+          "code": "long long count_inversions(int N,int *P){\n    long long inv=0;\n    long long *bit=(long long*)malloc((size_t)(N+2)*sizeof(long long));\n    bit_init(N,bit);\n    for(int i=0;i<N;i++){\n        int x=P[i];\n        long long le = bit_sum(bit,x);\n        inv += i - le;\n        bit_add(N,bit,x,1);\n    }\n    free(bit);\n    return inv;\n\n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "mod_norm",
+          "signature": "long long mod_norm(long long v)",
+          "code": "long long mod_norm(long long v){ const long long MOD=998244353; v%=MOD; if(v<0) v+=MOD; return v; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "clamp_mod",
+          "signature": "long long clamp_mod(long long v)",
+          "code": "long long clamp_mod(long long v){ return mod_norm(v); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "compute_expected",
+          "signature": "long long compute_expected(int N,long long K,int *P)",
+          "code": "long long compute_expected(int N,long long K,int *P){ long long inv=count_inversions(N,P); return clamp_mod(inv); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long K; int *P=NULL; read_input(&N,&K,&P); long long ans=compute_expected(N,K,P); print_answer(ans); free(P); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

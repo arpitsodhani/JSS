@@ -1,0 +1,65 @@
+import sys
+
+# Clause read_input [Confidence: 1.00]
+def read_input():
+    data = list(map(int, sys.stdin.buffer.read().split()))
+    n = data[0]
+    m = data[1]
+    d = data[2]
+    affected = data[3:3 + m]
+    adj = [[] for _ in range(n + 1)]
+    pos = 3 + m
+    for _ in range(n - 1):
+        u = data[pos]
+        v = data[pos + 1]
+        pos += 2
+        adj[u].append(v)
+        adj[v].append(u)
+    return n, m, d, affected, adj
+
+# Clause distances [Confidence: 1.00]
+def distances(n, adj, source):
+    dist = [-1] * (n + 1)
+    dist[source] = 0
+    queue = [source]
+    head = 0
+    while head < len(queue):
+        node = queue[head]
+        head += 1
+        step = dist[node] + 1
+        for nxt in adj[node]:
+            if dist[nxt] < 0:
+                dist[nxt] = step
+                queue.append(nxt)
+    return dist
+
+# Clause count_places [Confidence: 1.00]
+def count_places(n, m, d, affected, adj):
+    if m == 0:
+        return n
+    first = distances(n, adj, affected[0])
+    far = affected[0]
+    for node in affected:
+        if first[node] > first[far]:
+            far = node
+    from_far = distances(n, adj, far)
+    other = far
+    for node in affected:
+        if from_far[node] > from_far[other]:
+            other = node
+    from_other = distances(n, adj, other)
+    total = 0
+    for node in range(1, n + 1):
+        if from_far[node] <= d and from_other[node] <= d:
+            total += 1
+    return total
+
+# Clause main [Confidence: 1.00]
+def main():
+    n, m, d, affected, adj = read_input()
+    sys.stdout.write(str(count_places(n, m, d, affected, adj)) + "\n")
+
+
+if __name__ == "__main__":
+    main()
+

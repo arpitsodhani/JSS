@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9128352272727273,
+  "clauses": [
+    {
+      "clause": "compute_expected_position",
+      "confidence": 0.8904285714285713
+    },
+    {
+      "clause": "compute_modular_inverse",
+      "confidence": 0.9182337662337661
+    },
+    {
+      "clause": "main",
+      "confidence": 0.95875
+    },
+    {
+      "clause": "read_parameters",
+      "confidence": 0.8839285714285715
+    }
+  ]
+}

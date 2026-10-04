@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "max_manhattan",
+          "signature": "long long max_manhattan(int n)",
+          "code": "long long max1=-4000000000000000000LL, min1=4000000000000000000LL;\nlong long max2=-4000000000000000000LL, min2=4000000000000000000LL;\nfor(int i=0;i<n;i++){\n  long long x,y; scanf(\"%lld %lld\", &x, &y);\n  long long s1=x+y; long long s2=x-y;\n  if(s1>max1) max1=s1; if(s1<min1) min1=s1;\n  if(s2>max2) max2=s2; if(s2<min2) min2=s2;\n}\nlong long d1=max1-min1; long long d2=max2-min2;\nreturn d1>d2?d1:d2;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); long long ans=max_manhattan(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "max_manhattan",
+          "signature": "long long max_manhattan(int n)",
+          "code": "long long max1=-4000000000000000000LL, min1=4000000000000000000LL;\nlong long max2=-4000000000000000000LL, min2=4000000000000000000LL;\nfor(int i=0;i<n;i++){\n  long long x,y; scanf(\"%lld %lld\", &x, &y);\n  long long s1=x+y; long long s2=x-y;\n  if(s1>max1) max1=s1; if(s1<min1) min1=s1;\n  if(s2>max2) max2=s2; if(s2<min2) min2=s2;\n}\nlong long d1=max1-min1; long long d2=max2-min2;\nreturn d1>d2?d1:d2;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); long long ans=max_manhattan(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "max_manhattan",
+          "signature": "long long max_manhattan(int n)",
+          "code": "long long max1=-4000000000000000000LL, min1=4000000000000000000LL;\nlong long max2=-4000000000000000000LL, min2=4000000000000000000LL;\nfor(int i=0;i<n;i++){\n  long long x,y; scanf(\"%lld %lld\", &x, &y);\n  long long s1=x+y; long long s2=x-y;\n  if(s1>max1) max1=s1; if(s1<min1) min1=s1;\n  if(s2>max2) max2=s2; if(s2<min2) min2=s2;\n}\nlong long d1=max1-min1; long long d2=max2-min2;\nreturn d1>d2?d1:d2;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); long long ans=max_manhattan(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "max_manhattan",
+          "signature": "long long max_manhattan(int n)",
+          "code": "long long max1=-4000000000000000000LL, min1=4000000000000000000LL;\nlong long max2=-4000000000000000000LL, min2=4000000000000000000LL;\nfor(int i=0;i<n;i++){\n  long long x,y; scanf(\"%lld %lld\", &x, &y);\n  long long s1=x+y; long long s2=x-y;\n  if(s1>max1) max1=s1; if(s1<min1) min1=s1;\n  if(s2>max2) max2=s2; if(s2<min2) min2=s2;\n}\nlong long d1=max1-min1; long long d2=max2-min2;\nreturn d1>d2?d1:d2;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); long long ans=max_manhattan(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "max_manhattan",
+          "signature": "long long max_manhattan(int n)",
+          "code": "long long max1=-4000000000000000000LL, min1=4000000000000000000LL;\nlong long max2=-4000000000000000000LL, min2=4000000000000000000LL;\nfor(int i=0;i<n;i++){\n  long long x,y; scanf(\"%lld %lld\", &x, &y);\n  long long s1=x+y; long long s2=x-y;\n  if(s1>max1) max1=s1; if(s1<min1) min1=s1;\n  if(s2>max2) max2=s2; if(s2<min2) min2=s2;\n}\nlong long d1=max1-min1; long long d2=max2-min2;\nreturn d1>d2?d1:d2;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); long long ans=max_manhattan(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

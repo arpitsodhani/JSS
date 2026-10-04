@@ -1,0 +1,89 @@
+{
+  "average_confidence": 0.9988522588522589,
+  "clauses": [
+    {
+      "clause": "alphabeta",
+      "confidence": 1.0
+    },
+    {
+      "clause": "best_move",
+      "confidence": 1.0
+    },
+    {
+      "clause": "check_win",
+      "confidence": 1.0
+    },
+    {
+      "clause": "check_winner",
+      "confidence": 1.0
+    },
+    {
+      "clause": "game_tree",
+      "confidence": 1.0
+    },
+    {
+      "clause": "get_board",
+      "confidence": 1.0
+    },
+    {
+      "clause": "has_won",
+      "confidence": 1.0
+    },
+    {
+      "clause": "input_board",
+      "confidence": 1.0
+    },
+    {
+      "clause": "is_winner",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9758974358974359
+    },
+    {
+      "clause": "minimax",
+      "confidence": 1.0
+    },
+    {
+      "clause": "output",
+      "confidence": 1.0
+    },
+    {
+      "clause": "output_winner",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_answer",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_winner",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_grid",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_matrix",
+      "confidence": 1.0
+    },
+    {
+      "clause": "scan_board",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve_game",
+      "confidence": 1.0
+    },
+    {
+      "clause": "winner",
+      "confidence": 1.0
+    }
+  ]
+}

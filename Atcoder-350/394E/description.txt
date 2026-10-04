@@ -1,0 +1,8 @@
+We have a directed graph with N vertices, numbered 1, 2, \ldots, N . Information about the edges is given by N^2 characters C_{1, 1}, C_{1, 2}, \ldots, C_{1, N}, C_{2, 1}, \ldots, C_{N, N} . Here, each C_{i, j} is either a lowercase English letter or - . If C_{i, j} is a lowercase English letter, then there is exactly one directed edge from vertex i to vertex j labeled C_{i, j} . If C_{i, j} is - , there is no edge from vertex i to vertex j . For each integer pair (i, j) with 1 \leq i, j \leq N , answer the following question: Among all (not necessarily simple) paths from vertex i to vertex j whose concatenation of labels on the edges forms a palindrome, what is the length of the shortest such path? If there is no such path, the answer is -1 .
+
+**Constraints:**
+- 1 <= N, M, K <= 2 * 10^5
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple
+- All input values are integers

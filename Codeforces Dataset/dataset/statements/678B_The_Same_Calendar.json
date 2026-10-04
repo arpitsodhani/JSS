@@ -1,0 +1,34 @@
+{
+  "contestId": 678,
+  "index": "B",
+  "problem_id": "678B",
+  "name": "The Same Calendar",
+  "rating": 1600,
+  "tags": [
+    "implementation"
+  ],
+  "points": null,
+  "solvedCount": 4775,
+  "source": "verbatim_cf_fetch",
+  "title": "B. The Same Calendar",
+  "legend": "The girl Taylor has a beautiful calendar for the year y. In the calendar all days are given with their days of week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday and Sunday.\n\nThe calendar is so beautiful that she wants to know what is the next year after y when the calendar will be exactly the same. Help Taylor to find that year.\n\nNote that leap years has 366 days. The year is leap if it is divisible by 400 or it is divisible by 4, but not by 100 (https://en.wikipedia.org/wiki/Leap_year).",
+  "input_spec": "The only line contains integer y (1000 ≤ y < 100'000) — the year of the calendar.",
+  "output_spec": "Print the only integer y' — the next year after y when the calendar will be the same. Note that you should find the first year after y with the same calendar.",
+  "note": "Today is Monday, the 13th of June, 2016.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2016\n",
+      "output": "2044"
+    },
+    {
+      "input": "2000\n",
+      "output": "2028"
+    },
+    {
+      "input": "50501\n",
+      "output": "50507"
+    }
+  ]
+}

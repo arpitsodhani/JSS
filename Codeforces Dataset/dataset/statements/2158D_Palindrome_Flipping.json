@@ -1,0 +1,31 @@
+{
+  "contestId": 2158,
+  "index": "D",
+  "problem_id": "2158D",
+  "name": "Palindrome Flipping",
+  "rating": 2000,
+  "tags": [
+    "brute force",
+    "constructive algorithms",
+    "graphs",
+    "implementation",
+    "shortest paths",
+    "strings"
+  ],
+  "points": 2000.0,
+  "solvedCount": 3418,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Palindrome Flipping",
+  "legend": "You are given two binary strings s and t, each of the same length n. You are allowed to perform the following operation:\n\nPick indices l, r (1≤l<r≤n) such that substring sl,r is a palindrome and flip all bits in substring sl,r.\n\nThe goal is to finally make s equal to t, performing any of the above operations at most 2n times (possibly none).\n\nA substring sl,r of a string s is the contiguous sequence of characters starting from index l and ending at index r (both inclusive), where 1≤l<r≤|s|. Here |s| denotes the length of the string s.\n\nA string is a palindrome if it reads the same forwards and backwards. For example, the strings 101 and 00 are palindromes, while 10 is not.\n\nFlipping all bits in a substring means changing each 0 to 1 and each 1 to 0 in that substring. For example, flipping the substring 101 results in 010.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases T (1≤T≤5⋅103). The description of the test cases follows.\n\nThe first line of each test case contains an integer n (4≤n≤100) — the length of the strings s and t.\n\nThe next two lines of each test case contain the binary strings s and t, respectively.\n\nIt is guaranteed that the sum of n2 over all test cases does not exceed 5⋅105.",
+  "output_spec": "For each test case, if it is impossible to achieve the goal, print −1.\n\nOtherwise, the first line should contain an integer k (0≤k≤2n) — the number of operations.\n\nFor each of the next k lines, print two integers l,r (1≤l<r≤n) — the indices you choose in each operation. Note that sl,r must be a palindrome at this stage.",
+  "note": "For the first test case:\n\nInitially, s=01011 and t=10000.\nFirst, we choose l=1 and r=3. This is a valid operation since s1,3=010 is a palindrome. After flipping s1,3, s=10111.\nThen, we choose l=3 and r=5. This is a valid operation since s3,5=111 is a palindrome. After flipping s3,5, s=10000.\nNow, s is equal to t.\n\nFor the second test case:\n\nInitially, s=1010101 and t=0101010.\nFirst, we choose l=1 and r=7. This is a valid operation since s1,7=1010101 is a palindrome. After flipping s1,7, s=0101010.\nNow, s is equal to t.\n\nFor the third test case:\n\nInitially, s is equal to t. No operations are needed.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n5\n01011\n10000\n7\n1010101\n0101010\n4\n0010\n0010\n",
+      "output": "2\n1 3\n3 5\n1\n1 7\n0"
+    }
+  ]
+}

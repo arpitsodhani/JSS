@@ -1,0 +1,29 @@
+{
+  "average_confidence": 0.972183316339663,
+  "clauses": [
+    {
+      "clause": "read_input",
+      "confidence": 0.9723076923076924
+    },
+    {
+      "clause": "build_adj",
+      "confidence": 0.9723076923076924
+    },
+    {
+      "clause": "find_path",
+      "confidence": 0.9836363636363636
+    },
+    {
+      "clause": "count_cycles",
+      "confidence": 0.9810526315789474
+    },
+    {
+      "clause": "print_answer",
+      "confidence": 0.9549999999999998
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9687955182072827
+    }
+  ]
+}

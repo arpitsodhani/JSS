@@ -1,0 +1,6 @@
+Takahashi has various colors of socks in his chest of drawers. The colors of the socks are represented by integers from 1 to N , and there are A_i\ (\geq 2) socks of color i . He is about to choose which socks to wear today by performing the following operation: Continue to randomly draw one sock at a time from the chest, with equal probability, until he can make a pair of socks of the same color from those he has already drawn. Once a sock is drawn, it will not be returned to the chest. Find the expected value, modulo 998244353 , of the number of times he has to draw a sock from the chest. What does it mean to find the expected value modulo 998244353 ? It can be proved that the sought expected value is always rational. Furthermore, the of this problem guarantee that if the expected value is expressed as an irreducible fraction \frac{y}{x} , then x is not divisible by 998244353 . Here, there exists a unique integer z between 0 and 998244352 , inclusive, such that xz \equiv y \pmod{998244353} . Find this z .
+
+**Constraints:**
+- 1\leq N \leq 3\times 10^5
+- 2\leq A_i \leq 3000
+- integers

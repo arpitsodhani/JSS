@@ -1,0 +1,6 @@
+Takahashi came to a store to buy a pen. Here, a red pen costs R yen, a green pen costs G yen, and a blue pen costs B yen. Takahashi dislikes the color C . If C is Red , he cannot buy a red pen; if C is Green , he cannot buy a green pen; and if C is Blue , he cannot buy a blue pen. Determine the minimum amount of money he needs to buy one pen.
+
+**Constraints:**
+- 1 <= R, G, B <= 100
+- C is one of 'Red', 'Green', or 'Blue'
+- All input values are integers

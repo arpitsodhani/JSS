@@ -1,0 +1,29 @@
+{
+  "contestId": 2043,
+  "index": "D",
+  "problem_id": "2043D",
+  "name": "Problem about GCD",
+  "rating": 1800,
+  "tags": [
+    "brute force",
+    "flows",
+    "math",
+    "number theory"
+  ],
+  "points": null,
+  "solvedCount": 7829,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Problem about GCD",
+  "legend": "Given three integers l, r, and G, find two integers A and B (l≤A≤B≤r) such that their greatest common divisor (GCD) equals G and the distance |A−B| is maximized.\n\nIf there are multiple such pairs, choose the one where A is minimized. If no such pairs exist, output \"-1 -1\".",
+  "input_spec": "The first line contains a single integer t (1≤t≤103) — the number of test cases. Then, t test cases follow.\n\nEach test case consists of a single line containing three integers l,r,G (1≤l≤r≤1018; 1≤G≤1018) — the range boundaries and the required GCD.",
+  "output_spec": "For each test case, output two integers A and B — the solution to the problem, or \"-1 -1\" if no such pair exists.",
+  "note": "",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n4 8 2\n4 8 3\n4 8 4\n5 7 6\n",
+      "output": "4 6\n-1 -1\n4 8\n6 6"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+There are N seats in a row, numbered 1, 2, \ldots, N . The state of the seats is given by a string S of length N consisting of # and . . If the i -th character of S is # , it means seat i is occupied; if it is . , seat i is unoccupied. Find the number of integers i between 1 and N - 2 , inclusive, that satisfy the following condition: Seats i and i + 2 are occupied, and seat i + 1 is unoccupied.
+
+**Constraints:**
+- N is an integer
+- 3 <= N <= 100
+- S is a string of length N consisting of '#' and '.'

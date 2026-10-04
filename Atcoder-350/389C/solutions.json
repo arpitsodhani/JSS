@@ -1,0 +1,171 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(long long *L)",
+          "code": "int Q; scanf(\"%d\", &Q); return Q;\n"
+        },
+        {
+          "clause_id": "push_snake",
+          "signature": "void push_snake(long long len,long long *head,long long *lenq,int *tail,int *cnt,long long *offset)",
+          "code": "long long h=0;\nif(*cnt==0) h=0; else { int last=(*tail-1+200005)%200005; h=head[last]+lenq[last]; }\nhead[*tail]=h; lenq[*tail]=len; *tail=(*tail+1)%200005; (*cnt)++;\n"
+        },
+        {
+          "clause_id": "pop_snake",
+          "signature": "void pop_snake(long long *head,long long *lenq,int *headp,int *cnt,long long *offset)",
+          "code": "long long m=lenq[*headp]; *offset+=m; *headp=(*headp+1)%200005; (*cnt)--;\n"
+        },
+        {
+          "clause_id": "query_k",
+          "signature": "long long query_k(int k,long long *head,int headp,long long offset)",
+          "code": "int idx=(headp+k-1)%200005; return head[idx]-offset;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int Q=read_q(NULL); static long long head[200005],lenq[200005]; int headp=0,tail=0,cnt=0; long long offset=0; for(int qi=0;qi<Q;qi++){ int t; scanf(\"%d\", &t); if(t==1){ long long l; scanf(\"%lld\", &l); push_snake(l,head,lenq,&tail,&cnt,&offset); } else if(t==2){ pop_snake(head,lenq,&headp,&cnt,&offset); } else { int k; scanf(\"%d\", &k); long long ans=query_k(k,head,headp,offset); printf(\"%lld\\n\", ans); } } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(long long *L)",
+          "code": "int Q; scanf(\"%d\", &Q); return Q;\n"
+        },
+        {
+          "clause_id": "push_snake",
+          "signature": "void push_snake(long long len,long long *head,long long *lenq,int *tail,int *cnt,long long *offset)",
+          "code": "long long h=0;\nif(*cnt==0) h=0; else { int last=(*tail-1+200005)%200005; h=head[last]+lenq[last]; }\nhead[*tail]=h; lenq[*tail]=len; *tail=(*tail+1)%200005; (*cnt)++;\n"
+        },
+        {
+          "clause_id": "pop_snake",
+          "signature": "void pop_snake(long long *head,long long *lenq,int *headp,int *cnt,long long *offset)",
+          "code": "long long m=lenq[*headp]; *offset+=m; *headp=(*headp+1)%200005; (*cnt)--;\n"
+        },
+        {
+          "clause_id": "query_k",
+          "signature": "long long query_k(int k,long long *head,int headp,long long offset)",
+          "code": "int idx=(headp+k-1)%200005; return head[idx]-offset;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int Q=read_q(NULL); static long long head[200005],lenq[200005]; int headp=0,tail=0,cnt=0; long long offset=0; for(int qi=0;qi<Q;qi++){ int t; scanf(\"%d\", &t); if(t==1){ long long l; scanf(\"%lld\", &l); push_snake(l,head,lenq,&tail,&cnt,&offset); } else if(t==2){ pop_snake(head,lenq,&headp,&cnt,&offset); } else { int k; scanf(\"%d\", &k); long long ans=query_k(k,head,headp,offset); printf(\"%lld\\n\", ans); } } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(long long *L)",
+          "code": "int Q; scanf(\"%d\", &Q); return Q;\n"
+        },
+        {
+          "clause_id": "push_snake",
+          "signature": "void push_snake(long long len,long long *head,long long *lenq,int *tail,int *cnt,long long *offset)",
+          "code": "long long h=0;\nif(*cnt==0) h=0; else { int last=(*tail-1+200005)%200005; h=head[last]+lenq[last]; }\nhead[*tail]=h; lenq[*tail]=len; *tail=(*tail+1)%200005; (*cnt)++;\n"
+        },
+        {
+          "clause_id": "pop_snake",
+          "signature": "void pop_snake(long long *head,long long *lenq,int *headp,int *cnt,long long *offset)",
+          "code": "long long m=lenq[*headp]; *offset+=m; *headp=(*headp+1)%200005; (*cnt)--;\n"
+        },
+        {
+          "clause_id": "query_k",
+          "signature": "long long query_k(int k,long long *head,int headp,long long offset)",
+          "code": "int idx=(headp+k-1)%200005; return head[idx]-offset;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int Q=read_q(NULL); static long long head[200005],lenq[200005]; int headp=0,tail=0,cnt=0; long long offset=0; for(int qi=0;qi<Q;qi++){ int t; scanf(\"%d\", &t); if(t==1){ long long l; scanf(\"%lld\", &l); push_snake(l,head,lenq,&tail,&cnt,&offset); } else if(t==2){ pop_snake(head,lenq,&headp,&cnt,&offset); } else { int k; scanf(\"%d\", &k); long long ans=query_k(k,head,headp,offset); printf(\"%lld\\n\", ans); } } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(long long *L)",
+          "code": "int Q; scanf(\"%d\", &Q); return Q;\n"
+        },
+        {
+          "clause_id": "push_snake",
+          "signature": "void push_snake(long long len,long long *head,long long *lenq,int *tail,int *cnt,long long *offset)",
+          "code": "long long h=0;\nif(*cnt==0) h=0; else { int last=(*tail-1+200005)%200005; h=head[last]+lenq[last]; }\nhead[*tail]=h; lenq[*tail]=len; *tail=(*tail+1)%200005; (*cnt)++;\n"
+        },
+        {
+          "clause_id": "pop_snake",
+          "signature": "void pop_snake(long long *head,long long *lenq,int *headp,int *cnt,long long *offset)",
+          "code": "long long m=lenq[*headp]; *offset+=m; *headp=(*headp+1)%200005; (*cnt)--;\n"
+        },
+        {
+          "clause_id": "query_k",
+          "signature": "long long query_k(int k,long long *head,int headp,long long offset)",
+          "code": "int idx=(headp+k-1)%200005; return head[idx]-offset;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int Q=read_q(NULL); static long long head[200005],lenq[200005]; int headp=0,tail=0,cnt=0; long long offset=0; for(int qi=0;qi<Q;qi++){ int t; scanf(\"%d\", &t); if(t==1){ long long l; scanf(\"%lld\", &l); push_snake(l,head,lenq,&tail,&cnt,&offset); } else if(t==2){ pop_snake(head,lenq,&headp,&cnt,&offset); } else { int k; scanf(\"%d\", &k); long long ans=query_k(k,head,headp,offset); printf(\"%lld\\n\", ans); } } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(long long *L)",
+          "code": "int Q; scanf(\"%d\", &Q); return Q;\n"
+        },
+        {
+          "clause_id": "push_snake",
+          "signature": "void push_snake(long long len,long long *head,long long *lenq,int *tail,int *cnt,long long *offset)",
+          "code": "long long h=0;\nif(*cnt==0) h=0; else { int last=(*tail-1+200005)%200005; h=head[last]+lenq[last]; }\nhead[*tail]=h; lenq[*tail]=len; *tail=(*tail+1)%200005; (*cnt)++;\n"
+        },
+        {
+          "clause_id": "pop_snake",
+          "signature": "void pop_snake(long long *head,long long *lenq,int *headp,int *cnt,long long *offset)",
+          "code": "long long m=lenq[*headp]; *offset+=m; *headp=(*headp+1)%200005; (*cnt)--;\n"
+        },
+        {
+          "clause_id": "query_k",
+          "signature": "long long query_k(int k,long long *head,int headp,long long offset)",
+          "code": "int idx=(headp+k-1)%200005; return head[idx]-offset;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int Q=read_q(NULL); static long long head[200005],lenq[200005]; int headp=0,tail=0,cnt=0; long long offset=0; for(int qi=0;qi<Q;qi++){ int t; scanf(\"%d\", &t); if(t==1){ long long l; scanf(\"%lld\", &l); push_snake(l,head,lenq,&tail,&cnt,&offset); } else if(t==2){ pop_snake(head,lenq,&headp,&cnt,&offset); } else { int k; scanf(\"%d\", &k); long long ans=query_k(k,head,headp,offset); printf(\"%lld\\n\", ans); } } return 0; }\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "389C",
+  "total_programs": 5
+}

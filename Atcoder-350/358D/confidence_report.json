@@ -1,0 +1,25 @@
+{
+  "average_confidence": 0.9564701298701299,
+  "clauses": [
+    {
+      "clause": "compare_int",
+      "confidence": 0.9157142857142858
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "match_boxes_to_people",
+      "confidence": 0.9206363636363637
+    },
+    {
+      "clause": "read_arrays",
+      "confidence": 0.9460000000000001
+    },
+    {
+      "clause": "sort_arrays",
+      "confidence": 1.0
+    }
+  ]
+}

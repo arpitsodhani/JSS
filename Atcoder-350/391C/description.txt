@@ -1,0 +1,6 @@
+There are N pigeons numbered from 1 to N , and there are N nests numbered from 1 to N . Initially, pigeon i is in nest i for 1\leq i\leq N . You are given Q queries, which you must process in order. There are two types of queries, each given in one of the following formats: 1 P H : Move pigeon P to nest H . 2 : Output the number of nests that contain more than one pigeon.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 2 * 10^5
+- All input values are integers

@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_array_gcd",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_gcd_euclidean",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "process_gcd_queries",
+      "confidence": 1.0
+    }
+  ]
+}

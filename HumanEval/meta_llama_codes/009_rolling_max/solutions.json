@@ -1,0 +1,137 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "compute_rolling_max",
+          "code": "void compute_rolling_max(int *arr, int n, int *result) {\n    if (n == 0) return;\n    int max_val = arr[0];\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > max_val) max_val = arr[i];\n        result[i] = max_val;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int result[n];\n    compute_rolling_max(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "compute_rolling_max",
+          "code": "void compute_rolling_max(int *arr, int n, int *result) {\n    if (n == 0) return;\n    int max_val = arr[0];\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > max_val) max_val = arr[i];\n        result[i] = max_val;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int nums[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &nums[i]);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int result[n];\n    compute_rolling_max(nums, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "compute_rolling_max",
+          "code": "void compute_rolling_max(int *arr, int n, int *result) {\n    if (n == 0) return;\n    int max_val = arr[0];\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > max_val) max_val = arr[i];\n        result[i] = max_val;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    int values[count];\n    for (int i = 0; i < count; i++) scanf(\"%d\", &values[i]);\n    if (count == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int result[count];\n    compute_rolling_max(values, count, result);\n    for (int i = 0; i < count; i++) {\n        printf(\"%d\", result[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "compute_rolling_max",
+          "code": "void compute_rolling_max(int *arr, int n, int *result) {\n    if (n == 0) return;\n    int max_val = arr[0];\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > max_val) max_val = arr[i];\n        result[i] = max_val;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int size;\n    scanf(\"%d\", &size);\n    int data[size];\n    for (int i = 0; i < size; i++) scanf(\"%d\", &data[i]);\n    if (size == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int result[size];\n    compute_rolling_max(data, size, result);\n    for (int i = 0; i < size; i++) {\n        printf(\"%d\", result[i]);\n        if (i < size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "compute_rolling_max",
+          "code": "void compute_rolling_max(int *arr, int n, int *result) {\n    if (n == 0) return;\n    int max_val = arr[0];\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > max_val) max_val = arr[i];\n        result[i] = max_val;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int a[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int result[n];\n    compute_rolling_max(a, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ],
+  "global_includes": [],
+  "tests": {
+    "clause_tests": {},
+    "program_tests": [
+      {
+        "test_id": "test_0",
+        "input": "0\n",
+        "expected": "\n"
+      },
+      {
+        "test_id": "test_1",
+        "input": "5\n1 2 3 2 3\n",
+        "expected": "1 2 3 3 3\n"
+      }
+    ]
+  },
+  "merge_settings": {
+    "consensus_threshold": 0.6,
+    "max_rounds": 3
+  },
+  "includes": [
+    "<stdio.h>"
+  ]
+}

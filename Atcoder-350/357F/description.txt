@@ -1,0 +1,9 @@
+You are given sequences of length N , A=(A_1,A_2,\ldots,A_N) and B=(B_1,B_2,\ldots,B_N) . You are also given Q queries to process in order. There are three types of queries: 1 l r x : Add x to each of A_l, A_{l+1}, \ldots, A_r . 2 l r x : Add x to each of B_l, B_{l+1}, \ldots, B_r . 3 l r : Print the remainder of \displaystyle\sum_{i=l}^r (A_i\times B_i) when divided by 998244353 .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= Q <= 2 * 10^5
+- 1 <= A_i, B_i <= 10^9
+- 1 <= l <= r <= N (for all queries)
+- 1 <= x <= 10^9 (for query types 1 and 2)
+- All input values are integers

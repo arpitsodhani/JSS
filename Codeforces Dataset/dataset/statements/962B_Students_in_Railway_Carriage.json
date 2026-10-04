@@ -1,0 +1,40 @@
+{
+  "contestId": 962,
+  "index": "B",
+  "problem_id": "962B",
+  "name": "Students in Railway Carriage",
+  "rating": 1300,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "implementation"
+  ],
+  "points": null,
+  "solvedCount": 8136,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Students in Railway Carriage",
+  "legend": "There are n consecutive seat places in a railway carriage. Each place is either empty or occupied by a passenger.\n\nThe university team for the Olympiad consists of a student-programmers and b student-athletes. Determine the largest number of students from all a+b students, which you can put in the railway carriage so that:\n\nno student-programmer is sitting next to the student-programmer;\nand no student-athlete is sitting next to the student-athlete.\n\nIn the other words, there should not be two consecutive (adjacent) places where two student-athletes or two student-programmers are sitting.\n\nConsider that initially occupied seat places are occupied by jury members (who obviously are not students at all).",
+  "input_spec": "The first line contain three integers n, a and b (1≤n≤2⋅105, 0≤a,b≤2⋅105, a+b>0) — total number of seat places in the railway carriage, the number of student-programmers and the number of student-athletes.\n\nThe second line contains a string with length n, consisting of characters \".\" and \"*\". The dot means that the corresponding place is empty. The asterisk means that the corresponding place is occupied by the jury member.",
+  "output_spec": "Print the largest number of students, which you can put in the railway carriage so that no student-programmer is sitting next to a student-programmer and no student-athlete is sitting next to a student-athlete.",
+  "note": "In the first example you can put all student, for example, in the following way: *.AB*\n\nIn the second example you can put four students, for example, in the following way: *BAB*B\n\nIn the third example you can put seven students, for example, in the following way: B*ABAB**A*B\n\nThe letter A means a student-programmer, and the letter B — student-athlete.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5 1 1\n*...*\n",
+      "output": "2"
+    },
+    {
+      "input": "6 2 3\n*...*.\n",
+      "output": "4"
+    },
+    {
+      "input": "11 3 10\n.*....**.*.\n",
+      "output": "7"
+    },
+    {
+      "input": "3 2 3\n***\n",
+      "output": "0"
+    }
+  ]
+}

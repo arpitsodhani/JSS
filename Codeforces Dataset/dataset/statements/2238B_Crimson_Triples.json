@@ -1,0 +1,28 @@
+{
+  "contestId": 2238,
+  "index": "B",
+  "problem_id": "2238B",
+  "name": "Crimson Triples",
+  "rating": 900,
+  "tags": [
+    "dp",
+    "math",
+    "number theory"
+  ],
+  "points": 750.0,
+  "solvedCount": 14513,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Crimson Triples",
+  "legend": "Chills run down your spine...\n— Terraria\n\nAfter summoning the next boss — The Brain of Cthulhu, you noticed that it surrounds itself with n eyes, numbered from 1 to n. In one attack, The Brain of Cthulhu chooses a triple of eyes (not necessarily distinct) with numbers (a,b,c). The triple of eyes is called crimson if and only if the following property holds:\n\ngcd∗(lcm†(a,b),lcm(b,c))=gcd(a,c),\n\nTo defeat the boss, you want to know how many ways The Brain of Cthulhu can choose a crimson triple of eyes. The triples of eyes (a1,b1,c1) and (a2,b2,c2) are considered different if a1≠a2, or b1≠b2, or c1≠c2.\n\n∗gcd(x,y) denotes the greatest common divisor (GCD) of integers x and y.\n\n†lcm(x,y) denotes the least common multiple (LCM) of integers x and y.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤1000). The description of the test cases follows.\n\nThe only line of each test case contains one integer n (1≤n≤2⋅105) — the number of eyes of The Brain of Cthulhu.\n\nIt is guaranteed that the sum of n across all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, output one integer — the number of ways to choose a crimson triple of eyes.",
+  "note": "In the first test case, there is 1 possible crimson triple: (1,1,1).\n\nIn the second test case, there are 5 possible crimson triples: (1,1,1), (1,1,2), (2,1,1), (2,1,2), (2,2,2).",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n1\n2\n20\n",
+      "output": "1\n5\n612"
+    }
+  ]
+}

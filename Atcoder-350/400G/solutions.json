@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "better_pair",
+          "signature": "int better_pair(long long aval, int acnt, long long bval, int bcnt)",
+          "code": "if(aval!=bval) return aval>bval; return acnt>bcnt;\n"
+        },
+        {
+          "clause_id": "solve_c",
+          "signature": "void solve_c(long long c, int n, long long (*x)[3], long long *out_val, int *out_cnt)",
+          "code": "const long long NEG = -(long long)4000000000000000000LL;\nlong long dpv[8]; int dpc[8];\nfor(int m=0;m<8;m++){ dpv[m]=NEG; dpc[m]=0; }\ndpv[0]=0; dpc[0]=0;\nfor(int i=0;i<n;i++){\n  long long ndpv[8]; int ndpc[8];\n  for(int m=0;m<8;m++){ ndpv[m]=dpv[m]; ndpc[m]=dpc[m]; }\n  for(int mask=0;mask<8;mask++){\n    if(dpv[mask] <= NEG/2) continue;\n    for(int d=0;d<3;d++){\n      long long v = dpv[mask] + 2LL*x[i][d] - c;\n      int cnt = dpc[mask] + 1;\n      int nmask = mask ^ (1<<d);\n      if(better_pair(v,cnt,ndpv[nmask],ndpc[nmask])){ ndpv[nmask]=v; ndpc[nmask]=cnt; }\n    }\n  }\n  for(int m=0;m<8;m++){ dpv[m]=ndpv[m]; dpc[m]=ndpc[m]; }\n}\n*out_val = dpv[0];\n*out_cnt = dpc[0];\n"
+        },
+        {
+          "clause_id": "solve_one_case",
+          "signature": "long long solve_one_case(int n, int k, long long (*x)[3])",
+          "code": "long long L=0, R=(1LL<<31);\nwhile(L+1<R){\n  long long M=(L+R)/2;\n  long long v; int cnt;\n  solve_c(M,n,x,&v,&cnt);\n  if(cnt >= 2*k) L=M; else R=M;\n}\nlong long v; int cnt;\nsolve_c(L,n,x,&v,&cnt);\nlong long ans = (v + 2LL*k*L)/2LL;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; if(scanf(\"%d\", &T)!=1) return 0; while(T--){ int n,k; scanf(\"%d %d\", &n, &k); long long (*x)[3]=(long long(*)[3])malloc((size_t)n*sizeof(long long[3])); for(int i=0;i<n;i++) scanf(\"%lld %lld %lld\", &x[i][0], &x[i][1], &x[i][2]); long long ans=solve_one_case(n,k,x); printf(\"%lld\\n\", ans); free(x); } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "better_pair",
+          "signature": "int better_pair(long long aval, int acnt, long long bval, int bcnt)",
+          "code": "if(aval>bval) return 1; if(aval<bval) return 0; return acnt>bcnt;\n"
+        },
+        {
+          "clause_id": "solve_c",
+          "signature": "void solve_c(long long c, int n, long long (*x)[3], long long *out_val, int *out_cnt)",
+          "code": "const long long NEG = -(long long)4000000000000000000LL;\nlong long dpv[8]; int dpc[8];\nfor(int m=0;m<8;m++){ dpv[m]=NEG; dpc[m]=0; }\ndpv[0]=0; dpc[0]=0;\nfor(int i=0;i<n;i++){\n  long long ndpv[8]; int ndpc[8];\n  for(int m=0;m<8;m++){ ndpv[m]=dpv[m]; ndpc[m]=dpc[m]; }\n  for(int d=0;d<3;d++){\n    for(int mask=0;mask<8;mask++){\n      if(dpv[mask] <= NEG/2) continue;\n      long long v = dpv[mask] + 2LL*x[i][d] - c;\n      int cnt = dpc[mask] + 1;\n      int nmask = mask ^ (1<<d);\n      if(better_pair(v,cnt,ndpv[nmask],ndpc[nmask])){ ndpv[nmask]=v; ndpc[nmask]=cnt; }\n    }\n  }\n  for(int m=0;m<8;m++){ dpv[m]=ndpv[m]; dpc[m]=ndpc[m]; }\n}\n*out_val = dpv[0];\n*out_cnt = dpc[0];\n"
+        },
+        {
+          "clause_id": "solve_one_case",
+          "signature": "long long solve_one_case(int n, int k, long long (*x)[3])",
+          "code": "long long lo=0, hi=(1LL<<31);\nwhile(hi-lo>1){\n  long long mid=(lo+hi)/2;\n  long long v; int cnt;\n  solve_c(mid,n,x,&v,&cnt);\n  if(cnt>=2*k) lo=mid; else hi=mid;\n}\nlong long v; int cnt;\nsolve_c(lo,n,x,&v,&cnt);\nreturn (v + 2LL*k*lo)/2LL;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; if(scanf(\"%d\", &T)!=1) return 0; while(T--){ int n,k; scanf(\"%d %d\", &n, &k); long long (*x)[3]=(long long(*)[3])malloc((size_t)n*sizeof(long long[3])); for(int i=0;i<n;i++) scanf(\"%lld %lld %lld\", &x[i][0], &x[i][1], &x[i][2]); long long ans=solve_one_case(n,k,x); printf(\"%lld\\n\", ans); free(x); } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "better_pair",
+          "signature": "int better_pair(long long aval, int acnt, long long bval, int bcnt)",
+          "code": "if(aval!=bval){ return aval>bval; } return acnt>bcnt;\n"
+        },
+        {
+          "clause_id": "solve_c",
+          "signature": "void solve_c(long long c, int n, long long (*x)[3], long long *out_val, int *out_cnt)",
+          "code": "const long long NEG = -(long long)3000000000000000000LL;\nlong long dpv[8]; int dpc[8];\nfor(int m=0;m<8;m++){ dpv[m]=NEG; dpc[m]=0; }\ndpv[0]=0; dpc[0]=0;\nfor(int i=0;i<n;i++){\n  long long ndpv[8]; int ndpc[8];\n  for(int m=0;m<8;m++){ ndpv[m]=dpv[m]; ndpc[m]=dpc[m]; }\n  for(int mask=0;mask<8;mask++){\n    if(dpv[mask] <= NEG/2) continue;\n    long long base=dpv[mask]; int bc=dpc[mask];\n    for(int d=0;d<3;d++){\n      long long v = base + 2LL*x[i][d] - c;\n      int cnt = bc + 1;\n      int nmask = mask ^ (1<<d);\n      if(better_pair(v,cnt,ndpv[nmask],ndpc[nmask])){ ndpv[nmask]=v; ndpc[nmask]=cnt; }\n    }\n  }\n  for(int m=0;m<8;m++){ dpv[m]=ndpv[m]; dpc[m]=ndpc[m]; }\n}\n*out_val = dpv[0];\n*out_cnt = dpc[0];\n"
+        },
+        {
+          "clause_id": "solve_one_case",
+          "signature": "long long solve_one_case(int n, int k, long long (*x)[3])",
+          "code": "long long lo=0, hi=(1LL<<31);\nfor(int it=0;it<64;it++){\n  long long mid=(lo+hi)/2;\n  long long v; int cnt;\n  solve_c(mid,n,x,&v,&cnt);\n  if(cnt>=2*k) lo=mid; else hi=mid;\n}\nlong long v; int cnt;\nsolve_c(lo,n,x,&v,&cnt);\nreturn (v + 2LL*k*lo)/2LL;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; if(scanf(\"%d\", &T)!=1) return 0; while(T--){ int n,k; scanf(\"%d %d\", &n, &k); long long (*x)[3]=(long long(*)[3])malloc((size_t)n*sizeof(long long[3])); for(int i=0;i<n;i++) scanf(\"%lld %lld %lld\", &x[i][0], &x[i][1], &x[i][2]); long long ans=solve_one_case(n,k,x); printf(\"%lld\\n\", ans); free(x); } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "better_pair",
+          "signature": "int better_pair(long long aval, int acnt, long long bval, int bcnt)",
+          "code": "return (aval!=bval)?(aval>bval):(acnt>bcnt);\n"
+        },
+        {
+          "clause_id": "solve_c",
+          "signature": "void solve_c(long long c, int n, long long (*x)[3], long long *out_val, int *out_cnt)",
+          "code": "const long long NEG = -(long long)4000000000000000000LL;\nlong long dpv[8]; int dpc[8];\nfor(int m=0;m<8;m++){ dpv[m]=NEG; dpc[m]=0; }\ndpv[0]=0; dpc[0]=0;\nfor(int i=0;i<n;i++){\n  long long ndpv[8]; int ndpc[8];\n  for(int m=0;m<8;m++){ ndpv[m]=dpv[m]; ndpc[m]=dpc[m]; }\n  for(int mask=0;mask<8;mask++){\n    if(dpv[mask] <= NEG/2) continue;\n    for(int d=2;d>=0;d--){\n      long long v = dpv[mask] + 2LL*x[i][d] - c;\n      int cnt = dpc[mask] + 1;\n      int nmask = mask ^ (1<<d);\n      if(better_pair(v,cnt,ndpv[nmask],ndpc[nmask])){ ndpv[nmask]=v; ndpc[nmask]=cnt; }\n    }\n  }\n  for(int m=0;m<8;m++){ dpv[m]=ndpv[m]; dpc[m]=ndpc[m]; }\n}\n*out_val = dpv[0];\n*out_cnt = dpc[0];\n"
+        },
+        {
+          "clause_id": "solve_one_case",
+          "signature": "long long solve_one_case(int n, int k, long long (*x)[3])",
+          "code": "long long L=0, R=(1LL<<31);\nwhile(L<R-1){\n  long long M=(L+R)/2;\n  long long v; int cnt;\n  solve_c(M,n,x,&v,&cnt);\n  if(cnt>=2*k) L=M; else R=M;\n}\nlong long v; int cnt;\nsolve_c(L,n,x,&v,&cnt);\nreturn (v + 2LL*k*L)/2LL;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; if(scanf(\"%d\", &T)!=1) return 0; while(T--){ int n,k; scanf(\"%d %d\", &n, &k); long long (*x)[3]=(long long(*)[3])malloc((size_t)n*sizeof(long long[3])); for(int i=0;i<n;i++) scanf(\"%lld %lld %lld\", &x[i][0], &x[i][1], &x[i][2]); long long ans=solve_one_case(n,k,x); printf(\"%lld\\n\", ans); free(x); } return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "better_pair",
+          "signature": "int better_pair(long long aval, int acnt, long long bval, int bcnt)",
+          "code": "if(aval==bval) return acnt>bcnt; return aval>bval;\n"
+        },
+        {
+          "clause_id": "solve_c",
+          "signature": "void solve_c(long long c, int n, long long (*x)[3], long long *out_val, int *out_cnt)",
+          "code": "const long long NEG = -(long long)4000000000000000000LL;\nlong long dpv[8]; int dpc[8];\nfor(int m=0;m<8;m++){ dpv[m]=NEG; dpc[m]=0; }\ndpv[0]=0; dpc[0]=0;\nfor(int i=0;i<n;i++){\n  long long ndpv[8]; int ndpc[8];\n  for(int m=0;m<8;m++){ ndpv[m]=dpv[m]; ndpc[m]=dpc[m]; }\n  for(int mask=0;mask<8;mask++){\n    if(dpv[mask] <= NEG/2) continue;\n    for(int d=0;d<3;d++){\n      int nmask = mask ^ (1<<d);\n      long long v = dpv[mask] + 2LL*x[i][d] - c;\n      int cnt = dpc[mask] + 1;\n      if(v>ndpv[nmask] || (v==ndpv[nmask] && cnt>ndpc[nmask])){ ndpv[nmask]=v; ndpc[nmask]=cnt; }\n    }\n  }\n  for(int m=0;m<8;m++){ dpv[m]=ndpv[m]; dpc[m]=ndpc[m]; }\n\n    /* noop */\n    if(0){;}\n}\n*out_val = dpv[0];\n*out_cnt = dpc[0];\n"
+        },
+        {
+          "clause_id": "solve_one_case",
+          "signature": "long long solve_one_case(int n, int k, long long (*x)[3])",
+          "code": "long long L=0, R=(1LL<<31);\nwhile(L+1<R){\n  long long M=L + (R-L)/2;\n  long long v; int cnt;\n  solve_c(M,n,x,&v,&cnt);\n  if(cnt>=2*k) L=M; else R=M;\n\n    /* noop */\n    if(0){;}\n}\nlong long v; int cnt;\nsolve_c(L,n,x,&v,&cnt);\nreturn (v + 2LL*k*L)/2LL;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; if(scanf(\"%d\", &T)!=1) return 0; while(T--){ int n,k; scanf(\"%d %d\", &n, &k); long long (*x)[3]=(long long(*)[3])malloc((size_t)n*sizeof(long long[3])); for(int i=0;i<n;i++) scanf(\"%lld %lld %lld\", &x[i][0], &x[i][1], &x[i][2]); long long ans=solve_one_case(n,k,x); printf(\"%lld\\n\", ans); free(x); } return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

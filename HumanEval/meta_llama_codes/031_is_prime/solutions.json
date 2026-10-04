@@ -1,0 +1,70 @@
+{
+  "problem_id": "031_is_prime",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    if (n < 2) {\n        printf(\"False\\n\");\n        return 0;\n    }\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            printf(\"False\\n\");\n            return 0;\n        }\n    }\n    printf(\"True\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int num;\n    scanf(\"%d\", &num);\n    if (num <= 1) {\n        printf(\"False\\n\");\n    } else {\n        int is_prime = 1;\n        for (int i = 2; i * i <= num; i++) {\n            if (num % i == 0) {\n                is_prime = 0;\n                break;\n            }\n        }\n        printf(\"%s\\n\", is_prime ? \"True\" : \"False\");\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int prime = (n >= 2);\n    for (int i = 2; i * i <= n && prime; i++) {\n        if (n % i == 0) prime = 0;\n    }\n    printf(\"%s\\n\", prime ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int value;\n    scanf(\"%d\", &value);\n    if (value < 2) {\n        printf(\"False\\n\");\n        return 0;\n    }\n    for (int div = 2; div * div <= value; div++) {\n        if (value % div == 0) {\n            printf(\"False\\n\");\n            return 0;\n        }\n    }\n    printf(\"True\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int number;\n    scanf(\"%d\", &number);\n    int result = 1;\n    if (number < 2) result = 0;\n    for (int j = 2; j * j <= number; j++) {\n        if (number % j == 0) {\n            result = 0;\n            break;\n        }\n    }\n    printf(\"%s\\n\", result ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

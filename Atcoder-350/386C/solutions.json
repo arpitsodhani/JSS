@@ -1,0 +1,151 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s,char *t)",
+          "code": "scanf(\"%s%s\", s,t);\n"
+        },
+        {
+          "clause_id": "can_edit",
+          "signature": "int can_edit(const char *s,const char *t)",
+          "code": "int n=strlen(s), m=strlen(t);\nif(n==m){ int diff=0; for(int i=0;i<n;i++) if(s[i]!=t[i]) diff++; return diff<=1; }\nif(n+1==m){ int i=0,j=0,used=0; while(i<n && j<m){ if(s[i]==t[j]){i++;j++;} else { if(used) return 0; used=1; j++; } } return 1; }\nif(m+1==n){ int i=0,j=0,used=0; while(i<n && j<m){ if(s[i]==t[j]){i++;j++;} else { if(used) return 0; used=1; i++; } } return 1; }\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[600000],t[600000]; read_input(s,t); int ok=can_edit(s,t); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s,char *t)",
+          "code": "scanf(\"%s%s\", s,t);\n"
+        },
+        {
+          "clause_id": "can_edit",
+          "signature": "int can_edit(const char *s,const char *t)",
+          "code": "int n=strlen(s), m=strlen(t);\nif(n==m){ int diff=0; for(int i=0;i<n;i++) if(s[i]!=t[i]) diff++; return diff<=1; }\nif(n+1==m){ int i=0,j=0,used=0; while(i<n && j<m){ if(s[i]==t[j]){i++;j++;} else { if(used) return 0; used=1; j++; } } return 1; }\nif(m+1==n){ int i=0,j=0,used=0; while(i<n && j<m){ if(s[i]==t[j]){i++;j++;} else { if(used) return 0; used=1; i++; } } return 1; }\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[600000],t[600000]; read_input(s,t); int ok=can_edit(s,t); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s,char *t)",
+          "code": "scanf(\"%s%s\", s,t);\n"
+        },
+        {
+          "clause_id": "can_edit",
+          "signature": "int can_edit(const char *s,const char *t)",
+          "code": "int n=strlen(s), m=strlen(t);\nif(n==m){ int diff=0; for(int i=0;i<n;i++) if(s[i]!=t[i]) diff++; return diff<=1; }\nif(n+1==m){ int i=0,j=0,used=0; while(i<n && j<m){ if(s[i]==t[j]){i++;j++;} else { if(used) return 0; used=1; j++; } } return 1; }\nif(m+1==n){ int i=0,j=0,used=0; while(i<n && j<m){ if(s[i]==t[j]){i++;j++;} else { if(used) return 0; used=1; i++; } } return 1; }\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[600000],t[600000]; read_input(s,t); int ok=can_edit(s,t); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s,char *t)",
+          "code": "scanf(\"%s%s\", s,t);\n"
+        },
+        {
+          "clause_id": "can_edit",
+          "signature": "int can_edit(const char *s,const char *t)",
+          "code": "int n=strlen(s), m=strlen(t);\nif(n==m){ int diff=0; for(int i=0;i<n;i++) if(s[i]!=t[i]) diff++; return diff<=1; }\nif(n+1==m){ int i=0,j=0,used=0; while(i<n && j<m){ if(s[i]==t[j]){i++;j++;} else { if(used) return 0; used=1; j++; } } return 1; }\nif(m+1==n){ int i=0,j=0,used=0; while(i<n && j<m){ if(s[i]==t[j]){i++;j++;} else { if(used) return 0; used=1; i++; } } return 1; }\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[600000],t[600000]; read_input(s,t); int ok=can_edit(s,t); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s,char *t)",
+          "code": "scanf(\"%s%s\", s,t);\n"
+        },
+        {
+          "clause_id": "can_edit",
+          "signature": "int can_edit(const char *s,const char *t)",
+          "code": "int n=strlen(s), m=strlen(t);\nif(n==m){ int diff=0; for(int i=0;i<n;i++) if(s[i]!=t[i]) diff++; return diff<=1; }\nif(n+1==m){ int i=0,j=0,used=0; while(i<n && j<m){ if(s[i]==t[j]){i++;j++;} else { if(used) return 0; used=1; j++; } } return 1; }\nif(m+1==n){ int i=0,j=0,used=0; while(i<n && j<m){ if(s[i]==t[j]){i++;j++;} else { if(used) return 0; used=1; i++; } } return 1; }\nreturn 0;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int x)",
+          "code": "printf(\"%s\\n\", x?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[600000],t[600000]; read_input(s,t); int ok=can_edit(s,t); print_yesno(ok); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "386C",
+  "total_programs": 5
+}

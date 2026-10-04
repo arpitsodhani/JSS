@@ -1,0 +1,5 @@
+You are given positive integers N , L , and R . For a sequence A = (1, 2, \dots, N) of length N , an operation of reversing the L -th through R -th elements was performed once. Print the sequence after this operation.
+
+**Constraints:**
+- integers
+- 1 \le L \le R \le N \le 100

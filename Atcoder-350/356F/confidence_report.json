@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9763377786871763,
+  "clauses": [
+    {
+      "clause": "find_kth_distance",
+      "confidence": 0.9693406593406593
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9821276715252619
+    },
+    {
+      "clause": "read_input",
+      "confidence": 0.9883333333333333
+    },
+    {
+      "clause": "toggle_element",
+      "confidence": 0.9655494505494506
+    }
+  ]
+}

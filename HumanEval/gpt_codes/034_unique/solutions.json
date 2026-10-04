@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "unique_sorted",
+          "code": "void unique_sorted(int *arr, int n) {\n    int result[1000], count = 0;\n    for (int i = 0; i < n; i++) {\n        int found = 0;\n        for (int j = 0; j < count; j++) {\n            if (result[j] == arr[i]) {\n                found = 1;\n                break;\n            }\n        }\n        if (!found) result[count++] = arr[i];\n    }\n    for (int i = 0; i < count-1; i++) {\n        for (int j = i+1; j < count; j++) {\n            if (result[i] > result[j]) {\n                int temp = result[i];\n                result[i] = result[j];\n                result[j] = temp;\n            }\n        }\n    }\n    for (int i = 0; i < count; i++) {\n        printf(\"%d\", result[i]);\n        if (i < count-1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    unique_sorted(arr, n);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "distinct_sorted",
+          "code": "void distinct_sorted(int *nums, int size) {\n    int output[1000], num = 0;\n    for (int i = 0; i < size; i++) {\n        int exists = 0;\n        for (int j = 0; j < num; j++) {\n            if (output[j] == nums[i]) {\n                exists = 1;\n                break;\n            }\n        }\n        if (!exists) output[num++] = nums[i];\n    }\n    for (int i = 0; i < num-1; i++) {\n        for (int j = i+1; j < num; j++) {\n            if (output[i] > output[j]) {\n                int tmp = output[i];\n                output[i] = output[j];\n                output[j] = tmp;\n            }\n        }\n    }\n    for (int i = 0; i < num; i++) {\n        printf(\"%d\", output[i]);\n        if (i < num-1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    int data[count];\n    for (int i = 0; i < count; i++) scanf(\"%d\", &data[i]);\n    distinct_sorted(data, count);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "sorted_unique",
+          "code": "void sorted_unique(int *arr, int n) {\n    int res[1000],cnt=0;\n    for(int i=0;i<n;i++){int f=0;for(int j=0;j<cnt;j++)if(res[j]==arr[i]){f=1;break;}if(!f)res[cnt++]=arr[i];}\n    for(int i=0;i<cnt-1;i++) for(int j=i+1;j<cnt;j++) if(res[i]>res[j]){int t=res[i];res[i]=res[j];res[j]=t;}\n    for(int i=0;i<cnt;i++){printf(\"%d\",res[i]);if(i<cnt-1)printf(\" \");}\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\",&n);\n    int arr[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&arr[i]);\n    sorted_unique(arr,n);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "dedup_sorted",
+          "code": "void dedup_sorted(int *vals, int sz) {\n    int out[1000],n=0;\n    for(int i=0;i<sz;i++){int dup=0;for(int k=0;k<n;k++)if(out[k]==vals[i]){dup=1;break;}if(!dup)out[n++]=vals[i];}\n    for(int i=0;i<n-1;i++) for(int j=i+1;j<n;j++) if(out[i]>out[j]){int t=out[i];out[i]=out[j];out[j]=t;}\n    for(int i=0;i<n;i++){if(i)printf(\" \");printf(\"%d\",out[i]);}\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int sz;\n    scanf(\"%d\",&sz);\n    int vals[sz];\n    for(int i=0;i<sz;i++) scanf(\"%d\",&vals[i]);\n    dedup_sorted(vals,sz);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "unique_asc",
+          "code": "void unique_asc(int *data, int len) {\n    int buf[1000],cnt=0;\n    for(int i=0;i<len;i++){int found=0;for(int k=0;k<cnt;k++)if(buf[k]==data[i]){found=1;break;}if(!found)buf[cnt++]=data[i];}\n    for(int i=0;i<cnt-1;i++) for(int j=i+1;j<cnt;j++) if(buf[i]>buf[j]){int tmp=buf[i];buf[i]=buf[j];buf[j]=tmp;}\n    for(int i=0;i<cnt;i++){printf(\"%d\",buf[i]);if(i<cnt-1)printf(\" \");}\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int len;\n    scanf(\"%d\",&len);\n    int data[len];\n    for(int i=0;i<len;i++) scanf(\"%d\",&data[i]);\n    unique_asc(data,len);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

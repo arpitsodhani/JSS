@@ -1,0 +1,45 @@
+{
+  "average_confidence": 0.968184479593633,
+  "clauses": [
+    {
+      "clause": "read_input",
+      "confidence": 0.9723076923076924
+    },
+    {
+      "clause": "bit_init",
+      "confidence": 0.9640000000000001
+    },
+    {
+      "clause": "bit_add",
+      "confidence": 0.9640000000000001
+    },
+    {
+      "clause": "bit_sum",
+      "confidence": 0.9742857142857142
+    },
+    {
+      "clause": "count_inversions",
+      "confidence": 0.9810526315789474
+    },
+    {
+      "clause": "mod_norm",
+      "confidence": 0.984
+    },
+    {
+      "clause": "clamp_mod",
+      "confidence": 0.9549999999999998
+    },
+    {
+      "clause": "compute_expected",
+      "confidence": 0.9640000000000001
+    },
+    {
+      "clause": "print_answer",
+      "confidence": 0.9549999999999998
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9681987577639752
+    }
+  ]
+}

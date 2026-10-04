@@ -1,0 +1,130 @@
+{
+  "problem_id": "027_flip_case",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "flip_char",
+          "code": "char flip_char(char c) {\n    if (c >= 'a' && c <= 'z') {\n        return c - 32;\n    } else if (c >= 'A' && c <= 'Z') {\n        return c + 32;\n    }\n    return c;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char str[1000];\n    fgets(str, 1000, stdin);\n    \n    for (int i = 0; str[i] != '\\0' && str[i] != '\\n'; i++) {\n        str[i] = flip_char(str[i]);\n    }\n    \n    printf(\"%s\", str);\n    if (str[strlen(str)-1] != '\\n') printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "flip_char",
+          "code": "char flip_char(char c) {\n    if (c >= 'a' && c <= 'z') {\n        return c - 32;\n    } else if (c >= 'A' && c <= 'Z') {\n        return c + 32;\n    }\n    return c;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char str[1000];\n    fgets(str, 1000, stdin);\n    \n    for (int i = 0; str[i] != '\\0' && str[i] != '\\n'; i++) {\n        str[i] = flip_char(str[i]);\n    }\n    \n    printf(\"%s\", str);\n    if (str[strlen(str)-1] != '\\n') printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "flip_char",
+          "code": "char flip_char(char c) {\n    if (c >= 'a' && c <= 'z') {\n        return c - 32;\n    } else if (c >= 'A' && c <= 'Z') {\n        return c + 32;\n    }\n    return c;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char str[1000];\n    fgets(str, 1000, stdin);\n    \n    for (int i = 0; str[i] != '\\0' && str[i] != '\\n'; i++) {\n        str[i] = flip_char(str[i]);\n    }\n    \n    printf(\"%s\", str);\n    if (str[strlen(str)-1] != '\\n') printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "flip_char",
+          "code": "char flip_char(char c) {\n    if (c >= 'a' && c <= 'z') {\n        return c - 32;\n    } else if (c >= 'A' && c <= 'Z') {\n        return c + 32;\n    }\n    return c;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char str[1000];\n    fgets(str, 1000, stdin);\n    \n    for (int i = 0; str[i] != '\\0' && str[i] != '\\n'; i++) {\n        str[i] = flip_char(str[i]);\n    }\n    \n    printf(\"%s\", str);\n    if (str[strlen(str)-1] != '\\n') printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "flip_char",
+          "code": "char flip_char(char c) {\n    if (c >= 'a' && c <= 'z') {\n        return c - 32;\n    } else if (c >= 'A' && c <= 'Z') {\n        return c + 32;\n    }\n    return c;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char str[1000];\n    fgets(str, 1000, stdin);\n    \n    for (int i = 0; str[i] != '\\0' && str[i] != '\\n'; i++) {\n        str[i] = flip_char(str[i]);\n    }\n    \n    printf(\"%s\", str);\n    if (str[strlen(str)-1] != '\\n') printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

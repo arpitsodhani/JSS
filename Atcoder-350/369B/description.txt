@@ -1,0 +1,7 @@
+Takahashi has a piano with 100 keys arranged in a row. The i -th key from the left is called key i . He will play music by pressing N keys one by one. For the i -th press, he will press key A_i , using his left hand if S_i= L , and his right hand if S_i= R . Before starting to play, he can place both of his hands on any keys he likes, and his fatigue level at this is 0. During the performance, if he moves one hand from key x to key y , the fatigue level increases by |y-x| (conversely, the fatigue level does not increase for any reason other than moving hands). To press a certain key with a hand, that hand must be placed on that key. Find the minimum possible fatigue level at the end of the performance.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= A_i <= 100
+- S_i is 'L' or 'R'
+- All input values are integers

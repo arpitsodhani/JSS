@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int l[], int r[])",
+          "code": "int read_input(int l[], int r[]) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%d%d\", &l[i], &r[i]); return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int compute(int l1, int r1, int l2, int r2)",
+          "code": "int compute(int l1, int r1, int l2, int r2) { return !(r1 <= l2 || r2 <= l1); }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int l[], int r[], int n)",
+          "code": "long long solve(int l[], int r[], int n) { long long cnt = 0; for(int i = 0; i < n - 1; i++) { for(int j = i + 1; j < n; j++) { if(intersects(l[i], r[i], l[j], r[j])) cnt++; } } return cnt; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int l[500000], r[500000]; int n = read_input(l, r); printf(\"%lld\\n\", count_pairs(l, r, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int left[], int right[])",
+          "code": "void read_input(int *n, int left[], int right[]) { scanf(\"%d\", n); for(int i = 0; i < *n; i++) scanf(\"%d%d\", &left[i], &right[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int compute(int a1, int a2, int b1, int b2)",
+          "code": "int compute(int a1, int a2, int b1, int b2) { if(a2 <= b1) return 0; if(b2 <= a1) return 0; return 1; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int left[], int right[], int n)",
+          "code": "long long solve(int left[], int right[], int n) { long long total = 0; for(int i = 0; i < n; i++) { for(int j = i + 1; j < n; j++) { if(overlap(left[i], right[i], left[j], right[j])) total++; } } return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, left[500000], right[500000]; get_data(&n, left, right); printf(\"%lld\\n\", calc_intersections(left, right, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int a[][2])",
+          "code": "int read_input(int a[][2]) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%d%d\", &a[i][0], &a[i][1]); return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int compute(int x1, int x2, int y1, int y2)",
+          "code": "int compute(int x1, int x2, int y1, int y2) { return (x1 < y2 && y1 < x2); }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int a[][2], int n)",
+          "code": "long long solve(int a[][2], int n) { long long ans = 0; for(int i = 0; i < n - 1; i++) { for(int j = i + 1; j < n; j++) { if(has_overlap(a[i][0], a[i][1], a[j][0], a[j][1])) ans++; } } return ans; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int a[500000][2]; int n = input(a); printf(\"%lld\\n\", solve(a, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *cnt, int st[], int en[])",
+          "code": "void read_input(int *cnt, int st[], int en[]) { scanf(\"%d\", cnt); int i; for(i = 0; i < *cnt; i++) { scanf(\"%d%d\", &st[i], &en[i]); } }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int compute(int s1, int e1, int s2, int e2)",
+          "code": "int compute(int s1, int e1, int s2, int e2) { int res = 0; if(s1 < e2 && s2 < e1) res = 1; return res; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int st[], int en[], int cnt)",
+          "code": "long long solve(int st[], int en[], int cnt) { long long num = 0; int i, j; for(i = 0; i < cnt; i++) { for(j = i + 1; j < cnt; j++) { if(check_intersect(st[i], en[i], st[j], en[j])) num++; } } return num; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int cnt, st[500000], en[500000]; scan(&cnt, st, en); long long result = count_overlaps(st, en, cnt); printf(\"%lld\\n\", result); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int intervals[][2])",
+          "code": "int read_input(int intervals[][2]) { int n; scanf(\"%d\", &n); for(int k = 0; k < n; k++) scanf(\"%d%d\", &intervals[k][0], &intervals[k][1]); return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int compute(int p1, int q1, int p2, int q2)",
+          "code": "int compute(int p1, int q1, int p2, int q2) { if(q1 <= p2 || q2 <= p1) return 0; return 1; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int intervals[][2], int n)",
+          "code": "long long solve(int intervals[][2], int n) { long long count = 0; for(int i = 0; i < n; i++) { for(int j = i + 1; j < n; j++) { if(do_intersect(intervals[i][0], intervals[i][1], intervals[j][0], intervals[j][1])) count++; } } return count; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int intervals[500000][2]; int n = read(intervals); printf(\"%lld\\n\", find_count(intervals, n)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

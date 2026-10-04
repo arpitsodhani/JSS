@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int a[], int b[])",
+          "code": "void read_input(int *n, int *m, int a[], int b[]) { scanf(\"%d%d\", n, m); for(int i = 0; i < *n; i++) scanf(\"%d\", &a[i]); for(int j = 0; j < *m; j++) scanf(\"%d\", &b[j]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "void compute(int a[], int n, int b[], int m, int c[], int *from_a[])",
+          "code": "void compute(int a[], int n, int b[], int m, int c[], int *from_a[]) { int i = 0, j = 0, k = 0; while(i < n && j < m) { if(a[i] < b[j]) { c[k] = a[i]; from_a[k++] = 1; i++; } else { c[k] = b[j]; from_a[k++] = 0; j++; } } while(i < n) { c[k] = a[i++]; from_a[k++] = 1; } while(j < m) { c[k] = b[j++]; from_a[k++] = 0; } }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int from_a[], int len)",
+          "code": "int solve(int from_a[], int len) { for(int i = 0; i < len - 1; i++) { if(from_a[i] && from_a[i+1]) return 1; } return 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m, a[100], b[100], c[200], from_a[200]; read_input(&n, &m, a, b); merge_sequences(a, n, b, m, c, from_a); printf(\"%s\\n\", check_consecutive(from_a, n+m) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *na, int *nb, int sa[], int sb[])",
+          "code": "void read_input(int *na, int *nb, int sa[], int sb[]) { scanf(\"%d%d\", na, nb); for(int k = 0; k < *na; k++) scanf(\"%d\", &sa[k]); for(int k = 0; k < *nb; k++) scanf(\"%d\", &sb[k]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int compute(int sa[], int na, int sb[], int nb, int marks[])",
+          "code": "int compute(int sa[], int na, int sb[], int nb, int marks[]) { int combined[200], idx = 0; for(int i = 0; i < na; i++) { combined[idx] = sa[i]; marks[idx++] = 1; } for(int j = 0; j < nb; j++) { combined[idx] = sb[j]; marks[idx++] = 0; } for(int i = 0; i < na + nb - 1; i++) { for(int j = i + 1; j < na + nb; j++) { if(combined[i] > combined[j]) { int tc = combined[i]; combined[i] = combined[j]; combined[j] = tc; int tm = marks[i]; marks[i] = marks[j]; marks[j] = tm; } } } return na + nb; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int marks[], int total)",
+          "code": "int solve(int marks[], int total) { for(int i = 0; i < total - 1; i++) if(marks[i] && marks[i+1]) return 1; return 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int na, nb, sa[100], sb[100], marks[200]; get_data(&na, &nb, sa, sb); int total = combine_and_mark(sa, na, sb, nb, marks); printf(\"%s\\n\", has_adjacent(marks, total) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *n, int *m, int arr_a[], int arr_b[])",
+          "code": "int read_input(int *n, int *m, int arr_a[], int arr_b[]) { scanf(\"%d%d\", n, m); int i; for(i = 0; i < *n; i++) scanf(\"%d\", &arr_a[i]); for(i = 0; i < *m; i++) scanf(\"%d\", &arr_b[i]); return *n + *m; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "void compute(int arr_a[], int n, int arr_b[], int m, int result[], int flag[])",
+          "code": "void compute(int arr_a[], int n, int arr_b[], int m, int result[], int flag[]) { int idx = 0; for(int i = 0; i < n; i++) { result[idx] = arr_a[i]; flag[idx++] = 1; } for(int i = 0; i < m; i++) { result[idx] = arr_b[i]; flag[idx++] = 0; } int total = n + m; for(int i = 0; i < total; i++) { for(int j = i+1; j < total; j++) { if(result[i] > result[j]) { int t = result[i]; result[i] = result[j]; result[j] = t; t = flag[i]; flag[i] = flag[j]; flag[j] = t; } } } }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int flag[], int len)",
+          "code": "int solve(int flag[], int len) { int i = 0; while(i < len - 1) { if(flag[i] == 1 && flag[i+1] == 1) return 1; i++; } return 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m, arr_a[100], arr_b[100], result[200], flag[200]; int total = input(&n, &m, arr_a, arr_b); sort_with_flag(arr_a, n, arr_b, m, result, flag); printf(\"%s\\n\", find_consecutive(flag, total) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n1, int *n2, int d1[], int d2[])",
+          "code": "void read_input(int *n1, int *n2, int d1[], int d2[]) { scanf(\"%d%d\", n1, n2); for(int i = 0; i < *n1; i++) scanf(\"%d\", &d1[i]); for(int i = 0; i < *n2; i++) scanf(\"%d\", &d2[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int compute(int d1[], int n1, int d2[], int n2, int mark[])",
+          "code": "int compute(int d1[], int n1, int d2[], int n2, int mark[]) { typedef struct { int val; int src; } Pair; Pair pairs[200]; int cnt = 0; for(int i = 0; i < n1; i++) { pairs[cnt].val = d1[i]; pairs[cnt++].src = 1; } for(int i = 0; i < n2; i++) { pairs[cnt].val = d2[i]; pairs[cnt++].src = 0; } for(int i = 0; i < cnt; i++) { for(int j = i+1; j < cnt; j++) { if(pairs[i].val > pairs[j].val) { Pair tmp = pairs[i]; pairs[i] = pairs[j]; pairs[j] = tmp; } } } for(int i = 0; i < cnt; i++) mark[i] = pairs[i].src; return cnt; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int mark[], int size)",
+          "code": "int solve(int mark[], int size) { for(int i = 0; i < size - 1; i++) { if(mark[i] == 1 && mark[i+1] == 1) return 1; } return 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n1, n2, d1[100], d2[100], mark[200]; scan_data(&n1, &n2, d1, d2); int size = merge_mark(d1, n1, d2, n2, mark); int ans = adjacent_check(mark, size); printf(\"%s\\n\", ans ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int x[], int y[])",
+          "code": "void read_input(int *n, int *m, int x[], int y[]) { scanf(\"%d%d\", n, m); int i; for(i = 0; i < *n; i++) scanf(\"%d\", x+i); for(i = 0; i < *m; i++) scanf(\"%d\", y+i); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "void compute(int x[], int n, int y[], int m, int vals[], int tags[])",
+          "code": "void compute(int x[], int n, int y[], int m, int vals[], int tags[]) { int p = 0; for(int i = 0; i < n; i++) { vals[p] = x[i]; tags[p++] = 1; } for(int i = 0; i < m; i++) { vals[p] = y[i]; tags[p++] = 0; } int total = n + m; for(int i = 0; i < total - 1; i++) { for(int j = 0; j < total - i - 1; j++) { if(vals[j] > vals[j+1]) { int tv = vals[j]; vals[j] = vals[j+1]; vals[j+1] = tv; int tt = tags[j]; tags[j] = tags[j+1]; tags[j+1] = tt; } } } }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int tags[], int len)",
+          "code": "int solve(int tags[], int len) { for(int i = 0; i < len - 1; i++) if(tags[i] && tags[i+1]) return 1; return 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m, x[100], y[100], vals[200], tags[200]; read(&n, &m, x, y); create_merged(x, n, y, m, vals, tags); printf(\"%s\\n\", check(tags, n+m) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

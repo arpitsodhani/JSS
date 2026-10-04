@@ -1,0 +1,36 @@
+{
+  "contestId": 1108,
+  "index": "D",
+  "problem_id": "1108D",
+  "name": "Diverse Garland",
+  "rating": 1400,
+  "tags": [
+    "constructive algorithms",
+    "dp",
+    "greedy"
+  ],
+  "points": null,
+  "solvedCount": 16578,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Diverse Garland",
+  "legend": "You have a garland consisting of n lamps. Each lamp is colored red, green or blue. The color of the i-th lamp is si ('R', 'G' and 'B' — colors of lamps in the garland).\n\nYou have to recolor some lamps in this garland (recoloring a lamp means changing its initial color to another) in such a way that the obtained garland is diverse.\n\nA garland is called diverse if any two adjacent (consecutive) lamps (i. e. such lamps that the distance between their positions is 1) have distinct colors.\n\nIn other words, if the obtained garland is t then for each i from 1 to n−1 the condition ti≠ti+1 should be satisfied.\n\nAmong all ways to recolor the initial garland to make it diverse you have to choose one with the minimum number of recolored lamps. If there are multiple optimal solutions, print any of them.",
+  "input_spec": "The first line of the input contains one integer n (1≤n≤2⋅105) — the number of lamps.\n\nThe second line of the input contains the string s consisting of n characters 'R', 'G' and 'B' — colors of lamps in the garland.",
+  "output_spec": "In the first line of the output print one integer r — the minimum number of recolors needed to obtain a diverse garland from the given one.\n\nIn the second line of the output print one string t of length n — a diverse garland obtained from the initial one with minimum number of recolors. If there are multiple optimal solutions, print any of them.",
+  "note": "",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "9\nRBGRRBRGG\n",
+      "output": "2\nRBGRGBRGR"
+    },
+    {
+      "input": "8\nBBBGBRRR\n",
+      "output": "2\nBRBGBRGR"
+    },
+    {
+      "input": "13\nBBRRRRGGGGGRR\n",
+      "output": "6\nBGRBRBGBGBGRG"
+    }
+  ]
+}

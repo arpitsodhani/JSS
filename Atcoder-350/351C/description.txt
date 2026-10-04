@@ -1,0 +1,6 @@
+You have an empty sequence and N balls. The size of the i -th ball (1 \leq i \leq N) is 2^{A_i} . You will perform N operations. In the i -th operation, you add the i -th ball to the right end of the sequence, and repeat the following steps: If the sequence has one or fewer balls, end the operation. If the rightmost ball and the second rightmost ball in the sequence have different sizes, end the operation. If the rightmost ball and the second rightmost ball in the sequence have the same size, remove these two balls and add a new ball to the right end of the sequence with a size equal to the sum of the sizes of the two removed balls. Then, go back to step 1 and repeat the process. Determine the number of balls remaining in the sequence after the N operations.
+
+**Constraints:**
+- 1\leq N \leq 2\times 10^5
+- 0\leq A_i\leq 10^9
+- allintegers

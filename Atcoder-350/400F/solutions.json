@@ -1,0 +1,199 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *c, long long *x)",
+          "code": "scanf(\"%d\", n);\nfor(int i=0;i<*n;i++){ scanf(\"%d\", &c[i]); c[i]--; }\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &x[i]);\n"
+        },
+        {
+          "clause_id": "build_doubled_colors",
+          "signature": "int* build_doubled_colors(int n, const int *c)",
+          "code": "int N2=2*n; int *cc=(int*)malloc((size_t)N2*sizeof(int)); for(int i=0;i<n;i++){ cc[i]=c[i]; cc[n+i]=c[i]; } return cc;\n"
+        },
+        {
+          "clause_id": "init_tables",
+          "signature": "void init_tables(int N2, long long **dp, long long **ep, long long INF)",
+          "code": "for(int i=0;i<=N2;i++){ for(int j=0;j<=N2;j++){ dp[i][j]=INF; ep[i][j]=INF; } dp[i][i]=0; ep[i][i]=0; }\n"
+        },
+        {
+          "clause_id": "solve_case",
+          "signature": "long long solve_case(int n, const int *c, const long long *x)",
+          "code": "const long long INF=1000000000000000010LL;\nint N2=2*n;\nint *cc=build_doubled_colors(n,c);\nlong long **dp=(long long**)malloc((size_t)(N2+1)*sizeof(long long*));\nlong long **ep=(long long**)malloc((size_t)(N2+1)*sizeof(long long*));\nfor(int i=0;i<=N2;i++){ dp[i]=(long long*)malloc((size_t)(N2+1)*sizeof(long long)); ep[i]=(long long*)malloc((size_t)(N2+1)*sizeof(long long)); }\ninit_tables(N2,dp,ep,INF);\nfor(int l=N2;l>=0;l--){\n  for(int r=l+1;r<=N2;r++){\n    for(int m=l+1;m<r;m++){\n      long long v1=dp[l][m]+dp[m][r]; if(v1<dp[l][r]) dp[l][r]=v1;\n      long long v2=ep[l][m]+dp[m][r]; if(v2<ep[l][r]) ep[l][r]=v2;\n    }\n    if(cc[l]==cc[r-1]){\n      if(ep[l][r-1]<ep[l][r]) ep[l][r]=ep[l][r-1];\n      long long cand=ep[l][r] + (long long)(r-l) + x[cc[l]];\n      if(cand<dp[l][r]) dp[l][r]=cand;\n    }\n  }\n}\nlong long ans=INF;\nfor(int i=0;i<n;i++) if(dp[i][n+i]<ans) ans=dp[i][n+i];\nfor(int i=0;i<=N2;i++){ free(dp[i]); free(ep[i]); }\nfree(dp); free(ep); free(cc);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int c[2005]; static long long x[2005]; read_input(&n,c,x); long long ans=solve_case(n,c,x); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *c, long long *x)",
+          "code": "scanf(\"%d\", n);\nfor(int i=0;i<*n;i++){ scanf(\"%d\", &c[i]); c[i]--; }\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &x[i]);\n"
+        },
+        {
+          "clause_id": "build_doubled_colors",
+          "signature": "int* build_doubled_colors(int n, const int *c)",
+          "code": "int N2=2*n; int *cc=(int*)malloc((size_t)N2*sizeof(int)); for(int i=0;i<N2;i++) cc[i]=c[i%n]; return cc;\n"
+        },
+        {
+          "clause_id": "init_tables",
+          "signature": "void init_tables(int N2, long long **dp, long long **ep, long long INF)",
+          "code": "for(int i=0;i<=N2;i++){ for(int j=0;j<=N2;j++){ dp[i][j]=INF; ep[i][j]=INF; } } for(int i=0;i<=N2;i++){ dp[i][i]=0; ep[i][i]=0; }\n"
+        },
+        {
+          "clause_id": "solve_case",
+          "signature": "long long solve_case(int n, const int *c, const long long *x)",
+          "code": "const long long INF=4000000000000000000LL;\nint N2=2*n;\nint *cc=build_doubled_colors(n,c);\nlong long **dp=(long long**)malloc((size_t)(N2+1)*sizeof(long long*));\nlong long **ep=(long long**)malloc((size_t)(N2+1)*sizeof(long long*));\nfor(int i=0;i<=N2;i++){ dp[i]=(long long*)malloc((size_t)(N2+1)*sizeof(long long)); ep[i]=(long long*)malloc((size_t)(N2+1)*sizeof(long long)); }\ninit_tables(N2,dp,ep,INF);\nfor(int len=1;len<=N2;len++){\n  for(int l=0;l+len<=N2;l++){\n    int r=l+len;\n    for(int m=l+1;m<r;m++){\n      long long v1=dp[l][m]+dp[m][r]; if(v1<dp[l][r]) dp[l][r]=v1;\n      long long v2=ep[l][m]+dp[m][r]; if(v2<ep[l][r]) ep[l][r]=v2;\n    }\n    if(cc[l]==cc[r-1]){\n      if(ep[l][r-1]<ep[l][r]) ep[l][r]=ep[l][r-1];\n      long long cand=ep[l][r] + (long long)(r-l) + x[cc[l]];\n      if(cand<dp[l][r]) dp[l][r]=cand;\n    }\n  }\n}\nlong long ans=INF;\nfor(int i=0;i<n;i++) if(dp[i][n+i]<ans) ans=dp[i][n+i];\nfor(int i=0;i<=N2;i++){ free(dp[i]); free(ep[i]); }\nfree(dp); free(ep); free(cc);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int c[2005]; static long long x[2005]; read_input(&n,c,x); long long ans=solve_case(n,c,x); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *c, long long *x)",
+          "code": "scanf(\"%d\", n);\nfor(int i=0;i<*n;i++){ scanf(\"%d\", &c[i]); c[i]--; }\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &x[i]);\n"
+        },
+        {
+          "clause_id": "build_doubled_colors",
+          "signature": "int* build_doubled_colors(int n, const int *c)",
+          "code": "int N2=2*n; int *cc=(int*)malloc((size_t)N2*sizeof(int)); for(int i=0;i<n;i++){ cc[i]=c[i]; } for(int i=0;i<n;i++){ cc[n+i]=c[i]; } return cc;\n"
+        },
+        {
+          "clause_id": "init_tables",
+          "signature": "void init_tables(int N2, long long **dp, long long **ep, long long INF)",
+          "code": "for(int i=0;i<=N2;i++){ for(int j=0;j<=N2;j++){ dp[i][j]=INF; ep[i][j]=INF; } dp[i][i]=0; ep[i][i]=0; }\n"
+        },
+        {
+          "clause_id": "solve_case",
+          "signature": "long long solve_case(int n, const int *c, const long long *x)",
+          "code": "const long long INF=1000000000000000010LL;\nint N2=2*n;\nint *cc=build_doubled_colors(n,c);\nlong long **dp=(long long**)malloc((size_t)(N2+1)*sizeof(long long*));\nlong long **ep=(long long**)malloc((size_t)(N2+1)*sizeof(long long*));\nfor(int i=0;i<=N2;i++){ dp[i]=(long long*)malloc((size_t)(N2+1)*sizeof(long long)); ep[i]=(long long*)malloc((size_t)(N2+1)*sizeof(long long)); }\ninit_tables(N2,dp,ep,INF);\nfor(int l=N2-1;l>=0;l--){\n  for(int r=l+1;r<=N2;r++){\n    for(int m=l+1;m<r;m++){\n      long long v=dp[l][m]+dp[m][r]; if(v<dp[l][r]) dp[l][r]=v;\n      long long w=ep[l][m]+dp[m][r]; if(w<ep[l][r]) ep[l][r]=w;\n    }\n    if(cc[l]==cc[r-1]){\n      if(ep[l][r-1]<ep[l][r]) ep[l][r]=ep[l][r-1];\n      long long cand2=ep[l][r] + (long long)(r-l) + x[cc[l]];\n      if(cand2<dp[l][r]) dp[l][r]=cand2;\n    }\n  }\n}\nlong long ans=INF;\nfor(int i=0;i<n;i++) if(dp[i][n+i]<ans) ans=dp[i][n+i];\nfor(int i=0;i<=N2;i++){ free(dp[i]); free(ep[i]); }\nfree(dp); free(ep); free(cc);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int c[2005]; static long long x[2005]; read_input(&n,c,x); long long ans=solve_case(n,c,x); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *c, long long *x)",
+          "code": "scanf(\"%d\", n);\nfor(int i=0;i<*n;i++){ scanf(\"%d\", &c[i]); c[i]--; }\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &x[i]);\n"
+        },
+        {
+          "clause_id": "build_doubled_colors",
+          "signature": "int* build_doubled_colors(int n, const int *c)",
+          "code": "int N2=2*n; int *cc=(int*)calloc((size_t)N2,sizeof(int)); for(int i=0;i<n;i++){ cc[i]=c[i]; cc[i+n]=c[i]; } return cc;\n"
+        },
+        {
+          "clause_id": "init_tables",
+          "signature": "void init_tables(int N2, long long **dp, long long **ep, long long INF)",
+          "code": "for(int i=0;i<=N2;i++){ for(int j=0;j<=N2;j++) dp[i][j]=ep[i][j]=INF; dp[i][i]=0; ep[i][i]=0; }\n"
+        },
+        {
+          "clause_id": "solve_case",
+          "signature": "long long solve_case(int n, const int *c, const long long *x)",
+          "code": "const long long INF=4000000000000000000LL;\nint N2=2*n;\nint *cc=build_doubled_colors(n,c);\nlong long **dp=(long long**)malloc((size_t)(N2+1)*sizeof(long long*));\nlong long **ep=(long long**)malloc((size_t)(N2+1)*sizeof(long long*));\nfor(int i=0;i<=N2;i++){ dp[i]=(long long*)malloc((size_t)(N2+1)*sizeof(long long)); ep[i]=(long long*)malloc((size_t)(N2+1)*sizeof(long long)); }\ninit_tables(N2,dp,ep,INF);\nfor(int l=N2;l>=0;l--){\n  for(int r=l+1;r<=N2;r++){\n    for(int m=l+1;m<r;m++){\n      long long v1=dp[l][m]+dp[m][r]; if(v1<dp[l][r]) dp[l][r]=v1;\n      long long v2=ep[l][m]+dp[m][r]; if(v2<ep[l][r]) ep[l][r]=v2;\n    }\n    if(cc[l]==cc[r-1]){\n      long long epr1=ep[l][r-1]; if(epr1<ep[l][r]) ep[l][r]=epr1;\n      long long cand=ep[l][r] + (long long)(r-l) + x[cc[l]];\n      if(cand<dp[l][r]) dp[l][r]=cand;\n    }\n  }\n}\nlong long ans=INF;\nfor(int i=0;i<n;i++) if(dp[i][n+i]<ans) ans=dp[i][n+i];\nfor(int i=0;i<=N2;i++){ free(dp[i]); free(ep[i]); }\nfree(dp); free(ep); free(cc);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int c[2005]; static long long x[2005]; read_input(&n,c,x); long long ans=solve_case(n,c,x); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *c, long long *x)",
+          "code": "scanf(\"%d\", n);\nfor(int i=0;i<*n;i++){ scanf(\"%d\", &c[i]); c[i]--; \n    /* noop */\n    if(0){;}\n}\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &x[i]);\n"
+        },
+        {
+          "clause_id": "build_doubled_colors",
+          "signature": "int* build_doubled_colors(int n, const int *c)",
+          "code": "int N2=2*n; int *cc=(int*)malloc((size_t)N2*sizeof(int)); for(int i=0;i<n;i++){ int v=c[i]; cc[i]=v; cc[i+n]=v; \n    /* noop */\n    if(0){;}\n} return cc;\n"
+        },
+        {
+          "clause_id": "init_tables",
+          "signature": "void init_tables(int N2, long long **dp, long long **ep, long long INF)",
+          "code": "for(int i=0;i<=N2;i++){ for(int j=0;j<=N2;j++){ dp[i][j]=INF; ep[i][j]=INF; } dp[i][i]=0; ep[i][i]=0; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "solve_case",
+          "signature": "long long solve_case(int n, const int *c, const long long *x)",
+          "code": "const long long INF=1000000000000000010LL;\nint N2=2*n;\nint *cc=build_doubled_colors(n,c);\nlong long **dp=(long long**)malloc((size_t)(N2+1)*sizeof(long long*));\nlong long **ep=(long long**)malloc((size_t)(N2+1)*sizeof(long long*));\nfor(int i=0;i<=N2;i++){ dp[i]=(long long*)malloc((size_t)(N2+1)*sizeof(long long)); ep[i]=(long long*)malloc((size_t)(N2+1)*sizeof(long long)); }\ninit_tables(N2,dp,ep,INF);\nfor(int l=N2;l>=0;l--){\n  for(int r=l+1;r<=N2;r++){\n    for(int m=l+1;m<r;m++){\n      long long v=dp[l][m]+dp[m][r]; if(v<dp[l][r]) dp[l][r]=v;\n      long long w=ep[l][m]+dp[m][r]; if(w<ep[l][r]) ep[l][r]=w;\n    }\n    if(cc[l]==cc[r-1]){\n      if(ep[l][r-1]<ep[l][r]) ep[l][r]=ep[l][r-1];\n      long long cand=ep[l][r] + (long long)(r-l) + x[cc[l]];\n      if(cand<dp[l][r]) dp[l][r]=cand;\n    }\n  }\n}\nlong long ans=INF;\nfor(int i=0;i<n;i++) if(dp[i][n+i]<ans) ans=dp[i][n+i];\nfor(int i=0;i<=N2;i++){ free(dp[i]); free(ep[i]); \n    /* noop */\n    if(0){;}\n}\nfree(dp); free(ep); free(cc);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static int c[2005]; static long long x[2005]; read_input(&n,c,x); long long ans=solve_case(n,c,x); print_ll(ans); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

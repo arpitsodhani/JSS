@@ -1,0 +1,139 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main_prog1",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 1;\n    if (n % 2 == 0) return 0;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int start1, end1, start2, end2;\n    scanf(\"%d %d\", &start1, &end1);\n    scanf(\"%d %d\", &start2, &end2);\n    \n    int inter_start = (start1 > start2) ? start1 : start2;\n    int inter_end = (end1 < end2) ? end1 : end2;\n    \n    if (inter_start > inter_end) {\n        printf(\"NO\\n\");\n    } else {\n        int length = inter_end - inter_start;\n        if (is_prime(length)) {\n            printf(\"YES\\n\");\n        } else {\n            printf(\"NO\\n\");\n        }\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main_prog2",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 1;\n    if (n % 2 == 0) return 0;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int start1, end1, start2, end2;\n    scanf(\"%d %d\", &start1, &end1);\n    scanf(\"%d %d\", &start2, &end2);\n    \n    int inter_start = (start1 > start2) ? start1 : start2;\n    int inter_end = (end1 < end2) ? end1 : end2;\n    \n    if (inter_start > inter_end) {\n        printf(\"NO\\n\");\n    } else {\n        int length = inter_end - inter_start;\n        if (is_prime(length)) {\n            printf(\"YES\\n\");\n        } else {\n            printf(\"NO\\n\");\n        }\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main_prog3",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 1;\n    if (n % 2 == 0) return 0;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int start1, end1, start2, end2;\n    scanf(\"%d %d\", &start1, &end1);\n    scanf(\"%d %d\", &start2, &end2);\n    \n    int inter_start = (start1 > start2) ? start1 : start2;\n    int inter_end = (end1 < end2) ? end1 : end2;\n    \n    if (inter_start > inter_end) {\n        printf(\"NO\\n\");\n    } else {\n        int length = inter_end - inter_start;\n        if (is_prime(length)) {\n            printf(\"YES\\n\");\n        } else {\n            printf(\"NO\\n\");\n        }\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main_prog4",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 1;\n    if (n % 2 == 0) return 0;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int start1, end1, start2, end2;\n    scanf(\"%d %d\", &start1, &end1);\n    scanf(\"%d %d\", &start2, &end2);\n    \n    int inter_start = (start1 > start2) ? start1 : start2;\n    int inter_end = (end1 < end2) ? end1 : end2;\n    \n    if (inter_start > inter_end) {\n        printf(\"NO\\n\");\n    } else {\n        int length = inter_end - inter_start;\n        if (is_prime(length)) {\n            printf(\"YES\\n\");\n        } else {\n            printf(\"NO\\n\");\n        }\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main_prog5",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 1;\n    if (n % 2 == 0) return 0;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int start1, end1, start2, end2;\n    scanf(\"%d %d\", &start1, &end1);\n    scanf(\"%d %d\", &start2, &end2);\n    \n    int inter_start = (start1 > start2) ? start1 : start2;\n    int inter_end = (end1 < end2) ? end1 : end2;\n    \n    if (inter_start > inter_end) {\n        printf(\"NO\\n\");\n    } else {\n        int length = inter_end - inter_start;\n        if (is_prime(length)) {\n            printf(\"YES\\n\");\n        } else {\n            printf(\"NO\\n\");\n        }\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

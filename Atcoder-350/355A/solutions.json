@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a, int *b)",
+          "code": "void read_input(int *a, int *b) { scanf(\"%d%d\", a, b); }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int a, int b)",
+          "code": "int solve(int a, int b) { int cnt = 0, culprit = 0; for(int i = 1; i <= 3; i++) { if(i != a && i != b) { cnt++; culprit = i; } } return cnt == 1 ? culprit : -1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int a, b; read_input(&a, &b); int ans = find_culprit(a, b); printf(\"%d\\n\", ans); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *x, int *y)",
+          "code": "void read_input(int *x, int *y) { scanf(\"%d%d\", x, y); }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int x, int y)",
+          "code": "int solve(int x, int y) { if(x == y) return -1; int suspects[4] = {0}; suspects[x] = 1; suspects[y] = 1; int count = 0, person = 0; for(int p = 1; p <= 3; p++) { if(!suspects[p]) { count++; person = p; } } return count == 1 ? person : -1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int x, y; get_data(&x, &y); printf(\"%d\\n\", determine_culprit(x, y)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a, int *b)",
+          "code": "void read_input(int *a, int *b) { static int arr[2]; scanf(\"%d%d\", &arr[0], &arr[1]); return arr; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int a, int b)",
+          "code": "int solve(int a, int b) { int innocent[4] = {0}; innocent[a] = innocent[b] = 1; int c = 0, res = -1; for(int i = 1; i <= 3; i++) if(!innocent[i]) { c++; res = i; } return c == 1 ? res : -1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int *data = input(); printf(\"%d\\n\", identify(data[0], data[1])); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *p, int *q)",
+          "code": "void read_input(int *p, int *q) { scanf(\"%d\", p); scanf(\"%d\", q); }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int p, int q)",
+          "code": "int solve(int p, int q) { int not_culprit[4]; not_culprit[0] = 0; not_culprit[1] = not_culprit[2] = not_culprit[3] = 1; not_culprit[p] = not_culprit[q] = 0; int n = 0, who = 0; for(int i = 1; i <= 3; i++) if(not_culprit[i]) { n++; who = i; } return n == 1 ? who : -1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int p, q; scan(&p, &q); int result = check_unique(p, q); printf(\"%d\\n\", result); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a, int *b)",
+          "code": "void read_input(int *a, int *b) { int x, y; scanf(\"%d%d\", &x, &y); *a = x; *b = y; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int a, int b)",
+          "code": "int solve(int a, int b) { int possible[4] = {0, 1, 1, 1}; possible[a] = 0; possible[b] = 0; int sum = possible[1] + possible[2] + possible[3]; if(sum != 1) return -1; for(int i = 1; i <= 3; i++) if(possible[i]) return i; return -1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int a, b; read(&a, &b); printf(\"%d\\n\", solve(a, b)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

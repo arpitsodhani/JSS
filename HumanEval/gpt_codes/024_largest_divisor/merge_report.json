@@ -1,0 +1,107 @@
+{
+  "merged_program_file": "/home/arpit/Desktop/ISSTA-2026/HumanEval-C/gpt_codes/024_largest_divisor/merged.c",
+  "timestamp": "2026-03-16T17:03:01.749071",
+  "clauses": {
+    "find_divisor": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "main": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 5,
+          "total": 5,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 5
+    },
+    "largest_div": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "top_divisor": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "max_factor": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "biggest_divisor": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    }
+  },
+  "compile_status": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "test_results": {
+    "passed": 0,
+    "total": 0,
+    "details": []
+  },
+  "metrics": {
+    "total_clauses": 6,
+    "total_fragments": 6,
+    "average_confidence": 1.0,
+    "compile_success": true
+  },
+  "logs": ""
+}

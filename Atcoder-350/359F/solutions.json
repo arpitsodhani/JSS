@@ -1,0 +1,148 @@
+{
+  "problem_id": "359F",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_values",
+          "signature": "int read_values(long long a[])",
+          "code": "int read_values(long long a[]) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%lld\", &a[i]); return n; }"
+        },
+        {
+          "clause_id": "sort_values",
+          "signature": "void sort_values(int n, long long a[])",
+          "code": "void sort_values(int n, long long a[]) { for(int i = 0; i < n - 1; i++) { for(int j = i + 1; j < n; j++) { if(a[i] > a[j]) { long long temp = a[i]; a[i] = a[j]; a[j] = temp; } } } }"
+        },
+        {
+          "clause_id": "compute_minimum_cost",
+          "signature": "long long compute_minimum_cost(int n, long long a[])",
+          "code": "long long compute_minimum_cost(int n, long long a[]) { long long cost = 0; for(int i = 0; i < n - 2; i++) cost += a[i]; cost += a[n - 2] * 2; cost += a[n - 1] * 2; return cost; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long a[100005]; int n = read_values(a); sort_values(n, a); printf(\"%lld\\n\", compute_minimum_cost(n, a)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_values",
+          "signature": "int read_values(long long a[])",
+          "code": "int read_values(long long a[]) { int n; scanf(\"%d\", &n); int i; for(i = 0; i < n; i++) scanf(\"%lld\", &a[i]); return n; }"
+        },
+        {
+          "clause_id": "sort_values",
+          "signature": "void sort_values(int n, long long a[])",
+          "code": "void sort_values(int n, long long a[]) { int i, j; for(i = 0; i < n; i++) { for(j = i + 1; j < n; j++) { if(a[i] > a[j]) { long long t = a[i]; a[i] = a[j]; a[j] = t; } } } }"
+        },
+        {
+          "clause_id": "compute_minimum_cost",
+          "signature": "long long compute_minimum_cost(int n, long long a[])",
+          "code": "long long compute_minimum_cost(int n, long long a[]) { long long sum = 0; int i; for(i = 0; i < n - 2; i++) sum = sum + a[i]; sum = sum + 2 * a[n - 2]; sum = sum + 2 * a[n - 1]; return sum; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long values[100005]; int size = read_values(values); sort_values(size, values); printf(\"%lld\\n\", compute_minimum_cost(size, values)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_values",
+          "signature": "int read_values(long long a[])",
+          "code": "int read_values(long long a[]) { int n; scanf(\"%d\", &n); for(int k = 0; k < n; k++) scanf(\"%lld\", a + k); return n; }"
+        },
+        {
+          "clause_id": "sort_values",
+          "signature": "void sort_values(int n, long long a[])",
+          "code": "void sort_values(int n, long long a[]) { for(int p = 0; p < n - 1; p++) { for(int q = p + 1; q < n; q++) { if(a[p] > a[q]) { long long swap = a[p]; a[p] = a[q]; a[q] = swap; } } } }"
+        },
+        {
+          "clause_id": "compute_minimum_cost",
+          "signature": "long long compute_minimum_cost(int n, long long a[])",
+          "code": "long long compute_minimum_cost(int n, long long a[]) { long long result = 0; for(int m = 0; m < n - 2; m++) result += a[m]; result += a[n - 2] * 2 + a[n - 1] * 2; return result; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long data[100005]; int len = read_values(data); sort_values(len, data); printf(\"%lld\\n\", compute_minimum_cost(len, data)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_values",
+          "signature": "int read_values(long long a[])",
+          "code": "int read_values(long long a[]) { int n; scanf(\"%d\", &n); for(int idx = 0; idx < n; idx++) scanf(\"%lld\", &a[idx]); return n; }"
+        },
+        {
+          "clause_id": "sort_values",
+          "signature": "void sort_values(int n, long long a[])",
+          "code": "void sort_values(int n, long long a[]) { for(int x = 0; x < n; x++) { for(int y = x + 1; y < n; y++) { if(a[x] > a[y]) { long long tmp = a[x]; a[x] = a[y]; a[y] = tmp; } } } }"
+        },
+        {
+          "clause_id": "compute_minimum_cost",
+          "signature": "long long compute_minimum_cost(int n, long long a[])",
+          "code": "long long compute_minimum_cost(int n, long long a[]) { long long total = 0; for(int i = 0; i < n - 2; i++) total += a[i]; total += 2 * (a[n - 2] + a[n - 1]); return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long arr[100005]; int n = read_values(arr); sort_values(n, arr); printf(\"%lld\\n\", compute_minimum_cost(n, arr)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_values",
+          "signature": "int read_values(long long a[])",
+          "code": "int read_values(long long a[]) { int n; scanf(\"%d\", &n); for(int j = 0; j < n; j++) scanf(\"%lld\", &a[j]); return n; }"
+        },
+        {
+          "clause_id": "sort_values",
+          "signature": "void sort_values(int n, long long a[])",
+          "code": "void sort_values(int n, long long a[]) { for(int r = 0; r < n - 1; r++) { for(int s = r + 1; s < n; s++) { if(a[r] > a[s]) { long long temp = a[r]; a[r] = a[s]; a[s] = temp; } } } }"
+        },
+        {
+          "clause_id": "compute_minimum_cost",
+          "signature": "long long compute_minimum_cost(int n, long long a[])",
+          "code": "long long compute_minimum_cost(int n, long long a[]) { long long answer = 0; int i; for(i = 0; i < n - 2; i++) answer += a[i]; answer += (a[n - 2] + a[n - 1]) * 2; return answer; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long elements[100005]; int count = read_values(elements); sort_values(count, elements); printf(\"%lld\\n\", compute_minimum_cost(count, elements)); return 0; }"
+        }
+      ]
+    }
+  ]
+}

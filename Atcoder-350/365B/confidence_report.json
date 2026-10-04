@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "track_maximum_subarray_sum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "update_current_maximum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "update_global_maximum",
+      "confidence": 1.0
+    }
+  ]
+}

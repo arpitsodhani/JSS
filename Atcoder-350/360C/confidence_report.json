@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.984,
+  "clauses": [
+    {
+      "clause": "compute_minimum_cost",
+      "confidence": 0.9799999999999999
+    },
+    {
+      "clause": "find_box_weights",
+      "confidence": 0.9640000000000001
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_items",
+      "confidence": 0.992
+    }
+  ]
+}

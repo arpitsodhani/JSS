@@ -1,0 +1,29 @@
+{
+  "average_confidence": 0.9922222222222222,
+  "clauses": [
+    {
+      "clause": "read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "build_doubled_colors",
+      "confidence": 0.9899999999999999
+    },
+    {
+      "clause": "init_tables",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve_case",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_ll",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9633333333333333
+    }
+  ]
+}

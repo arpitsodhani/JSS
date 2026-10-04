@@ -1,0 +1,7 @@
+You are given a simple connected undirected graph with N vertices numbered 1 through N and M edges numbered 1 through M . Edge i connects vertices u_i and v_i , and has a label w_i . Among all simple paths (paths that do not pass through the same vertex more than once) from vertex 1 to vertex N , find the minimum XOR of the labels of the edges on the path. Notes on XOR For non-negative integers A and B , their XOR A \oplus B is defined as follows: In the binary representation of A \oplus B , the digit in the place corresponding to 2^k \,(k \ge 0) is 1 if and only if exactly one of the digits in the same place of A and B is 1 ; otherwise, it is 0 . For example, 3 \oplus 5 = 6 (in binary: 011 \oplus 101 = 110 ). In general, the XOR of k integers p_1, \dots, p_k is defined as (\cdots ((p_1 \oplus p_2) \oplus p_3) \oplus \cdots \oplus p_k) . It can be proved that it does not depend on the order of p_1, \dots, p_k .
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= p_i < i
+- 1 <= W_i <= 10^9
+- All input values are integers

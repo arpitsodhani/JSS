@@ -1,0 +1,299 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *T,long long **N,long long **X,long long **Y)",
+          "code": "void read_input(int *T,long long **N,long long **X,long long **Y){ scanf(\"%d\", T); *N=(long long*)malloc((size_t)(*T)*sizeof(long long)); *X=(long long*)malloc((size_t)(*T)*sizeof(long long)); *Y=(long long*)malloc((size_t)(*T)*sizeof(long long)); for(int i=0;i<*T;i++) scanf(\"%lld%lld%lld\", &(*N)[i], &(*X)[i], &(*Y)[i]); }\n"
+        },
+        {
+          "clause_id": "mod_norm",
+          "signature": "long long mod_norm(long long v)",
+          "code": "long long mod_norm(long long v){ const long long MOD=998244353; v%=MOD; if(v<0) v+=MOD; return v; }\n"
+        },
+        {
+          "clause_id": "mul_mod",
+          "signature": "long long mul_mod(long long a,long long b)",
+          "code": "long long mul_mod(long long a,long long b){ const long long MOD=998244353; return (a%MOD)*(b%MOD)%MOD; }\n"
+        },
+        {
+          "clause_id": "init_pair",
+          "signature": "void init_pair(long long x,long long y,long long *a,long long *b,long long *prod)",
+          "code": "void init_pair(long long x,long long y,long long *a,long long *b,long long *prod){ *a=mod_norm(x); *b=mod_norm(y); *prod=mul_mod(*a,*b); }\n"
+        },
+        {
+          "clause_id": "advance",
+          "signature": "void advance(long long *a,long long *b,long long *prod)",
+          "code": "void advance(long long *a,long long *b,long long *prod){ const long long MOD=998244353; long long c=(*a+*b)%MOD; *prod = (*prod * c)%MOD; *a=*b; *b=c; }\n"
+        },
+        {
+          "clause_id": "base_case",
+          "signature": "long long base_case(long long n,long long x,long long y)",
+          "code": "long long base_case(long long n,long long x,long long y){ if(n==1) return mod_norm(x); if(n==2) return mul_mod(x,y); return -1; }\n"
+        },
+        {
+          "clause_id": "fib_product",
+          "signature": "long long fib_product(long long n,long long x,long long y)",
+          "code": "long long fib_product(long long n,long long x,long long y){\n    const long long MOD=998244353;\n    if(n==1) return mod_norm(x);\n    if(n==2) return mul_mod(x,y);\n    long long a,b,prod;\n    init_pair(x,y,&a,&b,&prod);\n    for(long long i=3;i<=n;i++) advance(&a,&b,&prod);\n    return prod%MOD;\n}\n"
+        },
+        {
+          "clause_id": "solve_all",
+          "signature": "void solve_all(int T,long long *N,long long *X,long long *Y,long long *out)",
+          "code": "void solve_all(int T,long long *N,long long *X,long long *Y,long long *out){ for(int i=0;i<T;i++) out[i]=fib_product(N[i],X[i],Y[i]); }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int T,long long *out)",
+          "code": "void print_answers(int T,long long *out){ for(int i=0;i<T;i++) printf(\"%lld\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; long long *N=NULL,*X=NULL,*Y=NULL; read_input(&T,&N,&X,&Y); long long *out=(long long*)malloc((size_t)T*sizeof(long long)); solve_all(T,N,X,Y,out); print_answers(T,out); free(N); free(X); free(Y); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *T,long long **N,long long **X,long long **Y)",
+          "code": "void read_input(int *T,long long **N,long long **X,long long **Y){ scanf(\"%d\", T); *N=(long long*)malloc((size_t)(*T)*sizeof(long long)); *X=(long long*)malloc((size_t)(*T)*sizeof(long long)); *Y=(long long*)malloc((size_t)(*T)*sizeof(long long)); for(int i=0;i<*T;i++) scanf(\"%lld%lld%lld\", &(*N)[i], &(*X)[i], &(*Y)[i]); }\n"
+        },
+        {
+          "clause_id": "mod_norm",
+          "signature": "long long mod_norm(long long v)",
+          "code": "long long mod_norm(long long v){ const long long MOD=998244353; v%=MOD; if(v<0) v+=MOD; return v; }\n"
+        },
+        {
+          "clause_id": "mul_mod",
+          "signature": "long long mul_mod(long long a,long long b)",
+          "code": "long long mul_mod(long long a,long long b){ const long long MOD=998244353; return (a%MOD)*(b%MOD)%MOD; }\n"
+        },
+        {
+          "clause_id": "init_pair",
+          "signature": "void init_pair(long long x,long long y,long long *a,long long *b,long long *prod)",
+          "code": "void init_pair(long long x,long long y,long long *a,long long *b,long long *prod){ *a=mod_norm(x); *b=mod_norm(y); *prod=mul_mod(*a,*b); }\n"
+        },
+        {
+          "clause_id": "advance",
+          "signature": "void advance(long long *a,long long *b,long long *prod)",
+          "code": "void advance(long long *a,long long *b,long long *prod){ const long long MOD=998244353; long long c=(*a+*b)%MOD; *prod = (*prod * c)%MOD; *a=*b; *b=c; }\n"
+        },
+        {
+          "clause_id": "base_case",
+          "signature": "long long base_case(long long n,long long x,long long y)",
+          "code": "long long base_case(long long n,long long x,long long y){ if(n==1) return mod_norm(x); if(n==2) return mul_mod(x,y); return -1; }\n"
+        },
+        {
+          "clause_id": "fib_product",
+          "signature": "long long fib_product(long long n,long long x,long long y)",
+          "code": "long long fib_product(long long n,long long x,long long y){\n    const long long MOD=998244353;\n    if(n==1) return mod_norm(x);\n    if(n==2) return mul_mod(x,y);\n    long long a,b,prod;\n    init_pair(x,y,&a,&b,&prod);\n    for(long long i=3;i<=n;i++) advance(&a,&b,&prod);\n    return prod%MOD;\n}\n"
+        },
+        {
+          "clause_id": "solve_all",
+          "signature": "void solve_all(int T,long long *N,long long *X,long long *Y,long long *out)",
+          "code": "void solve_all(int T,long long *N,long long *X,long long *Y,long long *out){ for(int i=0;i<T;i++) out[i]=fib_product(N[i],X[i],Y[i]); }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int T,long long *out)",
+          "code": "void print_answers(int T,long long *out){ for(int i=0;i<T;i++) printf(\"%lld\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; long long *N=NULL,*X=NULL,*Y=NULL; read_input(&T,&N,&X,&Y); long long *out=(long long*)malloc((size_t)T*sizeof(long long)); solve_all(T,N,X,Y,out); print_answers(T,out); free(N); free(X); free(Y); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *T,long long **N,long long **X,long long **Y)",
+          "code": "void read_input(int *T,long long **N,long long **X,long long **Y){ scanf(\"%d\", T); *N=(long long*)malloc((size_t)(*T)*sizeof(long long)); *X=(long long*)malloc((size_t)(*T)*sizeof(long long)); *Y=(long long*)malloc((size_t)(*T)*sizeof(long long)); for(int i=0;i<*T;i++) scanf(\"%lld%lld%lld\", &(*N)[i], &(*X)[i], &(*Y)[i]); }\n"
+        },
+        {
+          "clause_id": "mod_norm",
+          "signature": "long long mod_norm(long long v)",
+          "code": "long long mod_norm(long long v){ const long long MOD=998244353; v%=MOD; if(v<0) v+=MOD; return v; }\n"
+        },
+        {
+          "clause_id": "mul_mod",
+          "signature": "long long mul_mod(long long a,long long b)",
+          "code": "long long mul_mod(long long a,long long b){ const long long MOD=998244353; return (a%MOD)*(b%MOD)%MOD; }\n"
+        },
+        {
+          "clause_id": "init_pair",
+          "signature": "void init_pair(long long x,long long y,long long *a,long long *b,long long *prod)",
+          "code": "void init_pair(long long x,long long y,long long *a,long long *b,long long *prod){ *a=mod_norm(x); *b=mod_norm(y); *prod=mul_mod(*a,*b); }\n"
+        },
+        {
+          "clause_id": "advance",
+          "signature": "void advance(long long *a,long long *b,long long *prod)",
+          "code": "void advance(long long *a,long long *b,long long *prod){ const long long MOD=998244353; long long c=(*a+*b)%MOD; *prod = (*prod * c)%MOD; *a=*b; *b=c; }\n"
+        },
+        {
+          "clause_id": "base_case",
+          "signature": "long long base_case(long long n,long long x,long long y)",
+          "code": "long long base_case(long long n,long long x,long long y){ if(n==1) return mod_norm(x); if(n==2) return mul_mod(x,y); return -1; }\n"
+        },
+        {
+          "clause_id": "fib_product",
+          "signature": "long long fib_product(long long n,long long x,long long y)",
+          "code": "long long fib_product(long long n,long long x,long long y){\n    const long long MOD=998244353;\n    if(n==1) return mod_norm(x);\n    if(n==2) return mul_mod(x,y);\n    long long a,b,prod;\n    init_pair(x,y,&a,&b,&prod);\n    for(long long i=3;i<=n;i++) advance(&a,&b,&prod);\n    return prod%MOD;\n}\n"
+        },
+        {
+          "clause_id": "solve_all",
+          "signature": "void solve_all(int T,long long *N,long long *X,long long *Y,long long *out)",
+          "code": "void solve_all(int T,long long *N,long long *X,long long *Y,long long *out){ for(int i=0;i<T;i++) out[i]=fib_product(N[i],X[i],Y[i]); }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int T,long long *out)",
+          "code": "void print_answers(int T,long long *out){ for(int i=0;i<T;i++) printf(\"%lld\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; long long *N=NULL,*X=NULL,*Y=NULL; read_input(&T,&N,&X,&Y); long long *out=(long long*)malloc((size_t)T*sizeof(long long)); solve_all(T,N,X,Y,out); print_answers(T,out); free(N); free(X); free(Y); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *T,long long **N,long long **X,long long **Y)",
+          "code": "void read_input(int *T,long long **N,long long **X,long long **Y){ scanf(\"%d\", T); *N=(long long*)malloc((size_t)(*T)*sizeof(long long)); *X=(long long*)malloc((size_t)(*T)*sizeof(long long)); *Y=(long long*)malloc((size_t)(*T)*sizeof(long long)); for(int i=0;i<*T;i++) scanf(\"%lld%lld%lld\", &(*N)[i], &(*X)[i], &(*Y)[i]); }\n"
+        },
+        {
+          "clause_id": "mod_norm",
+          "signature": "long long mod_norm(long long v)",
+          "code": "long long mod_norm(long long v){ const long long MOD=998244353; v%=MOD; if(v<0) v+=MOD; return v; }\n"
+        },
+        {
+          "clause_id": "mul_mod",
+          "signature": "long long mul_mod(long long a,long long b)",
+          "code": "long long mul_mod(long long a,long long b){ const long long MOD=998244353; return (a%MOD)*(b%MOD)%MOD; }\n"
+        },
+        {
+          "clause_id": "init_pair",
+          "signature": "void init_pair(long long x,long long y,long long *a,long long *b,long long *prod)",
+          "code": "void init_pair(long long x,long long y,long long *a,long long *b,long long *prod){ *a=mod_norm(x); *b=mod_norm(y); *prod=mul_mod(*a,*b); }\n"
+        },
+        {
+          "clause_id": "advance",
+          "signature": "void advance(long long *a,long long *b,long long *prod)",
+          "code": "void advance(long long *a,long long *b,long long *prod){ const long long MOD=998244353; long long c=(*a+*b)%MOD; *prod = (*prod * c)%MOD; *a=*b; *b=c; }\n"
+        },
+        {
+          "clause_id": "base_case",
+          "signature": "long long base_case(long long n,long long x,long long y)",
+          "code": "long long base_case(long long n,long long x,long long y){ if(n==1) return mod_norm(x); if(n==2) return mul_mod(x,y); return -1; }\n"
+        },
+        {
+          "clause_id": "fib_product",
+          "signature": "long long fib_product(long long n,long long x,long long y)",
+          "code": "long long fib_product(long long n,long long x,long long y){\n    const long long MOD=998244353;\n    if(n==1) return mod_norm(x);\n    if(n==2) return mul_mod(x,y);\n    long long a,b,prod;\n    init_pair(x,y,&a,&b,&prod);\n    for(long long i=3;i<=n;i++) advance(&a,&b,&prod);\n    return prod%MOD;\n}\n"
+        },
+        {
+          "clause_id": "solve_all",
+          "signature": "void solve_all(int T,long long *N,long long *X,long long *Y,long long *out)",
+          "code": "void solve_all(int T,long long *N,long long *X,long long *Y,long long *out){ for(int i=0;i<T;i++) out[i]=fib_product(N[i],X[i],Y[i]); }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int T,long long *out)",
+          "code": "void print_answers(int T,long long *out){ for(int i=0;i<T;i++) printf(\"%lld\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; long long *N=NULL,*X=NULL,*Y=NULL; read_input(&T,&N,&X,&Y); long long *out=(long long*)malloc((size_t)T*sizeof(long long)); solve_all(T,N,X,Y,out); print_answers(T,out); free(N); free(X); free(Y); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *T,long long **N,long long **X,long long **Y)",
+          "code": "void read_input(int *T,long long **N,long long **X,long long **Y){ scanf(\"%d\", T); *N=(long long*)malloc((size_t)(*T)*sizeof(long long)); *X=(long long*)malloc((size_t)(*T)*sizeof(long long)); *Y=(long long*)malloc((size_t)(*T)*sizeof(long long)); for(int i=0;i<*T;i++) scanf(\"%lld%lld%lld\", &(*N)[i], &(*X)[i], &(*Y)[i]); }\n"
+        },
+        {
+          "clause_id": "mod_norm",
+          "signature": "long long mod_norm(long long v)",
+          "code": "long long mod_norm(long long v){ const long long MOD=998244353; v%=MOD; if(v<0) v+=MOD; return v; }\n"
+        },
+        {
+          "clause_id": "mul_mod",
+          "signature": "long long mul_mod(long long a,long long b)",
+          "code": "long long mul_mod(long long a,long long b){ const long long MOD=998244353; return (a%MOD)*(b%MOD)%MOD; }\n"
+        },
+        {
+          "clause_id": "init_pair",
+          "signature": "void init_pair(long long x,long long y,long long *a,long long *b,long long *prod)",
+          "code": "void init_pair(long long x,long long y,long long *a,long long *b,long long *prod){ *a=mod_norm(x); *b=mod_norm(y); *prod=mul_mod(*a,*b); }\n"
+        },
+        {
+          "clause_id": "advance",
+          "signature": "void advance(long long *a,long long *b,long long *prod)",
+          "code": "void advance(long long *a,long long *b,long long *prod){ const long long MOD=998244353; long long c=(*a+*b)%MOD; *prod = (*prod * c)%MOD; *a=*b; *b=c; }\n"
+        },
+        {
+          "clause_id": "base_case",
+          "signature": "long long base_case(long long n,long long x,long long y)",
+          "code": "long long base_case(long long n,long long x,long long y){ if(n==1) return mod_norm(x); if(n==2) return mul_mod(x,y); return -1; }\n"
+        },
+        {
+          "clause_id": "fib_product",
+          "signature": "long long fib_product(long long n,long long x,long long y)",
+          "code": "long long fib_product(long long n,long long x,long long y){\n    const long long MOD=998244353;\n    if(n==1) return mod_norm(x);\n    if(n==2) return mul_mod(x,y);\n    long long a,b,prod;\n    init_pair(x,y,&a,&b,&prod);\n    for(long long i=3;i<=n;i++) advance(&a,&b,&prod);\n    return prod%MOD;\n}\n"
+        },
+        {
+          "clause_id": "solve_all",
+          "signature": "void solve_all(int T,long long *N,long long *X,long long *Y,long long *out)",
+          "code": "void solve_all(int T,long long *N,long long *X,long long *Y,long long *out){ for(int i=0;i<T;i++) out[i]=fib_product(N[i],X[i],Y[i]); }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int T,long long *out)",
+          "code": "void print_answers(int T,long long *out){ for(int i=0;i<T;i++) printf(\"%lld\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int T; long long *N=NULL,*X=NULL,*Y=NULL; read_input(&T,&N,&X,&Y); long long *out=(long long*)malloc((size_t)T*sizeof(long long)); solve_all(T,N,X,Y,out); print_answers(T,out); free(N); free(X); free(Y); free(out); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

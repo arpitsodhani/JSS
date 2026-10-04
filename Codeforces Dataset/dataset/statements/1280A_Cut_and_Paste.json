@@ -1,0 +1,27 @@
+{
+  "contestId": 1280,
+  "index": "A",
+  "problem_id": "1280A",
+  "name": "Cut and Paste",
+  "rating": 1700,
+  "tags": [
+    "implementation",
+    "math"
+  ],
+  "points": 500.0,
+  "solvedCount": 5873,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Cut and Paste",
+  "legend": "We start with a string s consisting only of the digits 1, 2, or 3. The length of s is denoted by |s|. For each i from 1 to |s|, the i-th character of s is denoted by si.\n\nThere is one cursor. The cursor's location ℓ is denoted by an integer in {0,…,|s|}, with the following meaning:\n\nIf ℓ=0, then the cursor is located before the first character of s.\nIf ℓ=|s|, then the cursor is located right after the last character of s.\nIf 0<ℓ<|s|, then the cursor is located between sℓ and sℓ+1.\n\nWe denote by sleft the string to the left of the cursor and sright the string to the right of the cursor.\n\nWe also have a string c, which we call our clipboard, which starts out as empty. There are three types of actions:\n\nThe Move action. Move the cursor one step to the right. This increments ℓ once.\nThe Cut action. Set c←sright, then set s←sleft.\nThe Paste action. Append the value of c to the end of the string s. Note that this doesn't modify c.\n\nThe cursor initially starts at ℓ=0. Then, we perform the following procedure:\n\nPerform the Move action once.\nPerform the Cut action once.\nPerform the Paste action sℓ times.\nIf ℓ=x, stop. Otherwise, return to step 1.\n\nYou're given the initial string s and the integer x. What is the length of s when the procedure stops? Since this value may be very large, only find it modulo 109+7.\n\nIt is guaranteed that ℓ≤|s| at any time.",
+  "input_spec": "The first line of input contains a single integer t (1≤t≤1000) denoting the number of test cases. The next lines contain descriptions of the test cases.\n\nThe first line of each test case contains a single integer x (1≤x≤106). The second line of each test case consists of the initial string s (1≤|s|≤500). It is guaranteed, that s consists of the characters \"1\", \"2\", \"3\".\n\nIt is guaranteed that the sum of x in a single file is at most 106. It is guaranteed that in each test case before the procedure will stop it will be true that ℓ≤|s| at any time.",
+  "output_spec": "For each test case, output a single line containing a single integer denoting the answer for that test case modulo 109+7.",
+  "note": "Let's illustrate what happens with the first test case. Initially, we have s= 231. Initially, ℓ=0 and c=ε (the empty string). The following things happen if we follow the procedure above:\n\nStep 1, Move once: we get ℓ=1.\nStep 2, Cut once: we get s= 2 and c= 31.\nStep 3, Paste sℓ= 2 times: we get s= 23131.\nStep 4: ℓ=1≠x=5, so we return to step 1.\n\nStep 1, Move once: we get ℓ=2.\nStep 2, Cut once: we get s= 23 and c= 131.\nStep 3, Paste sℓ= 3 times: we get s= 23131131131.\nStep 4: ℓ=2≠x=5, so we return to step 1.\n\nStep 1, Move once: we get ℓ=3.\nStep 2, Cut once: we get s= 231 and c= 31131131.\nStep 3, Paste sℓ= 1 time: we get s= 23131131131.\nStep 4: ℓ=3≠x=5, so we return to step 1.\n\nStep 1, Move once: we get ℓ=4.\nStep 2, Cut once: we get s= 2313 and c= 1131131.\nStep 3, Paste sℓ= 3 times: we get s= 2313113113111311311131131.\nStep 4: ℓ=4≠x=5, so we return to step 1.\n\nStep 1, Move once: we get ℓ=5.\nStep 2, Cut once: we get s= 23131 and c= 13113111311311131131.\nStep 3, Paste sℓ= 1 times: we get s= 2313113113111311311131131.\nStep 4: ℓ=5=x, so we stop.\n\nAt the end of the procedure, s has length 25.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n5\n231\n7\n2323\n6\n333\n24\n133321333\n",
+      "output": "25\n1438\n1101\n686531475"
+    }
+  ]
+}

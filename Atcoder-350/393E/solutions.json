@@ -1,0 +1,176 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *k,long long *A)",
+          "code": "scanf(\"%d%d\", n,k); for(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "list_divs",
+          "signature": "int list_divs(long long x,long long *divs)",
+          "code": "int cnt=0; for(long long d=1; d*d<=x; d++) if(x%d==0){ divs[cnt++]=d; if(d*d!=x) divs[cnt++]=x/d; }\nreturn cnt;\n"
+        },
+        {
+          "clause_id": "max_gcds",
+          "signature": "void max_gcds(int n,int k,long long *A,long long *out)",
+          "code": "int maxd=0; for(int i=0;i<n;i++) if(A[i]>maxd) maxd=(int)A[i];\nlong long *divs=(long long*)malloc((size_t)100000*sizeof(long long));\nint *cnt=(int*)calloc((size_t)(maxd+1),sizeof(int));\nfor(int i=0;i<n;i++){\n  int c=list_divs(A[i],divs);\n  for(int j=0;j<c;j++) if(divs[j]<=maxd) cnt[divs[j]]++;\n}\nfor(int i=0;i<n;i++){\n  long long best=1; int c=list_divs(A[i],divs);\n  for(int j=0;j<c;j++) if(cnt[divs[j]]>=k && divs[j]>best) best=divs[j];\n  out[i]=best;\n}\nfree(cnt); free(divs);\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int n,long long *out)",
+          "code": "for(int i=0;i<n;i++) printf(\"%lld\\n\", out[i]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static long long A[200005],out[200005]; read_input(&n,&k,A); max_gcds(n,k,A,out); print_all(n,out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *k,long long *A)",
+          "code": "scanf(\"%d%d\", n,k); for(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "list_divs",
+          "signature": "int list_divs(long long x,long long *divs)",
+          "code": "int cnt=0; for(long long d=1; d*d<=x; d++) if(x%d==0){ divs[cnt++]=d; if(d*d!=x) divs[cnt++]=x/d; }\nreturn cnt;\n"
+        },
+        {
+          "clause_id": "max_gcds",
+          "signature": "void max_gcds(int n,int k,long long *A,long long *out)",
+          "code": "int maxd=0; for(int i=0;i<n;i++) if(A[i]>maxd) maxd=(int)A[i];\nlong long *divs=(long long*)malloc((size_t)100000*sizeof(long long));\nint *cnt=(int*)calloc((size_t)(maxd+1),sizeof(int));\nfor(int i=0;i<n;i++){\n  int c=list_divs(A[i],divs);\n  for(int j=0;j<c;j++) if(divs[j]<=maxd) cnt[divs[j]]++;\n}\nfor(int i=0;i<n;i++){\n  long long best=1; int c=list_divs(A[i],divs);\n  for(int j=0;j<c;j++) if(cnt[divs[j]]>=k && divs[j]>best) best=divs[j];\n  out[i]=best;\n}\nfree(cnt); free(divs);\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int n,long long *out)",
+          "code": "for(int i=0;i<n;i++) printf(\"%lld\\n\", out[i]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static long long A[200005],out[200005]; read_input(&n,&k,A); max_gcds(n,k,A,out); print_all(n,out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *k,long long *A)",
+          "code": "scanf(\"%d%d\", n,k); for(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "list_divs",
+          "signature": "int list_divs(long long x,long long *divs)",
+          "code": "int cnt=0; for(long long d=1; d*d<=x; d++) if(x%d==0){ divs[cnt++]=d; if(d*d!=x) divs[cnt++]=x/d; }\nreturn cnt;\n"
+        },
+        {
+          "clause_id": "max_gcds",
+          "signature": "void max_gcds(int n,int k,long long *A,long long *out)",
+          "code": "int maxd=0; for(int i=0;i<n;i++) if(A[i]>maxd) maxd=(int)A[i];\nlong long *divs=(long long*)malloc((size_t)100000*sizeof(long long));\nint *cnt=(int*)calloc((size_t)(maxd+1),sizeof(int));\nfor(int i=0;i<n;i++){\n  int c=list_divs(A[i],divs);\n  for(int j=0;j<c;j++) if(divs[j]<=maxd) cnt[divs[j]]++;\n}\nfor(int i=0;i<n;i++){\n  long long best=1; int c=list_divs(A[i],divs);\n  for(int j=0;j<c;j++) if(cnt[divs[j]]>=k && divs[j]>best) best=divs[j];\n  out[i]=best;\n}\nfree(cnt); free(divs);\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int n,long long *out)",
+          "code": "for(int i=0;i<n;i++) printf(\"%lld\\n\", out[i]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static long long A[200005],out[200005]; read_input(&n,&k,A); max_gcds(n,k,A,out); print_all(n,out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *k,long long *A)",
+          "code": "scanf(\"%d%d\", n,k); for(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "list_divs",
+          "signature": "int list_divs(long long x,long long *divs)",
+          "code": "int cnt=0; for(long long d=1; d*d<=x; d++) if(x%d==0){ divs[cnt++]=d; if(d*d!=x) divs[cnt++]=x/d; }\nreturn cnt;\n"
+        },
+        {
+          "clause_id": "max_gcds",
+          "signature": "void max_gcds(int n,int k,long long *A,long long *out)",
+          "code": "int maxd=0; for(int i=0;i<n;i++) if(A[i]>maxd) maxd=(int)A[i];\nlong long *divs=(long long*)malloc((size_t)100000*sizeof(long long));\nint *cnt=(int*)calloc((size_t)(maxd+1),sizeof(int));\nfor(int i=0;i<n;i++){\n  int c=list_divs(A[i],divs);\n  for(int j=0;j<c;j++) if(divs[j]<=maxd) cnt[divs[j]]++;\n}\nfor(int i=0;i<n;i++){\n  long long best=1; int c=list_divs(A[i],divs);\n  for(int j=0;j<c;j++) if(cnt[divs[j]]>=k && divs[j]>best) best=divs[j];\n  out[i]=best;\n}\nfree(cnt); free(divs);\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int n,long long *out)",
+          "code": "for(int i=0;i<n;i++) printf(\"%lld\\n\", out[i]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static long long A[200005],out[200005]; read_input(&n,&k,A); max_gcds(n,k,A,out); print_all(n,out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *k,long long *A)",
+          "code": "scanf(\"%d%d\", n,k); for(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "list_divs",
+          "signature": "int list_divs(long long x,long long *divs)",
+          "code": "int cnt=0; for(long long d=1; d*d<=x; d++) if(x%d==0){ divs[cnt++]=d; if(d*d!=x) divs[cnt++]=x/d; }\nreturn cnt;\n"
+        },
+        {
+          "clause_id": "max_gcds",
+          "signature": "void max_gcds(int n,int k,long long *A,long long *out)",
+          "code": "int maxd=0; for(int i=0;i<n;i++) if(A[i]>maxd) maxd=(int)A[i];\nlong long *divs=(long long*)malloc((size_t)100000*sizeof(long long));\nint *cnt=(int*)calloc((size_t)(maxd+1),sizeof(int));\nfor(int i=0;i<n;i++){\n  int c=list_divs(A[i],divs);\n  for(int j=0;j<c;j++) if(divs[j]<=maxd) cnt[divs[j]]++;\n}\nfor(int i=0;i<n;i++){\n  long long best=1; int c=list_divs(A[i],divs);\n  for(int j=0;j<c;j++) if(cnt[divs[j]]>=k && divs[j]>best) best=divs[j];\n  out[i]=best;\n}\nfree(cnt); free(divs);\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int n,long long *out)",
+          "code": "for(int i=0;i<n;i++) printf(\"%lld\\n\", out[i]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static long long A[200005],out[200005]; read_input(&n,&k,A); max_gcds(n,k,A,out); print_all(n,out); return 0; }\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "393E",
+  "total_programs": 5
+}

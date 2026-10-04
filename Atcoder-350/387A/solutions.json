@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b)",
+          "code": "scanf(\"%d%d\", a,b);\n"
+        },
+        {
+          "clause_id": "calc",
+          "signature": "int calc(int a,int b)",
+          "code": "int s=a+b; return s*s;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b; read_input(&a,&b); int ans=calc(a,b); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b)",
+          "code": "scanf(\"%d%d\", a,b);\n"
+        },
+        {
+          "clause_id": "calc",
+          "signature": "int calc(int a,int b)",
+          "code": "int s=a+b; return s*s;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b; read_input(&a,&b); int ans=calc(a,b); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b)",
+          "code": "scanf(\"%d%d\", a,b);\n"
+        },
+        {
+          "clause_id": "calc",
+          "signature": "int calc(int a,int b)",
+          "code": "int s=a+b; return s*s;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b; read_input(&a,&b); int ans=calc(a,b); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b)",
+          "code": "scanf(\"%d%d\", a,b);\n"
+        },
+        {
+          "clause_id": "calc",
+          "signature": "int calc(int a,int b)",
+          "code": "int s=a+b; return s*s;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b; read_input(&a,&b); int ans=calc(a,b); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b)",
+          "code": "scanf(\"%d%d\", a,b);\n"
+        },
+        {
+          "clause_id": "calc",
+          "signature": "int calc(int a,int b)",
+          "code": "int s=a+b; return s*s;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b; read_input(&a,&b); int ans=calc(a,b); print_int(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "387A",
+  "total_programs": 5
+}

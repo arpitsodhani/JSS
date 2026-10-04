@@ -1,0 +1,30 @@
+{
+  "contestId": 1095,
+  "index": "B",
+  "problem_id": "1095B",
+  "name": "Array Stabilization",
+  "rating": 900,
+  "tags": [
+    "implementation"
+  ],
+  "points": null,
+  "solvedCount": 24769,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Array Stabilization",
+  "legend": "You are given an array a consisting of n integer numbers.\n\nLet instability of the array be the following value: \nn\nmax\n\ni=1ai−\nn\nmin\n\ni=1ai.\n\nYou have to remove exactly one element from this array to minimize instability of the resulting (n−1)-elements array. Your task is to calculate the minimum possible instability.",
+  "input_spec": "The first line of the input contains one integer n (2≤n≤105) — the number of elements in the array a.\n\nThe second line of the input contains n integers a1,a2,…,an (1≤ai≤105) — elements of the array a.",
+  "output_spec": "Print one integer — the minimum possible instability of the array if you have to remove exactly one element from the array a.",
+  "note": "In the first example you can remove 7 then instability of the remaining array will be 3−1=2.\n\nIn the second example you can remove either 1 or 100000 then instability of the remaining array will be 100000−100000=0 and 1−1=0 correspondingly.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n1 3 3 7\n",
+      "output": "2"
+    },
+    {
+      "input": "2\n1 100000\n",
+      "output": "0"
+    }
+  ]
+}

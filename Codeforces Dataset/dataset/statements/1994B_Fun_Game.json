@@ -1,0 +1,29 @@
+{
+  "contestId": 1994,
+  "index": "B",
+  "problem_id": "1994B",
+  "name": "Fun Game",
+  "rating": 1100,
+  "tags": [
+    "bitmasks",
+    "constructive algorithms",
+    "greedy",
+    "math"
+  ],
+  "points": 1000.0,
+  "solvedCount": 19820,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Fun Game",
+  "legend": "Vova really loves the XOR operation (denoted as ⊕). Recently, when he was going to sleep, he came up with a fun game.\n\nAt the beginning of the game, Vova chooses two binary sequences s and t of length n and gives them to Vanya. A binary sequence is a sequence consisting only of the numbers 0 and 1. Vanya can choose integers l,r such that 1≤l≤r≤n, and for all l≤i≤r simultaneously replace si with si⊕si−l+1, where si is the i-th element of the sequence s.\n\nIn order for the game to be interesting, there must be a possibility to win. Vanya wins if, with an unlimited number of actions, he can obtain the sequence t from the sequence s. Determine if the game will be interesting for the sequences s and t.",
+  "input_spec": "Each test consists of multiple test cases. The first line contains an integer q (1≤q≤104) — the number of test cases. Then follows the description of the test cases.\n\nThe first line of each test case contains a single integer n (1≤n≤2⋅105) — the length of the sequences s and t.\n\nThe second line of each test case contains a binary sequence s of length n.\n\nThe third line of each test case contains a binary sequence t of length n.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, output \"Yes\" if the game will be interesting, otherwise output \"No\".\n\nYou can output each letter in any case (for example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will be recognized as a positive answer).",
+  "note": "In the first test case, Vanya will not be able to change the sequence s with the only possible action of choosing l=r=1.\n\nIn the second test case, the sequences s and t are already equal.\n\nIn the third test case, Vanya can act as follows:\n\nChoose l=3 and r=5, then s will become 101101010.\nChoose l=5 and r=6, then s will become 101111010.\nChoose l=7 and r=7, then s will become 101111110.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n1\n0\n1\n7\n0110100\n0110100\n9\n100101010\n101111110\n4\n0011\n1011\n4\n0100\n0001\n8\n10110111\n01100000\n",
+      "output": "NO\nYES\nYES\nNO\nYES\nYES"
+    }
+  ]
+}

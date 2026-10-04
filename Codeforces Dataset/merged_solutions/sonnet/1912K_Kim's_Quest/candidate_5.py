@@ -1,0 +1,41 @@
+import sys
+
+
+# --- clause: read_input :: () -> list[int] ---
+def read_input():
+    raw = list(map(int, sys.stdin.buffer.read().split()))
+    return raw[1:1 + raw[0]]
+
+
+# --- clause: count_runs :: (values: list[int]) -> int ---
+def count_runs(values):
+    mod = 998244353
+    pairs = [[0, 0], [0, 0]]
+    singles = [0, 0]
+    running = 0
+    for item in values:
+        p = item & 1
+        fresh = [[0, 0], [0, 0]]
+        for x in (0, 1):
+            for y in (0, 1):
+                here = pairs[x][y]
+                if here and (x + y + p) % 2 == 0:
+                    running = (running + here) % mod
+                    fresh[y][p] = (fresh[y][p] + here) % mod
+        for x in (0, 1):
+            if singles[x]:
+                fresh[x][p] = (fresh[x][p] + singles[x]) % mod
+        for x in (0, 1):
+            for y in (0, 1):
+                pairs[x][y] = (pairs[x][y] + fresh[x][y]) % mod
+        singles[p] += 1
+    return running % mod
+
+
+# --- clause: main :: () -> None ---
+def main():
+    sys.stdout.write("%d\n" % count_runs(read_input()))
+
+
+if __name__ == "__main__":
+    main()

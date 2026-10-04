@@ -1,0 +1,28 @@
+{
+  "contestId": 1616,
+  "index": "D",
+  "problem_id": "1616D",
+  "name": "Keep the Average High",
+  "rating": 2000,
+  "tags": [
+    "dp",
+    "greedy",
+    "math"
+  ],
+  "points": 2000.0,
+  "solvedCount": 5650,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Keep the Average High",
+  "legend": "You are given an array of integers a1,a2,…,an and an integer x.\n\nYou need to select the maximum number of elements in the array, such that for every subsegment al,al+1,…,ar containing strictly more than one element (l<r), either:\n\nAt least one element on this subsegment is not selected, or\nal+al+1+…+ar≥x⋅(r−l+1).",
+  "input_spec": "The first line of input contains one integer t (1≤t≤10): the number of test cases.\n\nThe descriptions of t test cases follow, three lines per test case.\n\nIn the first line you are given one integer n (1≤n≤50000): the number of integers in the array.\n\nThe second line contains n integers a1,a2,…,an (−100000≤ai≤100000).\n\nThe third line contains one integer x (−100000≤x≤100000).",
+  "output_spec": "For each test case, print one integer: the maximum number of elements that you can select.",
+  "note": "In the first example, one valid way to select the elements is [1\n_,2,3\n_,4\n_,5\n_]. All subsegments satisfy at least one of the criteria. For example, for the subsegment l=1, r=2 we have that the element 2 is not selected, satisfying the first criterion. For the subsegment l=3, r=5 we have 3+4+5=12≥2⋅3, satisfying the second criterion.\n\nWe can't select all elements, because in this case for l=1, r=2 all elements are selected and we have a1+a2=3<2⋅2. Thus, the maximum number of selected elements is 4.\n\nIn the second example, one valid solution is [2\n_,4\n_,2,4\n_,2\n_,4\n_,2,4\n_,2\n_,4\n_].\n\nIn the third example, one valid solution is [−10\n_,−5,−10\n_].\n\nIn the fourth example, one valid solution is [9\n_,9\n_,−3].",
+  "time_limit": "1.5 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n5\n1 2 3 4 5\n2\n10\n2 4 2 4 2 4 2 4 2 4\n3\n3\n-10 -5 -10\n-8\n3\n9 9 -3\n5\n",
+      "output": "4\n8\n2\n2"
+    }
+  ]
+}

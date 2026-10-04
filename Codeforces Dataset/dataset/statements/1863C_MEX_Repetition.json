@@ -1,0 +1,27 @@
+{
+  "contestId": 1863,
+  "index": "C",
+  "problem_id": "1863C",
+  "name": "MEX Repetition",
+  "rating": 1100,
+  "tags": [
+    "implementation",
+    "math"
+  ],
+  "points": 1000.0,
+  "solvedCount": 15662,
+  "source": "verbatim_cf_fetch",
+  "title": "C. MEX Repetition",
+  "legend": "You are given an array a1,a2,…,an of pairwise distinct integers from 0 to n. Consider the following operation:\n\nconsecutively for each i from 1 to n in this order, replace ai with MEX(a1,a2,…,an).\n\nHere MEX of a collection of integers c1,c2,…,cm is defined as the smallest non-negative integer x which does not occur in the collection c. For example, MEX(0,2,2,1,4)=3 and MEX(1,2)=0.\n\nPrint the array after applying k such operations.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤105). The description of the test cases follows.\n\nThe first line of each test case contains two integers n and k (1≤n≤105, 1≤k≤109).\n\nThe second line contains n pairwise distinct integers a1,a2,…,an (0≤ai≤n) representing the elements of the array before applying the operations.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 105.",
+  "output_spec": "For each test case, print all n elements of the array after applying k operations.",
+  "note": "In the first test case, here is the entire process:\n\nOn the first operation, the array changes from [1] to [0], since MEX(1)=0.\nOn the second operation, the array changes from [0] to [1], since MEX(0)=1.\n\nThus, the array becomes [1] after two operations.\n\nIn the second test case, the array changes as follows during one operation: [0\n_,1,3]→[2,1\n_,3]→[2,0,3\n_]→[2,0,1].\n\nIn the third test case, the array changes as follows during one operation: [0\n_,2]→[1,2\n_]→[1,0]. And during the second operation: [1\n_,0]→[2,0\n_]→[2,1].",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n1 2\n1\n3 1\n0 1 3\n2 2\n0 2\n5 5\n1 2 3 4 5\n10 100\n5 3 0 4 2 1 6 9 10 8\n",
+      "output": "1\n2 0 1\n2 1\n2 3 4 5 0\n7 5 3 0 4 2 1 6 9 10"
+    }
+  ]
+}

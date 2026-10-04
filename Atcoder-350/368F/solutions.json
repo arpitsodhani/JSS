@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_range_xor",
+          "signature": "int compute_range_xor(int *array, int left, int right)",
+          "code": "int compute_range_xor(int *array, int left, int right) {\n    int xor_result = 0;\n    for (int i = left; i <= right; i++) {\n        xor_result ^= array[i];\n    }\n    return xor_result;\n}"
+        },
+        {
+          "clause_id": "update_array_element",
+          "signature": "void update_array_element(int *array, int position, int value)",
+          "code": "void update_array_element(int *array, int position, int value) {\n    array[position] = value;\n}"
+        },
+        {
+          "clause_id": "process_xor_queries",
+          "signature": "void process_xor_queries(int n, int *array, int q, int query_types[], int query_params[][2], int *results, int *result_count)",
+          "code": "void process_xor_queries(int n, int *array, int q, int query_types[], int query_params[][2], int *results, int *result_count) {\n    for (int i = 0; i < q; i++) {\n        if (query_types[i] == 1) {\n            update_array_element(array, query_params[i][0], query_params[i][1]);\n        } else {\n            results[*result_count] = compute_range_xor(array, query_params[i][0], query_params[i][1]);\n            (*result_count)++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, array[100005], query_types[100005], query_params[100005][2], results[100005], result_count = 0;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d %d\", &query_types[i], &query_params[i][0], &query_params[i][1]);\n    }\n    process_xor_queries(n, array, q, query_types, query_params, results, &result_count);\n    for (int i = 0; i < result_count; i++) {\n        printf(\"%d\\n\", results[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_range_xor",
+          "signature": "int compute_range_xor(int *array, int left, int right)",
+          "code": "int compute_range_xor(int *array, int left, int right) {\n    int xor_result = 0;\n    for (int i = left; i <= right; i++) {\n        xor_result ^= array[i];\n    }\n    return xor_result;\n}"
+        },
+        {
+          "clause_id": "update_array_element",
+          "signature": "void update_array_element(int *array, int position, int value)",
+          "code": "void update_array_element(int *array, int position, int value) {\n    array[position] = value;\n}"
+        },
+        {
+          "clause_id": "process_xor_queries",
+          "signature": "void process_xor_queries(int n, int *array, int q, int query_types[], int query_params[][2], int *results, int *result_count)",
+          "code": "void process_xor_queries(int n, int *array, int q, int query_types[], int query_params[][2], int *results, int *result_count) {\n    for (int i = 0; i < q; i++) {\n        if (query_types[i] == 1) {\n            update_array_element(array, query_params[i][0], query_params[i][1]);\n        } else {\n            results[*result_count] = compute_range_xor(array, query_params[i][0], query_params[i][1]);\n            (*result_count)++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, array[100005], query_types[100005], query_params[100005][2], results[100005], result_count = 0;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d %d\", &query_types[i], &query_params[i][0], &query_params[i][1]);\n    }\n    process_xor_queries(n, array, q, query_types, query_params, results, &result_count);\n    for (int i = 0; i < result_count; i++) {\n        printf(\"%d\\n\", results[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_range_xor",
+          "signature": "int compute_range_xor(int *array, int left, int right)",
+          "code": "int compute_range_xor(int *array, int left, int right) {\n    int xor_result = 0;\n    for (int i = left; i <= right; i++) {\n        xor_result ^= array[i];\n    }\n    return xor_result;\n}"
+        },
+        {
+          "clause_id": "update_array_element",
+          "signature": "void update_array_element(int *array, int position, int value)",
+          "code": "void update_array_element(int *array, int position, int value) {\n    array[position] = value;\n}"
+        },
+        {
+          "clause_id": "process_xor_queries",
+          "signature": "void process_xor_queries(int n, int *array, int q, int query_types[], int query_params[][2], int *results, int *result_count)",
+          "code": "void process_xor_queries(int n, int *array, int q, int query_types[], int query_params[][2], int *results, int *result_count) {\n    for (int i = 0; i < q; i++) {\n        if (query_types[i] == 1) {\n            update_array_element(array, query_params[i][0], query_params[i][1]);\n        } else {\n            results[*result_count] = compute_range_xor(array, query_params[i][0], query_params[i][1]);\n            (*result_count)++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, array[100005], query_types[100005], query_params[100005][2], results[100005], result_count = 0;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d %d\", &query_types[i], &query_params[i][0], &query_params[i][1]);\n    }\n    process_xor_queries(n, array, q, query_types, query_params, results, &result_count);\n    for (int i = 0; i < result_count; i++) {\n        printf(\"%d\\n\", results[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_range_xor",
+          "signature": "int compute_range_xor(int *array, int left, int right)",
+          "code": "int compute_range_xor(int *array, int left, int right) {\n    int xor_result = 0;\n    for (int i = left; i <= right; i++) {\n        xor_result ^= array[i];\n    }\n    return xor_result;\n}"
+        },
+        {
+          "clause_id": "update_array_element",
+          "signature": "void update_array_element(int *array, int position, int value)",
+          "code": "void update_array_element(int *array, int position, int value) {\n    array[position] = value;\n}"
+        },
+        {
+          "clause_id": "process_xor_queries",
+          "signature": "void process_xor_queries(int n, int *array, int q, int query_types[], int query_params[][2], int *results, int *result_count)",
+          "code": "void process_xor_queries(int n, int *array, int q, int query_types[], int query_params[][2], int *results, int *result_count) {\n    for (int i = 0; i < q; i++) {\n        if (query_types[i] == 1) {\n            update_array_element(array, query_params[i][0], query_params[i][1]);\n        } else {\n            results[*result_count] = compute_range_xor(array, query_params[i][0], query_params[i][1]);\n            (*result_count)++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, array[100005], query_types[100005], query_params[100005][2], results[100005], result_count = 0;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d %d\", &query_types[i], &query_params[i][0], &query_params[i][1]);\n    }\n    process_xor_queries(n, array, q, query_types, query_params, results, &result_count);\n    for (int i = 0; i < result_count; i++) {\n        printf(\"%d\\n\", results[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_range_xor",
+          "signature": "int compute_range_xor(int *array, int left, int right)",
+          "code": "int compute_range_xor(int *array, int left, int right) {\n    int xor_result = 0;\n    for (int i = left; i <= right; i++) {\n        xor_result ^= array[i];\n    }\n    return xor_result;\n}"
+        },
+        {
+          "clause_id": "update_array_element",
+          "signature": "void update_array_element(int *array, int position, int value)",
+          "code": "void update_array_element(int *array, int position, int value) {\n    array[position] = value;\n}"
+        },
+        {
+          "clause_id": "process_xor_queries",
+          "signature": "void process_xor_queries(int n, int *array, int q, int query_types[], int query_params[][2], int *results, int *result_count)",
+          "code": "void process_xor_queries(int n, int *array, int q, int query_types[], int query_params[][2], int *results, int *result_count) {\n    for (int i = 0; i < q; i++) {\n        if (query_types[i] == 1) {\n            update_array_element(array, query_params[i][0], query_params[i][1]);\n        } else {\n            results[*result_count] = compute_range_xor(array, query_params[i][0], query_params[i][1]);\n            (*result_count)++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, array[100005], query_types[100005], query_params[100005][2], results[100005], result_count = 0;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d %d\", &query_types[i], &query_params[i][0], &query_params[i][1]);\n    }\n    process_xor_queries(n, array, q, query_types, query_params, results, &result_count);\n    for (int i = 0; i < result_count; i++) {\n        printf(\"%d\\n\", results[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

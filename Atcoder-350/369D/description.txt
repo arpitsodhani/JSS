@@ -1,0 +1,6 @@
+Takahashi will encounter N monsters in order. The i -th monster (1\leq i\leq N) has a strength of A_i . For each monster, he can choose to either let it go or defeat it. Each action awards him experience as follows: If he lets a monster go, he gains 0 experience . If he defeats a monster with strength X , he gains X experience . If it is an even-numbered defeated monster (2nd, 4th, ...), he gains an additional X experience . Find the maximum total experience he can gain from the N monsters.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

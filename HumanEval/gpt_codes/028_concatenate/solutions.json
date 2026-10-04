@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "concat",
+          "code": "void concat(char strs[][100], int n) {\n    for (int i = 0; i < n; i++) {\n        printf(\"%s\", strs[i]);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    char strs[n][100];\n    for (int i = 0; i < n; i++) scanf(\"%s\", strs[i]);\n    concat(strs, n);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "join_strings",
+          "code": "void join_strings(char strings[][100], int count) {\n    for (int i = 0; i < count; i++) {\n        printf(\"%s\", strings[i]);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int num;\n    scanf(\"%d\", &num);\n    char data[num][100];\n    for (int i = 0; i < num; i++) scanf(\"%s\", data[i]);\n    join_strings(data, num);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "join_all",
+          "code": "void join_all(char strs[][100], int n) {\n    for(int i=0;i<n;i++) printf(\"%s\",strs[i]);\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\",&n);\n    char strs[n][100];\n    for(int i=0;i<n;i++) scanf(\"%s\",strs[i]);\n    join_all(strs,n);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "append_all",
+          "code": "void append_all(char words[][100], int cnt) {\n    int i=0;\n    while(i<cnt){printf(\"%s\",words[i]);i++;}\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int cnt;\n    scanf(\"%d\",&cnt);\n    char words[cnt][100];\n    for(int i=0;i<cnt;i++) scanf(\"%s\",words[i]);\n    append_all(words,cnt);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "merge_strings",
+          "code": "void merge_strings(char ws[][100], int sz) {\n    for(int k=0;k<sz;k++) printf(\"%s\",ws[k]);\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int sz;\n    scanf(\"%d\",&sz);\n    char ws[sz][100];\n    for(int i=0;i<sz;i++) scanf(\"%s\",ws[i]);\n    merge_strings(ws,sz);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

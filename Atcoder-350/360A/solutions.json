@@ -1,0 +1,129 @@
+{
+  "problem_id": "360A",
+  "includes": [
+    "#include <stdio.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrangement",
+          "signature": "void read_arrangement(char s[])",
+          "code": "void read_arrangement(char s[]) { scanf(\"%s\", s); }"
+        },
+        {
+          "clause_id": "check_rice_before_miso",
+          "signature": "int check_rice_before_miso(char s[])",
+          "code": "int check_rice_before_miso(char s[]) { int r_pos = -1, m_pos = -1; for(int i = 0; i < 3; i++) { if(s[i] == 'R') r_pos = i; if(s[i] == 'M') m_pos = i; } return r_pos < m_pos; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[5]; read_arrangement(s); printf(\"%s\\n\", check_rice_before_miso(s) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrangement",
+          "signature": "void read_arrangement(char s[])",
+          "code": "void read_arrangement(char s[]) { scanf(\"%s\", s); }"
+        },
+        {
+          "clause_id": "check_rice_before_miso",
+          "signature": "int check_rice_before_miso(char s[])",
+          "code": "int check_rice_before_miso(char s[]) { int rice = -1, miso = -1; int i; for(i = 0; i < 3; i++) { if(s[i] == 'R') rice = i; if(s[i] == 'M') miso = i; } return rice < miso ? 1 : 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char arrangement[5]; read_arrangement(arrangement); puts(check_rice_before_miso(arrangement) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrangement",
+          "signature": "void read_arrangement(char s[])",
+          "code": "void read_arrangement(char s[]) { scanf(\"%s\", s); }"
+        },
+        {
+          "clause_id": "check_rice_before_miso",
+          "signature": "int check_rice_before_miso(char s[])",
+          "code": "int check_rice_before_miso(char s[]) { int r_idx = 0, m_idx = 0; for(int j = 0; j < 3; j++) { if(s[j] == 'R') r_idx = j; else if(s[j] == 'M') m_idx = j; } return (r_idx < m_idx) ? 1 : 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char str[5]; read_arrangement(str); printf(check_rice_before_miso(str) ? \"Yes\\n\" : \"No\\n\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrangement",
+          "signature": "void read_arrangement(char s[])",
+          "code": "void read_arrangement(char s[]) { scanf(\"%s\", s); }"
+        },
+        {
+          "clause_id": "check_rice_before_miso",
+          "signature": "int check_rice_before_miso(char s[])",
+          "code": "int check_rice_before_miso(char s[]) { int pos_r = -1, pos_m = -1; for(int k = 0; k < 3; k++) { if(s[k] == 'R') pos_r = k; if(s[k] == 'M') pos_m = k; } return pos_r < pos_m; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char input[5]; read_arrangement(input); printf(\"%s\\n\", check_rice_before_miso(input) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrangement",
+          "signature": "void read_arrangement(char s[])",
+          "code": "void read_arrangement(char s[]) { scanf(\"%s\", s); }"
+        },
+        {
+          "clause_id": "check_rice_before_miso",
+          "signature": "int check_rice_before_miso(char s[])",
+          "code": "int check_rice_before_miso(char s[]) { int location_r = 0, location_m = 0; for(int p = 0; p < 3; p++) { if(s[p] == 'R') location_r = p; else if(s[p] == 'M') location_m = p; } return location_r < location_m; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char plates[5]; read_arrangement(plates); puts(check_rice_before_miso(plates) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    }
+  ]
+}

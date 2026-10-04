@@ -1,0 +1,124 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "xor_strings",
+          "code": "void xor_strings(char *a, char *b) {\n    int len = strlen(a);\n    for (int i = 0; i < len; i++) {\n        printf(\"%c\", (a[i] == b[i]) ? '0' : '1');\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char a[1000], b[1000];\n    scanf(\"%s %s\", a, b);\n    xor_strings(a, b);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "binary_xor",
+          "code": "void binary_xor(char *str1, char *str2) {\n    int length = strlen(str1);\n    for (int i = 0; i < length; i++) {\n        printf(\"%c\", (str1[i] != str2[i]) ? '1' : '0');\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char s1[1000], s2[1000];\n    scanf(\"%s %s\", s1, s2);\n    binary_xor(s1, s2);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "bitwise_str_xor",
+          "code": "void bitwise_str_xor(char *x, char *y) {\n    int n = strlen(x);\n    for (int i = 0; i < n; i++)\n        printf(\"%c\", (x[i] == y[i]) ? '0' : '1');\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char x[1000], y[1000];\n    scanf(\"%s %s\", x, y);\n    bitwise_str_xor(x, y);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "char_xor",
+          "code": "void char_xor(char *p, char *q) {\n    int sz = strlen(p);\n    int i = 0;\n    while (i < sz) {\n        printf(\"%c\", (p[i] != q[i]) ? '1' : '0');\n        i++;\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char p[1000], q[1000];\n    scanf(\"%s %s\", p, q);\n    char_xor(p, q);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "xor_bits",
+          "code": "void xor_bits(char *u, char *v) {\n    for (int k = 0; u[k]; k++)\n        printf(\"%c\", (u[k] == v[k]) ? '0' : '1');\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char u[1000], v[1000];\n    scanf(\"%s %s\", u, v);\n    xor_bits(u, v);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

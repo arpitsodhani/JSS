@@ -1,0 +1,27 @@
+{
+  "contestId": 2057,
+  "index": "A",
+  "problem_id": "2057A",
+  "name": "MEX Table",
+  "rating": 800,
+  "tags": [
+    "constructive algorithms",
+    "math"
+  ],
+  "points": 500.0,
+  "solvedCount": 27714,
+  "source": "verbatim_cf_fetch",
+  "title": "A. MEX Table",
+  "legend": "One day, the schoolboy Mark misbehaved, so the teacher Sasha called him to the whiteboard.\n\nSasha gave Mark a table with n rows and m columns. His task is to arrange the numbers 0,1,…,n⋅m−1 in the table (each number must be used exactly once) in such a way as to maximize the sum of MEX∗ across all rows and columns. More formally, he needs to maximize\nn\n∑\n\ni=1mex({ai,1,ai,2,…,ai,m})+\nm\n∑\n\nj=1mex({a1,j,a2,j,…,an,j}),\nwhere ai,j is the number in the i-th row and j-th column.\n\nSasha is not interested in how Mark arranges the numbers, so he only asks him to state one number — the maximum sum of MEX across all rows and columns that can be achieved.\n\n∗The minimum excluded (MEX) of a collection of integers c1,c2,…,ck is defined as the smallest non-negative integer x which does not occur in the collection c.\n\nFor example:\n\nmex([2,2,1])=0, since 0 does not belong to the array.\nmex([3,1,0,1])=2, since 0 and 1 belong to the array, but 2 does not.\nmex([0,3,1,2])=4, since 0, 1, 2, and 3 belong to the array, but 4 does not.",
+  "input_spec": "Each test contains multiple test cases. The first line contains a single integer t (1≤t≤1000) — the number of test cases. The description of the test cases follows.\n\nThe first line of each test case contains two integers n and m (1≤n,m≤109) — the number of rows and columns in the table, respectively.",
+  "output_spec": "For each test case, output the maximum possible sum of mex across all rows and columns.",
+  "note": "In the first test case, the only element is 0, and the sum of the mex of the numbers in the first row and the mex of the numbers in the first column is mex({0})+mex({0})=1+1=2.\n\nIn the second test case, the optimal table may look as follows:\n\n3\t0\n2\t1\n\nThen \nn\n∑\n\ni=1mex({ai,1,ai,2,…,ai,m})+\nm\n∑\n\nj=1mex({a1,j,a2,j,…,an,j})=mex({3,0})+mex({2,1}) +mex({3,2})+mex({0,1})=1+0+0+2=3.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n1 1\n2 2\n3 5\n",
+      "output": "2\n3\n6"
+    }
+  ]
+}

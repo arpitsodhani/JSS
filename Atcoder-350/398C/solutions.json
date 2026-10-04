@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "find_unique_max",
+          "signature": "int find_unique_max(int n, const int *a)",
+          "code": "int *cnt=(int*)calloc((size_t)(n+1), sizeof(int));\nfor(int i=0;i<n;i++) cnt[a[i]]++;\nint best=-1;\nfor(int i=0;i<n;i++) if(cnt[a[i]]==1){ if(best==-1||a[i]>a[best]) best=i; }\nfree(cnt);\nreturn (best==-1)?-1:(best+1);\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; int *a=(int*)malloc((size_t)200000*sizeof(int)); read_input(&n,a); int ans=find_unique_max(n,a); print_int(ans); free(a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "find_unique_max",
+          "signature": "int find_unique_max(int n, const int *a)",
+          "code": "int *cnt=(int*)calloc((size_t)(n+1), sizeof(int));\nfor(int i=0;i<n;i++) cnt[a[i]]++;\nint best=-1;\nfor(int i=0;i<n;i++) if(cnt[a[i]]==1){ if(best==-1||a[i]>a[best]) best=i; }\nfree(cnt);\nreturn (best==-1)?-1:(best+1);\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; int *a=(int*)malloc((size_t)200000*sizeof(int)); read_input(&n,a); int ans=find_unique_max(n,a); print_int(ans); free(a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "find_unique_max",
+          "signature": "int find_unique_max(int n, const int *a)",
+          "code": "int *cnt=(int*)calloc((size_t)(n+1), sizeof(int));\nfor(int i=0;i<n;i++) cnt[a[i]]++;\nint best=-1;\nfor(int i=0;i<n;i++) if(cnt[a[i]]==1){ if(best==-1||a[i]>a[best]) best=i; }\nfree(cnt);\nreturn (best==-1)?-1:(best+1);\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; int *a=(int*)malloc((size_t)200000*sizeof(int)); read_input(&n,a); int ans=find_unique_max(n,a); print_int(ans); free(a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "find_unique_max",
+          "signature": "int find_unique_max(int n, const int *a)",
+          "code": "int *cnt=(int*)calloc((size_t)(n+1), sizeof(int));\nfor(int i=0;i<n;i++) cnt[a[i]]++;\nint best=-1;\nfor(int i=0;i<n;i++) if(cnt[a[i]]==1){ if(best==-1||a[i]>a[best]) best=i; }\nfree(cnt);\nreturn (best==-1)?-1:(best+1);\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; int *a=(int*)malloc((size_t)200000*sizeof(int)); read_input(&n,a); int ans=find_unique_max(n,a); print_int(ans); free(a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "find_unique_max",
+          "signature": "int find_unique_max(int n, const int *a)",
+          "code": "int *cnt=(int*)calloc((size_t)(n+1), sizeof(int));\nfor(int i=0;i<n;i++) cnt[a[i]]++;\nint best=-1;\nfor(int i=0;i<n;i++) if(cnt[a[i]]==1){ if(best==-1||a[i]>a[best]) best=i; }\nfree(cnt);\nreturn (best==-1)?-1:(best+1);\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; int *a=(int*)malloc((size_t)200000*sizeof(int)); read_input(&n,a); int ans=find_unique_max(n,a); print_int(ans); free(a); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

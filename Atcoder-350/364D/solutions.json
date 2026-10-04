@@ -1,0 +1,160 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_distances_to_query_point",
+          "signature": "void compute_distances_to_query_point(int n, long long *points, long long query_pos, long long *distances)",
+          "code": "void compute_distances_to_query_point(int n, long long *points, long long query_pos, long long *distances) {\n    for (int i = 0; i < n; i++) {\n        long long diff = points[i] - query_pos;\n        distances[i] = diff >= 0 ? diff : -diff;\n    }\n}"
+        },
+        {
+          "clause_id": "sort_distances_ascending",
+          "signature": "void sort_distances_ascending(int n, long long *distances)",
+          "code": "void sort_distances_ascending(int n, long long *distances) {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (distances[j] < distances[i]) {\n                long long tmp = distances[i];\n                distances[i] = distances[j];\n                distances[j] = tmp;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "extract_kth_smallest_distance",
+          "signature": "long long extract_kth_smallest_distance(long long *sorted_distances, int k)",
+          "code": "long long extract_kth_smallest_distance(long long *sorted_distances, int k) {\n    return sorted_distances[k - 1];\n}"
+        },
+        {
+          "clause_id": "process_distance_queries",
+          "signature": "void process_distance_queries(int n, int q, long long *points, long long *query_positions, int *k_values, long long *results)",
+          "code": "void process_distance_queries(int n, int q, long long *points, long long *query_positions, int *k_values, long long *results) {\n    for (int qi = 0; qi < q; qi++) {\n        long long distances[200005];\n        compute_distances_to_query_point(n, points, query_positions[qi], distances);\n        sort_distances_ascending(n, distances);\n        results[qi] = extract_kth_smallest_distance(distances, k_values[qi]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long points[200005], query_positions[200005], results[200005];\n    int k_values[200005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%lld\", &points[i]);\n    for (int i = 0; i < q; i++) scanf(\"%lld %d\", &query_positions[i], &k_values[i]);\n    process_distance_queries(n, q, points, query_positions, k_values, results);\n    for (int i = 0; i < q; i++) printf(\"%lld\\n\", results[i]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_distances_to_query_point",
+          "signature": "void compute_distances_to_query_point(int n, long long *points, long long query_pos, long long *distances)",
+          "code": "void compute_distances_to_query_point(int n, long long *points, long long query_pos, long long *distances) {\n    for (int i = 0; i < n; i++) {\n        long long diff = points[i] - query_pos;\n        distances[i] = diff >= 0 ? diff : -diff;\n    }\n}"
+        },
+        {
+          "clause_id": "sort_distances_ascending",
+          "signature": "void sort_distances_ascending(int n, long long *distances)",
+          "code": "void sort_distances_ascending(int n, long long *distances) {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (distances[j] < distances[i]) {\n                long long tmp = distances[i];\n                distances[i] = distances[j];\n                distances[j] = tmp;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "extract_kth_smallest_distance",
+          "signature": "long long extract_kth_smallest_distance(long long *sorted_distances, int k)",
+          "code": "long long extract_kth_smallest_distance(long long *sorted_distances, int k) {\n    return sorted_distances[k - 1];\n}"
+        },
+        {
+          "clause_id": "process_distance_queries",
+          "signature": "void process_distance_queries(int n, int q, long long *points, long long *query_positions, int *k_values, long long *results)",
+          "code": "void process_distance_queries(int n, int q, long long *points, long long *query_positions, int *k_values, long long *results) {\n    for (int qi = 0; qi < q; qi++) {\n        long long distances[200005];\n        compute_distances_to_query_point(n, points, query_positions[qi], distances);\n        sort_distances_ascending(n, distances);\n        results[qi] = extract_kth_smallest_distance(distances, k_values[qi]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long points[200005], query_positions[200005], results[200005];\n    int k_values[200005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%lld\", &points[i]);\n    for (int i = 0; i < q; i++) scanf(\"%lld %d\", &query_positions[i], &k_values[i]);\n    process_distance_queries(n, q, points, query_positions, k_values, results);\n    for (int i = 0; i < q; i++) printf(\"%lld\\n\", results[i]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_distances_to_query_point",
+          "signature": "void compute_distances_to_query_point(int n, long long *points, long long query_pos, long long *distances)",
+          "code": "void compute_distances_to_query_point(int n, long long *points, long long query_pos, long long *distances) {\n    for (int i = 0; i < n; i++) {\n        long long diff = points[i] - query_pos;\n        distances[i] = diff >= 0 ? diff : -diff;\n    }\n}"
+        },
+        {
+          "clause_id": "sort_distances_ascending",
+          "signature": "void sort_distances_ascending(int n, long long *distances)",
+          "code": "void sort_distances_ascending(int n, long long *distances) {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (distances[j] < distances[i]) {\n                long long tmp = distances[i];\n                distances[i] = distances[j];\n                distances[j] = tmp;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "extract_kth_smallest_distance",
+          "signature": "long long extract_kth_smallest_distance(long long *sorted_distances, int k)",
+          "code": "long long extract_kth_smallest_distance(long long *sorted_distances, int k) {\n    return sorted_distances[k - 1];\n}"
+        },
+        {
+          "clause_id": "process_distance_queries",
+          "signature": "void process_distance_queries(int n, int q, long long *points, long long *query_positions, int *k_values, long long *results)",
+          "code": "void process_distance_queries(int n, int q, long long *points, long long *query_positions, int *k_values, long long *results) {\n    for (int qi = 0; qi < q; qi++) {\n        long long distances[200005];\n        compute_distances_to_query_point(n, points, query_positions[qi], distances);\n        sort_distances_ascending(n, distances);\n        results[qi] = extract_kth_smallest_distance(distances, k_values[qi]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long points[200005], query_positions[200005], results[200005];\n    int k_values[200005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%lld\", &points[i]);\n    for (int i = 0; i < q; i++) scanf(\"%lld %d\", &query_positions[i], &k_values[i]);\n    process_distance_queries(n, q, points, query_positions, k_values, results);\n    for (int i = 0; i < q; i++) printf(\"%lld\\n\", results[i]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_distances_to_query_point",
+          "signature": "void compute_distances_to_query_point(int n, long long *points, long long query_pos, long long *distances)",
+          "code": "void compute_distances_to_query_point(int n, long long *points, long long query_pos, long long *distances) {\n    for (int i = 0; i < n; i++) {\n        long long diff = points[i] - query_pos;\n        distances[i] = diff >= 0 ? diff : -diff;\n    }\n}"
+        },
+        {
+          "clause_id": "sort_distances_ascending",
+          "signature": "void sort_distances_ascending(int n, long long *distances)",
+          "code": "void sort_distances_ascending(int n, long long *distances) {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (distances[j] < distances[i]) {\n                long long tmp = distances[i];\n                distances[i] = distances[j];\n                distances[j] = tmp;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "extract_kth_smallest_distance",
+          "signature": "long long extract_kth_smallest_distance(long long *sorted_distances, int k)",
+          "code": "long long extract_kth_smallest_distance(long long *sorted_distances, int k) {\n    return sorted_distances[k - 1];\n}"
+        },
+        {
+          "clause_id": "process_distance_queries",
+          "signature": "void process_distance_queries(int n, int q, long long *points, long long *query_positions, int *k_values, long long *results)",
+          "code": "void process_distance_queries(int n, int q, long long *points, long long *query_positions, int *k_values, long long *results) {\n    for (int qi = 0; qi < q; qi++) {\n        long long distances[200005];\n        compute_distances_to_query_point(n, points, query_positions[qi], distances);\n        sort_distances_ascending(n, distances);\n        results[qi] = extract_kth_smallest_distance(distances, k_values[qi]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long points[200005], query_positions[200005], results[200005];\n    int k_values[200005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%lld\", &points[i]);\n    for (int i = 0; i < q; i++) scanf(\"%lld %d\", &query_positions[i], &k_values[i]);\n    process_distance_queries(n, q, points, query_positions, k_values, results);\n    for (int i = 0; i < q; i++) printf(\"%lld\\n\", results[i]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_distances_to_query_point",
+          "signature": "void compute_distances_to_query_point(int n, long long *points, long long query_pos, long long *distances)",
+          "code": "void compute_distances_to_query_point(int n, long long *points, long long query_pos, long long *distances) {\n    for (int i = 0; i < n; i++) {\n        long long diff = points[i] - query_pos;\n        distances[i] = diff >= 0 ? diff : -diff;\n    }\n}"
+        },
+        {
+          "clause_id": "sort_distances_ascending",
+          "signature": "void sort_distances_ascending(int n, long long *distances)",
+          "code": "void sort_distances_ascending(int n, long long *distances) {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (distances[j] < distances[i]) {\n                long long tmp = distances[i];\n                distances[i] = distances[j];\n                distances[j] = tmp;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "extract_kth_smallest_distance",
+          "signature": "long long extract_kth_smallest_distance(long long *sorted_distances, int k)",
+          "code": "long long extract_kth_smallest_distance(long long *sorted_distances, int k) {\n    return sorted_distances[k - 1];\n}"
+        },
+        {
+          "clause_id": "process_distance_queries",
+          "signature": "void process_distance_queries(int n, int q, long long *points, long long *query_positions, int *k_values, long long *results)",
+          "code": "void process_distance_queries(int n, int q, long long *points, long long *query_positions, int *k_values, long long *results) {\n    for (int qi = 0; qi < q; qi++) {\n        long long distances[200005];\n        compute_distances_to_query_point(n, points, query_positions[qi], distances);\n        sort_distances_ascending(n, distances);\n        results[qi] = extract_kth_smallest_distance(distances, k_values[qi]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long points[200005], query_positions[200005], results[200005];\n    int k_values[200005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) scanf(\"%lld\", &points[i]);\n    for (int i = 0; i < q; i++) scanf(\"%lld %d\", &query_positions[i], &k_values[i]);\n    process_distance_queries(n, q, points, query_positions, k_values, results);\n    for (int i = 0; i < q; i++) printf(\"%lld\\n\", results[i]);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

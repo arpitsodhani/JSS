@@ -1,0 +1,10 @@
+For a binary string B = B_1 B_2 \dots B_{3^n} of length 3^n ( n \geq 1 ), we define an operation to obtain a binary string C = C_1 C_2 \dots C_{3^{n-1}} of length 3^{n-1} as follows: Partition the elements of B into groups of 3 and take the majority value from each group. That is, for i=1,2,\dots,3^{n-1} , let C_i be the value that appears most frequently among B_{3i-2} , B_{3i-1} , and B_{3i} . You are given a binary string A = A_1 A_2 \dots A_{3^N} of length 3^N . Let A' = A'_1 be the length- 1 string obtained by applying the above operation N times to A . Determine the minimum number of elements of A that must be changed (from 0 to 1 or from 1 to 0 ) in order to change the value of A'_1 .
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple
+- 1 <= w_i <= 10^9
+- All input values are integers

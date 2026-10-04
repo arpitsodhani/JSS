@@ -1,0 +1,10 @@
+You are given a positive integer N and two strings S and T , each of length N and consisting of lowercase English letters. Determine whether it is possible to make S identical to T by repeating the operation below any number of times (possibly zero). If it is possible, also find the minimum number of operations required. Choose two lowercase English letters x, y and replace every occurrence of x in S with y .
+
+**Constraints:**
+- 2 <= N <= 50
+- 1 <= M <= N(N-1)/2
+- 1 <= a_i < b_i <= N
+- All pairs (a_i, b_i) are distinct
+- 1 <= c_i <= 10^{15}
+- 1 <= X <= 10^{15}
+- All input values are integers

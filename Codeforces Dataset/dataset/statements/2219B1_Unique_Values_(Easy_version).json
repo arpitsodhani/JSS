@@ -1,0 +1,30 @@
+{
+  "contestId": 2219,
+  "index": "B1",
+  "problem_id": "2219B1",
+  "name": "Unique Values (Easy version)",
+  "rating": 1900,
+  "tags": [
+    "binary search",
+    "constructive algorithms",
+    "divide and conquer",
+    "interactive",
+    "math"
+  ],
+  "points": 750.0,
+  "solvedCount": 4142,
+  "source": "verbatim_cf_fetch",
+  "title": "B1. Unique Values (Easy version)",
+  "legend": "The difference between the easy version and hard version is the maximum number of queries allowed. In this version, it is 66.\n\nThere is a secret array a of length 2n+1, whose elements are integers from 1 to n. Each value appears exactly twice, except for one value, which appears exactly three times.\n\nYour goal is to find the three positions of the value that appears three times.\n\nTo do this, you may ask the following query at most 66 times:\n\nChoose an integer k and an array s of k distinct indices between 1 and 2n+1.\nYou will receive the number of different values among as1,as2,…,ask that appear exactly once, or, in other words, the count of values that are not repeated.\n\nFor example, if the values as1,…,ask are {2,1,2,3,2,3,6,7}, the answer to the query will be 3, as 1, 6, 7 are the only values that appear exactly once. 3 appears 2 times and 2 appears 3 times, which is more than once, so they are not counted.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤500). The description of the test cases follows.\n\nThe first line of each test case contains a single integer n (2≤n≤1000).\n\nThe array a is fixed for the test case and does not change during the interaction. In other words, the interactor is not adaptive.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2⋅104.",
+  "output_spec": "",
+  "note": "The secret array is a=[1,1,1,2,2].\n\nIn the first query, we ask for the number of values that appear exactly once in [a1,a2]=[1,1], since value 1 is repeated, the answer is 0.\n\nIn the second query, we ask for the number of values that appear exactly once in [a1,a4]=[1,2], since values 1 and 2 appear exactly once, the answer is 2.\n\nIn the fourth query, we ask for the number of values that appear exactly once in [a1,a2,a3,a4,a5]=[1,1,1,2,2], since values 1 and 2 are repeated, the answer is 0.\n\nAt the end, we print that the indices of the value repeated three times are 1, 2 and 3.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "1\n2\n\n0\n\n2\n\n2\n\n0\n\n1\n",
+      "output": "\n\n? 2 1 2\n\n? 2 1 4\n\n? 2 1 5\n\n? 5 1 2 3 4 5\n\n? 4 1 2 3 4\n\n! 1 2 3"
+    }
+  ]
+}

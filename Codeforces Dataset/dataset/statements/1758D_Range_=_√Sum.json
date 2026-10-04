@@ -1,0 +1,30 @@
+{
+  "contestId": 1758,
+  "index": "D",
+  "problem_id": "1758D",
+  "name": "Range = √Sum",
+  "rating": 1800,
+  "tags": [
+    "binary search",
+    "brute force",
+    "constructive algorithms",
+    "math",
+    "two pointers"
+  ],
+  "points": 1750.0,
+  "solvedCount": 8597,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Range = √Sum",
+  "legend": "You are given an integer n. Find a sequence of n distinct integers a1,a2,…,an such that 1≤ai≤109 for all i and\nmax(a1,a2,…,an)−min(a1,a2,…,an)=\n√\na1+a2+⋯+an\n.\n\nIt can be proven that there exists a sequence of distinct integers that satisfies all the conditions above.",
+  "input_spec": "The first line of input contains t (1≤t≤104) — the number of test cases.\n\nThe first and only line of each test case contains one integer n (2≤n≤3⋅105) — the length of the sequence you have to find.\n\nThe sum of n over all test cases does not exceed 3⋅105.",
+  "output_spec": "For each test case, output n space-separated distinct integers a1,a2,…,an satisfying the conditions in the statement.\n\nIf there are several possible answers, you can output any of them. Please remember that your integers must be distinct!",
+  "note": "In the first test case, the maximum is 3, the minimum is 1, the sum is 4, and 3−1=\n√\n4\n.\n\nIn the second test case, the maximum is 29, the minimum is 18, the sum is 121, and 29−18=\n√\n121\n.\n\nFor each test case, the integers are all distinct.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n2\n5\n4\n",
+      "output": "3 1\n20 29 18 26 28\n25 21 23 31"
+    }
+  ]
+}

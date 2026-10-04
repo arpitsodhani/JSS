@@ -1,0 +1,129 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "add_edge",
+      "confidence": 1.0
+    },
+    {
+      "clause": "clear_adjacency_matrix",
+      "confidence": 1.0
+    },
+    {
+      "clause": "connect_vertices",
+      "confidence": 1.0
+    },
+    {
+      "clause": "create_connection",
+      "confidence": 1.0
+    },
+    {
+      "clause": "decipher_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "decode_values",
+      "confidence": 1.0
+    },
+    {
+      "clause": "decrypt_parameters",
+      "confidence": 1.0
+    },
+    {
+      "clause": "decrypt_query",
+      "confidence": 1.0
+    },
+    {
+      "clause": "execute_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_common_neighbor",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_mediator",
+      "confidence": 1.0
+    },
+    {
+      "clause": "get_problem_size",
+      "confidence": 1.0
+    },
+    {
+      "clause": "handle_all_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "init_graph",
+      "confidence": 1.0
+    },
+    {
+      "clause": "initialize_edges",
+      "confidence": 1.0
+    },
+    {
+      "clause": "input_problem_params",
+      "confidence": 1.0
+    },
+    {
+      "clause": "insert_edge",
+      "confidence": 1.0
+    },
+    {
+      "clause": "locate_mediator",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "make_edge",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prepare_graph_storage",
+      "confidence": 1.0
+    },
+    {
+      "clause": "process_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "query_common_adjacent",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_n_q",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_parameters",
+      "confidence": 1.0
+    },
+    {
+      "clause": "run_all_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "scan_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "search_common_neighbor",
+      "confidence": 1.0
+    },
+    {
+      "clause": "setup_adjacency",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve_queries",
+      "confidence": 1.0
+    },
+    {
+      "clause": "unscramble_query",
+      "confidence": 1.0
+    }
+  ]
+}

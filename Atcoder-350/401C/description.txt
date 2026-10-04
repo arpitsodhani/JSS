@@ -1,0 +1,16 @@
+You are given a sequence of N positive integers A_1, A_2, ..., A_N.
+Find the number of non-empty contiguous subsequences of A that satisfy the following condition:
+- The sum of the elements is a multiple of the number of elements.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N
+A_1 A_2 ... A_N
+
+**Output:**
+Print the answer.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

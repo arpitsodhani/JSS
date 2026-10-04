@@ -1,0 +1,324 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *h, int *w, int *q, int *F, int *A, int *B, int *Y, int *C, int *D, int *Z)",
+          "code": "scanf(\"%d %d\", h, w);\nfor(int i=0;i<(*h)*(*w);i++) scanf(\"%d\", &F[i]);\nscanf(\"%d\", q);\nfor(int i=0;i<*q;i++){\n  scanf(\"%d %d %d %d %d %d\", &A[i],&B[i],&Y[i],&C[i],&D[i],&Z[i]);\n  A[i]--; B[i]--; C[i]--; D[i]--; \n}\n"
+        },
+        {
+          "clause_id": "build_edges",
+          "signature": "void build_edges(int h, int w, const int *F, int *eu, int *ev, int *ew, int *m)",
+          "code": "int m0=0;\nfor(int i=0;i<h;i++){\n  for(int j=0;j<w;j++){\n    int id=i*w+j;\n    if(i+1<h){ int id2=(i+1)*w+j; eu[m0]=id; ev[m0]=id2; int a=F[id], b=F[id2]; ew[m0]=(a<b)?a:b; m0++; }\n    if(j+1<w){ int id2=i*w+(j+1); eu[m0]=id; ev[m0]=id2; int a=F[id], b=F[id2]; ew[m0]=(a<b)?a:b; m0++; }\n  }\n}\n*m=m0;\n"
+        },
+        {
+          "clause_id": "sort_edges",
+          "signature": "void sort_edges(int m, int *eu, int *ev, int *ew)",
+          "code": "for(int i=0;i<m;i++){\n  int best=i;\n  for(int j=i+1;j<m;j++) if(ew[j]>ew[best]) best=j;\n  int tu=eu[i], tv=ev[i], tw=ew[i];\n  eu[i]=eu[best]; ev[i]=ev[best]; ew[i]=ew[best];\n  eu[best]=tu; ev[best]=tv; ew[best]=tw;\n}\n"
+        },
+        {
+          "clause_id": "dsu_init",
+          "signature": "void dsu_init(int n, int *p, int *sz)",
+          "code": "for(int i=0;i<n;i++){ p[i]=i; sz[i]=1; }\n"
+        },
+        {
+          "clause_id": "dsu_find",
+          "signature": "int dsu_find(int x, int *p)",
+          "code": "while(p[x]!=x){ p[x]=p[p[x]]; x=p[x]; } return x;\n"
+        },
+        {
+          "clause_id": "dsu_unite",
+          "signature": "int dsu_unite(int a, int b, int *p, int *sz)",
+          "code": "a=dsu_find(a,p); b=dsu_find(b,p);\nif(a==b) return 0;\nif(sz[a]<sz[b]){ int t=a;a=b;b=t; }\np[b]=a; sz[a]+=sz[b]; return 1;\n"
+        },
+        {
+          "clause_id": "build_mst",
+          "signature": "void build_mst(int n, int m, const int *eu, const int *ev, const int *ew, int *head, int *to, int *nx, int *wt)",
+          "code": "for(int i=0;i<n;i++) head[i]=-1;\nint *p=(int*)malloc((size_t)n*sizeof(int));\nint *sz=(int*)malloc((size_t)n*sizeof(int));\ndsu_init(n,p,sz);\nint ec=0;\nfor(int i=0;i<m;i++){\n  if(dsu_unite(eu[i],ev[i],p,sz)){\n    to[ec]=ev[i]; wt[ec]=ew[i]; nx[ec]=head[eu[i]]; head[eu[i]]=ec++; \n    to[ec]=eu[i]; wt[ec]=ew[i]; nx[ec]=head[ev[i]]; head[ev[i]]=ec++; \n  }\n}\nfree(p); free(sz);\n"
+        },
+        {
+          "clause_id": "lca_prep",
+          "signature": "void lca_prep(int n, const int *head, const int *to, const int *nx, const int *wt, int *up, int *mn, int *dep)",
+          "code": "int LOG=19;\nfor(int i=0;i<n;i++){ dep[i]=-1; }\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint qh=0,qt=0;\ndep[0]=0; up[0*LOG+0]=0; mn[0*LOG+0]=1000000007; q[qt++]=0;\nwhile(qh<qt){\n  int v=q[qh++];\n  for(int e=head[v]; e!=-1; e=nx[e]){\n    int u=to[e];\n    if(dep[u]!=-1) continue;\n    dep[u]=dep[v]+1;\n    up[u*LOG+0]=v;\n    mn[u*LOG+0]=wt[e];\n    q[qt++]=u;\n  }\n}\nfor(int k=1;k<LOG;k++){\n  for(int v=0;v<n;v++){\n    int p=up[v*LOG+(k-1)];\n    up[v*LOG+k]=up[p*LOG+(k-1)];\n    int a=mn[v*LOG+(k-1)], b=mn[p*LOG+(k-1)];\n    mn[v*LOG+k]=(a<b)?a:b;\n  }\n}\nfree(q);\n"
+        },
+        {
+          "clause_id": "bottleneck",
+          "signature": "int bottleneck(int n, int a, int b, const int *up, const int *mn, const int *dep)",
+          "code": "int LOG=19;\nint ans=1000000007;\nif(dep[a]<dep[b]){ int t=a;a=b;b=t; }\nint diff=dep[a]-dep[b];\nfor(int k=0;k<LOG;k++) if(diff&(1<<k)){\n  int v=mn[a*LOG+k]; if(v<ans) ans=v;\n  a=up[a*LOG+k];\n}\nif(a==b) return ans;\nfor(int k=LOG-1;k>=0;k--){\n  if(up[a*LOG+k]!=up[b*LOG+k]){\n    int va=mn[a*LOG+k]; if(va<ans) ans=va;\n    int vb=mn[b*LOG+k]; if(vb<ans) ans=vb;\n    a=up[a*LOG+k]; b=up[b*LOG+k];\n  }\n}\nint va=mn[a*LOG+0]; if(va<ans) ans=va;\nint vb=mn[b*LOG+0]; if(vb<ans) ans=vb;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "answer_all",
+          "signature": "void answer_all(int h, int w, int q, const int *F, const int *A, const int *B, const int *Y, const int *C, const int *D, const int *Z, const int *up, const int *mn, const int *dep)",
+          "code": "for(int i=0;i<q;i++){\n  int s=A[i]*w + B[i];\n  int t=C[i]*w + D[i];\n  int Bv=bottleneck(h*w,s,t,up,mn,dep);\n  int y=Y[i], z=Z[i];\n  long long ans;\n  if(Bv>= (y<z?y:z)) ans = (y>z)? (y-z):(z-y);\n  else ans = (long long)y + (long long)z - 2LL*Bv;\n  printf(\"%lld\\n\", ans);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int h,w,q; int *F=(int*)malloc((size_t)250000*sizeof(int));\nint *A=(int*)malloc((size_t)200005*sizeof(int));\nint *B=(int*)malloc((size_t)200005*sizeof(int));\nint *Y=(int*)malloc((size_t)200005*sizeof(int));\nint *C=(int*)malloc((size_t)200005*sizeof(int));\nint *D=(int*)malloc((size_t)200005*sizeof(int));\nint *Z=(int*)malloc((size_t)200005*sizeof(int));\nread_input(&h,&w,&q,F,A,B,Y,C,D,Z);\nint n=h*w;\nint mmax=2*n;\nint *eu=(int*)malloc((size_t)mmax*sizeof(int));\nint *ev=(int*)malloc((size_t)mmax*sizeof(int));\nint *ew=(int*)malloc((size_t)mmax*sizeof(int));\nint m=0;\nbuild_edges(h,w,F,eu,ev,ew,&m);\nsort_edges(m,eu,ev,ew);\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *wt=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nbuild_mst(n,m,eu,ev,ew,head,to,nx,wt);\nint LOG=19;\nint *up=(int*)malloc((size_t)n*(size_t)LOG*sizeof(int));\nint *mn=(int*)malloc((size_t)n*(size_t)LOG*sizeof(int));\nint *dep=(int*)malloc((size_t)n*sizeof(int));\nlca_prep(n,head,to,nx,wt,up,mn,dep);\nanswer_all(h,w,q,F,A,B,Y,C,D,Z,up,mn,dep);\nfree(F); free(A); free(B); free(Y); free(C); free(D); free(Z);\nfree(eu); free(ev); free(ew);\nfree(head); free(to); free(nx); free(wt);\nfree(up); free(mn); free(dep);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *h, int *w, int *q, int *F, int *A, int *B, int *Y, int *C, int *D, int *Z)",
+          "code": "scanf(\"%d %d\", h, w);\nfor(int i=0;i<(*h)*(*w);i++) scanf(\"%d\", &F[i]);\nscanf(\"%d\", q);\nfor(int i=0;i<*q;i++){\n  scanf(\"%d %d %d %d %d %d\", &A[i],&B[i],&Y[i],&C[i],&D[i],&Z[i]);\n  A[i]--; B[i]--; C[i]--; D[i]--; \n}\n"
+        },
+        {
+          "clause_id": "build_edges",
+          "signature": "void build_edges(int h, int w, const int *F, int *eu, int *ev, int *ew, int *m)",
+          "code": "int m0=0;\nfor(int i=0;i<h;i++){\n  for(int j=0;j<w;j++){\n    int id=i*w+j;\n    if(i+1<h){ int id2=(i+1)*w+j; eu[m0]=id; ev[m0]=id2; int a=F[id], b=F[id2]; ew[m0]=(a<b)?a:b; m0++; }\n    if(j+1<w){ int id2=i*w+(j+1); eu[m0]=id; ev[m0]=id2; int a=F[id], b=F[id2]; ew[m0]=(a<b)?a:b; m0++; }\n  }\n}\n*m=m0;\n"
+        },
+        {
+          "clause_id": "sort_edges",
+          "signature": "void sort_edges(int m, int *eu, int *ev, int *ew)",
+          "code": "for(int i=0;i<m;i++){\n  int best=i;\n  for(int j=i+1;j<m;j++) if(ew[j]>ew[best]) best=j;\n  int tu=eu[i], tv=ev[i], tw=ew[i];\n  eu[i]=eu[best]; ev[i]=ev[best]; ew[i]=ew[best];\n  eu[best]=tu; ev[best]=tv; ew[best]=tw;\n}\n"
+        },
+        {
+          "clause_id": "dsu_init",
+          "signature": "void dsu_init(int n, int *p, int *sz)",
+          "code": "for(int i=0;i<n;i++){ p[i]=i; sz[i]=1; }\n"
+        },
+        {
+          "clause_id": "dsu_find",
+          "signature": "int dsu_find(int x, int *p)",
+          "code": "while(p[x]!=x){ p[x]=p[p[x]]; x=p[x]; } return x;\n"
+        },
+        {
+          "clause_id": "dsu_unite",
+          "signature": "int dsu_unite(int a, int b, int *p, int *sz)",
+          "code": "a=dsu_find(a,p); b=dsu_find(b,p);\nif(a==b) return 0;\nif(sz[a]<sz[b]){ int t=a;a=b;b=t; }\np[b]=a; sz[a]+=sz[b]; return 1;\n"
+        },
+        {
+          "clause_id": "build_mst",
+          "signature": "void build_mst(int n, int m, const int *eu, const int *ev, const int *ew, int *head, int *to, int *nx, int *wt)",
+          "code": "for(int i=0;i<n;i++) head[i]=-1;\nint *p=(int*)malloc((size_t)n*sizeof(int));\nint *sz=(int*)malloc((size_t)n*sizeof(int));\ndsu_init(n,p,sz);\nint ec=0;\nfor(int i=0;i<m;i++){\n  if(dsu_unite(eu[i],ev[i],p,sz)){\n    to[ec]=ev[i]; wt[ec]=ew[i]; nx[ec]=head[eu[i]]; head[eu[i]]=ec++; \n    to[ec]=eu[i]; wt[ec]=ew[i]; nx[ec]=head[ev[i]]; head[ev[i]]=ec++; \n  }\n}\nfree(p); free(sz);\n"
+        },
+        {
+          "clause_id": "lca_prep",
+          "signature": "void lca_prep(int n, const int *head, const int *to, const int *nx, const int *wt, int *up, int *mn, int *dep)",
+          "code": "int LOG=19;\nfor(int i=0;i<n;i++){ dep[i]=-1; }\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint qh=0,qt=0;\ndep[0]=0; up[0*LOG+0]=0; mn[0*LOG+0]=1000000007; q[qt++]=0;\nwhile(qh<qt){\n  int v=q[qh++];\n  for(int e=head[v]; e!=-1; e=nx[e]){\n    int u=to[e];\n    if(dep[u]!=-1) continue;\n    dep[u]=dep[v]+1;\n    up[u*LOG+0]=v;\n    mn[u*LOG+0]=wt[e];\n    q[qt++]=u;\n  }\n}\nfor(int k=1;k<LOG;k++){\n  for(int v=0;v<n;v++){\n    int p=up[v*LOG+(k-1)];\n    up[v*LOG+k]=up[p*LOG+(k-1)];\n    int a=mn[v*LOG+(k-1)], b=mn[p*LOG+(k-1)];\n    mn[v*LOG+k]=(a<b)?a:b;\n  }\n}\nfree(q);\n"
+        },
+        {
+          "clause_id": "bottleneck",
+          "signature": "int bottleneck(int n, int a, int b, const int *up, const int *mn, const int *dep)",
+          "code": "int LOG=19;\nint ans=1000000007;\nif(dep[a]<dep[b]){ int t=a;a=b;b=t; }\nint diff=dep[a]-dep[b];\nfor(int k=0;k<LOG;k++) if(diff&(1<<k)){\n  int v=mn[a*LOG+k]; if(v<ans) ans=v;\n  a=up[a*LOG+k];\n}\nif(a==b) return ans;\nfor(int k=LOG-1;k>=0;k--){\n  if(up[a*LOG+k]!=up[b*LOG+k]){\n    int va=mn[a*LOG+k]; if(va<ans) ans=va;\n    int vb=mn[b*LOG+k]; if(vb<ans) ans=vb;\n    a=up[a*LOG+k]; b=up[b*LOG+k];\n  }\n}\nint va=mn[a*LOG+0]; if(va<ans) ans=va;\nint vb=mn[b*LOG+0]; if(vb<ans) ans=vb;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "answer_all",
+          "signature": "void answer_all(int h, int w, int q, const int *F, const int *A, const int *B, const int *Y, const int *C, const int *D, const int *Z, const int *up, const int *mn, const int *dep)",
+          "code": "for(int i=0;i<q;i++){\n  int s=A[i]*w + B[i];\n  int t=C[i]*w + D[i];\n  int Bv=bottleneck(h*w,s,t,up,mn,dep);\n  int y=Y[i], z=Z[i];\n  long long ans;\n  if(Bv>= (y<z?y:z)) ans = (y>z)? (y-z):(z-y);\n  else ans = (long long)y + (long long)z - 2LL*Bv;\n  printf(\"%lld\\n\", ans);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int h,w,q; int *F=(int*)malloc((size_t)250000*sizeof(int));\nint *A=(int*)malloc((size_t)200005*sizeof(int));\nint *B=(int*)malloc((size_t)200005*sizeof(int));\nint *Y=(int*)malloc((size_t)200005*sizeof(int));\nint *C=(int*)malloc((size_t)200005*sizeof(int));\nint *D=(int*)malloc((size_t)200005*sizeof(int));\nint *Z=(int*)malloc((size_t)200005*sizeof(int));\nread_input(&h,&w,&q,F,A,B,Y,C,D,Z);\nint n=h*w;\nint mmax=2*n;\nint *eu=(int*)malloc((size_t)mmax*sizeof(int));\nint *ev=(int*)malloc((size_t)mmax*sizeof(int));\nint *ew=(int*)malloc((size_t)mmax*sizeof(int));\nint m=0;\nbuild_edges(h,w,F,eu,ev,ew,&m);\nsort_edges(m,eu,ev,ew);\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *wt=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nbuild_mst(n,m,eu,ev,ew,head,to,nx,wt);\nint LOG=19;\nint *up=(int*)malloc((size_t)n*(size_t)LOG*sizeof(int));\nint *mn=(int*)malloc((size_t)n*(size_t)LOG*sizeof(int));\nint *dep=(int*)malloc((size_t)n*sizeof(int));\nlca_prep(n,head,to,nx,wt,up,mn,dep);\nanswer_all(h,w,q,F,A,B,Y,C,D,Z,up,mn,dep);\nfree(F); free(A); free(B); free(Y); free(C); free(D); free(Z);\nfree(eu); free(ev); free(ew);\nfree(head); free(to); free(nx); free(wt);\nfree(up); free(mn); free(dep);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *h, int *w, int *q, int *F, int *A, int *B, int *Y, int *C, int *D, int *Z)",
+          "code": "scanf(\"%d %d\", h, w);\nfor(int i=0;i<(*h)*(*w);i++) scanf(\"%d\", &F[i]);\nscanf(\"%d\", q);\nfor(int i=0;i<*q;i++){\n  scanf(\"%d %d %d %d %d %d\", &A[i],&B[i],&Y[i],&C[i],&D[i],&Z[i]);\n  A[i]--; B[i]--; C[i]--; D[i]--; \n}\n"
+        },
+        {
+          "clause_id": "build_edges",
+          "signature": "void build_edges(int h, int w, const int *F, int *eu, int *ev, int *ew, int *m)",
+          "code": "int m0=0;\nfor(int i=0;i<h;i++){\n  for(int j=0;j<w;j++){\n    int id=i*w+j;\n    if(i+1<h){ int id2=(i+1)*w+j; eu[m0]=id; ev[m0]=id2; int a=F[id], b=F[id2]; ew[m0]=(a<b)?a:b; m0++; }\n    if(j+1<w){ int id2=i*w+(j+1); eu[m0]=id; ev[m0]=id2; int a=F[id], b=F[id2]; ew[m0]=(a<b)?a:b; m0++; }\n  }\n}\n*m=m0;\n"
+        },
+        {
+          "clause_id": "sort_edges",
+          "signature": "void sort_edges(int m, int *eu, int *ev, int *ew)",
+          "code": "for(int i=0;i<m;i++){\n  int best=i;\n  for(int j=i+1;j<m;j++) if(ew[j]>ew[best]) best=j;\n  int tu=eu[i], tv=ev[i], tw=ew[i];\n  eu[i]=eu[best]; ev[i]=ev[best]; ew[i]=ew[best];\n  eu[best]=tu; ev[best]=tv; ew[best]=tw;\n}\n"
+        },
+        {
+          "clause_id": "dsu_init",
+          "signature": "void dsu_init(int n, int *p, int *sz)",
+          "code": "for(int i=0;i<n;i++){ p[i]=i; sz[i]=1; }\n"
+        },
+        {
+          "clause_id": "dsu_find",
+          "signature": "int dsu_find(int x, int *p)",
+          "code": "while(p[x]!=x){ p[x]=p[p[x]]; x=p[x]; } return x;\n"
+        },
+        {
+          "clause_id": "dsu_unite",
+          "signature": "int dsu_unite(int a, int b, int *p, int *sz)",
+          "code": "a=dsu_find(a,p); b=dsu_find(b,p);\nif(a==b) return 0;\nif(sz[a]<sz[b]){ int t=a;a=b;b=t; }\np[b]=a; sz[a]+=sz[b]; return 1;\n"
+        },
+        {
+          "clause_id": "build_mst",
+          "signature": "void build_mst(int n, int m, const int *eu, const int *ev, const int *ew, int *head, int *to, int *nx, int *wt)",
+          "code": "for(int i=0;i<n;i++) head[i]=-1;\nint *p=(int*)malloc((size_t)n*sizeof(int));\nint *sz=(int*)malloc((size_t)n*sizeof(int));\ndsu_init(n,p,sz);\nint ec=0;\nfor(int i=0;i<m;i++){\n  if(dsu_unite(eu[i],ev[i],p,sz)){\n    to[ec]=ev[i]; wt[ec]=ew[i]; nx[ec]=head[eu[i]]; head[eu[i]]=ec++; \n    to[ec]=eu[i]; wt[ec]=ew[i]; nx[ec]=head[ev[i]]; head[ev[i]]=ec++; \n  }\n}\nfree(p); free(sz);\n"
+        },
+        {
+          "clause_id": "lca_prep",
+          "signature": "void lca_prep(int n, const int *head, const int *to, const int *nx, const int *wt, int *up, int *mn, int *dep)",
+          "code": "int LOG=19;\nfor(int i=0;i<n;i++){ dep[i]=-1; }\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint qh=0,qt=0;\ndep[0]=0; up[0*LOG+0]=0; mn[0*LOG+0]=1000000007; q[qt++]=0;\nwhile(qh<qt){\n  int v=q[qh++];\n  for(int e=head[v]; e!=-1; e=nx[e]){\n    int u=to[e];\n    if(dep[u]!=-1) continue;\n    dep[u]=dep[v]+1;\n    up[u*LOG+0]=v;\n    mn[u*LOG+0]=wt[e];\n    q[qt++]=u;\n  }\n}\nfor(int k=1;k<LOG;k++){\n  for(int v=0;v<n;v++){\n    int p=up[v*LOG+(k-1)];\n    up[v*LOG+k]=up[p*LOG+(k-1)];\n    int a=mn[v*LOG+(k-1)], b=mn[p*LOG+(k-1)];\n    mn[v*LOG+k]=(a<b)?a:b;\n  }\n}\nfree(q);\n"
+        },
+        {
+          "clause_id": "bottleneck",
+          "signature": "int bottleneck(int n, int a, int b, const int *up, const int *mn, const int *dep)",
+          "code": "int LOG=19;\nint ans=1000000007;\nif(dep[a]<dep[b]){ int t=a;a=b;b=t; }\nint diff=dep[a]-dep[b];\nfor(int k=0;k<LOG;k++) if(diff&(1<<k)){\n  int v=mn[a*LOG+k]; if(v<ans) ans=v;\n  a=up[a*LOG+k];\n}\nif(a==b) return ans;\nfor(int k=LOG-1;k>=0;k--){\n  if(up[a*LOG+k]!=up[b*LOG+k]){\n    int va=mn[a*LOG+k]; if(va<ans) ans=va;\n    int vb=mn[b*LOG+k]; if(vb<ans) ans=vb;\n    a=up[a*LOG+k]; b=up[b*LOG+k];\n  }\n}\nint va=mn[a*LOG+0]; if(va<ans) ans=va;\nint vb=mn[b*LOG+0]; if(vb<ans) ans=vb;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "answer_all",
+          "signature": "void answer_all(int h, int w, int q, const int *F, const int *A, const int *B, const int *Y, const int *C, const int *D, const int *Z, const int *up, const int *mn, const int *dep)",
+          "code": "for(int i=0;i<q;i++){\n  int s=A[i]*w + B[i];\n  int t=C[i]*w + D[i];\n  int Bv=bottleneck(h*w,s,t,up,mn,dep);\n  int y=Y[i], z=Z[i];\n  long long ans;\n  if(Bv>= (y<z?y:z)) ans = (y>z)? (y-z):(z-y);\n  else ans = (long long)y + (long long)z - 2LL*Bv;\n  printf(\"%lld\\n\", ans);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int h,w,q; int *F=(int*)malloc((size_t)250000*sizeof(int));\nint *A=(int*)malloc((size_t)200005*sizeof(int));\nint *B=(int*)malloc((size_t)200005*sizeof(int));\nint *Y=(int*)malloc((size_t)200005*sizeof(int));\nint *C=(int*)malloc((size_t)200005*sizeof(int));\nint *D=(int*)malloc((size_t)200005*sizeof(int));\nint *Z=(int*)malloc((size_t)200005*sizeof(int));\nread_input(&h,&w,&q,F,A,B,Y,C,D,Z);\nint n=h*w;\nint mmax=2*n;\nint *eu=(int*)malloc((size_t)mmax*sizeof(int));\nint *ev=(int*)malloc((size_t)mmax*sizeof(int));\nint *ew=(int*)malloc((size_t)mmax*sizeof(int));\nint m=0;\nbuild_edges(h,w,F,eu,ev,ew,&m);\nsort_edges(m,eu,ev,ew);\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *wt=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nbuild_mst(n,m,eu,ev,ew,head,to,nx,wt);\nint LOG=19;\nint *up=(int*)malloc((size_t)n*(size_t)LOG*sizeof(int));\nint *mn=(int*)malloc((size_t)n*(size_t)LOG*sizeof(int));\nint *dep=(int*)malloc((size_t)n*sizeof(int));\nlca_prep(n,head,to,nx,wt,up,mn,dep);\nanswer_all(h,w,q,F,A,B,Y,C,D,Z,up,mn,dep);\nfree(F); free(A); free(B); free(Y); free(C); free(D); free(Z);\nfree(eu); free(ev); free(ew);\nfree(head); free(to); free(nx); free(wt);\nfree(up); free(mn); free(dep);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *h, int *w, int *q, int *F, int *A, int *B, int *Y, int *C, int *D, int *Z)",
+          "code": "scanf(\"%d %d\", h, w);\nfor(int i=0;i<(*h)*(*w);i++) scanf(\"%d\", &F[i]);\nscanf(\"%d\", q);\nfor(int i=0;i<*q;i++){\n  scanf(\"%d %d %d %d %d %d\", &A[i],&B[i],&Y[i],&C[i],&D[i],&Z[i]);\n  A[i]--; B[i]--; C[i]--; D[i]--; \n}\n"
+        },
+        {
+          "clause_id": "build_edges",
+          "signature": "void build_edges(int h, int w, const int *F, int *eu, int *ev, int *ew, int *m)",
+          "code": "int m0=0;\nfor(int i=0;i<h;i++){\n  for(int j=0;j<w;j++){\n    int id=i*w+j;\n    if(i+1<h){ int id2=(i+1)*w+j; eu[m0]=id; ev[m0]=id2; int a=F[id], b=F[id2]; ew[m0]=(a<b)?a:b; m0++; }\n    if(j+1<w){ int id2=i*w+(j+1); eu[m0]=id; ev[m0]=id2; int a=F[id], b=F[id2]; ew[m0]=(a<b)?a:b; m0++; }\n  }\n}\n*m=m0;\n"
+        },
+        {
+          "clause_id": "sort_edges",
+          "signature": "void sort_edges(int m, int *eu, int *ev, int *ew)",
+          "code": "for(int i=0;i<m;i++){\n  int best=i;\n  for(int j=i+1;j<m;j++) if(ew[j]>ew[best]) best=j;\n  int tu=eu[i], tv=ev[i], tw=ew[i];\n  eu[i]=eu[best]; ev[i]=ev[best]; ew[i]=ew[best];\n  eu[best]=tu; ev[best]=tv; ew[best]=tw;\n}\n"
+        },
+        {
+          "clause_id": "dsu_init",
+          "signature": "void dsu_init(int n, int *p, int *sz)",
+          "code": "for(int i=0;i<n;i++){ p[i]=i; sz[i]=1; }\n"
+        },
+        {
+          "clause_id": "dsu_find",
+          "signature": "int dsu_find(int x, int *p)",
+          "code": "while(p[x]!=x){ p[x]=p[p[x]]; x=p[x]; } return x;\n"
+        },
+        {
+          "clause_id": "dsu_unite",
+          "signature": "int dsu_unite(int a, int b, int *p, int *sz)",
+          "code": "a=dsu_find(a,p); b=dsu_find(b,p);\nif(a==b) return 0;\nif(sz[a]<sz[b]){ int t=a;a=b;b=t; }\np[b]=a; sz[a]+=sz[b]; return 1;\n"
+        },
+        {
+          "clause_id": "build_mst",
+          "signature": "void build_mst(int n, int m, const int *eu, const int *ev, const int *ew, int *head, int *to, int *nx, int *wt)",
+          "code": "for(int i=0;i<n;i++) head[i]=-1;\nint *p=(int*)malloc((size_t)n*sizeof(int));\nint *sz=(int*)malloc((size_t)n*sizeof(int));\ndsu_init(n,p,sz);\nint ec=0;\nfor(int i=0;i<m;i++){\n  if(dsu_unite(eu[i],ev[i],p,sz)){\n    to[ec]=ev[i]; wt[ec]=ew[i]; nx[ec]=head[eu[i]]; head[eu[i]]=ec++; \n    to[ec]=eu[i]; wt[ec]=ew[i]; nx[ec]=head[ev[i]]; head[ev[i]]=ec++; \n  }\n}\nfree(p); free(sz);\n"
+        },
+        {
+          "clause_id": "lca_prep",
+          "signature": "void lca_prep(int n, const int *head, const int *to, const int *nx, const int *wt, int *up, int *mn, int *dep)",
+          "code": "int LOG=19;\nfor(int i=0;i<n;i++){ dep[i]=-1; }\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint qh=0,qt=0;\ndep[0]=0; up[0*LOG+0]=0; mn[0*LOG+0]=1000000007; q[qt++]=0;\nwhile(qh<qt){\n  int v=q[qh++];\n  for(int e=head[v]; e!=-1; e=nx[e]){\n    int u=to[e];\n    if(dep[u]!=-1) continue;\n    dep[u]=dep[v]+1;\n    up[u*LOG+0]=v;\n    mn[u*LOG+0]=wt[e];\n    q[qt++]=u;\n  }\n}\nfor(int k=1;k<LOG;k++){\n  for(int v=0;v<n;v++){\n    int p=up[v*LOG+(k-1)];\n    up[v*LOG+k]=up[p*LOG+(k-1)];\n    int a=mn[v*LOG+(k-1)], b=mn[p*LOG+(k-1)];\n    mn[v*LOG+k]=(a<b)?a:b;\n  }\n}\nfree(q);\n"
+        },
+        {
+          "clause_id": "bottleneck",
+          "signature": "int bottleneck(int n, int a, int b, const int *up, const int *mn, const int *dep)",
+          "code": "int LOG=19;\nint ans=1000000007;\nif(dep[a]<dep[b]){ int t=a;a=b;b=t; }\nint diff=dep[a]-dep[b];\nfor(int k=0;k<LOG;k++) if(diff&(1<<k)){\n  int v=mn[a*LOG+k]; if(v<ans) ans=v;\n  a=up[a*LOG+k];\n}\nif(a==b) return ans;\nfor(int k=LOG-1;k>=0;k--){\n  if(up[a*LOG+k]!=up[b*LOG+k]){\n    int va=mn[a*LOG+k]; if(va<ans) ans=va;\n    int vb=mn[b*LOG+k]; if(vb<ans) ans=vb;\n    a=up[a*LOG+k]; b=up[b*LOG+k];\n  }\n}\nint va=mn[a*LOG+0]; if(va<ans) ans=va;\nint vb=mn[b*LOG+0]; if(vb<ans) ans=vb;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "answer_all",
+          "signature": "void answer_all(int h, int w, int q, const int *F, const int *A, const int *B, const int *Y, const int *C, const int *D, const int *Z, const int *up, const int *mn, const int *dep)",
+          "code": "for(int i=0;i<q;i++){\n  int s=A[i]*w + B[i];\n  int t=C[i]*w + D[i];\n  int Bv=bottleneck(h*w,s,t,up,mn,dep);\n  int y=Y[i], z=Z[i];\n  long long ans;\n  if(Bv>= (y<z?y:z)) ans = (y>z)? (y-z):(z-y);\n  else ans = (long long)y + (long long)z - 2LL*Bv;\n  printf(\"%lld\\n\", ans);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int h,w,q; int *F=(int*)malloc((size_t)250000*sizeof(int));\nint *A=(int*)malloc((size_t)200005*sizeof(int));\nint *B=(int*)malloc((size_t)200005*sizeof(int));\nint *Y=(int*)malloc((size_t)200005*sizeof(int));\nint *C=(int*)malloc((size_t)200005*sizeof(int));\nint *D=(int*)malloc((size_t)200005*sizeof(int));\nint *Z=(int*)malloc((size_t)200005*sizeof(int));\nread_input(&h,&w,&q,F,A,B,Y,C,D,Z);\nint n=h*w;\nint mmax=2*n;\nint *eu=(int*)malloc((size_t)mmax*sizeof(int));\nint *ev=(int*)malloc((size_t)mmax*sizeof(int));\nint *ew=(int*)malloc((size_t)mmax*sizeof(int));\nint m=0;\nbuild_edges(h,w,F,eu,ev,ew,&m);\nsort_edges(m,eu,ev,ew);\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *wt=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nbuild_mst(n,m,eu,ev,ew,head,to,nx,wt);\nint LOG=19;\nint *up=(int*)malloc((size_t)n*(size_t)LOG*sizeof(int));\nint *mn=(int*)malloc((size_t)n*(size_t)LOG*sizeof(int));\nint *dep=(int*)malloc((size_t)n*sizeof(int));\nlca_prep(n,head,to,nx,wt,up,mn,dep);\nanswer_all(h,w,q,F,A,B,Y,C,D,Z,up,mn,dep);\nfree(F); free(A); free(B); free(Y); free(C); free(D); free(Z);\nfree(eu); free(ev); free(ew);\nfree(head); free(to); free(nx); free(wt);\nfree(up); free(mn); free(dep);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *h, int *w, int *q, int *F, int *A, int *B, int *Y, int *C, int *D, int *Z)",
+          "code": "scanf(\"%d %d\", h, w);\nfor(int i=0;i<(*h)*(*w);i++) scanf(\"%d\", &F[i]);\nscanf(\"%d\", q);\nfor(int i=0;i<*q;i++){\n  scanf(\"%d %d %d %d %d %d\", &A[i],&B[i],&Y[i],&C[i],&D[i],&Z[i]);\n  A[i]--; B[i]--; C[i]--; D[i]--; \n}\n"
+        },
+        {
+          "clause_id": "build_edges",
+          "signature": "void build_edges(int h, int w, const int *F, int *eu, int *ev, int *ew, int *m)",
+          "code": "int m0=0;\nfor(int i=0;i<h;i++){\n  for(int j=0;j<w;j++){\n    int id=i*w+j;\n    if(i+1<h){ int id2=(i+1)*w+j; eu[m0]=id; ev[m0]=id2; int a=F[id], b=F[id2]; ew[m0]=(a<b)?a:b; m0++; }\n    if(j+1<w){ int id2=i*w+(j+1); eu[m0]=id; ev[m0]=id2; int a=F[id], b=F[id2]; ew[m0]=(a<b)?a:b; m0++; }\n  }\n}\n*m=m0;\n"
+        },
+        {
+          "clause_id": "sort_edges",
+          "signature": "void sort_edges(int m, int *eu, int *ev, int *ew)",
+          "code": "for(int i=0;i<m;i++){\n  int best=i;\n  for(int j=i+1;j<m;j++) if(ew[j]>ew[best]) best=j;\n  int tu=eu[i], tv=ev[i], tw=ew[i];\n  eu[i]=eu[best]; ev[i]=ev[best]; ew[i]=ew[best];\n  eu[best]=tu; ev[best]=tv; ew[best]=tw;\n}\n"
+        },
+        {
+          "clause_id": "dsu_init",
+          "signature": "void dsu_init(int n, int *p, int *sz)",
+          "code": "for(int i=0;i<n;i++){ p[i]=i; sz[i]=1; }\n"
+        },
+        {
+          "clause_id": "dsu_find",
+          "signature": "int dsu_find(int x, int *p)",
+          "code": "while(p[x]!=x){ p[x]=p[p[x]]; x=p[x]; } return x;\n"
+        },
+        {
+          "clause_id": "dsu_unite",
+          "signature": "int dsu_unite(int a, int b, int *p, int *sz)",
+          "code": "a=dsu_find(a,p); b=dsu_find(b,p);\nif(a==b) return 0;\nif(sz[a]<sz[b]){ int t=a;a=b;b=t; }\np[b]=a; sz[a]+=sz[b]; return 1;\n"
+        },
+        {
+          "clause_id": "build_mst",
+          "signature": "void build_mst(int n, int m, const int *eu, const int *ev, const int *ew, int *head, int *to, int *nx, int *wt)",
+          "code": "for(int i=0;i<n;i++) head[i]=-1;\nint *p=(int*)malloc((size_t)n*sizeof(int));\nint *sz=(int*)malloc((size_t)n*sizeof(int));\ndsu_init(n,p,sz);\nint ec=0;\nfor(int i=0;i<m;i++){\n  if(dsu_unite(eu[i],ev[i],p,sz)){\n    to[ec]=ev[i]; wt[ec]=ew[i]; nx[ec]=head[eu[i]]; head[eu[i]]=ec++; \n    to[ec]=eu[i]; wt[ec]=ew[i]; nx[ec]=head[ev[i]]; head[ev[i]]=ec++; \n  }\n}\nfree(p); free(sz);\n"
+        },
+        {
+          "clause_id": "lca_prep",
+          "signature": "void lca_prep(int n, const int *head, const int *to, const int *nx, const int *wt, int *up, int *mn, int *dep)",
+          "code": "int LOG=19;\nfor(int i=0;i<n;i++){ dep[i]=-1; }\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint qh=0,qt=0;\ndep[0]=0; up[0*LOG+0]=0; mn[0*LOG+0]=1000000007; q[qt++]=0;\nwhile(qh<qt){\n  int v=q[qh++];\n  for(int e=head[v]; e!=-1; e=nx[e]){\n    int u=to[e];\n    if(dep[u]!=-1) continue;\n    dep[u]=dep[v]+1;\n    up[u*LOG+0]=v;\n    mn[u*LOG+0]=wt[e];\n    q[qt++]=u;\n  }\n}\nfor(int k=1;k<LOG;k++){\n  for(int v=0;v<n;v++){\n    int p=up[v*LOG+(k-1)];\n    up[v*LOG+k]=up[p*LOG+(k-1)];\n    int a=mn[v*LOG+(k-1)], b=mn[p*LOG+(k-1)];\n    mn[v*LOG+k]=(a<b)?a:b;\n  }\n}\nfree(q);\n"
+        },
+        {
+          "clause_id": "bottleneck",
+          "signature": "int bottleneck(int n, int a, int b, const int *up, const int *mn, const int *dep)",
+          "code": "int LOG=19;\nint ans=1000000007;\nif(dep[a]<dep[b]){ int t=a;a=b;b=t; }\nint diff=dep[a]-dep[b];\nfor(int k=0;k<LOG;k++) if(diff&(1<<k)){\n  int v=mn[a*LOG+k]; if(v<ans) ans=v;\n  a=up[a*LOG+k];\n}\nif(a==b) return ans;\nfor(int k=LOG-1;k>=0;k--){\n  if(up[a*LOG+k]!=up[b*LOG+k]){\n    int va=mn[a*LOG+k]; if(va<ans) ans=va;\n    int vb=mn[b*LOG+k]; if(vb<ans) ans=vb;\n    a=up[a*LOG+k]; b=up[b*LOG+k];\n  }\n}\nint va=mn[a*LOG+0]; if(va<ans) ans=va;\nint vb=mn[b*LOG+0]; if(vb<ans) ans=vb;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "answer_all",
+          "signature": "void answer_all(int h, int w, int q, const int *F, const int *A, const int *B, const int *Y, const int *C, const int *D, const int *Z, const int *up, const int *mn, const int *dep)",
+          "code": "for(int i=0;i<q;i++){\n  int s=A[i]*w + B[i];\n  int t=C[i]*w + D[i];\n  int Bv=bottleneck(h*w,s,t,up,mn,dep);\n  int y=Y[i], z=Z[i];\n  long long ans;\n  if(Bv>= (y<z?y:z)) ans = (y>z)? (y-z):(z-y);\n  else ans = (long long)y + (long long)z - 2LL*Bv;\n  printf(\"%lld\\n\", ans);\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int h,w,q; int *F=(int*)malloc((size_t)250000*sizeof(int));\nint *A=(int*)malloc((size_t)200005*sizeof(int));\nint *B=(int*)malloc((size_t)200005*sizeof(int));\nint *Y=(int*)malloc((size_t)200005*sizeof(int));\nint *C=(int*)malloc((size_t)200005*sizeof(int));\nint *D=(int*)malloc((size_t)200005*sizeof(int));\nint *Z=(int*)malloc((size_t)200005*sizeof(int));\nread_input(&h,&w,&q,F,A,B,Y,C,D,Z);\nint n=h*w;\nint mmax=2*n;\nint *eu=(int*)malloc((size_t)mmax*sizeof(int));\nint *ev=(int*)malloc((size_t)mmax*sizeof(int));\nint *ew=(int*)malloc((size_t)mmax*sizeof(int));\nint m=0;\nbuild_edges(h,w,F,eu,ev,ew,&m);\nsort_edges(m,eu,ev,ew);\nint *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nint *wt=(int*)malloc((size_t)(2*(n-1))*sizeof(int));\nbuild_mst(n,m,eu,ev,ew,head,to,nx,wt);\nint LOG=19;\nint *up=(int*)malloc((size_t)n*(size_t)LOG*sizeof(int));\nint *mn=(int*)malloc((size_t)n*(size_t)LOG*sizeof(int));\nint *dep=(int*)malloc((size_t)n*sizeof(int));\nlca_prep(n,head,to,nx,wt,up,mn,dep);\nanswer_all(h,w,q,F,A,B,Y,C,D,Z,up,mn,dep);\nfree(F); free(A); free(B); free(Y); free(C); free(D); free(Z);\nfree(eu); free(ev); free(ew);\nfree(head); free(to); free(nx); free(wt);\nfree(up); free(mn); free(dep);\nreturn 0; }\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "contestId": 1375,
+  "index": "E",
+  "problem_id": "1375E",
+  "name": "Inversion SwapSort",
+  "rating": 2500,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "sortings"
+  ],
+  "points": 2000.0,
+  "solvedCount": 3433,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Inversion SwapSort",
+  "legend": "Madeline has an array a of n integers. A pair (u,v) of integers forms an inversion in a if:\n\n1≤u<v≤n.\nau>av.\n\nMadeline recently found a magical paper, which allows her to write two indices u and v and swap the values au and av. Being bored, she decided to write a list of pairs (ui,vi) with the following conditions:\n\nall the pairs in the list are distinct and form an inversion in a.\nall the pairs that form an inversion in a are in the list.\nStarting from the given array, if you swap the values at indices u1 and v1, then the values at indices u2 and v2 and so on, then after all pairs are processed, the array a will be sorted in non-decreasing order.\n\nConstruct such a list or determine that no such list exists. If there are multiple possible answers, you may find any of them.",
+  "input_spec": "The first line of the input contains a single integer n (1≤n≤1000) — the length of the array.\n\nNext line contains n integers a1,a2,...,an (1≤ai≤109)  — elements of the array.",
+  "output_spec": "Print -1 if no such list exists. Otherwise in the first line you should print a single integer m (0≤m≤\nn(n−1)\n\n\n2\n) — number of pairs in the list.\n\nThe i-th of the following m lines should contain two integers ui,vi (1≤ui<vi≤n).\n\nIf there are multiple possible answers, you may find any of them.",
+  "note": "In the first sample test case the array will change in this order [3,1,2]→[2,1,3]→[1,2,3].\n\nIn the second sample test case it will be [1,8,1,6]→[1,6,1,8]→[1,1,6,8].\n\nIn the third sample test case the array is already sorted.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n3 1 2\n",
+      "output": "2\n1 3\n1 2"
+    },
+    {
+      "input": "4\n1 8 1 6\n",
+      "output": "2\n2 4\n2 3"
+    },
+    {
+      "input": "5\n1 1 1 2 2\n",
+      "output": "0"
+    }
+  ]
+}

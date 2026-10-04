@@ -1,0 +1,5 @@
+Overview : Create an N \times N pattern as follows. ########### #.........# #.#######.# #.#.....#.# #.#.###.#.# #.#.#.#.#.# #.#.###.#.# #.#.....#.# #.#######.# #.........# ########### You are given a positive integer N . Consider an N \times N grid. Let (i,j) denote the cell at the i -th row from the top and the j -th column from the left. Initially, no cell is colored. Then, for i = 1,2,\dots,N in order, perform the following operation: Let j = N + 1 - i . If i \leq j , fill the rectangular region whose top-left cell is (i,i) and bottom-right cell is (j,j) with black if i is odd, or white if i is even. If some cells are already colored, overwrite their colors. If i > j , do nothing. After all these operations, it can be proved that there are no uncolored cells. Determine the final color of each cell.
+
+**Constraints:**
+- 1 <= N <= 100
+- S is a string of length N consisting of lowercase English letters

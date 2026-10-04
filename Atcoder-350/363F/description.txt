@@ -1,0 +1,5 @@
+You are given an integer N . Print a string S that satisfies all of the following conditions. If no such string exists, print -1 . S is a string of length between 1 and 1000 , inclusive, consisting of the characters 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , and * (multiplication symbol). S is a palindrome. The first character of S is a digit. The value of S when evaluated as a formula equals N .
+
+**Constraints:**
+- 1 <= N <= 10^{12}
+- N is not divisible by 10

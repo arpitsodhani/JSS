@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "count_partitions_even",
+          "signature": "long long count_partitions_even(int n)",
+          "code": "const long long MOD=998244353LL;\nlong long sum0=1, sum1=0;\nint pref=0;\nfor(int i=0;i<n;i++){\n  long long a; scanf(\"%lld\", &a);\n  pref ^= (int)(a&1LL);\n  long long dp = (pref==0?sum0:sum1);\n  if(pref==0) sum0 = (sum0 + dp)%MOD; else sum1=(sum1+dp)%MOD;\n}\nlong long ans = (pref==0?sum0:sum1);\nans = (ans - 1 + MOD)%MOD;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); long long ans=count_partitions_even(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "count_partitions_even",
+          "signature": "long long count_partitions_even(int n)",
+          "code": "const long long MOD=998244353LL;\nlong long sum0=1, sum1=0;\nint pref=0;\nfor(int i=0;i<n;i++){\n  long long a; scanf(\"%lld\", &a);\n  pref ^= (int)(a&1LL);\n  long long dp = (pref==0?sum0:sum1);\n  if(pref==0) sum0 = (sum0 + dp)%MOD; else sum1=(sum1+dp)%MOD;\n}\nlong long ans = (pref==0?sum0:sum1);\nans = (ans - 1 + MOD)%MOD;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); long long ans=count_partitions_even(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "count_partitions_even",
+          "signature": "long long count_partitions_even(int n)",
+          "code": "const long long MOD=998244353LL;\nlong long sum0=1, sum1=0;\nint pref=0;\nfor(int i=0;i<n;i++){\n  long long a; scanf(\"%lld\", &a);\n  pref ^= (int)(a&1LL);\n  long long dp = (pref==0?sum0:sum1);\n  if(pref==0) sum0 = (sum0 + dp)%MOD; else sum1=(sum1+dp)%MOD;\n}\nlong long ans = (pref==0?sum0:sum1);\nans = (ans - 1 + MOD)%MOD;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); long long ans=count_partitions_even(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "count_partitions_even",
+          "signature": "long long count_partitions_even(int n)",
+          "code": "const long long MOD=998244353LL;\nlong long sum0=1, sum1=0;\nint pref=0;\nfor(int i=0;i<n;i++){\n  long long a; scanf(\"%lld\", &a);\n  pref ^= (int)(a&1LL);\n  long long dp = (pref==0?sum0:sum1);\n  if(pref==0) sum0 = (sum0 + dp)%MOD; else sum1=(sum1+dp)%MOD;\n}\nlong long ans = (pref==0?sum0:sum1);\nans = (ans - 1 + MOD)%MOD;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); long long ans=count_partitions_even(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "count_partitions_even",
+          "signature": "long long count_partitions_even(int n)",
+          "code": "const long long MOD=998244353LL;\nlong long sum0=1, sum1=0;\nint pref=0;\nfor(int i=0;i<n;i++){\n  long long a; scanf(\"%lld\", &a);\n  pref ^= (int)(a&1LL);\n  long long dp = (pref==0?sum0:sum1);\n  if(pref==0) sum0 = (sum0 + dp)%MOD; else sum1=(sum1+dp)%MOD;\n}\nlong long ans = (pref==0?sum0:sum1);\nans = (ans - 1 + MOD)%MOD;\nreturn ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); long long ans=count_partitions_even(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

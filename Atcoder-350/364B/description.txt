@@ -1,0 +1,10 @@
+There is a grid with H rows and W columns. Let (i, j) denote the cell at the i -th row from the top and j -th column from the left. Cell (i, j) is empty if C_{i, j} is . , and not empty if C_{i, j} is # . Takahashi is currently at cell (S_i, S_j) , and he will act according to the following rules for i = 1, 2, \ldots, |X| in order. If the i -th character of X is L , and the cell to the left of his current cell exists and is empty, he moves to the cell to the left. Otherwise, he stays in the current cell. If the i -th character of X is R , and the cell to the right of his current cell exists and is empty, he moves to the cell to the right. Otherwise, he stays in the current cell. If the i -th character of X is U , and the cell above his current cell exists and is empty, he moves to the cell above. Otherwise, he stays in the current cell. If the i -th character of X is D , and the cell below his current cell exists and is empty, he moves to the cell below. Otherwise, he stays in the current cell. Print the cell where he is after completing the series of actions.
+
+**Constraints:**
+- 1 <= H, W <= 50
+- 1 <= S_i, S_j <= H
+- 1 <= T_i, T_j <= W
+- C_{i,j} is '#' or '.'
+- C_{S_i, S_j} = '@'
+- X is a string consisting of 'L', 'R', 'U', 'D'
+- 1 <= |X| <= 50

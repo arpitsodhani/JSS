@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *C,int *T)",
+          "code": "void read_input(int *N,int *C,int *T){ scanf(\"%d%d\", N,C); for(int i=0;i<*N;i++) scanf(\"%d\", &T[i]); }\n"
+        },
+        {
+          "clause_id": "count_candies",
+          "signature": "int count_candies(int N,int C,int *T)",
+          "code": "int count_candies(int N,int C,int *T){ int ans=0; int last=-1e9; for(int i=0;i<N;i++){ if(T[i]-last>=C){ ans++; last=T[i]; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,C; int T[200005]; read_input(&N,&C,T); int ans=count_candies(N,C,T); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *C,int *T)",
+          "code": "void read_input(int *N,int *C,int *T){ scanf(\"%d%d\", N,C); for(int i=0;i<*N;i++) scanf(\"%d\", &T[i]); }\n"
+        },
+        {
+          "clause_id": "count_candies",
+          "signature": "int count_candies(int N,int C,int *T)",
+          "code": "int count_candies(int N,int C,int *T){ int ans=0; int last=-1e9; for(int i=0;i<N;i++){ if(T[i]-last>=C){ ans++; last=T[i]; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,C; int T[200005]; read_input(&N,&C,T); int ans=count_candies(N,C,T); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *C,int *T)",
+          "code": "void read_input(int *N,int *C,int *T){ scanf(\"%d%d\", N,C); for(int i=0;i<*N;i++) scanf(\"%d\", &T[i]); }\n"
+        },
+        {
+          "clause_id": "count_candies",
+          "signature": "int count_candies(int N,int C,int *T)",
+          "code": "int count_candies(int N,int C,int *T){ int ans=0; int last=-1e9; for(int i=0;i<N;i++){ if(T[i]-last>=C){ ans++; last=T[i]; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,C; int T[200005]; read_input(&N,&C,T); int ans=count_candies(N,C,T); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *C,int *T)",
+          "code": "void read_input(int *N,int *C,int *T){ scanf(\"%d%d\", N,C); for(int i=0;i<*N;i++) scanf(\"%d\", &T[i]); }\n"
+        },
+        {
+          "clause_id": "count_candies",
+          "signature": "int count_candies(int N,int C,int *T)",
+          "code": "int count_candies(int N,int C,int *T){ int ans=0; int last=-1e9; for(int i=0;i<N;i++){ if(T[i]-last>=C){ ans++; last=T[i]; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,C; int T[200005]; read_input(&N,&C,T); int ans=count_candies(N,C,T); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *C,int *T)",
+          "code": "void read_input(int *N,int *C,int *T){ scanf(\"%d%d\", N,C); for(int i=0;i<*N;i++) scanf(\"%d\", &T[i]); }\n"
+        },
+        {
+          "clause_id": "count_candies",
+          "signature": "int count_candies(int N,int C,int *T)",
+          "code": "int count_candies(int N,int C,int *T){ int ans=0; int last=-1e9; for(int i=0;i<N;i++){ if(T[i]-last>=C){ ans++; last=T[i]; } } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,C; int T[200005]; read_input(&N,&C,T); int ans=count_candies(N,C,T); print_answer(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

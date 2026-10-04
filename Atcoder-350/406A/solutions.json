@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ab",
+          "signature": "void read_ab(int *a, int *b)",
+          "code": "scanf(\"%d %d\", a, b);\n"
+        },
+        {
+          "clause_id": "decide",
+          "signature": "int decide(int a, int b)",
+          "code": "if(a>b) return 1; if(b>a) return 2; return 0;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int code)",
+          "code": "if(code==1) puts(\"A\"); else if(code==2) puts(\"B\"); else puts(\"equal\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b; read_ab(&a,&b); int code=decide(a,b); print_ans(code); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ab",
+          "signature": "void read_ab(int *a, int *b)",
+          "code": "int x,y; scanf(\"%d%d\", &x, &y); *a=x; *b=y;\n"
+        },
+        {
+          "clause_id": "decide",
+          "signature": "int decide(int a, int b)",
+          "code": "int d=a-b; if(d>0) return 1; if(d<0) return 2; return 0;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int code)",
+          "code": "puts(code==1?\"A\":(code==2?\"B\":\"equal\"));\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b; read_ab(&a,&b); int code=decide(a,b); print_ans(code); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ab",
+          "signature": "void read_ab(int *a, int *b)",
+          "code": "scanf(\"%d %d\", a, b);\n"
+        },
+        {
+          "clause_id": "decide",
+          "signature": "int decide(int a, int b)",
+          "code": "return (a==b)?0:((a>b)?1:2);\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int code)",
+          "code": "const char*ans=(code==0?\"equal\":(code==1?\"A\":\"B\")); puts(ans);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b; read_ab(&a,&b); int code=decide(a,b); print_ans(code); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ab",
+          "signature": "void read_ab(int *a, int *b)",
+          "code": "scanf(\"%d %d\", a, b);\n"
+        },
+        {
+          "clause_id": "decide",
+          "signature": "int decide(int a, int b)",
+          "code": "if(a==b) return 0; return (a>b)?1:2;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int code)",
+          "code": "if(code==0){ puts(\"equal\"); return; } puts(code==1?\"A\":\"B\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b; read_ab(&a,&b); int code=decide(a,b); print_ans(code); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_ab",
+          "signature": "void read_ab(int *a, int *b)",
+          "code": "scanf(\"%d %d\", a, b);\n"
+        },
+        {
+          "clause_id": "decide",
+          "signature": "int decide(int a, int b)",
+          "code": "if(a>b) return 1; if(a<b) return 2; return 0;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int code)",
+          "code": "char out[8]; if(code==1) strcpy(out,\"A\"); else if(code==2) strcpy(out,\"B\"); else strcpy(out,\"equal\"); puts(out);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b; read_ab(&a,&b); int code=decide(a,b); print_ans(code); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

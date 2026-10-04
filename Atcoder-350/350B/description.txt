@@ -1,0 +1,6 @@
+Takahashi has N teeth, one in each of the holes numbered 1, 2, \dots, N . Dentist Aoki will perform Q treatments on these teeth and holes. In the i -th treatment, hole T_i is treated as follows: If there is a tooth in hole T_i , remove the tooth from hole T_i . If there is no tooth in hole T_i (i.e., the hole is empty), grow a tooth in hole T_i . After all treatments are completed, how many teeth does Takahashi have?
+
+**Constraints:**
+- integers
+- 1 \le N,Q \le 1000
+- 1 \le T_i \le N

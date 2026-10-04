@@ -1,0 +1,18 @@
+You are given N points in a 2D plane. The i-th point is at coordinates (X_i, Y_i).
+Find the maximum Manhattan distance between any two points.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N
+X_1 Y_1
+X_2 Y_2
+...
+X_N Y_N
+
+**Output:**
+Print the answer.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- -10^9 <= X_i, Y_i <= 10^9
+- All input values are integers

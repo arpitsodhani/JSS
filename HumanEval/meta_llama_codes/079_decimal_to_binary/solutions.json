@@ -1,0 +1,124 @@
+{
+  "problem_id": "079_decimal_to_binary",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "decimal_to_binary",
+          "code": "void decimal_to_binary(int n, char *result) {\n    sprintf(result, \"db\");\n    char binary[100];\n    int idx = 0;\n    if (n == 0) {\n        binary[idx++] = '0';\n    } else {\n        while (n > 0) {\n            binary[idx++] = (n % 2) + '0';\n            n /= 2;\n        }\n    }\n    for (int i = idx - 1; i >= 0; i--) {\n        int len = strlen(result);\n        result[len] = binary[i];\n        result[len + 1] = '\\0';\n    }\n    strcat(result, \"db\");\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char result[200];\n    decimal_to_binary(n, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "decimal_to_binary",
+          "code": "void decimal_to_binary(int n, char *result) {\n    sprintf(result, \"db\");\n    char binary[100];\n    int idx = 0;\n    if (n == 0) {\n        binary[idx++] = '0';\n    } else {\n        while (n > 0) {\n            binary[idx++] = (n % 2) + '0';\n            n /= 2;\n        }\n    }\n    for (int i = idx - 1; i >= 0; i--) {\n        int len = strlen(result);\n        result[len] = binary[i];\n        result[len + 1] = '\\0';\n    }\n    strcat(result, \"db\");\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char result[200];\n    decimal_to_binary(n, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "decimal_to_binary",
+          "code": "void decimal_to_binary(int n, char *result) {\n    sprintf(result, \"db\");\n    char binary[100];\n    int idx = 0;\n    if (n == 0) {\n        binary[idx++] = '0';\n    } else {\n        while (n > 0) {\n            binary[idx++] = (n % 2) + '0';\n            n /= 2;\n        }\n    }\n    for (int i = idx - 1; i >= 0; i--) {\n        int len = strlen(result);\n        result[len] = binary[i];\n        result[len + 1] = '\\0';\n    }\n    strcat(result, \"db\");\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char result[200];\n    decimal_to_binary(n, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "decimal_to_binary",
+          "code": "void decimal_to_binary(int n, char *result) {\n    sprintf(result, \"db\");\n    char binary[100];\n    int idx = 0;\n    if (n == 0) {\n        binary[idx++] = '0';\n    } else {\n        while (n > 0) {\n            binary[idx++] = (n % 2) + '0';\n            n /= 2;\n        }\n    }\n    for (int i = idx - 1; i >= 0; i--) {\n        int len = strlen(result);\n        result[len] = binary[i];\n        result[len + 1] = '\\0';\n    }\n    strcat(result, \"db\");\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char result[200];\n    decimal_to_binary(n, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "decimal_to_binary",
+          "code": "void decimal_to_binary(int n, char *result) {\n    sprintf(result, \"db\");\n    char binary[100];\n    int idx = 0;\n    if (n == 0) {\n        binary[idx++] = '0';\n    } else {\n        while (n > 0) {\n            binary[idx++] = (n % 2) + '0';\n            n /= 2;\n        }\n    }\n    for (int i = idx - 1; i >= 0; i--) {\n        int len = strlen(result);\n        result[len] = binary[i];\n        result[len + 1] = '\\0';\n    }\n    strcat(result, \"db\");\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char result[200];\n    decimal_to_binary(n, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>"
+  ]
+}

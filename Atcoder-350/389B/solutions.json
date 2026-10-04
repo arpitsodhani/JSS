@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "long long read_x(void)",
+          "code": "long long x; scanf(\"%lld\", &x); return x;\n"
+        },
+        {
+          "clause_id": "find_n",
+          "signature": "int find_n(long long x)",
+          "code": "long long f=1; int n=1; while(f<x){ n++; f*=n; } return n;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long x=read_x(); int n=find_n(x); print_int(n); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "long long read_x(void)",
+          "code": "long long x; scanf(\"%lld\", &x); return x;\n"
+        },
+        {
+          "clause_id": "find_n",
+          "signature": "int find_n(long long x)",
+          "code": "long long f=1; int n=1; while(f<x){ n++; f*=n; } return n;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long x=read_x(); int n=find_n(x); print_int(n); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "long long read_x(void)",
+          "code": "long long x; scanf(\"%lld\", &x); return x;\n"
+        },
+        {
+          "clause_id": "find_n",
+          "signature": "int find_n(long long x)",
+          "code": "long long f=1; int n=1; while(f<x){ n++; f*=n; } return n;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long x=read_x(); int n=find_n(x); print_int(n); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "long long read_x(void)",
+          "code": "long long x; scanf(\"%lld\", &x); return x;\n"
+        },
+        {
+          "clause_id": "find_n",
+          "signature": "int find_n(long long x)",
+          "code": "long long f=1; int n=1; while(f<x){ n++; f*=n; } return n;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long x=read_x(); int n=find_n(x); print_int(n); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "long long read_x(void)",
+          "code": "long long x; scanf(\"%lld\", &x); return x;\n"
+        },
+        {
+          "clause_id": "find_n",
+          "signature": "int find_n(long long x)",
+          "code": "long long f=1; int n=1; while(f<x){ n++; f*=n; } return n;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long x=read_x(); int n=find_n(x); print_int(n); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "389B",
+  "total_programs": 5
+}

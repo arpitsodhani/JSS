@@ -1,0 +1,9 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "detect_negative_cycle",
+      "confidence": 1.0
+    }
+  ]
+}

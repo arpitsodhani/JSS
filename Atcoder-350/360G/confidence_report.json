@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9765950441715148,
+  "clauses": [
+    {
+      "clause": "compute_lis_arrays",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_maximum_lis",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.960226330532213
+    },
+    {
+      "clause": "read_sequence",
+      "confidence": 0.9461538461538461
+    }
+  ]
+}

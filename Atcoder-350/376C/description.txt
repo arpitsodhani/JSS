@@ -1,0 +1,6 @@
+There are N toys numbered from 1 to N , and N-1 boxes numbered from 1 to N-1 . Toy i\ (1 \leq i \leq N) has a size of A_i , and box i\ (1 \leq i \leq N-1) has a size of B_i . Takahashi wants to store all the toys in separate boxes, and he has decided to perform the following steps in order: Choose an arbitrary positive integer x and purchase one box of size x . Place each of the N toys into one of the N boxes (the N-1 existing boxes plus the newly purchased box). Here, each toy can only be placed in a box whose size is not less than the toy's size, and no box can contain two or more toys. He wants to execute step 2 by purchasing a sufficiently large box in step 1 , but larger boxes are more expensive, so he wants to purchase the smallest possible box. Determine whether there exists a value of x such that he can execute step 2 , and if it exists, find the minimum such x .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i, B_i <= 10^9
+- All input values are integers

@@ -1,0 +1,35 @@
+import sys
+
+# Clause read_input [Confidence: 1.00]
+def read_input():
+    data = sys.stdin.buffer.read().split()
+    return int(data[0])
+
+# Clause plan_moves [Confidence: 1.00]
+def plan_moves(x):
+    steps = 0
+    picks = []
+    while x & (x + 1):
+        top = x.bit_length()
+        gap = top - 1
+        while gap >= 0 and x >> gap & 1:
+            gap -= 1
+        power = gap + 1
+        x ^= (1 << power) - 1
+        picks.append(power)
+        steps += 1
+        if x & (x + 1) == 0:
+            break
+        x += 1
+        steps += 1
+    return steps, picks
+
+# Clause main [Confidence: 1.00]
+def main():
+    steps, picks = plan_moves(read_input())
+    sys.stdout.write(str(steps) + "\n" + " ".join(map(str, picks)) + "\n")
+
+
+if __name__ == "__main__":
+    main()
+

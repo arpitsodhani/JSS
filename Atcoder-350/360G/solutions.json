@@ -1,0 +1,159 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "void read_sequence(int *n, int **a)",
+          "code": "void read_sequence(int *n, int **a) {\n    scanf(\"%d\", n);\n    *a = malloc(*n * sizeof(int));\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &(*a)[i]);\n}"
+        },
+        {
+          "clause_id": "compute_lis_arrays",
+          "signature": "void compute_lis_arrays(int n, int *a, int *lis_left, int *lis_right)",
+          "code": "void compute_lis_arrays(int n, int *a, int *lis_left, int *lis_right) {\n    int dp[200005];\n    for (int i = 0; i < n; i++) {\n        int pos = 0, len = i;\n        for (int j = 0; j < len; j++) {\n            if (dp[j] < a[i]) pos = j + 1;\n        }\n        dp[pos] = a[i];\n        lis_left[i] = pos + 1;\n    }\n    for (int i = n - 1; i >= 0; i--) {\n        int pos = 0, len = n - 1 - i;\n        for (int j = 0; j < len; j++) {\n            if (dp[j] > a[i]) pos = j + 1;\n        }\n        dp[pos] = a[i];\n        lis_right[i] = pos + 1;\n    }\n}"
+        },
+        {
+          "clause_id": "find_maximum_lis",
+          "signature": "int find_maximum_lis(int n, int *lis_left, int *lis_right)",
+          "code": "int find_maximum_lis(int n, int *lis_left, int *lis_right) {\n    int max_lis = 0;\n    for (int i = 0; i < n; i++) {\n        int current = lis_left[i] + lis_right[i] - 1;\n        if (current > max_lis) max_lis = current;\n    }\n    for (int i = 0; i < n; i++) {\n        int replace = (i > 0 ? lis_left[i - 1] : 0) + (i < n - 1 ? lis_right[i + 1] : 0) + 1;\n        if (replace > max_lis) max_lis = replace;\n    }\n    return max_lis;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, *a;\n    read_sequence(&n, &a);\n    int lis_left[200005], lis_right[200005];\n    compute_lis_arrays(n, a, lis_left, lis_right);\n    printf(\"%d\\n\", find_maximum_lis(n, lis_left, lis_right));\n    free(a);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "int read_sequence(int *n, int a[])",
+          "code": "int read_sequence(int *n, int a[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &a[i]);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "compute_lis_arrays",
+          "signature": "void compute_lis_arrays(int n, int a[], int left[], int right[])",
+          "code": "void compute_lis_arrays(int n, int a[], int left[], int right[]) {\n    int dp[200005];\n    for (int i = 0; i < n; i++) {\n        int l = 0, r = i, pos = 0;\n        while (l < r) {\n            int m = (l + r) / 2;\n            if (dp[m] < a[i]) {\n                pos = m + 1;\n                l = m + 1;\n            } else r = m;\n        }\n        dp[pos] = a[i];\n        left[i] = pos + 1;\n    }\n    for (int i = n - 1; i >= 0; i--) {\n        int l = 0, r = n - 1 - i, pos = 0;\n        while (l < r) {\n            int m = (l + r) / 2;\n            if (dp[m] > a[i]) {\n                pos = m + 1;\n                l = m + 1;\n            } else r = m;\n        }\n        dp[pos] = a[i];\n        right[i] = pos + 1;\n    }\n}"
+        },
+        {
+          "clause_id": "find_maximum_lis",
+          "signature": "int find_maximum_lis(int n, int left[], int right[])",
+          "code": "int find_maximum_lis(int n, int left[], int right[]) {\n    int ans = 0;\n    for (int i = 0; i < n; i++) {\n        int val = left[i] + right[i] - 1;\n        if (val > ans) ans = val;\n    }\n    for (int i = 0; i < n; i++) {\n        int val = (i > 0 ? left[i - 1] : 0) + (i < n - 1 ? right[i + 1] : 0) + 1;\n        if (val > ans) ans = val;\n    }\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, a[200005];\n    read_sequence(&n, a);\n    int left[200005], right[200005];\n    compute_lis_arrays(n, a, left, right);\n    printf(\"%d\\n\", find_maximum_lis(n, left, right));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "void read_sequence(int *n, int arr[])",
+          "code": "void read_sequence(int *n, int arr[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &arr[i]);\n}"
+        },
+        {
+          "clause_id": "compute_lis_arrays",
+          "signature": "void compute_lis_arrays(int n, int arr[], int lis_l[], int lis_r[])",
+          "code": "void compute_lis_arrays(int n, int arr[], int lis_l[], int lis_r[]) {\n    int temp[200005];\n    for (int i = 0; i < n; i++) {\n        int idx = 0;\n        for (int j = 0; j < i; j++) {\n            if (temp[j] < arr[i]) idx = j + 1;\n        }\n        temp[idx] = arr[i];\n        lis_l[i] = idx + 1;\n    }\n    for (int i = n - 1; i >= 0; i--) {\n        int idx = 0;\n        for (int j = 0; j < n - 1 - i; j++) {\n            if (temp[j] > arr[i]) idx = j + 1;\n        }\n        temp[idx] = arr[i];\n        lis_r[i] = idx + 1;\n    }\n}"
+        },
+        {
+          "clause_id": "find_maximum_lis",
+          "signature": "int find_maximum_lis(int n, int lis_l[], int lis_r[])",
+          "code": "int find_maximum_lis(int n, int lis_l[], int lis_r[]) {\n    int max_len = 0;\n    for (int i = 0; i < n; i++) {\n        int len = lis_l[i] + lis_r[i] - 1;\n        if (len > max_len) max_len = len;\n    }\n    for (int i = 0; i < n; i++) {\n        int len = 1;\n        if (i > 0) len += lis_l[i - 1];\n        if (i < n - 1) len += lis_r[i + 1];\n        if (len > max_len) max_len = len;\n    }\n    return max_len;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, arr[200005];\n    read_sequence(&n, arr);\n    int lis_l[200005], lis_r[200005];\n    compute_lis_arrays(n, arr, lis_l, lis_r);\n    int result = find_maximum_lis(n, lis_l, lis_r);\n    printf(\"%d\\n\", result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "long long read_sequence(int *n, int a[])",
+          "code": "long long read_sequence(int *n, int a[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &a[i]);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_lis_arrays",
+          "signature": "void compute_lis_arrays(int n, int a[], int ll[], int lr[])",
+          "code": "void compute_lis_arrays(int n, int a[], int ll[], int lr[]) {\n    int lis_dp[200005];\n    for (int i = 0; i < n; i++) {\n        int p = 0;\n        for (int j = 0; j < i; j++) {\n            if (lis_dp[j] < a[i]) p = j + 1;\n        }\n        lis_dp[p] = a[i];\n        ll[i] = p + 1;\n    }\n    for (int i = n - 1; i >= 0; i--) {\n        int p = 0;\n        for (int j = 0; j < n - 1 - i; j++) {\n            if (lis_dp[j] > a[i]) p = j + 1;\n        }\n        lis_dp[p] = a[i];\n        lr[i] = p + 1;\n    }\n}"
+        },
+        {
+          "clause_id": "find_maximum_lis",
+          "signature": "int find_maximum_lis(int n, int ll[], int lr[])",
+          "code": "int find_maximum_lis(int n, int ll[], int lr[]) {\n    int result = 0;\n    for (int i = 0; i < n; i++) {\n        int current_lis = ll[i] + lr[i] - 1;\n        if (current_lis > result) result = current_lis;\n    }\n    for (int i = 0; i < n; i++) {\n        int new_lis = 1;\n        if (i > 0) new_lis += ll[i - 1];\n        if (i < n - 1) new_lis += lr[i + 1];\n        if (new_lis > result) result = new_lis;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, a[200005];\n    read_sequence(&n, a);\n    int ll[200005], lr[200005];\n    compute_lis_arrays(n, a, ll, lr);\n    int ans = find_maximum_lis(n, ll, lr);\n    printf(\"%d\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "void read_sequence(int *n, int *seq)",
+          "code": "void read_sequence(int *n, int *seq) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &seq[i]);\n}"
+        },
+        {
+          "clause_id": "compute_lis_arrays",
+          "signature": "void compute_lis_arrays(int n, int seq[], int left_lis[], int right_lis[])",
+          "code": "void compute_lis_arrays(int n, int seq[], int left_lis[], int right_lis[]) {\n    int buf[200005];\n    for (int i = 0; i < n; i++) {\n        int position = 0;\n        for (int j = 0; j < i; j++) {\n            if (buf[j] < seq[i]) position = j + 1;\n        }\n        buf[position] = seq[i];\n        left_lis[i] = position + 1;\n    }\n    for (int i = n - 1; i >= 0; i--) {\n        int position = 0;\n        for (int j = 0; j < n - 1 - i; j++) {\n            if (buf[j] > seq[i]) position = j + 1;\n        }\n        buf[position] = seq[i];\n        right_lis[i] = position + 1;\n    }\n}"
+        },
+        {
+          "clause_id": "find_maximum_lis",
+          "signature": "int find_maximum_lis(int n, int left_lis[], int right_lis[])",
+          "code": "int find_maximum_lis(int n, int left_lis[], int right_lis[]) {\n    int best = 0;\n    for (int i = 0; i < n; i++) {\n        int lis = left_lis[i] + right_lis[i] - 1;\n        if (lis > best) best = lis;\n    }\n    for (int i = 0; i < n; i++) {\n        int lis = 1 + (i > 0 ? left_lis[i - 1] : 0) + (i < n - 1 ? right_lis[i + 1] : 0);\n        if (lis > best) best = lis;\n    }\n    return best;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, seq[200005];\n    read_sequence(&n, seq);\n    int left_lis[200005], right_lis[200005];\n    compute_lis_arrays(n, seq, left_lis, right_lis);\n    printf(\"%d\\n\", find_maximum_lis(n, left_lis, right_lis));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

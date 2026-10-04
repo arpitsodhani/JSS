@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.7854094984407485,
+  "clauses": [
+    {
+      "clause": "collect_candidate_points",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_best_interval",
+      "confidence": 0.24
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9716860706860707
+    },
+    {
+      "clause": "read_intervals",
+      "confidence": 0.9299519230769231
+    }
+  ]
+}

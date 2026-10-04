@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "push_lazy_updates",
+          "signature": "void push_lazy_updates(long long *tree, long long *lazy, int node, int start, int end)",
+          "code": "void push_lazy_updates(long long *tree, long long *lazy, int node, int start, int end) {\n    if (lazy[node] != 0) {\n        tree[node] += (end - start + 1) * lazy[node];\n        if (start != end) {\n            lazy[2*node] += lazy[node];\n            lazy[2*node+1] += lazy[node];\n        }\n        lazy[node] = 0;\n    }\n}"
+        },
+        {
+          "clause_id": "update_range_lazy",
+          "signature": "void update_range_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right, long long value)",
+          "code": "void update_range_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right, long long value) {\n    push_lazy_updates(tree, lazy, node, start, end);\n    if (start > right || end < left) return;\n    \n    if (left <= start && end <= right) {\n        lazy[node] += value;\n        push_lazy_updates(tree, lazy, node, start, end);\n        return;\n    }\n    \n    int mid = (start + end) / 2;\n    update_range_lazy(tree, lazy, 2*node, start, mid, left, right, value);\n    update_range_lazy(tree, lazy, 2*node+1, mid+1, end, left, right, value);\n    \n    push_lazy_updates(tree, lazy, 2*node, start, mid);\n    push_lazy_updates(tree, lazy, 2*node+1, mid+1, end);\n    tree[node] = tree[2*node] + tree[2*node+1];\n}"
+        },
+        {
+          "clause_id": "query_range_sum_lazy",
+          "signature": "long long query_range_sum_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right)",
+          "code": "long long query_range_sum_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right) {\n    if (start > right || end < left) return 0;\n    push_lazy_updates(tree, lazy, node, start, end);\n    \n    if (left <= start && end <= right) {\n        return tree[node];\n    }\n    \n    int mid = (start + end) / 2;\n    long long left_sum = query_range_sum_lazy(tree, lazy, 2*node, start, mid, left, right);\n    long long right_sum = query_range_sum_lazy(tree, lazy, 2*node+1, mid+1, end, left, right);\n    return left_sum + right_sum;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long tree[400005] = {0}, lazy[400005] = {0};\n    scanf(\"%d %d\", &n, &q);\n    \n    for (int i = 0; i < q; i++) {\n        int type, left, right;\n        scanf(\"%d %d %d\", &type, &left, &right);\n        if (type == 1) {\n            long long value;\n            scanf(\"%lld\", &value);\n            update_range_lazy(tree, lazy, 1, 0, n-1, left, right, value);\n        } else {\n            printf(\"%lld\\n\", query_range_sum_lazy(tree, lazy, 1, 0, n-1, left, right));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "push_lazy_updates",
+          "signature": "void push_lazy_updates(long long *tree, long long *lazy, int node, int start, int end)",
+          "code": "void push_lazy_updates(long long *tree, long long *lazy, int node, int start, int end) {\n    if (lazy[node] != 0) {\n        tree[node] += (end - start + 1) * lazy[node];\n        if (start != end) {\n            lazy[2*node] += lazy[node];\n            lazy[2*node+1] += lazy[node];\n        }\n        lazy[node] = 0;\n    }\n}"
+        },
+        {
+          "clause_id": "update_range_lazy",
+          "signature": "void update_range_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right, long long value)",
+          "code": "void update_range_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right, long long value) {\n    push_lazy_updates(tree, lazy, node, start, end);\n    if (start > right || end < left) return;\n    \n    if (left <= start && end <= right) {\n        lazy[node] += value;\n        push_lazy_updates(tree, lazy, node, start, end);\n        return;\n    }\n    \n    int mid = (start + end) / 2;\n    update_range_lazy(tree, lazy, 2*node, start, mid, left, right, value);\n    update_range_lazy(tree, lazy, 2*node+1, mid+1, end, left, right, value);\n    \n    push_lazy_updates(tree, lazy, 2*node, start, mid);\n    push_lazy_updates(tree, lazy, 2*node+1, mid+1, end);\n    tree[node] = tree[2*node] + tree[2*node+1];\n}"
+        },
+        {
+          "clause_id": "query_range_sum_lazy",
+          "signature": "long long query_range_sum_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right)",
+          "code": "long long query_range_sum_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right) {\n    if (start > right || end < left) return 0;\n    push_lazy_updates(tree, lazy, node, start, end);\n    \n    if (left <= start && end <= right) {\n        return tree[node];\n    }\n    \n    int mid = (start + end) / 2;\n    long long left_sum = query_range_sum_lazy(tree, lazy, 2*node, start, mid, left, right);\n    long long right_sum = query_range_sum_lazy(tree, lazy, 2*node+1, mid+1, end, left, right);\n    return left_sum + right_sum;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long tree[400005] = {0}, lazy[400005] = {0};\n    scanf(\"%d %d\", &n, &q);\n    \n    for (int i = 0; i < q; i++) {\n        int type, left, right;\n        scanf(\"%d %d %d\", &type, &left, &right);\n        if (type == 1) {\n            long long value;\n            scanf(\"%lld\", &value);\n            update_range_lazy(tree, lazy, 1, 0, n-1, left, right, value);\n        } else {\n            printf(\"%lld\\n\", query_range_sum_lazy(tree, lazy, 1, 0, n-1, left, right));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "push_lazy_updates",
+          "signature": "void push_lazy_updates(long long *tree, long long *lazy, int node, int start, int end)",
+          "code": "void push_lazy_updates(long long *tree, long long *lazy, int node, int start, int end) {\n    if (lazy[node] != 0) {\n        tree[node] += (end - start + 1) * lazy[node];\n        if (start != end) {\n            lazy[2*node] += lazy[node];\n            lazy[2*node+1] += lazy[node];\n        }\n        lazy[node] = 0;\n    }\n}"
+        },
+        {
+          "clause_id": "update_range_lazy",
+          "signature": "void update_range_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right, long long value)",
+          "code": "void update_range_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right, long long value) {\n    push_lazy_updates(tree, lazy, node, start, end);\n    if (start > right || end < left) return;\n    \n    if (left <= start && end <= right) {\n        lazy[node] += value;\n        push_lazy_updates(tree, lazy, node, start, end);\n        return;\n    }\n    \n    int mid = (start + end) / 2;\n    update_range_lazy(tree, lazy, 2*node, start, mid, left, right, value);\n    update_range_lazy(tree, lazy, 2*node+1, mid+1, end, left, right, value);\n    \n    push_lazy_updates(tree, lazy, 2*node, start, mid);\n    push_lazy_updates(tree, lazy, 2*node+1, mid+1, end);\n    tree[node] = tree[2*node] + tree[2*node+1];\n}"
+        },
+        {
+          "clause_id": "query_range_sum_lazy",
+          "signature": "long long query_range_sum_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right)",
+          "code": "long long query_range_sum_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right) {\n    if (start > right || end < left) return 0;\n    push_lazy_updates(tree, lazy, node, start, end);\n    \n    if (left <= start && end <= right) {\n        return tree[node];\n    }\n    \n    int mid = (start + end) / 2;\n    long long left_sum = query_range_sum_lazy(tree, lazy, 2*node, start, mid, left, right);\n    long long right_sum = query_range_sum_lazy(tree, lazy, 2*node+1, mid+1, end, left, right);\n    return left_sum + right_sum;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long tree[400005] = {0}, lazy[400005] = {0};\n    scanf(\"%d %d\", &n, &q);\n    \n    for (int i = 0; i < q; i++) {\n        int type, left, right;\n        scanf(\"%d %d %d\", &type, &left, &right);\n        if (type == 1) {\n            long long value;\n            scanf(\"%lld\", &value);\n            update_range_lazy(tree, lazy, 1, 0, n-1, left, right, value);\n        } else {\n            printf(\"%lld\\n\", query_range_sum_lazy(tree, lazy, 1, 0, n-1, left, right));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "push_lazy_updates",
+          "signature": "void push_lazy_updates(long long *tree, long long *lazy, int node, int start, int end)",
+          "code": "void push_lazy_updates(long long *tree, long long *lazy, int node, int start, int end) {\n    if (lazy[node] != 0) {\n        tree[node] += (end - start + 1) * lazy[node];\n        if (start != end) {\n            lazy[2*node] += lazy[node];\n            lazy[2*node+1] += lazy[node];\n        }\n        lazy[node] = 0;\n    }\n}"
+        },
+        {
+          "clause_id": "update_range_lazy",
+          "signature": "void update_range_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right, long long value)",
+          "code": "void update_range_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right, long long value) {\n    push_lazy_updates(tree, lazy, node, start, end);\n    if (start > right || end < left) return;\n    \n    if (left <= start && end <= right) {\n        lazy[node] += value;\n        push_lazy_updates(tree, lazy, node, start, end);\n        return;\n    }\n    \n    int mid = (start + end) / 2;\n    update_range_lazy(tree, lazy, 2*node, start, mid, left, right, value);\n    update_range_lazy(tree, lazy, 2*node+1, mid+1, end, left, right, value);\n    \n    push_lazy_updates(tree, lazy, 2*node, start, mid);\n    push_lazy_updates(tree, lazy, 2*node+1, mid+1, end);\n    tree[node] = tree[2*node] + tree[2*node+1];\n}"
+        },
+        {
+          "clause_id": "query_range_sum_lazy",
+          "signature": "long long query_range_sum_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right)",
+          "code": "long long query_range_sum_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right) {\n    if (start > right || end < left) return 0;\n    push_lazy_updates(tree, lazy, node, start, end);\n    \n    if (left <= start && end <= right) {\n        return tree[node];\n    }\n    \n    int mid = (start + end) / 2;\n    long long left_sum = query_range_sum_lazy(tree, lazy, 2*node, start, mid, left, right);\n    long long right_sum = query_range_sum_lazy(tree, lazy, 2*node+1, mid+1, end, left, right);\n    return left_sum + right_sum;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long tree[400005] = {0}, lazy[400005] = {0};\n    scanf(\"%d %d\", &n, &q);\n    \n    for (int i = 0; i < q; i++) {\n        int type, left, right;\n        scanf(\"%d %d %d\", &type, &left, &right);\n        if (type == 1) {\n            long long value;\n            scanf(\"%lld\", &value);\n            update_range_lazy(tree, lazy, 1, 0, n-1, left, right, value);\n        } else {\n            printf(\"%lld\\n\", query_range_sum_lazy(tree, lazy, 1, 0, n-1, left, right));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "push_lazy_updates",
+          "signature": "void push_lazy_updates(long long *tree, long long *lazy, int node, int start, int end)",
+          "code": "void push_lazy_updates(long long *tree, long long *lazy, int node, int start, int end) {\n    if (lazy[node] != 0) {\n        tree[node] += (end - start + 1) * lazy[node];\n        if (start != end) {\n            lazy[2*node] += lazy[node];\n            lazy[2*node+1] += lazy[node];\n        }\n        lazy[node] = 0;\n    }\n}"
+        },
+        {
+          "clause_id": "update_range_lazy",
+          "signature": "void update_range_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right, long long value)",
+          "code": "void update_range_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right, long long value) {\n    push_lazy_updates(tree, lazy, node, start, end);\n    if (start > right || end < left) return;\n    \n    if (left <= start && end <= right) {\n        lazy[node] += value;\n        push_lazy_updates(tree, lazy, node, start, end);\n        return;\n    }\n    \n    int mid = (start + end) / 2;\n    update_range_lazy(tree, lazy, 2*node, start, mid, left, right, value);\n    update_range_lazy(tree, lazy, 2*node+1, mid+1, end, left, right, value);\n    \n    push_lazy_updates(tree, lazy, 2*node, start, mid);\n    push_lazy_updates(tree, lazy, 2*node+1, mid+1, end);\n    tree[node] = tree[2*node] + tree[2*node+1];\n}"
+        },
+        {
+          "clause_id": "query_range_sum_lazy",
+          "signature": "long long query_range_sum_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right)",
+          "code": "long long query_range_sum_lazy(long long *tree, long long *lazy, int node, int start, int end, int left, int right) {\n    if (start > right || end < left) return 0;\n    push_lazy_updates(tree, lazy, node, start, end);\n    \n    if (left <= start && end <= right) {\n        return tree[node];\n    }\n    \n    int mid = (start + end) / 2;\n    long long left_sum = query_range_sum_lazy(tree, lazy, 2*node, start, mid, left, right);\n    long long right_sum = query_range_sum_lazy(tree, lazy, 2*node+1, mid+1, end, left, right);\n    return left_sum + right_sum;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    long long tree[400005] = {0}, lazy[400005] = {0};\n    scanf(\"%d %d\", &n, &q);\n    \n    for (int i = 0; i < q; i++) {\n        int type, left, right;\n        scanf(\"%d %d %d\", &type, &left, &right);\n        if (type == 1) {\n            long long value;\n            scanf(\"%lld\", &value);\n            update_range_lazy(tree, lazy, 1, 0, n-1, left, right, value);\n        } else {\n            printf(\"%lld\\n\", query_range_sum_lazy(tree, lazy, 1, 0, n-1, left, right));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

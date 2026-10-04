@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9667752247752247,
+  "clauses": [
+    {
+      "clause": "convert_case",
+      "confidence": 0.9243256743256743
+    },
+    {
+      "clause": "main",
+      "confidence": 0.976
+    },
+    {
+      "clause": "read_input",
+      "confidence": 1.0
+    }
+  ]
+}

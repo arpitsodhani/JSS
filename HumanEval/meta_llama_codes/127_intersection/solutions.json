@@ -1,0 +1,126 @@
+{
+  "problem_num": 127,
+  "problem_name": "intersection",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int start1, end1, start2, end2;\n    scanf(\"%d %d %d %d\", &start1, &end1, &start2, &end2);\n    \n    int inter_start = (start1 > start2) ? start1 : start2;\n    int inter_end = (end1 < end2) ? end1 : end2;\n    \n    if (inter_start > inter_end) {\n        printf(\"NO\\n\");\n        return 0;\n    }\n    \n    int length = inter_end - inter_start;\n    \n    if (is_prime(length)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int start1, end1, start2, end2;\n    scanf(\"%d %d %d %d\", &start1, &end1, &start2, &end2);\n    \n    int inter_start = (start1 > start2) ? start1 : start2;\n    int inter_end = (end1 < end2) ? end1 : end2;\n    \n    if (inter_start > inter_end) {\n        printf(\"NO\\n\");\n        return 0;\n    }\n    \n    int length = inter_end - inter_start;\n    \n    if (is_prime(length)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int start1, end1, start2, end2;\n    scanf(\"%d %d %d %d\", &start1, &end1, &start2, &end2);\n    \n    int inter_start = (start1 > start2) ? start1 : start2;\n    int inter_end = (end1 < end2) ? end1 : end2;\n    \n    if (inter_start > inter_end) {\n        printf(\"NO\\n\");\n        return 0;\n    }\n    \n    int length = inter_end - inter_start;\n    \n    if (is_prime(length)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int start1, end1, start2, end2;\n    scanf(\"%d %d %d %d\", &start1, &end1, &start2, &end2);\n    \n    int inter_start = (start1 > start2) ? start1 : start2;\n    int inter_end = (end1 < end2) ? end1 : end2;\n    \n    if (inter_start > inter_end) {\n        printf(\"NO\\n\");\n        return 0;\n    }\n    \n    int length = inter_end - inter_start;\n    \n    if (is_prime(length)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int start1, end1, start2, end2;\n    scanf(\"%d %d %d %d\", &start1, &end1, &start2, &end2);\n    \n    int inter_start = (start1 > start2) ? start1 : start2;\n    int inter_end = (end1 < end2) ? end1 : end2;\n    \n    if (inter_start > inter_end) {\n        printf(\"NO\\n\");\n        return 0;\n    }\n    \n    int length = inter_end - inter_start;\n    \n    if (is_prime(length)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

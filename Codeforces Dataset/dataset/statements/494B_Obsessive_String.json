@@ -1,0 +1,35 @@
+{
+  "contestId": 494,
+  "index": "B",
+  "problem_id": "494B",
+  "name": "Obsessive String",
+  "rating": 2000,
+  "tags": [
+    "dp",
+    "strings"
+  ],
+  "points": 1000.0,
+  "solvedCount": 3221,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Obsessive String",
+  "legend": "Hamed has recently found a string t and suddenly became quite fond of it. He spent several days trying to find all occurrences of t in other strings he had. Finally he became tired and started thinking about the following problem. Given a string s how many ways are there to extract k ≥ 1 non-overlapping substrings from it such that each of them contains string t as a substring? More formally, you need to calculate the number of ways to choose two sequences a1, a2, ..., ak and b1, b2, ..., bk satisfying the following requirements:\n\nk ≥ 1\n  t is a substring of string saisai + 1... sbi (string s is considered as 1-indexed).\n\nAs the number of ways can be rather large print it modulo 109 + 7.",
+  "input_spec": "Input consists of two lines containing strings s and t (1 ≤ |s|, |t| ≤ 105). Each string consists of lowercase Latin letters.",
+  "output_spec": "Print the answer in a single line.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "ababa\naba\n",
+      "output": "5"
+    },
+    {
+      "input": "welcometoroundtwohundredandeightytwo\nd\n",
+      "output": "274201"
+    },
+    {
+      "input": "ddd\nd\n",
+      "output": "12"
+    }
+  ]
+}

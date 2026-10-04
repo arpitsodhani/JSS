@@ -1,0 +1,179 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *S)",
+          "code": "void read_input(int *N,int *K,char *S){ scanf(\"%d%d\", N,K); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "find_blocks",
+          "signature": "int find_blocks(int N,char *S,int *L,int *R)",
+          "code": "int find_blocks(int N,char *S,int *L,int *R){\n    int m=0;\n    int i=0;\n    while(i<N){\n        if(S[i]=='1'){\n            int l=i;\n            while(i<N && S[i]=='1') i++;\n            int r=i-1;\n            L[m]=l; R[m]=r; m++;\n        } else i++;\n    }\n    return m;\n}\n"
+        },
+        {
+          "clause_id": "move_k",
+          "signature": "void move_k(int N,char *S,int *L,int *R,int K,char *T)",
+          "code": "void move_k(int N,char *S,int *L,int *R,int K,char *T){\n    int k=K-1;\n    int l1=L[k-1], r1=R[k-1], l2=L[k], r2=R[k];\n    for(int i=0;i<N;i++) T[i]=S[i];\n    for(int i=r1+1;i<=r2;i++) T[i]='0';\n    for(int i=0;i<=r1;i++) T[i]=S[i];\n    int len=r2-l2+1;\n    for(int i=0;i<len;i++) T[r1+1+i]='1';\n    for(int i=r1+1+len;i<=r2;i++) T[i]='0';\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *T)",
+          "code": "void print_answer(char *T){ printf(\"%s\\n\", T); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; char *S=(char*)malloc(600000); read_input(&N,&K,S); int *L=(int*)malloc((size_t)N*sizeof(int)); int *R=(int*)malloc((size_t)N*sizeof(int)); int m=find_blocks(N,S,L,R); char *T=(char*)malloc((size_t)N+1); T[N]=0; move_k(N,S,L,R,K,T); print_answer(T); free(S); free(L); free(R); free(T); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *S)",
+          "code": "void read_input(int *N,int *K,char *S){ scanf(\"%d%d\", N,K); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "find_blocks",
+          "signature": "int find_blocks(int N,char *S,int *L,int *R)",
+          "code": "int find_blocks(int N,char *S,int *L,int *R){\n    int m=0;\n    int i=0;\n    while(i<N){\n        if(S[i]=='1'){\n            int l=i;\n            while(i<N && S[i]=='1') i++;\n            int r=i-1;\n            L[m]=l; R[m]=r; m++;\n        } else i++;\n    }\n    return m;\n}\n"
+        },
+        {
+          "clause_id": "move_k",
+          "signature": "void move_k(int N,char *S,int *L,int *R,int K,char *T)",
+          "code": "void move_k(int N,char *S,int *L,int *R,int K,char *T){\n    int k=K-1;\n    int l1=L[k-1], r1=R[k-1], l2=L[k], r2=R[k];\n    for(int i=0;i<N;i++) T[i]=S[i];\n    for(int i=r1+1;i<=r2;i++) T[i]='0';\n    for(int i=0;i<=r1;i++) T[i]=S[i];\n    int len=r2-l2+1;\n    for(int i=0;i<len;i++) T[r1+1+i]='1';\n    for(int i=r1+1+len;i<=r2;i++) T[i]='0';\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *T)",
+          "code": "void print_answer(char *T){ printf(\"%s\\n\", T); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; char *S=(char*)malloc(600000); read_input(&N,&K,S); int *L=(int*)malloc((size_t)N*sizeof(int)); int *R=(int*)malloc((size_t)N*sizeof(int)); int m=find_blocks(N,S,L,R); char *T=(char*)malloc((size_t)N+1); T[N]=0; move_k(N,S,L,R,K,T); print_answer(T); free(S); free(L); free(R); free(T); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *S)",
+          "code": "void read_input(int *N,int *K,char *S){ scanf(\"%d%d\", N,K); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "find_blocks",
+          "signature": "int find_blocks(int N,char *S,int *L,int *R)",
+          "code": "int find_blocks(int N,char *S,int *L,int *R){\n    int m=0;\n    int i=0;\n    while(i<N){\n        if(S[i]=='1'){\n            int l=i;\n            while(i<N && S[i]=='1') i++;\n            int r=i-1;\n            L[m]=l; R[m]=r; m++;\n        } else i++;\n    }\n    return m;\n}\n"
+        },
+        {
+          "clause_id": "move_k",
+          "signature": "void move_k(int N,char *S,int *L,int *R,int K,char *T)",
+          "code": "void move_k(int N,char *S,int *L,int *R,int K,char *T){\n    int k=K-1;\n    int l1=L[k-1], r1=R[k-1], l2=L[k], r2=R[k];\n    for(int i=0;i<N;i++) T[i]=S[i];\n    for(int i=r1+1;i<=r2;i++) T[i]='0';\n    for(int i=0;i<=r1;i++) T[i]=S[i];\n    int len=r2-l2+1;\n    for(int i=0;i<len;i++) T[r1+1+i]='1';\n    for(int i=r1+1+len;i<=r2;i++) T[i]='0';\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *T)",
+          "code": "void print_answer(char *T){ printf(\"%s\\n\", T); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; char *S=(char*)malloc(600000); read_input(&N,&K,S); int *L=(int*)malloc((size_t)N*sizeof(int)); int *R=(int*)malloc((size_t)N*sizeof(int)); int m=find_blocks(N,S,L,R); char *T=(char*)malloc((size_t)N+1); T[N]=0; move_k(N,S,L,R,K,T); print_answer(T); free(S); free(L); free(R); free(T); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *S)",
+          "code": "void read_input(int *N,int *K,char *S){ scanf(\"%d%d\", N,K); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "find_blocks",
+          "signature": "int find_blocks(int N,char *S,int *L,int *R)",
+          "code": "int find_blocks(int N,char *S,int *L,int *R){\n    int m=0;\n    int i=0;\n    while(i<N){\n        if(S[i]=='1'){\n            int l=i;\n            while(i<N && S[i]=='1') i++;\n            int r=i-1;\n            L[m]=l; R[m]=r; m++;\n        } else i++;\n    }\n    return m;\n}\n"
+        },
+        {
+          "clause_id": "move_k",
+          "signature": "void move_k(int N,char *S,int *L,int *R,int K,char *T)",
+          "code": "void move_k(int N,char *S,int *L,int *R,int K,char *T){\n    int k=K-1;\n    int l1=L[k-1], r1=R[k-1], l2=L[k], r2=R[k];\n    for(int i=0;i<N;i++) T[i]=S[i];\n    for(int i=r1+1;i<=r2;i++) T[i]='0';\n    for(int i=0;i<=r1;i++) T[i]=S[i];\n    int len=r2-l2+1;\n    for(int i=0;i<len;i++) T[r1+1+i]='1';\n    for(int i=r1+1+len;i<=r2;i++) T[i]='0';\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *T)",
+          "code": "void print_answer(char *T){ printf(\"%s\\n\", T); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; char *S=(char*)malloc(600000); read_input(&N,&K,S); int *L=(int*)malloc((size_t)N*sizeof(int)); int *R=(int*)malloc((size_t)N*sizeof(int)); int m=find_blocks(N,S,L,R); char *T=(char*)malloc((size_t)N+1); T[N]=0; move_k(N,S,L,R,K,T); print_answer(T); free(S); free(L); free(R); free(T); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,char *S)",
+          "code": "void read_input(int *N,int *K,char *S){ scanf(\"%d%d\", N,K); scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "find_blocks",
+          "signature": "int find_blocks(int N,char *S,int *L,int *R)",
+          "code": "int find_blocks(int N,char *S,int *L,int *R){\n    int m=0;\n    int i=0;\n    while(i<N){\n        if(S[i]=='1'){\n            int l=i;\n            while(i<N && S[i]=='1') i++;\n            int r=i-1;\n            L[m]=l; R[m]=r; m++;\n        } else i++;\n    }\n    return m;\n}\n"
+        },
+        {
+          "clause_id": "move_k",
+          "signature": "void move_k(int N,char *S,int *L,int *R,int K,char *T)",
+          "code": "void move_k(int N,char *S,int *L,int *R,int K,char *T){\n    int k=K-1;\n    int l1=L[k-1], r1=R[k-1], l2=L[k], r2=R[k];\n    for(int i=0;i<N;i++) T[i]=S[i];\n    for(int i=r1+1;i<=r2;i++) T[i]='0';\n    for(int i=0;i<=r1;i++) T[i]=S[i];\n    int len=r2-l2+1;\n    for(int i=0;i<len;i++) T[r1+1+i]='1';\n    for(int i=r1+1+len;i<=r2;i++) T[i]='0';\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(char *T)",
+          "code": "void print_answer(char *T){ printf(\"%s\\n\", T); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; char *S=(char*)malloc(600000); read_input(&N,&K,S); int *L=(int*)malloc((size_t)N*sizeof(int)); int *R=(int*)malloc((size_t)N*sizeof(int)); int m=find_blocks(N,S,L,R); char *T=(char*)malloc((size_t)N+1); T[N]=0; move_k(N,S,L,R,K,T); print_answer(T); free(S); free(L); free(R); free(T); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

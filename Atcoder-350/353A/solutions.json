@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *h)",
+          "code": "int read_input(int *h) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%d\", &h[i]); return n; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int find_taller(int *h, int n, int ref)",
+          "code": "int find_taller(int *h, int n, int ref) { for(int i = 1; i < n; i++) { if(h[i] > ref) return i; } return -1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int h[100]; int n = read_input(h); int pos = find_taller(h, n, h[0]); if(pos == -1) printf(\"-1\\n\"); else printf(\"%d\\n\", pos + 1); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_data(int *n, int arr[])",
+          "code": "void get_data(int *n, int arr[]) { scanf(\"%d\", n); for(int i = 0; i < *n; i++) scanf(\"%d\", &arr[i]); }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int search_taller(int arr[], int n, int base)",
+          "code": "int search_taller(int arr[], int n, int base) { for(int k = 1; k < n; k++) { if(arr[k] > base) return k + 1; } return -1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, arr[100]; get_data(&n, arr); printf(\"%d\\n\", search_taller(arr, n, arr[0])); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int input(int data[])",
+          "code": "int input(int data[]) { int cnt; scanf(\"%d\", &cnt); for(int j = 0; j < cnt; j++) scanf(\"%d\", &data[j]); return cnt; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int check_higher(int data[], int cnt)",
+          "code": "int check_higher(int data[], int cnt) { int first = data[0]; for(int i = 1; i < cnt; i++) { if(data[i] > first) return i + 1; } return -1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int data[100]; int cnt = input(data); printf(\"%d\\n\", check_higher(data, cnt)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *h)",
+          "code": "int read_input(int *h) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%d\", &h[i]); return n; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int find_taller(int *h, int n, int ref)",
+          "code": "int find_taller(int *h, int n, int ref) { for(int i = 1; i < n; i++) { if(h[i] > ref) return i; } return -1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int h[100]; int n = read_input(h); int pos = find_taller(h, n, h[0]); if(pos == -1) printf(\"-1\\n\"); else printf(\"%d\\n\", pos + 1); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_data(int *n, int arr[])",
+          "code": "void get_data(int *n, int arr[]) { scanf(\"%d\", n); for(int i = 0; i < *n; i++) scanf(\"%d\", &arr[i]); }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int search_taller(int arr[], int n, int base)",
+          "code": "int search_taller(int arr[], int n, int base) { for(int k = 1; k < n; k++) { if(arr[k] > base) return k + 1; } return -1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, arr[100]; get_data(&n, arr); printf(\"%d\\n\", search_taller(arr, n, arr[0])); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

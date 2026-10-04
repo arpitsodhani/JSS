@@ -1,0 +1,134 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *x, int *a)",
+          "code": "void read_input(int *n, int *k, int *x, int *a) {\n    scanf(\"%d %d %d\", n, k, x);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &a[i]);\n}"
+        },
+        {
+          "clause_id": "insert_and_print",
+          "signature": "void insert_and_print(int n, int k, int x, int *a)",
+          "code": "void insert_and_print(int n, int k, int x, int *a) {\n    for (int i = 0; i < k; i++) printf(\"%d \", a[i]);\n    printf(\"%d \", x);\n    for (int i = k; i < n; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, x, a[105];\n    read_input(&n, &k, &x, a);\n    insert_and_print(n, k, x, a);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *n, int *k, int *x, int a[])",
+          "code": "int read_input(int *n, int *k, int *x, int a[]) {\n    scanf(\"%d %d %d\", n, k, x);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &a[i]);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "insert_and_print",
+          "signature": "void insert_and_print(int n, int k, int x, int a[])",
+          "code": "void insert_and_print(int n, int k, int x, int a[]) {\n    for (int i = 0; i < k; i++) printf(\"%d \", a[i]);\n    printf(\"%d \", x);\n    for (int i = k; i < n; i++) printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, x, a[105];\n    read_input(&n, &k, &x, a);\n    insert_and_print(n, k, x, a);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *x, int arr[])",
+          "code": "void read_input(int *n, int *k, int *x, int arr[]) {\n    scanf(\"%d %d %d\", n, k, x);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &arr[i]);\n}"
+        },
+        {
+          "clause_id": "insert_and_print",
+          "signature": "void insert_and_print(int n, int k, int x, int arr[])",
+          "code": "void insert_and_print(int n, int k, int x, int arr[]) {\n    for (int i = 0; i <= n; i++) {\n        if (i == k) printf(\"%d \", x);\n        if (i < n) printf(\"%d \", arr[i]);\n    }\n    printf(\"\\n\");\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, x, arr[105];\n    read_input(&n, &k, &x, arr);\n    insert_and_print(n, k, x, arr);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "long long read_input(int *n, int *k, int *x, int *seq)",
+          "code": "long long read_input(int *n, int *k, int *x, int *seq) {\n    scanf(\"%d %d %d\", n, k, x);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &seq[i]);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "insert_and_print",
+          "signature": "void insert_and_print(int n, int k, int x, int *seq)",
+          "code": "void insert_and_print(int n, int k, int x, int *seq) {\n    int j = 0;\n    for (int i = 0; i < n + 1; i++) {\n        if (i == k) printf(\"%d \", x);\n        else printf(\"%d \", seq[j++]);\n    }\n    printf(\"\\n\");\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, x, seq[105];\n    read_input(&n, &k, &x, seq);\n    insert_and_print(n, k, x, seq);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *x, int values[])",
+          "code": "void read_input(int *n, int *k, int *x, int values[]) {\n    scanf(\"%d %d %d\", n, k, x);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &values[i]);\n}"
+        },
+        {
+          "clause_id": "insert_and_print",
+          "signature": "void insert_and_print(int n, int k, int x, int values[])",
+          "code": "void insert_and_print(int n, int k, int x, int values[]) {\n    for (int i = 0; i < n + 1; i++) {\n        if (i < k) printf(\"%d \", values[i]);\n        else if (i == k) printf(\"%d \", x);\n        else printf(\"%d \", values[i - 1]);\n    }\n    printf(\"\\n\");\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, x, values[105];\n    read_input(&n, &k, &x, values);\n    insert_and_print(n, k, x, values);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

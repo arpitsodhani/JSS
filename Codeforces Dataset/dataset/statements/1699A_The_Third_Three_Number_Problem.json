@@ -1,0 +1,27 @@
+{
+  "contestId": 1699,
+  "index": "A",
+  "problem_id": "1699A",
+  "name": "The Third Three Number Problem",
+  "rating": 800,
+  "tags": [
+    "constructive algorithms",
+    "math"
+  ],
+  "points": 500.0,
+  "solvedCount": 24886,
+  "source": "verbatim_cf_fetch",
+  "title": "A. The Third Three Number Problem",
+  "legend": "You are given a positive integer n. Your task is to find any three integers a, b and c (0≤a,b,c≤109) for which (a⊕b)+(b⊕c)+(a⊕c)=n, or determine that there are no such integers.\n\nHere a⊕b denotes the bitwise XOR of a and b. For example, 2⊕4=6 and 3⊕1=2.",
+  "input_spec": "Each test contains multiple test cases. The first line contains a single integer t (1≤t≤104) — the number of test cases. The following lines contain the descriptions of the test cases.\n\nThe only line of each test case contains a single integer n (1≤n≤109).",
+  "output_spec": "For each test case, print any three integers a, b and c (0≤a,b,c≤109) for which (a⊕b)+(b⊕c)+(a⊕c)=n. If no such integers exist, print −1.",
+  "note": "In the first test case, a=3, b=3, c=1, so (3⊕3)+(3⊕1)+(3⊕1)=0+2+2=4.\n\nIn the second test case, there are no solutions.\n\nIn the third test case, (2⊕4)+(4⊕6)+(2⊕6)=6+2+4=12.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n4\n1\n12\n2046\n194723326\n",
+      "output": "3 3 1\n-1\n2 4 6\n69 420 666\n12345678 87654321 100000000"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *X, long long *U, long long *D)",
+          "code": "scanf(\"%d %lld\", n, X); for(int i=0;i<*n;i++) scanf(\"%lld\", &U[i]); for(int i=0;i<*n;i++) scanf(\"%lld\", &D[i]);\n"
+        },
+        {
+          "clause_id": "feasible",
+          "signature": "int feasible(long long H, int n, long long X, const long long *U, const long long *D)",
+          "code": "long long L=H-D[0]; if(L<0) L=0; long long R=U[0];\nif(L>R) return 0;\nfor(int i=1;i<n;i++){\n  long long li=H-D[i]; if(li<0) li=0;\n  long long ri=U[i];\n  long long nL=L-X; long long nR=R+X;\n  if(nL<li) nL=li;\n  if(nR>ri) nR=ri;\n  if(nL>nR) return 0;\n  L=nL; R=nR;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "max_H",
+          "signature": "long long max_H(int n, long long X, const long long *U, const long long *D)",
+          "code": "long long lo=0, hi=0;\nfor(int i=0;i<n;i++) if(U[i]+D[i]>hi) hi=U[i]+D[i];\nhi += 1;\nwhile(lo+1<hi){\n  long long mid=(lo+hi)/2;\n  if(feasible(mid,n,X,U,D)) lo=mid; else hi=mid;\n}\nreturn lo;\n"
+        },
+        {
+          "clause_id": "min_cost",
+          "signature": "long long min_cost(int n, const long long *U, const long long *D, long long H)",
+          "code": "long long sum=0;\nfor(int i=0;i<n;i++) sum += U[i]+D[i];\nreturn sum - (long long)n*H;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long X; long long *U=(long long*)malloc((size_t)200005*sizeof(long long)); long long *D=(long long*)malloc((size_t)200005*sizeof(long long));\nread_input(&n,&X,U,D);\nlong long H=max_H(n,X,U,D);\nlong long ans=min_cost(n,U,D,H);\nprintf(\"%lld\\n\", ans);\nfree(U); free(D);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *X, long long *U, long long *D)",
+          "code": "scanf(\"%d %lld\", n, X); for(int i=0;i<*n;i++) scanf(\"%lld\", &U[i]); for(int i=0;i<*n;i++) scanf(\"%lld\", &D[i]);\n"
+        },
+        {
+          "clause_id": "feasible",
+          "signature": "int feasible(long long H, int n, long long X, const long long *U, const long long *D)",
+          "code": "long long L=H-D[0]; if(L<0) L=0; long long R=U[0];\nif(L>R) return 0;\nfor(int i=1;i<n;i++){\n  long long li=H-D[i]; if(li<0) li=0;\n  long long ri=U[i];\n  long long nL=L-X; long long nR=R+X;\n  if(nL<li) nL=li;\n  if(nR>ri) nR=ri;\n  if(nL>nR) return 0;\n  L=nL; R=nR;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "max_H",
+          "signature": "long long max_H(int n, long long X, const long long *U, const long long *D)",
+          "code": "long long lo=0, hi=0;\nfor(int i=0;i<n;i++) if(U[i]+D[i]>hi) hi=U[i]+D[i];\nhi += 1;\nwhile(lo+1<hi){\n  long long mid=(lo+hi)/2;\n  if(feasible(mid,n,X,U,D)) lo=mid; else hi=mid;\n}\nreturn lo;\n"
+        },
+        {
+          "clause_id": "min_cost",
+          "signature": "long long min_cost(int n, const long long *U, const long long *D, long long H)",
+          "code": "long long sum=0;\nfor(int i=0;i<n;i++) sum += U[i]+D[i];\nreturn sum - (long long)n*H;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long X; long long *U=(long long*)malloc((size_t)200005*sizeof(long long)); long long *D=(long long*)malloc((size_t)200005*sizeof(long long));\nread_input(&n,&X,U,D);\nlong long H=max_H(n,X,U,D);\nlong long ans=min_cost(n,U,D,H);\nprintf(\"%lld\\n\", ans);\nfree(U); free(D);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *X, long long *U, long long *D)",
+          "code": "scanf(\"%d %lld\", n, X); for(int i=0;i<*n;i++) scanf(\"%lld\", &U[i]); for(int i=0;i<*n;i++) scanf(\"%lld\", &D[i]);\n"
+        },
+        {
+          "clause_id": "feasible",
+          "signature": "int feasible(long long H, int n, long long X, const long long *U, const long long *D)",
+          "code": "long long L=H-D[0]; if(L<0) L=0; long long R=U[0];\nif(L>R) return 0;\nfor(int i=1;i<n;i++){\n  long long li=H-D[i]; if(li<0) li=0;\n  long long ri=U[i];\n  long long nL=L-X; long long nR=R+X;\n  if(nL<li) nL=li;\n  if(nR>ri) nR=ri;\n  if(nL>nR) return 0;\n  L=nL; R=nR;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "max_H",
+          "signature": "long long max_H(int n, long long X, const long long *U, const long long *D)",
+          "code": "long long lo=0, hi=0;\nfor(int i=0;i<n;i++) if(U[i]+D[i]>hi) hi=U[i]+D[i];\nhi += 1;\nwhile(lo+1<hi){\n  long long mid=(lo+hi)/2;\n  if(feasible(mid,n,X,U,D)) lo=mid; else hi=mid;\n}\nreturn lo;\n"
+        },
+        {
+          "clause_id": "min_cost",
+          "signature": "long long min_cost(int n, const long long *U, const long long *D, long long H)",
+          "code": "long long sum=0;\nfor(int i=0;i<n;i++) sum += U[i]+D[i];\nreturn sum - (long long)n*H;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long X; long long *U=(long long*)malloc((size_t)200005*sizeof(long long)); long long *D=(long long*)malloc((size_t)200005*sizeof(long long));\nread_input(&n,&X,U,D);\nlong long H=max_H(n,X,U,D);\nlong long ans=min_cost(n,U,D,H);\nprintf(\"%lld\\n\", ans);\nfree(U); free(D);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *X, long long *U, long long *D)",
+          "code": "scanf(\"%d %lld\", n, X); for(int i=0;i<*n;i++) scanf(\"%lld\", &U[i]); for(int i=0;i<*n;i++) scanf(\"%lld\", &D[i]);\n"
+        },
+        {
+          "clause_id": "feasible",
+          "signature": "int feasible(long long H, int n, long long X, const long long *U, const long long *D)",
+          "code": "long long L=H-D[0]; if(L<0) L=0; long long R=U[0];\nif(L>R) return 0;\nfor(int i=1;i<n;i++){\n  long long li=H-D[i]; if(li<0) li=0;\n  long long ri=U[i];\n  long long nL=L-X; long long nR=R+X;\n  if(nL<li) nL=li;\n  if(nR>ri) nR=ri;\n  if(nL>nR) return 0;\n  L=nL; R=nR;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "max_H",
+          "signature": "long long max_H(int n, long long X, const long long *U, const long long *D)",
+          "code": "long long lo=0, hi=0;\nfor(int i=0;i<n;i++) if(U[i]+D[i]>hi) hi=U[i]+D[i];\nhi += 1;\nwhile(lo+1<hi){\n  long long mid=(lo+hi)/2;\n  if(feasible(mid,n,X,U,D)) lo=mid; else hi=mid;\n}\nreturn lo;\n"
+        },
+        {
+          "clause_id": "min_cost",
+          "signature": "long long min_cost(int n, const long long *U, const long long *D, long long H)",
+          "code": "long long sum=0;\nfor(int i=0;i<n;i++) sum += U[i]+D[i];\nreturn sum - (long long)n*H;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long X; long long *U=(long long*)malloc((size_t)200005*sizeof(long long)); long long *D=(long long*)malloc((size_t)200005*sizeof(long long));\nread_input(&n,&X,U,D);\nlong long H=max_H(n,X,U,D);\nlong long ans=min_cost(n,U,D,H);\nprintf(\"%lld\\n\", ans);\nfree(U); free(D);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *X, long long *U, long long *D)",
+          "code": "scanf(\"%d %lld\", n, X); for(int i=0;i<*n;i++) scanf(\"%lld\", &U[i]); for(int i=0;i<*n;i++) scanf(\"%lld\", &D[i]);\n"
+        },
+        {
+          "clause_id": "feasible",
+          "signature": "int feasible(long long H, int n, long long X, const long long *U, const long long *D)",
+          "code": "long long L=H-D[0]; if(L<0) L=0; long long R=U[0];\nif(L>R) return 0;\nfor(int i=1;i<n;i++){\n  long long li=H-D[i]; if(li<0) li=0;\n  long long ri=U[i];\n  long long nL=L-X; long long nR=R+X;\n  if(nL<li) nL=li;\n  if(nR>ri) nR=ri;\n  if(nL>nR) return 0;\n  L=nL; R=nR;\n}\nreturn 1;\n"
+        },
+        {
+          "clause_id": "max_H",
+          "signature": "long long max_H(int n, long long X, const long long *U, const long long *D)",
+          "code": "long long lo=0, hi=0;\nfor(int i=0;i<n;i++) if(U[i]+D[i]>hi) hi=U[i]+D[i];\nhi += 1;\nwhile(lo+1<hi){\n  long long mid=(lo+hi)/2;\n  if(feasible(mid,n,X,U,D)) lo=mid; else hi=mid;\n}\nreturn lo;\n"
+        },
+        {
+          "clause_id": "min_cost",
+          "signature": "long long min_cost(int n, const long long *U, const long long *D, long long H)",
+          "code": "long long sum=0;\nfor(int i=0;i<n;i++) sum += U[i]+D[i];\nreturn sum - (long long)n*H;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long X; long long *U=(long long*)malloc((size_t)200005*sizeof(long long)); long long *D=(long long*)malloc((size_t)200005*sizeof(long long));\nread_input(&n,&X,U,D);\nlong long H=max_H(n,X,U,D);\nlong long ans=min_cost(n,U,D,H);\nprintf(\"%lld\\n\", ans);\nfree(U); free(D);\nreturn 0; }\n"
+        }
+      ]
+    }
+  ]
+}

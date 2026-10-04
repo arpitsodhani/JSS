@@ -1,0 +1,32 @@
+{
+  "contestId": 888,
+  "index": "G",
+  "problem_id": "888G",
+  "name": "Xor-MST",
+  "rating": 2300,
+  "tags": [
+    "bitmasks",
+    "constructive algorithms",
+    "data structures"
+  ],
+  "points": null,
+  "solvedCount": 6023,
+  "source": "verbatim_cf_fetch",
+  "title": "G. Xor-MST",
+  "legend": "You are given a complete undirected graph with n vertices. A number ai is assigned to each vertex, and the weight of an edge between vertices i and j is equal to ai xor aj.\n\nCalculate the weight of the minimum spanning tree in this graph.",
+  "input_spec": "The first line contains n (1 ≤ n ≤ 200000) — the number of vertices in the graph.\n\nThe second line contains n integers a1, a2, ..., an (0 ≤ ai < 230) — the numbers assigned to the vertices.",
+  "output_spec": "Print one number — the weight of the minimum spanning tree in the graph.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n1 2 3 4 5\n",
+      "output": "8"
+    },
+    {
+      "input": "4\n1 2 3 4\n",
+      "output": "8"
+    }
+  ]
+}

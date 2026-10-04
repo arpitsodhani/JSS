@@ -1,0 +1,5 @@
+You are given an H x W grid containing '.', '#', 'S', and 'G'. You start at S and want to reach G. You may move one cell at a time, but moves must alternate between vertical and horizontal. Find the minimum number of moves, or -1 if impossible.
+
+**Constraints:**
+- 1 <= H, W <= 1000
+- S and G each appear exactly once

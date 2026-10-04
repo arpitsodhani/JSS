@@ -1,0 +1,160 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "validate_move_within_bounds",
+          "signature": "int validate_move_within_bounds(int h, int w, int next_i, int next_j)",
+          "code": "int validate_move_within_bounds(int h, int w, int next_i, int next_j) {\n    if (next_i < 0 || next_i >= h || next_j < 0 || next_j >= w) {\n        return 0;\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "check_obstacle_at_position",
+          "signature": "int check_obstacle_at_position(char grid[55][55], int i, int j)",
+          "code": "int check_obstacle_at_position(char grid[55][55], int i, int j) {\n    if (grid[i][j] == '#') {\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_next_position_from_direction",
+          "signature": "void compute_next_position_from_direction(char dir, int curr_i, int curr_j, int *next_i, int *next_j)",
+          "code": "void compute_next_position_from_direction(char dir, int curr_i, int curr_j, int *next_i, int *next_j) {\n    *next_i = curr_i;\n    *next_j = curr_j;\n    if (dir == 'L') (*next_j)--;\n    else if (dir == 'R') (*next_j)++;\n    else if (dir == 'U') (*next_i)--;\n    else if (dir == 'D') (*next_i)++;\n}"
+        },
+        {
+          "clause_id": "execute_navigation_sequence",
+          "signature": "void execute_navigation_sequence(int h, int w, char grid[55][55], int si, int sj, char *moves, int *final_i, int *final_j)",
+          "code": "void execute_navigation_sequence(int h, int w, char grid[55][55], int si, int sj, char *moves, int *final_i, int *final_j) {\n    int curr_i = si, curr_j = sj;\n    int n = strlen(moves);\n    for (int i = 0; i < n; i++) {\n        int next_i, next_j;\n        compute_next_position_from_direction(moves[i], curr_i, curr_j, &next_i, &next_j);\n        if (validate_move_within_bounds(h, w, next_i, next_j) && !check_obstacle_at_position(grid, next_i, next_j)) {\n            curr_i = next_i;\n            curr_j = next_j;\n        }\n    }\n    *final_i = curr_i;\n    *final_j = curr_j;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int h, w, si, sj;\n    char grid[55][55], moves[1005];\n    scanf(\"%d %d\", &h, &w);\n    scanf(\"%d %d\", &si, &sj);\n    si--; sj--;\n    for (int i = 0; i < h; i++) scanf(\"%s\", grid[i]);\n    scanf(\"%s\", moves);\n    int final_i, final_j;\n    execute_navigation_sequence(h, w, grid, si, sj, moves, &final_i, &final_j);\n    printf(\"%d %d\\n\", final_i + 1, final_j + 1);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "validate_move_within_bounds",
+          "signature": "int validate_move_within_bounds(int h, int w, int next_i, int next_j)",
+          "code": "int validate_move_within_bounds(int h, int w, int next_i, int next_j) {\n    if (next_i < 0 || next_i >= h || next_j < 0 || next_j >= w) {\n        return 0;\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "check_obstacle_at_position",
+          "signature": "int check_obstacle_at_position(char grid[55][55], int i, int j)",
+          "code": "int check_obstacle_at_position(char grid[55][55], int i, int j) {\n    if (grid[i][j] == '#') {\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_next_position_from_direction",
+          "signature": "void compute_next_position_from_direction(char dir, int curr_i, int curr_j, int *next_i, int *next_j)",
+          "code": "void compute_next_position_from_direction(char dir, int curr_i, int curr_j, int *next_i, int *next_j) {\n    *next_i = curr_i;\n    *next_j = curr_j;\n    if (dir == 'L') (*next_j)--;\n    else if (dir == 'R') (*next_j)++;\n    else if (dir == 'U') (*next_i)--;\n    else if (dir == 'D') (*next_i)++;\n}"
+        },
+        {
+          "clause_id": "execute_navigation_sequence",
+          "signature": "void execute_navigation_sequence(int h, int w, char grid[55][55], int si, int sj, char *moves, int *final_i, int *final_j)",
+          "code": "void execute_navigation_sequence(int h, int w, char grid[55][55], int si, int sj, char *moves, int *final_i, int *final_j) {\n    int curr_i = si, curr_j = sj;\n    int n = strlen(moves);\n    for (int i = 0; i < n; i++) {\n        int next_i, next_j;\n        compute_next_position_from_direction(moves[i], curr_i, curr_j, &next_i, &next_j);\n        if (validate_move_within_bounds(h, w, next_i, next_j) && !check_obstacle_at_position(grid, next_i, next_j)) {\n            curr_i = next_i;\n            curr_j = next_j;\n        }\n    }\n    *final_i = curr_i;\n    *final_j = curr_j;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int h, w, si, sj;\n    char grid[55][55], moves[1005];\n    scanf(\"%d %d\", &h, &w);\n    scanf(\"%d %d\", &si, &sj);\n    si--; sj--;\n    for (int i = 0; i < h; i++) scanf(\"%s\", grid[i]);\n    scanf(\"%s\", moves);\n    int final_i, final_j;\n    execute_navigation_sequence(h, w, grid, si, sj, moves, &final_i, &final_j);\n    printf(\"%d %d\\n\", final_i + 1, final_j + 1);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "validate_move_within_bounds",
+          "signature": "int validate_move_within_bounds(int h, int w, int next_i, int next_j)",
+          "code": "int validate_move_within_bounds(int h, int w, int next_i, int next_j) {\n    if (next_i < 0 || next_i >= h || next_j < 0 || next_j >= w) {\n        return 0;\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "check_obstacle_at_position",
+          "signature": "int check_obstacle_at_position(char grid[55][55], int i, int j)",
+          "code": "int check_obstacle_at_position(char grid[55][55], int i, int j) {\n    if (grid[i][j] == '#') {\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_next_position_from_direction",
+          "signature": "void compute_next_position_from_direction(char dir, int curr_i, int curr_j, int *next_i, int *next_j)",
+          "code": "void compute_next_position_from_direction(char dir, int curr_i, int curr_j, int *next_i, int *next_j) {\n    *next_i = curr_i;\n    *next_j = curr_j;\n    if (dir == 'L') (*next_j)--;\n    else if (dir == 'R') (*next_j)++;\n    else if (dir == 'U') (*next_i)--;\n    else if (dir == 'D') (*next_i)++;\n}"
+        },
+        {
+          "clause_id": "execute_navigation_sequence",
+          "signature": "void execute_navigation_sequence(int h, int w, char grid[55][55], int si, int sj, char *moves, int *final_i, int *final_j)",
+          "code": "void execute_navigation_sequence(int h, int w, char grid[55][55], int si, int sj, char *moves, int *final_i, int *final_j) {\n    int curr_i = si, curr_j = sj;\n    int n = strlen(moves);\n    for (int i = 0; i < n; i++) {\n        int next_i, next_j;\n        compute_next_position_from_direction(moves[i], curr_i, curr_j, &next_i, &next_j);\n        if (validate_move_within_bounds(h, w, next_i, next_j) && !check_obstacle_at_position(grid, next_i, next_j)) {\n            curr_i = next_i;\n            curr_j = next_j;\n        }\n    }\n    *final_i = curr_i;\n    *final_j = curr_j;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int h, w, si, sj;\n    char grid[55][55], moves[1005];\n    scanf(\"%d %d\", &h, &w);\n    scanf(\"%d %d\", &si, &sj);\n    si--; sj--;\n    for (int i = 0; i < h; i++) scanf(\"%s\", grid[i]);\n    scanf(\"%s\", moves);\n    int final_i, final_j;\n    execute_navigation_sequence(h, w, grid, si, sj, moves, &final_i, &final_j);\n    printf(\"%d %d\\n\", final_i + 1, final_j + 1);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "validate_move_within_bounds",
+          "signature": "int validate_move_within_bounds(int h, int w, int next_i, int next_j)",
+          "code": "int validate_move_within_bounds(int h, int w, int next_i, int next_j) {\n    if (next_i < 0 || next_i >= h || next_j < 0 || next_j >= w) {\n        return 0;\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "check_obstacle_at_position",
+          "signature": "int check_obstacle_at_position(char grid[55][55], int i, int j)",
+          "code": "int check_obstacle_at_position(char grid[55][55], int i, int j) {\n    if (grid[i][j] == '#') {\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_next_position_from_direction",
+          "signature": "void compute_next_position_from_direction(char dir, int curr_i, int curr_j, int *next_i, int *next_j)",
+          "code": "void compute_next_position_from_direction(char dir, int curr_i, int curr_j, int *next_i, int *next_j) {\n    *next_i = curr_i;\n    *next_j = curr_j;\n    if (dir == 'L') (*next_j)--;\n    else if (dir == 'R') (*next_j)++;\n    else if (dir == 'U') (*next_i)--;\n    else if (dir == 'D') (*next_i)++;\n}"
+        },
+        {
+          "clause_id": "execute_navigation_sequence",
+          "signature": "void execute_navigation_sequence(int h, int w, char grid[55][55], int si, int sj, char *moves, int *final_i, int *final_j)",
+          "code": "void execute_navigation_sequence(int h, int w, char grid[55][55], int si, int sj, char *moves, int *final_i, int *final_j) {\n    int curr_i = si, curr_j = sj;\n    int n = strlen(moves);\n    for (int i = 0; i < n; i++) {\n        int next_i, next_j;\n        compute_next_position_from_direction(moves[i], curr_i, curr_j, &next_i, &next_j);\n        if (validate_move_within_bounds(h, w, next_i, next_j) && !check_obstacle_at_position(grid, next_i, next_j)) {\n            curr_i = next_i;\n            curr_j = next_j;\n        }\n    }\n    *final_i = curr_i;\n    *final_j = curr_j;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int h, w, si, sj;\n    char grid[55][55], moves[1005];\n    scanf(\"%d %d\", &h, &w);\n    scanf(\"%d %d\", &si, &sj);\n    si--; sj--;\n    for (int i = 0; i < h; i++) scanf(\"%s\", grid[i]);\n    scanf(\"%s\", moves);\n    int final_i, final_j;\n    execute_navigation_sequence(h, w, grid, si, sj, moves, &final_i, &final_j);\n    printf(\"%d %d\\n\", final_i + 1, final_j + 1);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "validate_move_within_bounds",
+          "signature": "int validate_move_within_bounds(int h, int w, int next_i, int next_j)",
+          "code": "int validate_move_within_bounds(int h, int w, int next_i, int next_j) {\n    if (next_i < 0 || next_i >= h || next_j < 0 || next_j >= w) {\n        return 0;\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "check_obstacle_at_position",
+          "signature": "int check_obstacle_at_position(char grid[55][55], int i, int j)",
+          "code": "int check_obstacle_at_position(char grid[55][55], int i, int j) {\n    if (grid[i][j] == '#') {\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_next_position_from_direction",
+          "signature": "void compute_next_position_from_direction(char dir, int curr_i, int curr_j, int *next_i, int *next_j)",
+          "code": "void compute_next_position_from_direction(char dir, int curr_i, int curr_j, int *next_i, int *next_j) {\n    *next_i = curr_i;\n    *next_j = curr_j;\n    if (dir == 'L') (*next_j)--;\n    else if (dir == 'R') (*next_j)++;\n    else if (dir == 'U') (*next_i)--;\n    else if (dir == 'D') (*next_i)++;\n}"
+        },
+        {
+          "clause_id": "execute_navigation_sequence",
+          "signature": "void execute_navigation_sequence(int h, int w, char grid[55][55], int si, int sj, char *moves, int *final_i, int *final_j)",
+          "code": "void execute_navigation_sequence(int h, int w, char grid[55][55], int si, int sj, char *moves, int *final_i, int *final_j) {\n    int curr_i = si, curr_j = sj;\n    int n = strlen(moves);\n    for (int i = 0; i < n; i++) {\n        int next_i, next_j;\n        compute_next_position_from_direction(moves[i], curr_i, curr_j, &next_i, &next_j);\n        if (validate_move_within_bounds(h, w, next_i, next_j) && !check_obstacle_at_position(grid, next_i, next_j)) {\n            curr_i = next_i;\n            curr_j = next_j;\n        }\n    }\n    *final_i = curr_i;\n    *final_j = curr_j;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int h, w, si, sj;\n    char grid[55][55], moves[1005];\n    scanf(\"%d %d\", &h, &w);\n    scanf(\"%d %d\", &si, &sj);\n    si--; sj--;\n    for (int i = 0; i < h; i++) scanf(\"%s\", grid[i]);\n    scanf(\"%s\", moves);\n    int final_i, final_j;\n    execute_navigation_sequence(h, w, grid, si, sj, moves, &final_i, &final_j);\n    printf(\"%d %d\\n\", final_i + 1, final_j + 1);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

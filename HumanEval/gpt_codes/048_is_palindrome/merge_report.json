@@ -1,0 +1,107 @@
+{
+  "merged_program_file": "/home/arpit/Desktop/ISSTA-2026/HumanEval-C/gpt_codes/048_is_palindrome/merged.c",
+  "timestamp": "2026-03-16T17:03:14.086825",
+  "clauses": {
+    "is_palindrome": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "main": {
+      "confidence": 0.9571428571428571,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 0.9571428571428571,
+          "cluster_size": 5,
+          "total": 5,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 5
+    },
+    "check_palindrome": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "pal_test": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "palindrome_check": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "is_mirror": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    }
+  },
+  "compile_status": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "test_results": {
+    "passed": 0,
+    "total": 0,
+    "details": []
+  },
+  "metrics": {
+    "total_clauses": 6,
+    "total_fragments": 6,
+    "average_confidence": 0.9928571428571429,
+    "compile_success": true
+  },
+  "logs": ""
+}

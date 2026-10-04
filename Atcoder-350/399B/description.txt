@@ -1,0 +1,6 @@
+N people labeled from 1 to N participated in a certain contest. The of person i ( 1 \leq i \leq N ) was P_i . In this contest, the rank of each of the N people is determined by the following procedure: Prepare a variable r , and initialize r = 1 . Initially, the ranks of the N people are all undetermined. Repeat the following operation until the ranks of all N people are determined: Let x be the maximum among the people whose ranks are currently undetermined, and let k be the number of people whose is x . Determine the rank of those k people with x to be r , and then add k to r . Print the rank of each of the N people.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= A_i, B_i <= 10^9
+- All input values are integers

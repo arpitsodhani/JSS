@@ -1,0 +1,16 @@
+You are given a sequence of N positive integers A_1, A_2, ..., A_N.
+Find the number of non-empty contiguous subsequences whose sum is divisible by both K and M.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N K M
+A_1 A_2 ... A_N
+
+**Output:**
+Print the answer.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= K, M <= 1000
+- 1 <= A_i <= 10^9
+- All input values are integers

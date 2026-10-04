@@ -1,0 +1,219 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, unsigned long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%llu\", &a[i]);\n"
+        },
+        {
+          "clause_id": "mod_pow",
+          "signature": "long long mod_pow(long long a, long long e)",
+          "code": "const long long MOD=998244353LL; long long r=1%MOD; while(e){ if(e&1) r=r*a%MOD; a=a*a%MOD; e>>=1; } return r;\n"
+        },
+        {
+          "clause_id": "basis_insert",
+          "signature": "void basis_insert(unsigned long long *basis, unsigned long long x)",
+          "code": "for(int b=63;b>=0;b--){ if(((x>>b)&1ULL)==0ULL) continue; if(!basis[b]){ basis[b]=x; return; } x^=basis[b]; }\n"
+        },
+        {
+          "clause_id": "compute_rank",
+          "signature": "int compute_rank(int n, const unsigned long long *a, unsigned long long *basis)",
+          "code": "for(int i=0;i<64;i++) basis[i]=0; int rank=0; for(int i=0;i<n;i++){ unsigned long long x=a[i]; for(int b=63;b>=0;b--){ if(((x>>b)&1ULL)==0ULL) continue; if(!basis[b]){ basis[b]=x; rank++; break; } x^=basis[b]; } } return rank;\n"
+        },
+        {
+          "clause_id": "compute_answer",
+          "signature": "long long compute_answer(int n, int rank)",
+          "code": "const long long MOD=998244353LL; long long ways=mod_pow(2LL,(long long)n-rank); ways=(ways-1+MOD)%MOD; return ways;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static unsigned long long a[200005]; unsigned long long basis[64]; read_input(&n,a); int r=compute_rank(n,a,basis); long long ans=compute_answer(n,r); print_ans(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, unsigned long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%llu\", &a[i]);\n"
+        },
+        {
+          "clause_id": "mod_pow",
+          "signature": "long long mod_pow(long long a, long long e)",
+          "code": "const long long MOD=998244353LL; long long r=1; for(;e;e>>=1){ if(e&1) r=r*a%MOD; a=a*a%MOD; } return r;\n"
+        },
+        {
+          "clause_id": "basis_insert",
+          "signature": "void basis_insert(unsigned long long *basis, unsigned long long x)",
+          "code": "for(int b=63;b>=0 && x;b--){ if(!(x&(1ULL<<b))) continue; if(basis[b]) x^=basis[b]; else { basis[b]=x; return; } }\n"
+        },
+        {
+          "clause_id": "compute_rank",
+          "signature": "int compute_rank(int n, const unsigned long long *a, unsigned long long *basis)",
+          "code": "for(int i=0;i<64;i++) basis[i]=0; int rank=0; for(int i=0;i<n;i++){ unsigned long long x=a[i]; for(int b=63;b>=0 && x;b--){ if(!(x&(1ULL<<b))) continue; if(basis[b]) x^=basis[b]; else { basis[b]=x; rank++; break; } } } return rank;\n"
+        },
+        {
+          "clause_id": "compute_answer",
+          "signature": "long long compute_answer(int n, int rank)",
+          "code": "const long long MOD=998244353LL; long long ways=mod_pow(2LL,(long long)n-rank); ways--; if(ways<0) ways+=MOD; return ways;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static unsigned long long a[200005]; unsigned long long basis[64]; read_input(&n,a); int r=compute_rank(n,a,basis); long long ans=compute_answer(n,r); print_ans(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, unsigned long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%llu\", &a[i]);\n"
+        },
+        {
+          "clause_id": "mod_pow",
+          "signature": "long long mod_pow(long long a, long long e)",
+          "code": "const long long MOD=998244353LL; long long r=1; while(e){ if(e%2) r=r*a%MOD; a=a*a%MOD; e/=2; } return r;\n"
+        },
+        {
+          "clause_id": "basis_insert",
+          "signature": "void basis_insert(unsigned long long *basis, unsigned long long x)",
+          "code": "for(int b=63;b>=0;b--){ if(!(x&(1ULL<<b))) continue; if(basis[b]==0){ basis[b]=x; return; } x^=basis[b]; }\n"
+        },
+        {
+          "clause_id": "compute_rank",
+          "signature": "int compute_rank(int n, const unsigned long long *a, unsigned long long *basis)",
+          "code": "for(int i=0;i<64;i++) basis[i]=0; for(int i=0;i<n;i++) basis_insert(basis, a[i]); int rank=0; for(int b=0;b<64;b++) if(basis[b]) rank++; return rank;\n"
+        },
+        {
+          "clause_id": "compute_answer",
+          "signature": "long long compute_answer(int n, int rank)",
+          "code": "const long long MOD=998244353LL; long long ways=mod_pow(2LL,(long long)n-rank); return (ways+MOD-1)%MOD;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static unsigned long long a[200005]; unsigned long long basis[64]; read_input(&n,a); int r=compute_rank(n,a,basis); long long ans=compute_answer(n,r); print_ans(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, unsigned long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%llu\", &a[i]);\n"
+        },
+        {
+          "clause_id": "mod_pow",
+          "signature": "long long mod_pow(long long a, long long e)",
+          "code": "const long long MOD=998244353LL; long long r=1; while(e){ if(e&1LL) r=(__int128)r*a%MOD; a=(__int128)a*a%MOD; e>>=1; } return r;\n"
+        },
+        {
+          "clause_id": "basis_insert",
+          "signature": "void basis_insert(unsigned long long *basis, unsigned long long x)",
+          "code": "for(int b=63;b>=0;b--){ unsigned long long bit=1ULL<<b; if(!(x&bit)) continue; if(basis[b]) x^=basis[b]; else { basis[b]=x; return; } }\n"
+        },
+        {
+          "clause_id": "compute_rank",
+          "signature": "int compute_rank(int n, const unsigned long long *a, unsigned long long *basis)",
+          "code": "for(int i=0;i<64;i++) basis[i]=0; for(int i=0;i<n;i++){ unsigned long long x=a[i]; basis_insert(basis,x); } int rank=0; for(int b=0;b<64;b++) if(basis[b]) rank++; return rank;\n"
+        },
+        {
+          "clause_id": "compute_answer",
+          "signature": "long long compute_answer(int n, int rank)",
+          "code": "const long long MOD=998244353LL; long long ways=mod_pow(2LL,(long long)n-rank); return (ways+MOD-1)%MOD;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static unsigned long long a[200005]; unsigned long long basis[64]; read_input(&n,a); int r=compute_rank(n,a,basis); long long ans=compute_answer(n,r); print_ans(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, unsigned long long *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%llu\", &a[i]);\n"
+        },
+        {
+          "clause_id": "mod_pow",
+          "signature": "long long mod_pow(long long a, long long e)",
+          "code": "const long long MOD=998244353LL; long long r=1%MOD; while(e){ if(e&1) r=r*a%MOD; a=a*a%MOD; e>>=1; } return r;\n"
+        },
+        {
+          "clause_id": "basis_insert",
+          "signature": "void basis_insert(unsigned long long *basis, unsigned long long x)",
+          "code": "for(int b=63;b>=0;b--){ if(((x>>b)&1ULL)==0) continue; if(!basis[b]){ basis[b]=x; return; } x^=basis[b]; }\n"
+        },
+        {
+          "clause_id": "compute_rank",
+          "signature": "int compute_rank(int n, const unsigned long long *a, unsigned long long *basis)",
+          "code": "for(int i=0;i<64;i++) basis[i]=0; for(int i=0;i<n;i++){ basis_insert(basis,a[i]); } int rank=0; for(int b=0;b<64;b++) if(basis[b]) rank++; return rank;\n"
+        },
+        {
+          "clause_id": "compute_answer",
+          "signature": "long long compute_answer(int n, int rank)",
+          "code": "const long long MOD=998244353LL; long long ways=mod_pow(2LL,(long long)n-rank); ways=(ways-1)%MOD; if(ways<0) ways+=MOD; return ways;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; static unsigned long long a[200005]; unsigned long long basis[64]; read_input(&n,a); int r=compute_rank(n,a,basis); long long ans=compute_answer(n,r); print_ans(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

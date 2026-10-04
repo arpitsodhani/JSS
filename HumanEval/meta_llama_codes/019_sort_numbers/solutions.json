@@ -1,0 +1,99 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "word_to_number",
+          "signature": "",
+          "code": "int word_to_number(char* word) {\n    if (strcmp(word, \"zero\") == 0) return 0;\n    if (strcmp(word, \"one\") == 0) return 1;\n    if (strcmp(word, \"two\") == 0) return 2;\n    if (strcmp(word, \"three\") == 0) return 3;\n    if (strcmp(word, \"four\") == 0) return 4;\n    if (strcmp(word, \"five\") == 0) return 5;\n    if (strcmp(word, \"six\") == 0) return 6;\n    if (strcmp(word, \"seven\") == 0) return 7;\n    if (strcmp(word, \"eight\") == 0) return 8;\n    if (strcmp(word, \"nine\") == 0) return 9;\n    return -1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char line[10000];\n    fgets(line, sizeof(line), stdin);\n    int nums[100], count = 0;\n    char* token = strtok(line, \" \\n\");\n    while (token) {\n        nums[count++] = word_to_number(token);\n        token = strtok(NULL, \" \\n\");\n    }\n    for (int i = 0; i < count - 1; i++) {\n        for (int j = i + 1; j < count; j++) {\n            if (nums[i] > nums[j]) {\n                int temp = nums[i];\n                nums[i] = nums[j];\n                nums[j] = temp;\n            }\n        }\n    }\n    char* words[] = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    for (int i = 0; i < count; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%s\", words[nums[i]]);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "word_to_number",
+          "signature": "",
+          "code": "int word_to_number(char* w) {\n    char* words[] = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    for (int i = 0; i < 10; i++) {\n        if (strcmp(w, words[i]) == 0) return i;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char input[10000];\n    fgets(input, sizeof(input), stdin);\n    int numbers[100], n = 0;\n    char* tok = strtok(input, \" \\n\");\n    while (tok) {\n        numbers[n++] = word_to_number(tok);\n        tok = strtok(NULL, \" \\n\");\n    }\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (numbers[i] > numbers[j]) {\n                int t = numbers[i];\n                numbers[i] = numbers[j];\n                numbers[j] = t;\n            }\n        }\n    }\n    char* labels[] = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    for (int i = 0; i < n; i++) {\n        if (i) printf(\" \");\n        printf(\"%s\", labels[numbers[i]]);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "word_to_number",
+          "signature": "",
+          "code": "int word_to_number(char* s) {\n    if (!strcmp(s, \"zero\")) return 0;\n    if (!strcmp(s, \"one\")) return 1;\n    if (!strcmp(s, \"two\")) return 2;\n    if (!strcmp(s, \"three\")) return 3;\n    if (!strcmp(s, \"four\")) return 4;\n    if (!strcmp(s, \"five\")) return 5;\n    if (!strcmp(s, \"six\")) return 6;\n    if (!strcmp(s, \"seven\")) return 7;\n    if (!strcmp(s, \"eight\")) return 8;\n    if (!strcmp(s, \"nine\")) return 9;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char buffer[10000];\n    fgets(buffer, sizeof(buffer), stdin);\n    int vals[100], cnt = 0;\n    char* p = strtok(buffer, \" \\n\");\n    while (p != NULL) {\n        vals[cnt++] = word_to_number(p);\n        p = strtok(NULL, \" \\n\");\n    }\n    for (int i = 0; i < cnt - 1; i++) {\n        for (int j = 0; j < cnt - 1 - i; j++) {\n            if (vals[j] > vals[j + 1]) {\n                int tmp = vals[j];\n                vals[j] = vals[j + 1];\n                vals[j + 1] = tmp;\n            }\n        }\n    }\n    char* map[] = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    for (int i = 0; i < cnt; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%s\", map[vals[i]]);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "word_to_number",
+          "signature": "",
+          "code": "int word_to_number(char* word) {\n    char* names[] = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    for (int k = 0; k < 10; k++) {\n        if (strcmp(word, names[k]) == 0) return k;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char str[10000];\n    fgets(str, sizeof(str), stdin);\n    int arr[100], size = 0;\n    char* word = strtok(str, \" \\n\");\n    while (word) {\n        arr[size++] = word_to_number(word);\n        word = strtok(NULL, \" \\n\");\n    }\n    for (int i = 0; i < size; i++) {\n        for (int j = i + 1; j < size; j++) {\n            if (arr[i] > arr[j]) {\n                int swap = arr[i];\n                arr[i] = arr[j];\n                arr[j] = swap;\n            }\n        }\n    }\n    char* names[] = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    for (int i = 0; i < size; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%s\", names[arr[i]]);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "word_to_number",
+          "signature": "",
+          "code": "int word_to_number(char* w) {\n    if (strcmp(w, \"zero\") == 0) return 0;\n    else if (strcmp(w, \"one\") == 0) return 1;\n    else if (strcmp(w, \"two\") == 0) return 2;\n    else if (strcmp(w, \"three\") == 0) return 3;\n    else if (strcmp(w, \"four\") == 0) return 4;\n    else if (strcmp(w, \"five\") == 0) return 5;\n    else if (strcmp(w, \"six\") == 0) return 6;\n    else if (strcmp(w, \"seven\") == 0) return 7;\n    else if (strcmp(w, \"eight\") == 0) return 8;\n    else if (strcmp(w, \"nine\") == 0) return 9;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char data[10000];\n    fgets(data, sizeof(data), stdin);\n    int digits[100], total = 0;\n    char* t = strtok(data, \" \\n\");\n    while (t) {\n        digits[total++] = word_to_number(t);\n        t = strtok(NULL, \" \\n\");\n    }\n    for (int i = 0; i < total - 1; i++) {\n        int min_idx = i;\n        for (int j = i + 1; j < total; j++) {\n            if (digits[j] < digits[min_idx]) {\n                min_idx = j;\n            }\n        }\n        int temp = digits[i];\n        digits[i] = digits[min_idx];\n        digits[min_idx] = temp;\n    }\n    char* strs[] = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    for (int i = 0; i < total; i++) {\n        if (i) printf(\" \");\n        printf(\"%s\", strs[digits[i]]);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

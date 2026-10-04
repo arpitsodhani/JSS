@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.986,
+  "clauses": [
+    {
+      "clause": "calculate_service_times",
+      "confidence": 0.9879999999999999
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_results",
+      "confidence": 0.9640000000000001
+    },
+    {
+      "clause": "read_input",
+      "confidence": 0.992
+    }
+  ]
+}

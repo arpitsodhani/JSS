@@ -1,0 +1,27 @@
+{
+  "contestId": 1924,
+  "index": "E",
+  "problem_id": "1924E",
+  "name": "Paper Cutting Again",
+  "rating": 3100,
+  "tags": [
+    "combinatorics",
+    "probabilities"
+  ],
+  "points": 2500.0,
+  "solvedCount": 592,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Paper Cutting Again",
+  "legend": "There is a rectangular sheet of paper with initial height n and width m. Let the current height and width be h and w respectively. We introduce a xy-coordinate system so that the four corners of the sheet are (0,0),(w,0),(0,h), and (w,h). The sheet can then be cut along the lines x=1,2,…,w−1 and the lines y=1,2,…,h−1. In each step, the paper is cut randomly along any one of these h+w−2 lines. After each vertical and horizontal cut, the right and bottom piece of paper respectively are discarded.\n\nFind the expected number of steps required to make the area of the sheet of paper strictly less than k. It can be shown that this answer can always be expressed as a fraction \np\n\n\nq\n where p and q are coprime integers. Calculate p⋅q−1mod(109+7).",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤57000). Description of the test cases follows.\n\nThe first line of each test case contains 3 integers n, m, and k (1≤n,m≤106, 2≤k≤1012).\n\nIt is guaranteed that the sum of n and the sum of m over all test cases do not exceed 106.",
+  "output_spec": "For each test case, print one integer — the answer to the problem.",
+  "note": "For the first test case, the area is already less than 10 so no cuts are required.\n\nFor the second test case, the area is exactly 8 so any one of the 4 possible cuts would make the area strictly less than 8.\n\nFor the third test case, the final answer is \n17\n\n\n6\n=833333342mod(109+7).\n\nFor the fourth test case, the final answer is \n5\n\n\n4\n=250000003mod(109+7).",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n2 4 10\n2 4 8\n2 4 2\n2 4 6\n",
+      "output": "0\n1\n833333342\n250000003"
+    }
+  ]
+}

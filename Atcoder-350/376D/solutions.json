@@ -1,0 +1,199 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int **U,int **V)",
+          "code": "void read_input(int *N,int *M,int **U,int **V){ scanf(\"%d%d\", N,M); *U=(int*)malloc((size_t)(*M)*sizeof(int)); *V=(int*)malloc((size_t)(*M)*sizeof(int)); for(int i=0;i<*M;i++) scanf(\"%d%d\", &(*U)[i], &(*V)[i]); }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int N,int M,int *U,int *V,int *head,int *to,int *next)",
+          "code": "void build_adj(int N,int M,int *U,int *V,int *head,int *to,int *next){ for(int i=1;i<=N;i++) head[i]=-1; int ec=0; for(int i=0;i<M;i++){ int a=U[i], b=V[i]; to[ec]=b; next[ec]=head[a]; head[a]=ec++; } }\n"
+        },
+        {
+          "clause_id": "bfs",
+          "signature": "int bfs(int N,int s,int t,int *head,int *to,int *next)",
+          "code": "int bfs(int N,int s,int t,int *head,int *to,int *next){ int *q=(int*)malloc((size_t)(N+1)*sizeof(int)); int *dist=(int*)malloc((size_t)(N+1)*sizeof(int)); for(int i=1;i<=N;i++) dist[i]=-1; int h=0,tt=0; q[tt++]=s; dist[s]=0; while(h<tt){ int v=q[h++]; if(v==t) break; for(int e=head[v]; e!=-1; e=next[e]){ int u=to[e]; if(dist[u]==-1){ dist[u]=dist[v]+1; q[tt++]=u; } } } int ans=dist[t]; free(q); free(dist); return ans; }\n"
+        },
+        {
+          "clause_id": "shortest_cycle",
+          "signature": "int shortest_cycle(int N,int M,int *U,int *V)",
+          "code": "int shortest_cycle(int N,int M,int *U,int *V){ int *head=(int*)malloc((size_t)(N+1)*sizeof(int)); int *to=(int*)malloc((size_t)M*sizeof(int)); int *next=(int*)malloc((size_t)M*sizeof(int)); build_adj(N,M,U,V,head,to,next); int best=1e9; for(int i=0;i<M;i++){ int u=U[i], v=V[i]; int d=bfs(N,v,u,head,to,next); if(d!=-1 && d+1<best) best=d+1; } free(head); free(to); free(next); if(best==1e9) return -1; return best; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; int *U=NULL,*V=NULL; read_input(&N,&M,&U,&V); int ans=shortest_cycle(N,M,U,V); print_answer(ans); free(U); free(V); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int **U,int **V)",
+          "code": "void read_input(int *N,int *M,int **U,int **V){ scanf(\"%d%d\", N,M); *U=(int*)malloc((size_t)(*M)*sizeof(int)); *V=(int*)malloc((size_t)(*M)*sizeof(int)); for(int i=0;i<*M;i++) scanf(\"%d%d\", &(*U)[i], &(*V)[i]); }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int N,int M,int *U,int *V,int *head,int *to,int *next)",
+          "code": "void build_adj(int N,int M,int *U,int *V,int *head,int *to,int *next){ for(int i=1;i<=N;i++) head[i]=-1; int ec=0; for(int i=0;i<M;i++){ int a=U[i], b=V[i]; to[ec]=b; next[ec]=head[a]; head[a]=ec++; } }\n"
+        },
+        {
+          "clause_id": "bfs",
+          "signature": "int bfs(int N,int s,int t,int *head,int *to,int *next)",
+          "code": "int bfs(int N,int s,int t,int *head,int *to,int *next){ int *q=(int*)malloc((size_t)(N+1)*sizeof(int)); int *dist=(int*)malloc((size_t)(N+1)*sizeof(int)); for(int i=1;i<=N;i++) dist[i]=-1; int h=0,tt=0; q[tt++]=s; dist[s]=0; while(h<tt){ int v=q[h++]; if(v==t) break; for(int e=head[v]; e!=-1; e=next[e]){ int u=to[e]; if(dist[u]==-1){ dist[u]=dist[v]+1; q[tt++]=u; } } } int ans=dist[t]; free(q); free(dist); return ans; }\n"
+        },
+        {
+          "clause_id": "shortest_cycle",
+          "signature": "int shortest_cycle(int N,int M,int *U,int *V)",
+          "code": "int shortest_cycle(int N,int M,int *U,int *V){ int *head=(int*)malloc((size_t)(N+1)*sizeof(int)); int *to=(int*)malloc((size_t)M*sizeof(int)); int *next=(int*)malloc((size_t)M*sizeof(int)); build_adj(N,M,U,V,head,to,next); int best=1e9; for(int i=0;i<M;i++){ int u=U[i], v=V[i]; int d=bfs(N,v,u,head,to,next); if(d!=-1 && d+1<best) best=d+1; } free(head); free(to); free(next); if(best==1e9) return -1; return best; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; int *U=NULL,*V=NULL; read_input(&N,&M,&U,&V); int ans=shortest_cycle(N,M,U,V); print_answer(ans); free(U); free(V); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int **U,int **V)",
+          "code": "void read_input(int *N,int *M,int **U,int **V){ scanf(\"%d%d\", N,M); *U=(int*)malloc((size_t)(*M)*sizeof(int)); *V=(int*)malloc((size_t)(*M)*sizeof(int)); for(int i=0;i<*M;i++) scanf(\"%d%d\", &(*U)[i], &(*V)[i]); }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int N,int M,int *U,int *V,int *head,int *to,int *next)",
+          "code": "void build_adj(int N,int M,int *U,int *V,int *head,int *to,int *next){ for(int i=1;i<=N;i++) head[i]=-1; int ec=0; for(int i=0;i<M;i++){ int a=U[i], b=V[i]; to[ec]=b; next[ec]=head[a]; head[a]=ec++; } }\n"
+        },
+        {
+          "clause_id": "bfs",
+          "signature": "int bfs(int N,int s,int t,int *head,int *to,int *next)",
+          "code": "int bfs(int N,int s,int t,int *head,int *to,int *next){ int *q=(int*)malloc((size_t)(N+1)*sizeof(int)); int *dist=(int*)malloc((size_t)(N+1)*sizeof(int)); for(int i=1;i<=N;i++) dist[i]=-1; int h=0,tt=0; q[tt++]=s; dist[s]=0; while(h<tt){ int v=q[h++]; if(v==t) break; for(int e=head[v]; e!=-1; e=next[e]){ int u=to[e]; if(dist[u]==-1){ dist[u]=dist[v]+1; q[tt++]=u; } } } int ans=dist[t]; free(q); free(dist); return ans; }\n"
+        },
+        {
+          "clause_id": "shortest_cycle",
+          "signature": "int shortest_cycle(int N,int M,int *U,int *V)",
+          "code": "int shortest_cycle(int N,int M,int *U,int *V){ int *head=(int*)malloc((size_t)(N+1)*sizeof(int)); int *to=(int*)malloc((size_t)M*sizeof(int)); int *next=(int*)malloc((size_t)M*sizeof(int)); build_adj(N,M,U,V,head,to,next); int best=1e9; for(int i=0;i<M;i++){ int u=U[i], v=V[i]; int d=bfs(N,v,u,head,to,next); if(d!=-1 && d+1<best) best=d+1; } free(head); free(to); free(next); if(best==1e9) return -1; return best; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; int *U=NULL,*V=NULL; read_input(&N,&M,&U,&V); int ans=shortest_cycle(N,M,U,V); print_answer(ans); free(U); free(V); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int **U,int **V)",
+          "code": "void read_input(int *N,int *M,int **U,int **V){ scanf(\"%d%d\", N,M); *U=(int*)malloc((size_t)(*M)*sizeof(int)); *V=(int*)malloc((size_t)(*M)*sizeof(int)); for(int i=0;i<*M;i++) scanf(\"%d%d\", &(*U)[i], &(*V)[i]); }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int N,int M,int *U,int *V,int *head,int *to,int *next)",
+          "code": "void build_adj(int N,int M,int *U,int *V,int *head,int *to,int *next){ for(int i=1;i<=N;i++) head[i]=-1; int ec=0; for(int i=0;i<M;i++){ int a=U[i], b=V[i]; to[ec]=b; next[ec]=head[a]; head[a]=ec++; } }\n"
+        },
+        {
+          "clause_id": "bfs",
+          "signature": "int bfs(int N,int s,int t,int *head,int *to,int *next)",
+          "code": "int bfs(int N,int s,int t,int *head,int *to,int *next){ int *q=(int*)malloc((size_t)(N+1)*sizeof(int)); int *dist=(int*)malloc((size_t)(N+1)*sizeof(int)); for(int i=1;i<=N;i++) dist[i]=-1; int h=0,tt=0; q[tt++]=s; dist[s]=0; while(h<tt){ int v=q[h++]; if(v==t) break; for(int e=head[v]; e!=-1; e=next[e]){ int u=to[e]; if(dist[u]==-1){ dist[u]=dist[v]+1; q[tt++]=u; } } } int ans=dist[t]; free(q); free(dist); return ans; }\n"
+        },
+        {
+          "clause_id": "shortest_cycle",
+          "signature": "int shortest_cycle(int N,int M,int *U,int *V)",
+          "code": "int shortest_cycle(int N,int M,int *U,int *V){ int *head=(int*)malloc((size_t)(N+1)*sizeof(int)); int *to=(int*)malloc((size_t)M*sizeof(int)); int *next=(int*)malloc((size_t)M*sizeof(int)); build_adj(N,M,U,V,head,to,next); int best=1e9; for(int i=0;i<M;i++){ int u=U[i], v=V[i]; int d=bfs(N,v,u,head,to,next); if(d!=-1 && d+1<best) best=d+1; } free(head); free(to); free(next); if(best==1e9) return -1; return best; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; int *U=NULL,*V=NULL; read_input(&N,&M,&U,&V); int ans=shortest_cycle(N,M,U,V); print_answer(ans); free(U); free(V); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *M,int **U,int **V)",
+          "code": "void read_input(int *N,int *M,int **U,int **V){ scanf(\"%d%d\", N,M); *U=(int*)malloc((size_t)(*M)*sizeof(int)); *V=(int*)malloc((size_t)(*M)*sizeof(int)); for(int i=0;i<*M;i++) scanf(\"%d%d\", &(*U)[i], &(*V)[i]); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int N,int M,int *U,int *V,int *head,int *to,int *next)",
+          "code": "void build_adj(int N,int M,int *U,int *V,int *head,int *to,int *next){ for(int i=1;i<=N;i++) head[i]=-1; int ec=0; for(int i=0;i<M;i++){ int a=U[i], b=V[i]; to[ec]=b; next[ec]=head[a]; head[a]=ec++; } \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "bfs",
+          "signature": "int bfs(int N,int s,int t,int *head,int *to,int *next)",
+          "code": "int bfs(int N,int s,int t,int *head,int *to,int *next){ int *q=(int*)malloc((size_t)(N+1)*sizeof(int)); int *dist=(int*)malloc((size_t)(N+1)*sizeof(int)); for(int i=1;i<=N;i++) dist[i]=-1; int h=0,tt=0; q[tt++]=s; dist[s]=0; while(h<tt){ int v=q[h++]; if(v==t) break; for(int e=head[v]; e!=-1; e=next[e]){ int u=to[e]; if(dist[u]==-1){ dist[u]=dist[v]+1; q[tt++]=u; } } } int ans=dist[t]; free(q); free(dist); return ans; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "shortest_cycle",
+          "signature": "int shortest_cycle(int N,int M,int *U,int *V)",
+          "code": "int shortest_cycle(int N,int M,int *U,int *V){ int *head=(int*)malloc((size_t)(N+1)*sizeof(int)); int *to=(int*)malloc((size_t)M*sizeof(int)); int *next=(int*)malloc((size_t)M*sizeof(int)); build_adj(N,M,U,V,head,to,next); int best=1e9; for(int i=0;i<M;i++){ int u=U[i], v=V[i]; int d=bfs(N,v,u,head,to,next); if(d!=-1 && d+1<best) best=d+1; } free(head); free(to); free(next); if(best==1e9) return -1; return best; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ans)",
+          "code": "void print_answer(int ans){ printf(\"%d\\n\", ans); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,M; int *U=NULL,*V=NULL; read_input(&N,&M,&U,&V); int ans=shortest_cycle(N,M,U,V); print_answer(ans); free(U); free(V); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

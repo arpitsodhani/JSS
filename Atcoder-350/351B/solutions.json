@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint n;\nchar grid1[105][105];\nchar grid2[105][105];\n\nvoid read_input() {\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", grid1[i]);\n    }\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", grid2[i]);\n    }\n}\n\nvoid find_difference() {\n    for (int row = 0; row < n; row++) {\n        for (int col = 0; col < n; col++) {\n            if (grid1[row][col] != grid2[row][col]) {\n                printf(\"%d %d\\n\", row + 1, col + 1);\n                return;\n            }\n        }\n    }\n}\n\nint main() {\n    read_input();\n    find_difference();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "find_difference",
+          "signature": "void find_difference()",
+          "code": "void find_difference() {\n    for (int row = 0; row < n; row++) {\n        for (int col = 0; col < n; col++) {\n            if (grid1[row][col] != grid2[row][col]) {\n                printf(\"%d %d\\n\", row + 1, col + 1);\n                return;\n            }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    find_difference();\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint n;\nchar grid1[105][105];\nchar grid2[105][105];\n\nvoid read_input() {\n    scanf(\"%d\", &n);\n    int i = 0;\n    while (i < n) {\n        scanf(\"%s\", grid1[i]);\n        i++;\n    }\n    i = 0;\n    while (i < n) {\n        scanf(\"%s\", grid2[i]);\n        i++;\n    }\n}\n\nvoid find_difference() {\n    int r, c;\n    for (r = 0; r < n; r++) {\n        for (c = 0; c < n; c++) {\n            if (grid1[r][c] != grid2[r][c]) {\n                printf(\"%d %d\\n\", r + 1, c + 1);\n                return;\n            }\n        }\n    }\n}\n\nint main() {\n    read_input();\n    find_difference();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "find_difference",
+          "signature": "void find_difference()",
+          "code": "void find_difference() {\n    int r, c;\n    for (r = 0; r < n; r++) {\n        for (c = 0; c < n; c++) {\n            if (grid1[r][c] != grid2[r][c]) {\n                printf(\"%d %d\\n\", r + 1, c + 1);\n                return;\n            }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    find_difference();\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint n;\nchar grid1[105][105];\nchar grid2[105][105];\n\nvoid read_input() {\n    scanf(\"%d\", &n);\n    for (int k = 0; k < n; k++) scanf(\"%s\", grid1[k]);\n    for (int k = 0; k < n; k++) scanf(\"%s\", grid2[k]);\n}\n\nvoid find_difference() {\n    int i, j;\n    for (i = 0; i < n; i++) {\n        for (j = 0; j < n; j++) {\n            if (grid1[i][j] != grid2[i][j]) {\n                printf(\"%d %d\\n\", i + 1, j + 1);\n                return;\n            }\n        }\n    }\n}\n\nint main() {\n    read_input();\n    find_difference();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "find_difference",
+          "signature": "void find_difference()",
+          "code": "void find_difference() {\n    int i, j;\n    for (i = 0; i < n; i++) {\n        for (j = 0; j < n; j++) {\n            if (grid1[i][j] != grid2[i][j]) {\n                printf(\"%d %d\\n\", i + 1, j + 1);\n                return;\n            }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    find_difference();\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint n;\nchar grid1[105][105];\nchar grid2[105][105];\n\nvoid read_input() {\n    scanf(\"%d\", &n);\n    for (int idx = 0; idx < n; idx++) {\n        scanf(\"%s\", grid1[idx]);\n    }\n    for (int idx = 0; idx < n; idx++) {\n        scanf(\"%s\", grid2[idx]);\n    }\n}\n\nvoid find_difference() {\n    for (int x = 0; x < n; x++) {\n        for (int y = 0; y < n; y++) {\n            if (grid1[x][y] != grid2[x][y]) {\n                printf(\"%d %d\\n\", x + 1, y + 1);\n                return;\n            }\n        }\n    }\n}\n\nint main() {\n    read_input();\n    find_difference();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "find_difference",
+          "signature": "void find_difference()",
+          "code": "void find_difference() {\n    for (int x = 0; x < n; x++) {\n        for (int y = 0; y < n; y++) {\n            if (grid1[x][y] != grid2[x][y]) {\n                printf(\"%d %d\\n\", x + 1, y + 1);\n                return;\n            }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    find_difference();\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint n;\nchar grid1[105][105];\nchar grid2[105][105];\n\nvoid read_input() {\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%s\", grid1[i]);\n    for (int i = 0; i < n; i++) scanf(\"%s\", grid2[i]);\n}\n\nvoid find_difference() {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid1[i][j] != grid2[i][j]) {\n                printf(\"%d %d\\n\", i + 1, j + 1);\n                return;\n            }\n        }\n    }\n}\n\nint main() {\n    read_input();\n    find_difference();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "find_difference",
+          "signature": "void find_difference()",
+          "code": "void find_difference() {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid1[i][j] != grid2[i][j]) {\n                printf(\"%d %d\\n\", i + 1, j + 1);\n                return;\n            }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    find_difference();\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

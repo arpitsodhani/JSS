@@ -1,0 +1,121 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(int *N)",
+          "code": "int Q; scanf(\"%d%d\", N,&Q); return Q;\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int N,int Q)",
+          "code": "static int pos[200005],cnt[200005];\nfor(int i=1;i<=N;i++){ pos[i]=i; cnt[i]=1; }\nint over=0;\nfor(int qi=0;qi<Q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int P,H; scanf(\"%d%d\", &P,&H); int old=pos[P];\n    if(cnt[old]==2) over--; cnt[old]--; if(cnt[old]==2) over++; if(cnt[old]<2) {}\n    if(cnt[H]==1) over++; cnt[H]++; pos[P]=H;\n  } else {\n    printf(\"%d\\n\", over);\n  }\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int Q=read_q(&N); process(N,Q); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(int *N)",
+          "code": "int Q; scanf(\"%d%d\", N,&Q); return Q;\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int N,int Q)",
+          "code": "static int pos[200005],cnt[200005];\nfor(int i=1;i<=N;i++){ pos[i]=i; cnt[i]=1; }\nint over=0;\nfor(int qi=0;qi<Q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int P,H; scanf(\"%d%d\", &P,&H); int old=pos[P];\n    if(cnt[old]==2) over--; cnt[old]--; if(cnt[old]==2) over++; if(cnt[old]<2) {}\n    if(cnt[H]==1) over++; cnt[H]++; pos[P]=H;\n  } else {\n    printf(\"%d\\n\", over);\n  }\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int Q=read_q(&N); process(N,Q); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(int *N)",
+          "code": "int Q; scanf(\"%d%d\", N,&Q); return Q;\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int N,int Q)",
+          "code": "static int pos[200005],cnt[200005];\nfor(int i=1;i<=N;i++){ pos[i]=i; cnt[i]=1; }\nint over=0;\nfor(int qi=0;qi<Q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int P,H; scanf(\"%d%d\", &P,&H); int old=pos[P];\n    if(cnt[old]==2) over--; cnt[old]--; if(cnt[old]==2) over++; if(cnt[old]<2) {}\n    if(cnt[H]==1) over++; cnt[H]++; pos[P]=H;\n  } else {\n    printf(\"%d\\n\", over);\n  }\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int Q=read_q(&N); process(N,Q); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(int *N)",
+          "code": "int Q; scanf(\"%d%d\", N,&Q); return Q;\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int N,int Q)",
+          "code": "static int pos[200005],cnt[200005];\nfor(int i=1;i<=N;i++){ pos[i]=i; cnt[i]=1; }\nint over=0;\nfor(int qi=0;qi<Q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int P,H; scanf(\"%d%d\", &P,&H); int old=pos[P];\n    if(cnt[old]==2) over--; cnt[old]--; if(cnt[old]==2) over++; if(cnt[old]<2) {}\n    if(cnt[H]==1) over++; cnt[H]++; pos[P]=H;\n  } else {\n    printf(\"%d\\n\", over);\n  }\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int Q=read_q(&N); process(N,Q); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(int *N)",
+          "code": "int Q; scanf(\"%d%d\", N,&Q); return Q;\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int N,int Q)",
+          "code": "static int pos[200005],cnt[200005];\nfor(int i=1;i<=N;i++){ pos[i]=i; cnt[i]=1; }\nint over=0;\nfor(int qi=0;qi<Q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int P,H; scanf(\"%d%d\", &P,&H); int old=pos[P];\n    if(cnt[old]==2) over--; cnt[old]--; if(cnt[old]==2) over++; if(cnt[old]<2) {}\n    if(cnt[H]==1) over++; cnt[H]++; pos[P]=H;\n  } else {\n    printf(\"%d\\n\", over);\n  }\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int Q=read_q(&N); process(N,Q); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "391C",
+  "total_programs": 5
+}

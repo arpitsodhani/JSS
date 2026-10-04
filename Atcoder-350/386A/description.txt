@@ -1,0 +1,5 @@
+There are four cards with integers A,B,C,D written on them. Determine whether a Full House can be formed by adding one card. A set of five cards is called a Full House if and only if the following condition is satisfied: For two distinct integers x and y , there are three cards with x written on them and two cards with y written on them.
+
+**Constraints:**
+- 1 <= a, b, c, d <= 13
+- All input values are integers

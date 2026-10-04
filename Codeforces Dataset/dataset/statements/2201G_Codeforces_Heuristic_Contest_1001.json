@@ -1,0 +1,26 @@
+{
+  "contestId": 2201,
+  "index": "G",
+  "problem_id": "2201G",
+  "name": "Codeforces Heuristic Contest 1001",
+  "rating": 3500,
+  "tags": [
+    "constructive algorithms"
+  ],
+  "points": 5000.0,
+  "solvedCount": 74,
+  "source": "verbatim_cf_fetch",
+  "title": "G. Codeforces Heuristic Contest 1001",
+  "legend": "There is a graph of n2 vertices, where vertices are labeled by integer pairs (r,c) such that 1≤r,c≤n. Vertices (r1,c1) and (r2,c2) are directly connected if and only if (r1−r2)2+(c1−c2)2=13. This graph is called the Zebra Graph of dimensions n×n.\n\nPlease find a subset of vertices S in the Zebra Graph of dimensions n×n, which satisfies the following condition.\n\nThe graph induced∗ by the subset S is isomorphic to a cycle graph of at least ⌊\nn2\n\n\ne\n⌋ vertices†.\n\nIt can be shown that such a subset of vertices exists under the constraints of this problem.\n\n∗The induced graph of a subset of vertices X is a graph that contains all vertices in X and all edges whose both endpoints are in X.\n\n†Here, e is the mathematical constant equal to the limit lim\nn→∞(1+\n1\n\n\nn\n)n≈2.71828182. Note that the value of \n1\n\n\ne\n is approximately 0.36787944.",
+  "input_spec": "The first and only line of input contains a single integer n (n∈{5,1001}).\n\nThere are only two input files for this problem:\n\nThe first input file (the example input) has n=5;\nThe second input file has n=1001.\n\nHacks are disabled for this problem.",
+  "output_spec": "Output n lines, each containing a string si of length n denoting the i-th row of the graph. If the vertex (r,c) is an element of S, then the c-th letter of sr should be '1'. Otherwise, the c-th letter of sr should be '0'.\n\nIf there are multiple solutions, print any of them.",
+  "note": "For the example output, the induced graph corresponding to the subset S is shown below.\n\nThis graph is isomorphic to the cycle graph C16 consisting of 16 vertices. As 16≥⌊\nn2\n\n\ne\n⌋=9, the output satisfies the problem's condition.",
+  "time_limit": "9 seconds",
+  "mem_limit": "1001 megabytes",
+  "samples": [
+    {
+      "input": "5\n",
+      "output": "01110\n11011\n10001\n11011\n01110"
+    }
+  ]
+}

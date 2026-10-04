@@ -1,0 +1,8 @@
+You are given a sequence P=(P_1,P_2,\dots,P_N) of length N . Takahashi and Aoki will play a game using the sequence P . First, Takahashi will choose K distinct integers x_1,x_2,\dots,x_K from 1,2,\dots,N . Next, Aoki will choose an integer y from 1,2,\dots,N with a probability proportional to P_y . That is, the probability that integer y is chosen is \dfrac{P_y}{\sum_{y'=1}^N P_{y'}} . Then, Aoki's will be \displaystyle \min_{i=1,2,\dots,K} |x_i-y| . Takahashi wants to minimize the expected value of Aoki's . Find the expected value of Aoki's when Takahashi chooses x_1,x_2,\dots,x_K so that this value is minimized, multiplied by \sum_{y'=1}^N P_{y'} . It is guaranteed that the value to be printed is an integer.
+
+**Constraints:**
+- 1 \leq N \leq 5 \times 10^4
+- 1 \leq K \leq N
+- 0 \leq P_i \leq 10^5
+- 1 \leq \sum_{y'=1}^N P_{y'} \leq 10^5
+- allintegers

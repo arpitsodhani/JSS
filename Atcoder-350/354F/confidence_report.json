@@ -1,0 +1,25 @@
+{
+  "average_confidence": 0.86,
+  "clauses": [
+    {
+      "clause": "in_lis",
+      "confidence": 0.29999999999999993
+    },
+    {
+      "clause": "lis_len",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "output",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_input",
+      "confidence": 1.0
+    }
+  ]
+}

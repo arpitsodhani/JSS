@@ -1,0 +1,51 @@
+import sys
+
+
+# --- clause: read_input :: () -> tuple[int, str] ---
+def read_input():
+    data = sys.stdin.buffer.read().split()
+    a = int(data[0])
+    digits = data[1].decode() if len(data) > 1 else ""
+    return a, digits
+
+
+# --- clause: interval_counts :: (digits: str) -> list[int] ---
+def interval_counts(digits):
+    n = len(digits)
+    counts = [0] * (9 * n + 1)
+    values = [ord(ch) - 48 for ch in digits]
+    for start in range(n):
+        total = 0
+        for end in range(start, n):
+            total += values[end]
+            counts[total] += 1
+    return counts
+
+
+# --- clause: count_rectangles :: (a: int, counts: list[int]) -> int ---
+def count_rectangles(a, counts):
+    top = len(counts) - 1
+    if a == 0:
+        whole = 0
+        for value in counts:
+            whole += value
+        zero = counts[0]
+        return 2 * zero * whole - zero * zero
+    total = 0
+    for left in range(1, top + 1):
+        if counts[left] == 0 or a % left:
+            continue
+        right = a // left
+        if right <= top:
+            total += counts[left] * counts[right]
+    return total
+
+
+# --- clause: main :: () -> None ---
+def main():
+    a, digits = read_input()
+    sys.stdout.write("%d\n" % count_rectangles(a, interval_counts(digits)))
+
+
+if __name__ == "__main__":
+    main()

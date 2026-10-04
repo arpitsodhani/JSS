@@ -1,0 +1,37 @@
+{
+  "contestId": 1485,
+  "index": "D",
+  "problem_id": "1485D",
+  "name": "Multiples and Power Differences",
+  "rating": 2200,
+  "tags": [
+    "constructive algorithms",
+    "graphs",
+    "math",
+    "number theory"
+  ],
+  "points": 1750.0,
+  "solvedCount": 5713,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Multiples and Power Differences",
+  "legend": "You are given a matrix a consisting of positive integers. It has n rows and m columns.\n\nConstruct a matrix b consisting of positive integers. It should have the same size as a, and the following conditions should be met:\n\n1≤bi,j≤106;\nbi,j is a multiple of ai,j;\nthe absolute value of the difference between numbers in any adjacent pair of cells (two cells that share the same side) in b is equal to k4 for some integer k≥1 (k is not necessarily the same for all pairs, it is own for each pair).\n\nWe can show that the answer always exists.",
+  "input_spec": "The first line contains two integers n and m (2≤n,m≤500).\n\nEach of the following n lines contains m integers. The j-th integer in the i-th line is ai,j (1≤ai,j≤16).",
+  "output_spec": "The output should contain n lines each containing m integers. The j-th integer in the i-th line should be bi,j.",
+  "note": "In the first example, the matrix a can be used as the matrix b, because the absolute value of the difference between numbers in any adjacent pair of cells is 1=14.\n\nIn the third example:\n\n327 is a multiple of 3, 583 is a multiple of 11, 408 is a multiple of 12, 664 is a multiple of 8;\n|408−327|=34, |583−327|=44, |664−408|=44, |664−583|=34.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2 2\n1 2\n2 3\n",
+      "output": "1 2\n2 3"
+    },
+    {
+      "input": "2 3\n16 16 16\n16 16 16\n",
+      "output": "16 32 48\n32 48 64"
+    },
+    {
+      "input": "2 2\n3 11\n12 8\n",
+      "output": "327 583\n408 664"
+    }
+  ]
+}

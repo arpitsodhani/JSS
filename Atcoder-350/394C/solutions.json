@@ -1,0 +1,151 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s)",
+          "code": "scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "transform",
+          "signature": "void transform(char *s)",
+          "code": "int n=(int)strlen(s);\nchar *stk=(char*)malloc((size_t)n+5); int top=0;\nfor(int i=0;i<n;i++){\n  stk[top++]=s[i];\n  if(top>=2 && stk[top-2]=='W' && stk[top-1]=='A'){ stk[top-2]='A'; stk[top-1]='C'; }\n}\nfor(int i=0;i<top;i++) s[i]=stk[i]; s[top]='\\0';\nfree(stk);\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[400005]; read_input(s); transform(s); print_str(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s)",
+          "code": "scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "transform",
+          "signature": "void transform(char *s)",
+          "code": "int changed=1;\nwhile(changed){\n  changed=0; int n=(int)strlen(s);\n  for(int i=0;i+1<n;i++) if(s[i]=='W' && s[i+1]=='A'){ s[i]='A'; s[i+1]='C'; changed=1; break; }\n}\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[400005]; read_input(s); transform(s); print_str(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s)",
+          "code": "scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "transform",
+          "signature": "void transform(char *s)",
+          "code": "int n=(int)strlen(s);\nchar *stk=(char*)malloc((size_t)n+5); int top=0;\nfor(int i=0;i<n;i++){\n  stk[top++]=s[i];\n  if(top>=2 && stk[top-2]=='W' && stk[top-1]=='A'){ stk[top-2]='A'; stk[top-1]='C'; }\n}\nfor(int i=0;i<top;i++) s[i]=stk[i]; s[top]='\\0';\nfree(stk);\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[400005]; read_input(s); transform(s); print_str(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s)",
+          "code": "scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "transform",
+          "signature": "void transform(char *s)",
+          "code": "int changed=1;\nwhile(changed){\n  changed=0; int n=(int)strlen(s);\n  for(int i=0;i+1<n;i++) if(s[i]=='W' && s[i+1]=='A'){ s[i]='A'; s[i+1]='C'; changed=1; break; }\n}\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[400005]; read_input(s); transform(s); print_str(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s)",
+          "code": "scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "transform",
+          "signature": "void transform(char *s)",
+          "code": "int n=(int)strlen(s);\nchar *stk=(char*)malloc((size_t)n+5); int top=0;\nfor(int i=0;i<n;i++){\n  stk[top++]=s[i];\n  if(top>=2 && stk[top-2]=='W' && stk[top-1]=='A'){ stk[top-2]='A'; stk[top-1]='C'; }\n}\nfor(int i=0;i<top;i++) s[i]=stk[i]; s[top]='\\0';\nfree(stk);\n"
+        },
+        {
+          "clause_id": "print_str",
+          "signature": "void print_str(const char *s)",
+          "code": "printf(\"%s\\n\", s);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[400005]; read_input(s); transform(s); print_str(s); return 0; }\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "394C",
+  "total_programs": 5
+}

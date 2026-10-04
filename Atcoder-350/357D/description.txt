@@ -1,0 +1,4 @@
+For a positive integer N , let V_N be the integer formed by concatenating N exactly N times. More precisely, consider N as a string, concatenate N copies of it, and treat the result as an integer to get V_N . For example, V_3=333 and V_{10}=10101010101010101010 . Find the remainder when V_N is divided by 998244353 .
+
+**Constraints:**
+- 1 <= N <= 10^{18}

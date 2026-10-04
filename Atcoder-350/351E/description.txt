@@ -1,0 +1,7 @@
+On a coordinate plane, there are N P_1, P_2, \ldots, P_N , where P_i has coordinates (X_i, Y_i) . The distance \text{dist}(A, B) between two A and B is defined as follows: A rabbit is initially at A . A rabbit at position (x, y) can jump to (x+1, y+1) , (x+1, y-1) , (x-1, y+1) , or (x-1, y-1) in one jump. \text{dist}(A, B) is defined as the minimum number of jumps required to get from A to B . If it is impossible to get from A to B after any number of jumps, let \text{dist}(A, B) = 0 . Calculate the sum \displaystyle\sum_{i=1}^{N-1}\displaystyle\sum_{j=i+1}^N \text{dist}(P_i, P_j) .
+
+**Constraints:**
+- 2\leq N\leq 2\times 10^5
+- 0\leq X_i,Y_i\leq 10^8
+- i\neq j (X_i,Y_i)\neq (X_j,Y_j)
+- allintegers

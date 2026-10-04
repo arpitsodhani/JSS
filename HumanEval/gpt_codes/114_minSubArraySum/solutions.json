@@ -1,0 +1,89 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "minSubArraySum",
+          "code": "long long minSubArraySum(int n, long long nums[]) {\n    long long min_sum = nums[0];\n    long long current_sum = nums[0];\n    \n    for (int i = 1; i < n; i++) {\n        current_sum = (nums[i] < current_sum + nums[i]) ? nums[i] : current_sum + nums[i];\n        if (current_sum < min_sum) {\n            min_sum = current_sum;\n        }\n    }\n    \n    return min_sum;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long nums[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &nums[i]);\n    }\n    printf(\"%lld\\n\", minSubArraySum(n, nums));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "minSubArraySum",
+          "code": "long long minSubArraySum(int n, long long nums[]) {\n    long long min_sum = nums[0];\n    long long current_sum = nums[0];\n    \n    for (int i = 1; i < n; i++) {\n        current_sum = (nums[i] < current_sum + nums[i]) ? nums[i] : current_sum + nums[i];\n        if (current_sum < min_sum) {\n            min_sum = current_sum;\n        }\n    }\n    \n    return min_sum;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long nums[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &nums[i]);\n    }\n    printf(\"%lld\\n\", minSubArraySum(n, nums));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "minSubArraySum",
+          "code": "long long minSubArraySum(int n, long long nums[]) {\n    long long min_sum = nums[0];\n    long long current_sum = nums[0];\n    \n    for (int i = 1; i < n; i++) {\n        current_sum = (nums[i] < current_sum + nums[i]) ? nums[i] : current_sum + nums[i];\n        if (current_sum < min_sum) {\n            min_sum = current_sum;\n        }\n    }\n    \n    return min_sum;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long nums[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &nums[i]);\n    }\n    printf(\"%lld\\n\", minSubArraySum(n, nums));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "minSubArraySum",
+          "code": "long long minSubArraySum(int n, long long nums[]) {\n    long long min_sum = nums[0];\n    long long current_sum = nums[0];\n    \n    for (int i = 1; i < n; i++) {\n        current_sum = (nums[i] < current_sum + nums[i]) ? nums[i] : current_sum + nums[i];\n        if (current_sum < min_sum) {\n            min_sum = current_sum;\n        }\n    }\n    \n    return min_sum;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long nums[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &nums[i]);\n    }\n    printf(\"%lld\\n\", minSubArraySum(n, nums));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "minSubArraySum",
+          "code": "long long minSubArraySum(int n, long long nums[]) {\n    long long min_sum = nums[0];\n    long long current_sum = nums[0];\n    \n    for (int i = 1; i < n; i++) {\n        current_sum = (nums[i] < current_sum + nums[i]) ? nums[i] : current_sum + nums[i];\n        if (current_sum < min_sum) {\n            min_sum = current_sum;\n        }\n    }\n    \n    return min_sum;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long nums[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &nums[i]);\n    }\n    printf(\"%lld\\n\", minSubArraySum(n, nums));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_jobs_and_queries",
+          "signature": "void read_jobs_and_queries(int *n, int *q, int *d, int *r, int *queries)",
+          "code": "void read_jobs_and_queries(int *n, int *q, int *d, int *r, int *queries) {\n    scanf(\"%d %d\", n, q);\n    for (int i = 0; i < *n; i++) scanf(\"%d %d\", &d[i], &r[i]);\n    for (int i = 0; i < *q; i++) scanf(\"%d\", &queries[i]);\n}"
+        },
+        {
+          "clause_id": "compute_optimal_schedule",
+          "signature": "long long compute_optimal_schedule(int n, int *d, int *r, int day_limit)",
+          "code": "long long compute_optimal_schedule(int n, int *d, int *r, int day_limit) {\n    int used[55] = {0};\n    long long total = 0;\n    for (int day = day_limit; day >= 1; day--) {\n        int best = -1;\n        long long best_reward = -1;\n        for (int i = 0; i < n; i++) {\n            if (used[i]) continue;\n            if (d[i] >= day && r[i] > best_reward) {\n                best_reward = r[i];\n                best = i;\n            }\n        }\n        if (best != -1) {\n            used[best] = 1;\n            total += best_reward;\n        }\n    }\n    return total;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, d[55], r[55], queries[55];\n    read_jobs_and_queries(&n, &q, d, r, queries);\n    for (int i = 0; i < q; i++) {\n        int job = queries[i] - 1;\n        d[job]++;\n        r[job]++;\n        printf(\"%lld\\n\", compute_optimal_schedule(n, d, r, 50));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_jobs_and_queries",
+          "signature": "int read_jobs_and_queries(int *n, int *q, int deadlines[], int rewards[], int query_list[])",
+          "code": "int read_jobs_and_queries(int *n, int *q, int deadlines[], int rewards[], int query_list[]) {\n    scanf(\"%d %d\", n, q);\n    for (int i = 0; i < *n; i++) scanf(\"%d %d\", &deadlines[i], &rewards[i]);\n    for (int i = 0; i < *q; i++) scanf(\"%d\", &query_list[i]);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "compute_optimal_schedule",
+          "signature": "long long compute_optimal_schedule(int n, int deadlines[], int rewards[], int limit)",
+          "code": "long long compute_optimal_schedule(int n, int deadlines[], int rewards[], int limit) {\n    int selected[55] = {0};\n    long long sum = 0;\n    for (int d = limit; d >= 1; d--) {\n        int idx = -1;\n        long long max_r = -1;\n        for (int i = 0; i < n; i++) {\n            if (selected[i]) continue;\n            if (deadlines[i] >= d && rewards[i] > max_r) {\n                max_r = rewards[i];\n                idx = i;\n            }\n        }\n        if (idx != -1) {\n            selected[idx] = 1;\n            sum += max_r;\n        }\n    }\n    return sum;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, deadlines[55], rewards[55], query_list[55];\n    read_jobs_and_queries(&n, &q, deadlines, rewards, query_list);\n    for (int i = 0; i < q; i++) {\n        int idx = query_list[i] - 1;\n        deadlines[idx]++;\n        rewards[idx]++;\n        long long result = compute_optimal_schedule(n, deadlines, rewards, 50);\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_jobs_and_queries",
+          "signature": "void read_jobs_and_queries(int *n, int *q, int *deadline, int *reward, int *qs)",
+          "code": "void read_jobs_and_queries(int *n, int *q, int *deadline, int *reward, int *qs) {\n    scanf(\"%d %d\", n, q);\n    for (int i = 0; i < *n; i++) scanf(\"%d %d\", &deadline[i], &reward[i]);\n    for (int i = 0; i < *q; i++) scanf(\"%d\", &qs[i]);\n}"
+        },
+        {
+          "clause_id": "compute_optimal_schedule",
+          "signature": "long long compute_optimal_schedule(int n, int *deadline, int *reward, int max_day)",
+          "code": "long long compute_optimal_schedule(int n, int *deadline, int *reward, int max_day) {\n    int taken[55] = {0};\n    long long ans = 0;\n    for (int day = max_day; day >= 1; day--) {\n        int choice = -1;\n        long long max_reward = -1;\n        for (int i = 0; i < n; i++) {\n            if (taken[i]) continue;\n            if (deadline[i] >= day && reward[i] > max_reward) {\n                max_reward = reward[i];\n                choice = i;\n            }\n        }\n        if (choice != -1) {\n            taken[choice] = 1;\n            ans += max_reward;\n        }\n    }\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, deadline[55], reward[55], qs[55];\n    read_jobs_and_queries(&n, &q, deadline, reward, qs);\n    for (int i = 0; i < q; i++) {\n        int j = qs[i] - 1;\n        deadline[j]++;\n        reward[j]++;\n        long long ans = compute_optimal_schedule(n, deadline, reward, 50);\n        printf(\"%lld\\n\", ans);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_jobs_and_queries",
+          "signature": "long long read_jobs_and_queries(int *n, int *q, int d[], int r[], int queries[])",
+          "code": "long long read_jobs_and_queries(int *n, int *q, int d[], int r[], int queries[]) {\n    scanf(\"%d %d\", n, q);\n    for (int i = 0; i < *n; i++) scanf(\"%d %d\", &d[i], &r[i]);\n    for (int i = 0; i < *q; i++) scanf(\"%d\", &queries[i]);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_optimal_schedule",
+          "signature": "long long compute_optimal_schedule(int n, int d[], int r[], int days)",
+          "code": "long long compute_optimal_schedule(int n, int d[], int r[], int days) {\n    int picked[55] = {0};\n    long long result = 0;\n    for (int current_day = days; current_day >= 1; current_day--) {\n        int best_job = -1;\n        long long best_val = -1;\n        for (int i = 0; i < n; i++) {\n            if (picked[i]) continue;\n            if (d[i] >= current_day && r[i] > best_val) {\n                best_val = r[i];\n                best_job = i;\n            }\n        }\n        if (best_job != -1) {\n            picked[best_job] = 1;\n            result += best_val;\n        }\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, d[55], r[55], queries[55];\n    read_jobs_and_queries(&n, &q, d, r, queries);\n    for (int i = 0; i < q; i++) {\n        int job_id = queries[i] - 1;\n        d[job_id]++;\n        r[job_id]++;\n        printf(\"%lld\\n\", compute_optimal_schedule(n, d, r, 50));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_jobs_and_queries",
+          "signature": "void read_jobs_and_queries(int *job_count, int *query_count, int *due_dates, int *profits, int *updates)",
+          "code": "void read_jobs_and_queries(int *job_count, int *query_count, int *due_dates, int *profits, int *updates) {\n    scanf(\"%d %d\", job_count, query_count);\n    for (int i = 0; i < *job_count; i++) scanf(\"%d %d\", &due_dates[i], &profits[i]);\n    for (int i = 0; i < *query_count; i++) scanf(\"%d\", &updates[i]);\n}"
+        },
+        {
+          "clause_id": "compute_optimal_schedule",
+          "signature": "long long compute_optimal_schedule(int job_count, int *due_dates, int *profits, int deadline_limit)",
+          "code": "long long compute_optimal_schedule(int job_count, int *due_dates, int *profits, int deadline_limit) {\n    int scheduled[55] = {0};\n    long long total_profit = 0;\n    for (int day = deadline_limit; day >= 1; day--) {\n        int selected_job = -1;\n        long long max_profit = -1;\n        for (int i = 0; i < job_count; i++) {\n            if (scheduled[i]) continue;\n            if (due_dates[i] >= day && profits[i] > max_profit) {\n                max_profit = profits[i];\n                selected_job = i;\n            }\n        }\n        if (selected_job != -1) {\n            scheduled[selected_job] = 1;\n            total_profit += max_profit;\n        }\n    }\n    return total_profit;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int job_count, query_count, due_dates[55], profits[55], updates[55];\n    read_jobs_and_queries(&job_count, &query_count, due_dates, profits, updates);\n    for (int i = 0; i < query_count; i++) {\n        int update_index = updates[i] - 1;\n        due_dates[update_index]++;\n        profits[update_index]++;\n        printf(\"%lld\\n\", compute_optimal_schedule(job_count, due_dates, profits, 50));\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

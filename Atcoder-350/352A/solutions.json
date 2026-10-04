@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint n, x, y, z;\n\nvoid read_input() {\n    scanf(\"%d %d %d %d\", &n, &x, &y, &z);\n}\n\nint check_condition() {\n    if (x < y) {\n        if (z >= x && z <= y) return 1;\n    } else {\n        if (z >= y && z <= x) return 1;\n    }\n    return 0;\n}\n\nint main() {\n    read_input();\n    if (check_condition()) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "check_condition",
+          "signature": "int check_condition()",
+          "code": "int check_condition() {\n    if (x < y) {\n        if (z >= x && z <= y) return 1;\n    }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    if (check_condition()) {\n        printf(\"Yes\\n\");\n    }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint n, x, y, z;\n\nvoid read_input() {\n    scanf(\"%d %d %d %d\", &n, &x, &y, &z);\n}\n\nint check_condition() {\n    int min = x < y ? x : y;\n    int max = x > y ? x : y;\n    return (z >= min && z <= max) ? 1 : 0;\n}\n\nint main() {\n    read_input();\n    printf(\"%s\\n\", check_condition() ? \"Yes\" : \"No\");\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "check_condition",
+          "signature": "int check_condition()",
+          "code": "int check_condition() {\n    int min = x < y ? x : y;\n    int max = x > y ? x : y;\n    return (z >= min && z <= max) ? 1 : 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%s\\n\", check_condition() ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint n, x, y, z;\n\nvoid read_input() {\n    scanf(\"%d %d %d %d\", &n, &x, &y, &z);\n}\n\nint check_condition() {\n    int lower, upper;\n    if (x <= y) {\n        lower = x;\n        upper = y;\n    } else {\n        lower = y;\n        upper = x;\n    }\n    return z >= lower && z <= upper;\n}\n\nint main() {\n    read_input();\n    if (check_condition()) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "check_condition",
+          "signature": "int check_condition()",
+          "code": "int check_condition() {\n    int lower, upper;\n    if (x <= y) {\n        lower = x;\n        upper = y;\n    }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    if (check_condition()) {\n        printf(\"Yes\\n\");\n    }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint n, x, y, z;\n\nvoid read_input() {\n    scanf(\"%d %d %d %d\", &n, &x, &y, &z);\n}\n\nint check_condition() {\n    if ((x <= z && z <= y) || (y <= z && z <= x)) {\n        return 1;\n    }\n    return 0;\n}\n\nint main() {\n    read_input();\n    int result = check_condition();\n    if (result) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "check_condition",
+          "signature": "int check_condition()",
+          "code": "int check_condition() {\n    if ((x <= z && z <= y) || (y <= z && z <= x)) {\n        return 1;\n    }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    int result = check_condition();\n    if (result) {\n        printf(\"Yes\\n\");\n    }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n\nint n, x, y, z;\n\nvoid read_input() {\n    scanf(\"%d %d %d %d\", &n, &x, &y, &z);\n}\n\nint check_condition() {\n    int a = x, b = y;\n    if (a > b) { int t = a; a = b; b = t; }\n    return (z >= a && z <= b) ? 1 : 0;\n}\n\nint main() {\n    read_input();\n    printf(\"%s\\n\", check_condition() ? \"Yes\" : \"No\");\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "check_condition",
+          "signature": "int check_condition()",
+          "code": "int check_condition() {\n    int a = x, b = y;\n    if (a > b) { int t = a; a = b; b = t; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    printf(\"%s\\n\", check_condition() ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

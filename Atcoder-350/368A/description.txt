@@ -1,0 +1,6 @@
+There is a stack of N cards, and the i -th card from the top has an integer A_i written on it. You take K cards from the bottom of the stack and place them on top of the stack, maintaining their order. Print the integers written on the cards from top to bottom after the operation.
+
+**Constraints:**
+- 1 <= N, K <= 100
+- 1 <= A_i <= 100
+- All input values are integers

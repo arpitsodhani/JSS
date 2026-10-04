@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "apply_median_filter",
+      "confidence": 1.0
+    },
+    {
+      "clause": "extract_window_values",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_median_value",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    }
+  ]
+}

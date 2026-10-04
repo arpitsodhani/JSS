@@ -1,0 +1,27 @@
+{
+  "contestId": 1409,
+  "index": "D",
+  "problem_id": "1409D",
+  "name": "Decrease the Sum of Digits",
+  "rating": 1500,
+  "tags": [
+    "greedy",
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 21609,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Decrease the Sum of Digits",
+  "legend": "You are given a positive integer n. In one move, you can increase n by one (i.e. make n:=n+1). Your task is to find the minimum number of moves you need to perform in order to make the sum of digits of n be less than or equal to s.\n\nYou have to answer t independent test cases.",
+  "input_spec": "The first line of the input contains one integer t (1≤t≤2⋅104) — the number of test cases. Then t test cases follow.\n\nThe only line of the test case contains two integers n and s (1≤n≤1018; 1≤s≤162).",
+  "output_spec": "For each test case, print the answer: the minimum number of moves you need to perform in order to make the sum of digits of n be less than or equal to s.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n2 1\n1 1\n500 4\n217871987498122 10\n100000000000000001 1\n",
+      "output": "8\n0\n500\n2128012501878\n899999999999999999"
+    }
+  ]
+}

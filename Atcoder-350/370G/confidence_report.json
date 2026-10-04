@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_subtree_sizes",
+      "confidence": 1.0
+    },
+    {
+      "clause": "decompose_into_heavy_chains",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "query_path_in_tree",
+      "confidence": 1.0
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *k, long long *A, long long *B, long long *C)",
+          "code": "scanf(\"%d%lld\", n, k);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &B[i]);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &C[i]);\n"
+        },
+        {
+          "clause_id": "kth_value",
+          "signature": "long long kth_value(int n, long long k, long long *A, long long *B, long long *C)",
+          "code": "long long total=(long long)n*n*n;\nlong long *vals=(long long*)malloc((size_t)total*sizeof(long long));\nlong long idx=0;\nfor(int i=0;i<n;i++) for(int j=0;j<n;j++) for(int t=0;t<n;t++){\n  vals[idx++]=A[i]*B[j]+B[j]*C[t]+C[t]*A[i];\n}\nfor(long long i=0;i<total;i++) for(long long j=i+1;j<total;j++) if(vals[j]>vals[i]){ long long tmp=vals[i]; vals[i]=vals[j]; vals[j]=tmp; }\nlong long ans=vals[k-1]; free(vals); return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long k; static long long A[205],B[205],C[205]; read_input(&n,&k,A,B,C); long long ans=kth_value(n,k,A,B,C); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *k, long long *A, long long *B, long long *C)",
+          "code": "scanf(\"%d%lld\", n, k);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &B[i]);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &C[i]);\n"
+        },
+        {
+          "clause_id": "kth_value",
+          "signature": "long long kth_value(int n, long long k, long long *A, long long *B, long long *C)",
+          "code": "long long total=(long long)n*n*n;\nlong long *vals=(long long*)malloc((size_t)total*sizeof(long long));\nlong long idx=0;\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    long long ab=A[i]*B[j];\n    for(int t=0;t<n;t++) vals[idx++]=ab+B[j]*C[t]+C[t]*A[i];\n  }\n}\nfor(long long i=0;i<total;i++) for(long long j=i+1;j<total;j++) if(vals[j]>vals[i]){ long long tmp=vals[i]; vals[i]=vals[j]; vals[j]=tmp; }\nlong long ans=vals[k-1]; free(vals); return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long k; static long long A[205],B[205],C[205]; read_input(&n,&k,A,B,C); long long ans=kth_value(n,k,A,B,C); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *k, long long *A, long long *B, long long *C)",
+          "code": "scanf(\"%d%lld\", n, k);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &B[i]);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &C[i]);\n"
+        },
+        {
+          "clause_id": "kth_value",
+          "signature": "long long kth_value(int n, long long k, long long *A, long long *B, long long *C)",
+          "code": "long long total=(long long)n*n*n;\nlong long *vals=(long long*)malloc((size_t)total*sizeof(long long));\nlong long idx=0;\nfor(int i=0;i<n;i++) for(int j=0;j<n;j++) for(int t=0;t<n;t++){\n  vals[idx++]=A[i]*B[j]+B[j]*C[t]+C[t]*A[i];\n}\nfor(long long i=0;i<total;i++) for(long long j=i+1;j<total;j++) if(vals[j]>vals[i]){ long long tmp=vals[i]; vals[i]=vals[j]; vals[j]=tmp; }\nlong long ans=vals[k-1]; free(vals); return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long k; static long long A[205],B[205],C[205]; read_input(&n,&k,A,B,C); long long ans=kth_value(n,k,A,B,C); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *k, long long *A, long long *B, long long *C)",
+          "code": "scanf(\"%d%lld\", n, k);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &B[i]);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &C[i]);\n"
+        },
+        {
+          "clause_id": "kth_value",
+          "signature": "long long kth_value(int n, long long k, long long *A, long long *B, long long *C)",
+          "code": "long long total=(long long)n*n*n;\nlong long *vals=(long long*)malloc((size_t)total*sizeof(long long));\nlong long idx=0;\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    long long ab=A[i]*B[j];\n    for(int t=0;t<n;t++) vals[idx++]=ab+B[j]*C[t]+C[t]*A[i];\n  }\n}\nfor(long long i=0;i<total;i++) for(long long j=i+1;j<total;j++) if(vals[j]>vals[i]){ long long tmp=vals[i]; vals[i]=vals[j]; vals[j]=tmp; }\nlong long ans=vals[k-1]; free(vals); return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long k; static long long A[205],B[205],C[205]; read_input(&n,&k,A,B,C); long long ans=kth_value(n,k,A,B,C); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, long long *k, long long *A, long long *B, long long *C)",
+          "code": "scanf(\"%d%lld\", n, k);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &B[i]);\nfor(int i=0;i<*n;i++) scanf(\"%lld\", &C[i]);\n"
+        },
+        {
+          "clause_id": "kth_value",
+          "signature": "long long kth_value(int n, long long k, long long *A, long long *B, long long *C)",
+          "code": "long long total=(long long)n*n*n;\nlong long *vals=(long long*)malloc((size_t)total*sizeof(long long));\nlong long idx=0;\nfor(int i=0;i<n;i++) for(int j=0;j<n;j++) for(int t=0;t<n;t++){\n  vals[idx++]=A[i]*B[j]+B[j]*C[t]+C[t]*A[i];\n}\nfor(long long i=0;i<total;i++) for(long long j=i+1;j<total;j++) if(vals[j]>vals[i]){ long long tmp=vals[i]; vals[i]=vals[j]; vals[j]=tmp; }\nlong long ans=vals[k-1]; free(vals); return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; long long k; static long long A[205],B[205],C[205]; read_input(&n,&k,A,B,C); long long ans=kth_value(n,k,A,B,C); print_ll(ans); return 0; }\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "391F",
+  "total_programs": 5
+}

@@ -1,0 +1,9 @@
+In AtCoder City, N types of garbage are collected regularly. The i -th type of garbage (i=1,2,\dots,N) is collected on days when the date modulo q_i equals r_i . Answer Q queries. In the j -th query (j=1,2,\dots,Q) , given that the t_j -th type of garbage is put out on day d_j , answer the next day on which it will be collected. Here, if the i -th type of garbage is put out on a day when that type of garbage is collected, then the garbage will be collected on the same day.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= q_i, r_i <= 100
+- 1 <= Q <= 100
+- 1 <= t_i <= N
+- 1 <= d_i <= 10^9
+- All input values are integers

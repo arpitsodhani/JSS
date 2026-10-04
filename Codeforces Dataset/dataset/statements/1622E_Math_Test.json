@@ -1,0 +1,28 @@
+{
+  "contestId": 1622,
+  "index": "E",
+  "problem_id": "1622E",
+  "name": "Math Test",
+  "rating": 2200,
+  "tags": [
+    "bitmasks",
+    "brute force",
+    "greedy"
+  ],
+  "points": null,
+  "solvedCount": 2271,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Math Test",
+  "legend": "Petya is a math teacher. n of his students has written a test consisting of m questions. For each student, it is known which questions he has answered correctly and which he has not.\n\nIf the student answers the j-th question correctly, he gets pj points (otherwise, he gets 0 points). Moreover, the points for the questions are distributed in such a way that the array p is a permutation of numbers from 1 to m.\n\nFor the i-th student, Petya knows that he expects to get xi points for the test. Petya wonders how unexpected the results could be. Petya believes that the surprise value of the results for students is equal to \nn\n∑\n\ni=1|xi−ri|, where ri is the number of points that the i-th student has got for the test.\n\nYour task is to help Petya find such a permutation p for which the surprise value of the results is maximum possible. If there are multiple answers, print any of them.",
+  "input_spec": "The first line contains a single integer t (1≤t≤104) — the number of test cases.\n\nThe first line of each test case contains two integers n and m (1≤n≤10; 1≤m≤104) — the number of students and the number of questions, respectively.\n\nThe second line contains n integers x1,x2,…,xn (0≤xi≤\nm(m+1)\n\n\n2\n), where xi is the number of points that the i-th student expects to get.\n\nThis is followed by n lines, the i-th line contains the string si (|si|=m;si,j∈{0,1}), where si,j is 1 if the i-th student has answered the j-th question correctly, and 0 otherwise.\n\nThe sum of m for all test cases does not exceed 104.",
+  "output_spec": "For each test case, print m integers — a permutation p for which the surprise value of the results is maximum possible. If there are multiple answers, print any of them.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n4 3\n5 1 2 2\n110\n100\n101\n100\n4 4\n6 2 0 10\n1001\n0010\n0110\n0101\n3 6\n20 3 15\n010110\n000101\n111111\n",
+      "output": "3 1 2\n2 3 4 1\n3 1 4 5 2 6"
+    }
+  ]
+}

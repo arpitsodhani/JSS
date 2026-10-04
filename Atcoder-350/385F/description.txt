@@ -1,0 +1,6 @@
+There are N buildings numbered 1 to N on a number line. Building i is at coordinate X_i and has height H_i . The size in directions other than height is negligible. From a P with coordinate x and height h , building i is considered visible if there exists a Q on building i such that the line segment PQ does not intersect with any other building. Find the maximum height at coordinate 0 from which it is not possible to see all buildings. Height must be non-negative; if it is possible to see all buildings at height 0 at coordinate 0 , report -1 instead.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

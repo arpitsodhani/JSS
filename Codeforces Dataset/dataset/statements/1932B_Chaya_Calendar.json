@@ -1,0 +1,26 @@
+{
+  "contestId": 1932,
+  "index": "B",
+  "problem_id": "1932B",
+  "name": "Chaya Calendar",
+  "rating": 1100,
+  "tags": [
+    "number theory"
+  ],
+  "points": null,
+  "solvedCount": 23960,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Chaya Calendar",
+  "legend": "The Chaya tribe believes that there are n signs of the apocalypse. Over time, it has been found out that the i-th sign occurs every ai years (in years ai, 2⋅ai, 3⋅ai, …).\n\nAccording to the legends, for the apocalypse to happen, the signs must occur sequentially. That is, first they wait for the first sign to occur, then strictly after it, the second sign will occur, and so on. That is, if the i-th sign occurred in the year x, the tribe starts waiting for the occurrence of the (i+1)-th sign, starting from the year x+1.\n\nIn which year will the n-th sign occur and the apocalypse will happen?",
+  "input_spec": "The first line of the input contains a single integer t (1≤t≤1000) — the number of test cases. Then follow the descriptions of the test cases.\n\nThe first line of each test case contains a single integer n (1≤n≤100) — the number of signs.\n\nThe second line of each test case contains n integers a1,a2,a3,…,an (1≤ai≤106) — the periodicities of the signs.",
+  "output_spec": "For each test case, output a single integer — the year in which all n signs will occur.",
+  "note": "In the first set of input data of the example:\n\nThe tribe will wait for the first sign in the 3-rd year;\nthe tribe will wait for the second sign in the 4-th year (since year 2 have already passed);\nthe tribe will wait for the third sign in the 8-th year (since the second sign has already occurred in the 4-th year);\nthe tribe will wait for the fourth sign in the 10-th year (since year 5 have already passed);\nthe tribe will wait for the fifth sign in the 18-th year (since year 9 have already passed);\nthe tribe will wait for the sixth sign in the 36-th year (since the fifth sign has already occurred in the 18-th year).",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n6\n3 2 4 5 9 18\n5\n1 2 3 4 5\n5\n1 1 1 1 1\n6\n50 30 711 200 503 1006\n",
+      "output": "36\n5\n5\n2012"
+    }
+  ]
+}

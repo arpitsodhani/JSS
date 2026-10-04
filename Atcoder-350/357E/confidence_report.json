@@ -1,0 +1,25 @@
+{
+  "average_confidence": 0.9768642857142856,
+  "clauses": [
+    {
+      "clause": "compute_total_pairs",
+      "confidence": 0.9899999999999999
+    },
+    {
+      "clause": "count_reachable_from",
+      "confidence": 0.9742857142857142
+    },
+    {
+      "clause": "find_cycle",
+      "confidence": 0.9742857142857142
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9537499999999998
+    },
+    {
+      "clause": "read_graph",
+      "confidence": 0.992
+    }
+  ]
+}

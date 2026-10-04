@@ -1,0 +1,177 @@
+{
+  "merged_program_file": "/home/arpit/Desktop/ISSTA-2026/HumanEval-C/gpt_codes/010_make_palindrome/merged.c",
+  "timestamp": "2026-03-16T17:02:53.082101",
+  "clauses": {
+    "is_palindrome": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "make_palindrome": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "main": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 5,
+          "total": 5,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 5
+    },
+    "check_palindrome": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "create_palindrome": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "pal_check": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "build_palindrome": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "verify_palindrome": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "extend_to_palindrome": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "is_pal": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "shortest_palindrome": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    }
+  },
+  "compile_status": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "test_results": {
+    "passed": 0,
+    "total": 0,
+    "details": []
+  },
+  "metrics": {
+    "total_clauses": 11,
+    "total_fragments": 11,
+    "average_confidence": 1.0,
+    "compile_success": true
+  },
+  "logs": ""
+}

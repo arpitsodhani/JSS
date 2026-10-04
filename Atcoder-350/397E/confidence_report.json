@@ -1,0 +1,38 @@
+{
+  "problem_id": "397E",
+  "average_confidence": 0.9891353519668736,
+  "clauses": {
+    "read_tree": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "add_edge": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "dfs_paths": {
+      "confidence": 0.9348121118012422,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "can_decompose": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "print_yesno": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    }
+  },
+  "total_clauses": 6,
+  "compile_success": true
+}

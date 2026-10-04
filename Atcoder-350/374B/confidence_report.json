@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "discrete_log_baby_giant",
+      "confidence": 1.0
+    },
+    {
+      "clause": "insert_hash_entry",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "modular_power_fast",
+      "confidence": 1.0
+    },
+    {
+      "clause": "search_hash_entry",
+      "confidence": 1.0
+    }
+  ]
+}

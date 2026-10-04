@@ -1,0 +1,28 @@
+{
+  "problem_id": "377A",
+  "average_confidence": 0.98,
+  "clauses": {
+    "read_input": {
+      "confidence": 0.98,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "check_perm": {
+      "confidence": 0.98,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "print_answer": {
+      "confidence": 0.98,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 0.98,
+      "fragment_count": 1,
+      "num_versions": 5
+    }
+  },
+  "total_clauses": 4,
+  "compile_success": true
+}

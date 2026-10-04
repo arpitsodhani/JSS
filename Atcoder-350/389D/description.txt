@@ -1,0 +1,5 @@
+On the two-dimensional coordinate plane, there is an infinite tiling of 1 \times 1 squares. Consider drawing a circle of radius R centered at the center of one of these squares. How many of these squares are completely contained inside the circle? More precisely, find the number of integer pairs (i,j) such that all four (i+0.5,j+0.5) , (i+0.5,j-0.5) , (i-0.5,j+0.5) , and (i-0.5,j-0.5) are at a distance of at most R from the origin.
+
+**Constraints:**
+- 1 <= R <= 10^9
+- R is an integer

@@ -1,0 +1,141 @@
+{
+  "problem_num": 147,
+  "problem_name": "get_max_triples",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "count_divisible_triples",
+          "code": "int count_divisible_triples(int n) {\n    int* a = malloc((n + 1) * sizeof(int));\n    for (int i = 1; i <= n; i++) {\n        a[i] = i * i - i + 1;\n    }\n    \n    int count = 0;\n    for (int i = 1; i <= n; i++) {\n        for (int j = i + 1; j <= n; j++) {\n            for (int k = j + 1; k <= n; k++) {\n                if ((a[i] + a[j] + a[k]) % 3 == 0) {\n                    count++;\n                }\n            }\n        }\n    }\n    \n    free(a);\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "count_divisible_triples",
+          "code": "int count_divisible_triples(int n) {\n    int* a = malloc((n + 1) * sizeof(int));\n    for (int i = 1; i <= n; i++) {\n        a[i] = i * i - i + 1;\n    }\n    \n    int count = 0;\n    for (int i = 1; i <= n; i++) {\n        for (int j = i + 1; j <= n; j++) {\n            for (int k = j + 1; k <= n; k++) {\n                if ((a[i] + a[j] + a[k]) % 3 == 0) {\n                    count++;\n                }\n            }\n        }\n    }\n    \n    free(a);\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "count_divisible_triples",
+          "code": "int count_divisible_triples(int n) {\n    int* a = malloc((n + 1) * sizeof(int));\n    for (int i = 1; i <= n; i++) {\n        a[i] = i * i - i + 1;\n    }\n    \n    int count = 0;\n    for (int i = 1; i <= n; i++) {\n        for (int j = i + 1; j <= n; j++) {\n            for (int k = j + 1; k <= n; k++) {\n                if ((a[i] + a[j] + a[k]) % 3 == 0) {\n                    count++;\n                }\n            }\n        }\n    }\n    \n    free(a);\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "count_divisible_triples",
+          "code": "int count_divisible_triples(int n) {\n    int* a = malloc((n + 1) * sizeof(int));\n    for (int i = 1; i <= n; i++) {\n        a[i] = i * i - i + 1;\n    }\n    \n    int count = 0;\n    for (int i = 1; i <= n; i++) {\n        for (int j = i + 1; j <= n; j++) {\n            for (int k = j + 1; k <= n; k++) {\n                if ((a[i] + a[j] + a[k]) % 3 == 0) {\n                    count++;\n                }\n            }\n        }\n    }\n    \n    free(a);\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "count_divisible_triples",
+          "code": "int count_divisible_triples(int n) {\n    int* a = malloc((n + 1) * sizeof(int));\n    for (int i = 1; i <= n; i++) {\n        a[i] = i * i - i + 1;\n    }\n    \n    int count = 0;\n    for (int i = 1; i <= n; i++) {\n        for (int j = i + 1; j <= n; j++) {\n            for (int k = j + 1; k <= n; k++) {\n                if ((a[i] + a[j] + a[k]) % 3 == 0) {\n                    count++;\n                }\n            }\n        }\n    }\n    \n    free(a);\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
+    }
+  ]
+}

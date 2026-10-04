@@ -1,0 +1,12 @@
+There is a grid with H rows and W columns. N horizontal bars are placed on the grid. Bar i consists of L_i consecutive 1×1 blocks, and its leftmost block is initially at cell (R_i, C_i). No cell is occupied by two different bars.
+
+At every time t = 0.5 + n (n is a non-negative integer), the following is processed in order i = 1..N: if bar i is not on the bottom row and all cells directly below its blocks are empty, then the entire bar moves down by one cell; otherwise nothing happens. Let R'_i be the final row of the leftmost block of bar i at time t = 10^100. Output R'_1..R'_N.
+
+**Constraints:**
+- 1 <= H, W <= 2 * 10^5
+- 1 <= N <= 2 * 10^5
+- 1 <= R_i <= H
+- 1 <= C_i <= W
+- 1 <= L_i <= W - C_i + 1
+- No overlap in the initial state
+- All input values are integers

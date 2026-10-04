@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_midpoint",
+      "confidence": 1.0
+    },
+    {
+      "clause": "determine_midpoint_existence",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "validate_even_sum",
+      "confidence": 1.0
+    }
+  ]
+}

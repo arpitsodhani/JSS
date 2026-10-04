@@ -1,0 +1,159 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_intervals",
+          "signature": "void read_intervals(int *n, int **l, int **r)",
+          "code": "void read_intervals(int *n, int **l, int **r) {\n    scanf(\"%d\", n);\n    *l = malloc(*n * sizeof(int));\n    *r = malloc(*n * sizeof(int));\n    for (int i = 0; i < *n; i++) {\n        scanf(\"%d %d\", &(*l)[i], &(*r)[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "collect_candidate_points",
+          "signature": "int collect_candidate_points(int n, int *l, int *r, int *points)",
+          "code": "int collect_candidate_points(int n, int *l, int *r, int *points) {\n    int cnt = 0;\n    for (int i = 0; i < n; i++) {\n        points[cnt++] = l[i];\n        points[cnt++] = r[i];\n        if (l[i] > 0) points[cnt++] = l[i] - 1;\n        if (r[i] < 1000000000) points[cnt++] = r[i] + 1;\n    }\n    return cnt;\n}"
+        },
+        {
+          "clause_id": "find_best_interval",
+          "signature": "void find_best_interval(int n, int *l, int *r, int num_points, int *points, int *best_l, int *best_r)",
+          "code": "void find_best_interval(int n, int *l, int *r, int num_points, int *points, int *best_l, int *best_r) {\n    int max_count = 0;\n    *best_l = 0;\n    *best_r = 1;\n    for (int i = 0; i < num_points; i++) {\n        for (int j = i + 1; j < num_points; j++) {\n            int la = points[i], ra = points[j];\n            if (la >= ra) continue;\n            int count = 0;\n            for (int k = 0; k < n; k++) {\n                if ((l[k] < la && la < r[k] && r[k] < ra) || (la < l[k] && l[k] < ra && ra < r[k])) count++;\n            }\n            if (count > max_count || (count == max_count && (la < *best_l || (la == *best_l && ra < *best_r)))) {\n                max_count = count;\n                *best_l = la;\n                *best_r = ra;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, *l, *r;\n    read_intervals(&n, &l, &r);\n    int points[4000], num_points = collect_candidate_points(n, l, r, points);\n    int best_l, best_r;\n    find_best_interval(n, l, r, num_points, points, &best_l, &best_r);\n    printf(\"%d %d\\n\", best_l, best_r);\n    free(l);\n    free(r);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_intervals",
+          "signature": "int read_intervals(int *n, int l[], int r[])",
+          "code": "int read_intervals(int *n, int l[], int r[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) {\n        scanf(\"%d %d\", &l[i], &r[i]);\n    }\n    return *n;\n}"
+        },
+        {
+          "clause_id": "collect_candidate_points",
+          "signature": "int collect_candidate_points(int n, int l[], int r[], int candidates[])",
+          "code": "int collect_candidate_points(int n, int l[], int r[], int candidates[]) {\n    int idx = 0;\n    for (int i = 0; i < n; i++) {\n        candidates[idx++] = l[i];\n        candidates[idx++] = r[i];\n        if (l[i] > 0) candidates[idx++] = l[i] - 1;\n        if (r[i] < 1e9) candidates[idx++] = r[i] + 1;\n    }\n    return idx;\n}"
+        },
+        {
+          "clause_id": "find_best_interval",
+          "signature": "void find_best_interval(int n, int l[], int r[], int pc, int pts[], int *res_l, int *res_r)",
+          "code": "void find_best_interval(int n, int l[], int r[], int pc, int pts[], int *res_l, int *res_r) {\n    int mx = 0;\n    *res_l = 0;\n    *res_r = 1;\n    for (int i = 0; i < pc; i++) {\n        for (int j = i + 1; j < pc; j++) {\n            if (pts[i] >= pts[j]) continue;\n            int cnt = 0;\n            for (int k = 0; k < n; k++) {\n                if ((l[k] < pts[i] && pts[i] < r[k] && r[k] < pts[j]) || (pts[i] < l[k] && l[k] < pts[j] && pts[j] < r[k])) cnt++;\n            }\n            if (cnt > mx || (cnt == mx && pts[i] < *res_l) || (cnt == mx && pts[i] == *res_l && pts[j] < *res_r)) {\n                mx = cnt;\n                *res_l = pts[i];\n                *res_r = pts[j];\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, l[505], r[505];\n    read_intervals(&n, l, r);\n    int pts[4000], pc = collect_candidate_points(n, l, r, pts);\n    int res_l, res_r;\n    find_best_interval(n, l, r, pc, pts, &res_l, &res_r);\n    printf(\"%d %d\\n\", res_l, res_r);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_intervals",
+          "signature": "void read_intervals(int *n, int *left, int *right)",
+          "code": "void read_intervals(int *n, int *left, int *right) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) {\n        scanf(\"%d %d\", &left[i], &right[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "collect_candidate_points",
+          "signature": "int collect_candidate_points(int n, int left[], int right[], int pts[])",
+          "code": "int collect_candidate_points(int n, int left[], int right[], int pts[]) {\n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        pts[count++] = left[i];\n        pts[count++] = right[i];\n        if (left[i] > 0) pts[count++] = left[i] - 1;\n        if (right[i] < 1000000000) pts[count++] = right[i] + 1;\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "find_best_interval",
+          "signature": "void find_best_interval(int n, int left[], int right[], int np, int candidates[], int *out_l, int *out_r)",
+          "code": "void find_best_interval(int n, int left[], int right[], int np, int candidates[], int *out_l, int *out_r) {\n    int best = 0;\n    *out_l = 0;\n    *out_r = 1;\n    for (int i = 0; i < np; i++) {\n        for (int j = i + 1; j < np; j++) {\n            int a = candidates[i], b = candidates[j];\n            if (a >= b) continue;\n            int score = 0;\n            for (int k = 0; k < n; k++) {\n                int intersects = 0;\n                if (left[k] < a && a < right[k] && right[k] < b) intersects = 1;\n                if (a < left[k] && left[k] < b && b < right[k]) intersects = 1;\n                score += intersects;\n            }\n            if (score > best || (score == best && a < *out_l) || (score == best && a == *out_l && b < *out_r)) {\n                best = score;\n                *out_l = a;\n                *out_r = b;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, left[505], right[505];\n    read_intervals(&n, left, right);\n    int candidates[4000];\n    int np = collect_candidate_points(n, left, right, candidates);\n    int out_l, out_r;\n    find_best_interval(n, left, right, np, candidates, &out_l, &out_r);\n    printf(\"%d %d\\n\", out_l, out_r);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_intervals",
+          "signature": "long long read_intervals(int *n, int l[], int r[])",
+          "code": "long long read_intervals(int *n, int l[], int r[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) scanf(\"%d %d\", &l[i], &r[i]);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "collect_candidate_points",
+          "signature": "int collect_candidate_points(int n, int l[], int r[], int *points)",
+          "code": "int collect_candidate_points(int n, int l[], int r[], int *points) {\n    int p = 0;\n    for (int i = 0; i < n; i++) {\n        points[p++] = l[i];\n        points[p++] = r[i];\n        if (l[i] - 1 >= 0) points[p++] = l[i] - 1;\n        if (r[i] + 1 <= 1000000000) points[p++] = r[i] + 1;\n    }\n    return p;\n}"
+        },
+        {
+          "clause_id": "find_best_interval",
+          "signature": "void find_best_interval(int n, int l[], int r[], int pn, int p[], int *ans_l, int *ans_r)",
+          "code": "void find_best_interval(int n, int l[], int r[], int pn, int p[], int *ans_l, int *ans_r) {\n    int max_inter = 0;\n    *ans_l = 0, *ans_r = 1;\n    for (int i = 0; i < pn; i++) {\n        for (int j = i + 1; j < pn; j++) {\n            if (p[i] >= p[j]) continue;\n            int inter = 0;\n            for (int k = 0; k < n; k++) {\n                if ((l[k] < p[i] && p[i] < r[k] && r[k] < p[j]) || (p[i] < l[k] && l[k] < p[j] && p[j] < r[k])) inter++;\n            }\n            if (inter > max_inter) {\n                max_inter = inter;\n                *ans_l = p[i];\n                *ans_r = p[j];\n            } else if (inter == max_inter) {\n                if (p[i] < *ans_l || (p[i] == *ans_l && p[j] < *ans_r)) {\n                    *ans_l = p[i];\n                    *ans_r = p[j];\n                }\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, l[505], r[505];\n    read_intervals(&n, l, r);\n    int p[4000], pn = collect_candidate_points(n, l, r, p);\n    int ans_l, ans_r;\n    find_best_interval(n, l, r, pn, p, &ans_l, &ans_r);\n    printf(\"%d %d\\n\", ans_l, ans_r);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_intervals",
+          "signature": "void read_intervals(int *n, int l_arr[], int r_arr[])",
+          "code": "void read_intervals(int *n, int l_arr[], int r_arr[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) {\n        scanf(\"%d %d\", &l_arr[i], &r_arr[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "collect_candidate_points",
+          "signature": "int collect_candidate_points(int n, int l[], int r[], int cand[])",
+          "code": "int collect_candidate_points(int n, int l[], int r[], int cand[]) {\n    int num = 0;\n    for (int i = 0; i < n; i++) {\n        cand[num++] = l[i];\n        cand[num++] = r[i];\n        if (l[i] > 0) cand[num++] = l[i] - 1;\n        if (r[i] < 1e9) cand[num++] = r[i] + 1;\n    }\n    return num;\n}"
+        },
+        {
+          "clause_id": "find_best_interval",
+          "signature": "void find_best_interval(int n, int l[], int r[], int num_cand, int cand[], int *best_left, int *best_right)",
+          "code": "void find_best_interval(int n, int l[], int r[], int num_cand, int cand[], int *best_left, int *best_right) {\n    int max_f = 0;\n    *best_left = 0;\n    *best_right = 1;\n    for (int i = 0; i < num_cand; i++) {\n        for (int j = i + 1; j < num_cand; j++) {\n            int x = cand[i], y = cand[j];\n            if (x >= y) continue;\n            int f = 0;\n            for (int k = 0; k < n; k++) {\n                if ((l[k] < x && x < r[k] && r[k] < y) || (x < l[k] && l[k] < y && y < r[k])) f++;\n            }\n            if (f > max_f || (f == max_f && (x < *best_left || (x == *best_left && y < *best_right)))) {\n                max_f = f;\n                *best_left = x;\n                *best_right = y;\n            }\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, l[505], r[505];\n    read_intervals(&n, l, r);\n    int cand[4000], num_cand = collect_candidate_points(n, l, r, cand);\n    int best_left, best_right;\n    find_best_interval(n, l, r, num_cand, cand, &best_left, &best_right);\n    printf(\"%d %d\\n\", best_left, best_right);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

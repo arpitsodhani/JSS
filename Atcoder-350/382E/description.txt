@@ -1,0 +1,6 @@
+There are infinitely many packs, each containing N cards. In each pack, the i -th card is rare with probability P_i percent. Whether each card is rare is independent of other cards being rare. You will now open the packs one by one, and obtain all the cards in each opened pack. When you keep opening packs until you have obtained a total of at least X rare cards, find the expected number of packs you will open.
+
+**Constraints:**
+- 1 <= N, X <= 5000
+- 0 <= P_i <= 100
+- All input values are integers

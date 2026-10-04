@@ -1,0 +1,69 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "display_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_swaps",
+      "confidence": 1.0
+    },
+    {
+      "clause": "fix_permutation",
+      "confidence": 1.0
+    },
+    {
+      "clause": "get_perm",
+      "confidence": 1.0
+    },
+    {
+      "clause": "input_array",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "output",
+      "confidence": 1.0
+    },
+    {
+      "clause": "output_moves",
+      "confidence": 1.0
+    },
+    {
+      "clause": "print_swaps",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_permutation",
+      "confidence": 1.0
+    },
+    {
+      "clause": "scan_perm",
+      "confidence": 1.0
+    },
+    {
+      "clause": "selection_sort",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve",
+      "confidence": 1.0
+    },
+    {
+      "clause": "sort_perm",
+      "confidence": 1.0
+    },
+    {
+      "clause": "write_operations",
+      "confidence": 1.0
+    }
+  ]
+}

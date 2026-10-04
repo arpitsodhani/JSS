@@ -1,0 +1,89 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main_prog1",
+          "code": "void minPath(int n, int grid[][100], int k, int *result) {\n    int min_val = grid[0][0];\n    int min_i = 0, min_j = 0;\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid[i][j] < min_val) {\n                min_val = grid[i][j];\n                min_i = i;\n                min_j = j;\n            }\n        }\n    }\n    \n    int neighbors[4] = {0};\n    int neighbor_count = 0;\n    \n    if (min_i > 0) neighbors[neighbor_count++] = grid[min_i-1][min_j];\n    if (min_i < n-1) neighbors[neighbor_count++] = grid[min_i+1][min_j];\n    if (min_j > 0) neighbors[neighbor_count++] = grid[min_i][min_j-1];\n    if (min_j < n-1) neighbors[neighbor_count++] = grid[min_i][min_j+1];\n    \n    int min_neighbor = neighbors[0];\n    for (int i = 1; i < neighbor_count; i++) {\n        if (neighbors[i] < min_neighbor) {\n            min_neighbor = neighbors[i];\n        }\n    }\n    \n    for (int i = 0; i < k; i++) {\n        if (i % 2 == 0) {\n            result[i] = min_val;\n        } else {\n            result[i] = min_neighbor;\n        }\n    }\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n = 0;\n    int grid[100][100];\n    char line[10000];\n    \n    while (scanf(\" %[^\\n]\", line) == 1) {\n        int col = 0;\n        char *token = strtok(line, \" \");\n        while (token != NULL) {\n            int val = atoi(token);\n            if (val == 0 && strcmp(token, \"0\") != 0) break;\n            grid[n][col++] = val;\n            token = strtok(NULL, \" \");\n        }\n        if (col == 0) break;\n        n++;\n        if (col < n) {\n            int k = grid[n-1][0];\n            n--;\n            \n            int result[1000];\n            minPath(n, grid, k, result);\n            \n            for (int i = 0; i < k; i++) {\n                printf(\"%d\\n\", result[i]);\n            }\n            return 0;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main_prog2",
+          "code": "void minPath(int n, int grid[][100], int k, int *result) {\n    int min_val = grid[0][0];\n    int min_i = 0, min_j = 0;\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid[i][j] < min_val) {\n                min_val = grid[i][j];\n                min_i = i;\n                min_j = j;\n            }\n        }\n    }\n    \n    int neighbors[4] = {0};\n    int neighbor_count = 0;\n    \n    if (min_i > 0) neighbors[neighbor_count++] = grid[min_i-1][min_j];\n    if (min_i < n-1) neighbors[neighbor_count++] = grid[min_i+1][min_j];\n    if (min_j > 0) neighbors[neighbor_count++] = grid[min_i][min_j-1];\n    if (min_j < n-1) neighbors[neighbor_count++] = grid[min_i][min_j+1];\n    \n    int min_neighbor = neighbors[0];\n    for (int i = 1; i < neighbor_count; i++) {\n        if (neighbors[i] < min_neighbor) {\n            min_neighbor = neighbors[i];\n        }\n    }\n    \n    for (int i = 0; i < k; i++) {\n        if (i % 2 == 0) {\n            result[i] = min_val;\n        } else {\n            result[i] = min_neighbor;\n        }\n    }\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n = 0;\n    int grid[100][100];\n    char line[10000];\n    \n    while (scanf(\" %[^\\n]\", line) == 1) {\n        int col = 0;\n        char *token = strtok(line, \" \");\n        while (token != NULL) {\n            int val = atoi(token);\n            if (val == 0 && strcmp(token, \"0\") != 0) break;\n            grid[n][col++] = val;\n            token = strtok(NULL, \" \");\n        }\n        if (col == 0) break;\n        n++;\n        if (col < n) {\n            int k = grid[n-1][0];\n            n--;\n            \n            int result[1000];\n            minPath(n, grid, k, result);\n            \n            for (int i = 0; i < k; i++) {\n                printf(\"%d\\n\", result[i]);\n            }\n            return 0;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main_prog3",
+          "code": "void minPath(int n, int grid[][100], int k, int *result) {\n    int min_val = grid[0][0];\n    int min_i = 0, min_j = 0;\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid[i][j] < min_val) {\n                min_val = grid[i][j];\n                min_i = i;\n                min_j = j;\n            }\n        }\n    }\n    \n    int neighbors[4] = {0};\n    int neighbor_count = 0;\n    \n    if (min_i > 0) neighbors[neighbor_count++] = grid[min_i-1][min_j];\n    if (min_i < n-1) neighbors[neighbor_count++] = grid[min_i+1][min_j];\n    if (min_j > 0) neighbors[neighbor_count++] = grid[min_i][min_j-1];\n    if (min_j < n-1) neighbors[neighbor_count++] = grid[min_i][min_j+1];\n    \n    int min_neighbor = neighbors[0];\n    for (int i = 1; i < neighbor_count; i++) {\n        if (neighbors[i] < min_neighbor) {\n            min_neighbor = neighbors[i];\n        }\n    }\n    \n    for (int i = 0; i < k; i++) {\n        if (i % 2 == 0) {\n            result[i] = min_val;\n        } else {\n            result[i] = min_neighbor;\n        }\n    }\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n = 0;\n    int grid[100][100];\n    char line[10000];\n    \n    while (scanf(\" %[^\\n]\", line) == 1) {\n        int col = 0;\n        char *token = strtok(line, \" \");\n        while (token != NULL) {\n            int val = atoi(token);\n            if (val == 0 && strcmp(token, \"0\") != 0) break;\n            grid[n][col++] = val;\n            token = strtok(NULL, \" \");\n        }\n        if (col == 0) break;\n        n++;\n        if (col < n) {\n            int k = grid[n-1][0];\n            n--;\n            \n            int result[1000];\n            minPath(n, grid, k, result);\n            \n            for (int i = 0; i < k; i++) {\n                printf(\"%d\\n\", result[i]);\n            }\n            return 0;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main_prog4",
+          "code": "void minPath(int n, int grid[][100], int k, int *result) {\n    int min_val = grid[0][0];\n    int min_i = 0, min_j = 0;\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid[i][j] < min_val) {\n                min_val = grid[i][j];\n                min_i = i;\n                min_j = j;\n            }\n        }\n    }\n    \n    int neighbors[4] = {0};\n    int neighbor_count = 0;\n    \n    if (min_i > 0) neighbors[neighbor_count++] = grid[min_i-1][min_j];\n    if (min_i < n-1) neighbors[neighbor_count++] = grid[min_i+1][min_j];\n    if (min_j > 0) neighbors[neighbor_count++] = grid[min_i][min_j-1];\n    if (min_j < n-1) neighbors[neighbor_count++] = grid[min_i][min_j+1];\n    \n    int min_neighbor = neighbors[0];\n    for (int i = 1; i < neighbor_count; i++) {\n        if (neighbors[i] < min_neighbor) {\n            min_neighbor = neighbors[i];\n        }\n    }\n    \n    for (int i = 0; i < k; i++) {\n        if (i % 2 == 0) {\n            result[i] = min_val;\n        } else {\n            result[i] = min_neighbor;\n        }\n    }\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n = 0;\n    int grid[100][100];\n    char line[10000];\n    \n    while (scanf(\" %[^\\n]\", line) == 1) {\n        int col = 0;\n        char *token = strtok(line, \" \");\n        while (token != NULL) {\n            int val = atoi(token);\n            if (val == 0 && strcmp(token, \"0\") != 0) break;\n            grid[n][col++] = val;\n            token = strtok(NULL, \" \");\n        }\n        if (col == 0) break;\n        n++;\n        if (col < n) {\n            int k = grid[n-1][0];\n            n--;\n            \n            int result[1000];\n            minPath(n, grid, k, result);\n            \n            for (int i = 0; i < k; i++) {\n                printf(\"%d\\n\", result[i]);\n            }\n            return 0;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main_prog5",
+          "code": "void minPath(int n, int grid[][100], int k, int *result) {\n    int min_val = grid[0][0];\n    int min_i = 0, min_j = 0;\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid[i][j] < min_val) {\n                min_val = grid[i][j];\n                min_i = i;\n                min_j = j;\n            }\n        }\n    }\n    \n    int neighbors[4] = {0};\n    int neighbor_count = 0;\n    \n    if (min_i > 0) neighbors[neighbor_count++] = grid[min_i-1][min_j];\n    if (min_i < n-1) neighbors[neighbor_count++] = grid[min_i+1][min_j];\n    if (min_j > 0) neighbors[neighbor_count++] = grid[min_i][min_j-1];\n    if (min_j < n-1) neighbors[neighbor_count++] = grid[min_i][min_j+1];\n    \n    int min_neighbor = neighbors[0];\n    for (int i = 1; i < neighbor_count; i++) {\n        if (neighbors[i] < min_neighbor) {\n            min_neighbor = neighbors[i];\n        }\n    }\n    \n    for (int i = 0; i < k; i++) {\n        if (i % 2 == 0) {\n            result[i] = min_val;\n        } else {\n            result[i] = min_neighbor;\n        }\n    }\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n = 0;\n    int grid[100][100];\n    char line[10000];\n    \n    while (scanf(\" %[^\\n]\", line) == 1) {\n        int col = 0;\n        char *token = strtok(line, \" \");\n        while (token != NULL) {\n            int val = atoi(token);\n            if (val == 0 && strcmp(token, \"0\") != 0) break;\n            grid[n][col++] = val;\n            token = strtok(NULL, \" \");\n        }\n        if (col == 0) break;\n        n++;\n        if (col < n) {\n            int k = grid[n-1][0];\n            n--;\n            \n            int result[1000];\n            minPath(n, grid, k, result);\n            \n            for (int i = 0; i < k; i++) {\n                printf(\"%d\\n\", result[i]);\n            }\n            return 0;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "contestId": 1990,
+  "index": "A",
+  "problem_id": "1990A",
+  "name": "Submission Bait",
+  "rating": 900,
+  "tags": [
+    "brute force",
+    "games",
+    "greedy",
+    "sortings"
+  ],
+  "points": 500.0,
+  "solvedCount": 27176,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Submission Bait",
+  "legend": "Alice and Bob are playing a game in an array a of size n.\n\nThey take turns to do operations, with Alice starting first. The player who can not operate will lose. At first, a variable mx is set to 0.\n\nIn one operation, a player can do:\n\nChoose an index i (1≤i≤n) such that ai≥mx and set mx to ai. Then, set ai to 0.\n\nDetermine whether Alice has a winning strategy.",
+  "input_spec": "The first line contains an integer t (1≤t≤103) — the number of test cases.\n\nFor each test case:\n\nThe first line contains an integer n (2≤n≤50) — the size of the array.\nThe second line contains n integers a1,a2,…,an (1≤ai≤n) — the elements of the array.",
+  "output_spec": "For each test case, if Alice has a winning strategy, output \"YES\". Otherwise, output \"NO\".\n\nYou can output the answer in any case (upper or lower). For example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will be recognized as positive responses.",
+  "note": "In the first test case, Alice can choose i=1 since a1=2≥mx=0.\n\nAfter Alice's operation, a=[0,1] and mx=2. Bob can not do any operation. Alice wins.\n\nIn the second test case, Alice doesn't have a winning strategy.\n\nFor example, if Alice chooses i=1, after Alice's operation: a=[0,1] and mx=1. Then, Bob can choose i=2 since a2=1≥mx=1. After Bob's operation: a=[0,0] and mx=1. Alice can not do any operation. Bob wins.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n2\n2 1\n2\n1 1\n3\n3 3 3\n4\n3 3 4 4\n4\n1 2 2 2\n",
+      "output": "YES\nNO\nYES\nNO\nYES"
+    }
+  ]
+}

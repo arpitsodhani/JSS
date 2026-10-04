@@ -1,0 +1,26 @@
+{
+  "contestId": 1545,
+  "index": "A",
+  "problem_id": "1545A",
+  "name": "AquaMoon and Strange Sort",
+  "rating": 1500,
+  "tags": [
+    "sortings"
+  ],
+  "points": 500.0,
+  "solvedCount": 14959,
+  "source": "verbatim_cf_fetch",
+  "title": "A. AquaMoon and Strange Sort",
+  "legend": "AquaMoon has n friends. They stand in a row from left to right, and the i-th friend from the left wears a T-shirt with a number ai written on it. Each friend has a direction (left or right). In the beginning, the direction of each friend is right.\n\nAquaMoon can make some operations on friends. On each operation, AquaMoon can choose two adjacent friends and swap their positions. After each operation, the direction of both chosen friends will also be flipped: left to right and vice versa.\n\nAquaMoon hopes that after some operations, the numbers written on the T-shirt of n friends in the row, read from left to right, become non-decreasing. Also she wants, that all friends will have a direction of right at the end. Please find if it is possible.",
+  "input_spec": "The input consists of multiple test cases. The first line contains a single integer t (1≤t≤50) — the number of test cases.\n\nThe first line of each test case contains a single integer n (1≤n≤105) — the number of Aquamoon's friends.\n\nThe second line contains n integers a1,a2,…,an (1≤ai≤105) — the numbers, written on the T-shirts.\n\nIt is guaranteed that the sum of n for all test cases does not exceed 105.",
+  "output_spec": "For each test case, if there exists a possible sequence of operations, print \"YES\" (without quotes); otherwise, print \"NO\" (without quotes).\n\nYou can print each letter in any case (upper or lower).",
+  "note": "The possible list of operations in the first test case:\n\nSwap a1 and a2. The resulting sequence is 3,4,2,5. The directions are: left, left, right, right.\nSwap a2 and a3. The resulting sequence is 3,2,4,5. The directions are: left, left, right, right.\nSwap a1 and a2. The resulting sequence is 2,3,4,5. The directions are: right, right, right, right.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n4\n4 3 2 5\n4\n3 3 2 2\n5\n1 2 3 5 4\n",
+      "output": "YES\nYES\nNO"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+We have seven cards. The i -th card (i=1,\ldots,7) has an integer A_i written on it. Determine whether it is possible to choose five of them so that the chosen cards form a full house. A set of five cards is called a full house if and only if the following conditions are satisfied: For different integers x and y , there are three cards with x and two cards with y .
+
+**Constraints:**
+- 1 <= N, M <= 100
+- A_{i,j} is 0 or 1
+- All input values are integers

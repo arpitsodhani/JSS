@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9635244755244756,
+  "clauses": [
+    {
+      "clause": "build_adjacency_list",
+      "confidence": 0.9187132867132867
+    },
+    {
+      "clause": "compute_path_distances",
+      "confidence": 0.9653846153846155
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_tree",
+      "confidence": 0.97
+    }
+  ]
+}

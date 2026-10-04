@@ -1,0 +1,50 @@
+import sys
+
+
+# --- clause: read_input :: () -> list[tuple[int, list[tuple[int, int]]]] ---
+def read_input():
+    numbers = list(map(int, sys.stdin.buffer.read().split()))
+    t = numbers[0]
+    cursor = 1
+    cases = []
+    for _ in range(t):
+        n = numbers[cursor]
+        m = numbers[cursor + 1]
+        cursor += 2
+        tracks = []
+        for _ in range(m):
+            tracks.append((numbers[cursor], numbers[cursor + 1]))
+            cursor += 2
+        cases.append((n, tracks))
+    return cases
+
+
+# --- clause: pick_closures :: (n: int, tracks: list[tuple[int, int]]) -> list[int] ---
+def pick_closures(n, tracks):
+    down = [[] for _ in range(n + 1)]
+    for x, y in tracks:
+        down[x].append(y)
+    level = [0 for _ in range(n + 1)]
+    closed = []
+    for v in range(1, n + 1):
+        if level[v] == 2:
+            closed.append(v)
+            continue
+        for u in down[v]:
+            if level[v] + 1 > level[u]:
+                level[u] = level[v] + 1
+    return closed
+
+
+# --- clause: main :: () -> None ---
+def main():
+    out = []
+    for n, tracks in read_input():
+        closed = pick_closures(n, tracks)
+        out.append(str(len(closed)))
+        out.append(" ".join(map(str, closed)))
+    sys.stdout.write("\n".join(out) + "\n")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,26 @@
+{
+  "contestId": 656,
+  "index": "D",
+  "problem_id": "656D",
+  "name": "Rosetta Problem",
+  "rating": 2100,
+  "tags": [
+    "*special"
+  ],
+  "points": null,
+  "solvedCount": 1005,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Rosetta Problem",
+  "legend": "++++++++[>+>++>+++>++++>+++++>++++++>+++++++>++++++++>+++++++++>++++++++++>+\n++++++++++>++++++++++++>+++++++++++++>++++++++++++++>+++++++++++++++>+++++++\n+++++++++<<<<<<<<<<<<<<<<-]>>>>>>>>>>.<<<<<<<<<<>>>>>>>>>>>>>>++.--<<<<<<<<<\n<<<<<>>>>>>>>>>>>>+.-<<<<<<<<<<<<<>>>>>>>>>>>>>>--.++<<<<<<<<<<<<<<>>>>>>>>>\n>>>>>>----.++++<<<<<<<<<<<<<<<>>>>.<<<<>>>>>>>>>>>>>>--.++<<<<<<<<<<<<<<>>>>\n>>>>>>>>>>>---.+++<<<<<<<<<<<<<<<>>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<<>>>>>>>>\n>>>>++.--<<<<<<<<<<<<>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<>>>>>>>>>>>>>>++.--<<<\n<<<<<<<<<<<.\n\nDCBA:^!~}|{zyxwvutsrqponmlkjihgfedcba`_^]\\[ZYXWVUTSRQPONMLKJIHdcbD`Y^]\\UZYRv\n9876543210/.-,+*)('&%$#\"!~}|{zyxwvutsrqponm+*)('&%$#cya`=^]\\[ZYXWVUTSRQPONML\nKJfe^cba`_X]VzTYRv98TSRQ3ONMLEi,+*)('&%$#\"!~}|{zyxwvutsrqponmlkjihgfedcba`_^\n]\\[ZYXWVUTSonPlkjchg`ed]#DCBA@?>=<;:9876543OHGLKDIHGFE>b%$#\"!~}|{zyxwvutsrqp\nonmlkjihgfedcba`_^]\\[ZYXWVUTSRQPONMibafedcba`_X|?>Z<XWVUTSRKo\\\n\n\n\n\nv34*8+6+,78+9*3+,93+9*5+,28+9*1+,55+9*4+,23*6*2*,91,@,+7*9*25,*48,+3*9+38,+<\n>62*9*2+,34*9*3+,66+9*8+,52*9*7+,75+9*8+,92+9*6+,48+9*3+,43*9*2+,84*,26*9*3^",
+  "input_spec": "The input contains a single integer a (0 ≤ a ≤ 1 000 000).",
+  "output_spec": "Output a single integer.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "64 megabytes",
+  "samples": [
+    {
+      "input": "129\n",
+      "output": "1"
+    }
+  ]
+}

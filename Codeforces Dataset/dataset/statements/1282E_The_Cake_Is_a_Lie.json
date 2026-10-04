@@ -1,0 +1,24 @@
+{
+  "contestId": 1282,
+  "index": "E",
+  "problem_id": "1282E",
+  "name": "The Cake Is a Lie",
+  "rating": 2400,
+  "tags": [
+    "constructive algorithms",
+    "data structures",
+    "dfs and similar",
+    "graphs"
+  ],
+  "points": 2500.0,
+  "solvedCount": 1247,
+  "source": "verbatim_cf_fetch",
+  "title": null,
+  "legend": null,
+  "input_spec": null,
+  "output_spec": null,
+  "note": null,
+  "time_limit": null,
+  "mem_limit": null,
+  "samples": null
+}

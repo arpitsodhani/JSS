@@ -1,0 +1,563 @@
+
+================ Program P1 ================
+--- Clause C1 AST ---
+└── program
+    └── if_statement
+        ├── if [if]
+        ├── parenthesized_expression
+        │   ├── ( [(]
+        │   ├── binary_expression
+        │   │   ├── binary_expression
+        │   │   │   ├── identifier [v0]
+        │   │   │   ├── == [==]
+        │   │   │   └── null_literal [LIT]
+        │   │   ├── || [||]
+        │   │   └── binary_expression
+        │   │       ├── identifier [v1]
+        │   │       ├── <= [<=]
+        │   │       └── decimal_integer_literal [LIT]
+        │   └── ) [)]
+        └── block
+            ├── { [{]
+            ├── return_statement
+            │   ├── return [return]
+            │   ├── unary_expression
+            │   │   ├── - [-]
+            │   │   └── decimal_integer_literal [LIT]
+            │   └── ; [;]
+            └── } [}]
+Normalized Sequence Path:
+program -> if_statement -> if:if -> parenthesized_expression -> ( -> binary_expression -> binary_expression -> identifier:ID -> ==:== -> null_literal:LIT -> ||:|| -> binary_expression -> identifier:ID -> <=:<= -> decimal_integer_literal:LIT -> ) -> block -> { -> return_statement -> return:return -> unary_expression -> -:- -> decimal_integer_literal:LIT -> ; -> }
+----------------------------------------
+--- Clause C2 AST ---
+└── program
+    ├── local_variable_declaration
+    │   ├── integral_type
+    │   │   └── int [int]
+    │   ├── variable_declarator
+    │   │   ├── identifier [v0]
+    │   │   ├── = [=]
+    │   │   └── array_access
+    │   │       ├── identifier [v1]
+    │   │       ├── [ [[]
+    │   │       ├── decimal_integer_literal [LIT]
+    │   │       └── ] []]
+    │   └── ; [;]
+    ├── local_variable_declaration
+    │   ├── integral_type
+    │   │   └── int [int]
+    │   ├── variable_declarator
+    │   │   ├── identifier [v2]
+    │   │   ├── = [=]
+    │   │   └── decimal_integer_literal [LIT]
+    │   └── ; [;]
+    ├── for_statement
+    │   ├── for [for]
+    │   ├── ( [(]
+    │   ├── local_variable_declaration
+    │   │   ├── integral_type
+    │   │   │   └── int [int]
+    │   │   ├── variable_declarator
+    │   │   │   ├── identifier [v3]
+    │   │   │   ├── = [=]
+    │   │   │   └── decimal_integer_literal [LIT]
+    │   │   └── ; [;]
+    │   ├── binary_expression
+    │   │   ├── identifier [v3]
+    │   │   ├── < [<]
+    │   │   └── identifier [v4]
+    │   ├── ; [;]
+    │   ├── update_expression
+    │   │   ├── identifier [v3]
+    │   │   └── ++ [++]
+    │   ├── ) [)]
+    │   └── block
+    │       ├── { [{]
+    │       ├── if_statement
+    │       │   ├── if [if]
+    │       │   ├── parenthesized_expression
+    │       │   │   ├── ( [(]
+    │       │   │   ├── binary_expression
+    │       │   │   │   ├── array_access
+    │       │   │   │   │   ├── identifier [v1]
+    │       │   │   │   │   ├── [ [[]
+    │       │   │   │   │   ├── identifier [v3]
+    │       │   │   │   │   └── ] []]
+    │       │   │   │   ├── >= [>=]
+    │       │   │   │   └── identifier [v0]
+    │       │   │   └── ) [)]
+    │       │   └── block
+    │       │       ├── { [{]
+    │       │       ├── expression_statement
+    │       │       │   ├── assignment_expression
+    │       │       │   │   ├── identifier [v0]
+    │       │       │   │   ├── = [=]
+    │       │       │   │   └── array_access
+    │       │       │   │       ├── identifier [v1]
+    │       │       │   │       ├── [ [[]
+    │       │       │   │       ├── identifier [v3]
+    │       │       │   │       └── ] []]
+    │       │       │   └── ; [;]
+    │       │       ├── expression_statement
+    │       │       │   ├── assignment_expression
+    │       │       │   │   ├── identifier [v2]
+    │       │       │   │   ├── = [=]
+    │       │       │   │   └── identifier [v3]
+    │       │       │   └── ; [;]
+    │       │       └── } [}]
+    │       └── } [}]
+    └── return_statement
+        ├── return [return]
+        ├── identifier [v2]
+        └── ; [;]
+Normalized Sequence Path:
+program -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> array_access -> identifier:ID -> [ -> decimal_integer_literal:LIT -> ] -> ; -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> decimal_integer_literal:LIT -> ; -> for_statement -> for:for -> ( -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> decimal_integer_literal:LIT -> ; -> binary_expression -> identifier:ID -> <:< -> identifier:ID -> ; -> update_expression -> identifier:ID -> ++:++ -> ) -> block -> { -> if_statement -> if:if -> parenthesized_expression -> ( -> binary_expression -> array_access -> identifier:ID -> [ -> identifier:ID -> ] -> >=:>= -> identifier:ID -> ) -> block -> { -> expression_statement -> assignment_expression -> identifier:ID -> =:= -> array_access -> identifier:ID -> [ -> identifier:ID -> ] -> ; -> expression_statement -> assignment_expression -> identifier:ID -> =:= -> identifier:ID -> ; -> } -> } -> return_statement -> return:return -> identifier:ID -> ;
+----------------------------------------
+
+================ Program P2 ================
+--- Clause C1 AST ---
+└── program
+    └── if_statement
+        ├── if [if]
+        ├── parenthesized_expression
+        │   ├── ( [(]
+        │   ├── binary_expression
+        │   │   ├── binary_expression
+        │   │   │   ├── identifier [v0]
+        │   │   │   ├── == [==]
+        │   │   │   └── null_literal [LIT]
+        │   │   ├── || [||]
+        │   │   └── binary_expression
+        │   │       ├── identifier [v1]
+        │   │       ├── <= [<=]
+        │   │       └── decimal_integer_literal [LIT]
+        │   └── ) [)]
+        └── block
+            ├── { [{]
+            ├── return_statement
+            │   ├── return [return]
+            │   ├── unary_expression
+            │   │   ├── - [-]
+            │   │   └── decimal_integer_literal [LIT]
+            │   └── ; [;]
+            └── } [}]
+Normalized Sequence Path:
+program -> if_statement -> if:if -> parenthesized_expression -> ( -> binary_expression -> binary_expression -> identifier:ID -> ==:== -> null_literal:LIT -> ||:|| -> binary_expression -> identifier:ID -> <=:<= -> decimal_integer_literal:LIT -> ) -> block -> { -> return_statement -> return:return -> unary_expression -> -:- -> decimal_integer_literal:LIT -> ; -> }
+----------------------------------------
+--- Clause C2 AST ---
+└── program
+    ├── local_variable_declaration
+    │   ├── integral_type
+    │   │   └── int [int]
+    │   ├── variable_declarator
+    │   │   ├── identifier [v0]
+    │   │   ├── = [=]
+    │   │   └── array_access
+    │   │       ├── identifier [v1]
+    │   │       ├── [ [[]
+    │   │       ├── decimal_integer_literal [LIT]
+    │   │       └── ] []]
+    │   └── ; [;]
+    ├── local_variable_declaration
+    │   ├── integral_type
+    │   │   └── int [int]
+    │   ├── variable_declarator
+    │   │   ├── identifier [v2]
+    │   │   ├── = [=]
+    │   │   └── decimal_integer_literal [LIT]
+    │   └── ; [;]
+    ├── for_statement
+    │   ├── for [for]
+    │   ├── ( [(]
+    │   ├── local_variable_declaration
+    │   │   ├── integral_type
+    │   │   │   └── int [int]
+    │   │   ├── variable_declarator
+    │   │   │   ├── identifier [v3]
+    │   │   │   ├── = [=]
+    │   │   │   └── decimal_integer_literal [LIT]
+    │   │   └── ; [;]
+    │   ├── binary_expression
+    │   │   ├── identifier [v3]
+    │   │   ├── < [<]
+    │   │   └── identifier [v4]
+    │   ├── ; [;]
+    │   ├── update_expression
+    │   │   ├── identifier [v3]
+    │   │   └── ++ [++]
+    │   ├── ) [)]
+    │   └── block
+    │       ├── { [{]
+    │       ├── if_statement
+    │       │   ├── if [if]
+    │       │   ├── parenthesized_expression
+    │       │   │   ├── ( [(]
+    │       │   │   ├── binary_expression
+    │       │   │   │   ├── array_access
+    │       │   │   │   │   ├── identifier [v1]
+    │       │   │   │   │   ├── [ [[]
+    │       │   │   │   │   ├── identifier [v3]
+    │       │   │   │   │   └── ] []]
+    │       │   │   │   ├── >= [>=]
+    │       │   │   │   └── identifier [v0]
+    │       │   │   └── ) [)]
+    │       │   └── block
+    │       │       ├── { [{]
+    │       │       ├── expression_statement
+    │       │       │   ├── assignment_expression
+    │       │       │   │   ├── identifier [v0]
+    │       │       │   │   ├── = [=]
+    │       │       │   │   └── array_access
+    │       │       │   │       ├── identifier [v1]
+    │       │       │   │       ├── [ [[]
+    │       │       │   │       ├── identifier [v3]
+    │       │       │   │       └── ] []]
+    │       │       │   └── ; [;]
+    │       │       ├── expression_statement
+    │       │       │   ├── assignment_expression
+    │       │       │   │   ├── identifier [v2]
+    │       │       │   │   ├── = [=]
+    │       │       │   │   └── identifier [v3]
+    │       │       │   └── ; [;]
+    │       │       └── } [}]
+    │       └── } [}]
+    └── return_statement
+        ├── return [return]
+        ├── identifier [v2]
+        └── ; [;]
+Normalized Sequence Path:
+program -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> array_access -> identifier:ID -> [ -> decimal_integer_literal:LIT -> ] -> ; -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> decimal_integer_literal:LIT -> ; -> for_statement -> for:for -> ( -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> decimal_integer_literal:LIT -> ; -> binary_expression -> identifier:ID -> <:< -> identifier:ID -> ; -> update_expression -> identifier:ID -> ++:++ -> ) -> block -> { -> if_statement -> if:if -> parenthesized_expression -> ( -> binary_expression -> array_access -> identifier:ID -> [ -> identifier:ID -> ] -> >=:>= -> identifier:ID -> ) -> block -> { -> expression_statement -> assignment_expression -> identifier:ID -> =:= -> array_access -> identifier:ID -> [ -> identifier:ID -> ] -> ; -> expression_statement -> assignment_expression -> identifier:ID -> =:= -> identifier:ID -> ; -> } -> } -> return_statement -> return:return -> identifier:ID -> ;
+----------------------------------------
+
+================ Program P3 ================
+--- Clause C1 AST ---
+└── program
+    └── if_statement
+        ├── if [if]
+        ├── parenthesized_expression
+        │   ├── ( [(]
+        │   ├── binary_expression
+        │   │   ├── binary_expression
+        │   │   │   ├── identifier [v0]
+        │   │   │   ├── == [==]
+        │   │   │   └── null_literal [LIT]
+        │   │   ├── || [||]
+        │   │   └── binary_expression
+        │   │       ├── identifier [v1]
+        │   │       ├── == [==]
+        │   │       └── decimal_integer_literal [LIT]
+        │   └── ) [)]
+        └── block
+            ├── { [{]
+            ├── return_statement
+            │   ├── return [return]
+            │   ├── unary_expression
+            │   │   ├── - [-]
+            │   │   └── decimal_integer_literal [LIT]
+            │   └── ; [;]
+            └── } [}]
+Normalized Sequence Path:
+program -> if_statement -> if:if -> parenthesized_expression -> ( -> binary_expression -> binary_expression -> identifier:ID -> ==:== -> null_literal:LIT -> ||:|| -> binary_expression -> identifier:ID -> ==:== -> decimal_integer_literal:LIT -> ) -> block -> { -> return_statement -> return:return -> unary_expression -> -:- -> decimal_integer_literal:LIT -> ; -> }
+----------------------------------------
+--- Clause C2 AST ---
+└── program
+    ├── local_variable_declaration
+    │   ├── integral_type
+    │   │   └── int [int]
+    │   ├── variable_declarator
+    │   │   ├── identifier [v0]
+    │   │   ├── = [=]
+    │   │   └── array_access
+    │   │       ├── identifier [v1]
+    │   │       ├── [ [[]
+    │   │       ├── decimal_integer_literal [LIT]
+    │   │       └── ] []]
+    │   └── ; [;]
+    ├── local_variable_declaration
+    │   ├── integral_type
+    │   │   └── int [int]
+    │   ├── variable_declarator
+    │   │   ├── identifier [v2]
+    │   │   ├── = [=]
+    │   │   └── decimal_integer_literal [LIT]
+    │   └── ; [;]
+    ├── for_statement
+    │   ├── for [for]
+    │   ├── ( [(]
+    │   ├── local_variable_declaration
+    │   │   ├── integral_type
+    │   │   │   └── int [int]
+    │   │   ├── variable_declarator
+    │   │   │   ├── identifier [v3]
+    │   │   │   ├── = [=]
+    │   │   │   └── decimal_integer_literal [LIT]
+    │   │   └── ; [;]
+    │   ├── binary_expression
+    │   │   ├── identifier [v3]
+    │   │   ├── < [<]
+    │   │   └── identifier [v4]
+    │   ├── ; [;]
+    │   ├── update_expression
+    │   │   ├── identifier [v3]
+    │   │   └── ++ [++]
+    │   ├── ) [)]
+    │   └── block
+    │       ├── { [{]
+    │       ├── if_statement
+    │       │   ├── if [if]
+    │       │   ├── parenthesized_expression
+    │       │   │   ├── ( [(]
+    │       │   │   ├── binary_expression
+    │       │   │   │   ├── array_access
+    │       │   │   │   │   ├── identifier [v1]
+    │       │   │   │   │   ├── [ [[]
+    │       │   │   │   │   ├── identifier [v3]
+    │       │   │   │   │   └── ] []]
+    │       │   │   │   ├── > [>]
+    │       │   │   │   └── identifier [v0]
+    │       │   │   └── ) [)]
+    │       │   └── block
+    │       │       ├── { [{]
+    │       │       ├── expression_statement
+    │       │       │   ├── assignment_expression
+    │       │       │   │   ├── identifier [v0]
+    │       │       │   │   ├── = [=]
+    │       │       │   │   └── array_access
+    │       │       │   │       ├── identifier [v1]
+    │       │       │   │       ├── [ [[]
+    │       │       │   │       ├── identifier [v3]
+    │       │       │   │       └── ] []]
+    │       │       │   └── ; [;]
+    │       │       ├── expression_statement
+    │       │       │   ├── assignment_expression
+    │       │       │   │   ├── identifier [v2]
+    │       │       │   │   ├── = [=]
+    │       │       │   │   └── identifier [v3]
+    │       │       │   └── ; [;]
+    │       │       └── } [}]
+    │       └── } [}]
+    └── return_statement
+        ├── return [return]
+        ├── identifier [v2]
+        └── ; [;]
+Normalized Sequence Path:
+program -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> array_access -> identifier:ID -> [ -> decimal_integer_literal:LIT -> ] -> ; -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> decimal_integer_literal:LIT -> ; -> for_statement -> for:for -> ( -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> decimal_integer_literal:LIT -> ; -> binary_expression -> identifier:ID -> <:< -> identifier:ID -> ; -> update_expression -> identifier:ID -> ++:++ -> ) -> block -> { -> if_statement -> if:if -> parenthesized_expression -> ( -> binary_expression -> array_access -> identifier:ID -> [ -> identifier:ID -> ] -> >:> -> identifier:ID -> ) -> block -> { -> expression_statement -> assignment_expression -> identifier:ID -> =:= -> array_access -> identifier:ID -> [ -> identifier:ID -> ] -> ; -> expression_statement -> assignment_expression -> identifier:ID -> =:= -> identifier:ID -> ; -> } -> } -> return_statement -> return:return -> identifier:ID -> ;
+----------------------------------------
+
+================ Program P4 ================
+--- Clause C1 AST ---
+└── program
+    └── if_statement
+        ├── if [if]
+        ├── parenthesized_expression
+        │   ├── ( [(]
+        │   ├── binary_expression
+        │   │   ├── identifier [v0]
+        │   │   ├── <= [<=]
+        │   │   └── decimal_integer_literal [LIT]
+        │   └── ) [)]
+        └── block
+            ├── { [{]
+            ├── return_statement
+            │   ├── return [return]
+            │   ├── unary_expression
+            │   │   ├── - [-]
+            │   │   └── decimal_integer_literal [LIT]
+            │   └── ; [;]
+            └── } [}]
+Normalized Sequence Path:
+program -> if_statement -> if:if -> parenthesized_expression -> ( -> binary_expression -> identifier:ID -> <=:<= -> decimal_integer_literal:LIT -> ) -> block -> { -> return_statement -> return:return -> unary_expression -> -:- -> decimal_integer_literal:LIT -> ; -> }
+----------------------------------------
+--- Clause C2 AST ---
+└── program
+    ├── local_variable_declaration
+    │   ├── integral_type
+    │   │   └── int [int]
+    │   ├── variable_declarator
+    │   │   ├── identifier [v0]
+    │   │   ├── = [=]
+    │   │   └── array_access
+    │   │       ├── identifier [v1]
+    │   │       ├── [ [[]
+    │   │       ├── decimal_integer_literal [LIT]
+    │   │       └── ] []]
+    │   └── ; [;]
+    ├── local_variable_declaration
+    │   ├── integral_type
+    │   │   └── int [int]
+    │   ├── variable_declarator
+    │   │   ├── identifier [v2]
+    │   │   ├── = [=]
+    │   │   └── decimal_integer_literal [LIT]
+    │   └── ; [;]
+    ├── for_statement
+    │   ├── for [for]
+    │   ├── ( [(]
+    │   ├── local_variable_declaration
+    │   │   ├── integral_type
+    │   │   │   └── int [int]
+    │   │   ├── variable_declarator
+    │   │   │   ├── identifier [v3]
+    │   │   │   ├── = [=]
+    │   │   │   └── decimal_integer_literal [LIT]
+    │   │   └── ; [;]
+    │   ├── binary_expression
+    │   │   ├── identifier [v3]
+    │   │   ├── < [<]
+    │   │   └── identifier [v4]
+    │   ├── ; [;]
+    │   ├── update_expression
+    │   │   ├── identifier [v3]
+    │   │   └── ++ [++]
+    │   ├── ) [)]
+    │   └── block
+    │       ├── { [{]
+    │       ├── if_statement
+    │       │   ├── if [if]
+    │       │   ├── parenthesized_expression
+    │       │   │   ├── ( [(]
+    │       │   │   ├── binary_expression
+    │       │   │   │   ├── array_access
+    │       │   │   │   │   ├── identifier [v1]
+    │       │   │   │   │   ├── [ [[]
+    │       │   │   │   │   ├── identifier [v3]
+    │       │   │   │   │   └── ] []]
+    │       │   │   │   ├── >= [>=]
+    │       │   │   │   └── identifier [v0]
+    │       │   │   └── ) [)]
+    │       │   └── block
+    │       │       ├── { [{]
+    │       │       ├── expression_statement
+    │       │       │   ├── assignment_expression
+    │       │       │   │   ├── identifier [v0]
+    │       │       │   │   ├── = [=]
+    │       │       │   │   └── array_access
+    │       │       │   │       ├── identifier [v1]
+    │       │       │   │       ├── [ [[]
+    │       │       │   │       ├── identifier [v3]
+    │       │       │   │       └── ] []]
+    │       │       │   └── ; [;]
+    │       │       ├── expression_statement
+    │       │       │   ├── assignment_expression
+    │       │       │   │   ├── identifier [v2]
+    │       │       │   │   ├── = [=]
+    │       │       │   │   └── identifier [v3]
+    │       │       │   └── ; [;]
+    │       │       └── } [}]
+    │       └── } [}]
+    └── return_statement
+        ├── return [return]
+        ├── identifier [v2]
+        └── ; [;]
+Normalized Sequence Path:
+program -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> array_access -> identifier:ID -> [ -> decimal_integer_literal:LIT -> ] -> ; -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> decimal_integer_literal:LIT -> ; -> for_statement -> for:for -> ( -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> decimal_integer_literal:LIT -> ; -> binary_expression -> identifier:ID -> <:< -> identifier:ID -> ; -> update_expression -> identifier:ID -> ++:++ -> ) -> block -> { -> if_statement -> if:if -> parenthesized_expression -> ( -> binary_expression -> array_access -> identifier:ID -> [ -> identifier:ID -> ] -> >=:>= -> identifier:ID -> ) -> block -> { -> expression_statement -> assignment_expression -> identifier:ID -> =:= -> array_access -> identifier:ID -> [ -> identifier:ID -> ] -> ; -> expression_statement -> assignment_expression -> identifier:ID -> =:= -> identifier:ID -> ; -> } -> } -> return_statement -> return:return -> identifier:ID -> ;
+----------------------------------------
+
+================ Program P5 ================
+--- Clause C1 AST ---
+└── program
+    └── if_statement
+        ├── if [if]
+        ├── parenthesized_expression
+        │   ├── ( [(]
+        │   ├── binary_expression
+        │   │   ├── identifier [v0]
+        │   │   ├── <= [<=]
+        │   │   └── decimal_integer_literal [LIT]
+        │   └── ) [)]
+        └── block
+            ├── { [{]
+            ├── return_statement
+            │   ├── return [return]
+            │   ├── unary_expression
+            │   │   ├── - [-]
+            │   │   └── decimal_integer_literal [LIT]
+            │   └── ; [;]
+            └── } [}]
+Normalized Sequence Path:
+program -> if_statement -> if:if -> parenthesized_expression -> ( -> binary_expression -> identifier:ID -> <=:<= -> decimal_integer_literal:LIT -> ) -> block -> { -> return_statement -> return:return -> unary_expression -> -:- -> decimal_integer_literal:LIT -> ; -> }
+----------------------------------------
+--- Clause C2 AST ---
+└── program
+    ├── local_variable_declaration
+    │   ├── integral_type
+    │   │   └── int [int]
+    │   ├── variable_declarator
+    │   │   ├── identifier [v0]
+    │   │   ├── = [=]
+    │   │   └── array_access
+    │   │       ├── identifier [v1]
+    │   │       ├── [ [[]
+    │   │       ├── decimal_integer_literal [LIT]
+    │   │       └── ] []]
+    │   └── ; [;]
+    ├── local_variable_declaration
+    │   ├── integral_type
+    │   │   └── int [int]
+    │   ├── variable_declarator
+    │   │   ├── identifier [v2]
+    │   │   ├── = [=]
+    │   │   └── decimal_integer_literal [LIT]
+    │   └── ; [;]
+    ├── for_statement
+    │   ├── for [for]
+    │   ├── ( [(]
+    │   ├── local_variable_declaration
+    │   │   ├── integral_type
+    │   │   │   └── int [int]
+    │   │   ├── variable_declarator
+    │   │   │   ├── identifier [v3]
+    │   │   │   ├── = [=]
+    │   │   │   └── decimal_integer_literal [LIT]
+    │   │   └── ; [;]
+    │   ├── binary_expression
+    │   │   ├── identifier [v3]
+    │   │   ├── < [<]
+    │   │   └── identifier [v4]
+    │   ├── ; [;]
+    │   ├── update_expression
+    │   │   ├── identifier [v3]
+    │   │   └── ++ [++]
+    │   ├── ) [)]
+    │   └── block
+    │       ├── { [{]
+    │       ├── if_statement
+    │       │   ├── if [if]
+    │       │   ├── parenthesized_expression
+    │       │   │   ├── ( [(]
+    │       │   │   ├── binary_expression
+    │       │   │   │   ├── array_access
+    │       │   │   │   │   ├── identifier [v1]
+    │       │   │   │   │   ├── [ [[]
+    │       │   │   │   │   ├── identifier [v3]
+    │       │   │   │   │   └── ] []]
+    │       │   │   │   ├── >= [>=]
+    │       │   │   │   └── identifier [v0]
+    │       │   │   └── ) [)]
+    │       │   └── block
+    │       │       ├── { [{]
+    │       │       ├── expression_statement
+    │       │       │   ├── assignment_expression
+    │       │       │   │   ├── identifier [v0]
+    │       │       │   │   ├── = [=]
+    │       │       │   │   └── array_access
+    │       │       │   │       ├── identifier [v1]
+    │       │       │   │       ├── [ [[]
+    │       │       │   │       ├── identifier [v3]
+    │       │       │   │       └── ] []]
+    │       │       │   └── ; [;]
+    │       │       ├── expression_statement
+    │       │       │   ├── assignment_expression
+    │       │       │   │   ├── identifier [v2]
+    │       │       │   │   ├── = [=]
+    │       │       │   │   └── identifier [v3]
+    │       │       │   └── ; [;]
+    │       │       └── } [}]
+    │       └── } [}]
+    └── return_statement
+        ├── return [return]
+        ├── identifier [v2]
+        └── ; [;]
+Normalized Sequence Path:
+program -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> array_access -> identifier:ID -> [ -> decimal_integer_literal:LIT -> ] -> ; -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> decimal_integer_literal:LIT -> ; -> for_statement -> for:for -> ( -> local_variable_declaration -> integral_type -> int -> variable_declarator -> identifier:ID -> =:= -> decimal_integer_literal:LIT -> ; -> binary_expression -> identifier:ID -> <:< -> identifier:ID -> ; -> update_expression -> identifier:ID -> ++:++ -> ) -> block -> { -> if_statement -> if:if -> parenthesized_expression -> ( -> binary_expression -> array_access -> identifier:ID -> [ -> identifier:ID -> ] -> >=:>= -> identifier:ID -> ) -> block -> { -> expression_statement -> assignment_expression -> identifier:ID -> =:= -> array_access -> identifier:ID -> [ -> identifier:ID -> ] -> ; -> expression_statement -> assignment_expression -> identifier:ID -> =:= -> identifier:ID -> ; -> } -> } -> return_statement -> return:return -> identifier:ID -> ;
+----------------------------------------

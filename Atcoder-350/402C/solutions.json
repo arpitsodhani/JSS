@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "count_pairs_even_sum",
+          "signature": "long long count_pairs_even_sum(int n)",
+          "code": "long long even=0, odd=0;\nfor(int i=0;i<n;i++){\n  long long x; scanf(\"%lld\", &x);\n  if((x&1LL)==0) even++; else odd++;\n}\nreturn even*(even-1)/2 + odd*(odd-1)/2;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); long long ans=count_pairs_even_sum(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "count_pairs_even_sum",
+          "signature": "long long count_pairs_even_sum(int n)",
+          "code": "long long even=0, odd=0;\nfor(int i=0;i<n;i++){\n  long long x; scanf(\"%lld\", &x);\n  if((x&1LL)==0) even++; else odd++;\n}\nreturn even*(even-1)/2 + odd*(odd-1)/2;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); long long ans=count_pairs_even_sum(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "count_pairs_even_sum",
+          "signature": "long long count_pairs_even_sum(int n)",
+          "code": "long long even=0, odd=0;\nfor(int i=0;i<n;i++){\n  long long x; scanf(\"%lld\", &x);\n  if((x&1LL)==0) even++; else odd++;\n}\nreturn even*(even-1)/2 + odd*(odd-1)/2;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); long long ans=count_pairs_even_sum(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "count_pairs_even_sum",
+          "signature": "long long count_pairs_even_sum(int n)",
+          "code": "long long even=0, odd=0;\nfor(int i=0;i<n;i++){\n  long long x; scanf(\"%lld\", &x);\n  if((x&1LL)==0) even++; else odd++;\n}\nreturn even*(even-1)/2 + odd*(odd-1)/2;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); long long ans=count_pairs_even_sum(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n)",
+          "code": "scanf(\"%d\", n);\n"
+        },
+        {
+          "clause_id": "count_pairs_even_sum",
+          "signature": "long long count_pairs_even_sum(int n)",
+          "code": "long long even=0, odd=0;\nfor(int i=0;i<n;i++){\n  long long x; scanf(\"%lld\", &x);\n  if((x&1LL)==0) even++; else odd++;\n}\nreturn even*(even-1)/2 + odd*(odd-1)/2;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; read_input(&n); long long ans=count_pairs_even_sum(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_wavelet_node",
+          "signature": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size)",
+          "implementations": [
+            {
+              "code": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size) {\n    if (left == right) return;\n    int mid = (left + right) / 2;\n    int left_arr[MAX_N], right_arr[MAX_N];\n    int left_count = 0, right_count = 0;\n    for (int i = 0; i < arr_size; i++) {\n        int bit = (arr[i] <= mid) ? 0 : 1;\n        wavelet_bits[node][i] = bit;\n        if (i > 0) wavelet_prefix[node][i] = wavelet_prefix[node][i - 1];\n        else wavelet_prefix[node][i] = 0;\n        if (bit == 0) {\n            wavelet_prefix[node][i]++;\n            left_arr[left_count++] = arr[i];\n        } else {\n            right_arr[right_count++] = arr[i];\n        }\n    }\n    build_wavelet_node(2 * node, left, mid, left_arr, left_count);\n    build_wavelet_node(2 * node + 1, mid + 1, right, right_arr, right_count);\n}"
+            },
+            {
+              "code": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size) {\n    if (left == right) return;\n    int mid = (left + right) / 2;\n    int left_arr[MAX_N], right_arr[MAX_N];\n    int left_count = 0, right_count = 0;\n    for (int i = 0; i < arr_size; i++) {\n        int bit = (arr[i] <= mid) ? 0 : 1;\n        wavelet_bits[node][i] = bit;\n        if (i > 0) wavelet_prefix[node][i] = wavelet_prefix[node][i - 1];\n        else wavelet_prefix[node][i] = 0;\n        if (bit == 0) {\n            wavelet_prefix[node][i]++;\n            left_arr[left_count++] = arr[i];\n        } else {\n            right_arr[right_count++] = arr[i];\n        }\n    }\n    build_wavelet_node(2 * node, left, mid, left_arr, left_count);\n    build_wavelet_node(2 * node + 1, mid + 1, right, right_arr, right_count);\n}"
+            },
+            {
+              "code": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size) {\n    if (left == right) return;\n    int mid = (left + right) / 2;\n    int left_arr[MAX_N], right_arr[MAX_N];\n    int left_count = 0, right_count = 0;\n    for (int i = 0; i < arr_size; i++) {\n        int bit = (arr[i] <= mid) ? 0 : 1;\n        wavelet_bits[node][i] = bit;\n        if (i > 0) wavelet_prefix[node][i] = wavelet_prefix[node][i - 1];\n        else wavelet_prefix[node][i] = 0;\n        if (bit == 0) {\n            wavelet_prefix[node][i]++;\n            left_arr[left_count++] = arr[i];\n        } else {\n            right_arr[right_count++] = arr[i];\n        }\n    }\n    build_wavelet_node(2 * node, left, mid, left_arr, left_count);\n    build_wavelet_node(2 * node + 1, mid + 1, right, right_arr, right_count);\n}"
+            },
+            {
+              "code": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size) {\n    if (left == right) return;\n    int mid = (left + right) / 2;\n    int left_arr[MAX_N], right_arr[MAX_N];\n    int left_count = 0, right_count = 0;\n    for (int i = 0; i < arr_size; i++) {\n        int bit = (arr[i] <= mid) ? 0 : 1;\n        wavelet_bits[node][i] = bit;\n        if (i > 0) wavelet_prefix[node][i] = wavelet_prefix[node][i - 1];\n        else wavelet_prefix[node][i] = 0;\n        if (bit == 0) {\n            wavelet_prefix[node][i]++;\n            left_arr[left_count++] = arr[i];\n        } else {\n            right_arr[right_count++] = arr[i];\n        }\n    }\n    build_wavelet_node(2 * node, left, mid, left_arr, left_count);\n    build_wavelet_node(2 * node + 1, mid + 1, right, right_arr, right_count);\n}"
+            },
+            {
+              "code": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size) {\n    if (left == right) return;\n    int mid = (left + right) / 2;\n    int left_arr[MAX_N], right_arr[MAX_N];\n    int left_count = 0, right_count = 0;\n    for (int i = 0; i < arr_size; i++) {\n        int bit = (arr[i] <= mid) ? 0 : 1;\n        wavelet_bits[node][i] = bit;\n        if (i > 0) wavelet_prefix[node][i] = wavelet_prefix[node][i - 1];\n        else wavelet_prefix[node][i] = 0;\n        if (bit == 0) {\n            wavelet_prefix[node][i]++;\n            left_arr[left_count++] = arr[i];\n        } else {\n            right_arr[right_count++] = arr[i];\n        }\n    }\n    build_wavelet_node(2 * node, left, mid, left_arr, left_count);\n    build_wavelet_node(2 * node + 1, mid + 1, right, right_arr, right_count);\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "query_kth_smallest_wavelet",
+          "signature": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k)",
+          "implementations": [
+            {
+              "code": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k) {\n    if (left == right) return left;\n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    if (k <= left_count) {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        return query_kth_smallest_wavelet(2 * node, left, mid, new_qleft, new_qright, k);\n    } else {\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        return query_kth_smallest_wavelet(2 * node + 1, mid + 1, right, new_qleft, new_qright, k - left_count);\n    }\n}"
+            },
+            {
+              "code": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k) {\n    if (left == right) return left;\n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    if (k <= left_count) {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        return query_kth_smallest_wavelet(2 * node, left, mid, new_qleft, new_qright, k);\n    } else {\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        return query_kth_smallest_wavelet(2 * node + 1, mid + 1, right, new_qleft, new_qright, k - left_count);\n    }\n}"
+            },
+            {
+              "code": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k) {\n    if (left == right) return left;\n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    if (k <= left_count) {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        return query_kth_smallest_wavelet(2 * node, left, mid, new_qleft, new_qright, k);\n    } else {\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        return query_kth_smallest_wavelet(2 * node + 1, mid + 1, right, new_qleft, new_qright, k - left_count);\n    }\n}"
+            },
+            {
+              "code": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k) {\n    if (left == right) return left;\n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    if (k <= left_count) {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        return query_kth_smallest_wavelet(2 * node, left, mid, new_qleft, new_qright, k);\n    } else {\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        return query_kth_smallest_wavelet(2 * node + 1, mid + 1, right, new_qleft, new_qright, k - left_count);\n    }\n}"
+            },
+            {
+              "code": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k) {\n    if (left == right) return left;\n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    if (k <= left_count) {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        return query_kth_smallest_wavelet(2 * node, left, mid, new_qleft, new_qright, k);\n    } else {\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        return query_kth_smallest_wavelet(2 * node + 1, mid + 1, right, new_qleft, new_qright, k - left_count);\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "count_range_less_than",
+          "signature": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value)",
+          "implementations": [
+            {
+              "code": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value) {\n    if (left >= value || qleft > qright) return 0;\n    if (right < value) return qright - qleft + 1;\n    \n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    \n    int result = 0;\n    if (value > mid) {\n        result += left_count;\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        result += count_range_less_than(2 * node + 1, mid + 1, right, new_qleft, new_qright, value);\n    } else {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        result = count_range_less_than(2 * node, left, mid, new_qleft, new_qright, value);\n    }\n    return result;\n}"
+            },
+            {
+              "code": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value) {\n    if (left >= value || qleft > qright) return 0;\n    if (right < value) return qright - qleft + 1;\n    \n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    \n    int result = 0;\n    if (value > mid) {\n        result += left_count;\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        result += count_range_less_than(2 * node + 1, mid + 1, right, new_qleft, new_qright, value);\n    } else {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        result = count_range_less_than(2 * node, left, mid, new_qleft, new_qright, value);\n    }\n    return result;\n}"
+            },
+            {
+              "code": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value) {\n    if (left >= value || qleft > qright) return 0;\n    if (right < value) return qright - qleft + 1;\n    \n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    \n    int result = 0;\n    if (value > mid) {\n        result += left_count;\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        result += count_range_less_than(2 * node + 1, mid + 1, right, new_qleft, new_qright, value);\n    } else {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        result = count_range_less_than(2 * node, left, mid, new_qleft, new_qright, value);\n    }\n    return result;\n}"
+            },
+            {
+              "code": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value) {\n    if (left >= value || qleft > qright) return 0;\n    if (right < value) return qright - qleft + 1;\n    \n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    \n    int result = 0;\n    if (value > mid) {\n        result += left_count;\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        result += count_range_less_than(2 * node + 1, mid + 1, right, new_qleft, new_qright, value);\n    } else {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        result = count_range_less_than(2 * node, left, mid, new_qleft, new_qright, value);\n    }\n    return result;\n}"
+            },
+            {
+              "code": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value) {\n    if (left >= value || qleft > qright) return 0;\n    if (right < value) return qright - qleft + 1;\n    \n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    \n    int result = 0;\n    if (value > mid) {\n        result += left_count;\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        result += count_range_less_than(2 * node + 1, mid + 1, right, new_qleft, new_qright, value);\n    } else {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        result = count_range_less_than(2 * node, left, mid, new_qleft, new_qright, value);\n    }\n    return result;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "initialize_wavelet_arrays",
+          "signature": "void initialize_wavelet_arrays(int max_nodes, int max_size)",
+          "implementations": [
+            {
+              "code": "void initialize_wavelet_arrays(int max_nodes, int max_size) {\n    for (int i = 0; i < max_nodes; i++) {\n        for (int j = 0; j < max_size; j++) {\n            wavelet_bits[i][j] = 0;\n            wavelet_prefix[i][j] = 0;\n        }\n    }\n}"
+            },
+            {
+              "code": "void initialize_wavelet_arrays(int max_nodes, int max_size) {\n    for (int i = 0; i < max_nodes; i++) {\n        for (int j = 0; j < max_size; j++) {\n            wavelet_bits[i][j] = 0;\n            wavelet_prefix[i][j] = 0;\n        }\n    }\n}"
+            },
+            {
+              "code": "void initialize_wavelet_arrays(int max_nodes, int max_size) {\n    for (int i = 0; i < max_nodes; i++) {\n        for (int j = 0; j < max_size; j++) {\n            wavelet_bits[i][j] = 0;\n            wavelet_prefix[i][j] = 0;\n        }\n    }\n}"
+            },
+            {
+              "code": "void initialize_wavelet_arrays(int max_nodes, int max_size) {\n    for (int i = 0; i < max_nodes; i++) {\n        for (int j = 0; j < max_size; j++) {\n            wavelet_bits[i][j] = 0;\n            wavelet_prefix[i][j] = 0;\n        }\n    }\n}"
+            },
+            {
+              "code": "void initialize_wavelet_arrays(int max_nodes, int max_size) {\n    for (int i = 0; i < max_nodes; i++) {\n        for (int j = 0; j < max_size; j++) {\n            wavelet_bits[i][j] = 0;\n            wavelet_prefix[i][j] = 0;\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    build_wavelet_node(1, 0, MAX_VAL, array, n);\n    for (int i = 0; i < q; i++) {\n        int left, right, k;\n        scanf(\"%d %d %d\", &left, &right, &k);\n        printf(\"%d\\n\", query_kth_smallest_wavelet(1, 0, MAX_VAL, left, right, k));\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    build_wavelet_node(1, 0, MAX_VAL, array, n);\n    for (int i = 0; i < q; i++) {\n        int left, right, k;\n        scanf(\"%d %d %d\", &left, &right, &k);\n        printf(\"%d\\n\", query_kth_smallest_wavelet(1, 0, MAX_VAL, left, right, k));\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    build_wavelet_node(1, 0, MAX_VAL, array, n);\n    for (int i = 0; i < q; i++) {\n        int left, right, k;\n        scanf(\"%d %d %d\", &left, &right, &k);\n        printf(\"%d\\n\", query_kth_smallest_wavelet(1, 0, MAX_VAL, left, right, k));\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    build_wavelet_node(1, 0, MAX_VAL, array, n);\n    for (int i = 0; i < q; i++) {\n        int left, right, k;\n        scanf(\"%d %d %d\", &left, &right, &k);\n        printf(\"%d\\n\", query_kth_smallest_wavelet(1, 0, MAX_VAL, left, right, k));\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    build_wavelet_node(1, 0, MAX_VAL, array, n);\n    for (int i = 0; i < q; i++) {\n        int left, right, k;\n        scanf(\"%d %d %d\", &left, &right, &k);\n        printf(\"%d\\n\", query_kth_smallest_wavelet(1, 0, MAX_VAL, left, right, k));\n    }\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_wavelet_node",
+          "signature": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size)",
+          "code": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size) {\n    if (left == right) return;\n    int mid = (left + right) / 2;\n    int left_arr[MAX_N], right_arr[MAX_N];\n    int left_count = 0, right_count = 0;\n    for (int i = 0; i < arr_size; i++) {\n        int bit = (arr[i] <= mid) ? 0 : 1;\n        wavelet_bits[node][i] = bit;\n        if (i > 0) wavelet_prefix[node][i] = wavelet_prefix[node][i - 1];\n        else wavelet_prefix[node][i] = 0;\n        if (bit == 0) {\n            wavelet_prefix[node][i]++;\n            left_arr[left_count++] = arr[i];\n        } else {\n            right_arr[right_count++] = arr[i];\n        }\n    }\n    build_wavelet_node(2 * node, left, mid, left_arr, left_count);\n    build_wavelet_node(2 * node + 1, mid + 1, right, right_arr, right_count);\n}"
+        },
+        {
+          "clause_id": "query_kth_smallest_wavelet",
+          "signature": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k)",
+          "code": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k) {\n    if (left == right) return left;\n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    if (k <= left_count) {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        return query_kth_smallest_wavelet(2 * node, left, mid, new_qleft, new_qright, k);\n    } else {\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        return query_kth_smallest_wavelet(2 * node + 1, mid + 1, right, new_qleft, new_qright, k - left_count);\n    }\n}"
+        },
+        {
+          "clause_id": "count_range_less_than",
+          "signature": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value)",
+          "code": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value) {\n    if (left >= value || qleft > qright) return 0;\n    if (right < value) return qright - qleft + 1;\n    \n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    \n    int result = 0;\n    if (value > mid) {\n        result += left_count;\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        result += count_range_less_than(2 * node + 1, mid + 1, right, new_qleft, new_qright, value);\n    } else {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        result = count_range_less_than(2 * node, left, mid, new_qleft, new_qright, value);\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "initialize_wavelet_arrays",
+          "signature": "void initialize_wavelet_arrays(int max_nodes, int max_size)",
+          "code": "void initialize_wavelet_arrays(int max_nodes, int max_size) {\n    for (int i = 0; i < max_nodes; i++) {\n        for (int j = 0; j < max_size; j++) {\n            wavelet_bits[i][j] = 0;\n            wavelet_prefix[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    build_wavelet_node(1, 0, MAX_VAL, array, n);\n    for (int i = 0; i < q; i++) {\n        int left, right, k;\n        scanf(\"%d %d %d\", &left, &right, &k);\n        printf(\"%d\\n\", query_kth_smallest_wavelet(1, 0, MAX_VAL, left, right, k));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_wavelet_node",
+          "signature": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size)",
+          "code": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size) {\n    if (left == right) return;\n    int mid = (left + right) / 2;\n    int left_arr[MAX_N], right_arr[MAX_N];\n    int left_count = 0, right_count = 0;\n    for (int i = 0; i < arr_size; i++) {\n        int bit = (arr[i] <= mid) ? 0 : 1;\n        wavelet_bits[node][i] = bit;\n        if (i > 0) wavelet_prefix[node][i] = wavelet_prefix[node][i - 1];\n        else wavelet_prefix[node][i] = 0;\n        if (bit == 0) {\n            wavelet_prefix[node][i]++;\n            left_arr[left_count++] = arr[i];\n        } else {\n            right_arr[right_count++] = arr[i];\n        }\n    }\n    build_wavelet_node(2 * node, left, mid, left_arr, left_count);\n    build_wavelet_node(2 * node + 1, mid + 1, right, right_arr, right_count);\n}"
+        },
+        {
+          "clause_id": "query_kth_smallest_wavelet",
+          "signature": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k)",
+          "code": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k) {\n    if (left == right) return left;\n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    if (k <= left_count) {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        return query_kth_smallest_wavelet(2 * node, left, mid, new_qleft, new_qright, k);\n    } else {\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        return query_kth_smallest_wavelet(2 * node + 1, mid + 1, right, new_qleft, new_qright, k - left_count);\n    }\n}"
+        },
+        {
+          "clause_id": "count_range_less_than",
+          "signature": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value)",
+          "code": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value) {\n    if (left >= value || qleft > qright) return 0;\n    if (right < value) return qright - qleft + 1;\n    \n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    \n    int result = 0;\n    if (value > mid) {\n        result += left_count;\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        result += count_range_less_than(2 * node + 1, mid + 1, right, new_qleft, new_qright, value);\n    } else {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        result = count_range_less_than(2 * node, left, mid, new_qleft, new_qright, value);\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "initialize_wavelet_arrays",
+          "signature": "void initialize_wavelet_arrays(int max_nodes, int max_size)",
+          "code": "void initialize_wavelet_arrays(int max_nodes, int max_size) {\n    for (int i = 0; i < max_nodes; i++) {\n        for (int j = 0; j < max_size; j++) {\n            wavelet_bits[i][j] = 0;\n            wavelet_prefix[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    build_wavelet_node(1, 0, MAX_VAL, array, n);\n    for (int i = 0; i < q; i++) {\n        int left, right, k;\n        scanf(\"%d %d %d\", &left, &right, &k);\n        printf(\"%d\\n\", query_kth_smallest_wavelet(1, 0, MAX_VAL, left, right, k));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_wavelet_node",
+          "signature": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size)",
+          "code": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size) {\n    if (left == right) return;\n    int mid = (left + right) / 2;\n    int left_arr[MAX_N], right_arr[MAX_N];\n    int left_count = 0, right_count = 0;\n    for (int i = 0; i < arr_size; i++) {\n        int bit = (arr[i] <= mid) ? 0 : 1;\n        wavelet_bits[node][i] = bit;\n        if (i > 0) wavelet_prefix[node][i] = wavelet_prefix[node][i - 1];\n        else wavelet_prefix[node][i] = 0;\n        if (bit == 0) {\n            wavelet_prefix[node][i]++;\n            left_arr[left_count++] = arr[i];\n        } else {\n            right_arr[right_count++] = arr[i];\n        }\n    }\n    build_wavelet_node(2 * node, left, mid, left_arr, left_count);\n    build_wavelet_node(2 * node + 1, mid + 1, right, right_arr, right_count);\n}"
+        },
+        {
+          "clause_id": "query_kth_smallest_wavelet",
+          "signature": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k)",
+          "code": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k) {\n    if (left == right) return left;\n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    if (k <= left_count) {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        return query_kth_smallest_wavelet(2 * node, left, mid, new_qleft, new_qright, k);\n    } else {\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        return query_kth_smallest_wavelet(2 * node + 1, mid + 1, right, new_qleft, new_qright, k - left_count);\n    }\n}"
+        },
+        {
+          "clause_id": "count_range_less_than",
+          "signature": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value)",
+          "code": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value) {\n    if (left >= value || qleft > qright) return 0;\n    if (right < value) return qright - qleft + 1;\n    \n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    \n    int result = 0;\n    if (value > mid) {\n        result += left_count;\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        result += count_range_less_than(2 * node + 1, mid + 1, right, new_qleft, new_qright, value);\n    } else {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        result = count_range_less_than(2 * node, left, mid, new_qleft, new_qright, value);\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "initialize_wavelet_arrays",
+          "signature": "void initialize_wavelet_arrays(int max_nodes, int max_size)",
+          "code": "void initialize_wavelet_arrays(int max_nodes, int max_size) {\n    for (int i = 0; i < max_nodes; i++) {\n        for (int j = 0; j < max_size; j++) {\n            wavelet_bits[i][j] = 0;\n            wavelet_prefix[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    build_wavelet_node(1, 0, MAX_VAL, array, n);\n    for (int i = 0; i < q; i++) {\n        int left, right, k;\n        scanf(\"%d %d %d\", &left, &right, &k);\n        printf(\"%d\\n\", query_kth_smallest_wavelet(1, 0, MAX_VAL, left, right, k));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_wavelet_node",
+          "signature": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size)",
+          "code": "void build_wavelet_node(int node, int left, int right, int *arr, int arr_size) {\n    if (left == right) return;\n    int mid = (left + right) / 2;\n    int left_arr[MAX_N], right_arr[MAX_N];\n    int left_count = 0, right_count = 0;\n    for (int i = 0; i < arr_size; i++) {\n        int bit = (arr[i] <= mid) ? 0 : 1;\n        wavelet_bits[node][i] = bit;\n        if (i > 0) wavelet_prefix[node][i] = wavelet_prefix[node][i - 1];\n        else wavelet_prefix[node][i] = 0;\n        if (bit == 0) {\n            wavelet_prefix[node][i]++;\n            left_arr[left_count++] = arr[i];\n        } else {\n            right_arr[right_count++] = arr[i];\n        }\n    }\n    build_wavelet_node(2 * node, left, mid, left_arr, left_count);\n    build_wavelet_node(2 * node + 1, mid + 1, right, right_arr, right_count);\n}"
+        },
+        {
+          "clause_id": "query_kth_smallest_wavelet",
+          "signature": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k)",
+          "code": "int query_kth_smallest_wavelet(int node, int left, int right, int qleft, int qright, int k) {\n    if (left == right) return left;\n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    if (k <= left_count) {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        return query_kth_smallest_wavelet(2 * node, left, mid, new_qleft, new_qright, k);\n    } else {\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        return query_kth_smallest_wavelet(2 * node + 1, mid + 1, right, new_qleft, new_qright, k - left_count);\n    }\n}"
+        },
+        {
+          "clause_id": "count_range_less_than",
+          "signature": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value)",
+          "code": "int count_range_less_than(int node, int left, int right, int qleft, int qright, int value) {\n    if (left >= value || qleft > qright) return 0;\n    if (right < value) return qright - qleft + 1;\n    \n    int mid = (left + right) / 2;\n    int left_count = wavelet_prefix[node][qright];\n    if (qleft > 0) left_count -= wavelet_prefix[node][qleft - 1];\n    \n    int result = 0;\n    if (value > mid) {\n        result += left_count;\n        int new_qleft = qleft - ((qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0);\n        int new_qright = qright - wavelet_prefix[node][qright];\n        result += count_range_less_than(2 * node + 1, mid + 1, right, new_qleft, new_qright, value);\n    } else {\n        int new_qleft = (qleft > 0) ? wavelet_prefix[node][qleft - 1] : 0;\n        int new_qright = wavelet_prefix[node][qright] - 1;\n        result = count_range_less_than(2 * node, left, mid, new_qleft, new_qright, value);\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "initialize_wavelet_arrays",
+          "signature": "void initialize_wavelet_arrays(int max_nodes, int max_size)",
+          "code": "void initialize_wavelet_arrays(int max_nodes, int max_size) {\n    for (int i = 0; i < max_nodes; i++) {\n        for (int j = 0; j < max_size; j++) {\n            wavelet_bits[i][j] = 0;\n            wavelet_prefix[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    build_wavelet_node(1, 0, MAX_VAL, array, n);\n    for (int i = 0; i < q; i++) {\n        int left, right, k;\n        scanf(\"%d %d %d\", &left, &right, &k);\n        printf(\"%d\\n\", query_kth_smallest_wavelet(1, 0, MAX_VAL, left, right, k));\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

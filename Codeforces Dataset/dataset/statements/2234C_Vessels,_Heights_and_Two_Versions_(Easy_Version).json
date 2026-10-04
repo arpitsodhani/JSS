@@ -1,0 +1,30 @@
+{
+  "contestId": 2234,
+  "index": "C",
+  "problem_id": "2234C",
+  "name": "Vessels, Heights and Two Versions (Easy Version)",
+  "rating": 1200,
+  "tags": [
+    "dfs and similar",
+    "dsu",
+    "greedy",
+    "implementation",
+    "two pointers"
+  ],
+  "points": 1250.0,
+  "solvedCount": 11746,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Vessels, Heights and Two Versions (Easy Version)",
+  "legend": "This is the easy version of the problem. The difference between the versions is that in this version, constraints on n and on the number of test cases are smaller. You can hack only if you solved all versions of this problem.\n\nThere are n communicating vessels of infinite height arranged in a circle. The base area of each vessel is 1 cm2, and between the i-th vessel and the (imodn)+1-th vessel there is a connection of negligible volume at height hi cm. For each vessel i, find the maximum total volume of water in cm3 that can be placed in these vessels under the condition that the i-th vessel remains empty.\n\nFormally, you are given an array h1,h2,…,hn. A cyclic array of non-negative integers w1,w2,…,wn is called good if the following holds:\n\nFor every i from 1 to n, if max(wi,wimodn+1)>hi, then wi=wimodn+1. In other words, if the maximum of two neighboring elements of the array w exceeds the corresponding element of the array h, then these two neighboring elements of the array w must be equal.\n\nFor each i from 1 to n, output the maximum possible sum w1+w2+…+wn among all good arrays w1,w2,…,wn, under the condition that wi=0.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤1000). The description of the test cases follows.\n\nThe first line of each test case contains one integer n (3≤n≤3000) — the number of vessels.\n\nThe second line of each test case contains n integers h1,h2,…,hn (1≤hi≤109) — the heights of the partitions between the vessels.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 3000.",
+  "output_spec": "For each test case, output n integers — the l-th integer means the maximum total volume of water in cm3 in the vessels under the condition that the l-th vessel remains empty.",
+  "note": "Consider the first test case.\n\nTo keep vessel 1 empty, one good array is w=[0,1,2,3], with a total of 6 cm3 of water.\nTo keep vessel 2 empty, one good array is w=[1,0,2,3], with a total of 6 cm3 of water.\nTo keep vessel 3 empty, one good array is w=[2,2,0,3], with a total of 7 cm3 of water.\nTo keep vessel 4 empty, one good array is w=[3,3,3,0], with a total of 9 cm3 of water.\n\nFor example, the array w=[2,2,0,4] is not good, because max(w3,w4)>h3, and therefore w3=w4 must hold.\n\nIt can be shown that each of the arrays above has the maximum possible sum among all suitable options.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n4\n1 2 3 4\n5\n5 3 1 5 2\n6\n3 4 2 6 1 5\n7\n1 2 1 4 2 3 5\n",
+      "output": "6 6 7 9\n17 16 14 14 17\n21 21 20 20 21 21\n17 17 17 17 21 21 22"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+There are N foods, each containing exactly one of vitamins 1 , 2 , and 3 . Specifically, eating the i -th food gives you A_i units of vitamin V_i , and C_i calories. Takahashi can choose any subset of these N foods as long as the total calorie consumption does not exceed X . Find the maximum possible value of this: the minimum intake among vitamins 1 , 2 , and 3 .
+
+**Constraints:**
+- 1 <= N <= 100
+- 0 <= M <= N(N-1)/2
+- 1 <= a_i < b_i <= N
+- All pairs (a_i, b_i) are distinct
+- All input values are integers

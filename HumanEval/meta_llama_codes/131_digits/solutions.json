@@ -1,0 +1,76 @@
+{
+  "problem_num": 131,
+  "problem_name": "digits",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int product = 1;\n    int has_odd = 0;\n    int temp = n;\n    \n    while (temp > 0) {\n        int digit = temp % 10;\n        if (digit % 2 == 1) {\n            product *= digit;\n            has_odd = 1;\n        }\n        temp /= 10;\n    }\n    \n    if (has_odd) {\n        printf(\"%d\\n\", product);\n    } else {\n        printf(\"0\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int result = 1;\n    int found_odd = 0;\n    \n    for (int num = n; num > 0; num /= 10) {\n        int d = num % 10;\n        if (d & 1) {\n            result *= d;\n            found_odd = 1;\n        }\n    }\n    \n    printf(\"%d\\n\", found_odd ? result : 0);\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int prod = 1;\n    int count = 0;\n    int x = n;\n    \n    while (x) {\n        int digit = x % 10;\n        if (digit % 2) {\n            prod *= digit;\n            count++;\n        }\n        x /= 10;\n    }\n    \n    printf(\"%d\\n\", count > 0 ? prod : 0);\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char str[20];\n    scanf(\"%s\", str);\n    \n    int product = 1;\n    int has_odd = 0;\n    \n    for (int i = 0; str[i] != '\\0'; i++) {\n        int digit = str[i] - '0';\n        if (digit % 2 == 1) {\n            product *= digit;\n            has_odd = 1;\n        }\n    }\n    \n    printf(\"%d\\n\", has_odd ? product : 0);\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n, p = 1, f = 0;\n    scanf(\"%d\", &n);\n    for (; n; n /= 10) {\n        int d = n % 10;\n        if (d & 1) { p *= d; f = 1; }\n    }\n    printf(\"%d\\n\", f ? p : 0);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    }
+  ]
+}

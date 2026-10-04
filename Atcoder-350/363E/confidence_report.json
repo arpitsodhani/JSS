@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.7496348096348097,
+  "clauses": [
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_grid",
+      "confidence": 0.9622377622377624
+    },
+    {
+      "clause": "simulate_sinking",
+      "confidence": 0.2866666666666666
+    }
+  ]
+}

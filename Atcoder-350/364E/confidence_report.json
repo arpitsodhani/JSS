@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "check_budget_constraints",
+      "confidence": 1.0
+    },
+    {
+      "clause": "execute_knapsack_optimization",
+      "confidence": 1.0
+    },
+    {
+      "clause": "initialize_dp_table",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "update_dp_state_with_dish",
+      "confidence": 1.0
+    }
+  ]
+}

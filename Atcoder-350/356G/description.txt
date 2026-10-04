@@ -1,0 +1,9 @@
+Takahashi can swim in N different styles. When he swims in the i -th style, he consumes A_i stamina per second and advances B_i meters per second. Answer Q queries. The i -th query is as follows: Determine if it is possible to advance D_i meters while keeping the total stamina consumption at most C_i . If it is possible, find the minimum number of seconds required. Here, he can freely combine different swimming styles, and the time to switch styles is negligible. Specifically, he can swim using the following steps: Choose a positive integer m , a sequence of positive real numbers t=(t_1,t_2,\dots,t_m) of length m , and a sequence of integers x=(x_1,x_2,\dots,x_m) of length m where each element is between 1 and N , inclusive. Then, swim in the x_i -th style for t_i seconds in the order i=1,2,\dots,m .
+
+**Constraints:**
+- 2 <= N <= 10^5
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple (no multi-edges)
+- All input values are integers

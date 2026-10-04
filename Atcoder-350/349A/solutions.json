@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n()",
+          "code": "int read_n() { int n; scanf(\"%d\", &n); return n; }"
+        },
+        {
+          "clause_id": "sum_scores",
+          "signature": "int sum_scores(int count)",
+          "code": "int sum_scores(int count) { int sum = 0; for(int i = 0; i < count; i++) { int x; scanf(\"%d\", &x); sum += x; } return sum; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int compute(int s)",
+          "code": "int compute(int s) { return -s; }"
+        },
+        {
+          "clause_id": "output",
+          "signature": "void output(int ans)",
+          "code": "void output(int ans) { printf(\"%d\\n\", ans); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n = read_n(); int sum = sum_scores(n-1); int ans = compute(sum); output(ans); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int get_input(int *arr, int n)",
+          "code": "int get_input(int *arr, int n) { int count; scanf(\"%d\", &count); for(int i = 0; i < count-1; i++) scanf(\"%d\", &arr[i]); return count-1; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int calculate(int *arr, int len)",
+          "code": "int calculate(int *arr, int len) { int total = 0; int i = 0; while(i < len) { total += arr[i++]; } return -total; }"
+        },
+        {
+          "clause_id": "output",
+          "signature": "void print_res(int result)",
+          "code": "void print_res(int result) { printf(\"%d\\n\", result); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int arr[101]; int len = get_input(arr, 101); int ans = calculate(arr, len); print_res(ans); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int accumulate()",
+          "code": "int accumulate() { int n, sum = 0; scanf(\"%d\", &n); for(int j = 1; j < n; j++) { int val; scanf(\"%d\", &val); sum = sum + val; } return sum; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int negate(int x)",
+          "code": "int negate(int x) { return 0 - x; }"
+        },
+        {
+          "clause_id": "output",
+          "signature": "void display(int res)",
+          "code": "void display(int res) { printf(\"%d\\n\", res); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int sum = accumulate(); int answer = negate(sum); display(answer); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_rec(int rem)",
+          "code": "int read_rec(int rem) { if(rem == 0) return 0; int v; scanf(\"%d\", &v); return v + read_rec(rem-1); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int invert(int num)",
+          "code": "int invert(int num) { return -num; }"
+        },
+        {
+          "clause_id": "output",
+          "signature": "void write(int a)",
+          "code": "void write(int a) { printf(\"%d\\n\", a); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n; scanf(\"%d\", &n); int s = read_rec(n-1); write(invert(s)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int fast_sum(int cnt)",
+          "code": "int fast_sum(int cnt) { int s = 0, i = cnt; while(i--) { int x; scanf(\"%d\", &x); s += x; } return s; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int flip(int v)",
+          "code": "int flip(int v) { return (~v) + 1; }"
+        },
+        {
+          "clause_id": "output",
+          "signature": "void out(int r)",
+          "code": "void out(int r) { printf(\"%d\\n\", r); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n; scanf(\"%d\", &n); out(flip(fast_sum(n-1))); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

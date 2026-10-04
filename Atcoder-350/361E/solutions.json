@@ -1,0 +1,184 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "long long read_tree(int *n, int **a, int **b, long long **c)",
+          "code": "long long read_tree(int *n, int **a, int **b, long long **c) {\n    scanf(\"%d\", n);\n    *a = malloc((*n - 1) * sizeof(int));\n    *b = malloc((*n - 1) * sizeof(int));\n    *c = malloc((*n - 1) * sizeof(long long));\n    for (int i = 0; i < *n - 1; i++) {\n        scanf(\"%d %d %lld\", &(*a)[i], &(*b)[i], &(*c)[i]);\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_total_edge_weight",
+          "signature": "long long compute_total_edge_weight(int n, long long *c)",
+          "code": "long long compute_total_edge_weight(int n, long long *c) {\n    long long total = 0;\n    for (int i = 0; i < n - 1; i++) total += c[i];\n    return total;\n}"
+        },
+        {
+          "clause_id": "find_maximum_edge",
+          "signature": "long long find_maximum_edge(int n, long long *c)",
+          "code": "long long find_maximum_edge(int n, long long *c) {\n    long long max_edge = c[0];\n    for (int i = 1; i < n - 1; i++) {\n        if (c[i] > max_edge) max_edge = c[i];\n    }\n    return max_edge;\n}"
+        },
+        {
+          "clause_id": "compute_minimum_travel",
+          "signature": "long long compute_minimum_travel(long long total, long long max_edge)",
+          "code": "long long compute_minimum_travel(long long total, long long max_edge) {\n    return 2 * total - max_edge;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, *a, *b;\n    long long *c;\n    read_tree(&n, &a, &b, &c);\n    long long total = compute_total_edge_weight(n, c);\n    long long max_edge = find_maximum_edge(n, c);\n    printf(\"%lld\\n\", compute_minimum_travel(total, max_edge));\n    free(a);\n    free(b);\n    free(c);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "int read_tree(int *n, int a[], int b[], long long c[])",
+          "code": "int read_tree(int *n, int a[], int b[], long long c[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n - 1; i++) {\n        scanf(\"%d %d %lld\", &a[i], &b[i], &c[i]);\n    }\n    return *n;\n}"
+        },
+        {
+          "clause_id": "compute_total_edge_weight",
+          "signature": "long long compute_total_edge_weight(int n, long long c[])",
+          "code": "long long compute_total_edge_weight(int n, long long c[]) {\n    long long sum = 0;\n    for (int i = 0; i < n - 1; i++) sum += c[i];\n    return sum;\n}"
+        },
+        {
+          "clause_id": "find_maximum_edge",
+          "signature": "long long find_maximum_edge(int n, long long c[])",
+          "code": "long long find_maximum_edge(int n, long long c[]) {\n    long long mx = c[0];\n    for (int i = 1; i < n - 1; i++) {\n        if (c[i] > mx) mx = c[i];\n    }\n    return mx;\n}"
+        },
+        {
+          "clause_id": "compute_minimum_travel",
+          "signature": "long long compute_minimum_travel(long long sum, long long mx)",
+          "code": "long long compute_minimum_travel(long long sum, long long mx) {\n    return 2 * sum - mx;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, a[200005], b[200005];\n    long long c[200005];\n    read_tree(&n, a, b, c);\n    long long sum = compute_total_edge_weight(n, c);\n    long long mx = find_maximum_edge(n, c);\n    printf(\"%lld\\n\", compute_minimum_travel(sum, mx));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, int u[], int v[], long long w[])",
+          "code": "void read_tree(int *n, int u[], int v[], long long w[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n - 1; i++) {\n        scanf(\"%d %d %lld\", &u[i], &v[i], &w[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "compute_total_edge_weight",
+          "signature": "long long compute_total_edge_weight(int n, long long w[])",
+          "code": "long long compute_total_edge_weight(int n, long long w[]) {\n    long long total_weight = 0;\n    for (int i = 0; i < n - 1; i++) total_weight += w[i];\n    return total_weight;\n}"
+        },
+        {
+          "clause_id": "find_maximum_edge",
+          "signature": "long long find_maximum_edge(int n, long long w[])",
+          "code": "long long find_maximum_edge(int n, long long w[]) {\n    long long max_w = w[0];\n    for (int i = 1; i < n - 1; i++) {\n        if (w[i] > max_w) max_w = w[i];\n    }\n    return max_w;\n}"
+        },
+        {
+          "clause_id": "compute_minimum_travel",
+          "signature": "long long compute_minimum_travel(long long total_weight, long long max_w)",
+          "code": "long long compute_minimum_travel(long long total_weight, long long max_w) {\n    return 2 * total_weight - max_w;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, u[200005], v[200005];\n    long long w[200005];\n    read_tree(&n, u, v, w);\n    long long total_weight = compute_total_edge_weight(n, w);\n    long long max_w = find_maximum_edge(n, w);\n    long long ans = compute_minimum_travel(total_weight, max_w);\n    printf(\"%lld\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "long long read_tree(int *n, int *from, int *to, long long *weight)",
+          "code": "long long read_tree(int *n, int *from, int *to, long long *weight) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n - 1; i++) {\n        scanf(\"%d %d %lld\", &from[i], &to[i], &weight[i]);\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_total_edge_weight",
+          "signature": "long long compute_total_edge_weight(int n, long long *weight)",
+          "code": "long long compute_total_edge_weight(int n, long long *weight) {\n    long long ans = 0;\n    for (int i = 0; i < n - 1; i++) ans += weight[i];\n    return ans;\n}"
+        },
+        {
+          "clause_id": "find_maximum_edge",
+          "signature": "long long find_maximum_edge(int n, long long *weight)",
+          "code": "long long find_maximum_edge(int n, long long *weight) {\n    long long max = weight[0];\n    for (int i = 1; i < n - 1; i++) {\n        if (weight[i] > max) max = weight[i];\n    }\n    return max;\n}"
+        },
+        {
+          "clause_id": "compute_minimum_travel",
+          "signature": "long long compute_minimum_travel(long long total, long long max)",
+          "code": "long long compute_minimum_travel(long long total, long long max) {\n    return total * 2 - max;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, from[200005], to[200005];\n    long long weight[200005];\n    read_tree(&n, from, to, weight);\n    long long total = compute_total_edge_weight(n, weight);\n    long long max = find_maximum_edge(n, weight);\n    printf(\"%lld\\n\", compute_minimum_travel(total, max));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, int edges_a[], int edges_b[], long long costs[])",
+          "code": "void read_tree(int *n, int edges_a[], int edges_b[], long long costs[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n - 1; i++) {\n        scanf(\"%d %d %lld\", &edges_a[i], &edges_b[i], &costs[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "compute_total_edge_weight",
+          "signature": "long long compute_total_edge_weight(int n, long long costs[])",
+          "code": "long long compute_total_edge_weight(int n, long long costs[]) {\n    long long result = 0;\n    for (int i = 0; i < n - 1; i++) result += costs[i];\n    return result;\n}"
+        },
+        {
+          "clause_id": "find_maximum_edge",
+          "signature": "long long find_maximum_edge(int n, long long costs[])",
+          "code": "long long find_maximum_edge(int n, long long costs[]) {\n    long long maximum = costs[0];\n    for (int i = 1; i < n - 1; i++) {\n        if (costs[i] > maximum) maximum = costs[i];\n    }\n    return maximum;\n}"
+        },
+        {
+          "clause_id": "compute_minimum_travel",
+          "signature": "long long compute_minimum_travel(long long result, long long maximum)",
+          "code": "long long compute_minimum_travel(long long result, long long maximum) {\n    return 2 * result - maximum;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, edges_a[200005], edges_b[200005];\n    long long costs[200005];\n    read_tree(&n, edges_a, edges_b, costs);\n    long long result = compute_total_edge_weight(n, costs);\n    long long maximum = find_maximum_edge(n, costs);\n    printf(\"%lld\\n\", compute_minimum_travel(result, maximum));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

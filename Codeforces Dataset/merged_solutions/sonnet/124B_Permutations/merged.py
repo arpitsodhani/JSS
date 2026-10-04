@@ -1,0 +1,50 @@
+import sys
+
+# Clause read_input [Confidence: 1.00]
+def read_input():
+    data = sys.stdin.buffer.read().split()
+    n = int(data[0])
+    k = int(data[1])
+    numbers = [data[2 + i].decode() for i in range(n)]
+    return n, k, numbers
+
+# Clause orderings [Confidence: 1.00]
+def orderings(k):
+    result = [[]]
+    for _ in range(k):
+        grown = []
+        for partial in result:
+            for slot in range(k):
+                if slot not in partial:
+                    grown.append(partial + [slot])
+        result = grown
+    return result
+
+# Clause smallest_gap [Confidence: 1.00]
+def smallest_gap(n, k, numbers, orders):
+    best = None
+    for order in orders:
+        low = None
+        high = None
+        for text in numbers:
+            value = 0
+            for slot in order:
+                value = value * 10 + (ord(text[slot]) - 48)
+            if low is None or value < low:
+                low = value
+            if high is None or value > high:
+                high = value
+        gap = high - low
+        if best is None or gap < best:
+            best = gap
+    return best
+
+# Clause main [Confidence: 1.00]
+def main():
+    n, k, numbers = read_input()
+    sys.stdout.write(str(smallest_gap(n, k, numbers, orderings(k))) + "\n")
+
+
+if __name__ == "__main__":
+    main()
+

@@ -1,0 +1,76 @@
+{
+  "problem_num": 134,
+  "problem_name": "check_if_last_char_is_a_letter",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nint main() {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    \n    int len = strlen(s);\n    \n    if (len == 0) {\n        printf(\"False\\n\");\n        return 0;\n    }\n    \n    char last = s[len - 1];\n    \n    if (!isalpha(last)) {\n        printf(\"False\\n\");\n        return 0;\n    }\n    \n    if (len == 1) {\n        printf(\"True\\n\");\n        return 0;\n    }\n    \n    char before_last = s[len - 2];\n    \n    if (before_last == ' ') {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nint main() {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    \n    int len = strlen(s);\n    \n    if (len > 0 && isalpha(s[len - 1])) {\n        if (len == 1 || s[len - 2] == ' ') {\n            printf(\"True\\n\");\n        } else {\n            printf(\"False\\n\");\n        }\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nint main() {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    \n    int len = strlen(s);\n    int result = 0;\n    \n    if (len > 0 && isalpha(s[len - 1])) {\n        result = (len == 1 || s[len - 2] == ' ');\n    }\n    \n    printf(\"%s\\n\", result ? \"True\" : \"False\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nint main() {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    \n    int len = strlen(s);\n    if (s[len - 1] == '\\n') {\n        s[len - 1] = 0;\n        len--;\n    }\n    \n    int is_valid = 0;\n    \n    if (len >= 1 && isalpha(s[len - 1])) {\n        if (len == 1) {\n            is_valid = 1;\n        } else if (s[len - 2] == ' ') {\n            is_valid = 1;\n        }\n    }\n    \n    printf(\"%s\\n\", is_valid ? \"True\" : \"False\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nint main() {\n    char s[1000];\n    fgets(s, 1000, stdin);\n    int len = strlen(s);\n    if (s[len - 1] == '\\n') s[--len] = 0;\n    printf(\"%s\\n\", (len > 0 && isalpha(s[len - 1]) && (len == 1 || s[len - 2] == ' ')) ? \"True\" : \"False\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    }
+  ]
+}

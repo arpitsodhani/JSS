@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n#include <string.h>\n\nchar s[100005];\nchar t[100005];\n\nvoid read_input() {\n    scanf(\"%s\", s);\n    scanf(\"%s\", t);\n}\n\nvoid find_positions() {\n    int s_len = strlen(s);\n    int t_len = strlen(t);\n    int s_idx = 0;\n    int t_idx = 0;\n    \n    while (s_idx < s_len && t_idx < t_len) {\n        if (s[s_idx] == t[t_idx]) {\n            printf(\"%d\", t_idx + 1);\n            s_idx++;\n            if (s_idx < s_len) printf(\" \");\n        }\n        t_idx++;\n    }\n    printf(\"\\n\");\n}\n\nint main() {\n    read_input();\n    find_positions();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "find_positions",
+          "signature": "void find_positions()",
+          "code": "void find_positions() {\n    int s_len = strlen(s);\n    int t_len = strlen(t);\n    int s_idx = 0;\n    int t_idx = 0;\n    \n    while (s_idx < s_len && t_idx < t_len) {\n        if (s[s_idx] == t[t_idx]) {\n            printf(\"%d\", t_idx + 1);\n            s_idx++;\n            if (s_idx < s_len) printf(\" \");\n        }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    find_positions();\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n#include <string.h>\n\nchar s[100005];\nchar t[100005];\n\nvoid read_input() {\n    scanf(\"%s\", s);\n    scanf(\"%s\", t);\n}\n\nvoid find_positions() {\n    int n = strlen(s);\n    int m = strlen(t);\n    int i = 0, j = 0;\n    int first = 1;\n    \n    while (i < n && j < m) {\n        if (s[i] == t[j]) {\n            if (!first) printf(\" \");\n            printf(\"%d\", j + 1);\n            first = 0;\n            i++;\n        }\n        j++;\n    }\n    printf(\"\\n\");\n}\n\nint main() {\n    read_input();\n    find_positions();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "find_positions",
+          "signature": "void find_positions()",
+          "code": "void find_positions() {\n    int n = strlen(s);\n    int m = strlen(t);\n    int i = 0, j = 0;\n    int first = 1;\n    \n    while (i < n && j < m) {\n        if (s[i] == t[j]) {\n            if (!first) printf(\" \");\n            printf(\"%d\", j + 1);\n            first = 0;\n            i++;\n        }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    find_positions();\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n#include <string.h>\n\nchar s[100005];\nchar t[100005];\n\nvoid read_input() {\n    scanf(\"%s %s\", s, t);\n}\n\nvoid find_positions() {\n    int len_s = strlen(s), len_t = strlen(t);\n    int pos_s = 0, pos_t = 0;\n    \n    while (pos_s < len_s && pos_t < len_t) {\n        if (s[pos_s] == t[pos_t]) {\n            if (pos_s > 0) printf(\" \");\n            printf(\"%d\", pos_t + 1);\n            pos_s++;\n        }\n        pos_t++;\n    }\n    printf(\"\\n\");\n}\n\nint main() {\n    read_input();\n    find_positions();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "find_positions",
+          "signature": "void find_positions()",
+          "code": "void find_positions() {\n    int len_s = strlen(s), len_t = strlen(t);\n    int pos_s = 0, pos_t = 0;\n    \n    while (pos_s < len_s && pos_t < len_t) {\n        if (s[pos_s] == t[pos_t]) {\n            if (pos_s > 0) printf(\" \");\n            printf(\"%d\", pos_t + 1);\n            pos_s++;\n        }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    find_positions();\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n#include <string.h>\n\nchar s[100005];\nchar t[100005];\n\nvoid read_input() {\n    scanf(\"%s\", s);\n    scanf(\"%s\", t);\n}\n\nvoid find_positions() {\n    int slen = strlen(s), tlen = strlen(t);\n    int si = 0, ti = 0, space = 0;\n    \n    for (ti = 0; ti < tlen && si < slen; ti++) {\n        if (s[si] == t[ti]) {\n            if (space) printf(\" \");\n            printf(\"%d\", ti + 1);\n            space = 1;\n            si++;\n        }\n    }\n    printf(\"\\n\");\n}\n\nint main() {\n    read_input();\n    find_positions();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "find_positions",
+          "signature": "void find_positions()",
+          "code": "void find_positions() {\n    int slen = strlen(s), tlen = strlen(t);\n    int si = 0, ti = 0, space = 0;\n    \n    for (ti = 0; ti < tlen && si < slen; ti++) {\n        if (s[si] == t[ti]) {\n            if (space) printf(\" \");\n            printf(\"%d\", ti + 1);\n            space = 1;\n            si++;\n        }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    find_positions();\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input()",
+          "code": "#include <stdio.h>\n#include <string.h>\n\nchar s[100005], t[100005];\n\nvoid read_input() {\n    scanf(\"%s %s\", s, t);\n}\n\nvoid find_positions() {\n    int ns = strlen(s), nt = strlen(t), is = 0, it = 0;\n    while (is < ns && it < nt) {\n        if (s[is] == t[it]) {\n            if (is) printf(\" \");\n            printf(\"%d\", it + 1);\n            is++;\n        }\n        it++;\n    }\n    printf(\"\\n\");\n}\n\nint main() {\n    read_input();\n    find_positions();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "find_positions",
+          "signature": "void find_positions()",
+          "code": "void find_positions() {\n    int ns = strlen(s), nt = strlen(t), is = 0, it = 0;\n    while (is < ns && it < nt) {\n        if (s[is] == t[it]) {\n            if (is) printf(\" \");\n            printf(\"%d\", it + 1);\n            is++;\n        }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    read_input();\n    find_positions();\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

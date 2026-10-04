@@ -1,0 +1,148 @@
+{
+  "problem_id": "359B",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_colors",
+          "signature": "int read_colors(int n, int colors[])",
+          "code": "int read_colors(int n, int colors[]) { for(int i = 0; i < 2 * n; i++) scanf(\"%d\", &colors[i]); return 2 * n; }"
+        },
+        {
+          "clause_id": "find_positions",
+          "signature": "void find_positions(int n, int colors[], int first[], int second[])",
+          "code": "void find_positions(int n, int colors[], int first[], int second[]) { for(int i = 1; i <= n; i++) { first[i] = -1; second[i] = -1; } for(int i = 0; i < 2 * n; i++) { int c = colors[i]; if(first[c] == -1) first[c] = i; else second[c] = i; } }"
+        },
+        {
+          "clause_id": "count_valid_colors",
+          "signature": "int count_valid_colors(int n, int first[], int second[])",
+          "code": "int count_valid_colors(int n, int first[], int second[]) { int count = 0; for(int i = 1; i <= n; i++) { if(second[i] - first[i] == 2) count++; } return count; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n; scanf(\"%d\", &n); int colors[205], first[105], second[105]; read_colors(n, colors); find_positions(n, colors, first, second); printf(\"%d\\n\", count_valid_colors(n, first, second)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_colors",
+          "signature": "int read_colors(int n, int colors[])",
+          "code": "int read_colors(int n, int colors[]) { int total = 2 * n; for(int j = 0; j < total; j++) scanf(\"%d\", &colors[j]); return total; }"
+        },
+        {
+          "clause_id": "find_positions",
+          "signature": "void find_positions(int n, int colors[], int first[], int second[])",
+          "code": "void find_positions(int n, int colors[], int first[], int second[]) { for(int c = 1; c <= n; c++) { first[c] = -1; second[c] = -1; } for(int pos = 0; pos < 2 * n; pos++) { int color = colors[pos]; if(first[color] == -1) first[color] = pos; else second[color] = pos; } }"
+        },
+        {
+          "clause_id": "count_valid_colors",
+          "signature": "int count_valid_colors(int n, int first[], int second[])",
+          "code": "int count_valid_colors(int n, int first[], int second[]) { int result = 0; for(int col = 1; col <= n; col++) { int gap = second[col] - first[col]; if(gap == 2) result++; } return result; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n; scanf(\"%d\", &n); int arr[205], pos1[105], pos2[105]; read_colors(n, arr); find_positions(n, arr, pos1, pos2); printf(\"%d\\n\", count_valid_colors(n, pos1, pos2)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_colors",
+          "signature": "int read_colors(int n, int colors[])",
+          "code": "int read_colors(int n, int colors[]) { int len = 2 * n; int i; for(i = 0; i < len; i++) scanf(\"%d\", &colors[i]); return len; }"
+        },
+        {
+          "clause_id": "find_positions",
+          "signature": "void find_positions(int n, int colors[], int first[], int second[])",
+          "code": "void find_positions(int n, int colors[], int first[], int second[]) { int i; for(i = 1; i <= n; i++) { first[i] = -1; second[i] = -1; } for(i = 0; i < 2 * n; i++) { int val = colors[i]; if(first[val] == -1) first[val] = i; else second[val] = i; } }"
+        },
+        {
+          "clause_id": "count_valid_colors",
+          "signature": "int count_valid_colors(int n, int first[], int second[])",
+          "code": "int count_valid_colors(int n, int first[], int second[]) { int total = 0; int j; for(j = 1; j <= n; j++) { int distance = second[j] - first[j]; if(distance == 2) total++; } return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n; scanf(\"%d\", &n); int sequence[205], loc1[105], loc2[105]; read_colors(n, sequence); find_positions(n, sequence, loc1, loc2); printf(\"%d\\n\", count_valid_colors(n, loc1, loc2)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_colors",
+          "signature": "int read_colors(int n, int colors[])",
+          "code": "int read_colors(int n, int colors[]) { for(int k = 0; k < 2 * n; k++) scanf(\"%d\", colors + k); return 2 * n; }"
+        },
+        {
+          "clause_id": "find_positions",
+          "signature": "void find_positions(int n, int colors[], int first[], int second[])",
+          "code": "void find_positions(int n, int colors[], int first[], int second[]) { for(int idx = 1; idx <= n; idx++) first[idx] = second[idx] = -1; for(int idx = 0; idx < 2 * n; idx++) { int c = colors[idx]; if(first[c] < 0) first[c] = idx; else second[c] = idx; } }"
+        },
+        {
+          "clause_id": "count_valid_colors",
+          "signature": "int count_valid_colors(int n, int first[], int second[])",
+          "code": "int count_valid_colors(int n, int first[], int second[]) { int answer = 0; for(int i = 1; i <= n; i++) { if(second[i] - first[i] == 2) answer++; } return answer; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n; scanf(\"%d\", &n); int data[205], start[105], end[105]; read_colors(n, data); find_positions(n, data, start, end); printf(\"%d\\n\", count_valid_colors(n, start, end)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_colors",
+          "signature": "int read_colors(int n, int colors[])",
+          "code": "int read_colors(int n, int colors[]) { int size = 2 * n; for(int p = 0; p < size; p++) scanf(\"%d\", &colors[p]); return size; }"
+        },
+        {
+          "clause_id": "find_positions",
+          "signature": "void find_positions(int n, int colors[], int first[], int second[])",
+          "code": "void find_positions(int n, int colors[], int first[], int second[]) { for(int m = 1; m <= n; m++) { first[m] = -1; second[m] = -1; } for(int m = 0; m < 2 * n; m++) { int color = colors[m]; if(first[color] == -1) first[color] = m; else second[color] = m; } }"
+        },
+        {
+          "clause_id": "count_valid_colors",
+          "signature": "int count_valid_colors(int n, int first[], int second[])",
+          "code": "int count_valid_colors(int n, int first[], int second[]) { int cnt = 0; for(int color = 1; color <= n; color++) { if(second[color] - first[color] == 2) cnt++; } return cnt; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n; scanf(\"%d\", &n); int clothes[205], first_pos[105], second_pos[105]; read_colors(n, clothes); find_positions(n, clothes, first_pos, second_pos); printf(\"%d\\n\", count_valid_colors(n, first_pos, second_pos)); return 0; }"
+        }
+      ]
+    }
+  ]
+}

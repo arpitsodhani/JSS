@@ -1,0 +1,7 @@
+You are given a sequence A of length N . Freely choose exactly K elements from A and remove them, then concatenate the remaining elements in their original order to form a new sequence B . Find the minimum possible value of this: the maximum value of B minus the minimum value of B .
+
+**Constraints:**
+- 1 <= N, K <= 2 * 10^5
+- K < N
+- 1 <= A_i <= 10^9
+- All input values are integers

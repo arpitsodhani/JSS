@@ -1,0 +1,107 @@
+{
+  "merged_program_file": "/home/arpit/Desktop/ISSTA-2026/HumanEval-C/gpt_codes/058_common/merged.c",
+  "timestamp": "2026-03-16T17:03:19.097801",
+  "clauses": {
+    "common": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "main": {
+      "confidence": 0.9979411764705883,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 0.9979411764705883,
+          "cluster_size": 5,
+          "total": 5,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 5
+    },
+    "find_common": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "intersect_sorted": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "shared_elements": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "common_vals": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    }
+  },
+  "compile_status": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "/tmp/tmppues73me.c: In function \u2018find_common\u2019:\n/tmp/tmppues73me.c:54:9: warning: this \u2018if\u2019 clause does not guard... [-Wmisleading-indentation]\n   54 |         if(!dup) res[(*cnt)++]=a[i];break;\n      |         ^~\n/tmp/tmppues73me.c:54:37: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the \u2018if\u2019\n   54 |         if(!dup) res[(*cnt)++]=a[i];break;\n      |                                     ^~~~~\n/tmp/tmppues73me.c: In function \u2018intersect_sorted\u2019:\n/tmp/tmppues73me.c:63:9: warning: this \u2018if\u2019 clause does not guard... [-Wmisleading-indentation]\n   63 |         if(!found) out[(*sz)++]=x[i];break;\n      |         ^~\n/tmp/tmppues73me.c:63:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the \u2018if\u2019\n   63 |         if(!found) out[(*sz)++]=x[i];break;\n      |                                      ^~~~~\n/tmp/tmppues73me.c: In function \u2018shared_elements\u2019:\n/tmp/tmppues73me.c:72:9: warning: this \u2018if\u2019 clause does not guard... [-Wmisleading-indentation]\n   72 |         if(!dup) r[(*nr)++]=p[i];break;\n      |         ^~\n/tmp/tmppues73me.c:72:34: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the \u2018if\u2019\n   72 |         if(!dup) r[(*nr)++]=p[i];break;\n      |                                  ^~~~~\n/tmp/tmppues73me.c: In function \u2018common_vals\u2019:\n/tmp/tmppues73me.c:81:9: warning: this \u2018if\u2019 clause does not guard... [-Wmisleading-indentation]\n   81 |         if(!in) res[(*cnt)++]=a[i];break;\n      |         ^~\n/tmp/tmppues73me.c:81:36: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the \u2018if\u2019\n   81 |         if(!in) res[(*cnt)++]=a[i];break;\n      |                                    ^~~~~\n"
+  },
+  "test_results": {
+    "passed": 0,
+    "total": 0,
+    "details": []
+  },
+  "metrics": {
+    "total_clauses": 6,
+    "total_fragments": 6,
+    "average_confidence": 0.999656862745098,
+    "compile_success": true
+  },
+  "logs": ""
+}

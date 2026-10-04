@@ -1,0 +1,10 @@
+You are given a sequence A = (A_1, A_2, \dots, A_N) of length N . Answer Q queries. The i -th query ( 1 \leq i \leq Q ) is as follows: You are given integers R_i and X_i . Consider a subsequence (not necessarily contiguous) of (A_1, A_2, \dots, A_{R_i}) that is strictly increasing and consists only of elements at most X_i . Find the maximum possible length of such a subsequence. It is guaranteed that X_i \geq \min\lbrace A_1, A_2,\dots,A_{R_i} \rbrace .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple
+- 1 <= A_i <= 10^9
+- All input values are integers

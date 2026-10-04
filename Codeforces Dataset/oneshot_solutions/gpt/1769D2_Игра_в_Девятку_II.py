@@ -1,0 +1,64 @@
+import sys
+
+deals = [
+    (
+        "KS QD 8D QC 8S 8C JD 9H AC TH 9S 9D QH 7H 8H TS 7S 9C",
+        "6D JS 7D KH QS TC AD AS KC 6C 7C TD AH KD 6S JC JH 6H",
+    ),
+    (
+        "JC JS 8S TD JD KH 7D 9C KC TH QD 8D 7H TC KD 9H 8C 6D",
+        "7S AC QH AD 8H TS 6H JH 6C AH 7C 6S 9D QC AS QS KS 9S",
+    ),
+    (
+        "9C QD TS 8C AH JH KD QS 6D TC TD TH 8D AC KS 7S 7D 6H",
+        "6C 7C JC QC KC 9D JD AD 6S 8S 9S JS AS 7H 8H 9H QH KH",
+    ),
+    (
+        "JD 6H TS JC KS 6D KD 9H TH 8C AD 7D TD 7C KC 9S AC QC",
+        "6C 9C TC 8D 9D QD 6S 7S 8S JS QS AS 7H 8H JH QH KH AH",
+    ),
+    (
+        "JS 6S TH 9D AC 7D QH KH 8C AS 6H 9H 7S TC TS 8D AH 6D",
+        "6C 7C 9C JC QC KC TD JD QD KD AD 8S 9S QS KS 7H 8H JH",
+    ),
+    (
+        "AH TD TS 7D QC 6D 7S JD KS TH AD 9C 9H 8H 6H 8C KC 8D",
+        "6C 7C TC JC AC 9D QD KD 6S 8S 9S JS QS AS 7H JH QH KH",
+    ),
+    (
+        "JH QC 6D QD 9D 8H 6H AD 7H JD JS TS 6C KD TD KH QS 7D",
+        "7C 8C 9C TC JC KC AC 8D 6S 7S 8S 9S KS AS 9H TH QH AH",
+    ),
+    (
+        "JS 8C 6D 7C TC AH 8D 9H KH KD 9C AC QH QC TS KC 6H 8S",
+        "6C JC 7D 9D TD JD QD AD 6S 7S 9S QS KS AS 7H 8H TH JH",
+    ),
+    (
+        "9C KS 6D TH 6S 8C 7H 9D QD QH JS 9H KD 7C AD AS TD KH",
+        "6C TC JC QC KC AC 7D 8D JD 7S 8S 9S TS QS 6H 8H JH AH",
+    ),
+    (
+        "7D KD QC AD 7H 8S QD 7C JH TD TC 8H 9D KS TS 8C KC 6S",
+        "6C 9C JC AC 6D 8D JD 7S 9S JS QS AS 6H 9H TH QH KH AH",
+    ),
+    (
+        "JH 6S 8D KD KH 6H JS 8H 7C 7D 9H 7S QS 9C KS 8S 7H QC",
+        "6C 8C TC JC KC AC 6D 9D TD JD QD AD 9S TS AS TH QH AH",
+    ),
+    (
+        "JS JD 6C KC TH QD 8H 6S KD TC 9S TD JC TS AC 7C 6H QC",
+        "8C 9C 6D 7D 8D 9D AD 7S 8S QS KS AS 7H 9H JH QH KH AH",
+    ),
+    (
+        "7D QS 6S JH 8C 9S 6C 6D 9H AD TC AH TS QH 9D 7H KH KD",
+        "7C 9C JC QC KC AC 8D TD JD QD 7S 8S JS KS AS 6H 8H TH",
+    ),
+]
+
+k = int(sys.stdin.readline())
+out = []
+for i in range(k):
+    out.append(deals[i][0])
+    out.append(deals[i][1])
+    out.append("")
+print("\n".join(out))

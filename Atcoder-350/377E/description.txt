@@ -1,0 +1,7 @@
+You are given a permutation P=(P_1,P_2,\ldots,P_N) of (1,2,\ldots,N) . The following operation will be performed K times: For i=1,2,\ldots,N , simultaneously update P_i to P_{P_i} . Print P after all operations.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 0 <= K <= 10^{18}
+- P is a permutation of (1, 2, ..., N)
+- All input values are integers

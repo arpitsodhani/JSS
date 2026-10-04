@@ -1,0 +1,43 @@
+{
+  "problem_id": "404F",
+  "average_confidence": 0.9689359212216354,
+  "clauses": {
+    "read_input": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "mod_pow": {
+      "confidence": 0.9399999999999998,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "basis_insert": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "compute_rank": {
+      "confidence": 0.9693406593406593,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "compute_answer": {
+      "confidence": 0.8732107892107891,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "print_ans": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    }
+  },
+  "total_clauses": 7,
+  "compile_success": true
+}

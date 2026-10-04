@@ -1,0 +1,31 @@
+{
+  "contestId": 1609,
+  "index": "C",
+  "problem_id": "1609C",
+  "name": "Complex Market Analysis",
+  "rating": 1400,
+  "tags": [
+    "binary search",
+    "dp",
+    "implementation",
+    "number theory",
+    "schedules",
+    "two pointers"
+  ],
+  "points": 1500.0,
+  "solvedCount": 10532,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Complex Market Analysis",
+  "legend": "While performing complex market analysis William encountered the following problem:\n\nFor a given array a of size n and a natural number e, calculate the number of pairs of natural numbers (i,k) which satisfy the following conditions:\n\n1≤i,k\ni+e⋅k≤n.\nProduct ai⋅ai+e⋅ai+2⋅e⋅…⋅ai+k⋅e is a prime number.\n\nA prime number (or a prime) is a natural number greater than 1 that is not a product of two smaller natural numbers.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤10000). Description of the test cases follows.\n\nThe first line of each test case contains two integers n and e (1≤e≤n≤2⋅105), the number of items in the array and number e, respectively.\n\nThe second line contains n integers a1,a2,…,an (1≤ai≤106), the contents of the array.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case output the answer in the following format:\n\nOutput one line containing the number of pairs of numbers (i,k) which satisfy the conditions.",
+  "note": "In the first example test case two pairs satisfy the conditions:\n\ni=2,k=1, for which the product is: a2⋅a5=2 which is a prime number.\ni=3,k=1, for which the product is: a3⋅a6=19 which is a prime number.\n\nIn the second example test case there are no pairs that satisfy the conditions.\n\nIn the third example test case four pairs satisfy the conditions:\n\ni=1,k=1, for which the product is: a1⋅a4=2 which is a prime number.\ni=1,k=2, for which the product is: a1⋅a4⋅a7=2 which is a prime number.\ni=3,k=1, for which the product is: a3⋅a6=2 which is a prime number.\ni=6,k=1, for which the product is: a6⋅a9=2 which is a prime number.\n\nIn the fourth example test case there are no pairs that satisfy the conditions.\n\nIn the fifth example test case five pairs satisfy the conditions:\n\ni=1,k=1, for which the product is: a1⋅a2=2 which is a prime number.\ni=1,k=2, for which the product is: a1⋅a2⋅a3=2 which is a prime number.\ni=1,k=3, for which the product is: a1⋅a2⋅a3⋅a4=2 which is a prime number.\ni=2,k=1, for which the product is: a2⋅a3=2 which is a prime number.\ni=2,k=2, for which the product is: a2⋅a3⋅a4=2 which is a prime number.\n\nIn the sixth example test case there are no pairs that satisfy the conditions.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n7 3\n10 2 1 3 1 19 3\n3 2\n1 13 1\n9 3\n2 4 2 1 1 1 1 4 2\n3 1\n1 1 1\n4 1\n1 2 1 1\n2 2\n1 2\n",
+      "output": "2\n0\n4\n0\n5\n0"
+    }
+  ]
+}

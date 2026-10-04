@@ -1,0 +1,28 @@
+{
+  "contestId": 802,
+  "index": "M2",
+  "problem_id": "802M2",
+  "name": "April Fools' Problem (medium)",
+  "rating": 2400,
+  "tags": [
+    "binary search",
+    "flows",
+    "graphs"
+  ],
+  "points": null,
+  "solvedCount": 1496,
+  "source": "verbatim_cf_fetch",
+  "title": "M2. April Fools' Problem (medium)",
+  "legend": "The marmots need to prepare k problems for HC2 over n days. Each problem, once prepared, also has to be printed.\n\nThe preparation of a problem on day i (at most one per day) costs ai CHF, and the printing of a problem on day i (also at most one per day) costs bi CHF. Of course, a problem cannot be printed before it has been prepared (but doing both on the same day is fine).\n\nWhat is the minimum cost of preparation and printing?",
+  "input_spec": "The first line of input contains two space-separated integers n and k (1 ≤ k ≤ n ≤ 2200). The second line contains n space-separated integers a1, ..., an () — the preparation costs. The third line contains n space-separated integers b1, ..., bn () — the printing costs.",
+  "output_spec": "Output the minimum cost of preparation and printing k problems — that is, the minimum possible sum ai1 + ai2 + ... + aik + bj1 + bj2 + ... + bjk, where 1 ≤ i1 < i2 < ... < ik ≤ n, 1 ≤ j1 < j2 < ... < jk ≤ n and i1 ≤ j1, i2 ≤ j2, ..., ik ≤ jk.",
+  "note": "In the sample testcase, one optimum solution is to prepare the first problem on day 1 and print it on day 1, prepare the second problem on day 2 and print it on day 4, prepare the third problem on day 3 and print it on day 5, and prepare the fourth problem on day 6 and print it on day 8.",
+  "time_limit": "4 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "8 4\n3 8 7 9 9 4 6 8\n2 5 9 4 3 8 9 1\n",
+      "output": "32"
+    }
+  ]
+}

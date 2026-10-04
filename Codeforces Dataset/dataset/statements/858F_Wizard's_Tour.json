@@ -1,0 +1,32 @@
+{
+  "contestId": 858,
+  "index": "F",
+  "problem_id": "858F",
+  "name": "Wizard's Tour",
+  "rating": 2300,
+  "tags": [
+    "constructive algorithms",
+    "dfs and similar",
+    "graphs"
+  ],
+  "points": 3000.0,
+  "solvedCount": 2099,
+  "source": "verbatim_cf_fetch",
+  "title": "F. Wizard's Tour",
+  "legend": "All Berland residents are waiting for an unprecedented tour of wizard in his Blue Helicopter over the cities of Berland!\n\nIt is well-known that there are n cities in Berland, some pairs of which are connected by bidirectional roads. Each pair of cities is connected by no more than one road. It is not guaranteed that the road network is connected, i.e. it is possible that you can't reach some city from some other.\n\nThe tour will contain several episodes. In each of the episodes:\n\nthe wizard will disembark at some city x from the Helicopter;\nhe will give a performance and show a movie for free at the city x;\nhe will drive to some neighboring city y using a road;\nhe will give a performance and show a movie for free at the city y;\nhe will drive to some neighboring to y city z;\nhe will give a performance and show a movie for free at the city z;\nhe will embark the Helicopter and fly away from the city z.\n\nIt is known that the wizard doesn't like to use roads, so he agrees to use each road at most once (regardless of direction). In other words, for road between a and b he only can drive once from a to b, or drive once from b to a, or do not use this road at all.\n\nThe wizards wants to plan as many episodes as possible without violation the above rules. Help the wizard!\n\nPlease note that the wizard can visit the same city multiple times, the restriction is on roads only.",
+  "input_spec": "The first line contains two integers n, m (1 ≤ n ≤ 2·105, 0 ≤ m ≤ 2·105) — the number of cities and the number of roads in Berland, respectively.\n\nThe roads description follow, one in each line. Each description is a pair of two integers ai, bi (1 ≤ ai, bi ≤ n, ai ≠ bi), where ai and bi are the ids of the cities connected by the i-th road. It is guaranteed that there are no two roads connecting the same pair of cities. Every road is bidirectional. The cities are numbered from 1 to n.\n\nIt is possible that the road network in Berland is not connected.",
+  "output_spec": "In the first line print w — the maximum possible number of episodes. The next w lines should contain the episodes in format x, y, z — the three integers denoting the ids of the cities in the order of the wizard's visits.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4 5\n1 2\n3 2\n2 4\n3 4\n4 1\n",
+      "output": "2\n1 4 2\n4 3 2"
+    },
+    {
+      "input": "5 8\n5 3\n1 2\n4 5\n5 1\n2 5\n4 3\n1 4\n3 2\n",
+      "output": "4\n1 4 5\n2 3 4\n1 5 3\n5 2 1"
+    }
+  ]
+}

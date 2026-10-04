@@ -1,0 +1,8 @@
+There are N people numbered from 1 to N visiting a conveyor belt sushi restaurant. The gourmet level of person i is A_i . Now, M pieces of sushi will be placed on the conveyor belt. The deliciousness of the j -th sushi is B_j . Each piece of sushi passes in front of people 1, 2, \dots, N in this order. Each person, when a sushi whose deliciousness is not less than their gourmet level passes in front of them, will take and eat that sushi; otherwise, they do nothing. A sushi that person i takes and eats will no longer pass in front of person j\ (j > i) . For each of the M pieces of sushi, determine who eats that sushi, or if nobody eats it.
+
+**Constraints:**
+- 1 <= N, M <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- A_i >= A_{i+1}
+- 1 <= B_i <= 10^9
+- All input values are integers

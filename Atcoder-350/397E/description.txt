@@ -1,0 +1,8 @@
+You are given a tree with NK vertices. The vertices are numbered 1,2,\dots,NK , and the i -th edge ( i=1,2,\dots,NK-1 ) connects vertices u_i and v_i bidirectionally. Determine whether this tree can be decomposed into N paths, each of length K . More precisely, determine whether there exists an N \times K matrix P satisfying the following: P_{1,1}, \dots, P_{1,K}, P_{2,1}, \dots, P_{N,K} is a permutation of 1,2,\dots,NK . For each i=1,2,\dots,N and j=1,2,\dots,K-1 , there is an edge connecting vertices P_{i,j} and P_{i,j+1} .
+
+**Constraints:**
+- 1 <= N, Q <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- 1 <= l_i <= r_i <= N
+- 1 <= x_i <= 10^9
+- All input values are integers

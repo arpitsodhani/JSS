@@ -1,0 +1,28 @@
+{
+  "contestId": 2002,
+  "index": "E",
+  "problem_id": "2002E",
+  "name": "Cosmic Rays",
+  "rating": 2300,
+  "tags": [
+    "brute force",
+    "data structures",
+    "dp"
+  ],
+  "points": 2000.0,
+  "solvedCount": 2964,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Cosmic Rays",
+  "legend": "Given an array of integers s1,s2,…,sl, every second, cosmic rays will cause all si such that i=1 or si≠si−1 to be deleted simultaneously, and the remaining parts will be concatenated together in order to form the new array s1,s2,…,sl′.\n\nDefine the strength of an array as the number of seconds it takes to become empty.\n\nYou are given an array of integers compressed in the form of n pairs that describe the array left to right. Each pair (ai,bi) represents ai copies of bi, i.e. bi,bi,⋯,bi\n⏟\nai times.\n\nFor each i=1,2,…,n, please find the strength of the sequence described by the first i pairs.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe first line of each test case contains a single integer n (1≤n≤3⋅105) — the length of sequence a.\n\nThe next n lines contain two integers each ai, bi (1≤ai≤109,0≤bi≤n) — the pairs which describe the sequence.\n\nIt is guaranteed that the sum of all n does not exceed 3⋅105.\n\nIt is guaranteed that for all 1≤i<n, bi≠bi+1 holds.",
+  "output_spec": "For each test case, print one line containing n integers — the answer for each prefix of pairs.",
+  "note": "In the first test case, for the prefix of length 4, the changes will be [0,0,1,0,0,0,1,1,1,1,1]→[0,0,0,1,1,1,1]→[0,0,1,1,1]→[0,1,1]→[1]→[], so the array becomes empty after 5 seconds.\n\nIn the second test case, for the prefix of length 4, the changes will be [6,6,6,6,3,6,6,6,6,0,0,0,0]→[6,6,6,6,6,6,0,0,0]→[6,6,6,6,6,0,0]→[6,6,6,6,0]→[6,6,6]→[6,6]→[6]→[], so the array becomes empty after 7 seconds.",
+  "time_limit": "2 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "4\n4\n2 0\n1 1\n3 0\n5 1\n6\n4 6\n1 3\n4 6\n4 0\n7 6\n6 3\n7\n9 0\n7 1\n5 0\n7 1\n9 0\n1 1\n2 0\n10\n10 7\n4 9\n2 2\n7 9\n2 8\n8 5\n11 7\n15 5\n12 7\n4 0\n",
+      "output": "2 2 4 5\n4 4 7 7 10 10\n9 9 9 9 9 9 10\n10 10 10 10 10 10 12 15 15 15"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *m,int *a)",
+          "code": "scanf(\"%d%d\", n,m); for(int i=0;i<*m;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "mark_missing",
+          "signature": "void mark_missing(int n,int m,int *a,int *used)",
+          "code": "for(int i=0;i<=n;i++) used[i]=0; for(int i=0;i<m;i++) used[a[i]]=1;\n"
+        },
+        {
+          "clause_id": "print_missing",
+          "signature": "void print_missing(int n,int *used)",
+          "code": "for(int i=1;i<=n;i++) if(!used[i]) printf(\"%d \", i); printf(\"\\n\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; int a[105]; int used[105]; read_input(&n,&m,a); mark_missing(n,m,a,used); print_missing(n,used); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *m,int *a)",
+          "code": "scanf(\"%d%d\", n,m); for(int i=0;i<*m;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "mark_missing",
+          "signature": "void mark_missing(int n,int m,int *a,int *used)",
+          "code": "for(int i=0;i<=n;i++) used[i]=0; for(int i=0;i<m;i++) used[a[i]]=1;\n"
+        },
+        {
+          "clause_id": "print_missing",
+          "signature": "void print_missing(int n,int *used)",
+          "code": "for(int i=1;i<=n;i++) if(!used[i]) printf(\"%d \", i); printf(\"\\n\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; int a[105]; int used[105]; read_input(&n,&m,a); mark_missing(n,m,a,used); print_missing(n,used); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *m,int *a)",
+          "code": "scanf(\"%d%d\", n,m); for(int i=0;i<*m;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "mark_missing",
+          "signature": "void mark_missing(int n,int m,int *a,int *used)",
+          "code": "for(int i=0;i<=n;i++) used[i]=0; for(int i=0;i<m;i++) used[a[i]]=1;\n"
+        },
+        {
+          "clause_id": "print_missing",
+          "signature": "void print_missing(int n,int *used)",
+          "code": "for(int i=1;i<=n;i++) if(!used[i]) printf(\"%d \", i); printf(\"\\n\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; int a[105]; int used[105]; read_input(&n,&m,a); mark_missing(n,m,a,used); print_missing(n,used); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *m,int *a)",
+          "code": "scanf(\"%d%d\", n,m); for(int i=0;i<*m;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "mark_missing",
+          "signature": "void mark_missing(int n,int m,int *a,int *used)",
+          "code": "for(int i=0;i<=n;i++) used[i]=0; for(int i=0;i<m;i++) used[a[i]]=1;\n"
+        },
+        {
+          "clause_id": "print_missing",
+          "signature": "void print_missing(int n,int *used)",
+          "code": "int first=1; for(int i=1;i<=n;i++) if(!used[i]){ if(!first) printf(\" \"); printf(\"%d\", i); first=0; } printf(\"\\n\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; int a[105]; int used[105]; read_input(&n,&m,a); mark_missing(n,m,a,used); print_missing(n,used); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *m,int *a)",
+          "code": "scanf(\"%d%d\", n,m); for(int i=0;i<*m;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "mark_missing",
+          "signature": "void mark_missing(int n,int m,int *a,int *used)",
+          "code": "for(int i=0;i<=n;i++) used[i]=0; for(int i=0;i<m;i++) used[a[i]]=1;\n"
+        },
+        {
+          "clause_id": "print_missing",
+          "signature": "void print_missing(int n,int *used)",
+          "code": "int first=1; for(int i=1;i<=n;i++) if(!used[i]){ if(!first) printf(\" \"); printf(\"%d\", i); first=0; } printf(\"\\n\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; int a[105]; int used[105]; read_input(&n,&m,a); mark_missing(n,m,a,used); print_missing(n,used); return 0; }\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "392B",
+  "total_programs": 5
+}

@@ -1,0 +1,5 @@
+You are given N strings. The i -th string S_i (1 \leq i \leq N) is either Takahashi or Aoki . How many i are there such that S_i is equal to Takahashi ?
+
+**Constraints:**
+- 1 <= N <= 100
+- S_i is either "Takahashi" or "Aoki"

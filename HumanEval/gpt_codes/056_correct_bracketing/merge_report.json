@@ -1,0 +1,107 @@
+{
+  "merged_program_file": "/home/arpit/Desktop/ISSTA-2026/HumanEval-C/gpt_codes/056_correct_bracketing/merged.c",
+  "timestamp": "2026-03-16T17:03:18.055158",
+  "clauses": {
+    "correct_bracketing": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "main": {
+      "confidence": 0.9571428571428571,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 0.9571428571428571,
+          "cluster_size": 5,
+          "total": 5,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 5
+    },
+    "balanced_brackets": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "angle_balance": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "check_angles": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "valid_angle_brackets": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    }
+  },
+  "compile_status": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "/tmp/tmpcoomepxn.c: In function \u2018main\u2019:\n/tmp/tmpcoomepxn.c:16:18: warning: implicit declaration of function \u2018strcspn\u2019 [-Wimplicit-function-declaration]\n   16 |         brackets[strcspn(brackets, \"\\n\")] = 0;\n      |                  ^~~~~~~\n/tmp/tmpcoomepxn.c:2:1: note: include \u2018<string.h>\u2019 or provide a declaration of \u2018strcspn\u2019\n    1 | #include <stdio.h>\n  +++ |+#include <string.h>\n    2 | \n/tmp/tmpcoomepxn.c:16:18: warning: incompatible implicit declaration of built-in function \u2018strcspn\u2019 [-Wbuiltin-declaration-mismatch]\n   16 |         brackets[strcspn(brackets, \"\\n\")] = 0;\n      |                  ^~~~~~~\n/tmp/tmpcoomepxn.c:16:18: note: include \u2018<string.h>\u2019 or provide a declaration of \u2018strcspn\u2019\n"
+  },
+  "test_results": {
+    "passed": 0,
+    "total": 0,
+    "details": []
+  },
+  "metrics": {
+    "total_clauses": 6,
+    "total_fragments": 6,
+    "average_confidence": 0.9928571428571429,
+    "compile_success": true
+  },
+  "logs": ""
+}

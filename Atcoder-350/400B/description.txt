@@ -1,0 +1,5 @@
+You are given two positive integers N and M . Let X = \displaystyle\sum_{i = 0}^{M} N^i . If X \leq 10^9 , print the value of X . If X > 10^9 , print inf .
+
+**Constraints:**
+- 1 <= A, B, C <= 100
+- All input values are integers

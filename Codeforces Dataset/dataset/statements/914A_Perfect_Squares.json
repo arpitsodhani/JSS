@@ -1,0 +1,32 @@
+{
+  "contestId": 914,
+  "index": "A",
+  "problem_id": "914A",
+  "name": "Perfect Squares",
+  "rating": 900,
+  "tags": [
+    "brute force",
+    "implementation",
+    "math"
+  ],
+  "points": 500.0,
+  "solvedCount": 15847,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Perfect Squares",
+  "legend": "Given an array a1, a2, ..., an of n integers, find the largest number in the array that is not a perfect square.\n\nA number x is said to be a perfect square if there exists an integer y such that x = y2.",
+  "input_spec": "The first line contains a single integer n (1 ≤ n ≤ 1000) — the number of elements in the array.\n\nThe second line contains n integers a1, a2, ..., an ( - 106 ≤ ai ≤ 106) — the elements of the array.\n\nIt is guaranteed that at least one element of the array is not a perfect square.",
+  "output_spec": "Print the largest number in the array which is not a perfect square. It is guaranteed that an answer always exists.",
+  "note": "In the first sample case, 4 is a perfect square, so the largest number in the array that is not a perfect square is 2.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n4 2\n",
+      "output": "2"
+    },
+    {
+      "input": "8\n1 2 4 8 16 32 64 576\n",
+      "output": "32"
+    }
+  ]
+}

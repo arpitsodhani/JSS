@@ -1,0 +1,10 @@
+You are given two sequences of length N : D=(D_1, D_2, \dots, D_N) and P=(P_1, P_2, \dots, P_N) . Process Q queries in the order they are given. Each query is given in the following format: c x y : Change D_c to x and P_c to y . Then, solve the following problem and print the answer. There are N jobs numbered 1 to N . Starting from today (consider this as day 1 ), you will choose and complete one job per day for N days. If you complete job i on or before day D_i , you will receive a reward of P_i . (If you do not complete it by day D_i , you get nothing.) Find the maximum total reward you can achieve by choosing the optimal order of completing the jobs.
+
+**Constraints:**
+- 1 <= N <= 50
+- 1 <= M <= min(N(N-1)/2, 1000)
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple
+- S_i is a non-empty string consisting of lowercase English letters
+- The total length of all S_i is at most 200

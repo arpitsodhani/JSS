@@ -1,0 +1,9 @@
+You have N keys numbered 1, 2, \dots, N . Some of these are real keys, while the others are dummies. There is a door, Door X, into which you can insert any number of keys. Door X will open if and only if at least K real keys are inserted. You have conducted M tests on these keys. The i -th test went as follows: You inserted C_i keys A_{i,1}, A_{i,2}, \dots, A_{i,C_i} into Door X. The test result is represented by a single English letter R_i . R_i = o means that Door X opened in the i -th test. R_i = x means that Door X did not open in the i -th test. There are 2^N possible combinations of which keys are real and which are dummies. Among these, find the number of combinations that do not contradict any of the test results. It is possible that the given test results are incorrect and no combination satisfies the conditions. In such a case, report 0 .
+
+**Constraints:**
+- 1 <= N <= 15
+- 1 <= M <= N
+- 1 <= K <= N
+- 1 <= A_i <= N
+- All A_i are distinct
+- All input values are integers

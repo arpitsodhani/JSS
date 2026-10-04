@@ -1,0 +1,5 @@
+Find the number of positive integers not greater than N that have exactly 9 positive divisors.
+
+**Constraints:**
+- 1 <= N <= 4 * 10^12
+- All input values are integers

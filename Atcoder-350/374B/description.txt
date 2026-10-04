@@ -1,0 +1,5 @@
+KEYENCE has a culture of reporting things as they are, whether good or bad. So we want to check whether the reported content is exactly the same as the original text. You are given two strings S and T , consisting of lowercase English letters. If S and T are equal, print 0 ; otherwise, print the position of the first character where they differ. Here, if the i -th character exists in only one of S and T , consider that the i -th characters are different. More precisely, if S and T are not equal, print the smallest integer i satisfying one of the following conditions: 1\leq i\leq |S| , 1\leq i\leq |T| , and S_i\neq T_i . |S| < i \leq |T| . |T| < i \leq |S| . Here, |S| and |T| denote the lengths of S and T , respectively, and S_i and T_i denote the i -th characters of S and T , respectively.
+
+**Constraints:**
+- S and T are strings consisting of lowercase English letters
+- 1 <= |S|, |T| <= 100

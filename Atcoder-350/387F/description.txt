@@ -1,0 +1,8 @@
+You are given integers N and M, and an array A of length N. Count the number of arrays x of length N such that:
+- 1 <= x_i <= M
+- x_i <= x_{A_i} for all i
+Output the count modulo 998244353.
+
+**Constraints:**
+- 1 <= N, M <= 2025
+- 1 <= A_i <= N

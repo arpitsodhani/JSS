@@ -1,0 +1,30 @@
+{
+  "contestId": 1867,
+  "index": "C",
+  "problem_id": "1867C",
+  "name": "Salyg1n and the MEX Game",
+  "rating": 1300,
+  "tags": [
+    "constructive algorithms",
+    "data structures",
+    "games",
+    "greedy",
+    "interactive"
+  ],
+  "points": 1250.0,
+  "solvedCount": 12790,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Salyg1n and the MEX Game",
+  "legend": "This is an interactive problem!\n\nsalyg1n gave Alice a set S of n distinct integers s1,s2,…,sn (0≤si≤109). Alice decided to play a game with this set against Bob. The rules of the game are as follows:\n\nPlayers take turns, with Alice going first.\n\nIn one move, Alice adds one number x (0≤x≤109) to the set S. The set S must not contain the number x at the time of the move.\nIn one move, Bob removes one number y from the set S. The set S must contain the number y at the time of the move. Additionally, the number y must be strictly smaller than the last number added by Alice.\nThe game ends when Bob cannot make a move or after 2⋅n+1 moves (in which case Alice's move will be the last one).\nThe result of the game is MEX†(S) (S at the end of the game).\nAlice aims to maximize the result, while Bob aims to minimize it.\n\nLet R be the result when both players play optimally. In this problem, you play as Alice against the jury program playing as Bob. Your task is to implement a strategy for Alice such that the result of the game is always at least R.\n\n† MEX of a set of integers c1,c2,…,ck is defined as the smallest non-negative integer x which does not occur in the set c. For example, MEX({0,1,2,4}) = 3.",
+  "input_spec": "The first line contains an integer t (1≤t≤105) - the number of test cases.",
+  "output_spec": "",
+  "note": "In the first test case, the set S changed as follows:\n\n{1,2,3,5,7} → {1,2,3,5,7,8} → {1,2,3,5,8} → {1,2,3,5,8,57} → {1,2,3,8,57} → {0,1,2,3,8,57}. In the end of the game, MEX(S)=4, R=4.\n\nIn the second test case, the set S changed as follows:\n\n{0,1,2} → {0,1,2,3} → {1,2,3} → {0,1,2,3}. In the end of the game, MEX(S)=4, R=4.\n\nIn the third test case, the set S changed as follows:\n\n{5,7,57} → {0,5,7,57}. In the end of the game, MEX(S)=1, R=1.",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n5\n1 2 3 5 7\n\n7\n\n5\n\n-1\n\n3\n0 1 2\n\n0\n\n-1\n\n3\n5 7 57\n\n-1\n",
+      "output": "8\n\n57\n\n0\n\n3\n\n0\n\n0"
+    }
+  ]
+}

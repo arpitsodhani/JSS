@@ -1,0 +1,30 @@
+{
+  "contestId": 2154,
+  "index": "D",
+  "problem_id": "2154D",
+  "name": "Catshock",
+  "rating": 1900,
+  "tags": [
+    "constructive algorithms",
+    "dfs and similar",
+    "graphs",
+    "trees",
+    "two pointers"
+  ],
+  "points": 1750.0,
+  "solvedCount": 4977,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Catshock",
+  "legend": "A cat lives on a tree with n nodes. The cat starts on node 1, and you live on node n. You are going to leave the cat a note written in the parkour language to help it reach you.\n\nThe parkour language has two types of instructions:\n\n1 — This means that the cat should move to any adjacent node to it, if there are multiple options, it will pick one of them arbitrarily. If there are no adjacent nodes to it, then it will not move.\n2u — This means to destroy node u and all adjacent edges to it. If the cat is currently on node u, it will die, so this should be avoided. If node u was already destroyed, then nothing will happen.\n\nAdditionally, there cannot be two consecutive instances of the second instruction.\n\nUnfortunately, the parkour language is ambiguous because the cat may have multiple options for each instance of the first instruction. So you should construct a sequence of instructions of length at most 3n so that if the cat follows them, it will end at node n, no matter what choices it makes. It can be proven that such a sequence exists for any tree.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe first line of each testcase contains an integer n (2≤n≤2⋅105) — the size of the tree.\n\nThen n−1 lines follow, each of them contains two integers u and v (1≤u,v≤n,u≠v) which describe a pair of vertices connected by an edge. It is guaranteed that the given graph is a tree and has no loops or multiple edges.\n\nThe sum of n across all testcases does not exceed 2⋅105.",
+  "output_spec": "For each testcase, output a single integer k (0≤k≤3n) — the number of operations you will perform.\n\nThen output k lines of either of the following formats:\n\n1 — make the cat move to an adjacent node if there are nodes adjacent to it.\n2u (1≤u≤n) — delete node u along with all adjacent edges",
+  "note": "There are extra spaces between the output of different test cases only for clarity, and the participants are not expected to print them.\n\nThe path of the cat in the first testcase is shown below.\n\nIt can be shown that this is the only possible path, and so the cat will always end at node 5.\n\nAn example of a sequence of instructions that does not work for the first testcase is: 1, 2 2. As the following may happen:\n\nHere the cat died at node 2.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n5\n1 2\n2 3\n1 5\n5 4\n2\n1 2\n4\n1 2\n1 3\n1 4\n6\n1 2\n1 3\n3 4\n4 5\n4 6\n",
+      "output": "2\n2 2\n1\n\n1\n1\n\n5\n2 2\n1\n1\n2 3\n1\n\n9\n2 2\n1\n2 1\n1\n2 3\n1\n1\n2 5\n1"
+    }
+  ]
+}

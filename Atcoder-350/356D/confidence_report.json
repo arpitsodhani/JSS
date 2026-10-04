@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9593261113886113,
+  "clauses": [
+    {
+      "clause": "compute_sum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "count_bits",
+      "confidence": 0.8785544455544454
+    },
+    {
+      "clause": "main",
+      "confidence": 0.95875
+    },
+    {
+      "clause": "read_input",
+      "confidence": 1.0
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "get_beat_value",
+          "signature": "",
+          "code": "int get_beat_value(char* note) {\n    if (strcmp(note, \"o\") == 0) return 4;\n    if (strcmp(note, \"o|\") == 0) return 2;\n    if (strcmp(note, \".|\") == 0) return 1;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char line[10000];\n    fgets(line, sizeof(line), stdin);\n    char* token = strtok(line, \" \\n\");\n    int first = 1;\n    while (token) {\n        if (!first) printf(\" \");\n        printf(\"%d\", get_beat_value(token));\n        first = 0;\n        token = strtok(NULL, \" \\n\");\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "get_beat_value",
+          "signature": "",
+          "code": "int get_beat_value(char* note) {\n    if (note[0] == 'o' && note[1] == '\\0') return 4;\n    if (note[0] == 'o' && note[1] == '|') return 2;\n    if (note[0] == '.' && note[1] == '|') return 1;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char input[10000];\n    fgets(input, sizeof(input), stdin);\n    char* tok = strtok(input, \" \\n\");\n    int isFirst = 1;\n    while (tok != NULL) {\n        if (isFirst) isFirst = 0;\n        else printf(\" \");\n        printf(\"%d\", get_beat_value(tok));\n        tok = strtok(NULL, \" \\n\");\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "get_beat_value",
+          "signature": "",
+          "code": "int get_beat_value(char* s) {\n    if (strcmp(s, \"o\") == 0) return 4;\n    else if (strcmp(s, \"o|\") == 0) return 2;\n    else if (strcmp(s, \".|\") == 0) return 1;\n    else return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char buffer[10000];\n    fgets(buffer, sizeof(buffer), stdin);\n    char* t = strtok(buffer, \" \\n\");\n    int count = 0;\n    while (t) {\n        if (count++) printf(\" \");\n        printf(\"%d\", get_beat_value(t));\n        t = strtok(NULL, \" \\n\");\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "get_beat_value",
+          "signature": "",
+          "code": "int get_beat_value(char* note) {\n    if (!strcmp(note, \"o\")) return 4;\n    if (!strcmp(note, \"o|\")) return 2;\n    if (!strcmp(note, \".|\")) return 1;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char str[10000];\n    fgets(str, sizeof(str), stdin);\n    char* p = strtok(str, \" \\n\");\n    int i = 0;\n    while (p) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", get_beat_value(p));\n        i++;\n        p = strtok(NULL, \" \\n\");\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "get_beat_value",
+          "signature": "",
+          "code": "int get_beat_value(char* note) {\n    if (note[0] == 'o') {\n        if (note[1] == '\\0') return 4;\n        if (note[1] == '|') return 2;\n    } else if (note[0] == '.' && note[1] == '|') {\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char data[10000];\n    fgets(data, sizeof(data), stdin);\n    char* word = strtok(data, \" \\n\");\n    int idx = 0;\n    while (word != NULL) {\n        if (idx++) printf(\" \");\n        printf(\"%d\", get_beat_value(word));\n        word = strtok(NULL, \" \\n\");\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

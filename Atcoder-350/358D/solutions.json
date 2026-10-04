@@ -1,0 +1,179 @@
+{
+  "problem_id": "358D",
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrays",
+          "signature": "void read_arrays(int n, int m, int boxes[], int people[])",
+          "code": "void read_arrays(int n, int m, int boxes[], int people[]) { for(int i = 0; i < n; i++) scanf(\"%d\", &boxes[i]); for(int i = 0; i < m; i++) scanf(\"%d\", &people[i]); }"
+        },
+        {
+          "clause_id": "compare_int",
+          "signature": "int compare_int(const void *a, const void *b)",
+          "code": "int compare_int(const void *a, const void *b) { return (*(int*)a - *(int*)b); }"
+        },
+        {
+          "clause_id": "sort_arrays",
+          "signature": "void sort_arrays(int n, int m, int boxes[], int people[])",
+          "code": "void sort_arrays(int n, int m, int boxes[], int people[]) { qsort(boxes, n, sizeof(int), compare_int); qsort(people, m, sizeof(int), compare_int); }"
+        },
+        {
+          "clause_id": "match_boxes_to_people",
+          "signature": "long long match_boxes_to_people(int n, int m, int boxes[], int people[])",
+          "code": "long long match_boxes_to_people(int n, int m, int boxes[], int people[]) { int box_idx = 0, person_idx = 0; long long total = 0; while(person_idx < m) { if(box_idx >= n) return -1; if(boxes[box_idx] >= people[person_idx]) { total += boxes[box_idx]; person_idx++; } box_idx++; } return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m; scanf(\"%d%d\", &n, &m); int boxes[200005], people[200005]; read_arrays(n, m, boxes, people); sort_arrays(n, m, boxes, people); long long result = match_boxes_to_people(n, m, boxes, people); printf(\"%lld\\n\", result); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrays",
+          "signature": "void read_arrays(int n, int m, int boxes[], int people[])",
+          "code": "void read_arrays(int n, int m, int boxes[], int people[]) { int i; for(i = 0; i < n; i++) scanf(\"%d\", boxes + i); for(i = 0; i < m; i++) scanf(\"%d\", people + i); }"
+        },
+        {
+          "clause_id": "compare_int",
+          "signature": "int compare_int(const void *a, const void *b)",
+          "code": "int compare_int(const void *a, const void *b) { int x = *(int*)a; int y = *(int*)b; return x - y; }"
+        },
+        {
+          "clause_id": "sort_arrays",
+          "signature": "void sort_arrays(int n, int m, int boxes[], int people[])",
+          "code": "void sort_arrays(int n, int m, int boxes[], int people[]) { qsort(boxes, n, sizeof(int), compare_int); qsort(people, m, sizeof(int), compare_int); }"
+        },
+        {
+          "clause_id": "match_boxes_to_people",
+          "signature": "long long match_boxes_to_people(int n, int m, int boxes[], int people[])",
+          "code": "long long match_boxes_to_people(int n, int m, int boxes[], int people[]) { int b = 0, p = 0; long long cost = 0; while(p < m) { if(b >= n) return -1; if(boxes[b] >= people[p]) { cost += boxes[b]; p++; } b++; } return cost; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m; scanf(\"%d %d\", &n, &m); int box_sizes[200005], person_needs[200005]; read_arrays(n, m, box_sizes, person_needs); sort_arrays(n, m, box_sizes, person_needs); long long answer = match_boxes_to_people(n, m, box_sizes, person_needs); printf(\"%lld\\n\", answer); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrays",
+          "signature": "void read_arrays(int n, int m, int boxes[], int people[])",
+          "code": "void read_arrays(int n, int m, int boxes[], int people[]) { for(int j = 0; j < n; j++) scanf(\"%d\", &boxes[j]); for(int j = 0; j < m; j++) scanf(\"%d\", &people[j]); }"
+        },
+        {
+          "clause_id": "compare_int",
+          "signature": "int compare_int(const void *a, const void *b)",
+          "code": "int compare_int(const void *a, const void *b) { return *(int*)a - *(int*)b; }"
+        },
+        {
+          "clause_id": "sort_arrays",
+          "signature": "void sort_arrays(int n, int m, int boxes[], int people[])",
+          "code": "void sort_arrays(int n, int m, int boxes[], int people[]) { qsort(boxes, n, sizeof(int), compare_int); qsort(people, m, sizeof(int), compare_int); }"
+        },
+        {
+          "clause_id": "match_boxes_to_people",
+          "signature": "long long match_boxes_to_people(int n, int m, int boxes[], int people[])",
+          "code": "long long match_boxes_to_people(int n, int m, int boxes[], int people[]) { int box_pos = 0, person_pos = 0; long long sum = 0; while(person_pos < m && box_pos < n) { if(boxes[box_pos] >= people[person_pos]) { sum += boxes[box_pos]; person_pos++; } box_pos++; } return (person_pos == m) ? sum : -1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m; scanf(\"%d%d\", &n, &m); int available[200005], required[200005]; read_arrays(n, m, available, required); sort_arrays(n, m, available, required); long long total = match_boxes_to_people(n, m, available, required); printf(\"%lld\\n\", total); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrays",
+          "signature": "void read_arrays(int n, int m, int boxes[], int people[])",
+          "code": "void read_arrays(int n, int m, int boxes[], int people[]) { int k; for(k = 0; k < n; k++) scanf(\"%d\", &boxes[k]); for(k = 0; k < m; k++) scanf(\"%d\", &people[k]); }"
+        },
+        {
+          "clause_id": "compare_int",
+          "signature": "int compare_int(const void *a, const void *b)",
+          "code": "int compare_int(const void *a, const void *b) { int first = *(int*)a, second = *(int*)b; return first - second; }"
+        },
+        {
+          "clause_id": "sort_arrays",
+          "signature": "void sort_arrays(int n, int m, int boxes[], int people[])",
+          "code": "void sort_arrays(int n, int m, int boxes[], int people[]) { qsort(boxes, n, sizeof(int), compare_int); qsort(people, m, sizeof(int), compare_int); }"
+        },
+        {
+          "clause_id": "match_boxes_to_people",
+          "signature": "long long match_boxes_to_people(int n, int m, int boxes[], int people[])",
+          "code": "long long match_boxes_to_people(int n, int m, int boxes[], int people[]) { int box_i = 0, person_i = 0; long long total_cost = 0; for(person_i = 0; person_i < m; person_i++) { while(box_i < n && boxes[box_i] < people[person_i]) box_i++; if(box_i >= n) return -1; total_cost += boxes[box_i]; box_i++; } return total_cost; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m; scanf(\"%d %d\", &n, &m); int box_array[200005], person_array[200005]; read_arrays(n, m, box_array, person_array); sort_arrays(n, m, box_array, person_array); long long result = match_boxes_to_people(n, m, box_array, person_array); printf(\"%lld\\n\", result); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrays",
+          "signature": "void read_arrays(int n, int m, int boxes[], int people[])",
+          "code": "void read_arrays(int n, int m, int boxes[], int people[]) { for(int idx = 0; idx < n; idx++) scanf(\"%d\", &boxes[idx]); for(int idx = 0; idx < m; idx++) scanf(\"%d\", &people[idx]); }"
+        },
+        {
+          "clause_id": "compare_int",
+          "signature": "int compare_int(const void *a, const void *b)",
+          "code": "int compare_int(const void *a, const void *b) { return (*(int*)a) - (*(int*)b); }"
+        },
+        {
+          "clause_id": "sort_arrays",
+          "signature": "void sort_arrays(int n, int m, int boxes[], int people[])",
+          "code": "void sort_arrays(int n, int m, int boxes[], int people[]) { qsort(boxes, n, sizeof(int), compare_int); qsort(people, m, sizeof(int), compare_int); }"
+        },
+        {
+          "clause_id": "match_boxes_to_people",
+          "signature": "long long match_boxes_to_people(int n, int m, int boxes[], int people[])",
+          "code": "long long match_boxes_to_people(int n, int m, int boxes[], int people[]) { int current_box = 0, current_person = 0; long long expense = 0; while(current_person < m) { if(current_box >= n) return -1; if(boxes[current_box] >= people[current_person]) { expense = expense + boxes[current_box]; current_person = current_person + 1; } current_box = current_box + 1; } return expense; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m; scanf(\"%d%d\", &n, &m); int gift_boxes[200005], recipients[200005]; read_arrays(n, m, gift_boxes, recipients); sort_arrays(n, m, gift_boxes, recipients); long long final_cost = match_boxes_to_people(n, m, gift_boxes, recipients); printf(\"%lld\\n\", final_cost); return 0; }"
+        }
+      ]
+    }
+  ]
+}

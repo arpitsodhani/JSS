@@ -1,0 +1,8 @@
+You are given a string S consisting of uppercase and lowercase English letters. We perform the following operation on S 10^{100} times: First, create a string T by changing uppercase letters in S to lowercase, and lowercase letters to uppercase. Then, concatenate S and T in this order to form a new S . Answer Q queries. The i -th query is as follows: Find the K_i -th character from the beginning of S after all operations are completed.
+
+**Constraints:**
+- 1 <= |S| <= 2 * 10^5
+- S consists of uppercase and lowercase English letters
+- 1 <= Q <= 2 * 10^5
+- 1 <= K_i <= 10^{18}
+- All input values are integers

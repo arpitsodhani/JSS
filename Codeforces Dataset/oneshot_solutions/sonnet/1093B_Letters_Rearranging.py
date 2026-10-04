@@ -1,0 +1,8 @@
+t = int(input())
+for _ in range(t):
+    s = input().strip()
+    
+    if len(set(s)) == 1:
+        print(-1)
+    else:
+        print(''.join(sorted(s)))

@@ -1,0 +1,70 @@
+{
+  "problem_id": "045_triangle_area",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    double a, h;\n    scanf(\"%lf %lf\", &a, &h);\n    double area = a * h / 2.0;\n    if (area == (int)area) {\n        printf(\"%.1f\\n\", area);\n    } else {\n        printf(\"%g\\n\", area);\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    double base, height;\n    scanf(\"%lf %lf\", &base, &height);\n    double result = (base * height) / 2.0;\n    if (result == (int)result) {\n        printf(\"%.1f\\n\", result);\n    } else {\n        printf(\"%g\\n\", result);\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    double b, h;\n    scanf(\"%lf %lf\", &b, &h);\n    double area = b * h * 0.5;\n    if (area == (int)area) {\n        printf(\"%.1f\\n\", area);\n    } else {\n        printf(\"%g\\n\", area);\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    double width, height;\n    scanf(\"%lf %lf\", &width, &height);\n    double tri_area = width * height / 2;\n    if (tri_area == (int)tri_area) {\n        printf(\"%.1f\\n\", tri_area);\n    } else {\n        printf(\"%g\\n\", tri_area);\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    double a, h;\n    scanf(\"%lf %lf\", &a, &h);\n    double ans = (a * h) / 2.0;\n    if (ans == (int)ans) {\n        printf(\"%.1f\\n\", ans);\n    } else {\n        printf(\"%g\\n\", ans);\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "build_pref",
+          "signature": "void build_pref(int n, const int *a, int *pref)",
+          "code": "int *seen=(int*)calloc((size_t)(n+1),sizeof(int));\nint c=0;\nfor(int i=0;i<n;i++){\n  int x=a[i];\n  if(!seen[x]){ seen[x]=1; c++; }\n  pref[i]=c;\n}\nfree(seen);\n"
+        },
+        {
+          "clause_id": "build_suf",
+          "signature": "void build_suf(int n, const int *a, int *suf)",
+          "code": "int *seen=(int*)calloc((size_t)(n+1),sizeof(int));\nint c=0;\nfor(int i=n-1;i>=0;i--){\n  int x=a[i];\n  if(!seen[x]){ seen[x]=1; c++; }\n  suf[i]=c;\n}\nfree(seen);\n"
+        },
+        {
+          "clause_id": "max_split",
+          "signature": "int max_split(int n, const int *pref, const int *suf)",
+          "code": "int best=0;\nfor(int i=0;i<n-1;i++){\n  int v=pref[i]+suf[i+1];\n  if(v>best) best=v;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; int *a=(int*)malloc((size_t)300000*sizeof(int)); read_input(&n,a); int *pref=(int*)malloc((size_t)n*sizeof(int)); int *suf=(int*)malloc((size_t)n*sizeof(int)); build_pref(n,a,pref); build_suf(n,a,suf); int ans=max_split(n,pref,suf); print_int(ans); free(a); free(pref); free(suf); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "build_pref",
+          "signature": "void build_pref(int n, const int *a, int *pref)",
+          "code": "int *seen=(int*)calloc((size_t)(n+1),sizeof(int));\nint c=0;\nfor(int i=0;i<n;i++){\n  int x=a[i];\n  if(!seen[x]){ seen[x]=1; c++; }\n  pref[i]=c;\n}\nfree(seen);\n"
+        },
+        {
+          "clause_id": "build_suf",
+          "signature": "void build_suf(int n, const int *a, int *suf)",
+          "code": "int *seen=(int*)calloc((size_t)(n+1),sizeof(int));\nint c=0;\nfor(int i=n-1;i>=0;i--){\n  int x=a[i];\n  if(!seen[x]){ seen[x]=1; c++; }\n  suf[i]=c;\n}\nfree(seen);\n"
+        },
+        {
+          "clause_id": "max_split",
+          "signature": "int max_split(int n, const int *pref, const int *suf)",
+          "code": "int best=0;\nfor(int i=0;i<n-1;i++){\n  int v=pref[i]+suf[i+1];\n  if(v>best) best=v;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; int *a=(int*)malloc((size_t)300000*sizeof(int)); read_input(&n,a); int *pref=(int*)malloc((size_t)n*sizeof(int)); int *suf=(int*)malloc((size_t)n*sizeof(int)); build_pref(n,a,pref); build_suf(n,a,suf); int ans=max_split(n,pref,suf); print_int(ans); free(a); free(pref); free(suf); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "build_pref",
+          "signature": "void build_pref(int n, const int *a, int *pref)",
+          "code": "int *seen=(int*)calloc((size_t)(n+1),sizeof(int));\nint c=0;\nfor(int i=0;i<n;i++){\n  int x=a[i];\n  if(!seen[x]){ seen[x]=1; c++; }\n  pref[i]=c;\n}\nfree(seen);\n"
+        },
+        {
+          "clause_id": "build_suf",
+          "signature": "void build_suf(int n, const int *a, int *suf)",
+          "code": "int *seen=(int*)calloc((size_t)(n+1),sizeof(int));\nint c=0;\nfor(int i=n-1;i>=0;i--){\n  int x=a[i];\n  if(!seen[x]){ seen[x]=1; c++; }\n  suf[i]=c;\n}\nfree(seen);\n"
+        },
+        {
+          "clause_id": "max_split",
+          "signature": "int max_split(int n, const int *pref, const int *suf)",
+          "code": "int best=0;\nfor(int i=0;i<n-1;i++){\n  int v=pref[i]+suf[i+1];\n  if(v>best) best=v;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; int *a=(int*)malloc((size_t)300000*sizeof(int)); read_input(&n,a); int *pref=(int*)malloc((size_t)n*sizeof(int)); int *suf=(int*)malloc((size_t)n*sizeof(int)); build_pref(n,a,pref); build_suf(n,a,suf); int ans=max_split(n,pref,suf); print_int(ans); free(a); free(pref); free(suf); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "build_pref",
+          "signature": "void build_pref(int n, const int *a, int *pref)",
+          "code": "int *seen=(int*)calloc((size_t)(n+1),sizeof(int));\nint c=0;\nfor(int i=0;i<n;i++){\n  int x=a[i];\n  if(!seen[x]){ seen[x]=1; c++; }\n  pref[i]=c;\n}\nfree(seen);\n"
+        },
+        {
+          "clause_id": "build_suf",
+          "signature": "void build_suf(int n, const int *a, int *suf)",
+          "code": "int *seen=(int*)calloc((size_t)(n+1),sizeof(int));\nint c=0;\nfor(int i=n-1;i>=0;i--){\n  int x=a[i];\n  if(!seen[x]){ seen[x]=1; c++; }\n  suf[i]=c;\n}\nfree(seen);\n"
+        },
+        {
+          "clause_id": "max_split",
+          "signature": "int max_split(int n, const int *pref, const int *suf)",
+          "code": "int best=0;\nfor(int i=0;i<n-1;i++){\n  int v=pref[i]+suf[i+1];\n  if(v>best) best=v;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; int *a=(int*)malloc((size_t)300000*sizeof(int)); read_input(&n,a); int *pref=(int*)malloc((size_t)n*sizeof(int)); int *suf=(int*)malloc((size_t)n*sizeof(int)); build_pref(n,a,pref); build_suf(n,a,suf); int ans=max_split(n,pref,suf); print_int(ans); free(a); free(pref); free(suf); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *a)",
+          "code": "scanf(\"%d\", n); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "build_pref",
+          "signature": "void build_pref(int n, const int *a, int *pref)",
+          "code": "int *seen=(int*)calloc((size_t)(n+1),sizeof(int));\nint c=0;\nfor(int i=0;i<n;i++){\n  int x=a[i];\n  if(!seen[x]){ seen[x]=1; c++; }\n  pref[i]=c;\n}\nfree(seen);\n"
+        },
+        {
+          "clause_id": "build_suf",
+          "signature": "void build_suf(int n, const int *a, int *suf)",
+          "code": "int *seen=(int*)calloc((size_t)(n+1),sizeof(int));\nint c=0;\nfor(int i=n-1;i>=0;i--){\n  int x=a[i];\n  if(!seen[x]){ seen[x]=1; c++; }\n  suf[i]=c;\n}\nfree(seen);\n"
+        },
+        {
+          "clause_id": "max_split",
+          "signature": "int max_split(int n, const int *pref, const int *suf)",
+          "code": "int best=0;\nfor(int i=0;i<n-1;i++){\n  int v=pref[i]+suf[i+1];\n  if(v>best) best=v;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n; int *a=(int*)malloc((size_t)300000*sizeof(int)); read_input(&n,a); int *pref=(int*)malloc((size_t)n*sizeof(int)); int *suf=(int*)malloc((size_t)n*sizeof(int)); build_pref(n,a,pref); build_suf(n,a,suf); int ans=max_split(n,pref,suf); print_int(ans); free(a); free(pref); free(suf); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

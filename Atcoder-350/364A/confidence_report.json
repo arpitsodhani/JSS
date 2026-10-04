@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9596729323308271,
+  "clauses": [
+    {
+      "clause": "check_consecutive_sweets",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9304473684210525
+    },
+    {
+      "clause": "read_dishes",
+      "confidence": 0.9485714285714287
+    }
+  ]
+}

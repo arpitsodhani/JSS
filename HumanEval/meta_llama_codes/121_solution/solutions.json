@@ -1,0 +1,76 @@
+{
+  "problem_num": 121,
+  "problem_name": "solution",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int numbers[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &numbers[i]);\n    }\n    \n    int sum_of_odds_at_even_positions = 0;\n    for (int index = 0; index < n; index += 2) {\n        if (numbers[index] % 2 != 0) {\n            sum_of_odds_at_even_positions += numbers[index];\n        }\n    }\n    \n    printf(\"%d\\n\", sum_of_odds_at_even_positions);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int arr[1000];\n    int i = 0;\n    while (i < n) {\n        scanf(\"%d\", &arr[i]);\n        i++;\n    }\n    \n    int result = 0;\n    for (int pos = 0; pos < n; pos++) {\n        if (pos % 2 == 0 && arr[pos] % 2 == 1) {\n            result += arr[pos];\n        }\n    }\n    \n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n, vals[1000], total = 0;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &vals[i]);\n    }\n    for (int i = 0; i < n; i += 2) {\n        if (vals[i] & 1) total += vals[i];\n    }\n    printf(\"%d\\n\", total);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int data[1000];\n    for (int k = 0; k < n; k++) {\n        scanf(\"%d\", &data[k]);\n    }\n    \n    int accumulator = 0;\n    int idx = 0;\n    while (idx < n) {\n        if (data[idx] % 2 != 0) {\n            accumulator += data[idx];\n        }\n        idx += 2;\n    }\n    \n    printf(\"%d\\n\", accumulator);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n, a[1000], s = 0;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (int i = 0; i < n; i += 2) if (a[i] & 1) s += a[i];\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    }
+  ]
+}

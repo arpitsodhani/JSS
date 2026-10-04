@@ -1,0 +1,220 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_primitive_root",
+          "signature": "long long find_primitive_root(long long p)",
+          "implementations": [
+            {
+              "code": "long long find_primitive_root(long long p) {\n    long long phi = p - 1;\n    long long factors[100], factor_count = 0;\n    long long n = phi;\n    \n    for (long long i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            factors[factor_count++] = i;\n            while (n % i == 0) n /= i;\n        }\n    }\n    if (n > 1) factors[factor_count++] = n;\n    \n    for (long long g = 2; g < p; g++) {\n        int is_root = 1;\n        for (int i = 0; i < factor_count; i++) {\n            long long exp = phi / factors[i];\n            long long result = 1, base = g;\n            while (exp > 0) {\n                if (exp & 1) result = (result * base) % p;\n                base = (base * base) % p;\n                exp >>= 1;\n            }\n            if (result == 1) {\n                is_root = 0;\n                break;\n            }\n        }\n        if (is_root) return g;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long find_primitive_root(long long p) {\n    long long phi = p - 1;\n    long long factors[100], factor_count = 0;\n    long long n = phi;\n    \n    for (long long i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            factors[factor_count++] = i;\n            while (n % i == 0) n /= i;\n        }\n    }\n    if (n > 1) factors[factor_count++] = n;\n    \n    for (long long g = 2; g < p; g++) {\n        int is_root = 1;\n        for (int i = 0; i < factor_count; i++) {\n            long long exp = phi / factors[i];\n            long long result = 1, base = g;\n            while (exp > 0) {\n                if (exp & 1) result = (result * base) % p;\n                base = (base * base) % p;\n                exp >>= 1;\n            }\n            if (result == 1) {\n                is_root = 0;\n                break;\n            }\n        }\n        if (is_root) return g;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long find_primitive_root(long long p) {\n    long long phi = p - 1;\n    long long factors[100], factor_count = 0;\n    long long n = phi;\n    \n    for (long long i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            factors[factor_count++] = i;\n            while (n % i == 0) n /= i;\n        }\n    }\n    if (n > 1) factors[factor_count++] = n;\n    \n    for (long long g = 2; g < p; g++) {\n        int is_root = 1;\n        for (int i = 0; i < factor_count; i++) {\n            long long exp = phi / factors[i];\n            long long result = 1, base = g;\n            while (exp > 0) {\n                if (exp & 1) result = (result * base) % p;\n                base = (base * base) % p;\n                exp >>= 1;\n            }\n            if (result == 1) {\n                is_root = 0;\n                break;\n            }\n        }\n        if (is_root) return g;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long find_primitive_root(long long p) {\n    long long phi = p - 1;\n    long long factors[100], factor_count = 0;\n    long long n = phi;\n    \n    for (long long i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            factors[factor_count++] = i;\n            while (n % i == 0) n /= i;\n        }\n    }\n    if (n > 1) factors[factor_count++] = n;\n    \n    for (long long g = 2; g < p; g++) {\n        int is_root = 1;\n        for (int i = 0; i < factor_count; i++) {\n            long long exp = phi / factors[i];\n            long long result = 1, base = g;\n            while (exp > 0) {\n                if (exp & 1) result = (result * base) % p;\n                base = (base * base) % p;\n                exp >>= 1;\n            }\n            if (result == 1) {\n                is_root = 0;\n                break;\n            }\n        }\n        if (is_root) return g;\n    }\n    return -1;\n}"
+            },
+            {
+              "code": "long long find_primitive_root(long long p) {\n    long long phi = p - 1;\n    long long factors[100], factor_count = 0;\n    long long n = phi;\n    \n    for (long long i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            factors[factor_count++] = i;\n            while (n % i == 0) n /= i;\n        }\n    }\n    if (n > 1) factors[factor_count++] = n;\n    \n    for (long long g = 2; g < p; g++) {\n        int is_root = 1;\n        for (int i = 0; i < factor_count; i++) {\n            long long exp = phi / factors[i];\n            long long result = 1, base = g;\n            while (exp > 0) {\n                if (exp & 1) result = (result * base) % p;\n                base = (base * base) % p;\n                exp >>= 1;\n            }\n            if (result == 1) {\n                is_root = 0;\n                break;\n            }\n        }\n        if (is_root) return g;\n    }\n    return -1;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "bit_reverse_copy",
+          "signature": "void bit_reverse_copy(long long *a, long long *rev, int n)",
+          "implementations": [
+            {
+              "code": "void bit_reverse_copy(long long *a, long long *rev, int n) {\n    for (int i = 0; i < n; i++) {\n        int r = 0, k = i, logn = 0;\n        int temp = n;\n        while (temp > 1) {\n            logn++;\n            temp >>= 1;\n        }\n        for (int j = 0; j < logn; j++) {\n            r = (r << 1) | (k & 1);\n            k >>= 1;\n        }\n        rev[r] = a[i];\n    }\n}"
+            },
+            {
+              "code": "void bit_reverse_copy(long long *a, long long *rev, int n) {\n    for (int i = 0; i < n; i++) {\n        int r = 0, k = i, logn = 0;\n        int temp = n;\n        while (temp > 1) {\n            logn++;\n            temp >>= 1;\n        }\n        for (int j = 0; j < logn; j++) {\n            r = (r << 1) | (k & 1);\n            k >>= 1;\n        }\n        rev[r] = a[i];\n    }\n}"
+            },
+            {
+              "code": "void bit_reverse_copy(long long *a, long long *rev, int n) {\n    for (int i = 0; i < n; i++) {\n        int r = 0, k = i, logn = 0;\n        int temp = n;\n        while (temp > 1) {\n            logn++;\n            temp >>= 1;\n        }\n        for (int j = 0; j < logn; j++) {\n            r = (r << 1) | (k & 1);\n            k >>= 1;\n        }\n        rev[r] = a[i];\n    }\n}"
+            },
+            {
+              "code": "void bit_reverse_copy(long long *a, long long *rev, int n) {\n    for (int i = 0; i < n; i++) {\n        int r = 0, k = i, logn = 0;\n        int temp = n;\n        while (temp > 1) {\n            logn++;\n            temp >>= 1;\n        }\n        for (int j = 0; j < logn; j++) {\n            r = (r << 1) | (k & 1);\n            k >>= 1;\n        }\n        rev[r] = a[i];\n    }\n}"
+            },
+            {
+              "code": "void bit_reverse_copy(long long *a, long long *rev, int n) {\n    for (int i = 0; i < n; i++) {\n        int r = 0, k = i, logn = 0;\n        int temp = n;\n        while (temp > 1) {\n            logn++;\n            temp >>= 1;\n        }\n        for (int j = 0; j < logn; j++) {\n            r = (r << 1) | (k & 1);\n            k >>= 1;\n        }\n        rev[r] = a[i];\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "ntt_transform",
+          "signature": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse)",
+          "implementations": [
+            {
+              "code": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse) {\n    long long rev[100005];\n    bit_reverse_copy(a, rev, n);\n    for (int i = 0; i < n; i++) a[i] = rev[i];\n    \n    for (int len = 2; len <= n; len *= 2) {\n        long long w = 1, wn = root;\n        long long exp = (mod - 1) / len;\n        if (inverse) exp = (mod - 1) - exp;\n        \n        long long base = root;\n        while (exp > 0) {\n            if (exp & 1) wn = (wn * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        \n        for (int start = 0; start < n; start += len) {\n            w = 1;\n            for (int j = 0; j < len / 2; j++) {\n                long long u = a[start + j];\n                long long v = (a[start + j + len / 2] * w) % mod;\n                a[start + j] = (u + v) % mod;\n                a[start + j + len / 2] = (u - v + mod) % mod;\n                w = (w * wn) % mod;\n            }\n        }\n    }\n    \n    if (inverse) {\n        long long n_inv = 1, base = n, exp = mod - 2;\n        while (exp > 0) {\n            if (exp & 1) n_inv = (n_inv * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        for (int i = 0; i < n; i++) {\n            a[i] = (a[i] * n_inv) % mod;\n        }\n    }\n}"
+            },
+            {
+              "code": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse) {\n    long long rev[100005];\n    bit_reverse_copy(a, rev, n);\n    for (int i = 0; i < n; i++) a[i] = rev[i];\n    \n    for (int len = 2; len <= n; len *= 2) {\n        long long w = 1, wn = root;\n        long long exp = (mod - 1) / len;\n        if (inverse) exp = (mod - 1) - exp;\n        \n        long long base = root;\n        while (exp > 0) {\n            if (exp & 1) wn = (wn * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        \n        for (int start = 0; start < n; start += len) {\n            w = 1;\n            for (int j = 0; j < len / 2; j++) {\n                long long u = a[start + j];\n                long long v = (a[start + j + len / 2] * w) % mod;\n                a[start + j] = (u + v) % mod;\n                a[start + j + len / 2] = (u - v + mod) % mod;\n                w = (w * wn) % mod;\n            }\n        }\n    }\n    \n    if (inverse) {\n        long long n_inv = 1, base = n, exp = mod - 2;\n        while (exp > 0) {\n            if (exp & 1) n_inv = (n_inv * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        for (int i = 0; i < n; i++) {\n            a[i] = (a[i] * n_inv) % mod;\n        }\n    }\n}"
+            },
+            {
+              "code": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse) {\n    long long rev[100005];\n    bit_reverse_copy(a, rev, n);\n    for (int i = 0; i < n; i++) a[i] = rev[i];\n    \n    for (int len = 2; len <= n; len *= 2) {\n        long long w = 1, wn = root;\n        long long exp = (mod - 1) / len;\n        if (inverse) exp = (mod - 1) - exp;\n        \n        long long base = root;\n        while (exp > 0) {\n            if (exp & 1) wn = (wn * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        \n        for (int start = 0; start < n; start += len) {\n            w = 1;\n            for (int j = 0; j < len / 2; j++) {\n                long long u = a[start + j];\n                long long v = (a[start + j + len / 2] * w) % mod;\n                a[start + j] = (u + v) % mod;\n                a[start + j + len / 2] = (u - v + mod) % mod;\n                w = (w * wn) % mod;\n            }\n        }\n    }\n    \n    if (inverse) {\n        long long n_inv = 1, base = n, exp = mod - 2;\n        while (exp > 0) {\n            if (exp & 1) n_inv = (n_inv * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        for (int i = 0; i < n; i++) {\n            a[i] = (a[i] * n_inv) % mod;\n        }\n    }\n}"
+            },
+            {
+              "code": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse) {\n    long long rev[100005];\n    bit_reverse_copy(a, rev, n);\n    for (int i = 0; i < n; i++) a[i] = rev[i];\n    \n    for (int len = 2; len <= n; len *= 2) {\n        long long w = 1, wn = root;\n        long long exp = (mod - 1) / len;\n        if (inverse) exp = (mod - 1) - exp;\n        \n        long long base = root;\n        while (exp > 0) {\n            if (exp & 1) wn = (wn * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        \n        for (int start = 0; start < n; start += len) {\n            w = 1;\n            for (int j = 0; j < len / 2; j++) {\n                long long u = a[start + j];\n                long long v = (a[start + j + len / 2] * w) % mod;\n                a[start + j] = (u + v) % mod;\n                a[start + j + len / 2] = (u - v + mod) % mod;\n                w = (w * wn) % mod;\n            }\n        }\n    }\n    \n    if (inverse) {\n        long long n_inv = 1, base = n, exp = mod - 2;\n        while (exp > 0) {\n            if (exp & 1) n_inv = (n_inv * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        for (int i = 0; i < n; i++) {\n            a[i] = (a[i] * n_inv) % mod;\n        }\n    }\n}"
+            },
+            {
+              "code": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse) {\n    long long rev[100005];\n    bit_reverse_copy(a, rev, n);\n    for (int i = 0; i < n; i++) a[i] = rev[i];\n    \n    for (int len = 2; len <= n; len *= 2) {\n        long long w = 1, wn = root;\n        long long exp = (mod - 1) / len;\n        if (inverse) exp = (mod - 1) - exp;\n        \n        long long base = root;\n        while (exp > 0) {\n            if (exp & 1) wn = (wn * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        \n        for (int start = 0; start < n; start += len) {\n            w = 1;\n            for (int j = 0; j < len / 2; j++) {\n                long long u = a[start + j];\n                long long v = (a[start + j + len / 2] * w) % mod;\n                a[start + j] = (u + v) % mod;\n                a[start + j + len / 2] = (u - v + mod) % mod;\n                w = (w * wn) % mod;\n            }\n        }\n    }\n    \n    if (inverse) {\n        long long n_inv = 1, base = n, exp = mod - 2;\n        while (exp > 0) {\n            if (exp & 1) n_inv = (n_inv * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        for (int i = 0; i < n; i++) {\n            a[i] = (a[i] * n_inv) % mod;\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "compute_power_mod",
+          "signature": "long long compute_power_mod(long long base, long long exp, long long mod)",
+          "implementations": [
+            {
+              "code": "long long compute_power_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long compute_power_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long compute_power_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long compute_power_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+            },
+            {
+              "code": "long long compute_power_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return result;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    int n;\n    long long a[100005], mod = 998244353;\n    scanf(\"%d\", &n);\n    \n    int size = 1;\n    while (size < n) size *= 2;\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n    for (int i = n; i < size; i++) {\n        a[i] = 0;\n    }\n    \n    long long root = find_primitive_root(mod);\n    ntt_transform(a, size, root, mod, 0);\n    \n    for (int i = 0; i < size; i++) {\n        printf(\"%lld \", a[i]);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    long long a[100005], mod = 998244353;\n    scanf(\"%d\", &n);\n    \n    int size = 1;\n    while (size < n) size *= 2;\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n    for (int i = n; i < size; i++) {\n        a[i] = 0;\n    }\n    \n    long long root = find_primitive_root(mod);\n    ntt_transform(a, size, root, mod, 0);\n    \n    for (int i = 0; i < size; i++) {\n        printf(\"%lld \", a[i]);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    long long a[100005], mod = 998244353;\n    scanf(\"%d\", &n);\n    \n    int size = 1;\n    while (size < n) size *= 2;\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n    for (int i = n; i < size; i++) {\n        a[i] = 0;\n    }\n    \n    long long root = find_primitive_root(mod);\n    ntt_transform(a, size, root, mod, 0);\n    \n    for (int i = 0; i < size; i++) {\n        printf(\"%lld \", a[i]);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    long long a[100005], mod = 998244353;\n    scanf(\"%d\", &n);\n    \n    int size = 1;\n    while (size < n) size *= 2;\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n    for (int i = n; i < size; i++) {\n        a[i] = 0;\n    }\n    \n    long long root = find_primitive_root(mod);\n    ntt_transform(a, size, root, mod, 0);\n    \n    for (int i = 0; i < size; i++) {\n        printf(\"%lld \", a[i]);\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    long long a[100005], mod = 998244353;\n    scanf(\"%d\", &n);\n    \n    int size = 1;\n    while (size < n) size *= 2;\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n    for (int i = n; i < size; i++) {\n        a[i] = 0;\n    }\n    \n    long long root = find_primitive_root(mod);\n    ntt_transform(a, size, root, mod, 0);\n    \n    for (int i = 0; i < size; i++) {\n        printf(\"%lld \", a[i]);\n    }\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_primitive_root",
+          "signature": "long long find_primitive_root(long long p)",
+          "code": "long long find_primitive_root(long long p) {\n    long long phi = p - 1;\n    long long factors[100], factor_count = 0;\n    long long n = phi;\n    \n    for (long long i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            factors[factor_count++] = i;\n            while (n % i == 0) n /= i;\n        }\n    }\n    if (n > 1) factors[factor_count++] = n;\n    \n    for (long long g = 2; g < p; g++) {\n        int is_root = 1;\n        for (int i = 0; i < factor_count; i++) {\n            long long exp = phi / factors[i];\n            long long result = 1, base = g;\n            while (exp > 0) {\n                if (exp & 1) result = (result * base) % p;\n                base = (base * base) % p;\n                exp >>= 1;\n            }\n            if (result == 1) {\n                is_root = 0;\n                break;\n            }\n        }\n        if (is_root) return g;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "bit_reverse_copy",
+          "signature": "void bit_reverse_copy(long long *a, long long *rev, int n)",
+          "code": "void bit_reverse_copy(long long *a, long long *rev, int n) {\n    for (int i = 0; i < n; i++) {\n        int r = 0, k = i, logn = 0;\n        int temp = n;\n        while (temp > 1) {\n            logn++;\n            temp >>= 1;\n        }\n        for (int j = 0; j < logn; j++) {\n            r = (r << 1) | (k & 1);\n            k >>= 1;\n        }\n        rev[r] = a[i];\n    }\n}"
+        },
+        {
+          "clause_id": "ntt_transform",
+          "signature": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse)",
+          "code": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse) {\n    long long rev[100005];\n    bit_reverse_copy(a, rev, n);\n    for (int i = 0; i < n; i++) a[i] = rev[i];\n    \n    for (int len = 2; len <= n; len *= 2) {\n        long long w = 1, wn = root;\n        long long exp = (mod - 1) / len;\n        if (inverse) exp = (mod - 1) - exp;\n        \n        long long base = root;\n        while (exp > 0) {\n            if (exp & 1) wn = (wn * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        \n        for (int start = 0; start < n; start += len) {\n            w = 1;\n            for (int j = 0; j < len / 2; j++) {\n                long long u = a[start + j];\n                long long v = (a[start + j + len / 2] * w) % mod;\n                a[start + j] = (u + v) % mod;\n                a[start + j + len / 2] = (u - v + mod) % mod;\n                w = (w * wn) % mod;\n            }\n        }\n    }\n    \n    if (inverse) {\n        long long n_inv = 1, base = n, exp = mod - 2;\n        while (exp > 0) {\n            if (exp & 1) n_inv = (n_inv * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        for (int i = 0; i < n; i++) {\n            a[i] = (a[i] * n_inv) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long a[100005], mod = 998244353;\n    scanf(\"%d\", &n);\n    \n    int size = 1;\n    while (size < n) size *= 2;\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n    for (int i = n; i < size; i++) {\n        a[i] = 0;\n    }\n    \n    long long root = find_primitive_root(mod);\n    ntt_transform(a, size, root, mod, 0);\n    \n    for (int i = 0; i < size; i++) {\n        printf(\"%lld \", a[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_primitive_root",
+          "signature": "long long find_primitive_root(long long p)",
+          "code": "long long find_primitive_root(long long p) {\n    long long phi = p - 1;\n    long long factors[100], factor_count = 0;\n    long long n = phi;\n    \n    for (long long i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            factors[factor_count++] = i;\n            while (n % i == 0) n /= i;\n        }\n    }\n    if (n > 1) factors[factor_count++] = n;\n    \n    for (long long g = 2; g < p; g++) {\n        int is_root = 1;\n        for (int i = 0; i < factor_count; i++) {\n            long long exp = phi / factors[i];\n            long long result = 1, base = g;\n            while (exp > 0) {\n                if (exp & 1) result = (result * base) % p;\n                base = (base * base) % p;\n                exp >>= 1;\n            }\n            if (result == 1) {\n                is_root = 0;\n                break;\n            }\n        }\n        if (is_root) return g;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "bit_reverse_copy",
+          "signature": "void bit_reverse_copy(long long *a, long long *rev, int n)",
+          "code": "void bit_reverse_copy(long long *a, long long *rev, int n) {\n    for (int i = 0; i < n; i++) {\n        int r = 0, k = i, logn = 0;\n        int temp = n;\n        while (temp > 1) {\n            logn++;\n            temp >>= 1;\n        }\n        for (int j = 0; j < logn; j++) {\n            r = (r << 1) | (k & 1);\n            k >>= 1;\n        }\n        rev[r] = a[i];\n    }\n}"
+        },
+        {
+          "clause_id": "ntt_transform",
+          "signature": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse)",
+          "code": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse) {\n    long long rev[100005];\n    bit_reverse_copy(a, rev, n);\n    for (int i = 0; i < n; i++) a[i] = rev[i];\n    \n    for (int len = 2; len <= n; len *= 2) {\n        long long w = 1, wn = root;\n        long long exp = (mod - 1) / len;\n        if (inverse) exp = (mod - 1) - exp;\n        \n        long long base = root;\n        while (exp > 0) {\n            if (exp & 1) wn = (wn * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        \n        for (int start = 0; start < n; start += len) {\n            w = 1;\n            for (int j = 0; j < len / 2; j++) {\n                long long u = a[start + j];\n                long long v = (a[start + j + len / 2] * w) % mod;\n                a[start + j] = (u + v) % mod;\n                a[start + j + len / 2] = (u - v + mod) % mod;\n                w = (w * wn) % mod;\n            }\n        }\n    }\n    \n    if (inverse) {\n        long long n_inv = 1, base = n, exp = mod - 2;\n        while (exp > 0) {\n            if (exp & 1) n_inv = (n_inv * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        for (int i = 0; i < n; i++) {\n            a[i] = (a[i] * n_inv) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long a[100005], mod = 998244353;\n    scanf(\"%d\", &n);\n    \n    int size = 1;\n    while (size < n) size *= 2;\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n    for (int i = n; i < size; i++) {\n        a[i] = 0;\n    }\n    \n    long long root = find_primitive_root(mod);\n    ntt_transform(a, size, root, mod, 0);\n    \n    for (int i = 0; i < size; i++) {\n        printf(\"%lld \", a[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_primitive_root",
+          "signature": "long long find_primitive_root(long long p)",
+          "code": "long long find_primitive_root(long long p) {\n    long long phi = p - 1;\n    long long factors[100], factor_count = 0;\n    long long n = phi;\n    \n    for (long long i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            factors[factor_count++] = i;\n            while (n % i == 0) n /= i;\n        }\n    }\n    if (n > 1) factors[factor_count++] = n;\n    \n    for (long long g = 2; g < p; g++) {\n        int is_root = 1;\n        for (int i = 0; i < factor_count; i++) {\n            long long exp = phi / factors[i];\n            long long result = 1, base = g;\n            while (exp > 0) {\n                if (exp & 1) result = (result * base) % p;\n                base = (base * base) % p;\n                exp >>= 1;\n            }\n            if (result == 1) {\n                is_root = 0;\n                break;\n            }\n        }\n        if (is_root) return g;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "bit_reverse_copy",
+          "signature": "void bit_reverse_copy(long long *a, long long *rev, int n)",
+          "code": "void bit_reverse_copy(long long *a, long long *rev, int n) {\n    for (int i = 0; i < n; i++) {\n        int r = 0, k = i, logn = 0;\n        int temp = n;\n        while (temp > 1) {\n            logn++;\n            temp >>= 1;\n        }\n        for (int j = 0; j < logn; j++) {\n            r = (r << 1) | (k & 1);\n            k >>= 1;\n        }\n        rev[r] = a[i];\n    }\n}"
+        },
+        {
+          "clause_id": "ntt_transform",
+          "signature": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse)",
+          "code": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse) {\n    long long rev[100005];\n    bit_reverse_copy(a, rev, n);\n    for (int i = 0; i < n; i++) a[i] = rev[i];\n    \n    for (int len = 2; len <= n; len *= 2) {\n        long long w = 1, wn = root;\n        long long exp = (mod - 1) / len;\n        if (inverse) exp = (mod - 1) - exp;\n        \n        long long base = root;\n        while (exp > 0) {\n            if (exp & 1) wn = (wn * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        \n        for (int start = 0; start < n; start += len) {\n            w = 1;\n            for (int j = 0; j < len / 2; j++) {\n                long long u = a[start + j];\n                long long v = (a[start + j + len / 2] * w) % mod;\n                a[start + j] = (u + v) % mod;\n                a[start + j + len / 2] = (u - v + mod) % mod;\n                w = (w * wn) % mod;\n            }\n        }\n    }\n    \n    if (inverse) {\n        long long n_inv = 1, base = n, exp = mod - 2;\n        while (exp > 0) {\n            if (exp & 1) n_inv = (n_inv * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        for (int i = 0; i < n; i++) {\n            a[i] = (a[i] * n_inv) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long a[100005], mod = 998244353;\n    scanf(\"%d\", &n);\n    \n    int size = 1;\n    while (size < n) size *= 2;\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n    for (int i = n; i < size; i++) {\n        a[i] = 0;\n    }\n    \n    long long root = find_primitive_root(mod);\n    ntt_transform(a, size, root, mod, 0);\n    \n    for (int i = 0; i < size; i++) {\n        printf(\"%lld \", a[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_primitive_root",
+          "signature": "long long find_primitive_root(long long p)",
+          "code": "long long find_primitive_root(long long p) {\n    long long phi = p - 1;\n    long long factors[100], factor_count = 0;\n    long long n = phi;\n    \n    for (long long i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            factors[factor_count++] = i;\n            while (n % i == 0) n /= i;\n        }\n    }\n    if (n > 1) factors[factor_count++] = n;\n    \n    for (long long g = 2; g < p; g++) {\n        int is_root = 1;\n        for (int i = 0; i < factor_count; i++) {\n            long long exp = phi / factors[i];\n            long long result = 1, base = g;\n            while (exp > 0) {\n                if (exp & 1) result = (result * base) % p;\n                base = (base * base) % p;\n                exp >>= 1;\n            }\n            if (result == 1) {\n                is_root = 0;\n                break;\n            }\n        }\n        if (is_root) return g;\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "bit_reverse_copy",
+          "signature": "void bit_reverse_copy(long long *a, long long *rev, int n)",
+          "code": "void bit_reverse_copy(long long *a, long long *rev, int n) {\n    for (int i = 0; i < n; i++) {\n        int r = 0, k = i, logn = 0;\n        int temp = n;\n        while (temp > 1) {\n            logn++;\n            temp >>= 1;\n        }\n        for (int j = 0; j < logn; j++) {\n            r = (r << 1) | (k & 1);\n            k >>= 1;\n        }\n        rev[r] = a[i];\n    }\n}"
+        },
+        {
+          "clause_id": "ntt_transform",
+          "signature": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse)",
+          "code": "void ntt_transform(long long *a, int n, long long root, long long mod, int inverse) {\n    long long rev[100005];\n    bit_reverse_copy(a, rev, n);\n    for (int i = 0; i < n; i++) a[i] = rev[i];\n    \n    for (int len = 2; len <= n; len *= 2) {\n        long long w = 1, wn = root;\n        long long exp = (mod - 1) / len;\n        if (inverse) exp = (mod - 1) - exp;\n        \n        long long base = root;\n        while (exp > 0) {\n            if (exp & 1) wn = (wn * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        \n        for (int start = 0; start < n; start += len) {\n            w = 1;\n            for (int j = 0; j < len / 2; j++) {\n                long long u = a[start + j];\n                long long v = (a[start + j + len / 2] * w) % mod;\n                a[start + j] = (u + v) % mod;\n                a[start + j + len / 2] = (u - v + mod) % mod;\n                w = (w * wn) % mod;\n            }\n        }\n    }\n    \n    if (inverse) {\n        long long n_inv = 1, base = n, exp = mod - 2;\n        while (exp > 0) {\n            if (exp & 1) n_inv = (n_inv * base) % mod;\n            base = (base * base) % mod;\n            exp >>= 1;\n        }\n        for (int i = 0; i < n; i++) {\n            a[i] = (a[i] * n_inv) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long a[100005], mod = 998244353;\n    scanf(\"%d\", &n);\n    \n    int size = 1;\n    while (size < n) size *= 2;\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n    for (int i = n; i < size; i++) {\n        a[i] = 0;\n    }\n    \n    long long root = find_primitive_root(mod);\n    ntt_transform(a, size, root, mod, 0);\n    \n    for (int i = 0; i < size; i++) {\n        printf(\"%lld \", a[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

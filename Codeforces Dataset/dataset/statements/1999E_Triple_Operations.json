@@ -1,0 +1,28 @@
+{
+  "contestId": 1999,
+  "index": "E",
+  "problem_id": "1999E",
+  "name": "Triple Operations",
+  "rating": 1300,
+  "tags": [
+    "dp",
+    "implementation",
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 24080,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Triple Operations",
+  "legend": "On the board Ivy wrote down all integers from l to r, inclusive.\n\nIn an operation, she does the following:\n\npick two numbers x and y on the board, erase them, and in their place write the numbers 3x and ⌊\ny\n\n\n3\n⌋. (Here ⌊∙⌋ denotes rounding down to the nearest integer).\n\nWhat is the minimum number of operations Ivy needs to make all numbers on the board equal 0? We have a proof that this is always possible.",
+  "input_spec": "The first line contains an integer t (1≤t≤104) — the number of test cases.\n\nThe only line of each test case contains two integers l and r (1≤l<r≤2⋅105).",
+  "output_spec": "For each test case, output a single integer — the minimum number of operations needed to make all numbers on the board equal 0.",
+  "note": "In the first test case, we can perform 5 operations as follows:\n1,2,3\n→\n\n\nx=1,y=2\n3,0,3\n→\n\n\nx=0,y=3\n1,0,3\n→\n\n\nx=0,y=3\n1,0,1\n→\n\n\nx=0,y=1\n0,0,1\n→\n\n\nx=0,y=1\n0,0,0.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n1 3\n2 4\n199999 200000\n19 84\n",
+      "output": "5\n6\n36\n263"
+    }
+  ]
+}

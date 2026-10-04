@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *u, int *v)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "is_bipartite",
+          "signature": "int is_bipartite(int n, int m, const int *u, const int *v)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int)); int *to=(int*)malloc((size_t)2*m*sizeof(int)); int *nx=(int*)malloc((size_t)2*m*sizeof(int)); for(int i=0;i<n;i++) head[i]=-1; int ec=0; for(int i=0;i<m;i++){ int a=u[i],b=v[i]; to[ec]=b; nx[ec]=head[a]; head[a]=ec++; to[ec]=a; nx[ec]=head[b]; head[b]=ec++; }\nint *col=(int*)malloc((size_t)n*sizeof(int)); for(int i=0;i<n;i++) col[i]=-1; int *q=(int*)malloc((size_t)n*sizeof(int));\nfor(int s=0;s<n;s++) if(col[s]<0){ int qh=0,qt=0; col[s]=0; q[qt++]=s; while(qh<qt){ int x=q[qh++]; for(int e=head[x];e!=-1;e=nx[e]){ int y=to[e]; if(col[y]<0){ col[y]=col[x]^1; q[qt++]=y; } else if(col[y]==col[x]){ free(head); free(to); free(nx); free(col); free(q); return 0; } } } }\nfree(head); free(to); free(nx); free(col); free(q); return 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int u[200005], v[200005]; read_graph(&n,&m,u,v); int ok=is_bipartite(n,m,u,v); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *u, int *v)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "is_bipartite",
+          "signature": "int is_bipartite(int n, int m, const int *u, const int *v)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int)); int *to=(int*)malloc((size_t)2*m*sizeof(int)); int *nx=(int*)malloc((size_t)2*m*sizeof(int)); for(int i=0;i<n;i++) head[i]=-1; int ec=0; for(int i=0;i<m;i++){ int a=u[i],b=v[i]; to[ec]=b; nx[ec]=head[a]; head[a]=ec++; to[ec]=a; nx[ec]=head[b]; head[b]=ec++; }\nint *col=(int*)malloc((size_t)n*sizeof(int)); for(int i=0;i<n;i++) col[i]=-1; int *st=(int*)malloc((size_t)n*sizeof(int));\nfor(int s=0;s<n;s++) if(col[s]<0){ int top=0; col[s]=0; st[top++]=s; while(top){ int x=st[--top]; for(int e=head[x];e!=-1;e=nx[e]){ int y=to[e]; if(col[y]<0){ col[y]=col[x]^1; st[top++]=y; } else if(col[y]==col[x]){ free(head); free(to); free(nx); free(col); free(st); return 0; } } } }\nfree(head); free(to); free(nx); free(col); free(st); return 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int u[200005], v[200005]; read_graph(&n,&m,u,v); int ok=is_bipartite(n,m,u,v); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *u, int *v)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "is_bipartite",
+          "signature": "int is_bipartite(int n, int m, const int *u, const int *v)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int)); int *to=(int*)malloc((size_t)2*m*sizeof(int)); int *nx=(int*)malloc((size_t)2*m*sizeof(int)); for(int i=0;i<n;i++) head[i]=-1; int ec=0; for(int i=0;i<m;i++){ int a=u[i],b=v[i]; to[ec]=b; nx[ec]=head[a]; head[a]=ec++; to[ec]=a; nx[ec]=head[b]; head[b]=ec++; }\nint *col=(int*)malloc((size_t)n*sizeof(int)); for(int i=0;i<n;i++) col[i]=-1; int *q=(int*)malloc((size_t)n*sizeof(int));\nfor(int s=0;s<n;s++) if(col[s]==-1){ int qh=0,qt=0; col[s]=0; q[qt++]=s; while(qh<qt){ int x=q[qh++]; for(int e=head[x];e!=-1;e=nx[e]){ int y=to[e]; if(col[y]==-1){ col[y]=col[x]^1; q[qt++]=y; } else if(col[y]==col[x]){ free(head); free(to); free(nx); free(col); free(q); return 0; } } } }\nfree(head); free(to); free(nx); free(col); free(q); return 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int u[200005], v[200005]; read_graph(&n,&m,u,v); int ok=is_bipartite(n,m,u,v); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *u, int *v)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "is_bipartite",
+          "signature": "int is_bipartite(int n, int m, const int *u, const int *v)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int)); int *to=(int*)malloc((size_t)2*m*sizeof(int)); int *nx=(int*)malloc((size_t)2*m*sizeof(int)); for(int i=0;i<n;i++) head[i]=-1; int ec=0; for(int i=0;i<m;i++){ int a=u[i],b=v[i]; to[ec]=b; nx[ec]=head[a]; head[a]=ec++; to[ec]=a; nx[ec]=head[b]; head[b]=ec++; }\nint *col=(int*)malloc((size_t)n*sizeof(int)); for(int i=0;i<n;i++) col[i]=-1; int *st=(int*)malloc((size_t)n*sizeof(int));\nfor(int s=0;s<n;s++) if(col[s]<0){ int top=0; col[s]=0; st[top++]=s; while(top){ int x=st[--top]; for(int e=head[x];e!=-1;e=nx[e]){ int y=to[e]; if(col[y]<0){ col[y]=col[x]^1; st[top++]=y; } else if(col[y]==col[x]){ free(head); free(to); free(nx); free(col); free(st); return 0; } } } }\nfree(head); free(to); free(nx); free(col); free(st); return 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int u[200005], v[200005]; read_graph(&n,&m,u,v); int ok=is_bipartite(n,m,u,v); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *u, int *v)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "is_bipartite",
+          "signature": "int is_bipartite(int n, int m, const int *u, const int *v)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int)); int *to=(int*)malloc((size_t)2*m*sizeof(int)); int *nx=(int*)malloc((size_t)2*m*sizeof(int)); for(int i=0;i<n;i++) head[i]=-1; int ec=0; for(int i=0;i<m;i++){ int a=u[i],b=v[i]; to[ec]=b; nx[ec]=head[a]; head[a]=ec++; to[ec]=a; nx[ec]=head[b]; head[b]=ec++; }\nint *col=(int*)malloc((size_t)n*sizeof(int)); for(int i=0;i<n;i++) col[i]=-1; int *q=(int*)malloc((size_t)n*sizeof(int));\nfor(int s=0;s<n;s++) if(col[s]<0){ int qh=0,qt=0; col[s]=0; q[qt++]=s; while(qh<qt){ int x=q[qh++]; for(int e=head[x];e!=-1;e=nx[e]){ int y=to[e]; if(col[y]<0){ col[y]=col[x]^1; q[qt++]=y; } else if(col[y]==col[x]){ free(head); free(to); free(nx); free(col); free(q); return 0; } } } }\nfree(head); free(to); free(nx); free(col); free(q); return 1;\n"
+        },
+        {
+          "clause_id": "print_yesno",
+          "signature": "void print_yesno(int ok)",
+          "code": "puts(ok?\"Yes\":\"No\");\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int u[200005], v[200005]; read_graph(&n,&m,u,v); int ok=is_bipartite(n,m,u,v); print_yesno(ok); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

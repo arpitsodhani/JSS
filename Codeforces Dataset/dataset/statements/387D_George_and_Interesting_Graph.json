@@ -1,0 +1,34 @@
+{
+  "contestId": 387,
+  "index": "D",
+  "problem_id": "387D",
+  "name": "George and Interesting Graph",
+  "rating": 2200,
+  "tags": [
+    "graph matchings"
+  ],
+  "points": 2000.0,
+  "solvedCount": 1207,
+  "source": "verbatim_cf_fetch",
+  "title": "D. George and Interesting Graph",
+  "legend": "George loves graphs. Most of all, he loves interesting graphs. We will assume that a directed graph is interesting, if it meets the following criteria:\n\nThe graph doesn't contain any multiple arcs;\nThere is vertex v (we'll call her the center), such that for any vertex of graph u, the graph contains arcs (u, v) and (v, u). Please note that the graph also contains loop (v, v).\nThe outdegree of all vertexes except for the center equals two and the indegree of all vertexes except for the center equals two. The outdegree of vertex u is the number of arcs that go out of u, the indegree of vertex u is the number of arcs that go in u. Please note that the graph can contain loops.\n\nHowever, not everything's that simple. George got a directed graph of n vertices and m arcs as a present. The graph didn't have any multiple arcs. As George loves interesting graphs, he wants to slightly alter the presented graph and transform it into an interesting one. In one alteration he can either remove an arbitrary existing arc from the graph or add an arbitrary arc to the graph.\n\nGeorge wonders: what is the minimum number of changes that he needs to obtain an interesting graph from the graph he's got as a present? Help George and find the answer to the question.",
+  "input_spec": "The first line contains two space-separated integers n and m (2 ≤ n ≤ 500, 1 ≤ m ≤ 1000) — the number of vertices and arcs in the presented graph.\n\nEach of the next m lines contains two space-separated integers ai, bi (1 ≤ ai, bi ≤ n) — the descriptions of the graph's arcs. Pair (ai, bi) means that the graph contains an arc from vertex number ai to vertex number bi. It is guaranteed that the presented graph doesn't contain multiple arcs.\n\nAssume that the grah vertices are numbered 1 through n.",
+  "output_spec": "Print a single integer — the answer to George's question.",
+  "note": "For more information about directed graphs, please visit: http://en.wikipedia.org/wiki/Directed_graph\n\nIn the first sample the graph already is interesting, its center is vertex 3.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3 7\n1 1\n2 2\n3 1\n1 3\n3 2\n2 3\n3 3\n",
+      "output": "0"
+    },
+    {
+      "input": "3 6\n1 1\n2 2\n3 1\n3 2\n2 3\n3 3\n",
+      "output": "1"
+    },
+    {
+      "input": "3 1\n2 2\n",
+      "output": "6"
+    }
+  ]
+}

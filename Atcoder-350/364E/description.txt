@@ -1,0 +1,9 @@
+Takahashi has prepared N dishes for Snuke. The dishes are numbered from 1 to N , and dish i has a sweetness of A_i and a saltiness of B_i . Takahashi can arrange these dishes in any order he likes. Snuke will eat the dishes in the order they are arranged, but if at any the total sweetness of the dishes he has eaten so far exceeds X or the total saltiness exceeds Y , he will not eat any further dishes. Takahashi wants Snuke to eat as many dishes as possible. Find the maximum number of dishes Snuke will eat if Takahashi arranges the dishes optimally.
+
+**Constraints:**
+- 1 <= N <= 80
+- 1 <= X <= 10^4
+- 1 <= Y <= 10^4
+- 1 <= A_i <= 1000
+- 1 <= B_i <= 1000
+- All input values are integers

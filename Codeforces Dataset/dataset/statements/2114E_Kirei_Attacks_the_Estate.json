@@ -1,0 +1,29 @@
+{
+  "contestId": 2114,
+  "index": "E",
+  "problem_id": "2114E",
+  "name": "Kirei Attacks the Estate",
+  "rating": 1400,
+  "tags": [
+    "dfs and similar",
+    "dp",
+    "greedy",
+    "trees"
+  ],
+  "points": null,
+  "solvedCount": 14371,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Kirei Attacks the Estate",
+  "legend": "Once, Kirei stealthily infiltrated the trap-filled estate of the Ainzbern family but was discovered by Kiritugu's familiar. Assessing his strength, Kirei decided to retreat. The estate is represented as a tree with n vertices, with the root at vertex 1. Each vertex of the tree has a number ai recorded, which represents the danger of vertex i. Recall that a tree is a connected undirected graph without cycles.\n\nFor a successful retreat, Kirei must compute the threat value for each vertex. The threat of a vertex is equal to the maximum alternating sum along the vertical path starting from that vertex. The alternating sum along the vertical path starting from vertex i is defined as ai−api+appi−…, where pi is the parent of vertex i on the path to the root (to vertex 1).\n\nFor example, in the tree below, vertex 4 has the following vertical paths:\n\n[4] with an alternating sum of a4=6;\n[4,3] with an alternating sum of a4−a3=6−2=4;\n[4,3,2] with an alternating sum of a4−a3+a2=6−2+5=9;\n[4,3,2,1] with an alternating sum of a4−a3+a2−a1=6−2+5−4=5.\nThe dangers of the vertices are indicated in red.\n\nHelp Kirei compute the threat values for all vertices and escape the estate.",
+  "input_spec": "The first line contains an integer t (1≤t≤104) — the number of test cases.\n\nThe following describes the test cases.\n\nThe first line contains an integer n (2≤n≤2⋅105) — the number of vertices in the tree.\n\nThe second line contains n integers a1,a2,…,an (1≤ai≤109) — the dangers of the vertices.\n\nThe next n−1 lines contain the numbers v,u (1≤v,u≤n, v≠u) — the description of the edges of the tree.\n\nIt is guaranteed that the sum of n across all test cases does not exceed 2⋅105. It is also guaranteed that the given set of edges forms a tree.",
+  "output_spec": "For each test case, output n integers — the threat of each vertex.",
+  "note": "The tree from the first test case is depicted in the statement, and the maximum variable-sign sums are achieved as follows:\n\na1=4;\na2=5;\na3=2;\na4−a3+a2=6−2+5=9;\na5=7.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n5\n4 5 2 6 7\n1 2\n3 2\n4 3\n5 1\n6\n1000000000 500500500 900900900 9 404 800800800\n3 4\n5 1\n2 5\n1 6\n6 4\n",
+      "output": "4 5 2 9 7\n1000000000 1500500096 1701701691 199199209 404 800800800"
+    }
+  ]
+}

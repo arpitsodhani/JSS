@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "pairs_sum_to_zero",
+          "code": "int pairs_sum_to_zero(int* arr, int n) {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (arr[i] + arr[j] == 0) return 1;\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    printf(\"%s\\n\", pairs_sum_to_zero(arr, n) ? \"True\" : \"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "pair_zero_sum",
+          "code": "int pair_zero_sum(int *arr, int n) {\n    for(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(arr[i]+arr[j]==0) return 1;\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    int arr[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&arr[i]);\n    printf(\"%s\\n\",pair_zero_sum(arr,n)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "two_sum_zero",
+          "code": "int two_sum_zero(int *v, int sz) {\n    int i=0;\n    while(i<sz){int j=i+1;while(j<sz){if(v[i]+v[j]==0)return 1;j++;}i++;}\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int sz;\n    scanf(\"%d\",&sz);\n    int v[sz];\n    for(int i=0;i<sz;i++) scanf(\"%d\",&v[i]);\n    printf(\"%s\\n\",two_sum_zero(v,sz)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "any_pair_zero",
+          "code": "int any_pair_zero(int *nums, int cnt) {\n    for(int a=0;a<cnt;a++) for(int b=a+1;b<cnt;b++) if(nums[a]+nums[b]==0) return 1;\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int cnt;\n    scanf(\"%d\",&cnt);\n    int nums[cnt];\n    for(int i=0;i<cnt;i++) scanf(\"%d\",&nums[i]);\n    printf(\"%s\\n\",any_pair_zero(nums,cnt)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "opposite_exists",
+          "code": "int opposite_exists(int *data, int n) {\n    for(int p=0;p<n-1;p++) for(int q=p+1;q<n;q++) if(data[p]+data[q]==0) return 1;\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    int data[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&data[i]);\n    printf(\"%s\\n\",opposite_exists(data,n)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

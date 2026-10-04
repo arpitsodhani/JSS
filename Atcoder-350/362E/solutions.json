@@ -1,0 +1,110 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "void read_sequence(int *n, long long *a)",
+          "code": "void read_sequence(int *n, long long *a) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &a[i]);\n}"
+        },
+        {
+          "clause_id": "compute_arithmetic_subsequences",
+          "signature": "void compute_arithmetic_subsequences(int n, long long *a, long long *result)",
+          "code": "void compute_arithmetic_subsequences(int n, long long *a, long long *result) {\n    const long long MOD = 998244353;\n    result[0] = 1;\n    for (int k = 1; k <= n; k++) {\n        if (k == 1) { result[k] = n; continue; }\n        long long dp[85][85] = {};\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                long long diff = a[j] - a[i];\n                if (k == 2) dp[j][0] = (dp[j][0] + 1) % MOD;\n                else {\n                    for (int prev = 0; prev < i; prev++) {\n                        if (a[i] - a[prev] == diff) dp[j][0] = (dp[j][0] + (k == 3 ? 1 : dp[i][0])) % MOD;\n                    }\n                }\n            }\n        }\n        long long sum = 0;\n        for (int i = 0; i < n; i++) sum = (sum + dp[i][0]) % MOD;\n        result[k] = sum;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long a[85], result[85];\n    read_sequence(&n, a);\n    compute_arithmetic_subsequences(n, a, result);\n    for (int i = 1; i <= n; i++) printf(\"%lld%c\", result[i], i == n ? '\\n' : ' ');\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "int read_sequence(int *n, long long arr[])",
+          "code": "int read_sequence(int *n, long long arr[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &arr[i]);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "compute_arithmetic_subsequences",
+          "signature": "void compute_arithmetic_subsequences(int n, long long arr[], long long ans[])",
+          "code": "void compute_arithmetic_subsequences(int n, long long arr[], long long ans[]) {\n    const long long MOD = 998244353;\n    ans[0] = 1;\n    ans[1] = n;\n    for (int len = 2; len <= n; len++) {\n        long long cnt[85][85];\n        memset(cnt, 0, sizeof(cnt));\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                long long d = arr[j] - arr[i];\n                if (len == 2) { cnt[j][0] = (cnt[j][0] + 1) % MOD; }\n                else {\n                    for (int k = 0; k < i; k++) {\n                        if (arr[i] - arr[k] == d) cnt[j][0] = (cnt[j][0] + (len == 3 ? 1 : cnt[i][0])) % MOD;\n                    }\n                }\n            }\n        }\n        long long total = 0;\n        for (int i = 0; i < n; i++) total = (total + cnt[i][0]) % MOD;\n        ans[len] = total;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long arr[85], ans[85];\n    read_sequence(&n, arr);\n    compute_arithmetic_subsequences(n, arr, ans);\n    for (int i = 1; i <= n; i++) printf(\"%lld \", ans[i]);\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "void read_sequence(int *n, long long *seq)",
+          "code": "void read_sequence(int *n, long long *seq) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &seq[i]);\n}"
+        },
+        {
+          "clause_id": "compute_arithmetic_subsequences",
+          "signature": "void compute_arithmetic_subsequences(int n, long long *seq, long long *res)",
+          "code": "void compute_arithmetic_subsequences(int n, long long *seq, long long *res) {\n    const long long MOD = 998244353;\n    res[0] = 1;\n    for (int k = 1; k <= n; k++) {\n        if (k == 1) { res[k] = n; continue; }\n        long long table[85][85];\n        memset(table, 0, sizeof(table));\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                long long delta = seq[j] - seq[i];\n                if (k == 2) table[j][0]++;\n                else {\n                    for (int p = 0; p < i; p++) {\n                        if (seq[i] - seq[p] == delta) table[j][0] = (table[j][0] + (k == 3 ? 1 : table[i][0])) % MOD;\n                    }\n                }\n            }\n        }\n        long long s = 0;\n        for (int i = 0; i < n; i++) s = (s + table[i][0]) % MOD;\n        res[k] = s;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long seq[85], res[85];\n    read_sequence(&n, seq);\n    compute_arithmetic_subsequences(n, seq, res);\n    for (int i = 1; i <= n; i++) {\n        if (i > 1) printf(\" \");\n        printf(\"%lld\", res[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "long long read_sequence(int *n, long long a[])",
+          "code": "long long read_sequence(int *n, long long a[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &a[i]);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_arithmetic_subsequences",
+          "signature": "void compute_arithmetic_subsequences(int n, long long a[], long long out[])",
+          "code": "void compute_arithmetic_subsequences(int n, long long a[], long long out[]) {\n    const long long MOD = 998244353;\n    out[0] = 1;\n    out[1] = n;\n    for (int size = 2; size <= n; size++) {\n        long long dp[85][85] = {{0}};\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                long long diff = a[j] - a[i];\n                if (size == 2) dp[j][0] = (dp[j][0] + 1) % MOD;\n                else {\n                    for (int k = 0; k < i; k++) {\n                        if (a[i] - a[k] == diff) dp[j][0] = (dp[j][0] + (size == 3 ? 1 : dp[i][0])) % MOD;\n                    }\n                }\n            }\n        }\n        long long total = 0;\n        for (int i = 0; i < n; i++) total = (total + dp[i][0]) % MOD;\n        out[size] = total;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long a[85], out[85];\n    read_sequence(&n, a);\n    compute_arithmetic_subsequences(n, a, out);\n    for (int i = 1; i <= n; i++) printf(\"%lld%c\", out[i], i == n ? '\\n' : ' ');\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "void read_sequence(int *n, long long values[])",
+          "code": "void read_sequence(int *n, long long values[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n; i++) scanf(\"%lld\", &values[i]);\n}"
+        },
+        {
+          "clause_id": "compute_arithmetic_subsequences",
+          "signature": "void compute_arithmetic_subsequences(int n, long long values[], long long counts[])",
+          "code": "void compute_arithmetic_subsequences(int n, long long values[], long long counts[]) {\n    const long long MOD = 998244353;\n    counts[0] = 1;\n    for (int k = 1; k <= n; k++) {\n        if (k == 1) { counts[k] = n; continue; }\n        long long memo[85][85] = {};\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                long long d = values[j] - values[i];\n                if (k == 2) memo[j][0] = (memo[j][0] + 1) % MOD;\n                else {\n                    for (int prev = 0; prev < i; prev++) {\n                        if (values[i] - values[prev] == d) memo[j][0] = (memo[j][0] + (k == 3 ? 1 : memo[i][0])) % MOD;\n                    }\n                }\n            }\n        }\n        long long sum = 0;\n        for (int i = 0; i < n; i++) sum = (sum + memo[i][0]) % MOD;\n        counts[k] = sum;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long values[85], counts[85];\n    read_sequence(&n, values);\n    compute_arithmetic_subsequences(n, values, counts);\n    for (int i = 1; i <= n; i++) printf(\"%lld \", counts[i]);\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

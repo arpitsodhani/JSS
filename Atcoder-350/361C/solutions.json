@@ -1,0 +1,159 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "void read_sequence(int *n, int *k, int *a)",
+          "code": "void read_sequence(int *n, int *k, int *a) {\n    scanf(\"%d %d\", n, k);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &a[i]);\n}"
+        },
+        {
+          "clause_id": "sort_sequence",
+          "signature": "int compare(const void *a, const void *b)",
+          "code": "int compare(const void *a, const void *b) {\n    return (*(int *)a - *(int *)b);\n}\nvoid sort_sequence(int n, int *a) {\n    qsort(a, n, sizeof(int), compare);\n}"
+        },
+        {
+          "clause_id": "find_minimum_range",
+          "signature": "int find_minimum_range(int n, int k, int *a)",
+          "code": "int find_minimum_range(int n, int k, int *a) {\n    int remaining = n - k;\n    int min_range = a[remaining - 1] - a[0];\n    for (int i = 1; i + remaining - 1 < n; i++) {\n        int range = a[i + remaining - 1] - a[i];\n        if (range < min_range) min_range = range;\n    }\n    return min_range;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, a[200005];\n    read_sequence(&n, &k, a);\n    sort_sequence(n, a);\n    printf(\"%d\\n\", find_minimum_range(n, k, a));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "int read_sequence(int *n, int *k, int a[])",
+          "code": "int read_sequence(int *n, int *k, int a[]) {\n    scanf(\"%d %d\", n, k);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &a[i]);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "sort_sequence",
+          "signature": "int cmp_int(const void *x, const void *y)",
+          "code": "int cmp_int(const void *x, const void *y) {\n    return *(int *)x - *(int *)y;\n}\nvoid sort_sequence(int n, int a[]) {\n    qsort(a, n, sizeof(int), cmp_int);\n}"
+        },
+        {
+          "clause_id": "find_minimum_range",
+          "signature": "int find_minimum_range(int n, int k, int a[])",
+          "code": "int find_minimum_range(int n, int k, int a[]) {\n    int len = n - k;\n    int ans = a[len - 1] - a[0];\n    for (int i = 1; i <= k; i++) {\n        int val = a[i + len - 1] - a[i];\n        if (val < ans) ans = val;\n    }\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, a[200005];\n    read_sequence(&n, &k, a);\n    sort_sequence(n, a);\n    int ans = find_minimum_range(n, k, a);\n    printf(\"%d\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "void read_sequence(int *n, int *k, int arr[])",
+          "code": "void read_sequence(int *n, int *k, int arr[]) {\n    scanf(\"%d %d\", n, k);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &arr[i]);\n}"
+        },
+        {
+          "clause_id": "sort_sequence",
+          "signature": "int compare_ints(const void *a, const void *b)",
+          "code": "int compare_ints(const void *a, const void *b) {\n    int arg1 = *(const int *)a;\n    int arg2 = *(const int *)b;\n    return (arg1 > arg2) - (arg1 < arg2);\n}\nvoid sort_sequence(int n, int arr[]) {\n    qsort(arr, n, sizeof(int), compare_ints);\n}"
+        },
+        {
+          "clause_id": "find_minimum_range",
+          "signature": "int find_minimum_range(int n, int k, int arr[])",
+          "code": "int find_minimum_range(int n, int k, int arr[]) {\n    int keep = n - k;\n    int result = arr[keep - 1] - arr[0];\n    for (int start = 1; start + keep <= n; start++) {\n        int diff = arr[start + keep - 1] - arr[start];\n        if (diff < result) result = diff;\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, arr[200005];\n    read_sequence(&n, &k, arr);\n    sort_sequence(n, arr);\n    int result = find_minimum_range(n, k, arr);\n    printf(\"%d\\n\", result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "long long read_sequence(int *n, int *k, int *seq)",
+          "code": "long long read_sequence(int *n, int *k, int *seq) {\n    scanf(\"%d %d\", n, k);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &seq[i]);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "sort_sequence",
+          "signature": "int comp(const void *a, const void *b)",
+          "code": "int comp(const void *a, const void *b) {\n    return (*(int *)a - *(int *)b);\n}\nvoid sort_sequence(int n, int *seq) {\n    qsort(seq, n, sizeof(int), comp);\n}"
+        },
+        {
+          "clause_id": "find_minimum_range",
+          "signature": "int find_minimum_range(int n, int k, int *seq)",
+          "code": "int find_minimum_range(int n, int k, int *seq) {\n    int m = n - k;\n    int best = seq[m - 1] - seq[0];\n    for (int i = 1; i + m - 1 < n; i++) {\n        int cur = seq[i + m - 1] - seq[i];\n        if (cur < best) best = cur;\n    }\n    return best;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, seq[200005];\n    read_sequence(&n, &k, seq);\n    sort_sequence(n, seq);\n    printf(\"%d\\n\", find_minimum_range(n, k, seq));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_sequence",
+          "signature": "void read_sequence(int *n, int *k, int values[])",
+          "code": "void read_sequence(int *n, int *k, int values[]) {\n    scanf(\"%d %d\", n, k);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &values[i]);\n}"
+        },
+        {
+          "clause_id": "sort_sequence",
+          "signature": "int int_compare(const void *a, const void *b)",
+          "code": "int int_compare(const void *a, const void *b) {\n    return (*(int *)a - *(int *)b);\n}\nvoid sort_sequence(int n, int values[]) {\n    qsort(values, n, sizeof(int), int_compare);\n}"
+        },
+        {
+          "clause_id": "find_minimum_range",
+          "signature": "int find_minimum_range(int n, int k, int values[])",
+          "code": "int find_minimum_range(int n, int k, int values[]) {\n    int size = n - k;\n    int min_diff = values[size - 1] - values[0];\n    for (int offset = 1; offset <= k; offset++) {\n        int diff = values[offset + size - 1] - values[offset];\n        if (diff < min_diff) min_diff = diff;\n    }\n    return min_diff;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, k, values[200005];\n    read_sequence(&n, &k, values);\n    sort_sequence(n, values);\n    printf(\"%d\\n\", find_minimum_range(n, k, values));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

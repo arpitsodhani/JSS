@@ -1,0 +1,27 @@
+{
+  "contestId": 1342,
+  "index": "B",
+  "problem_id": "1342B",
+  "name": "Binary Period",
+  "rating": 1100,
+  "tags": [
+    "constructive algorithms",
+    "strings"
+  ],
+  "points": null,
+  "solvedCount": 24698,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Binary Period",
+  "legend": "Let's say string s has period k if si=si+k for all i from 1 to |s|−k (|s| means length of string s) and k is the minimum positive integer with this property.\n\nSome examples of a period: for s=\"0101\" the period is k=2, for s=\"0000\" the period is k=1, for s=\"010\" the period is k=2, for s=\"0011\" the period is k=4.\n\nYou are given string t consisting only of 0's and 1's and you need to find such string s that:\n\nString s consists only of 0's and 1's;\nThe length of s doesn't exceed 2⋅|t|;\nString t is a subsequence of string s;\nString s has smallest possible period among all strings that meet conditions 1—3.\n\nLet us recall that t is a subsequence of s if t can be derived from s by deleting zero or more elements (any) without changing the order of the remaining elements. For example, t=\"011\" is a subsequence of s=\"10101\".",
+  "input_spec": "The first line contains single integer T (1≤T≤100) — the number of test cases.\n\nNext T lines contain test cases — one per line. Each line contains string t (1≤|t|≤100) consisting only of 0's and 1's.",
+  "output_spec": "Print one string for each test case — string s you needed to find. If there are multiple solutions print any one of them.",
+  "note": "In the first and second test cases, s=t since it's already one of the optimal solutions. Answers have periods equal to 1 and 2, respectively.\n\nIn the third test case, there are shorter optimal solutions, but it's okay since we don't need to minimize the string s. String s has period equal to 1.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n00\n01\n111\n110\n",
+      "output": "00\n01\n11111\n1010"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "correct_bracketing",
+          "code": "int correct_bracketing(char* brackets) {\n    int depth = 0;\n    for (int i = 0; brackets[i]; i++) {\n        if (brackets[i] == '<') depth++;\n        else if (brackets[i] == '>') depth--;\n        if (depth < 0) return 0;\n    }\n    return depth == 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char brackets[1000];\n    if (fgets(brackets, sizeof(brackets), stdin)) {\n        brackets[strcspn(brackets, \"\\n\")] = 0;\n    } else {\n        brackets[0] = 0;\n    }\n    printf(\"%s\\n\", correct_bracketing(brackets) ? \"True\" : \"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "balanced_brackets",
+          "code": "int balanced_brackets(char *s) {\n    int cnt=0;\n    for(int i=0;s[i];i++){if(s[i]=='<')cnt++;else if(s[i]=='>')cnt--;if(cnt<0)return 0;}\n    return cnt==0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char s[1000];\n    scanf(\"%s\",s);\n    printf(\"%s\\n\",balanced_brackets(s)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "angle_balance",
+          "code": "int angle_balance(char *str) {\n    int d=0;\n    int i=0;\n    while(str[i]){if(str[i]=='<')d++;else if(str[i]=='>')d--;if(d<0)return 0;i++;}\n    return d==0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char str[1000];\n    scanf(\"%s\",str);\n    printf(\"%s\\n\",angle_balance(str)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "check_angles",
+          "code": "int check_angles(char *w) {\n    int open=0;\n    for(int k=0;w[k];k++){if(w[k]=='<')open++;else if(w[k]=='>')open--;if(open<0)return 0;}\n    return open==0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char w[1000];\n    scanf(\"%s\",w);\n    printf(\"%s\\n\",check_angles(w)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "valid_angle_brackets",
+          "code": "int valid_angle_brackets(char *buf) {\n    int level=0;\n    for(int i=0;buf[i];i++){if(buf[i]=='<')level++;else if(buf[i]=='>')level--;if(level<0)return 0;}\n    return level==0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char buf[1000];\n    scanf(\"%s\",buf);\n    printf(\"%s\\n\",valid_angle_brackets(buf)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+You are given a string S of length N consisting of lowercase English letters, along with lowercase English letters c_1 and c_2 . Find the string obtained by replacing every character of S that is not c_1 with c_2 .
+
+**Constraints:**
+- 1 <= N <= 100
+- c1 and c2 are lowercase English letters
+- c1 != c2
+- S is a string of length N consisting of lowercase English letters

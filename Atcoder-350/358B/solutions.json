@@ -1,0 +1,148 @@
+{
+  "problem_id": "358B",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int n, int times[])",
+          "code": "int read_input(int n, int times[]) { int a; scanf(\"%d%d\", &n, &a); for(int i = 0; i < n; i++) scanf(\"%d\", &times[i]); return a; }"
+        },
+        {
+          "clause_id": "calculate_service_times",
+          "signature": "void calculate_service_times(int n, int times[], int a, int results[])",
+          "code": "void calculate_service_times(int n, int times[], int a, int results[]) { int finish = 0; for(int i = 0; i < n; i++) { if(times[i] > finish) finish = times[i]; finish += a; results[i] = finish; } }"
+        },
+        {
+          "clause_id": "print_results",
+          "signature": "void print_results(int n, int results[])",
+          "code": "void print_results(int n, int results[]) { for(int i = 0; i < n; i++) printf(\"%d\\n\", results[i]); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, times[105], results[105]; int a = read_input(n, times); calculate_service_times(n, times, a, results); print_results(n, results); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int n, int times[])",
+          "code": "int read_input(int n, int times[]) { int a; scanf(\"%d %d\", &n, &a); for(int j = 0; j < n; j++) scanf(\"%d\", &times[j]); return a; }"
+        },
+        {
+          "clause_id": "calculate_service_times",
+          "signature": "void calculate_service_times(int n, int times[], int a, int results[])",
+          "code": "void calculate_service_times(int n, int times[], int a, int results[]) { int current_time = 0; for(int k = 0; k < n; k++) { current_time = (times[k] > current_time) ? times[k] : current_time; current_time += a; results[k] = current_time; } }"
+        },
+        {
+          "clause_id": "print_results",
+          "signature": "void print_results(int n, int results[])",
+          "code": "void print_results(int n, int results[]) { int i; for(i = 0; i < n; i++) printf(\"%d\\n\", results[i]); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, arrivals[105], outputs[105]; int service = read_input(n, arrivals); calculate_service_times(n, arrivals, service, outputs); print_results(n, outputs); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int n, int times[])",
+          "code": "int read_input(int n, int times[]) { int a; scanf(\"%d%d\", &n, &a); int idx; for(idx = 0; idx < n; idx++) scanf(\"%d\", times + idx); return a; }"
+        },
+        {
+          "clause_id": "calculate_service_times",
+          "signature": "void calculate_service_times(int n, int times[], int a, int results[])",
+          "code": "void calculate_service_times(int n, int times[], int a, int results[]) { int last = 0; int i; for(i = 0; i < n; i++) { if(times[i] > last) last = times[i]; last = last + a; results[i] = last; } }"
+        },
+        {
+          "clause_id": "print_results",
+          "signature": "void print_results(int n, int results[])",
+          "code": "void print_results(int n, int results[]) { for(int p = 0; p < n; p++) printf(\"%d\\n\", results[p]); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, queue_times[105], finish_times[105]; int duration = read_input(n, queue_times); calculate_service_times(n, queue_times, duration, finish_times); print_results(n, finish_times); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int n, int times[])",
+          "code": "int read_input(int n, int times[]) { int a; scanf(\"%d %d\", &n, &a); for(int m = 0; m < n; m++) scanf(\"%d\", &times[m]); return a; }"
+        },
+        {
+          "clause_id": "calculate_service_times",
+          "signature": "void calculate_service_times(int n, int times[], int a, int results[])",
+          "code": "void calculate_service_times(int n, int times[], int a, int results[]) { int end_time = 0; for(int pos = 0; pos < n; pos++) { end_time = (times[pos] > end_time) ? times[pos] + a : end_time + a; results[pos] = end_time; } }"
+        },
+        {
+          "clause_id": "print_results",
+          "signature": "void print_results(int n, int results[])",
+          "code": "void print_results(int n, int results[]) { for(int q = 0; q < n; q++) printf(\"%d\\n\", results[q]); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, arrive[105], depart[105]; int proc_time = read_input(n, arrive); calculate_service_times(n, arrive, proc_time, depart); print_results(n, depart); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int n, int times[])",
+          "code": "int read_input(int n, int times[]) { int a; scanf(\"%d%d\", &n, &a); for(int r = 0; r < n; r++) scanf(\"%d\", &times[r]); return a; }"
+        },
+        {
+          "clause_id": "calculate_service_times",
+          "signature": "void calculate_service_times(int n, int times[], int a, int results[])",
+          "code": "void calculate_service_times(int n, int times[], int a, int results[]) { int completion = 0; for(int customer = 0; customer < n; customer++) { if(times[customer] > completion) { completion = times[customer] + a; } else { completion = completion + a; } results[customer] = completion; } }"
+        },
+        {
+          "clause_id": "print_results",
+          "signature": "void print_results(int n, int results[])",
+          "code": "void print_results(int n, int results[]) { for(int entry = 0; entry < n; entry++) printf(\"%d\\n\", results[entry]); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, entry_times[105], exit_times[105]; int service_duration = read_input(n, entry_times); calculate_service_times(n, entry_times, service_duration, exit_times); print_results(n, exit_times); return 0; }"
+        }
+      ]
+    }
+  ]
+}

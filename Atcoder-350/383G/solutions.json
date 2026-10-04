@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,long long **A)",
+          "code": "void read_input(int *N,int *K,long long **A){ scanf(\"%d%d\", N,K); *A=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "max_sums",
+          "signature": "void max_sums(int N,int K,long long *A,long long *out)",
+          "code": "void max_sums(int N,int K,long long *A,long long *out){\n    int T = N / K;\n    long long *pref=(long long*)malloc((size_t)(N+1)*sizeof(long long));\n    pref[0]=0; for(int i=0;i<N;i++) pref[i+1]=pref[i]+A[i];\n    long long *seg=(long long*)malloc((size_t)N*sizeof(long long));\n    for(int i=0;i+K<=N;i++) seg[i]=pref[i+K]-pref[i];\n    long long *dp=(long long*)malloc((size_t)(N+1)*sizeof(long long));\n    for(int t=1;t<=T;t++){\n        for(int i=0;i<=N;i++) dp[i]=0;\n        for(int i=K;i<=N;i++){\n            long long take = seg[i-K];\n            long long val = dp[i-K] + take;\n            dp[i] = dp[i-1] > val ? dp[i-1] : val;\n        }\n        out[t]=dp[N];\n    }\n    free(pref); free(seg); free(dp);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int K,long long *out)",
+          "code": "void print_answer(int N,int K,long long *out){ int T=N/K; for(int i=1;i<=T;i++) printf(\"%lld\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; long long *A=NULL; read_input(&N,&K,&A); int T=N/K; long long *out=(long long*)malloc((size_t)(T+1)*sizeof(long long)); max_sums(N,K,A,out); print_answer(N,K,out); free(A); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,long long **A)",
+          "code": "void read_input(int *N,int *K,long long **A){ scanf(\"%d%d\", N,K); *A=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "max_sums",
+          "signature": "void max_sums(int N,int K,long long *A,long long *out)",
+          "code": "void max_sums(int N,int K,long long *A,long long *out){\n    int T = N / K;\n    long long *pref=(long long*)malloc((size_t)(N+1)*sizeof(long long));\n    pref[0]=0; for(int i=0;i<N;i++) pref[i+1]=pref[i]+A[i];\n    long long *seg=(long long*)malloc((size_t)N*sizeof(long long));\n    for(int i=0;i+K<=N;i++) seg[i]=pref[i+K]-pref[i];\n    long long *dp=(long long*)malloc((size_t)(N+1)*sizeof(long long));\n    for(int t=1;t<=T;t++){\n        for(int i=0;i<=N;i++) dp[i]=0;\n        for(int i=K;i<=N;i++){\n            long long take = seg[i-K];\n            long long val = dp[i-K] + take;\n            dp[i] = dp[i-1] > val ? dp[i-1] : val;\n        }\n        out[t]=dp[N];\n    }\n    free(pref); free(seg); free(dp);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int K,long long *out)",
+          "code": "void print_answer(int N,int K,long long *out){ int T=N/K; for(int i=1;i<=T;i++) printf(\"%lld\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; long long *A=NULL; read_input(&N,&K,&A); int T=N/K; long long *out=(long long*)malloc((size_t)(T+1)*sizeof(long long)); max_sums(N,K,A,out); print_answer(N,K,out); free(A); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,long long **A)",
+          "code": "void read_input(int *N,int *K,long long **A){ scanf(\"%d%d\", N,K); *A=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "max_sums",
+          "signature": "void max_sums(int N,int K,long long *A,long long *out)",
+          "code": "void max_sums(int N,int K,long long *A,long long *out){\n    int T = N / K;\n    long long *pref=(long long*)malloc((size_t)(N+1)*sizeof(long long));\n    pref[0]=0; for(int i=0;i<N;i++) pref[i+1]=pref[i]+A[i];\n    long long *seg=(long long*)malloc((size_t)N*sizeof(long long));\n    for(int i=0;i+K<=N;i++) seg[i]=pref[i+K]-pref[i];\n    long long *dp=(long long*)malloc((size_t)(N+1)*sizeof(long long));\n    for(int t=1;t<=T;t++){\n        for(int i=0;i<=N;i++) dp[i]=0;\n        for(int i=K;i<=N;i++){\n            long long take = seg[i-K];\n            long long val = dp[i-K] + take;\n            dp[i] = dp[i-1] > val ? dp[i-1] : val;\n        }\n        out[t]=dp[N];\n    }\n    free(pref); free(seg); free(dp);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int K,long long *out)",
+          "code": "void print_answer(int N,int K,long long *out){ int T=N/K; for(int i=1;i<=T;i++) printf(\"%lld\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; long long *A=NULL; read_input(&N,&K,&A); int T=N/K; long long *out=(long long*)malloc((size_t)(T+1)*sizeof(long long)); max_sums(N,K,A,out); print_answer(N,K,out); free(A); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,long long **A)",
+          "code": "void read_input(int *N,int *K,long long **A){ scanf(\"%d%d\", N,K); *A=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*A)[i]); }\n"
+        },
+        {
+          "clause_id": "max_sums",
+          "signature": "void max_sums(int N,int K,long long *A,long long *out)",
+          "code": "void max_sums(int N,int K,long long *A,long long *out){\n    int T = N / K;\n    long long *pref=(long long*)malloc((size_t)(N+1)*sizeof(long long));\n    pref[0]=0; for(int i=0;i<N;i++) pref[i+1]=pref[i]+A[i];\n    long long *seg=(long long*)malloc((size_t)N*sizeof(long long));\n    for(int i=0;i+K<=N;i++) seg[i]=pref[i+K]-pref[i];\n    long long *dp=(long long*)malloc((size_t)(N+1)*sizeof(long long));\n    for(int t=1;t<=T;t++){\n        for(int i=0;i<=N;i++) dp[i]=0;\n        for(int i=K;i<=N;i++){\n            long long take = seg[i-K];\n            long long val = dp[i-K] + take;\n            dp[i] = dp[i-1] > val ? dp[i-1] : val;\n        }\n        out[t]=dp[N];\n    }\n    free(pref); free(seg); free(dp);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int K,long long *out)",
+          "code": "void print_answer(int N,int K,long long *out){ int T=N/K; for(int i=1;i<=T;i++) printf(\"%lld\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; long long *A=NULL; read_input(&N,&K,&A); int T=N/K; long long *out=(long long*)malloc((size_t)(T+1)*sizeof(long long)); max_sums(N,K,A,out); print_answer(N,K,out); free(A); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K,long long **A)",
+          "code": "void read_input(int *N,int *K,long long **A){ scanf(\"%d%d\", N,K); *A=(long long*)malloc((size_t)(*N)*sizeof(long long)); for(int i=0;i<*N;i++) scanf(\"%lld\", &(*A)[i]); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "max_sums",
+          "signature": "void max_sums(int N,int K,long long *A,long long *out)",
+          "code": "void max_sums(int N,int K,long long *A,long long *out){\n    int T = N / K;\n    long long *pref=(long long*)malloc((size_t)(N+1)*sizeof(long long));\n    pref[0]=0; for(int i=0;i<N;i++) pref[i+1]=pref[i]+A[i];\n    long long *seg=(long long*)malloc((size_t)N*sizeof(long long));\n    for(int i=0;i+K<=N;i++) seg[i]=pref[i+K]-pref[i];\n    long long *dp=(long long*)malloc((size_t)(N+1)*sizeof(long long));\n    for(int t=1;t<=T;t++){\n        for(int i=0;i<=N;i++) dp[i]=0;\n        for(int i=K;i<=N;i++){\n            long long take = seg[i-K];\n            long long val = dp[i-K] + take;\n            dp[i] = dp[i-1] > val ? dp[i-1] : val;\n        }\n        out[t]=dp[N];\n    }\n    free(pref); free(seg); free(dp);\n\n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int K,long long *out)",
+          "code": "void print_answer(int N,int K,long long *out){ int T=N/K; for(int i=1;i<=T;i++) printf(\"%lld\\n\", out[i]); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; long long *A=NULL; read_input(&N,&K,&A); int T=N/K; long long *out=(long long*)malloc((size_t)(T+1)*sizeof(long long)); max_sums(N,K,A,out); print_answer(N,K,out); free(A); free(out); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

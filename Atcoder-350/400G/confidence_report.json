@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.957204465810544,
+  "clauses": [
+    {
+      "clause": "better_pair",
+      "confidence": 0.9133333333333333
+    },
+    {
+      "clause": "solve_c",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve_one_case",
+      "confidence": 0.9351052631578947
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9803792667509482
+    }
+  ]
+}

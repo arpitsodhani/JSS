@@ -1,0 +1,6 @@
+You are playing a game. There are N enemies lined up in a row, and the i -th enemy from the front has a health of H_i . You will repeat the following action until the healths of all enemies become 0 or less, using a variable T initialized to 0 . Increase T by 1 . Then, attack the frontmost enemy with health 1 or more. If T is a multiple of 3 , the enemy's health decreases by 3 ; otherwise, it decreases by 1 . Find the value of T when the healths of all enemies become 0 or less.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= H_i <= 10^9
+- All input values are integers

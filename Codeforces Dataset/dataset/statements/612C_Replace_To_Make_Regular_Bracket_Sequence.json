@@ -1,0 +1,36 @@
+{
+  "contestId": 612,
+  "index": "C",
+  "problem_id": "612C",
+  "name": "Replace To Make Regular Bracket Sequence",
+  "rating": 1400,
+  "tags": [
+    "data structures",
+    "expression parsing",
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 10100,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Replace To Make Regular Bracket Sequence",
+  "legend": "You are given string s consists of opening and closing brackets of four kinds <>, {}, [], (). There are two types of brackets: opening and closing. You can replace any bracket by another of the same type. For example, you can replace < by the bracket {, but you can't replace it by ) or >.\n\nThe following definition of a regular bracket sequence is well-known, so you can be familiar with it.\n\nLet's define a regular bracket sequence (RBS). Empty string is RBS. Let s1 and s2 be a RBS then the strings <s1>s2, {s1}s2, [s1]s2, (s1)s2 are also RBS.\n\nFor example the string \"[[(){}]<>]\" is RBS, but the strings \"[)()\" and \"][()()\" are not.\n\nDetermine the least number of replaces to make the string s RBS.",
+  "input_spec": "The only line contains a non empty string s, consisting of only opening and closing brackets of four kinds. The length of s does not exceed 106.",
+  "output_spec": "If it's impossible to get RBS from s print Impossible.\n\nOtherwise print the least number of replaces needed to get RBS from s.",
+  "note": "",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "[<}){}\n",
+      "output": "2"
+    },
+    {
+      "input": "{()}[]\n",
+      "output": "0"
+    },
+    {
+      "input": "]]\n",
+      "output": "Impossible"
+    }
+  ]
+}

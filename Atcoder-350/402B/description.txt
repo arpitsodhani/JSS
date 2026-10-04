@@ -1,0 +1,13 @@
+There is an N x M grid. You will place K pieces on this grid.
+Find the number of ways to place the pieces such that no two pieces are in the same row or column.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N M K
+
+**Output:**
+Print the answer.
+
+**Constraints:**
+- 1 <= N, M, K <= 100
+- All input values are integers

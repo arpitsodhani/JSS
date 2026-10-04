@@ -1,0 +1,23 @@
+{
+  "problem_id": "404A",
+  "average_confidence": 0.7875,
+  "clauses": {
+    "read_ab": {
+      "confidence": 0.8,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "print_range": {
+      "confidence": 0.5625,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    }
+  },
+  "total_clauses": 3,
+  "compile_success": true
+}

@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.6499999999999999,
+  "clauses": [
+    {
+      "clause": "add_implication_edge",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve_2sat_instance",
+      "confidence": 0.29999999999999993
+    },
+    {
+      "clause": "tarjan_dfs_scc",
+      "confidence": 0.29999999999999993
+    }
+  ]
+}

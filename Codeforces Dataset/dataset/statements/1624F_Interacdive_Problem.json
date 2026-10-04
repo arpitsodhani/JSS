@@ -1,0 +1,36 @@
+{
+  "contestId": 1624,
+  "index": "F",
+  "problem_id": "1624F",
+  "name": "Interacdive Problem",
+  "rating": 2000,
+  "tags": [
+    "binary search",
+    "constructive algorithms",
+    "interactive"
+  ],
+  "points": null,
+  "solvedCount": 3864,
+  "source": "verbatim_cf_fetch",
+  "title": "F. Interacdive Problem",
+  "legend": "This problem is interactive.\n\nWe decided to play a game with you and guess the number x (1≤x<n), where you know the number n.\n\nYou can make queries like this:\n\n+ c: this command assigns x=x+c (1≤c<n) and then returns you the value ⌊\nx\n\n\nn\n⌋ (x divide by n and round down).\n\nYou win if you guess the current number with no more than 10 queries.",
+  "input_spec": "",
+  "output_spec": "",
+  "note": "In the first sample initially x=2. After the first query x=3, ⌊\nx\n\n\nn\n⌋=1.\n\nIn the second sample also initially x=2. After the first query x=3, ⌊\nx\n\n\nn\n⌋=0. After the second query x=4, ⌊\nx\n\n\nn\n⌋=0. After the third query x=5, ⌊\nx\n\n\nn\n⌋=1.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n\n1\n",
+      "output": "+ 1\n\n! 3"
+    },
+    {
+      "input": "5\n\n0\n\n0\n\n1\n",
+      "output": "+ 1\n\n+ 1\n\n+ 1\n\n! 5"
+    },
+    {
+      "input": "10\n\n0\n\n0\n\n1\n\n2\n",
+      "output": "\n+ 2\n\n+ 2\n\n+ 3\n\n+ 8\n\n! 20"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+There are N mochi (rice cakes), arranged in ascending order of size. The size of the i -th mochi (1\leq i\leq N) is A_i . Given two mochi A and B , with sizes a and b respectively, you can make one kagamimochi (a stacked rice cake) by placing mochi A on top of mochi B if and only if a is at most half of b . You are given Q integer pairs. Let (L_i, R_i) be the i -th pair (1\leq i\leq Q) , and solve the following problem for each i : Using only the R_i - L_i + 1 mochi from the L_i -th to the R_i -th, how many kagamimochi can you make simultaneously? More precisely, find the maximum non-negative integer K such that: Out of the R_i - L_i + 1 mochi from the L_i -th to the R_i -th, choose 2K mochi and form K pairs. For each pair, place one mochi on top of the other, to make K kagamimochi.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= a_i, b_i <= N
+- a_i != b_i
+- The graph is simple
+- 1 <= w_i <= 10^9
+- All input values are integers

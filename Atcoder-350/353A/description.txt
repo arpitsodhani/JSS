@@ -1,0 +1,6 @@
+There are N buildings aligned in a row. The i -th building from the left has a height of H_i . Determine if there is a building taller than the first one from the left. If such a building exists, find the position of the leftmost such building from the left.
+
+**Constraints:**
+- 1\leq N\leq 100
+- 1\leq H_i \leq 100
+- integers

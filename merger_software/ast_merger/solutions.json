@@ -1,0 +1,109 @@
+{
+  "programs": [
+    {
+      "id": "P1",
+      "includes": ["#include <stdio.h>"],
+      "clauses": [
+        {
+          "clause_id": "sum_array",
+          "signature": "int sum_array(const int *a, int n)",
+          "code": "int sum = 0; for (int i = 0; i < n; i++) { sum += a[i]; } return sum;"
+        },
+        {
+          "clause_id": "max_array",
+          "signature": "int max_array(const int *a, int n)",
+          "code": "int m = a[0]; for (int i = 1; i < n; i++) { if (a[i] > m) m = a[i]; } return m;"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int a[3] = {1, 2, 3}; int s = sum_array(a, 3); int m = max_array(a, 3); printf(\"%d %d\\n\", s, m); return 0;"
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "includes": ["#include <stdio.h>"],
+      "clauses": [
+        {
+          "clause_id": "sum_array",
+          "signature": "int sum_array(const int *a, int n)",
+          "code": "int sum = 0; int i = 0; while (i < n) { sum += a[i]; i++; } return sum;"
+        },
+        {
+          "clause_id": "max_array",
+          "signature": "int max_array(const int *a, int n)",
+          "code": "int m = a[0]; for (int i = 1; i < n; i++) { if (a[i] >= m) m = a[i]; } return m;"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int a[] = {4, -1, 7}; int s = sum_array(a, 3); int m = max_array(a, 3); printf(\"%d %d\\n\", s, m); return 0;"
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "includes": ["#include <stdio.h>"],
+      "clauses": [
+        {
+          "clause_id": "sum_array",
+          "signature": "int sum_array(const int *a, int n)",
+          "code": "int sum = 0; const int *p = a; for (int i = 0; i < n; i++) { sum += *p; p++; } return sum;"
+        },
+        {
+          "clause_id": "max_array",
+          "signature": "int max_array(const int *a, int n)",
+          "code": "int m = a[0]; int i = 1; while (i < n) { if (a[i] > m) m = a[i]; i++; } return m;"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int a[5] = {3, 3, 2, 1, 0}; int s = sum_array(a, 5); int m = max_array(a, 5); printf(\"%d %d\\n\", s, m); return 0;"
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "includes": ["#include <stdio.h>"],
+      "clauses": [
+        {
+          "clause_id": "sum_array",
+          "signature": "int sum_array(const int *a, int n)",
+          "code": "int sum = 0; for (int i = 0; i < n; i++) { sum = sum + a[i]; } return sum;"
+        },
+        {
+          "clause_id": "max_array",
+          "signature": "int max_array(const int *a, int n)",
+          "code": "int m = a[0]; for (int i = 1; i < n; i++) { if (a[i] > m) { m = a[i]; } } return m;"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int a[4] = {9, 8, 7, 6}; int s = sum_array(a, 4); int m = max_array(a, 4); printf(\"%d %d\\n\", s, m); return 0;"
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "includes": ["#include <stdio.h>"],
+      "clauses": [
+        {
+          "clause_id": "sum_array",
+          "signature": "int sum_array(const int *a, int n)",
+          "code": "int sum = 0; for (int i = 0; i < n; i++) { sum += a[i]; } return sum;"
+        },
+        {
+          "clause_id": "max_array",
+          "signature": "int max_array(const int *a, int n)",
+          "code": "int m = a[0]; for (int i = 1; i < n; i++) { if (a[i] > m) m = a[i]; } return m;"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int a[2] = {10, -5}; int s = sum_array(a, 2); int m = max_array(a, 2); printf(\"%d %d\\n\", s, m); return 0;"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "problem_num": 151,
+  "problem_name": "double_the_difference",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "compute_sum_odd_squares",
+          "code": "int compute_sum_odd_squares(double* lst, int n) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        if (lst[i] > 0 && lst[i] == (int)lst[i]) {\n            int val = (int)lst[i];\n            if (val % 2 == 1) {\n                sum += val * val;\n            }\n        }\n    }\n    return sum;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    double lst[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf\", &lst[i]);\n    }\n    \n    printf(\"%d\\n\", compute_sum_odd_squares(lst, n));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "compute_sum_odd_squares",
+          "code": "int compute_sum_odd_squares(double* lst, int n) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        if (lst[i] > 0 && lst[i] == (int)lst[i]) {\n            int val = (int)lst[i];\n            if (val % 2 == 1) {\n                sum += val * val;\n            }\n        }\n    }\n    return sum;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    double lst[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf\", &lst[i]);\n    }\n    \n    printf(\"%d\\n\", compute_sum_odd_squares(lst, n));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "compute_sum_odd_squares",
+          "code": "int compute_sum_odd_squares(double* lst, int n) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        if (lst[i] > 0 && lst[i] == (int)lst[i]) {\n            int val = (int)lst[i];\n            if (val % 2 == 1) {\n                sum += val * val;\n            }\n        }\n    }\n    return sum;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    double lst[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf\", &lst[i]);\n    }\n    \n    printf(\"%d\\n\", compute_sum_odd_squares(lst, n));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "compute_sum_odd_squares",
+          "code": "int compute_sum_odd_squares(double* lst, int n) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        if (lst[i] > 0 && lst[i] == (int)lst[i]) {\n            int val = (int)lst[i];\n            if (val % 2 == 1) {\n                sum += val * val;\n            }\n        }\n    }\n    return sum;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    double lst[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf\", &lst[i]);\n    }\n    \n    printf(\"%d\\n\", compute_sum_odd_squares(lst, n));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "compute_sum_odd_squares",
+          "code": "int compute_sum_odd_squares(double* lst, int n) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        if (lst[i] > 0 && lst[i] == (int)lst[i]) {\n            int val = (int)lst[i];\n            if (val % 2 == 1) {\n                sum += val * val;\n            }\n        }\n    }\n    return sum;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    double lst[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf\", &lst[i]);\n    }\n    \n    printf(\"%d\\n\", compute_sum_odd_squares(lst, n));\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

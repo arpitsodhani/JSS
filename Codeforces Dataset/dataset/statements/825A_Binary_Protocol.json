@@ -1,0 +1,30 @@
+{
+  "contestId": 825,
+  "index": "A",
+  "problem_id": "825A",
+  "name": "Binary Protocol",
+  "rating": 1100,
+  "tags": [
+    "implementation"
+  ],
+  "points": null,
+  "solvedCount": 8243,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Binary Protocol",
+  "legend": "Polycarp has just invented a new binary protocol for data transmission. He is encoding positive integer decimal number to binary string using following algorithm:\n\nEach digit is represented with number of '1' characters equal to the value of that digit (for 0 it is zero ones).\nDigits are written one by one in order corresponding to number and separated by single '0' character.\n\nThough Polycarp learnt how to encode the numbers, he has no idea how to decode them back. Help him calculate the decoded number.",
+  "input_spec": "The first line contains one integer number n (1 ≤ n ≤ 89) — length of the string s.\n\nThe second line contains string s — sequence of '0' and '1' characters, number in its encoded format. It is guaranteed that the number corresponding to the string is positive and doesn't exceed 109. The string always starts with '1'.",
+  "output_spec": "Print the decoded number.",
+  "note": "",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n111\n",
+      "output": "3"
+    },
+    {
+      "input": "9\n110011101\n",
+      "output": "2031"
+    }
+  ]
+}

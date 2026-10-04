@@ -1,0 +1,33 @@
+{
+  "contestId": 1387,
+  "index": "B1",
+  "problem_id": "1387B1",
+  "name": "Village (Minimum)",
+  "rating": 2100,
+  "tags": [
+    "*special",
+    "dp",
+    "greedy",
+    "trees"
+  ],
+  "points": null,
+  "solvedCount": 1951,
+  "source": "verbatim_cf_fetch",
+  "title": "B1. Village (Minimum)",
+  "legend": "This problem is split into two tasks. In this task, you are required to find the minimum possible answer. In the task Village (Maximum) you are required to find the maximum possible answer. Each task is worth 50 points.\n\nThere are N houses in a certain village. A single villager lives in each of the houses. The houses are connected by roads. Each road connects two houses and is exactly 1 kilometer long. From each house it is possible to reach any other using one or several consecutive roads. In total there are N−1 roads in the village.\n\nOne day all villagers decided to move to different houses — that is, after moving each house should again have a single villager living in it, but no villager should be living in the same house as before. We would like to know the smallest possible total length in kilometers of the shortest paths between the old and the new houses for all villagers.\n\nExample village with seven houses\n\nFor example, if there are seven houses connected by roads as shown on the figure, the smallest total length is 8 km (this can be achieved by moving 1→6, 2→4, 3→1, 4→2, 5→7, 6→3, 7→5).\n\nWrite a program that finds the smallest total length of the shortest paths in kilometers and an example assignment of the new houses to the villagers.",
+  "input_spec": "The first line contains an integer N (1<N≤105). Houses are numbered by consecutive integers 1,2,…,N.\n\nThen N−1 lines follow that describe the roads. Each line contains two integers a and b (1≤a,b≤N, a≠b) denoting that there is a road connecting houses a and b.",
+  "output_spec": "In the first line output the smallest total length of the shortest paths in kilometers.\n\nIn the second line describe one valid assignment of the new houses with the smallest total length: N space-separated distinct integers v1,v2,…,vN. For each i, vi is the house number where the villager from the house i should move (vi≠i). If there are several valid assignments, output any of those.",
+  "note": "",
+  "time_limit": "0.75 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n1 2\n2 3\n3 4\n",
+      "output": "4\n2 1 4 3"
+    },
+    {
+      "input": "7\n4 2\n5 7\n3 4\n6 3\n1 3\n4 5\n",
+      "output": "8\n3 4 6 2 7 1 5"
+    }
+  ]
+}

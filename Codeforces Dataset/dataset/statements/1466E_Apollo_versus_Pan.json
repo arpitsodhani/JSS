@@ -1,0 +1,28 @@
+{
+  "contestId": 1466,
+  "index": "E",
+  "problem_id": "1466E",
+  "name": "Apollo versus Pan",
+  "rating": 1800,
+  "tags": [
+    "bitmasks",
+    "brute force",
+    "math"
+  ],
+  "points": 1500.0,
+  "solvedCount": 8517,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Apollo versus Pan",
+  "legend": "Only a few know that Pan and Apollo weren't only battling for the title of the GOAT musician. A few millenniums later, they also challenged each other in math (or rather in fast calculations). The task they got to solve is the following:\n\nLet x1,x2,…,xn be the sequence of n non-negative integers. Find this value:\nn\n∑\n\ni=1\nn\n∑\n\nj=1\nn\n∑\n\nk=1(xi&xj)⋅(xj|xk)\n\nHere & denotes the bitwise and, and | denotes the bitwise or.\n\nPan and Apollo could solve this in a few seconds. Can you do it too? For convenience, find the answer modulo 109+7.",
+  "input_spec": "The first line of the input contains a single integer t (1≤t≤1000) denoting the number of test cases, then t test cases follow.\n\nThe first line of each test case consists of a single integer n (1≤n≤5⋅105), the length of the sequence. The second one contains n non-negative integers x1,x2,…,xn (0≤xi<260), elements of the sequence.\n\nThe sum of n over all test cases will not exceed 5⋅105.",
+  "output_spec": "Print t lines. The i-th line should contain the answer to the i-th text case.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "8\n2\n1 7\n3\n1 2 4\n4\n5 5 5 5\n5\n6 2 2 1 0\n1\n0\n1\n1\n6\n1 12 123 1234 12345 123456\n5\n536870912 536870911 1152921504606846975 1152921504606846974 1152921504606846973\n",
+      "output": "128\n91\n1600\n505\n0\n1\n502811676\n264880351"
+    }
+  ]
+}

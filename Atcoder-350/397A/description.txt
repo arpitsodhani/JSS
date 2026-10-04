@@ -1,0 +1,5 @@
+Takahashi measured his body temperature and found it to be X {}^\circ C. Body temperature is classified into the following: Higher than or equal to 38.0 {}^\circ C: “High fever” Higher than or equal to 37.5 {}^\circ C and lower than 38.0 {}^\circ C: “Fever” Lower than 37.5 {}^\circ C: “Normal” Which classification does Takahashi's body temperature fall into? Present the answer as an integer according to the Output section.
+
+**Constraints:**
+- 1 <= A, B, C, D <= 10
+- All input values are integers

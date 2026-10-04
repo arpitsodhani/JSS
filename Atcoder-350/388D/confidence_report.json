@@ -1,0 +1,12 @@
+{
+  "problem_id": "388D",
+  "average_confidence": 0.9054019774466501,
+  "clause_confidences": {},
+  "statistics": {
+    "total_clauses": 4,
+    "total_fragments": 4,
+    "high_confidence_clauses": 4,
+    "merge_successful": true,
+    "compilation_successful": true
+  }
+}

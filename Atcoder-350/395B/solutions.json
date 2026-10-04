@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "fill_grid",
+          "signature": "void fill_grid(int n, char *g)",
+          "code": "for(int i=0;i<n*n;i++) g[i]='?';\nfor(int layer=1;layer<=n;layer++){\n  int j=n+1-layer;\n  if(layer>j) continue;\n  char ch = (layer%2==1)?'#':'.';\n  for(int r=layer-1;r<=j-1;r++) for(int c=layer-1;c<=j-1;c++) g[r*n+c]=ch;\n}\n"
+        },
+        {
+          "clause_id": "print_grid",
+          "signature": "void print_grid(int n, const char *g)",
+          "code": "for(int r=0;r<n;r++){\n  for(int c=0;c<n;c++) putchar(g[r*n+c]);\n  putchar('\\n');\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); char *g=(char*)malloc((size_t)n*(size_t)n); fill_grid(n,g); print_grid(n,g); free(g); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "fill_grid",
+          "signature": "void fill_grid(int n, char *g)",
+          "code": "for(int i=0;i<n*n;i++) g[i]='?';\nfor(int layer=1;layer<=n;layer++){\n  int j=n+1-layer;\n  if(layer>j) continue;\n  char ch = (layer%2==1)?'#':'.';\n  for(int r=layer-1;r<=j-1;r++) for(int c=layer-1;c<=j-1;c++) g[r*n+c]=ch;\n}\n"
+        },
+        {
+          "clause_id": "print_grid",
+          "signature": "void print_grid(int n, const char *g)",
+          "code": "for(int r=0;r<n;r++){\n  for(int c=0;c<n;c++) putchar(g[r*n+c]);\n  putchar('\\n');\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); char *g=(char*)malloc((size_t)n*(size_t)n); fill_grid(n,g); print_grid(n,g); free(g); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "fill_grid",
+          "signature": "void fill_grid(int n, char *g)",
+          "code": "for(int i=0;i<n*n;i++) g[i]='?';\nfor(int layer=1;layer<=n;layer++){\n  int j=n+1-layer;\n  if(layer>j) continue;\n  char ch = (layer%2==1)?'#':'.';\n  for(int r=layer-1;r<=j-1;r++) for(int c=layer-1;c<=j-1;c++) g[r*n+c]=ch;\n}\n"
+        },
+        {
+          "clause_id": "print_grid",
+          "signature": "void print_grid(int n, const char *g)",
+          "code": "for(int r=0;r<n;r++){\n  for(int c=0;c<n;c++) putchar(g[r*n+c]);\n  putchar('\\n');\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); char *g=(char*)malloc((size_t)n*(size_t)n); fill_grid(n,g); print_grid(n,g); free(g); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "fill_grid",
+          "signature": "void fill_grid(int n, char *g)",
+          "code": "for(int i=0;i<n*n;i++) g[i]='?';\nfor(int layer=1;layer<=n;layer++){\n  int j=n+1-layer;\n  if(layer>j) continue;\n  char ch = (layer%2==1)?'#':'.';\n  for(int r=layer-1;r<=j-1;r++) for(int c=layer-1;c<=j-1;c++) g[r*n+c]=ch;\n}\n"
+        },
+        {
+          "clause_id": "print_grid",
+          "signature": "void print_grid(int n, const char *g)",
+          "code": "for(int r=0;r<n;r++){\n  for(int c=0;c<n;c++) putchar(g[r*n+c]);\n  putchar('\\n');\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); char *g=(char*)malloc((size_t)n*(size_t)n); fill_grid(n,g); print_grid(n,g); free(g); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "fill_grid",
+          "signature": "void fill_grid(int n, char *g)",
+          "code": "for(int i=0;i<n*n;i++) g[i]='?';\nfor(int layer=1;layer<=n;layer++){\n  int j=n+1-layer;\n  if(layer>j) continue;\n  char ch = (layer%2==1)?'#':'.';\n  for(int r=layer-1;r<=j-1;r++) for(int c=layer-1;c<=j-1;c++) g[r*n+c]=ch;\n}\n"
+        },
+        {
+          "clause_id": "print_grid",
+          "signature": "void print_grid(int n, const char *g)",
+          "code": "for(int r=0;r<n;r++){\n  for(int c=0;c<n;c++) putchar(g[r*n+c]);\n  putchar('\\n');\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); char *g=(char*)malloc((size_t)n*(size_t)n); fill_grid(n,g); print_grid(n,g); free(g); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *q, long long *c)",
+          "code": "scanf(\"%d %d\", n, k);\nfor(int i=0;i<*n;i++) for(int j=0;j<*n;j++){ long long x; scanf(\"%lld\", &x); c[i*(*n)+j]=x; }\nscanf(\"%d\", q);\n"
+        },
+        {
+          "clause_id": "floyd",
+          "signature": "void floyd(int n, long long *d)",
+          "code": "for(int k=0;k<n;k++){\n  for(int i=0;i<n;i++){\n    long long dik=d[i*n+k];\n    for(int j=0;j<n;j++){\n      long long v=dik + d[k*n+j];\n      if(v<d[i*n+j]) d[i*n+j]=v;\n    }\n  }\n}\n"
+        },
+        {
+          "clause_id": "steiner_base",
+          "signature": "void steiner_base(int n, int k, const long long *d, long long *best_to)",
+          "code": "int T=k;\nint S=1<<T;\nlong long INF=4000000000000000000LL;\nlong long *dp=(long long*)malloc((size_t)S*(size_t)n*sizeof(long long));\nfor(int m=0;m<S*n;m++) dp[m]=INF;\nfor(int i=0;i<T;i++) dp[(1<<i)*n + i]=0;\nfor(int mask=1;mask<S;mask++){\n  for(int sub=(mask-1)&mask; sub; sub=(sub-1)&mask){\n    int other=mask^sub;\n    for(int v=0;v<n;v++){\n      long long a=dp[sub*n+v], b=dp[other*n+v];\n      long long c=a+b;\n      if(c<dp[mask*n+v]) dp[mask*n+v]=c;\n    }\n  }\n  // relax by shortest paths\n  int upd=1;\n  while(upd){\n    upd=0;\n    for(int v=0;v<n;v++){\n      long long dv=dp[mask*n+v];\n      for(int u=0;u<n;u++){\n        long long nd=d[v*n+u]+dv;\n        if(nd<dp[mask*n+u]){ dp[mask*n+u]=nd; upd=1; }\n      }\n    }\n  }\n}\nint full=S-1;\nfor(int v=0;v<n;v++) best_to[v]=dp[full*n+v];\nfree(dp);\n"
+        },
+        {
+          "clause_id": "answer_query",
+          "signature": "long long answer_query(int n, int k, const long long *d, const long long *best_to, int s, int t)",
+          "code": "long long ans=4000000000000000000LL;\nfor(int m=0;m<n;m++){\n  long long cand=best_to[m] + d[m*n+s] + d[m*n+t];\n  if(cand<ans) ans=cand;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k,q; long long *c=(long long*)malloc((size_t)80*(size_t)80*sizeof(long long));\nread_input(&n,&k,&q,c);\nfloyd(n,c);\nlong long *best_to=(long long*)malloc((size_t)n*sizeof(long long));\nsteiner_base(n,k,c,best_to);\nfor(int i=0;i<q;i++){\n  int s,t; scanf(\"%d %d\", &s,&t); s--; t--;\n  long long ans=answer_query(n,k,c,best_to,s,t);\n  printf(\"%lld\\n\", ans);\n}\nfree(best_to); free(c);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *q, long long *c)",
+          "code": "scanf(\"%d %d\", n, k);\nfor(int i=0;i<*n;i++) for(int j=0;j<*n;j++){ long long x; scanf(\"%lld\", &x); c[i*(*n)+j]=x; }\nscanf(\"%d\", q);\n"
+        },
+        {
+          "clause_id": "floyd",
+          "signature": "void floyd(int n, long long *d)",
+          "code": "for(int k=0;k<n;k++){\n  for(int i=0;i<n;i++){\n    long long dik=d[i*n+k];\n    for(int j=0;j<n;j++){\n      long long v=dik + d[k*n+j];\n      if(v<d[i*n+j]) d[i*n+j]=v;\n    }\n  }\n}\n"
+        },
+        {
+          "clause_id": "steiner_base",
+          "signature": "void steiner_base(int n, int k, const long long *d, long long *best_to)",
+          "code": "int T=k;\nint S=1<<T;\nlong long INF=4000000000000000000LL;\nlong long *dp=(long long*)malloc((size_t)S*(size_t)n*sizeof(long long));\nfor(int m=0;m<S*n;m++) dp[m]=INF;\nfor(int i=0;i<T;i++) dp[(1<<i)*n + i]=0;\nfor(int mask=1;mask<S;mask++){\n  for(int sub=(mask-1)&mask; sub; sub=(sub-1)&mask){\n    int other=mask^sub;\n    for(int v=0;v<n;v++){\n      long long a=dp[sub*n+v], b=dp[other*n+v];\n      long long c=a+b;\n      if(c<dp[mask*n+v]) dp[mask*n+v]=c;\n    }\n  }\n  // relax by shortest paths\n  int upd=1;\n  while(upd){\n    upd=0;\n    for(int v=0;v<n;v++){\n      long long dv=dp[mask*n+v];\n      for(int u=0;u<n;u++){\n        long long nd=d[v*n+u]+dv;\n        if(nd<dp[mask*n+u]){ dp[mask*n+u]=nd; upd=1; }\n      }\n    }\n  }\n}\nint full=S-1;\nfor(int v=0;v<n;v++) best_to[v]=dp[full*n+v];\nfree(dp);\n"
+        },
+        {
+          "clause_id": "answer_query",
+          "signature": "long long answer_query(int n, int k, const long long *d, const long long *best_to, int s, int t)",
+          "code": "long long ans=4000000000000000000LL;\nfor(int m=0;m<n;m++){\n  long long cand=best_to[m] + d[m*n+s] + d[m*n+t];\n  if(cand<ans) ans=cand;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k,q; long long *c=(long long*)malloc((size_t)80*(size_t)80*sizeof(long long));\nread_input(&n,&k,&q,c);\nfloyd(n,c);\nlong long *best_to=(long long*)malloc((size_t)n*sizeof(long long));\nsteiner_base(n,k,c,best_to);\nfor(int i=0;i<q;i++){\n  int s,t; scanf(\"%d %d\", &s,&t); s--; t--;\n  long long ans=answer_query(n,k,c,best_to,s,t);\n  printf(\"%lld\\n\", ans);\n}\nfree(best_to); free(c);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *q, long long *c)",
+          "code": "scanf(\"%d %d\", n, k);\nfor(int i=0;i<*n;i++) for(int j=0;j<*n;j++){ long long x; scanf(\"%lld\", &x); c[i*(*n)+j]=x; }\nscanf(\"%d\", q);\n"
+        },
+        {
+          "clause_id": "floyd",
+          "signature": "void floyd(int n, long long *d)",
+          "code": "for(int k=0;k<n;k++){\n  for(int i=0;i<n;i++){\n    long long dik=d[i*n+k];\n    for(int j=0;j<n;j++){\n      long long v=dik + d[k*n+j];\n      if(v<d[i*n+j]) d[i*n+j]=v;\n    }\n  }\n}\n"
+        },
+        {
+          "clause_id": "steiner_base",
+          "signature": "void steiner_base(int n, int k, const long long *d, long long *best_to)",
+          "code": "int T=k;\nint S=1<<T;\nlong long INF=4000000000000000000LL;\nlong long *dp=(long long*)malloc((size_t)S*(size_t)n*sizeof(long long));\nfor(int m=0;m<S*n;m++) dp[m]=INF;\nfor(int i=0;i<T;i++) dp[(1<<i)*n + i]=0;\nfor(int mask=1;mask<S;mask++){\n  for(int sub=(mask-1)&mask; sub; sub=(sub-1)&mask){\n    int other=mask^sub;\n    for(int v=0;v<n;v++){\n      long long a=dp[sub*n+v], b=dp[other*n+v];\n      long long c=a+b;\n      if(c<dp[mask*n+v]) dp[mask*n+v]=c;\n    }\n  }\n  // relax by shortest paths\n  int upd=1;\n  while(upd){\n    upd=0;\n    for(int v=0;v<n;v++){\n      long long dv=dp[mask*n+v];\n      for(int u=0;u<n;u++){\n        long long nd=d[v*n+u]+dv;\n        if(nd<dp[mask*n+u]){ dp[mask*n+u]=nd; upd=1; }\n      }\n    }\n  }\n}\nint full=S-1;\nfor(int v=0;v<n;v++) best_to[v]=dp[full*n+v];\nfree(dp);\n"
+        },
+        {
+          "clause_id": "answer_query",
+          "signature": "long long answer_query(int n, int k, const long long *d, const long long *best_to, int s, int t)",
+          "code": "long long ans=4000000000000000000LL;\nfor(int m=0;m<n;m++){\n  long long cand=best_to[m] + d[m*n+s] + d[m*n+t];\n  if(cand<ans) ans=cand;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k,q; long long *c=(long long*)malloc((size_t)80*(size_t)80*sizeof(long long));\nread_input(&n,&k,&q,c);\nfloyd(n,c);\nlong long *best_to=(long long*)malloc((size_t)n*sizeof(long long));\nsteiner_base(n,k,c,best_to);\nfor(int i=0;i<q;i++){\n  int s,t; scanf(\"%d %d\", &s,&t); s--; t--;\n  long long ans=answer_query(n,k,c,best_to,s,t);\n  printf(\"%lld\\n\", ans);\n}\nfree(best_to); free(c);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *q, long long *c)",
+          "code": "scanf(\"%d %d\", n, k);\nfor(int i=0;i<*n;i++) for(int j=0;j<*n;j++){ long long x; scanf(\"%lld\", &x); c[i*(*n)+j]=x; }\nscanf(\"%d\", q);\n"
+        },
+        {
+          "clause_id": "floyd",
+          "signature": "void floyd(int n, long long *d)",
+          "code": "for(int k=0;k<n;k++){\n  for(int i=0;i<n;i++){\n    long long dik=d[i*n+k];\n    for(int j=0;j<n;j++){\n      long long v=dik + d[k*n+j];\n      if(v<d[i*n+j]) d[i*n+j]=v;\n    }\n  }\n}\n"
+        },
+        {
+          "clause_id": "steiner_base",
+          "signature": "void steiner_base(int n, int k, const long long *d, long long *best_to)",
+          "code": "int T=k;\nint S=1<<T;\nlong long INF=4000000000000000000LL;\nlong long *dp=(long long*)malloc((size_t)S*(size_t)n*sizeof(long long));\nfor(int m=0;m<S*n;m++) dp[m]=INF;\nfor(int i=0;i<T;i++) dp[(1<<i)*n + i]=0;\nfor(int mask=1;mask<S;mask++){\n  for(int sub=(mask-1)&mask; sub; sub=(sub-1)&mask){\n    int other=mask^sub;\n    for(int v=0;v<n;v++){\n      long long a=dp[sub*n+v], b=dp[other*n+v];\n      long long c=a+b;\n      if(c<dp[mask*n+v]) dp[mask*n+v]=c;\n    }\n  }\n  // relax by shortest paths\n  int upd=1;\n  while(upd){\n    upd=0;\n    for(int v=0;v<n;v++){\n      long long dv=dp[mask*n+v];\n      for(int u=0;u<n;u++){\n        long long nd=d[v*n+u]+dv;\n        if(nd<dp[mask*n+u]){ dp[mask*n+u]=nd; upd=1; }\n      }\n    }\n  }\n}\nint full=S-1;\nfor(int v=0;v<n;v++) best_to[v]=dp[full*n+v];\nfree(dp);\n"
+        },
+        {
+          "clause_id": "answer_query",
+          "signature": "long long answer_query(int n, int k, const long long *d, const long long *best_to, int s, int t)",
+          "code": "long long ans=4000000000000000000LL;\nfor(int m=0;m<n;m++){\n  long long cand=best_to[m] + d[m*n+s] + d[m*n+t];\n  if(cand<ans) ans=cand;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k,q; long long *c=(long long*)malloc((size_t)80*(size_t)80*sizeof(long long));\nread_input(&n,&k,&q,c);\nfloyd(n,c);\nlong long *best_to=(long long*)malloc((size_t)n*sizeof(long long));\nsteiner_base(n,k,c,best_to);\nfor(int i=0;i<q;i++){\n  int s,t; scanf(\"%d %d\", &s,&t); s--; t--;\n  long long ans=answer_query(n,k,c,best_to,s,t);\n  printf(\"%lld\\n\", ans);\n}\nfree(best_to); free(c);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *q, long long *c)",
+          "code": "scanf(\"%d %d\", n, k);\nfor(int i=0;i<*n;i++) for(int j=0;j<*n;j++){ long long x; scanf(\"%lld\", &x); c[i*(*n)+j]=x; }\nscanf(\"%d\", q);\n"
+        },
+        {
+          "clause_id": "floyd",
+          "signature": "void floyd(int n, long long *d)",
+          "code": "for(int k=0;k<n;k++){\n  for(int i=0;i<n;i++){\n    long long dik=d[i*n+k];\n    for(int j=0;j<n;j++){\n      long long v=dik + d[k*n+j];\n      if(v<d[i*n+j]) d[i*n+j]=v;\n    }\n  }\n}\n"
+        },
+        {
+          "clause_id": "steiner_base",
+          "signature": "void steiner_base(int n, int k, const long long *d, long long *best_to)",
+          "code": "int T=k;\nint S=1<<T;\nlong long INF=4000000000000000000LL;\nlong long *dp=(long long*)malloc((size_t)S*(size_t)n*sizeof(long long));\nfor(int m=0;m<S*n;m++) dp[m]=INF;\nfor(int i=0;i<T;i++) dp[(1<<i)*n + i]=0;\nfor(int mask=1;mask<S;mask++){\n  for(int sub=(mask-1)&mask; sub; sub=(sub-1)&mask){\n    int other=mask^sub;\n    for(int v=0;v<n;v++){\n      long long a=dp[sub*n+v], b=dp[other*n+v];\n      long long c=a+b;\n      if(c<dp[mask*n+v]) dp[mask*n+v]=c;\n    }\n  }\n  // relax by shortest paths\n  int upd=1;\n  while(upd){\n    upd=0;\n    for(int v=0;v<n;v++){\n      long long dv=dp[mask*n+v];\n      for(int u=0;u<n;u++){\n        long long nd=d[v*n+u]+dv;\n        if(nd<dp[mask*n+u]){ dp[mask*n+u]=nd; upd=1; }\n      }\n    }\n  }\n}\nint full=S-1;\nfor(int v=0;v<n;v++) best_to[v]=dp[full*n+v];\nfree(dp);\n"
+        },
+        {
+          "clause_id": "answer_query",
+          "signature": "long long answer_query(int n, int k, const long long *d, const long long *best_to, int s, int t)",
+          "code": "long long ans=4000000000000000000LL;\nfor(int m=0;m<n;m++){\n  long long cand=best_to[m] + d[m*n+s] + d[m*n+t];\n  if(cand<ans) ans=cand;\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k,q; long long *c=(long long*)malloc((size_t)80*(size_t)80*sizeof(long long));\nread_input(&n,&k,&q,c);\nfloyd(n,c);\nlong long *best_to=(long long*)malloc((size_t)n*sizeof(long long));\nsteiner_base(n,k,c,best_to);\nfor(int i=0;i<q;i++){\n  int s,t; scanf(\"%d %d\", &s,&t); s--; t--;\n  long long ans=answer_query(n,k,c,best_to,s,t);\n  printf(\"%lld\\n\", ans);\n}\nfree(best_to); free(c);\nreturn 0; }\n"
+        }
+      ]
+    }
+  ]
+}

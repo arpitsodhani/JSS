@@ -1,0 +1,8 @@
+Takahashi plans to participate in N AtCoder contests. In the i -th contest ( 1 \leq i \leq N ), if his rating is between L_i and R_i (inclusive), his rating increases by 1 . You are given Q queries in the following format: An integer X is given. Assuming that Takahashi's initial rating is X , determine his rating after participating in all N contests.
+
+**Constraints:**
+- 1 <= N, M, K <= 2 * 10^5
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple
+- All input values are integers

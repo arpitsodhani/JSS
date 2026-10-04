@@ -1,0 +1,33 @@
+{
+  "contestId": 2108,
+  "index": "C",
+  "problem_id": "2108C",
+  "name": "Neo's Escape",
+  "rating": 1500,
+  "tags": [
+    "binary search",
+    "brute force",
+    "data structures",
+    "dp",
+    "dsu",
+    "graphs",
+    "greedy",
+    "implementation"
+  ],
+  "points": 1500.0,
+  "solvedCount": 15105,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Neo's Escape",
+  "legend": "Neo wants to escape from the Matrix. In front of him are n buttons arranged in a row. Each button has a weight given by an integer: a1,a2,…,an.\n\nNeo is immobilized, but he can create and move clones. This means he can perform an unlimited number of actions of the following two types in any order:\n\nCreate a clone in front of a specific button.\nMove an existing clone one position to the left or right.\n\nAs soon as a clone is in front of another button that has not yet been pressed—regardless of whether he was created or moved — he immediately presses it. If the button has already been pressed, a clone does nothing — buttons can only be pressed once.\n\nFor Neo to escape, he needs to press all the buttons in such an order that the sequence of their weights is non-increasing — that is, if b1,b2,…,bn are the weights of the buttons in the order they are pressed, then it must hold that b1≥b2≥⋯≥bn.\n\nYour task is to determine the minimum number of clones that Neo needs to create in order to press all the buttons in a valid order.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe first line of each test case contains one integer n (1≤n≤2⋅105) — the number of buttons.\n\nThe second line of each test case contains n integers a1,a2,…,an (1≤ai≤109) — the weights of the buttons.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, output one integer — the minimum number of clones that need to be created to press all the buttons in a valid order.",
+  "note": "In the first test case, Neo can act as follows:\n\nCreate a clone in front of the fifth button (with weight 5).\nCreate a clone in front of the first button (with weight 4).\nMove the second clone from the first button to the second (with weight 3).\nMove the second clone from the second button to the third (with weight 2).\nMove the first clone from the fifth button to the fourth (with weight 1).\nThus, the sequence of button presses will be 5→4→3→2→1, which meets the requirement. It can be shown that the number of clones created is the smallest possible.\n\nIn the second test case, Neo can act as follows:\n\nCreate a clone in front of the second button (with weight 1).\nMove the clone from the second button to the third (with weight 1).\nMove the clone from the third button to the second (already pressed).\nMove the clone from the second button to the first (with weight 1).\nThus, the sequence of button presses will be 1→1→1.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n5\n4 3 2 1 5\n3\n1 1 1\n6\n7 8 1 5 9 2\n10\n1 7 9 7 1 10 2 10 10 7\n",
+      "output": "2\n1\n2\n3"
+    }
+  ]
+}

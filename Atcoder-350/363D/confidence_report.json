@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9726719576719578,
+  "clauses": [
+    {
+      "clause": "compute_nth_palindrome",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9694444444444444
+    },
+    {
+      "clause": "read_n",
+      "confidence": 0.9485714285714287
+    }
+  ]
+}

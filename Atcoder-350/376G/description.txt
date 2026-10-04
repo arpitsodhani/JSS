@@ -1,0 +1,10 @@
+There is a rooted tree with N + 1 vertices numbered from 0 to N . Vertex 0 is the root, and the parent of vertex i is vertex p_i . One of the vertices among vertex 1 , vertex 2 , ..., vertex N hides a treasure. The probability that the treasure is at vertex i is \frac{a_i}{\sum_{j=1}^N a_j} . Also, each vertex is in one of the two states: "searched" and "unsearched". Initially, vertex 0 is searched, and all other vertices are unsearched. Until the vertex containing the treasure becomes searched, you perform the following operation: Choose an unsearched vertex whose parent is searched, and mark it as searched. Find the expected number of operations required when you act to minimize the expected number of operations, modulo 998244353 . You are given T test cases; solve each of them. How to find an expected value modulo 998244353 It can be proved that the expected value is always a rational number. Under the of this problem, it can also be proved that when the expected value is expressed as an irreducible fraction \frac{P}{Q} , we have Q \not\equiv 0 \pmod{998244353} . In this case, there is a unique integer R satisfying R \times Q \equiv P \pmod{998244353},\ 0 \leq R < 998244353 . Report this R .
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple
+- The graph is connected
+- All input values are integers

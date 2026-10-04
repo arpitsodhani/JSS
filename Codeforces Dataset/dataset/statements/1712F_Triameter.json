@@ -1,0 +1,37 @@
+{
+  "contestId": 1712,
+  "index": "F",
+  "problem_id": "1712F",
+  "name": "Triameter",
+  "rating": 3200,
+  "tags": [
+    "binary search",
+    "data structures",
+    "dfs and similar",
+    "trees"
+  ],
+  "points": 3500.0,
+  "solvedCount": 506,
+  "source": "verbatim_cf_fetch",
+  "title": "F. Triameter",
+  "legend": "— What is my mission?\n — To count graph diameters.\nYou and Your Submission\n\nA tree is a connected undirected graph without cycles. A weighted tree has a weight assigned to each edge. The degree of a vertex is the number of edges connected to this vertex.\n\nYou are given a weighted tree with n vertices, each edge has a weight of 1. Let L be the set of vertices with degree equal to 1.\n\nYou have to answer q independent queries. In the i-th query:\n\nYou are given a positive integer xi.\nFor all u,v∈L such that u<v, add edge (u,v) with weight xi to the graph (initially the given tree).\nFind the diameter of the resulting graph.\n\nThe diameter of a graph is equal to max\n1≤u<v≤nd(u,v), where d(u,v) is the length of the shortest path between vertex u and vertex v.",
+  "input_spec": "The first line contains a single integer n (3≤n≤106).\n\nThe second line contains n−1 integers p2,p3,…,pn (1≤pi<i) indicating that there is an edge between vertices i and pi. It is guaranteed that the given edges form a tree.\n\nThe third line contains a single integer q (1≤q≤10).\n\nThe fourth line contains q integers x1,x2,…,xq (1≤xi≤n). All xi are distinct.",
+  "output_spec": "Print q integers in a single line — the answers to the queries.",
+  "note": "The graph in the first test after adding the edges:",
+  "time_limit": "4.5 seconds",
+  "mem_limit": "768 megabytes",
+  "samples": [
+    {
+      "input": "4\n1 2 2\n4\n1 2 3 4\n",
+      "output": "1 2 2 2"
+    },
+    {
+      "input": "7\n1 2 3 4 2 1\n7\n2 1 3 7 5 6 4\n",
+      "output": "3 3 4 5 5 5 4"
+    },
+    {
+      "input": "3\n1 2\n1\n1\n",
+      "output": "1"
+    }
+  ]
+}

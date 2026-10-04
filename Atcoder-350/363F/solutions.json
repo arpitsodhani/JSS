@@ -1,0 +1,110 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_target",
+          "signature": "void read_target(long long *n)",
+          "code": "void read_target(long long *n) {\n    scanf(\"%lld\", n);\n}"
+        },
+        {
+          "clause_id": "construct_palindrome_formula",
+          "signature": "int construct_palindrome_formula(long long n, char *result)",
+          "code": "int construct_palindrome_formula(long long n, char *result) {\n    if (n == 0) {\n        strcpy(result, \"0+0\");\n        return 1;\n    }\n    char formula[205] = \"\";\n    while (n > 0) {\n        if (n >= 9) {\n            if (strlen(formula) > 0) strcat(formula, \"+\");\n            strcat(formula, \"9\");\n            n -= 9;\n        } else {\n            if (strlen(formula) > 0) strcat(formula, \"+\");\n            char digit[2] = {(char)('0' + n), '\\0'};\n            strcat(formula, digit);\n            n = 0;\n        }\n    }\n    int len = strlen(formula);\n    strcpy(result, formula);\n    result[len] = '+';\n    for (int i = len - 1; i >= 0; i--) result[len + (len - i)] = formula[i];\n    result[2 * len + 1] = '\\0';\n    int is_pal = 1;\n    int total_len = strlen(result);\n    for (int i = 0; i < total_len / 2; i++) {\n        if (result[i] != result[total_len - 1 - i]) {\n            is_pal = 0;\n            break;\n        }\n    }\n    return is_pal;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    char result[405];\n    read_target(&n);\n    if (construct_palindrome_formula(n, result)) {\n        printf(\"%s\\n\", result);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_target",
+          "signature": "long long read_target(long long *value)",
+          "code": "long long read_target(long long *value) {\n    scanf(\"%lld\", value);\n    return *value;\n}"
+        },
+        {
+          "clause_id": "construct_palindrome_formula",
+          "signature": "int construct_palindrome_formula(long long value, char *output)",
+          "code": "int construct_palindrome_formula(long long value, char *output) {\n    if (value == 0) {\n        strcpy(output, \"0+0\");\n        return 1;\n    }\n    char left[205] = \"\";\n    while (value > 0) {\n        if (value >= 9) {\n            if (strlen(left) > 0) strcat(left, \"+\");\n            strcat(left, \"9\");\n            value -= 9;\n        } else {\n            if (strlen(left) > 0) strcat(left, \"+\");\n            char ch[2] = {(char)('0' + value), 0};\n            strcat(left, ch);\n            value = 0;\n        }\n    }\n    int l = strlen(left);\n    strcpy(output, left);\n    output[l] = '+';\n    for (int i = l - 1; i >= 0; i--) output[l + (l - i)] = left[i];\n    output[2 * l + 1] = 0;\n    int valid = 1;\n    int total = strlen(output);\n    for (int i = 0; i < total / 2; i++) {\n        if (output[i] != output[total - 1 - i]) {\n            valid = 0;\n            break;\n        }\n    }\n    return valid;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long value;\n    char output[405];\n    read_target(&value);\n    if (construct_palindrome_formula(value, output)) {\n        printf(\"%s\\n\", output);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_target",
+          "signature": "void read_target(long long *n)",
+          "code": "void read_target(long long *n) {\n    scanf(\"%lld\", n);\n}"
+        },
+        {
+          "clause_id": "construct_palindrome_formula",
+          "signature": "int construct_palindrome_formula(long long n, char *ans)",
+          "code": "int construct_palindrome_formula(long long n, char *ans) {\n    if (n == 0) {\n        strcpy(ans, \"0+0\");\n        return 1;\n    }\n    char prefix[205] = \"\";\n    while (n > 0) {\n        if (n >= 9) {\n            if (strlen(prefix) > 0) strcat(prefix, \"+\");\n            strcat(prefix, \"9\");\n            n -= 9;\n        } else {\n            if (strlen(prefix) > 0) strcat(prefix, \"+\");\n            char d[2] = {n + '0', 0};\n            strcat(prefix, d);\n            n = 0;\n        }\n    }\n    int plen = strlen(prefix);\n    strcpy(ans, prefix);\n    ans[plen] = '+';\n    for (int i = plen - 1; i >= 0; i--) ans[plen + (plen - i)] = prefix[i];\n    ans[2 * plen + 1] = 0;\n    int ok = 1;\n    int full_len = strlen(ans);\n    for (int i = 0; i < full_len / 2; i++) {\n        if (ans[i] != ans[full_len - 1 - i]) {\n            ok = 0;\n            break;\n        }\n    }\n    return ok;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    char ans[405];\n    read_target(&n);\n    int success = construct_palindrome_formula(n, ans);\n    if (success) {\n        printf(\"%s\\n\", ans);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_target",
+          "signature": "long long read_target(long long *num)",
+          "code": "long long read_target(long long *num) {\n    scanf(\"%lld\", num);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "construct_palindrome_formula",
+          "signature": "int construct_palindrome_formula(long long n, char *res)",
+          "code": "int construct_palindrome_formula(long long n, char *res) {\n    if (n == 0) {\n        strcpy(res, \"0+0\");\n        return 1;\n    }\n    char part[205] = \"\";\n    while (n > 0) {\n        if (n >= 9) {\n            if (strlen(part) > 0) strcat(part, \"+\");\n            strcat(part, \"9\");\n            n -= 9;\n        } else {\n            if (strlen(part) > 0) strcat(part, \"+\");\n            char s[2] = {n + '0', '\\0'};\n            strcat(part, s);\n            n = 0;\n        }\n    }\n    int part_len = strlen(part);\n    strcpy(res, part);\n    res[part_len] = '+';\n    for (int i = part_len - 1; i >= 0; i--) res[part_len + (part_len - i)] = part[i];\n    res[2 * part_len + 1] = 0;\n    int palindrome = 1;\n    int res_len = strlen(res);\n    for (int i = 0; i < res_len / 2; i++) {\n        if (res[i] != res[res_len - 1 - i]) {\n            palindrome = 0;\n            break;\n        }\n    }\n    return palindrome;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    char res[405];\n    read_target(&n);\n    if (construct_palindrome_formula(n, res)) {\n        printf(\"%s\\n\", res);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_target",
+          "signature": "void read_target(long long *target_value)",
+          "code": "void read_target(long long *target_value) {\n    scanf(\"%lld\", target_value);\n}"
+        },
+        {
+          "clause_id": "construct_palindrome_formula",
+          "signature": "int construct_palindrome_formula(long long target_value, char *formula)",
+          "code": "int construct_palindrome_formula(long long target_value, char *formula) {\n    if (target_value == 0) {\n        strcpy(formula, \"0+0\");\n        return 1;\n    }\n    char half[205] = \"\";\n    while (target_value > 0) {\n        if (target_value >= 9) {\n            if (strlen(half) > 0) strcat(half, \"+\");\n            strcat(half, \"9\");\n            target_value -= 9;\n        } else {\n            if (strlen(half) > 0) strcat(half, \"+\");\n            char digit_str[2] = {(char)('0' + target_value), '\\0'};\n            strcat(half, digit_str);\n            target_value = 0;\n        }\n    }\n    int half_length = strlen(half);\n    strcpy(formula, half);\n    formula[half_length] = '+';\n    for (int i = half_length - 1; i >= 0; i--) \n        formula[half_length + (half_length - i)] = half[i];\n    formula[2 * half_length + 1] = '\\0';\n    int is_palindrome = 1;\n    int formula_length = strlen(formula);\n    for (int i = 0; i < formula_length / 2; i++) {\n        if (formula[i] != formula[formula_length - 1 - i]) {\n            is_palindrome = 0;\n            break;\n        }\n    }\n    return is_palindrome;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long target_value;\n    char formula[405];\n    read_target(&target_value);\n    if (construct_palindrome_formula(target_value, formula)) {\n        printf(\"%s\\n\", formula);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

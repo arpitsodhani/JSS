@@ -1,0 +1,35 @@
+{
+  "contestId": 712,
+  "index": "C",
+  "problem_id": "712C",
+  "name": "Memory and De-Evolution",
+  "rating": 1600,
+  "tags": [
+    "greedy",
+    "math"
+  ],
+  "points": 1500.0,
+  "solvedCount": 6234,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Memory and De-Evolution",
+  "legend": "Memory is now interested in the de-evolution of objects, specifically triangles. He starts with an equilateral triangle of side length x, and he wishes to perform operations to obtain an equilateral triangle of side length y.\n\nIn a single second, he can modify the length of a single side of the current triangle such that it remains a non-degenerate triangle (triangle of positive area). At any moment of time, the length of each side should be integer.\n\nWhat is the minimum number of seconds required for Memory to obtain the equilateral triangle of side length y?",
+  "input_spec": "The first and only line contains two integers x and y (3 ≤ y < x ≤ 100 000) — the starting and ending equilateral triangle side lengths respectively.",
+  "output_spec": "Print a single integer — the minimum number of seconds required for Memory to obtain the equilateral triangle of side length y if he starts with the equilateral triangle of side length x.",
+  "note": "In the first sample test, Memory starts with an equilateral triangle of side length 6 and wants one of side length 3. Denote a triangle with sides a, b, and c as (a, b, c). Then, Memory can do .\n\nIn the second sample test, Memory can do .\n\nIn the third sample test, Memory can do: \n\n.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6 3\n",
+      "output": "4"
+    },
+    {
+      "input": "8 5\n",
+      "output": "3"
+    },
+    {
+      "input": "22 4\n",
+      "output": "6"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_modular_inverse_extended",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve_crt_pair",
+      "confidence": 1.0
+    },
+    {
+      "clause": "solve_crt_system",
+      "confidence": 1.0
+    }
+  ]
+}

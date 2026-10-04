@@ -1,0 +1,154 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_id(char *s)",
+          "code": "void read_id(char *s) { scanf(\"%s\", s); }"
+        },
+        {
+          "clause_id": "parse_num",
+          "signature": "int parse_num(char *s)",
+          "code": "int parse_num(char *s) { return (s[3]-'0')*100 + (s[4]-'0')*10 + (s[5]-'0'); }"
+        },
+        {
+          "clause_id": "is_valid",
+          "signature": "int is_valid(int n)",
+          "code": "int is_valid(int n) { return (n >= 1 && n <= 349 && n != 316); }"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_yn(int ok)",
+          "code": "void print_yn(int ok) { printf(\"%s\\n\", ok ? \"Yes\" : \"No\"); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[7]; read_id(s); print_yn(is_valid(parse_num(s))); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_parse()",
+          "code": "int read_parse() { char buf[7]; scanf(\"%s\", buf); int num = 0; for(int i = 3; i < 6; i++) num = num * 10 + (buf[i] - '0'); return num; }"
+        },
+        {
+          "clause_id": "is_valid",
+          "signature": "int validate(int n)",
+          "code": "int validate(int n) { return !(n < 1 || n > 349 || n == 316); }"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void output_result(int v)",
+          "code": "void output_result(int v) { puts(v ? \"Yes\" : \"No\"); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { output_result(validate(read_parse())); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_input(char *str)",
+          "code": "void get_input(char *str) { int i = 0, ch; while((ch = getchar()) != '\\n' && ch != EOF) str[i++] = ch; str[i] = '\\0'; }"
+        },
+        {
+          "clause_id": "parse_num",
+          "signature": "int extract(char *s)",
+          "code": "int extract(char *s) { int r = 0; r += (s[3]-'0')*100; r += (s[4]-'0')*10; r += (s[5]-'0'); return r; }"
+        },
+        {
+          "clause_id": "is_valid",
+          "signature": "int check_held(int num)",
+          "code": "int check_held(int num) { if(num == 316) return 0; return (num >= 1 && num <= 349); }"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void write_ans(int ans)",
+          "code": "void write_ans(int ans) { printf(\"%s\\n\", ans ? \"Yes\" : \"No\"); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char id[10]; get_input(id); write_ans(check_held(extract(id))); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int scan_convert()",
+          "code": "int scan_convert() { char s[7]; scanf(\"%s\", s); int n = 0, i = 3; while(i < 6) { n = n * 10 + (s[i]-'0'); i++; } return n; }"
+        },
+        {
+          "clause_id": "is_valid",
+          "signature": "int verify_contest(int number)",
+          "code": "int verify_contest(int number) { return (number != 316 && number >= 1 && number <= 349); }"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void output_verdict(int valid)",
+          "code": "void output_verdict(int valid) { puts(valid ? \"Yes\" : \"No\"); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { output_verdict(verify_contest(scan_convert())); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int fast_read_num()",
+          "code": "int fast_read_num() { char buf[10]; scanf(\"%s\", buf); return (buf[3]-'0')*100 + (buf[4]-'0')*10 + (buf[5]-'0'); }"
+        },
+        {
+          "clause_id": "is_valid",
+          "signature": "int is_held(int n)",
+          "code": "int is_held(int n) { return !(n < 1 || n > 349 || n == 316); }"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void write_result(int ans)",
+          "code": "void write_result(int ans) { printf(\"%s\\n\", ans ? \"Yes\" : \"No\"); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { write_result(is_held(fast_read_num())); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

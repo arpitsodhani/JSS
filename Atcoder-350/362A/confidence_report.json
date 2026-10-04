@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9688455149501661,
+  "clauses": [
+    {
+      "clause": "find_minimum_cost",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9654651162790697
+    },
+    {
+      "clause": "read_prices",
+      "confidence": 0.9410714285714287
+    }
+  ]
+}

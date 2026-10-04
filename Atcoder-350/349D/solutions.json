@@ -1,0 +1,154 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, long long *arr)",
+          "code": "void read_input(int *n, int *k, long long *arr) { scanf(\"%d%d\", n, k); for(int i = 0; i < *n; i++) scanf(\"%lld\", &arr[i]); }"
+        },
+        {
+          "clause_id": "sort_desc",
+          "signature": "void sort_desc(long long *arr, int n)",
+          "code": "void sort_desc(long long *arr, int n) { for(int i = 0; i < n-1; i++) for(int j = i+1; j < n; j++) if(arr[i] < arr[j]) { long long tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp; } }"
+        },
+        {
+          "clause_id": "compute_sum",
+          "signature": "long long compute_sum(long long *arr, int k)",
+          "code": "long long compute_sum(long long *arr, int k) { long long sum = 0; for(int i = 0; i < k; i++) sum += arr[i]; return sum; }"
+        },
+        {
+          "clause_id": "output",
+          "signature": "void output(long long ans)",
+          "code": "void output(long long ans) { printf(\"%lld\\n\", ans); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k; long long arr[200001]; read_input(&n, &k, arr); sort_desc(arr, n); output(compute_sum(arr, k)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "input_data",
+          "signature": "int input_data(int *k, long long *a)",
+          "code": "int input_data(int *k, long long *a) { int n; scanf(\"%d%d\", &n, k); for(int i = 0; i < n; i++) scanf(\"%lld\", &a[i]); return n; }"
+        },
+        {
+          "clause_id": "bubble_sort",
+          "signature": "void bubble_sort(long long *a, int n)",
+          "code": "void bubble_sort(long long *a, int n) { int swapped = 1; while(swapped) { swapped = 0; for(int i = 0; i < n-1; i++) if(a[i] < a[i+1]) { long long t = a[i]; a[i] = a[i+1]; a[i+1] = t; swapped = 1; } } }"
+        },
+        {
+          "clause_id": "sum_top_k",
+          "signature": "long long sum_top_k(long long *a, int k)",
+          "code": "long long sum_top_k(long long *a, int k) { long long s = 0; int i = 0; while(i < k) { s += a[i]; i++; } return s; }"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(long long r)",
+          "code": "void print_result(long long r) { printf(\"%lld\\n\", r); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int k; long long a[200001]; int n = input_data(&k, a); bubble_sort(a, n); print_result(sum_top_k(a, k)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "get_input",
+          "signature": "int get_input(int *k, long long *vals)",
+          "code": "int get_input(int *k, long long *vals) { int n; scanf(\"%d%d\", &n, k); for(int i = 0; i < n; i++) scanf(\"%lld\", vals+i); return n; }"
+        },
+        {
+          "clause_id": "selection_sort",
+          "signature": "void selection_sort(long long *v, int n)",
+          "code": "void selection_sort(long long *v, int n) { for(int i = 0; i < n-1; i++) { int maxIdx = i; for(int j = i+1; j < n; j++) if(v[j] > v[maxIdx]) maxIdx = j; long long tmp = v[i]; v[i] = v[maxIdx]; v[maxIdx] = tmp; } }"
+        },
+        {
+          "clause_id": "calc_sum",
+          "signature": "long long calc_sum(long long *v, int cnt)",
+          "code": "long long calc_sum(long long *v, int cnt) { long long total = 0; for(int j = 0; j < cnt; j++) total += v[j]; return total; }"
+        },
+        {
+          "clause_id": "write_ans",
+          "signature": "void write_ans(long long ans)",
+          "code": "void write_ans(long long ans) { printf(\"%lld\\n\", ans); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int k; long long vals[200001]; int n = get_input(&k, vals); selection_sort(vals, n); write_ans(calc_sum(vals, k)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "scan_values",
+          "signature": "int scan_values(int *k, long long *arr)",
+          "code": "int scan_values(int *k, long long *arr) { int n; scanf(\"%d%d\", &n, k); for(int i = 0; i < n; i++) scanf(\"%lld\", &arr[i]); return n; }"
+        },
+        {
+          "clause_id": "insertion_sort",
+          "signature": "void insertion_sort(long long *arr, int n)",
+          "code": "void insertion_sort(long long *arr, int n) { for(int i = 1; i < n; i++) { long long key = arr[i]; int j = i-1; while(j >= 0 && arr[j] < key) { arr[j+1] = arr[j]; j--; } arr[j+1] = key; } }"
+        },
+        {
+          "clause_id": "sum_first_k",
+          "signature": "long long sum_first_k(long long *arr, int k)",
+          "code": "long long sum_first_k(long long *arr, int k) { long long sum = 0; for(int i = 0; i < k; sum += arr[i], i++); return sum; }"
+        },
+        {
+          "clause_id": "output_ans",
+          "signature": "void output_ans(long long a)",
+          "code": "void output_ans(long long a) { printf(\"%lld\\n\", a); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int k; long long arr[200001]; int n = scan_values(&k, arr); insertion_sort(arr, n); output_ans(sum_first_k(arr, k)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_data",
+          "signature": "int read_data(int *keep, long long *nums)",
+          "code": "int read_data(int *keep, long long *nums) { int n; scanf(\"%d%d\", &n, keep); for(int i = 0; i < n; i++) scanf(\"%lld\", &nums[i]); return n; }"
+        },
+        {
+          "clause_id": "qsort_desc",
+          "signature": "void qsort_desc(long long *a, int n)",
+          "code": "void qsort_desc(long long *a, int n) { if(n <= 1) return; long long pivot = a[n/2]; int i = 0, j = n-1; while(i <= j) { while(a[i] > pivot) i++; while(a[j] < pivot) j--; if(i <= j) { long long t = a[i]; a[i] = a[j]; a[j] = t; i++; j--; } } if(j > 0) qsort_desc(a, j+1); if(i < n) qsort_desc(a+i, n-i); }"
+        },
+        {
+          "clause_id": "accumulate",
+          "signature": "long long accumulate(long long *a, int k)",
+          "code": "long long accumulate(long long *a, int k) { long long acc = 0; for(int i = 0; i < k; i++) acc = acc + a[i]; return acc; }"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(long long res)",
+          "code": "void print_ans(long long res) { printf(\"%lld\\n\", res); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int keep; long long nums[200001]; int n = read_data(&keep, nums); qsort_desc(nums, n); print_ans(accumulate(nums, keep)); return 0; }"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_component_root",
+          "signature": "int find_component_root(int node, int *parent)",
+          "code": "int find_component_root(int node, int *parent) {\n    while (parent[node] != node) {\n        node = parent[node];\n    }\n    return node;\n}"
+        },
+        {
+          "clause_id": "merge_components",
+          "signature": "void merge_components(int u, int v, int *parent)",
+          "code": "void merge_components(int u, int v, int *parent) {\n    int root_u = find_component_root(u, parent);\n    int root_v = find_component_root(v, parent);\n    if (root_u != root_v) {\n        parent[root_u] = root_v;\n    }\n}"
+        },
+        {
+          "clause_id": "verify_single_component",
+          "signature": "int verify_single_component(int n, int *parent)",
+          "code": "int verify_single_component(int n, int *parent) {\n    int global_root = find_component_root(0, parent);\n    for (int i = 1; i < n; i++) {\n        int node_root = find_component_root(i, parent);\n        if (node_root != global_root) {\n            return 0;\n        }\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "process_graph_edges",
+          "signature": "void process_graph_edges(int n, int m, int *u, int *v, int *parent)",
+          "code": "void process_graph_edges(int n, int m, int *u, int *v, int *parent) {\n    for (int i = 0; i < n; i++) parent[i] = i;\n    for (int i = 0; i < m; i++) {\n        merge_components(u[i], v[i], parent);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, u[100005], v[100005], parent[100005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d\", &u[i], &v[i]);\n        u[i]--; v[i]--;\n    }\n    process_graph_edges(n, m, u, v, parent);\n    printf(\"%s\\n\", verify_single_component(n, parent) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_component_root",
+          "signature": "int find_component_root(int node, int *parent)",
+          "code": "int find_component_root(int node, int *parent) {\n    while (parent[node] != node) {\n        node = parent[node];\n    }\n    return node;\n}"
+        },
+        {
+          "clause_id": "merge_components",
+          "signature": "void merge_components(int u, int v, int *parent)",
+          "code": "void merge_components(int u, int v, int *parent) {\n    int root_u = find_component_root(u, parent);\n    int root_v = find_component_root(v, parent);\n    if (root_u != root_v) {\n        parent[root_u] = root_v;\n    }\n}"
+        },
+        {
+          "clause_id": "verify_single_component",
+          "signature": "int verify_single_component(int n, int *parent)",
+          "code": "int verify_single_component(int n, int *parent) {\n    int global_root = find_component_root(0, parent);\n    for (int i = 1; i < n; i++) {\n        int node_root = find_component_root(i, parent);\n        if (node_root != global_root) {\n            return 0;\n        }\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "process_graph_edges",
+          "signature": "void process_graph_edges(int n, int m, int *u, int *v, int *parent)",
+          "code": "void process_graph_edges(int n, int m, int *u, int *v, int *parent) {\n    for (int i = 0; i < n; i++) parent[i] = i;\n    for (int i = 0; i < m; i++) {\n        merge_components(u[i], v[i], parent);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, u[100005], v[100005], parent[100005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d\", &u[i], &v[i]);\n        u[i]--; v[i]--;\n    }\n    process_graph_edges(n, m, u, v, parent);\n    printf(\"%s\\n\", verify_single_component(n, parent) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_component_root",
+          "signature": "int find_component_root(int node, int *parent)",
+          "code": "int find_component_root(int node, int *parent) {\n    while (parent[node] != node) {\n        node = parent[node];\n    }\n    return node;\n}"
+        },
+        {
+          "clause_id": "merge_components",
+          "signature": "void merge_components(int u, int v, int *parent)",
+          "code": "void merge_components(int u, int v, int *parent) {\n    int root_u = find_component_root(u, parent);\n    int root_v = find_component_root(v, parent);\n    if (root_u != root_v) {\n        parent[root_u] = root_v;\n    }\n}"
+        },
+        {
+          "clause_id": "verify_single_component",
+          "signature": "int verify_single_component(int n, int *parent)",
+          "code": "int verify_single_component(int n, int *parent) {\n    int global_root = find_component_root(0, parent);\n    for (int i = 1; i < n; i++) {\n        int node_root = find_component_root(i, parent);\n        if (node_root != global_root) {\n            return 0;\n        }\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "process_graph_edges",
+          "signature": "void process_graph_edges(int n, int m, int *u, int *v, int *parent)",
+          "code": "void process_graph_edges(int n, int m, int *u, int *v, int *parent) {\n    for (int i = 0; i < n; i++) parent[i] = i;\n    for (int i = 0; i < m; i++) {\n        merge_components(u[i], v[i], parent);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, u[100005], v[100005], parent[100005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d\", &u[i], &v[i]);\n        u[i]--; v[i]--;\n    }\n    process_graph_edges(n, m, u, v, parent);\n    printf(\"%s\\n\", verify_single_component(n, parent) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_component_root",
+          "signature": "int find_component_root(int node, int *parent)",
+          "code": "int find_component_root(int node, int *parent) {\n    while (parent[node] != node) {\n        node = parent[node];\n    }\n    return node;\n}"
+        },
+        {
+          "clause_id": "merge_components",
+          "signature": "void merge_components(int u, int v, int *parent)",
+          "code": "void merge_components(int u, int v, int *parent) {\n    int root_u = find_component_root(u, parent);\n    int root_v = find_component_root(v, parent);\n    if (root_u != root_v) {\n        parent[root_u] = root_v;\n    }\n}"
+        },
+        {
+          "clause_id": "verify_single_component",
+          "signature": "int verify_single_component(int n, int *parent)",
+          "code": "int verify_single_component(int n, int *parent) {\n    int global_root = find_component_root(0, parent);\n    for (int i = 1; i < n; i++) {\n        int node_root = find_component_root(i, parent);\n        if (node_root != global_root) {\n            return 0;\n        }\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "process_graph_edges",
+          "signature": "void process_graph_edges(int n, int m, int *u, int *v, int *parent)",
+          "code": "void process_graph_edges(int n, int m, int *u, int *v, int *parent) {\n    for (int i = 0; i < n; i++) parent[i] = i;\n    for (int i = 0; i < m; i++) {\n        merge_components(u[i], v[i], parent);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, u[100005], v[100005], parent[100005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d\", &u[i], &v[i]);\n        u[i]--; v[i]--;\n    }\n    process_graph_edges(n, m, u, v, parent);\n    printf(\"%s\\n\", verify_single_component(n, parent) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_component_root",
+          "signature": "int find_component_root(int node, int *parent)",
+          "code": "int find_component_root(int node, int *parent) {\n    while (parent[node] != node) {\n        node = parent[node];\n    }\n    return node;\n}"
+        },
+        {
+          "clause_id": "merge_components",
+          "signature": "void merge_components(int u, int v, int *parent)",
+          "code": "void merge_components(int u, int v, int *parent) {\n    int root_u = find_component_root(u, parent);\n    int root_v = find_component_root(v, parent);\n    if (root_u != root_v) {\n        parent[root_u] = root_v;\n    }\n}"
+        },
+        {
+          "clause_id": "verify_single_component",
+          "signature": "int verify_single_component(int n, int *parent)",
+          "code": "int verify_single_component(int n, int *parent) {\n    int global_root = find_component_root(0, parent);\n    for (int i = 1; i < n; i++) {\n        int node_root = find_component_root(i, parent);\n        if (node_root != global_root) {\n            return 0;\n        }\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "process_graph_edges",
+          "signature": "void process_graph_edges(int n, int m, int *u, int *v, int *parent)",
+          "code": "void process_graph_edges(int n, int m, int *u, int *v, int *parent) {\n    for (int i = 0; i < n; i++) parent[i] = i;\n    for (int i = 0; i < m; i++) {\n        merge_components(u[i], v[i], parent);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, u[100005], v[100005], parent[100005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d\", &u[i], &v[i]);\n        u[i]--; v[i]--;\n    }\n    process_graph_edges(n, m, u, v, parent);\n    printf(\"%s\\n\", verify_single_component(n, parent) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

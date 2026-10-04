@@ -1,0 +1,139 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "clause1_0",
+          "code": "void pluck(int* arr, int n, int* result, int* result_n) {\n    *result_n = 0;\n    int min_even = -1;\n    int min_idx = -1;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] % 2 == 0) {\n            if (min_even == -1 || arr[i] < min_even) {\n                min_even = arr[i];\n                min_idx = i;\n            }\n        }\n    }\n    if (min_even != -1) {\n        result[0] = min_even;\n        result[1] = min_idx;\n        *result_n = 2;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[2], result_n;\n    pluck(arr, n, result, &result_n);\n    if (result_n == 0) {\n        printf(\"\\n\");\n    } else {\n        for (int i = 0; i < result_n; i++) {\n            if (i > 0) printf(\" \");\n            printf(\"%d\", result[i]);\n        }\n        printf(\"\\n\");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "clause2_0",
+          "code": "void pluck(int* arr, int n, int* result, int* result_n) {\n    *result_n = 0;\n    int min_even = -1;\n    int min_idx = -1;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] % 2 == 0) {\n            if (min_even == -1 || arr[i] < min_even) {\n                min_even = arr[i];\n                min_idx = i;\n            }\n        }\n    }\n    if (min_even != -1) {\n        result[0] = min_even;\n        result[1] = min_idx;\n        *result_n = 2;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[2], result_n;\n    pluck(arr, n, result, &result_n);\n    if (result_n == 0) {\n        printf(\"\\n\");\n    } else {\n        for (int i = 0; i < result_n; i++) {\n            if (i > 0) printf(\" \");\n            printf(\"%d\", result[i]);\n        }\n        printf(\"\\n\");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "clause3_0",
+          "code": "void pluck(int* arr, int n, int* result, int* result_n) {\n    *result_n = 0;\n    int min_even = -1;\n    int min_idx = -1;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] % 2 == 0) {\n            if (min_even == -1 || arr[i] < min_even) {\n                min_even = arr[i];\n                min_idx = i;\n            }\n        }\n    }\n    if (min_even != -1) {\n        result[0] = min_even;\n        result[1] = min_idx;\n        *result_n = 2;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[2], result_n;\n    pluck(arr, n, result, &result_n);\n    if (result_n == 0) {\n        printf(\"\\n\");\n    } else {\n        for (int i = 0; i < result_n; i++) {\n            if (i > 0) printf(\" \");\n            printf(\"%d\", result[i]);\n        }\n        printf(\"\\n\");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "clause4_0",
+          "code": "void pluck(int* arr, int n, int* result, int* result_n) {\n    *result_n = 0;\n    int min_even = -1;\n    int min_idx = -1;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] % 2 == 0) {\n            if (min_even == -1 || arr[i] < min_even) {\n                min_even = arr[i];\n                min_idx = i;\n            }\n        }\n    }\n    if (min_even != -1) {\n        result[0] = min_even;\n        result[1] = min_idx;\n        *result_n = 2;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[2], result_n;\n    pluck(arr, n, result, &result_n);\n    if (result_n == 0) {\n        printf(\"\\n\");\n    } else {\n        for (int i = 0; i < result_n; i++) {\n            if (i > 0) printf(\" \");\n            printf(\"%d\", result[i]);\n        }\n        printf(\"\\n\");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "clause5_0",
+          "code": "void pluck(int* arr, int n, int* result, int* result_n) {\n    *result_n = 0;\n    int min_even = -1;\n    int min_idx = -1;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] % 2 == 0) {\n            if (min_even == -1 || arr[i] < min_even) {\n                min_even = arr[i];\n                min_idx = i;\n            }\n        }\n    }\n    if (min_even != -1) {\n        result[0] = min_even;\n        result[1] = min_idx;\n        *result_n = 2;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[2], result_n;\n    pluck(arr, n, result, &result_n);\n    if (result_n == 0) {\n        printf(\"\\n\");\n    } else {\n        for (int i = 0; i < result_n; i++) {\n            if (i > 0) printf(\" \");\n            printf(\"%d\", result[i]);\n        }\n        printf(\"\\n\");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

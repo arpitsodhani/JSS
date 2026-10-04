@@ -1,0 +1,6 @@
+There is a directed graph with N vertices numbered 1 to N and N edges. The out-degree of every vertex is 1 , and the edge from vertex i to vertex a_i . Count the number of pairs of vertices (u, v) such that vertex v is reachable from vertex u . Here, vertex v is reachable from vertex u if there exists a sequence of vertices w_0, w_1, \dots, w_K of length K+1 that satisfies the following conditions. In particular, if u = v , it is always reachable. w_0 = u . w_K = v . For every 0 \leq i \lt K , there is an edge from vertex w_i to vertex w_{i+1} .
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= a_i <= N
+- All input values are integers

@@ -1,0 +1,6 @@
+You are given a string S consisting of uppercase English letters. Apply the following procedure to S , and then output the resulting string: As long as the string contains WA as a (contiguous) substring, repeat the following operation: Among all occurrences of WA in the string, replace the leftmost one with AC . It can be proved under the of this problem that this operation is repeated at most a finite number of times.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i, B_i <= 10^9
+- All input values are integers

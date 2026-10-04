@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9966666666666666,
+  "clauses": [
+    {
+      "clause": "count_takahashi",
+      "confidence": 0.9899999999999999
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_count",
+      "confidence": 1.0
+    }
+  ]
+}

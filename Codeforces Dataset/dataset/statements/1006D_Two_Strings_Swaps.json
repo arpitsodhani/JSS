@@ -1,0 +1,30 @@
+{
+  "contestId": 1006,
+  "index": "D",
+  "problem_id": "1006D",
+  "name": "Two Strings Swaps",
+  "rating": 1700,
+  "tags": [
+    "implementation"
+  ],
+  "points": null,
+  "solvedCount": 6504,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Two Strings Swaps",
+  "legend": "You are given two strings a and b consisting of lowercase English letters, both of length n. The characters of both strings have indices from 1 to n, inclusive.\n\nYou are allowed to do the following changes:\n\nChoose any index i (1≤i≤n) and swap characters ai and bi;\nChoose any index i (1≤i≤n) and swap characters ai and an−i+1;\nChoose any index i (1≤i≤n) and swap characters bi and bn−i+1.\n\nNote that if n is odd, you are formally allowed to swap a⌈\nn\n\n\n2\n⌉ with a⌈\nn\n\n\n2\n⌉ (and the same with the string b) but this move is useless. Also you can swap two equal characters but this operation is useless as well.\n\nYou have to make these strings equal by applying any number of changes described above, in any order. But it is obvious that it may be impossible to make two strings equal by these swaps.\n\nIn one preprocess move you can replace a character in a with another character. In other words, in a single preprocess move you can choose any index i (1≤i≤n), any character c and set ai:=c.\n\nYour task is to find the minimum number of preprocess moves to apply in such a way that after them you can make strings a and b equal by applying some number of changes described in the list above.\n\nNote that the number of changes you make after the preprocess moves does not matter. Also note that you cannot apply preprocess moves to the string b or make any preprocess moves after the first change is made.",
+  "input_spec": "The first line of the input contains one integer n (1≤n≤105) — the length of strings a and b.\n\nThe second line contains the string a consisting of exactly n lowercase English letters.\n\nThe third line contains the string b consisting of exactly n lowercase English letters.",
+  "output_spec": "Print a single integer — the minimum number of preprocess moves to apply before changes, so that it is possible to make the string a equal to string b with a sequence of changes from the list above.",
+  "note": "In the first example preprocess moves are as follows: a1:='b', a3:='c', a4:='a' and a5:='b'. Afterwards, a=\"bbcabba\". Then we can obtain equal strings by the following sequence of changes: swap(a2,b2) and swap(a2,a6). There is no way to use fewer than 4 preprocess moves before a sequence of changes to make string equal, so the answer in this example is 4.\n\nIn the second example no preprocess moves are required. We can use the following sequence of changes to make a and b equal: swap(b1,b5), swap(a2,a4).",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "7\nabacaba\nbacabaa\n",
+      "output": "4"
+    },
+    {
+      "input": "5\nzcabd\ndbacz\n",
+      "output": "0"
+    }
+  ]
+}

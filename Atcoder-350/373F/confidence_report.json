@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.825,
+  "clauses": [
+    {
+      "clause": "compute_rolling_hash",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "search_pattern_rabin_karp",
+      "confidence": 0.29999999999999993
+    },
+    {
+      "clause": "update_rolling_hash",
+      "confidence": 1.0
+    }
+  ]
+}

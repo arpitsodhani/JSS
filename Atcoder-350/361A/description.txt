@@ -1,0 +1,8 @@
+You are given an integer sequence A of length N and integers K and X . Print the integer sequence B obtained by inserting the integer X immediately after the K -th element of the sequence A .
+
+**Constraints:**
+- 2 <= N <= 100
+- 1 <= K <= N
+- 1 <= X <= 100
+- 1 <= A_i <= 100
+- All input values are integers

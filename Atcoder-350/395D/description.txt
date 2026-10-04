@@ -1,0 +1,7 @@
+There are N pigeons labeled 1, 2, \ldots, N and N nests labeled 1, 2, \ldots, N . Initially, pigeon i (1 \leq i \leq N) is in nest i . You will perform Q operations on these pigeons. There are three types of operations: Type 1 : You are given integers a and b (1 \leq a \leq N, 1 \leq b \leq N) . Take pigeon a out of its current nest and move it to nest b . Type 2 : You are given integers a and b (1 \leq a < b \leq N) . Move all pigeons in nest a to nest b , and move all pigeons in nest b to nest a . These two moves happen simultaneously. Type 3 : You are given an integer a (1 \leq a \leq N) . Pigeon a reports the label of the nest it is currently in. Print the result of each Type 3 operation in the order the operations are given.
+
+**Constraints:**
+- 1 <= N, M <= 2 * 10^5
+- 1 <= A_i, B_i <= N
+- A_i != B_i
+- All input values are integers

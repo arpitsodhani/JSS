@@ -1,0 +1,174 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S,int *Q,long long *K)",
+          "code": "void read_input(char *S,int *Q,long long *K){ scanf(\"%s\", S); scanf(\"%d\", Q); for(int i=0;i<*Q;i++) scanf(\"%lld\", &K[i]); }\n"
+        },
+        {
+          "clause_id": "resolve_char",
+          "signature": "char resolve_char(char *S,long long k)",
+          "code": "char resolve_char(char *S,long long k){\n    long long n=strlen(S);\n    long long L=n;\n    while(L<k) L*=2;\n    int flip=0;\n    while(L>n){\n        long long half=L/2;\n        if(k>half){ k-=half; flip^=1; }\n        L=half;\n    }\n    char c=S[k-1];\n    if(flip){\n        if(c>='a' && c<='z') c = c-'a'+'A';\n        else if(c>='A' && c<='Z') c = c-'A'+'a';\n    }\n    return c;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(char *S,int Q,long long *K,char *out)",
+          "code": "void process_queries(char *S,int Q,long long *K,char *out){ for(int i=0;i<Q;i++) out[i]=resolve_char(S,K[i]); }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int Q,char *out)",
+          "code": "void print_answers(int Q,char *out){ for(int i=0;i<Q;i++) printf(\"%c\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[300000]; int Q; long long *K=(long long*)malloc((size_t)200000*sizeof(long long)); read_input(S,&Q,K); char *out=(char*)malloc((size_t)Q); process_queries(S,Q,K,out); print_answers(Q,out); free(K); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S,int *Q,long long *K)",
+          "code": "void read_input(char *S,int *Q,long long *K){ scanf(\"%s\", S); scanf(\"%d\", Q); for(int i=0;i<*Q;i++) scanf(\"%lld\", &K[i]); }\n"
+        },
+        {
+          "clause_id": "resolve_char",
+          "signature": "char resolve_char(char *S,long long k)",
+          "code": "char resolve_char(char *S,long long k){\n    long long n=strlen(S);\n    long long L=n;\n    while(L<k) L*=2;\n    int flip=0;\n    while(L>n){\n        long long half=L/2;\n        if(k>half){ k-=half; flip^=1; }\n        L=half;\n    }\n    char c=S[k-1];\n    if(flip){\n        if(c>='a' && c<='z') c = c-'a'+'A';\n        else if(c>='A' && c<='Z') c = c-'A'+'a';\n    }\n    return c;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(char *S,int Q,long long *K,char *out)",
+          "code": "void process_queries(char *S,int Q,long long *K,char *out){ for(int i=0;i<Q;i++) out[i]=resolve_char(S,K[i]); }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int Q,char *out)",
+          "code": "void print_answers(int Q,char *out){ for(int i=0;i<Q;i++) printf(\"%c\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[300000]; int Q; long long *K=(long long*)malloc((size_t)200000*sizeof(long long)); read_input(S,&Q,K); char *out=(char*)malloc((size_t)Q); process_queries(S,Q,K,out); print_answers(Q,out); free(K); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S,int *Q,long long *K)",
+          "code": "void read_input(char *S,int *Q,long long *K){ scanf(\"%s\", S); scanf(\"%d\", Q); for(int i=0;i<*Q;i++) scanf(\"%lld\", &K[i]); }\n"
+        },
+        {
+          "clause_id": "resolve_char",
+          "signature": "char resolve_char(char *S,long long k)",
+          "code": "char resolve_char(char *S,long long k){\n    long long n=strlen(S);\n    long long L=n;\n    while(L<k) L*=2;\n    int flip=0;\n    while(L>n){\n        long long half=L/2;\n        if(k>half){ k-=half; flip^=1; }\n        L=half;\n    }\n    char c=S[k-1];\n    if(flip){\n        if(c>='a' && c<='z') c = c-'a'+'A';\n        else if(c>='A' && c<='Z') c = c-'A'+'a';\n    }\n    return c;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(char *S,int Q,long long *K,char *out)",
+          "code": "void process_queries(char *S,int Q,long long *K,char *out){ for(int i=0;i<Q;i++) out[i]=resolve_char(S,K[i]); }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int Q,char *out)",
+          "code": "void print_answers(int Q,char *out){ for(int i=0;i<Q;i++) printf(\"%c\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[300000]; int Q; long long *K=(long long*)malloc((size_t)200000*sizeof(long long)); read_input(S,&Q,K); char *out=(char*)malloc((size_t)Q); process_queries(S,Q,K,out); print_answers(Q,out); free(K); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S,int *Q,long long *K)",
+          "code": "void read_input(char *S,int *Q,long long *K){ scanf(\"%s\", S); scanf(\"%d\", Q); for(int i=0;i<*Q;i++) scanf(\"%lld\", &K[i]); }\n"
+        },
+        {
+          "clause_id": "resolve_char",
+          "signature": "char resolve_char(char *S,long long k)",
+          "code": "char resolve_char(char *S,long long k){\n    long long n=strlen(S);\n    long long L=n;\n    while(L<k) L*=2;\n    int flip=0;\n    while(L>n){\n        long long half=L/2;\n        if(k>half){ k-=half; flip^=1; }\n        L=half;\n    }\n    char c=S[k-1];\n    if(flip){\n        if(c>='a' && c<='z') c = c-'a'+'A';\n        else if(c>='A' && c<='Z') c = c-'A'+'a';\n    }\n    return c;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(char *S,int Q,long long *K,char *out)",
+          "code": "void process_queries(char *S,int Q,long long *K,char *out){ for(int i=0;i<Q;i++) out[i]=resolve_char(S,K[i]); }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int Q,char *out)",
+          "code": "void print_answers(int Q,char *out){ for(int i=0;i<Q;i++) printf(\"%c\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[300000]; int Q; long long *K=(long long*)malloc((size_t)200000*sizeof(long long)); read_input(S,&Q,K); char *out=(char*)malloc((size_t)Q); process_queries(S,Q,K,out); print_answers(Q,out); free(K); free(out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S,int *Q,long long *K)",
+          "code": "void read_input(char *S,int *Q,long long *K){ scanf(\"%s\", S); scanf(\"%d\", Q); for(int i=0;i<*Q;i++) scanf(\"%lld\", &K[i]); }\n"
+        },
+        {
+          "clause_id": "resolve_char",
+          "signature": "char resolve_char(char *S,long long k)",
+          "code": "char resolve_char(char *S,long long k){\n    long long n=strlen(S);\n    long long L=n;\n    while(L<k) L*=2;\n    int flip=0;\n    while(L>n){\n        long long half=L/2;\n        if(k>half){ k-=half; flip^=1; }\n        L=half;\n    }\n    char c=S[k-1];\n    if(flip){\n        if(c>='a' && c<='z') c = c-'a'+'A';\n        else if(c>='A' && c<='Z') c = c-'A'+'a';\n    }\n    return c;\n}\n"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(char *S,int Q,long long *K,char *out)",
+          "code": "void process_queries(char *S,int Q,long long *K,char *out){ for(int i=0;i<Q;i++) out[i]=resolve_char(S,K[i]); }\n"
+        },
+        {
+          "clause_id": "print_answers",
+          "signature": "void print_answers(int Q,char *out)",
+          "code": "void print_answers(int Q,char *out){ for(int i=0;i<Q;i++) printf(\"%c\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[300000]; int Q; long long *K=(long long*)malloc((size_t)200000*sizeof(long long)); read_input(S,&Q,K); char *out=(char*)malloc((size_t)Q); process_queries(S,Q,K,out); print_answers(Q,out); free(K); free(out); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

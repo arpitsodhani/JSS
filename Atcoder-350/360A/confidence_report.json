@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9709009324009323,
+  "clauses": [
+    {
+      "clause": "check_rice_before_miso",
+      "confidence": 0.9628846153846154
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9498181818181817
+    },
+    {
+      "clause": "read_arrangement",
+      "confidence": 1.0
+    }
+  ]
+}

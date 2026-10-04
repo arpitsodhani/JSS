@@ -1,0 +1,35 @@
+{
+  "contestId": 1252,
+  "index": "H",
+  "problem_id": "1252H",
+  "name": "Twin Buildings",
+  "rating": 1800,
+  "tags": [
+    "greedy",
+    "implementation"
+  ],
+  "points": null,
+  "solvedCount": 2863,
+  "source": "verbatim_cf_fetch",
+  "title": "H. Twin Buildings",
+  "legend": "As you might already know, space has always been a problem in ICPC Jakarta. To cope with this, ICPC Jakarta is planning to build two new buildings. These buildings should have a shape of a rectangle of the same size. Now, their problem is to find land to build the buildings.\n\nThere are N lands available for sale. The ith land has a rectangular shape of size Li×Wi. For a good feng shui, the building's side should be parallel to the land's sides.\n\nOne way is to build the two buildings on two different lands, one on each land (not necessarily with the same orientation). A building of size A×B can be build on the ith land if and only if at least one of the following is satisfied:\n\nA≤Li and B≤Wi, or\nA≤Wi and B≤Li.\nAlternatively, it is also possible to build two buildings of A×B on the ith land with the same orientation. Formally, it is possible to build two buildings of A×B on the ith land if and only if at least one of the following is satisfied:\nA×2≤Li and B≤Wi, or\nA×2≤Wi and B≤Li, or\nA≤Li and B×2≤Wi, or\nA≤Wi and B×2≤Li.\n\nYour task in this problem is to help ICPC Jakarta to figure out the largest possible buildings they can build given N available lands. Note that ICPC Jakarta has to build two buildings of A×B; output the largest possible for A×B.",
+  "input_spec": "Input begins with a line containing an integer: N (1≤N≤100000) representing the number of available lands. The next N lines each contains two integers: Li Wi (1≤Li,Wi≤109) representing the size of the land.",
+  "output_spec": "Output in a line a number representing the largest building that ICPC Jakarta can build with exactly one decimal point (see sample input/output for clarity).",
+  "note": "Explanation for the sample input/output #1\n\nTwo buildings of 2.5×5 can be built both on the first land.\n\nExplanation for the sample input/output #2\n\nTwo buildings of 2×4 can be built each on the first and second lands.\n\nExplanation for the sample input/output #3\n\nTwo buildings of 7×6 can be built each on the second and third lands.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n5 5\n3 4\n",
+      "output": "12.5"
+    },
+    {
+      "input": "2\n2 5\n4 3\n",
+      "output": "8.0"
+    },
+    {
+      "input": "3\n10 1\n9 8\n7 6\n",
+      "output": "42.0"
+    }
+  ]
+}

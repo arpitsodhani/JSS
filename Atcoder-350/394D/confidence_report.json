@@ -1,0 +1,23 @@
+{
+  "problem_id": "394D",
+  "total_clauses": 4,
+  "average_confidence": 0.912,
+  "clause_confidences": [
+    {
+      "clause_id": "read_input",
+      "confidence": 0.912
+    },
+    {
+      "clause_id": "find_maximum",
+      "confidence": 0.912
+    },
+    {
+      "clause_id": "print_result",
+      "confidence": 0.912
+    },
+    {
+      "clause_id": "main",
+      "confidence": 0.912
+    }
+  ]
+}

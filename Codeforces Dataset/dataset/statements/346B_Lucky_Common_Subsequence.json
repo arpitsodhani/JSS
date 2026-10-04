@@ -1,0 +1,31 @@
+{
+  "contestId": 346,
+  "index": "B",
+  "problem_id": "346B",
+  "name": "Lucky Common Subsequence",
+  "rating": 2000,
+  "tags": [
+    "dp",
+    "strings"
+  ],
+  "points": 1000.0,
+  "solvedCount": 4387,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Lucky Common Subsequence",
+  "legend": "In mathematics, a subsequence is a sequence that can be derived from another sequence by deleting some elements without changing the order of the remaining elements. For example, the sequence BDF is a subsequence of ABCDEF. A substring of a string is a continuous subsequence of the string. For example, BCD is a substring of ABCDEF.\n\nYou are given two strings s1, s2 and another string called virus. Your task is to find the longest common subsequence of s1 and s2, such that it doesn't contain virus as a substring.",
+  "input_spec": "The input contains three strings in three separate lines: s1, s2 and virus (1 ≤ |s1|, |s2|, |virus| ≤ 100). Each string consists only of uppercase English letters.",
+  "output_spec": "Output the longest common subsequence of s1 and s2 without virus as a substring. If there are multiple answers, any of them will be accepted.\n\nIf there is no valid common subsequence, output 0.",
+  "note": "",
+  "time_limit": "3 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "AJKEQSLOBSROFGZ\nOVGURWZLWVLUXTH\nOZ\n",
+      "output": "ORZ"
+    },
+    {
+      "input": "AA\nA\nA\n",
+      "output": "0"
+    }
+  ]
+}

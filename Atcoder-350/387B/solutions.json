@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "int read_x(void)",
+          "code": "int x; scanf(\"%d\", &x); return x;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int x)",
+          "code": "int total=0; for(int i=1;i<=9;i++) for(int j=1;j<=9;j++) total+=i*j;\nint cnt=0; for(int i=1;i<=9;i++) for(int j=1;j<=9;j++) if(i*j==x) cnt++;\nreturn total - cnt*x;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int x=read_x(); int ans=solve(x); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "int read_x(void)",
+          "code": "int x; scanf(\"%d\", &x); return x;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int x)",
+          "code": "int total=0; for(int i=1;i<=9;i++) for(int j=1;j<=9;j++) total+=i*j;\nint cnt=0; for(int i=1;i<=9;i++) for(int j=1;j<=9;j++) if(i*j==x) cnt++;\nreturn total - cnt*x;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int x=read_x(); int ans=solve(x); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "int read_x(void)",
+          "code": "int x; scanf(\"%d\", &x); return x;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int x)",
+          "code": "int total=0; for(int i=1;i<=9;i++) for(int j=1;j<=9;j++) total+=i*j;\nint cnt=0; for(int i=1;i<=9;i++) for(int j=1;j<=9;j++) if(i*j==x) cnt++;\nreturn total - cnt*x;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int x=read_x(); int ans=solve(x); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "int read_x(void)",
+          "code": "int x; scanf(\"%d\", &x); return x;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int x)",
+          "code": "int total=0; for(int i=1;i<=9;i++) for(int j=1;j<=9;j++) total+=i*j;\nint cnt=0; for(int i=1;i<=9;i++) for(int j=1;j<=9;j++) if(i*j==x) cnt++;\nreturn total - cnt*x;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int x=read_x(); int ans=solve(x); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "int read_x(void)",
+          "code": "int x; scanf(\"%d\", &x); return x;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(int x)",
+          "code": "int total=0; for(int i=1;i<=9;i++) for(int j=1;j<=9;j++) total+=i*j;\nint cnt=0; for(int i=1;i<=9;i++) for(int j=1;j<=9;j++) if(i*j==x) cnt++;\nreturn total - cnt*x;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int x=read_x(); int ans=solve(x); print_int(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "387B",
+  "total_programs": 5
+}

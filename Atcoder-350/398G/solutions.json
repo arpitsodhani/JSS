@@ -1,0 +1,174 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *u, int *v)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "bipartition",
+          "signature": "void bipartition(int n, int m, const int *u, const int *v, int *col)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<m;i++){\n  int a=u[i], b=v[i];\n  to[ec]=b; nx[ec]=head[a]; head[a]=ec++;\n  to[ec]=a; nx[ec]=head[b]; head[b]=ec++;\n}\nfor(int i=0;i<n;i++) col[i]=-1;\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint qh=0,qt=0;\ncol[0]=0; q[qt++]=0;\nwhile(qh<qt){\n  int x=q[qh++];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    if(col[y]==-1){ col[y]=col[x]^1; q[qt++]=y; }\n  }\n}\nfree(head); free(to); free(nx); free(q);\n"
+        },
+        {
+          "clause_id": "count_moves",
+          "signature": "long long count_moves(int n, int m, const int *u, const int *v, const int *col)",
+          "code": "long long L=0,R=0;\nfor(int i=0;i<n;i++) if(col[i]==0) L++; else R++;\nlong long total=L*R;\nreturn total - (long long)m;\n"
+        },
+        {
+          "clause_id": "winner",
+          "signature": "const char* winner(long long moves)",
+          "code": "return (moves%2)?\"Aoki\":\"Takahashi\";\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int u[200005], v[200005]; read_graph(&n,&m,u,v); int *col=(int*)malloc((size_t)n*sizeof(int)); bipartition(n,m,u,v,col); long long moves=count_moves(n,m,u,v,col); puts(winner(moves)); free(col); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *u, int *v)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "bipartition",
+          "signature": "void bipartition(int n, int m, const int *u, const int *v, int *col)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<m;i++){\n  int a=u[i], b=v[i];\n  to[ec]=b; nx[ec]=head[a]; head[a]=ec++;\n  to[ec]=a; nx[ec]=head[b]; head[b]=ec++;\n}\nfor(int i=0;i<n;i++) col[i]=-1;\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint qh=0,qt=0;\ncol[0]=0; q[qt++]=0;\nwhile(qh<qt){\n  int x=q[qh++];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    if(col[y]==-1){ col[y]=col[x]^1; q[qt++]=y; }\n  }\n}\nfree(head); free(to); free(nx); free(q);\n"
+        },
+        {
+          "clause_id": "count_moves",
+          "signature": "long long count_moves(int n, int m, const int *u, const int *v, const int *col)",
+          "code": "long long L=0,R=0;\nfor(int i=0;i<n;i++) if(col[i]==0) L++; else R++;\nlong long total=L*R;\nreturn total - (long long)m;\n"
+        },
+        {
+          "clause_id": "winner",
+          "signature": "const char* winner(long long moves)",
+          "code": "return (moves%2)?\"Aoki\":\"Takahashi\";\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int u[200005], v[200005]; read_graph(&n,&m,u,v); int *col=(int*)malloc((size_t)n*sizeof(int)); bipartition(n,m,u,v,col); long long moves=count_moves(n,m,u,v,col); puts(winner(moves)); free(col); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *u, int *v)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "bipartition",
+          "signature": "void bipartition(int n, int m, const int *u, const int *v, int *col)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<m;i++){\n  int a=u[i], b=v[i];\n  to[ec]=b; nx[ec]=head[a]; head[a]=ec++;\n  to[ec]=a; nx[ec]=head[b]; head[b]=ec++;\n}\nfor(int i=0;i<n;i++) col[i]=-1;\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint qh=0,qt=0;\ncol[0]=0; q[qt++]=0;\nwhile(qh<qt){\n  int x=q[qh++];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    if(col[y]==-1){ col[y]=col[x]^1; q[qt++]=y; }\n  }\n}\nfree(head); free(to); free(nx); free(q);\n"
+        },
+        {
+          "clause_id": "count_moves",
+          "signature": "long long count_moves(int n, int m, const int *u, const int *v, const int *col)",
+          "code": "long long L=0,R=0;\nfor(int i=0;i<n;i++) if(col[i]==0) L++; else R++;\nlong long total=L*R;\nreturn total - (long long)m;\n"
+        },
+        {
+          "clause_id": "winner",
+          "signature": "const char* winner(long long moves)",
+          "code": "return (moves%2)?\"Aoki\":\"Takahashi\";\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int u[200005], v[200005]; read_graph(&n,&m,u,v); int *col=(int*)malloc((size_t)n*sizeof(int)); bipartition(n,m,u,v,col); long long moves=count_moves(n,m,u,v,col); puts(winner(moves)); free(col); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *u, int *v)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "bipartition",
+          "signature": "void bipartition(int n, int m, const int *u, const int *v, int *col)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<m;i++){\n  int a=u[i], b=v[i];\n  to[ec]=b; nx[ec]=head[a]; head[a]=ec++;\n  to[ec]=a; nx[ec]=head[b]; head[b]=ec++;\n}\nfor(int i=0;i<n;i++) col[i]=-1;\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint qh=0,qt=0;\ncol[0]=0; q[qt++]=0;\nwhile(qh<qt){\n  int x=q[qh++];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    if(col[y]==-1){ col[y]=col[x]^1; q[qt++]=y; }\n  }\n}\nfree(head); free(to); free(nx); free(q);\n"
+        },
+        {
+          "clause_id": "count_moves",
+          "signature": "long long count_moves(int n, int m, const int *u, const int *v, const int *col)",
+          "code": "long long L=0,R=0;\nfor(int i=0;i<n;i++) if(col[i]==0) L++; else R++;\nlong long total=L*R;\nreturn total - (long long)m;\n"
+        },
+        {
+          "clause_id": "winner",
+          "signature": "const char* winner(long long moves)",
+          "code": "return (moves%2)?\"Aoki\":\"Takahashi\";\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int u[200005], v[200005]; read_graph(&n,&m,u,v); int *col=(int*)malloc((size_t)n*sizeof(int)); bipartition(n,m,u,v,col); long long moves=count_moves(n,m,u,v,col); puts(winner(moves)); free(col); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "void read_graph(int *n, int *m, int *u, int *v)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*m;i++){ scanf(\"%d %d\", &u[i], &v[i]); u[i]--; v[i]--; }\n"
+        },
+        {
+          "clause_id": "bipartition",
+          "signature": "void bipartition(int n, int m, const int *u, const int *v, int *col)",
+          "code": "int *head=(int*)malloc((size_t)n*sizeof(int));\nint *to=(int*)malloc((size_t)(2*m)*sizeof(int));\nint *nx=(int*)malloc((size_t)(2*m)*sizeof(int));\nfor(int i=0;i<n;i++) head[i]=-1;\nint ec=0;\nfor(int i=0;i<m;i++){\n  int a=u[i], b=v[i];\n  to[ec]=b; nx[ec]=head[a]; head[a]=ec++;\n  to[ec]=a; nx[ec]=head[b]; head[b]=ec++;\n}\nfor(int i=0;i<n;i++) col[i]=-1;\nint *q=(int*)malloc((size_t)n*sizeof(int));\nint qh=0,qt=0;\ncol[0]=0; q[qt++]=0;\nwhile(qh<qt){\n  int x=q[qh++];\n  for(int e=head[x]; e!=-1; e=nx[e]){\n    int y=to[e];\n    if(col[y]==-1){ col[y]=col[x]^1; q[qt++]=y; }\n  }\n}\nfree(head); free(to); free(nx); free(q);\n"
+        },
+        {
+          "clause_id": "count_moves",
+          "signature": "long long count_moves(int n, int m, const int *u, const int *v, const int *col)",
+          "code": "long long L=0,R=0;\nfor(int i=0;i<n;i++) if(col[i]==0) L++; else R++;\nlong long total=L*R;\nreturn total - (long long)m;\n"
+        },
+        {
+          "clause_id": "winner",
+          "signature": "const char* winner(long long moves)",
+          "code": "return (moves%2)?\"Aoki\":\"Takahashi\";\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int u[200005], v[200005]; read_graph(&n,&m,u,v); int *col=(int*)malloc((size_t)n*sizeof(int)); bipartition(n,m,u,v,col); long long moves=count_moves(n,m,u,v,col); puts(winner(moves)); free(col); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

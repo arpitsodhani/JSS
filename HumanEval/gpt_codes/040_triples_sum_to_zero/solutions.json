@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "triples_sum_to_zero",
+          "code": "int triples_sum_to_zero(int* arr, int n) {\n    for (int i = 0; i < n - 2; i++) {\n        for (int j = i + 1; j < n - 1; j++) {\n            for (int k = j + 1; k < n; k++) {\n                if (arr[i] + arr[j] + arr[k] == 0) return 1;\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    printf(\"%s\\n\", triples_sum_to_zero(arr, n) ? \"True\" : \"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "three_sum_zero",
+          "code": "int three_sum_zero(int *arr, int n) {\n    for(int i=0;i<n-2;i++) for(int j=i+1;j<n-1;j++) for(int k=j+1;k<n;k++) if(arr[i]+arr[j]+arr[k]==0) return 1;\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    int arr[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&arr[i]);\n    printf(\"%s\\n\",three_sum_zero(arr,n)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "triplet_sums_zero",
+          "code": "int triplet_sums_zero(int *v, int n) {\n    int i=0;\n    while(i<n-2){int j=i+1;while(j<n-1){int k=j+1;while(k<n){if(v[i]+v[j]+v[k]==0)return 1;k++;}j++;}i++;}\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    int v[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&v[i]);\n    printf(\"%s\\n\",triplet_sums_zero(v,n)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "any_triple_zero",
+          "code": "int any_triple_zero(int *a, int n) {\n    for(int p=0;p<n;p++) for(int q=p+1;q<n;q++) for(int r=q+1;r<n;r++) if(a[p]+a[q]+a[r]==0) return 1;\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    int a[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    printf(\"%s\\n\",any_triple_zero(a,n)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "check_triple_sum",
+          "code": "int check_triple_sum(int *nums, int cnt) {\n    for(int x=0;x<cnt-2;x++) for(int y=x+1;y<cnt-1;y++) for(int z=y+1;z<cnt;z++) if(nums[x]+nums[y]+nums[z]==0) return 1;\n    return 0;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int cnt;\n    scanf(\"%d\",&cnt);\n    int nums[cnt];\n    for(int i=0;i<cnt;i++) scanf(\"%d\",&nums[i]);\n    printf(\"%s\\n\",check_triple_sum(nums,cnt)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

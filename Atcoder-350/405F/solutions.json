@@ -1,0 +1,154 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "mod_pow",
+          "signature": "long long mod_pow(long long a, long long e)",
+          "code": "long long mod_pow(long long a,long long e){ const long long MOD=998244353LL; long long r=1%MOD; while(e){ if(e&1) r=r*a%MOD; a=a*a%MOD; e>>=1; } return r; }\n"
+        },
+        {
+          "clause_id": "det_mod",
+          "signature": "long long det_mod(long long *mat, int n)",
+          "code": "long long det_mod(long long *mat,int n){ const long long MOD=998244353LL; long long det=1; for(int col=0;col<n;col++){ int piv=col; while(piv<n && mat[(size_t)piv*n+col]==0) piv++; if(piv==n) return 0; if(piv!=col){ for(int j=col;j<n;j++){ long long t=mat[(size_t)col*n+j]; mat[(size_t)col*n+j]=mat[(size_t)piv*n+j]; mat[(size_t)piv*n+j]=t; } det=(MOD-det)%MOD; } long long pivot=mat[(size_t)col*n+col]%MOD; det=det*pivot%MOD; long long inv=mod_pow(pivot, MOD-2); for(int r=col+1;r<n;r++){ long long x=mat[(size_t)r*n+col]; if(!x) continue; long long f=x%MOD*inv%MOD; for(int c=col;c<n;c++){ long long v=(mat[(size_t)r*n+c] - f*mat[(size_t)col*n+c])%MOD; if(v<0) v+=MOD; mat[(size_t)r*n+c]=v; } } } return det; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ const long long MOD=998244353LL; int N,M; scanf(\"%d %d\", &N, &M); int n=N-1; long long *mat=(long long*)calloc((size_t)n*n, sizeof(long long)); for(int i=0;i<M;i++){ int u,v; scanf(\"%d %d\", &u, &v); u--; v--; if(u==N-1 || v==N-1){ int x=(u==N-1)?v:u; mat[(size_t)x*n+x]=(mat[(size_t)x*n+x]+1)%MOD; } else { mat[(size_t)u*n+u]++; mat[(size_t)v*n+v]++; mat[(size_t)u*n+v]--; mat[(size_t)v*n+u]--; } }\n for(int i=0;i<n*n;i++){ mat[i]%=MOD; if(mat[i]<0) mat[i]+=MOD; }\n long long ans=det_mod(mat,n)%MOD; printf(\"%lld\\n\", ans); free(mat); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "mod_pow",
+          "signature": "long long mod_pow(long long a, long long e)",
+          "code": "long long mod_pow(long long a,long long e){ const long long MOD=998244353LL; long long r=1; for(;e;e>>=1){ if(e&1) r=r*a%MOD; a=a*a%MOD; } return r; }\n"
+        },
+        {
+          "clause_id": "det_mod",
+          "signature": "long long det_mod(long long *mat, int n)",
+          "code": "long long det_mod(long long *mat,int n){ const long long MOD=998244353LL; long long det=1; for(int i=0;i<n;i++){ int piv=i; for(int r=i;r<n;r++){ if(mat[(size_t)r*n+i]){ piv=r; break; } } if(!mat[(size_t)piv*n+i]) return 0; if(piv!=i){ for(int c=i;c<n;c++){ long long t=mat[(size_t)i*n+c]; mat[(size_t)i*n+c]=mat[(size_t)piv*n+c]; mat[(size_t)piv*n+c]=t; } det=(MOD-det)%MOD; } long long pivot=mat[(size_t)i*n+i]%MOD; det=det*pivot%MOD; long long inv=mod_pow(pivot, MOD-2); for(int r=i+1;r<n;r++){ long long x=mat[(size_t)r*n+i]; if(!x) continue; long long f=x%MOD*inv%MOD; for(int c=i;c<n;c++){ long long v=(mat[(size_t)r*n+c]-f*mat[(size_t)i*n+c])%MOD; if(v<0) v+=MOD; mat[(size_t)r*n+c]=v; } } } return det; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ const long long MOD=998244353LL; int N,M; scanf(\"%d %d\", &N, &M); int n=N-1; long long *mat=(long long*)calloc((size_t)n*n, sizeof(long long)); for(int i=0;i<M;i++){ int u,v; scanf(\"%d %d\", &u, &v); u--; v--; if(u==N-1 || v==N-1){ int x=(u==N-1)?v:u; mat[(size_t)x*n+x]++; } else { mat[(size_t)u*n+u]++; mat[(size_t)v*n+v]++; mat[(size_t)u*n+v]--; mat[(size_t)v*n+u]--; } } for(int i=0;i<n*n;i++){ mat[i]%=MOD; if(mat[i]<0) mat[i]+=MOD; } printf(\"%lld\\n\", det_mod(mat,n)%MOD); free(mat); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "mod_pow",
+          "signature": "long long mod_pow(long long a, long long e)",
+          "code": "long long mod_pow(long long a,long long e){ const long long MOD=998244353LL; long long r=1; while(e){ if(e%2) r=r*a%MOD; a=a*a%MOD; e/=2; } return r; }\n"
+        },
+        {
+          "clause_id": "det_mod",
+          "signature": "long long det_mod(long long *mat, int n)",
+          "code": "long long det_mod(long long *mat,int n){ const long long MOD=998244353LL; long long det=1; for(int i=0;i<n;i++){ int piv=i; while(piv<n && !mat[(size_t)piv*n+i]) piv++; if(piv==n) return 0; if(piv!=i){ for(int c=i;c<n;c++){ long long t=mat[(size_t)i*n+c]; mat[(size_t)i*n+c]=mat[(size_t)piv*n+c]; mat[(size_t)piv*n+c]=t; } det=(MOD-det)%MOD; } long long pivot=mat[(size_t)i*n+i]%MOD; det=det*pivot%MOD; long long inv=mod_pow(pivot, MOD-2); for(int r=i+1;r<n;r++){ long long f=mat[(size_t)r*n+i]%MOD*inv%MOD; if(!f) continue; for(int c=i;c<n;c++){ long long v=(mat[(size_t)r*n+c] - f*mat[(size_t)i*n+c])%MOD; if(v<0) v+=MOD; mat[(size_t)r*n+c]=v; } } } return det; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ const long long MOD=998244353LL; int N,M; scanf(\"%d %d\", &N, &M); int n=N-1; long long *mat=(long long*)calloc((size_t)n*n, sizeof(long long)); for(int i=0;i<M;i++){ int u,v; scanf(\"%d %d\", &u, &v); u--; v--; if(u==N-1 || v==N-1){ int x=(u==N-1)?v:u; mat[(size_t)x*n+x]+=1; } else { mat[(size_t)u*n+u]+=1; mat[(size_t)v*n+v]+=1; mat[(size_t)u*n+v]-=1; mat[(size_t)v*n+u]-=1; } } for(int i=0;i<n*n;i++){ long long x=mat[i]%MOD; if(x<0) x+=MOD; mat[i]=x; } long long ans=det_mod(mat,n); printf(\"%lld\\n\", ans); free(mat); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "mod_pow",
+          "signature": "long long mod_pow(long long a, long long e)",
+          "code": "long long mod_pow(long long a,long long e){ const long long MOD=998244353LL; long long r=1; while(e){ if(e&1LL) r=(__int128)r*a%MOD; a=(__int128)a*a%MOD; e>>=1; } return r; }\n"
+        },
+        {
+          "clause_id": "det_mod",
+          "signature": "long long det_mod(long long *mat, int n)",
+          "code": "long long det_mod(long long *mat,int n){ const long long MOD=998244353LL; long long det=1; for(int i=0;i<n;i++){ int piv=i; for(int r=i;r<n;r++) if(mat[(size_t)r*n+i]){ piv=r; break; } if(!mat[(size_t)piv*n+i]) return 0; if(piv!=i){ for(int c=i;c<n;c++){ long long t=mat[(size_t)i*n+c]; mat[(size_t)i*n+c]=mat[(size_t)piv*n+c]; mat[(size_t)piv*n+c]=t; } det=(MOD-det)%MOD; } long long pivot=mat[(size_t)i*n+i]%MOD; det=det*pivot%MOD; long long inv=mod_pow(pivot, MOD-2); for(int r=i+1;r<n;r++){ long long x=mat[(size_t)r*n+i]; if(!x) continue; long long f=x%MOD*inv%MOD; for(int c=i;c<n;c++){ long long v=(mat[(size_t)r*n+c]-f*mat[(size_t)i*n+c])%MOD; if(v<0) v+=MOD; mat[(size_t)r*n+c]=v; } } } return det; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ const long long MOD=998244353LL; int N,M; scanf(\"%d %d\", &N, &M); int n=N-1; long long *mat=(long long*)calloc((size_t)n*n, sizeof(long long)); for(int i=0;i<M;i++){ int u,v; scanf(\"%d %d\", &u, &v); u--; v--; if(u==N-1 || v==N-1){ int x=(u==N-1)?v:u; mat[(size_t)x*n+x]++; } else { mat[(size_t)u*n+u]++; mat[(size_t)v*n+v]++; mat[(size_t)u*n+v]--; mat[(size_t)v*n+u]--; } } for(int i=0;i<n*n;i++){ mat[i]%=MOD; if(mat[i]<0) mat[i]+=MOD; } long long ans=det_mod(mat,n); printf(\"%lld\\n\", ans); free(mat); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "mod_pow",
+          "signature": "long long mod_pow(long long a, long long e)",
+          "code": "long long mod_pow(long long a,long long e){ const long long MOD=998244353LL; long long r=1%MOD; while(e){ if(e&1) r=r*a%MOD; a=a*a%MOD; e>>=1; } return r; }\n"
+        },
+        {
+          "clause_id": "det_mod",
+          "signature": "long long det_mod(long long *mat, int n)",
+          "code": "long long det_mod(long long *mat,int n){ const long long MOD=998244353LL; long long det=1; for(int col=0;col<n;col++){ int piv=col; while(piv<n && mat[(size_t)piv*n+col]==0) piv++; if(piv==n) return 0; if(piv!=col){ for(int j=col;j<n;j++){ long long t=mat[(size_t)col*n+j]; mat[(size_t)col*n+j]=mat[(size_t)piv*n+j]; mat[(size_t)piv*n+j]=t; } det=(MOD-det)%MOD; } long long pivot=mat[(size_t)col*n+col]%MOD; det=det*pivot%MOD; long long inv=mod_pow(pivot, MOD-2); for(int r=col+1;r<n;r++){ long long x=mat[(size_t)r*n+col]; if(!x) continue; long long f=x%MOD*inv%MOD; for(int c=col;c<n;c++){ long long v=(mat[(size_t)r*n+c]-f*mat[(size_t)col*n+c])%MOD; if(v<0) v+=MOD; mat[(size_t)r*n+c]=v; } } } return det; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ const long long MOD=998244353LL; int N,M; scanf(\"%d %d\", &N, &M); int n=N-1; long long *mat=(long long*)calloc((size_t)n*n, sizeof(long long)); for(int i=0;i<M;i++){ int u,v; scanf(\"%d %d\", &u, &v); u--; v--; if(u==N-1 || v==N-1){ int x=(u==N-1)?v:u; mat[(size_t)x*n+x]++; } else { mat[(size_t)u*n+u]++; mat[(size_t)v*n+v]++; mat[(size_t)u*n+v]--; mat[(size_t)v*n+u]--; } } for(int i=0;i<n*n;i++){ mat[i]%=MOD; if(mat[i]<0) mat[i]+=MOD; } printf(\"%lld\\n\", det_mod(mat,n)%MOD); free(mat); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

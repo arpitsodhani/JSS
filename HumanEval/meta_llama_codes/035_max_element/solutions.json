@@ -1,0 +1,70 @@
+{
+  "problem_id": "035_max_element",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int max_val;\n    scanf(\"%d\", &max_val);\n    for (int i = 1; i < n; i++) {\n        int val;\n        scanf(\"%d\", &val);\n        if (val > max_val) max_val = val;\n    }\n    printf(\"%d\\n\", max_val);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int maximum;\n    scanf(\"%d\", &maximum);\n    for (int i = 1; i < n; i++) {\n        int num;\n        scanf(\"%d\", &num);\n        if (num > maximum) maximum = num;\n    }\n    printf(\"%d\\n\", maximum);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    int max_elem;\n    scanf(\"%d\", &max_elem);\n    for (int k = 1; k < count; k++) {\n        int value;\n        scanf(\"%d\", &value);\n        max_elem = (value > max_elem) ? value : max_elem;\n    }\n    printf(\"%d\\n\", max_elem);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int size;\n    scanf(\"%d\", &size);\n    int result;\n    scanf(\"%d\", &result);\n    for (int j = 1; j < size; j++) {\n        int item;\n        scanf(\"%d\", &item);\n        if (item > result) result = item;\n    }\n    printf(\"%d\\n\", result);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int length;\n    scanf(\"%d\", &length);\n    int largest;\n    scanf(\"%d\", &largest);\n    for (int m = 1; m < length; m++) {\n        int number;\n        scanf(\"%d\", &number);\n        if (number > largest) largest = number;\n    }\n    printf(\"%d\\n\", largest);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

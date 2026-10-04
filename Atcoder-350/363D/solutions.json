@@ -1,0 +1,110 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "void read_n(long long *n)",
+          "code": "void read_n(long long *n) {\n    scanf(\"%lld\", n);\n}"
+        },
+        {
+          "clause_id": "compute_nth_palindrome",
+          "signature": "long long compute_nth_palindrome(long long n)",
+          "code": "long long compute_nth_palindrome(long long n) {\n    if (n <= 9) return n;\n    n -= 9;\n    for (int len = 2; ; len++) {\n        int half = (len + 1) / 2;\n        long long count = 9;\n        for (int i = 1; i < half; i++) count *= 10;\n        if (n <= count) {\n            long long base = 1;\n            for (int i = 1; i < half; i++) base *= 10;\n            long long num = base + n - 1;\n            char s[25];\n            sprintf(s, \"%lld\", num);\n            int slen = strlen(s);\n            for (int i = len - slen; i < len; i++) s[i] = s[len - 1 - i];\n            s[len] = '\\0';\n            long long result = 0;\n            for (int i = 0; i < len; i++) result = result * 10 + (s[i] - '0');\n            return result;\n        }\n        n -= count;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    read_n(&n);\n    printf(\"%lld\\n\", compute_nth_palindrome(n));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(long long *num)",
+          "code": "long long read_n(long long *num) {\n    scanf(\"%lld\", num);\n    return *num;\n}"
+        },
+        {
+          "clause_id": "compute_nth_palindrome",
+          "signature": "long long compute_nth_palindrome(long long n)",
+          "code": "long long compute_nth_palindrome(long long n) {\n    if (n <= 9) return n;\n    n -= 9;\n    for (int digits = 2; ; digits++) {\n        int half_len = (digits + 1) / 2;\n        long long cnt = 9;\n        for (int i = 1; i < half_len; i++) cnt *= 10;\n        if (n <= cnt) {\n            long long start = 1;\n            for (int i = 1; i < half_len; i++) start *= 10;\n            long long half_num = start + n - 1;\n            char buffer[25];\n            sprintf(buffer, \"%lld\", half_num);\n            int len = strlen(buffer);\n            for (int i = digits - len; i < digits; i++) buffer[i] = buffer[digits - 1 - i];\n            buffer[digits] = 0;\n            long long ans = 0;\n            for (int i = 0; i < digits; i++) ans = ans * 10 + (buffer[i] - '0');\n            return ans;\n        }\n        n -= cnt;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long num;\n    read_n(&num);\n    long long result = compute_nth_palindrome(num);\n    printf(\"%lld\\n\", result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "void read_n(long long *n)",
+          "code": "void read_n(long long *n) {\n    scanf(\"%lld\", n);\n}"
+        },
+        {
+          "clause_id": "compute_nth_palindrome",
+          "signature": "long long compute_nth_palindrome(long long n)",
+          "code": "long long compute_nth_palindrome(long long n) {\n    if (n <= 9) return n;\n    n -= 9;\n    for (int length = 2; ; length++) {\n        int half = (length + 1) / 2;\n        long long total = 9;\n        for (int i = 1; i < half; i++) total *= 10;\n        if (n <= total) {\n            long long prefix = 1;\n            for (int i = 1; i < half; i++) prefix *= 10;\n            long long val = prefix + n - 1;\n            char str[25];\n            sprintf(str, \"%lld\", val);\n            int str_len = strlen(str);\n            for (int i = length - str_len; i < length; i++) str[i] = str[length - 1 - i];\n            str[length] = '\\0';\n            long long res = 0;\n            for (int i = 0; i < length; i++) res = res * 10 + (str[i] - '0');\n            return res;\n        }\n        n -= total;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    read_n(&n);\n    long long ans = compute_nth_palindrome(n);\n    printf(\"%lld\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(long long *value)",
+          "code": "long long read_n(long long *value) {\n    scanf(\"%lld\", value);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_nth_palindrome",
+          "signature": "long long compute_nth_palindrome(long long n)",
+          "code": "long long compute_nth_palindrome(long long n) {\n    if (n <= 9) return n;\n    n -= 9;\n    for (int d = 2; ; d++) {\n        int h = (d + 1) / 2;\n        long long c = 9;\n        for (int i = 1; i < h; i++) c *= 10;\n        if (n <= c) {\n            long long b = 1;\n            for (int i = 1; i < h; i++) b *= 10;\n            long long x = b + n - 1;\n            char t[25];\n            sprintf(t, \"%lld\", x);\n            int tl = strlen(t);\n            for (int i = d - tl; i < d; i++) t[i] = t[d - 1 - i];\n            t[d] = 0;\n            long long r = 0;\n            for (int i = 0; i < d; i++) r = r * 10 + (t[i] - '0');\n            return r;\n        }\n        n -= c;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    read_n(&n);\n    printf(\"%lld\\n\", compute_nth_palindrome(n));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "void read_n(long long *target)",
+          "code": "void read_n(long long *target) {\n    scanf(\"%lld\", target);\n}"
+        },
+        {
+          "clause_id": "compute_nth_palindrome",
+          "signature": "long long compute_nth_palindrome(long long target)",
+          "code": "long long compute_nth_palindrome(long long target) {\n    if (target <= 9) return target;\n    target -= 9;\n    for (int num_digits = 2; ; num_digits++) {\n        int half_digits = (num_digits + 1) / 2;\n        long long palindromes_count = 9;\n        for (int i = 1; i < half_digits; i++) palindromes_count *= 10;\n        if (target <= palindromes_count) {\n            long long half_start = 1;\n            for (int i = 1; i < half_digits; i++) half_start *= 10;\n            long long half_value = half_start + target - 1;\n            char palindrome_str[25];\n            sprintf(palindrome_str, \"%lld\", half_value);\n            int str_length = strlen(palindrome_str);\n            for (int i = num_digits - str_length; i < num_digits; i++) \n                palindrome_str[i] = palindrome_str[num_digits - 1 - i];\n            palindrome_str[num_digits] = '\\0';\n            long long result = 0;\n            for (int i = 0; i < num_digits; i++) \n                result = result * 10 + (palindrome_str[i] - '0');\n            return result;\n        }\n        target -= palindromes_count;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long target;\n    read_n(&target);\n    printf(\"%lld\\n\", compute_nth_palindrome(target));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

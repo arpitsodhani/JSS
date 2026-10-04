@@ -1,0 +1,123 @@
+{
+  "problem_id": "357A",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *m, int hands[])",
+          "code": "int read_input(int *m, int hands[]) { int n; scanf(\"%d%d\", &n, m); for(int i = 0; i < n; i++) scanf(\"%d\", &hands[i]); return n; }"
+        },
+        {
+          "clause_id": "count_aliens",
+          "signature": "int count_aliens(int n, int m, int hands[])",
+          "code": "int count_aliens(int n, int m, int hands[]) { int count = 0, remaining = m; for(int i = 0; i < n; i++) { if(remaining >= hands[i]) { remaining -= hands[i]; count++; } else break; } return count; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int m, h[105]; int n = read_input(&m, h); printf(\"%d\\n\", count_aliens(n, m, h)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *m, int hands[])",
+          "code": "int read_input(int *m, int hands[]) { int n; scanf(\"%d %d\", &n, m); for(int i = 0; i < n; i++) scanf(\"%d\", &hands[i]); return n; }"
+        },
+        {
+          "clause_id": "count_aliens",
+          "signature": "int count_aliens(int n, int m, int hands[])",
+          "code": "int count_aliens(int n, int m, int hands[]) { int aliens = 0, supply = m; for(int i = 0; i < n && supply >= hands[i]; i++) { supply -= hands[i]; aliens++; } return aliens; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int capacity, num_hands[105]; int total = read_input(&capacity, num_hands); int result = count_aliens(total, capacity, num_hands); printf(\"%d\\n\", result); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *m, int hands[])",
+          "code": "int read_input(int *m, int hands[]) { int n; scanf(\"%d%d\", &n, m); int i; for(i = 0; i < n; i++) scanf(\"%d\", &hands[i]); return n; }"
+        },
+        {
+          "clause_id": "count_aliens",
+          "signature": "int count_aliens(int n, int m, int hands[])",
+          "code": "int count_aliens(int n, int m, int hands[]) { int cnt = 0, left = m; int i; for(i = 0; i < n; i++) { if(left >= hands[i]) { left -= hands[i]; cnt++; } else { break; } } return cnt; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int m, alien_hands[105]; int n = read_input(&m, alien_hands); printf(\"%d\\n\", count_aliens(n, m, alien_hands)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *m, int hands[])",
+          "code": "int read_input(int *m, int hands[]) { int n; scanf(\"%d %d\", &n, m); for(int idx = 0; idx < n; idx++) scanf(\"%d\", hands + idx); return n; }"
+        },
+        {
+          "clause_id": "count_aliens",
+          "signature": "int count_aliens(int n, int m, int hands[])",
+          "code": "int count_aliens(int n, int m, int hands[]) { int served = 0; int available = m; for(int alien = 0; alien < n; alien++) { if(available >= hands[alien]) { available -= hands[alien]; served++; } else { return served; } } return served; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int max_uses, hand_count[105]; int num_aliens = read_input(&max_uses, hand_count); printf(\"%d\\n\", count_aliens(num_aliens, max_uses, hand_count)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *m, int hands[])",
+          "code": "int read_input(int *m, int hands[]) { int n; scanf(\"%d%d\", &n, m); for(int j = 0; j < n; j++) scanf(\"%d\", &hands[j]); return n; }"
+        },
+        {
+          "clause_id": "count_aliens",
+          "signature": "int count_aliens(int n, int m, int hands[])",
+          "code": "int count_aliens(int n, int m, int hands[]) { int answer = 0, stock = m; for(int k = 0; k < n; k++) { if(stock < hands[k]) break; stock -= hands[k]; answer++; } return answer; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int bottle_capacity, hands_per_alien[105]; int aliens = read_input(&bottle_capacity, hands_per_alien); printf(\"%d\\n\", count_aliens(aliens, bottle_capacity, hands_per_alien)); return 0; }"
+        }
+      ]
+    }
+  ]
+}

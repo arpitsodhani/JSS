@@ -1,0 +1,220 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "multiply_matrices_mod",
+          "signature": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105])",
+          "implementations": [
+            {
+              "code": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105]) {\n    long long temp[105][105] = {0};\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            for (int k = 0; k < n; k++) {\n                temp[i][j] = (temp[i][j] + a[i][k] * b[k][j]) % mod;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            result[i][j] = temp[i][j];\n        }\n    }\n}"
+            },
+            {
+              "code": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105]) {\n    long long temp[105][105] = {0};\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            for (int k = 0; k < n; k++) {\n                temp[i][j] = (temp[i][j] + a[i][k] * b[k][j]) % mod;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            result[i][j] = temp[i][j];\n        }\n    }\n}"
+            },
+            {
+              "code": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105]) {\n    long long temp[105][105] = {0};\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            for (int k = 0; k < n; k++) {\n                temp[i][j] = (temp[i][j] + a[i][k] * b[k][j]) % mod;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            result[i][j] = temp[i][j];\n        }\n    }\n}"
+            },
+            {
+              "code": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105]) {\n    long long temp[105][105] = {0};\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            for (int k = 0; k < n; k++) {\n                temp[i][j] = (temp[i][j] + a[i][k] * b[k][j]) % mod;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            result[i][j] = temp[i][j];\n        }\n    }\n}"
+            },
+            {
+              "code": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105]) {\n    long long temp[105][105] = {0};\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            for (int k = 0; k < n; k++) {\n                temp[i][j] = (temp[i][j] + a[i][k] * b[k][j]) % mod;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            result[i][j] = temp[i][j];\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "initialize_identity_matrix",
+          "signature": "void initialize_identity_matrix(long long matrix[105][105], int n)",
+          "implementations": [
+            {
+              "code": "void initialize_identity_matrix(long long matrix[105][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            matrix[i][j] = (i == j) ? 1 : 0;\n        }\n    }\n}"
+            },
+            {
+              "code": "void initialize_identity_matrix(long long matrix[105][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            matrix[i][j] = (i == j) ? 1 : 0;\n        }\n    }\n}"
+            },
+            {
+              "code": "void initialize_identity_matrix(long long matrix[105][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            matrix[i][j] = (i == j) ? 1 : 0;\n        }\n    }\n}"
+            },
+            {
+              "code": "void initialize_identity_matrix(long long matrix[105][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            matrix[i][j] = (i == j) ? 1 : 0;\n        }\n    }\n}"
+            },
+            {
+              "code": "void initialize_identity_matrix(long long matrix[105][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            matrix[i][j] = (i == j) ? 1 : 0;\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "matrix_power_binary",
+          "signature": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105])",
+          "implementations": [
+            {
+              "code": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105]) {\n    long long temp[105][105];\n    initialize_identity_matrix(result, n);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            temp[i][j] = base[i][j];\n        }\n    }\n    \n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105];\n            multiply_matrices_mod(result, temp, n, mod, prod);\n            for (int i = 0; i < n; i++) {\n                for (int j = 0; j < n; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105];\n        multiply_matrices_mod(temp, temp, n, mod, sq);\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n}"
+            },
+            {
+              "code": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105]) {\n    long long temp[105][105];\n    initialize_identity_matrix(result, n);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            temp[i][j] = base[i][j];\n        }\n    }\n    \n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105];\n            multiply_matrices_mod(result, temp, n, mod, prod);\n            for (int i = 0; i < n; i++) {\n                for (int j = 0; j < n; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105];\n        multiply_matrices_mod(temp, temp, n, mod, sq);\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n}"
+            },
+            {
+              "code": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105]) {\n    long long temp[105][105];\n    initialize_identity_matrix(result, n);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            temp[i][j] = base[i][j];\n        }\n    }\n    \n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105];\n            multiply_matrices_mod(result, temp, n, mod, prod);\n            for (int i = 0; i < n; i++) {\n                for (int j = 0; j < n; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105];\n        multiply_matrices_mod(temp, temp, n, mod, sq);\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n}"
+            },
+            {
+              "code": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105]) {\n    long long temp[105][105];\n    initialize_identity_matrix(result, n);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            temp[i][j] = base[i][j];\n        }\n    }\n    \n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105];\n            multiply_matrices_mod(result, temp, n, mod, prod);\n            for (int i = 0; i < n; i++) {\n                for (int j = 0; j < n; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105];\n        multiply_matrices_mod(temp, temp, n, mod, sq);\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n}"
+            },
+            {
+              "code": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105]) {\n    long long temp[105][105];\n    initialize_identity_matrix(result, n);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            temp[i][j] = base[i][j];\n        }\n    }\n    \n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105];\n            multiply_matrices_mod(result, temp, n, mod, prod);\n            for (int i = 0; i < n; i++) {\n                for (int j = 0; j < n; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105];\n        multiply_matrices_mod(temp, temp, n, mod, sq);\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "copy_matrix",
+          "signature": "void copy_matrix(long long src[][105], long long dst[][105], int n)",
+          "implementations": [
+            {
+              "code": "void copy_matrix(long long src[][105], long long dst[][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            dst[i][j] = src[i][j];\n        }\n    }\n}"
+            },
+            {
+              "code": "void copy_matrix(long long src[][105], long long dst[][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            dst[i][j] = src[i][j];\n        }\n    }\n}"
+            },
+            {
+              "code": "void copy_matrix(long long src[][105], long long dst[][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            dst[i][j] = src[i][j];\n        }\n    }\n}"
+            },
+            {
+              "code": "void copy_matrix(long long src[][105], long long dst[][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            dst[i][j] = src[i][j];\n        }\n    }\n}"
+            },
+            {
+              "code": "void copy_matrix(long long src[][105], long long dst[][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            dst[i][j] = src[i][j];\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    int n;\n    long long exp, matrix[105][105], result[105][105], mod = 1000000007;\n    scanf(\"%d %lld\", &n, &exp);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%lld\", &matrix[i][j]);\n        }\n    }\n    \n    matrix_power_binary(matrix, exp, n, mod, result);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            printf(\"%lld \", result[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    long long exp, matrix[105][105], result[105][105], mod = 1000000007;\n    scanf(\"%d %lld\", &n, &exp);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%lld\", &matrix[i][j]);\n        }\n    }\n    \n    matrix_power_binary(matrix, exp, n, mod, result);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            printf(\"%lld \", result[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    long long exp, matrix[105][105], result[105][105], mod = 1000000007;\n    scanf(\"%d %lld\", &n, &exp);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%lld\", &matrix[i][j]);\n        }\n    }\n    \n    matrix_power_binary(matrix, exp, n, mod, result);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            printf(\"%lld \", result[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    long long exp, matrix[105][105], result[105][105], mod = 1000000007;\n    scanf(\"%d %lld\", &n, &exp);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%lld\", &matrix[i][j]);\n        }\n    }\n    \n    matrix_power_binary(matrix, exp, n, mod, result);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            printf(\"%lld \", result[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n;\n    long long exp, matrix[105][105], result[105][105], mod = 1000000007;\n    scanf(\"%d %lld\", &n, &exp);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%lld\", &matrix[i][j]);\n        }\n    }\n    \n    matrix_power_binary(matrix, exp, n, mod, result);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            printf(\"%lld \", result[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "multiply_matrices_mod",
+          "signature": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105])",
+          "code": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105]) {\n    long long temp[105][105] = {0};\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            for (int k = 0; k < n; k++) {\n                temp[i][j] = (temp[i][j] + a[i][k] * b[k][j]) % mod;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            result[i][j] = temp[i][j];\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "initialize_identity_matrix",
+          "signature": "void initialize_identity_matrix(long long matrix[105][105], int n)",
+          "code": "void initialize_identity_matrix(long long matrix[105][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            matrix[i][j] = (i == j) ? 1 : 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "matrix_power_binary",
+          "signature": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105])",
+          "code": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105]) {\n    long long temp[105][105];\n    initialize_identity_matrix(result, n);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            temp[i][j] = base[i][j];\n        }\n    }\n    \n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105];\n            multiply_matrices_mod(result, temp, n, mod, prod);\n            for (int i = 0; i < n; i++) {\n                for (int j = 0; j < n; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105];\n        multiply_matrices_mod(temp, temp, n, mod, sq);\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long exp, matrix[105][105], result[105][105], mod = 1000000007;\n    scanf(\"%d %lld\", &n, &exp);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%lld\", &matrix[i][j]);\n        }\n    }\n    \n    matrix_power_binary(matrix, exp, n, mod, result);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            printf(\"%lld \", result[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "multiply_matrices_mod",
+          "signature": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105])",
+          "code": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105]) {\n    long long temp[105][105] = {0};\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            for (int k = 0; k < n; k++) {\n                temp[i][j] = (temp[i][j] + a[i][k] * b[k][j]) % mod;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            result[i][j] = temp[i][j];\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "initialize_identity_matrix",
+          "signature": "void initialize_identity_matrix(long long matrix[105][105], int n)",
+          "code": "void initialize_identity_matrix(long long matrix[105][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            matrix[i][j] = (i == j) ? 1 : 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "matrix_power_binary",
+          "signature": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105])",
+          "code": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105]) {\n    long long temp[105][105];\n    initialize_identity_matrix(result, n);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            temp[i][j] = base[i][j];\n        }\n    }\n    \n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105];\n            multiply_matrices_mod(result, temp, n, mod, prod);\n            for (int i = 0; i < n; i++) {\n                for (int j = 0; j < n; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105];\n        multiply_matrices_mod(temp, temp, n, mod, sq);\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long exp, matrix[105][105], result[105][105], mod = 1000000007;\n    scanf(\"%d %lld\", &n, &exp);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%lld\", &matrix[i][j]);\n        }\n    }\n    \n    matrix_power_binary(matrix, exp, n, mod, result);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            printf(\"%lld \", result[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "multiply_matrices_mod",
+          "signature": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105])",
+          "code": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105]) {\n    long long temp[105][105] = {0};\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            for (int k = 0; k < n; k++) {\n                temp[i][j] = (temp[i][j] + a[i][k] * b[k][j]) % mod;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            result[i][j] = temp[i][j];\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "initialize_identity_matrix",
+          "signature": "void initialize_identity_matrix(long long matrix[105][105], int n)",
+          "code": "void initialize_identity_matrix(long long matrix[105][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            matrix[i][j] = (i == j) ? 1 : 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "matrix_power_binary",
+          "signature": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105])",
+          "code": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105]) {\n    long long temp[105][105];\n    initialize_identity_matrix(result, n);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            temp[i][j] = base[i][j];\n        }\n    }\n    \n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105];\n            multiply_matrices_mod(result, temp, n, mod, prod);\n            for (int i = 0; i < n; i++) {\n                for (int j = 0; j < n; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105];\n        multiply_matrices_mod(temp, temp, n, mod, sq);\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long exp, matrix[105][105], result[105][105], mod = 1000000007;\n    scanf(\"%d %lld\", &n, &exp);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%lld\", &matrix[i][j]);\n        }\n    }\n    \n    matrix_power_binary(matrix, exp, n, mod, result);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            printf(\"%lld \", result[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "multiply_matrices_mod",
+          "signature": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105])",
+          "code": "void multiply_matrices_mod(long long a[105][105], long long b[105][105], int n, long long mod, long long result[105][105]) {\n    long long temp[105][105] = {0};\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            for (int k = 0; k < n; k++) {\n                temp[i][j] = (temp[i][j] + a[i][k] * b[k][j]) % mod;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            result[i][j] = temp[i][j];\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "initialize_identity_matrix",
+          "signature": "void initialize_identity_matrix(long long matrix[105][105], int n)",
+          "code": "void initialize_identity_matrix(long long matrix[105][105], int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            matrix[i][j] = (i == j) ? 1 : 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "matrix_power_binary",
+          "signature": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105])",
+          "code": "void matrix_power_binary(long long base[105][105], long long exp, int n, long long mod, long long result[105][105]) {\n    long long temp[105][105];\n    initialize_identity_matrix(result, n);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            temp[i][j] = base[i][j];\n        }\n    }\n    \n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105];\n            multiply_matrices_mod(result, temp, n, mod, prod);\n            for (int i = 0; i < n; i++) {\n                for (int j = 0; j < n; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105];\n        multiply_matrices_mod(temp, temp, n, mod, sq);\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long exp, matrix[105][105], result[105][105], mod = 1000000007;\n    scanf(\"%d %lld\", &n, &exp);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%lld\", &matrix[i][j]);\n        }\n    }\n    \n    matrix_power_binary(matrix, exp, n, mod, result);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            printf(\"%lld \", result[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

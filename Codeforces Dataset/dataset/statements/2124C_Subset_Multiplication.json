@@ -1,0 +1,29 @@
+{
+  "contestId": 2124,
+  "index": "C",
+  "problem_id": "2124C",
+  "name": "Subset Multiplication",
+  "rating": 1300,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "math",
+    "number theory"
+  ],
+  "points": 1250.0,
+  "solvedCount": 15733,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Subset Multiplication",
+  "legend": "Alice has an array a, consisting of n positive integers. The array satisfies the beautiful property that ai divides ai+1 for each 1≤i≤n−1.\n\nBob sees Alice's beautiful array and is jealous. To sabotage her, Bob first creates an array b of size n such that bi=ai for each 1≤i≤n. Then, he chooses a positive integer x and multiplies some (possibly none, possibly all) elements in b by x.\n\nFormally, he chooses a (possibly-empty) subset S⊆{1,2,…,n}, and for each i∈S, he sets bi:=bi⋅x.\n\nYou are given an array b, but you don't know array a and the chosen number x. Please output any integer x that Bob could choose, so that multiplying some subset of elements of the correct array a by x would result in array b. It is guaranteed that the answer exists. If there are multiple possible integers, you can output any of them.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤2⋅105). The description of the test cases follows.\n\nThe first line of each test case contains an integer n (2≤n≤6⋅105) — the length of the array b.\n\nThe second line of each test case contains n integers b1,b2,…,bn (1≤bi≤109) — denoting the array b.\n\nIt is guaranteed the array b can be obtained from some beautiful array a and some positive integer x as described in the statements.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 6⋅105.",
+  "output_spec": "For each test case, output any possible value of x (1≤x≤109) on a new line. It is guaranteed at least one value of x exists.",
+  "note": "In the first test case, it is possible Bob selected x=343 and S={} (meaning he did not change the array a at all).\n\nIn the third test case, it is possible Bob selected x=4 and S={1,2}, meaning he multiplied both b1 and b2 by 4. The original array was {1,2,4,8}, which satisfies the required property.",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n2\n2 4\n3\n1 1000000000 500000000\n4\n4 8 4 8\n7\n42 42 14 84 28 73080 255780\n",
+      "output": "343\n2\n4\n6"
+    }
+  ]
+}

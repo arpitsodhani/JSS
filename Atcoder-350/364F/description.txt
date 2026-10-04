@@ -1,0 +1,10 @@
+There is a graph with N + Q vertices, numbered 1, 2, \ldots, N + Q . Initially, the graph has no edges. For this graph, perform the following operation for i = 1, 2, \ldots, Q in order: For each integer j satisfying L_i \leq j \leq R_i , add an undirected edge with cost C_i between vertices N + i and j . Determine if the graph is connected after all operations are completed. If it is connected, find the cost of a minimum spanning tree of the graph. A minimum spanning tree is a spanning tree with the smallest possible cost, and the cost of a spanning tree is the sum of the costs of the edges used in the spanning tree.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= Q <= 2 * 10^5
+- 1 <= a_i, b_i <= N
+- a_i != b_i
+- The given edges form a tree
+- 1 <= u_i, v_i <= N
+- All input values are integers

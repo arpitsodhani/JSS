@@ -1,0 +1,7 @@
+The definition of an 11/22 string in this problem is the same as in Problems A and C. A string T is called an 11/22 string when it satisfies all of the following conditions: |T| is odd. Here, |T| denotes the length of T . The 1 -st through (\frac{|T|+1}{2} - 1) -th characters are all 1 . The (\frac{|T|+1}{2}) -th character is / . The (\frac{|T|+1}{2} + 1) -th through |T| -th characters are all 2 . For example, 11/22 , 111/222 , and / are 11/22 strings, but 1122 , 1/22 , 11/2222 , 22/11 , and //2/2/211 are not. Given a string S of length N consisting of 1 , 2 , and / , process Q queries. Each query provides two integers L and R . Let T be the (contiguous) substring of S from the L -th through R -th character. Find the maximum length of a subsequence (not necessarily contiguous) of T that is an 11/22 string. If no such subsequence exists, print 0 .
+
+**Constraints:**
+- 1 <= N, Q <= 10^5
+- S is a string of length N consisting of '1', '2', and '/'
+- 1 <= L_i <= R_i <= N
+- All input values are integers

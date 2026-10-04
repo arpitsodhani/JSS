@@ -1,0 +1,7 @@
+A string S is given. Find how many places in S have A , B , and C in this order at even intervals. Specifically, find the number of triples of integers (i,j,k) that satisfy all of the following conditions. Here, |S| denotes the length of S , and S_x denotes the x -th character of S . 1 \leq i < j < k \leq |S| j - i = k - j S_i = A S_j = B S_k = C
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= D <= 100
+- 1 <= S_i <= 7
+- All input values are integers

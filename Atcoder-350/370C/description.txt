@@ -1,0 +1,6 @@
+You are given two strings S and T consisting of lowercase English letters. Here, S and T have equal lengths. Let X be an empty array, and repeat the following operation until S equals T : Change one character in S , and append S to the end of X . Find the array of strings X with the minimum number of elements obtained in this way. If there are multiple such arrays with the minimum number of elements, find the lexicographically smallest one among them. What is lexicographical order on arrays of strings? A string S = S_1 S_2 \ldots S_N of length N is lexicographically smaller than a string T = T_1 T_2 \ldots T_N of length N if there exists an integer 1 \leq i \leq N such that both of the following are satisfied: S_1 S_2 \ldots S_{i-1} = T_1 T_2 \ldots T_{i-1} S_i comes earlier than T_i in alphabetical order. An array of strings X = (X_1,X_2,\ldots,X_M) with M elements is lexicographically smaller than an array of strings Y = (Y_1,Y_2,\ldots,Y_M) with M elements if there exists an integer 1 \leq j \leq M such that both of the following are satisfied: (X_1,X_2,\ldots,X_{j-1}) = (Y_1,Y_2,\ldots,Y_{j-1}) X_j is lexicographically smaller than Y_j .
+
+**Constraints:**
+- 1 <= |S|, |T| <= 100
+- S and T consist of uppercase English letters
+- S != T

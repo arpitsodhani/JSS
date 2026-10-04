@@ -1,0 +1,29 @@
+{
+  "average_confidence": 0.972,
+  "clauses": [
+    {
+      "clause": "apply_range_update_a",
+      "confidence": 0.943
+    },
+    {
+      "clause": "apply_range_update_b",
+      "confidence": 0.943
+    },
+    {
+      "clause": "compute_product_sum",
+      "confidence": 0.9899999999999999
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "process_queries",
+      "confidence": 0.9640000000000001
+    },
+    {
+      "clause": "read_arrays",
+      "confidence": 0.992
+    }
+  ]
+}

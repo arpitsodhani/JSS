@@ -1,0 +1,26 @@
+{
+  "contestId": 1333,
+  "index": "A",
+  "problem_id": "1333A",
+  "name": "Little Artem",
+  "rating": 1000,
+  "tags": [
+    "constructive algorithms"
+  ],
+  "points": 500.0,
+  "solvedCount": 25998,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Little Artem",
+  "legend": "Young boy Artem tries to paint a picture, and he asks his mother Medina to help him. Medina is very busy, that's why she asked for your help.\n\nArtem wants to paint an n×m board. Each cell of the board should be colored in white or black.\n\nLets B be the number of black cells that have at least one white neighbor adjacent by the side. Let W be the number of white cells that have at least one black neighbor adjacent by the side. A coloring is called good if B=W+1.\n\nThe first coloring shown below has B=5 and W=4 (all cells have at least one neighbor with the opposite color). However, the second coloring is not good as it has B=4, W=4 (only the bottom right cell doesn't have a neighbor with the opposite color).\n\nPlease, help Medina to find any good coloring. It's guaranteed that under given constraints the solution always exists. If there are several solutions, output any of them.",
+  "input_spec": "Each test contains multiple test cases.\n\nThe first line contains the number of test cases t (1≤t≤20). Each of the next t lines contains two integers n,m (2≤n,m≤100) — the number of rows and the number of columns in the grid.",
+  "output_spec": "For each test case print n lines, each of length m, where i-th line is the i-th row of your colored matrix (cell labeled with 'B' means that the cell is black, and 'W' means white). Do not use quotes.\n\nIt's guaranteed that under given constraints the solution always exists.",
+  "note": "In the first testcase, B=3, W=2.\n\nIn the second testcase, B=5, W=4. You can see the coloring in the statement.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n3 2\n3 3\n",
+      "output": "BW\nWB\nBB\nBWB\nBWW\nBWB"
+    }
+  ]
+}

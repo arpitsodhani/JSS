@@ -1,0 +1,75 @@
+{
+  "problem_id": "061_correct_bracketing",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    char brackets[1000];\n    fgets(brackets, sizeof(brackets), stdin);\n    brackets[strcspn(brackets, \"\\n\")] = 0;\n    int depth = 0;\n    for (int i = 0; brackets[i]; i++) {\n        if (brackets[i] == '(') depth++;\n        else if (brackets[i] == ')') depth--;\n        if (depth < 0) {\n            printf(\"False\\n\");\n            return 0;\n        }\n    }\n    printf(\"%s\\n\", depth == 0 ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    int level = 0;\n    for (int k = 0; s[k]; k++) {\n        if (s[k] == '(') level++;\n        if (s[k] == ')') level--;\n        if (level < 0) {\n            printf(\"False\\n\");\n            return 0;\n        }\n    }\n    printf(\"%s\\n\", level == 0 ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    char input[1000];\n    fgets(input, sizeof(input), stdin);\n    input[strcspn(input, \"\\n\")] = 0;\n    int count = 0;\n    for (int i = 0; input[i]; i++) {\n        count += (input[i] == '(') ? 1 : -1;\n        if (count < 0) {\n            printf(\"False\\n\");\n            return 0;\n        }\n    }\n    printf(\"%s\\n\", count == 0 ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    char str[1000];\n    fgets(str, sizeof(str), stdin);\n    str[strcspn(str, \"\\n\")] = 0;\n    int balance = 0;\n    for (int p = 0; str[p]; p++) {\n        if (str[p] == '(') balance++;\n        else if (str[p] == ')') {\n            balance--;\n            if (balance < 0) {\n                printf(\"False\\n\");\n                return 0;\n            }\n        }\n    }\n    printf(\"%s\\n\", balance == 0 ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    char line[1000];\n    fgets(line, sizeof(line), stdin);\n    line[strcspn(line, \"\\n\")] = 0;\n    int open = 0;\n    for (int i = 0; line[i]; i++) {\n        if (line[i] == '(') {\n            open++;\n        } else if (line[i] == ')') {\n            if (open == 0) {\n                printf(\"False\\n\");\n                return 0;\n            }\n            open--;\n        }\n    }\n    printf(\"%s\\n\", open == 0 ? \"True\" : \"False\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

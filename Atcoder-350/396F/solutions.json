@@ -1,0 +1,199 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int *a)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(long long *bit, int n, int idx, long long v)",
+          "code": "for(int i=idx;i<=n;i+=i&-i) bit[i]+=v;\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(const long long *bit, int idx)",
+          "code": "long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s;\n"
+        },
+        {
+          "clause_id": "inversions0",
+          "signature": "long long inversions0(int n, int m, const int *a)",
+          "code": "long long *bit=(long long*)calloc((size_t)(m+2),sizeof(long long));\nlong long inv=0;\nfor(int i=0;i<n;i++){\n  int x=a[i]+1;\n  long long le=bit_sum(bit,x);\n  inv += (long long)i - le;\n  bit_add(bit,m+1,x,1);\n}\nfree(bit);\nreturn inv;\n"
+        },
+        {
+          "clause_id": "all_shifts",
+          "signature": "void all_shifts(int n, int m, const int *a)",
+          "code": "long long inv=inversions0(n,m,a);\nint *cnt=(int*)calloc((size_t)m,sizeof(int));\nlong long *sumpos=(long long*)calloc((size_t)m,sizeof(long long));\nfor(int i=0;i<n;i++){ int x=a[i]%m; cnt[x]++; sumpos[x]+=i; }\nfor(int k=0;k<m;k++){\n  printf(\"%lld\\n\", inv);\n  int r=(m-1-k)%m;\n  long long c=cnt[r];\n  long long sp=sumpos[r];\n  long long delta = 2LL*sp - c*(long long)n + c;\n  inv += delta;\n}\nfree(cnt); free(sumpos);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int a[200005]; read_input(&n,&m,a); all_shifts(n,m,a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int *a)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(long long *bit, int n, int idx, long long v)",
+          "code": "for(int i=idx;i<=n;i+=i&-i) bit[i]+=v;\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(const long long *bit, int idx)",
+          "code": "long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s;\n"
+        },
+        {
+          "clause_id": "inversions0",
+          "signature": "long long inversions0(int n, int m, const int *a)",
+          "code": "long long *bit=(long long*)calloc((size_t)(m+2),sizeof(long long));\nlong long inv=0;\nfor(int i=0;i<n;i++){\n  int x=a[i]+1;\n  long long le=bit_sum(bit,x);\n  inv += (long long)i - le;\n  bit_add(bit,m+1,x,1);\n}\nfree(bit);\nreturn inv;\n"
+        },
+        {
+          "clause_id": "all_shifts",
+          "signature": "void all_shifts(int n, int m, const int *a)",
+          "code": "long long inv=inversions0(n,m,a);\nint *cnt=(int*)calloc((size_t)m,sizeof(int));\nlong long *sumpos=(long long*)calloc((size_t)m,sizeof(long long));\nfor(int i=0;i<n;i++){ int x=a[i]%m; cnt[x]++; sumpos[x]+=i; }\nfor(int k=0;k<m;k++){\n  printf(\"%lld\\n\", inv);\n  int r=(m-1-k)%m;\n  long long c=cnt[r];\n  long long sp=sumpos[r];\n  long long delta = 2LL*sp - c*(long long)n + c;\n  inv += delta;\n}\nfree(cnt); free(sumpos);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int a[200005]; read_input(&n,&m,a); all_shifts(n,m,a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int *a)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(long long *bit, int n, int idx, long long v)",
+          "code": "for(int i=idx;i<=n;i+=i&-i) bit[i]+=v;\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(const long long *bit, int idx)",
+          "code": "long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s;\n"
+        },
+        {
+          "clause_id": "inversions0",
+          "signature": "long long inversions0(int n, int m, const int *a)",
+          "code": "long long *bit=(long long*)calloc((size_t)(m+2),sizeof(long long));\nlong long inv=0;\nfor(int i=0;i<n;i++){\n  int x=a[i]+1;\n  long long le=bit_sum(bit,x);\n  inv += (long long)i - le;\n  bit_add(bit,m+1,x,1);\n}\nfree(bit);\nreturn inv;\n"
+        },
+        {
+          "clause_id": "all_shifts",
+          "signature": "void all_shifts(int n, int m, const int *a)",
+          "code": "long long inv=inversions0(n,m,a);\nint *cnt=(int*)calloc((size_t)m,sizeof(int));\nlong long *sumpos=(long long*)calloc((size_t)m,sizeof(long long));\nfor(int i=0;i<n;i++){ int x=a[i]%m; cnt[x]++; sumpos[x]+=i; }\nfor(int k=0;k<m;k++){\n  printf(\"%lld\\n\", inv);\n  int r=(m-1-k)%m;\n  long long c=cnt[r];\n  long long sp=sumpos[r];\n  long long delta = 2LL*sp - c*(long long)n + c;\n  inv += delta;\n}\nfree(cnt); free(sumpos);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int a[200005]; read_input(&n,&m,a); all_shifts(n,m,a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int *a)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(long long *bit, int n, int idx, long long v)",
+          "code": "for(int i=idx;i<=n;i+=i&-i) bit[i]+=v;\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(const long long *bit, int idx)",
+          "code": "long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s;\n"
+        },
+        {
+          "clause_id": "inversions0",
+          "signature": "long long inversions0(int n, int m, const int *a)",
+          "code": "long long *bit=(long long*)calloc((size_t)(m+2),sizeof(long long));\nlong long inv=0;\nfor(int i=0;i<n;i++){\n  int x=a[i]+1;\n  long long le=bit_sum(bit,x);\n  inv += (long long)i - le;\n  bit_add(bit,m+1,x,1);\n}\nfree(bit);\nreturn inv;\n"
+        },
+        {
+          "clause_id": "all_shifts",
+          "signature": "void all_shifts(int n, int m, const int *a)",
+          "code": "long long inv=inversions0(n,m,a);\nint *cnt=(int*)calloc((size_t)m,sizeof(int));\nlong long *sumpos=(long long*)calloc((size_t)m,sizeof(long long));\nfor(int i=0;i<n;i++){ int x=a[i]%m; cnt[x]++; sumpos[x]+=i; }\nfor(int k=0;k<m;k++){\n  printf(\"%lld\\n\", inv);\n  int r=(m-1-k)%m;\n  long long c=cnt[r];\n  long long sp=sumpos[r];\n  long long delta = 2LL*sp - c*(long long)n + c;\n  inv += delta;\n}\nfree(cnt); free(sumpos);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int a[200005]; read_input(&n,&m,a); all_shifts(n,m,a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int *a)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*n;i++) scanf(\"%d\", &a[i]);\n"
+        },
+        {
+          "clause_id": "bit_add",
+          "signature": "void bit_add(long long *bit, int n, int idx, long long v)",
+          "code": "for(int i=idx;i<=n;i+=i&-i) bit[i]+=v;\n"
+        },
+        {
+          "clause_id": "bit_sum",
+          "signature": "long long bit_sum(const long long *bit, int idx)",
+          "code": "long long s=0; for(int i=idx;i>0;i-=i&-i) s+=bit[i]; return s;\n"
+        },
+        {
+          "clause_id": "inversions0",
+          "signature": "long long inversions0(int n, int m, const int *a)",
+          "code": "long long *bit=(long long*)calloc((size_t)(m+2),sizeof(long long));\nlong long inv=0;\nfor(int i=0;i<n;i++){\n  int x=a[i]+1;\n  long long le=bit_sum(bit,x);\n  inv += (long long)i - le;\n  bit_add(bit,m+1,x,1);\n}\nfree(bit);\nreturn inv;\n"
+        },
+        {
+          "clause_id": "all_shifts",
+          "signature": "void all_shifts(int n, int m, const int *a)",
+          "code": "long long inv=inversions0(n,m,a);\nint *cnt=(int*)calloc((size_t)m,sizeof(int));\nlong long *sumpos=(long long*)calloc((size_t)m,sizeof(long long));\nfor(int i=0;i<n;i++){ int x=a[i]%m; cnt[x]++; sumpos[x]+=i; }\nfor(int k=0;k<m;k++){\n  printf(\"%lld\\n\", inv);\n  int r=(m-1-k)%m;\n  long long c=cnt[r];\n  long long sp=sumpos[r];\n  long long delta = 2LL*sp - c*(long long)n + c;\n  inv += delta;\n}\nfree(cnt); free(sumpos);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int a[200005]; read_input(&n,&m,a); all_shifts(n,m,a); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

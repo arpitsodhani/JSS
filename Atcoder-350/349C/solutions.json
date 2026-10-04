@@ -1,0 +1,129 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *s, char *t)",
+          "code": "void read_input(char *s, char *t) { scanf(\"%s%s\", s, t); }"
+        },
+        {
+          "clause_id": "check_match",
+          "signature": "int check_match(char *s, char *t)",
+          "code": "int check_match(char *s, char *t) { int j = 0; for(int i = 0; s[i] && j < 3; i++) { if(t[j] == 'X') break; if(s[i] - 'a' == t[j] - 'A') j++; } return (j == 3 || (j == 2 && t[2] == 'X')); }"
+        },
+        {
+          "clause_id": "output",
+          "signature": "void output(int ok)",
+          "code": "void output(int ok) { puts(ok ? \"Yes\" : \"No\"); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[100001], t[4]; read_input(s, t); output(check_match(s, t)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "get_strings",
+          "signature": "void get_strings(char *s, char *t)",
+          "code": "void get_strings(char *s, char *t) { scanf(\"%s%s\", s, t); }"
+        },
+        {
+          "clause_id": "validate_code",
+          "signature": "int validate_code(char *s, char *t)",
+          "code": "int validate_code(char *s, char *t) { int pos = 0, matched = 0; while(s[pos] && matched < 3) { if(t[matched] == 'X') break; if((s[pos] | 32) == (t[matched] | 32)) matched++; pos++; } return matched == 3 || (matched == 2 && t[2] == 'X'); }"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(int res)",
+          "code": "void print_result(int res) { printf(\"%s\\n\", res ? \"Yes\" : \"No\"); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char src[100001], code[4]; get_strings(src, code); print_result(validate_code(src, code)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "input_data",
+          "signature": "void input_data(char *a, char *b)",
+          "code": "void input_data(char *a, char *b) { scanf(\"%s%s\", a, b); }"
+        },
+        {
+          "clause_id": "is_airport_code",
+          "signature": "int is_airport_code(char *str, char *code)",
+          "code": "int is_airport_code(char *str, char *code) { int i = 0, cnt = 0; for(int k = 0; str[k]; k++) { if(cnt < 3 && code[cnt] == 'X') break; if(cnt < 3 && str[k] + ('A'-'a') == code[cnt]) cnt++; } return cnt >= 2 && (cnt == 3 || code[2] == 'X'); }"
+        },
+        {
+          "clause_id": "write_ans",
+          "signature": "void write_ans(int v)",
+          "code": "void write_ans(int v) { puts(v ? \"Yes\" : \"No\"); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[100001], t[4]; input_data(s, t); write_ans(is_airport_code(s, t)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "scan_input",
+          "signature": "void scan_input(char *s, char *t)",
+          "code": "void scan_input(char *s, char *t) { scanf(\"%s%s\", s, t); }"
+        },
+        {
+          "clause_id": "match_subsequence",
+          "signature": "int match_subsequence(char *s, char *t)",
+          "code": "int match_subsequence(char *s, char *t) { int idx = 0, found = 0; for(; s[idx]; idx++) { if(found == 2 && t[2] == 'X') return 1; if(found < 3 && (s[idx]-'a') == (t[found]-'A')) found++; if(found == 3) return 1; } return found == 2 && t[2] == 'X'; }"
+        },
+        {
+          "clause_id": "output_result",
+          "signature": "void output_result(int ans)",
+          "code": "void output_result(int ans) { printf(\"%s\\n\", ans ? \"Yes\" : \"No\"); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[100001], t[4]; scan_input(s, t); output_result(match_subsequence(s, t)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_two_strings",
+          "signature": "void read_two_strings(char *s, char *t)",
+          "code": "void read_two_strings(char *s, char *t) { scanf(\"%s%s\", s, t); }"
+        },
+        {
+          "clause_id": "check_airport",
+          "signature": "int check_airport(char *s, char *t)",
+          "code": "int check_airport(char *s, char *t) { int m = 0; for(int i = 0; s[i] && m < 3; i++) { if(m < 3 && t[m] == 'X') { m = 2; break; } if((s[i] & ~32) == t[m]) m++; } return m == 3 || (m == 2 && t[2] == 'X'); }"
+        },
+        {
+          "clause_id": "print_yn",
+          "signature": "void print_yn(int ok)",
+          "code": "void print_yn(int ok) { puts(ok ? \"Yes\" : \"No\"); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[100001], t[4]; read_two_strings(s, t); print_yn(check_airport(s, t)); return 0; }"
+        }
+      ]
+    }
+  ]
+}

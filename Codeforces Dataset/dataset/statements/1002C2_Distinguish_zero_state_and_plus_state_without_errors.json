@@ -1,0 +1,21 @@
+{
+  "contestId": 1002,
+  "index": "C2",
+  "problem_id": "1002C2",
+  "name": "Distinguish zero state and plus state without errors",
+  "rating": 1800,
+  "tags": [
+    "*special"
+  ],
+  "points": null,
+  "solvedCount": 273,
+  "source": "verbatim_cf_fetch",
+  "title": "C2. Distinguish zero state and plus state without errors",
+  "legend": "You are given a qubit which is guaranteed to be either in  state or in  state.\n\nYour task is to perform necessary operations and measurements to figure out which state it was and to return 0 if it was a  state, 1 if it was  state or -1 if you can not decide, i.e., an \"inconclusive\" result. The state of the qubit after the operations does not matter.\n\nNote that these states are not orthogonal, and thus can not be distinguished perfectly. In each test your solution will be called 10000 times, and your goals are:\n\nnever give 0 or 1 answer incorrectly (i.e., never return 0 if input state was  and never return 1 if input state was ),\ngive -1 answer at most 80% of the times,\ncorrectly identify  state at least 10% of the times,\ncorrectly identify  state at least 10% of the times.\n\nIn each test  and  states will be provided with 50% probability.\n\nYou have to implement an operation which takes a qubit as an input and returns an integer.\n\nYour code should have the following signature:\n\nnamespace Solution {\n    open Microsoft.Quantum.Primitive;\n    open Microsoft.Quantum.Canon;\n\n    operation Solve (q : Qubit) : Int\n    {\n        body\n        {\n            // your code here\n        }\n    }\n}",
+  "input_spec": "",
+  "output_spec": "",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": []
+}

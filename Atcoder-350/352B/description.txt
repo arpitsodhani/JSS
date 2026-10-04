@@ -1,0 +1,5 @@
+Takahashi tried to type a string S consisting of lowercase English letters using a keyboard. He was typing while looking only at the keyboard, not the screen. Whenever he mistakenly typed a different lowercase English letter, he immediately pressed the backspace key. However, the backspace key was broken, so the mistakenly typed letter was not deleted, and the actual string typed was T . He did not mistakenly press any keys other than those for lowercase English letters. The characters in T that were not mistakenly typed are called correctly typed characters . Determine the positions in T of the correctly typed characters.
+
+**Constraints:**
+- S, T 1 2 \times 10^5 string
+- T string

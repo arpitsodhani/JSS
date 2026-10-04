@@ -1,0 +1,30 @@
+{
+  "contestId": 2129,
+  "index": "D",
+  "problem_id": "2129D",
+  "name": "Permutation Blackhole",
+  "rating": 2600,
+  "tags": [
+    "brute force",
+    "combinatorics",
+    "dp",
+    "implementation",
+    "math"
+  ],
+  "points": 2000.0,
+  "solvedCount": 2004,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Permutation Blackhole",
+  "legend": "For a permutation p1,p2,…,pn of length n, the corresponding coloring sequence s can be obtained by the following coloring process:\n\nInitially, there are n white cells indexed from 1 to n from left to right. At second 0, the score of each cell is 0.\nAt second i (1≤i≤n),\nIf i>1, find the nearest black cell to the cell pi, and increase the score of that cell by 1. In case there are multiple nearest black cells, choose the cell with the lowest index. Cell y is called the nearest black cell to cell x only if cell y is black and there is no black cell z satisfying |x−z|<|x−y|.\nColor the cell pi black.\n\nAfter all cells are colored black, denoting si as the score of cell i (1≤i≤n), we get the coloring sequence s.\n\nYou might want to read the notes for a better understanding.\n\nYou are given an incomplete coloring sequence s, where some si are already fixed, while others are not yet determined. Count how many different permutations p can produce this coloring sequence. Since the answer may be large, you need to output it modulo 998244353.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤103). The description of the test cases follows.\n\nFor each test case, the first line contains an integer n (2≤n≤100).\n\nThe second line contains n integers s1,s2,…,sn (−1≤si≤n−1). Here, si=−1 means si has not been determined. And si≠−1 means si has already been fixed.\n\nIt is guaranteed that the sum of n2 over all test cases does not exceed 104.",
+  "output_spec": "For each test case, output the total of different permutations p1,p2,…,pn that can produce the coloring sequence, modulo 998244353.",
+  "note": "In the first test case, p=[3,1,2] and p=[3,2,1] can produce the coloring sequence s=[−1,−1,1].\n\nFor p=[3,1,2], the coloring process is shown as the following picture.\n\n\t\n\t\n\t\n\t\nThe grid at seconds 0, 1, 2, and 3 respectively when p=[3,1,2].\n\nFor p=[3,2,1], the coloring process is shown as the following picture.\n\n\t\n\t\n\t\n\t\nThe grid at seconds 0, 1, 2, and 3 respectively when p=[3,2,1].",
+  "time_limit": "3 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "9\n3\n-1 -1 1\n3\n-1 -1 -1\n4\n-1 2 -1 0\n4\n-1 0 1 -1\n5\n-1 3 -1 0 -1\n5\n4 4 4 4 4\n5\n1 0 1 2 0\n6\n-1 1 -1 -1 3 0\n13\n-1 -1 -1 -1 -1 -1 2 -1 -1 -1 -1 -1 -1\n",
+      "output": "2\n6\n4\n3\n8\n0\n4\n10\n867303072"
+    }
+  ]
+}

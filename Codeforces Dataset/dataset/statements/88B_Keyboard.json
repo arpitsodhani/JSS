@@ -1,0 +1,38 @@
+{
+  "contestId": 88,
+  "index": "B",
+  "problem_id": "88B",
+  "name": "Keyboard",
+  "rating": 1500,
+  "tags": [
+    "implementation"
+  ],
+  "points": 1000.0,
+  "solvedCount": 5302,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Keyboard",
+  "legend": "Vasya learns to type. He has an unusual keyboard at his disposal: it is rectangular and it has n rows of keys containing m keys in each row. Besides, the keys are of two types. Some of the keys have lowercase Latin letters on them and some of the keys work like the \"Shift\" key on standard keyboards, that is, they make lowercase letters uppercase.\n\nVasya can press one or two keys with one hand. However, he can only press two keys if the Euclidean distance between the centers of the keys does not exceed x. The keys are considered as squares with a side equal to 1. There are no empty spaces between neighbouring keys.\n\nVasya is a very lazy boy, that's why he tries to type with one hand as he eats chips with his other one. However, it is possible that some symbol can't be typed with one hand only, because the distance between it and the closest \"Shift\" key is strictly larger than x. In this case he will have to use his other hand. Having typed the symbol, Vasya returns other hand back to the chips.\n\nYou are given Vasya's keyboard and the text. Count the minimum number of times Vasya will have to use the other hand.",
+  "input_spec": "The first line contains three integers n, m, x (1 ≤ n, m ≤ 30, 1 ≤ x ≤ 50).\n\nNext n lines contain descriptions of all the keyboard keys. Each line contains the descriptions of exactly m keys, without spaces. The letter keys are marked with the corresponding lowercase letters. The \"Shift\" keys are marked with the \"S\" symbol.\n\nThen follow the length of the text q (1 ≤ q ≤ 5·105). The last line contains the text T, which consists of q symbols, which are uppercase and lowercase Latin letters.",
+  "output_spec": "If Vasya can type the text, then print the minimum number of times he will have to use his other hand. Otherwise, print \"-1\" (without the quotes).",
+  "note": "In the first sample the symbol \"A\" is impossible to print as there's no \"Shift\" key on the keyboard.\n\nIn the second sample the symbol \"e\" is impossible to print as there's no such key on the keyboard.\n\nIn the fourth sample the symbols \"T\", \"G\" are impossible to print with one hand. The other letters that are on the keyboard can be printed. Those symbols come up in the text twice, thus, the answer is 2.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2 2 1\nab\ncd\n1\nA\n",
+      "output": "-1"
+    },
+    {
+      "input": "2 2 1\nab\ncd\n1\ne\n",
+      "output": "-1"
+    },
+    {
+      "input": "2 2 1\nab\ncS\n5\nabcBA\n",
+      "output": "1"
+    },
+    {
+      "input": "3 9 4\nqwertyuio\nasdfghjkl\nSzxcvbnmS\n35\nTheQuIcKbRoWnFOXjummsovertHeLazYDOG\n",
+      "output": "2"
+    }
+  ]
+}

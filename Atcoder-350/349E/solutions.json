@@ -1,0 +1,134 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_L",
+          "signature": "long long read_L()",
+          "code": "long long read_L() { long long L; scanf(\"%lld\", &L); return L; }"
+        },
+        {
+          "clause_id": "count_pairs",
+          "signature": "int count_pairs(long long L)",
+          "code": "int count_pairs(long long L) { int cnt = 0; long long pow = 1; while(pow <= L) { long long l = ((L-1) / pow) * pow; long long r = l + pow; if(l < L && L <= r) cnt++; pow *= 2; } return cnt; }"
+        },
+        {
+          "clause_id": "print_count",
+          "signature": "void print_count(int cnt)",
+          "code": "void print_count(int cnt) { printf(\"%d\\n\", cnt); }"
+        },
+        {
+          "clause_id": "print_pairs",
+          "signature": "void print_pairs(long long L)",
+          "code": "void print_pairs(long long L) { long long pow = 1; while(pow <= L) { long long n = (L-1) / pow; long long l = n * pow; long long r = l + pow; if(l < L && L <= r) printf(\"%lld %lld\\n\", l, r); pow *= 2; } }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long L = read_L(); int cnt = count_pairs(L); print_count(cnt); print_pairs(L); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "input_L",
+          "signature": "long long input_L()",
+          "code": "long long input_L() { long long x; scanf(\"%lld\", &x); return x; }"
+        },
+        {
+          "clause_id": "find_pairs",
+          "signature": "int find_pairs(long long L, long long *pairs)",
+          "code": "int find_pairs(long long L, long long *pairs) { int idx = 0; for(long long p = 1; p <= L; p <<= 1) { long long l = ((L-1)/p)*p; if(l < L && L <= l+p) { pairs[idx++] = l; pairs[idx++] = l+p; } } return idx/2; }"
+        },
+        {
+          "clause_id": "output_result",
+          "signature": "void output_result(int n, long long *pairs)",
+          "code": "void output_result(int n, long long *pairs) { printf(\"%d\\n\", n); for(int i = 0; i < n; i++) printf(\"%lld %lld\\n\", pairs[2*i], pairs[2*i+1]); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long L = input_L(); long long pairs[120]; int n = find_pairs(L, pairs); output_result(n, pairs); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "get_L",
+          "signature": "long long get_L()",
+          "code": "long long get_L() { long long L; scanf(\"%lld\", &L); return L; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "int compute(long long L, long long *res)",
+          "code": "int compute(long long L, long long *res) { int c = 0; long long pow2 = 1; while(pow2 <= L) { long long n = (L-1)/pow2; long long l = n*pow2, r = (n+1)*pow2; if(l < L && L <= r) { res[c*2] = l; res[c*2+1] = r; c++; } pow2 = pow2 * 2; } return c; }"
+        },
+        {
+          "clause_id": "write_output",
+          "signature": "void write_output(int cnt, long long *res)",
+          "code": "void write_output(int cnt, long long *res) { printf(\"%d\\n\", cnt); for(int i = 0; i < cnt; i++) printf(\"%lld %lld\\n\", res[2*i], res[2*i+1]); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long L = get_L(); long long res[120]; int cnt = compute(L, res); write_output(cnt, res); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "scan_L",
+          "signature": "long long scan_L()",
+          "code": "long long scan_L() { long long val; scanf(\"%lld\", &val); return val; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int solve(long long L, long long *ans)",
+          "code": "int solve(long long L, long long *ans) { int count = 0; for(long long power = 1; power <= L; power *= 2) { long long left = ((L-1)/power)*power; long long right = left + power; if(left < L && L <= right) { ans[count++] = left; ans[count++] = right; } } return count/2; }"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int n, long long *ans)",
+          "code": "void print_ans(int n, long long *ans) { printf(\"%d\\n\", n); for(int i = 0; i < n*2; i += 2) printf(\"%lld %lld\\n\", ans[i], ans[i+1]); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long L = scan_L(); long long ans[120]; int n = solve(L, ans); print_ans(n, ans); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "long long read_input()",
+          "code": "long long read_input() { long long L; scanf(\"%lld\", &L); return L; }"
+        },
+        {
+          "clause_id": "calculate",
+          "signature": "int calculate(long long L, long long *out)",
+          "code": "int calculate(long long L, long long *out) { int num = 0; long long bit = 1; do { long long l = ((L-1)/bit)*bit; long long r = l+bit; if(l < L && r >= L) { out[num*2] = l; out[num*2+1] = r; num++; } bit <<= 1; } while(bit <= L); return num; }"
+        },
+        {
+          "clause_id": "display",
+          "signature": "void display(int cnt, long long *out)",
+          "code": "void display(int cnt, long long *out) { printf(\"%d\\n\", cnt); for(int i = 0; i < cnt; i++) printf(\"%lld %lld\\n\", out[i*2], out[i*2+1]); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long L = read_input(); long long out[120]; int cnt = calculate(L, out); display(cnt, out); return 0; }"
+        }
+      ]
+    }
+  ]
+}

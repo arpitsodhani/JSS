@@ -1,0 +1,13 @@
+There are N islands and M bidirectional bridges connecting two islands. The islands and bridges are numbered 1 , 2 , \ldots , N and 1 , 2 , \ldots , M , respectively. Bridge i connects islands U_i and V_i , and the time it takes to cross it in either direction is T_i . No bridge connects an island to itself, but it is possible for two islands to be directly connected by more than one bridge. One can travel between any two islands using some bridges. You are given Q queries, so answer each of them. The i -th query is as follows: You are given K_i distinct bridges: bridges B_{i,1}, B_{i,2}, \ldots, B_{i,K_i} . Find the minimum time required to travel from island 1 to island N using each of these bridges at least once. Only consider the time spent crossing bridges. You can cross the given bridges in any order and in any direction.
+
+**Constraints:**
+- 2 <= N <= 400
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= U_i, V_i <= N
+- U_i != V_i
+- 1 <= T_i <= 10^9
+- 1 <= Q <= 3000
+- 1 <= K_i <= 5
+- 1 <= B_{i,j} <= M
+- All B_{i,j} in each query are distinct
+- All input values are integers

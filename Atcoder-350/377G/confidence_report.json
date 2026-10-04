@@ -1,0 +1,29 @@
+{
+  "average_confidence": 0.9673110223110224,
+  "clauses": [
+    {
+      "clause": "read_input",
+      "confidence": 0.9742857142857142
+    },
+    {
+      "clause": "lcp",
+      "confidence": 0.9723076923076924
+    },
+    {
+      "clause": "cost_to",
+      "confidence": 0.9640000000000001
+    },
+    {
+      "clause": "solve_all",
+      "confidence": 0.9700000000000001
+    },
+    {
+      "clause": "print_answer",
+      "confidence": 0.9672727272727272
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9560000000000001
+    }
+  ]
+}

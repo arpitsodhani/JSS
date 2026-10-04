@@ -1,0 +1,36 @@
+{
+  "contestId": 1299,
+  "index": "C",
+  "problem_id": "1299C",
+  "name": "Water Balance",
+  "rating": 2100,
+  "tags": [
+    "data structures",
+    "geometry",
+    "greedy"
+  ],
+  "points": 1250.0,
+  "solvedCount": 4387,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Water Balance",
+  "legend": "There are n water tanks in a row, i-th of them contains ai liters of water. The tanks are numbered from 1 to n from left to right.\n\nYou can perform the following operation: choose some subsegment [l,r] (1≤l≤r≤n), and redistribute water in tanks l,l+1,…,r evenly. In other words, replace each of al,al+1,…,ar by \nal+al+1+⋯+ar\n\n\nr−l+1\n. For example, if for volumes [1,3,6,7] you choose l=2,r=3, new volumes of water will be [1,4.5,4.5,7]. You can perform this operation any number of times.\n\nWhat is the lexicographically smallest sequence of volumes of water that you can achieve?\n\nAs a reminder:\n\nA sequence a is lexicographically smaller than a sequence b of the same length if and only if the following holds: in the first (leftmost) position where a and b differ, the sequence a has a smaller element than the corresponding element in b.",
+  "input_spec": "The first line contains an integer n (1≤n≤106) — the number of water tanks.\n\nThe second line contains n integers a1,a2,…,an (1≤ai≤106) — initial volumes of water in the water tanks, in liters.\n\nBecause of large input, reading input as doubles is not recommended.",
+  "output_spec": "Print the lexicographically smallest sequence you can get. In the i-th line print the final volume of water in the i-th tank.\n\nYour answer is considered correct if the absolute or relative error of each ai does not exceed 10−9.\n\nFormally, let your answer be a1,a2,…,an, and the jury's answer be b1,b2,…,bn. Your answer is accepted if and only if \n|ai−bi|\n\n\nmax(1,|bi|)\n≤10−9 for each i.",
+  "note": "In the first sample, you can get the sequence by applying the operation for subsegment [1,3].\n\nIn the second sample, you can't get any lexicographically smaller sequence.",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n7 5 5 7\n",
+      "output": "5.666666667\n5.666666667\n5.666666667\n7.000000000"
+    },
+    {
+      "input": "5\n7 8 8 10 12\n",
+      "output": "7.000000000\n8.000000000\n8.000000000\n10.000000000\n12.000000000"
+    },
+    {
+      "input": "10\n3 9 5 5 1 7 5 3 8 7\n",
+      "output": "3.000000000\n5.000000000\n5.000000000\n5.000000000\n5.000000000\n5.000000000\n5.000000000\n5.000000000\n7.500000000\n7.500000000"
+    }
+  ]
+}

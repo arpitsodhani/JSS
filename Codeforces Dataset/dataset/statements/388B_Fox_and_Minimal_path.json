@@ -1,0 +1,38 @@
+{
+  "contestId": 388,
+  "index": "B",
+  "problem_id": "388B",
+  "name": "Fox and Minimal path",
+  "rating": 1900,
+  "tags": [
+    "bitmasks",
+    "constructive algorithms",
+    "graphs",
+    "implementation",
+    "math"
+  ],
+  "points": 1000.0,
+  "solvedCount": 2609,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Fox and Minimal path",
+  "legend": "Fox Ciel wants to write a task for a programming contest. The task is: \"You are given a simple undirected graph with n vertexes. Each its edge has unit length. You should calculate the number of shortest paths between vertex 1 and vertex 2.\"\n\nSame with some writers, she wants to make an example with some certain output: for example, her birthday or the number of her boyfriend. Can you help her to make a test case with answer equal exactly to k?",
+  "input_spec": "The first line contains a single integer k (1 ≤ k ≤ 109).",
+  "output_spec": "You should output a graph G with n vertexes (2 ≤ n ≤ 1000). There must be exactly k shortest paths between vertex 1 and vertex 2 of the graph.\n\nThe first line must contain an integer n. Then adjacency matrix G with n rows and n columns must follow. Each element of the matrix must be 'N' or 'Y'. If Gij is 'Y', then graph G has a edge connecting vertex i and vertex j. Consider the graph vertexes are numbered from 1 to n.\n\nThe graph must be undirected and simple: Gii = 'N' and Gij = Gji must hold. And there must be at least one path between vertex 1 and vertex 2. It's guaranteed that the answer exists. If there multiple correct answers, you can output any of them.",
+  "note": "In first example, there are 2 shortest paths: 1-3-2 and 1-4-2.\n\nIn second example, there are 9 shortest paths: 1-3-6-2, 1-3-7-2, 1-3-8-2, 1-4-6-2, 1-4-7-2, 1-4-8-2, 1-5-6-2, 1-5-7-2, 1-5-8-2.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n",
+      "output": "4\nNNYY\nNNYY\nYYNN\nYYNN"
+    },
+    {
+      "input": "9\n",
+      "output": "8\nNNYYYNNN\nNNNNNYYY\nYNNNNYYY\nYNNNNYYY\nYNNNNYYY\nNYYYYNNN\nNYYYYNNN\nNYYYYNNN"
+    },
+    {
+      "input": "1\n",
+      "output": "2\nNY\nYN"
+    }
+  ]
+}

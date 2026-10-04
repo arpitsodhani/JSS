@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "below_threshold",
+          "code": "int below_threshold(int* arr, int n, int threshold) {\n    for (int i = 0; i < n; i++) {\n        if (arr[i] >= threshold) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n, threshold;\n    scanf(\"%d %d\", &n, &threshold);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    printf(\"%s\\n\", below_threshold(arr, n, threshold) ? \"True\" : \"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "all_below",
+          "code": "int all_below(int *arr, int n, int t) {\n    for(int i=0;i<n;i++) if(arr[i]>=t) return 0;\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n,t;\n    scanf(\"%d %d\",&n,&t);\n    int arr[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&arr[i]);\n    printf(\"%s\\n\",all_below(arr,n,t)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "under_limit",
+          "code": "int under_limit(int *v, int sz, int limit) {\n    int i=0;\n    while(i<sz){if(v[i]>=limit)return 0;i++;}\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int sz,limit;\n    scanf(\"%d %d\",&sz,&limit);\n    int v[sz];\n    for(int i=0;i<sz;i++) scanf(\"%d\",&v[i]);\n    printf(\"%s\\n\",under_limit(v,sz,limit)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "check_threshold",
+          "code": "int check_threshold(int *nums, int cnt, int thr) {\n    for(int k=0;k<cnt;k++) if(nums[k]>=thr) return 0;\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int cnt,thr;\n    scanf(\"%d %d\",&cnt,&thr);\n    int nums[cnt];\n    for(int i=0;i<cnt;i++) scanf(\"%d\",&nums[i]);\n    printf(\"%s\\n\",check_threshold(nums,cnt,thr)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "less_than_max",
+          "code": "int less_than_max(int *data, int len, int max) {\n    for(int i=0;i<len;i++) if(data[i]>=max) return 0;\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int len,max;\n    scanf(\"%d %d\",&len,&max);\n    int data[len];\n    for(int i=0;i<len;i++) scanf(\"%d\",&data[i]);\n    printf(\"%s\\n\",less_than_max(data,len,max)?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

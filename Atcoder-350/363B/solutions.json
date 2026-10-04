@@ -1,0 +1,110 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *t, int *p, int *l)",
+          "code": "void read_input(int *n, int *t, int *p, int *l) {\n    scanf(\"%d %d %d\", n, t, p);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &l[i]);\n}"
+        },
+        {
+          "clause_id": "compute_days_needed",
+          "signature": "int compute_days_needed(int n, int t, int p, int *l)",
+          "code": "int compute_days_needed(int n, int t, int p, int *l) {\n    int count = 0;\n    for (int i = 0; i < n; i++) if (l[i] >= t) count++;\n    if (count >= p) return 0;\n    int days = 0;\n    while (count < p) {\n        days++;\n        count = 0;\n        for (int i = 0; i < n; i++) if (l[i] + days >= t) count++;\n    }\n    return days;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, t, p, l[105];\n    read_input(&n, &t, &p, l);\n    printf(\"%d\\n\", compute_days_needed(n, t, p, l));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *n, int *t, int *p, int lengths[])",
+          "code": "int read_input(int *n, int *t, int *p, int lengths[]) {\n    scanf(\"%d %d %d\", n, t, p);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &lengths[i]);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "compute_days_needed",
+          "signature": "int compute_days_needed(int n, int t, int p, int lengths[])",
+          "code": "int compute_days_needed(int n, int t, int p, int lengths[]) {\n    int cnt = 0;\n    for (int i = 0; i < n; i++) if (lengths[i] >= t) cnt++;\n    if (cnt >= p) return 0;\n    int d = 0;\n    while (1) {\n        d++;\n        cnt = 0;\n        for (int i = 0; i < n; i++) if (lengths[i] + d >= t) cnt++;\n        if (cnt >= p) return d;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, t, p, lengths[105];\n    read_input(&n, &t, &p, lengths);\n    int result = compute_days_needed(n, t, p, lengths);\n    printf(\"%d\\n\", result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *t, int *p, int *hair)",
+          "code": "void read_input(int *n, int *t, int *p, int *hair) {\n    scanf(\"%d %d %d\", n, t, p);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &hair[i]);\n}"
+        },
+        {
+          "clause_id": "compute_days_needed",
+          "signature": "int compute_days_needed(int n, int t, int p, int *hair)",
+          "code": "int compute_days_needed(int n, int t, int p, int *hair) {\n    int current = 0;\n    for (int i = 0; i < n; i++) if (hair[i] >= t) current++;\n    if (current >= p) return 0;\n    for (int day = 1; day <= 200; day++) {\n        int cnt = 0;\n        for (int i = 0; i < n; i++) if (hair[i] + day >= t) cnt++;\n        if (cnt >= p) return day;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, t, p, hair[105];\n    read_input(&n, &t, &p, hair);\n    int ans = compute_days_needed(n, t, p, hair);\n    printf(\"%d\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "long long read_input(int *n, int *t, int *p, int l[])",
+          "code": "long long read_input(int *n, int *t, int *p, int l[]) {\n    scanf(\"%d %d %d\", n, t, p);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &l[i]);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_days_needed",
+          "signature": "int compute_days_needed(int n, int t, int p, int l[])",
+          "code": "int compute_days_needed(int n, int t, int p, int l[]) {\n    int num = 0;\n    for (int i = 0; i < n; i++) if (l[i] >= t) num++;\n    if (num >= p) return 0;\n    int ans = 1;\n    while (1) {\n        num = 0;\n        for (int i = 0; i < n; i++) if (l[i] + ans >= t) num++;\n        if (num >= p) return ans;\n        ans++;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, t, p, l[105];\n    read_input(&n, &t, &p, l);\n    printf(\"%d\\n\", compute_days_needed(n, t, p, l));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *threshold, int *people, int *current_lengths)",
+          "code": "void read_input(int *n, int *threshold, int *people, int *current_lengths) {\n    scanf(\"%d %d %d\", n, threshold, people);\n    for (int i = 0; i < *n; i++) scanf(\"%d\", &current_lengths[i]);\n}"
+        },
+        {
+          "clause_id": "compute_days_needed",
+          "signature": "int compute_days_needed(int n, int threshold, int people, int *current_lengths)",
+          "code": "int compute_days_needed(int n, int threshold, int people, int *current_lengths) {\n    int ready = 0;\n    for (int i = 0; i < n; i++) if (current_lengths[i] >= threshold) ready++;\n    if (ready >= people) return 0;\n    int days = 0;\n    while (ready < people) {\n        days++;\n        ready = 0;\n        for (int i = 0; i < n; i++) if (current_lengths[i] + days >= threshold) ready++;\n    }\n    return days;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, threshold, people, current_lengths[105];\n    read_input(&n, &threshold, &people, current_lengths);\n    printf(\"%d\\n\", compute_days_needed(n, threshold, people, current_lengths));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

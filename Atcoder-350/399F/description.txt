@@ -1,0 +1,6 @@
+You are given positive integers N, K , and an integer sequence of length N : A = (A_1, A_2, \dots, A_N) . Find \displaystyle \sum_{1\leq l\leq r\leq N} \Bigg(\sum_{l\leq i\leq r} A_i\Bigg)^K , modulo 998244353 .
+
+**Constraints:**
+- 1 <= N <= 400
+- 1 <= A_i <= 10^9
+- All input values are integers

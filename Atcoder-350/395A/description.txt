@@ -1,0 +1,5 @@
+You are given a positive integer N and a sequence of positive integers A = (A_1,A_2,\dots,A_N) of length N . Determine whether A is strictly increasing, that is, whether A_i < A_{i+1} holds for every integer i with 1 \leq i < N .
+
+**Constraints:**
+- 1 <= A, B, C <= 100
+- All input values are integers

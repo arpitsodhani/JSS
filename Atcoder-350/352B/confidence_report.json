@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.7325532508427245,
+  "clauses": [
+    {
+      "clause": "find_positions",
+      "confidence": 0.8976597525281734
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_input",
+      "confidence": 0.29999999999999993
+    }
+  ]
+}

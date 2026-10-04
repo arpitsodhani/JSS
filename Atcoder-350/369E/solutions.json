@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_operation_cost",
+          "signature": "int compute_operation_cost(int insert_cost, int delete_cost, int replace_cost)",
+          "code": "int compute_operation_cost(int insert_cost, int delete_cost, int replace_cost) {\n    int min_cost = insert_cost;\n    if (delete_cost < min_cost) min_cost = delete_cost;\n    if (replace_cost < min_cost) min_cost = replace_cost;\n    return min_cost;\n}"
+        },
+        {
+          "clause_id": "initialize_edit_distance_table",
+          "signature": "void initialize_edit_distance_table(int dp[1005][1005], int len1, int len2)",
+          "code": "void initialize_edit_distance_table(int dp[1005][1005], int len1, int len2) {\n    for (int i = 0; i <= len1; i++) dp[i][0] = i;\n    for (int j = 0; j <= len2; j++) dp[0][j] = j;\n}"
+        },
+        {
+          "clause_id": "compute_edit_distance",
+          "signature": "int compute_edit_distance(char *s1, char *s2)",
+          "code": "int compute_edit_distance(char *s1, char *s2) {\n    int len1 = strlen(s1), len2 = strlen(s2);\n    int dp[1005][1005];\n    initialize_edit_distance_table(dp, len1, len2);\n    \n    for (int i = 1; i <= len1; i++) {\n        for (int j = 1; j <= len2; j++) {\n            if (s1[i-1] == s2[j-1]) {\n                dp[i][j] = dp[i-1][j-1];\n            } else {\n                int insert = dp[i][j-1] + 1;\n                int delete = dp[i-1][j] + 1;\n                int replace = dp[i-1][j-1] + 1;\n                dp[i][j] = compute_operation_cost(insert, delete, replace);\n            }\n        }\n    }\n    return dp[len1][len2];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char s1[1005], s2[1005];\n    scanf(\"%s %s\", s1, s2);\n    printf(\"%d\\n\", compute_edit_distance(s1, s2));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_operation_cost",
+          "signature": "int compute_operation_cost(int insert_cost, int delete_cost, int replace_cost)",
+          "code": "int compute_operation_cost(int insert_cost, int delete_cost, int replace_cost) {\n    int min_cost = insert_cost;\n    if (delete_cost < min_cost) min_cost = delete_cost;\n    if (replace_cost < min_cost) min_cost = replace_cost;\n    return min_cost;\n}"
+        },
+        {
+          "clause_id": "initialize_edit_distance_table",
+          "signature": "void initialize_edit_distance_table(int dp[1005][1005], int len1, int len2)",
+          "code": "void initialize_edit_distance_table(int dp[1005][1005], int len1, int len2) {\n    for (int i = 0; i <= len1; i++) dp[i][0] = i;\n    for (int j = 0; j <= len2; j++) dp[0][j] = j;\n}"
+        },
+        {
+          "clause_id": "compute_edit_distance",
+          "signature": "int compute_edit_distance(char *s1, char *s2)",
+          "code": "int compute_edit_distance(char *s1, char *s2) {\n    int len1 = strlen(s1), len2 = strlen(s2);\n    int dp[1005][1005];\n    initialize_edit_distance_table(dp, len1, len2);\n    \n    for (int i = 1; i <= len1; i++) {\n        for (int j = 1; j <= len2; j++) {\n            if (s1[i-1] == s2[j-1]) {\n                dp[i][j] = dp[i-1][j-1];\n            } else {\n                int insert = dp[i][j-1] + 1;\n                int delete = dp[i-1][j] + 1;\n                int replace = dp[i-1][j-1] + 1;\n                dp[i][j] = compute_operation_cost(insert, delete, replace);\n            }\n        }\n    }\n    return dp[len1][len2];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char s1[1005], s2[1005];\n    scanf(\"%s %s\", s1, s2);\n    printf(\"%d\\n\", compute_edit_distance(s1, s2));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_operation_cost",
+          "signature": "int compute_operation_cost(int insert_cost, int delete_cost, int replace_cost)",
+          "code": "int compute_operation_cost(int insert_cost, int delete_cost, int replace_cost) {\n    int min_cost = insert_cost;\n    if (delete_cost < min_cost) min_cost = delete_cost;\n    if (replace_cost < min_cost) min_cost = replace_cost;\n    return min_cost;\n}"
+        },
+        {
+          "clause_id": "initialize_edit_distance_table",
+          "signature": "void initialize_edit_distance_table(int dp[1005][1005], int len1, int len2)",
+          "code": "void initialize_edit_distance_table(int dp[1005][1005], int len1, int len2) {\n    for (int i = 0; i <= len1; i++) dp[i][0] = i;\n    for (int j = 0; j <= len2; j++) dp[0][j] = j;\n}"
+        },
+        {
+          "clause_id": "compute_edit_distance",
+          "signature": "int compute_edit_distance(char *s1, char *s2)",
+          "code": "int compute_edit_distance(char *s1, char *s2) {\n    int len1 = strlen(s1), len2 = strlen(s2);\n    int dp[1005][1005];\n    initialize_edit_distance_table(dp, len1, len2);\n    \n    for (int i = 1; i <= len1; i++) {\n        for (int j = 1; j <= len2; j++) {\n            if (s1[i-1] == s2[j-1]) {\n                dp[i][j] = dp[i-1][j-1];\n            } else {\n                int insert = dp[i][j-1] + 1;\n                int delete = dp[i-1][j] + 1;\n                int replace = dp[i-1][j-1] + 1;\n                dp[i][j] = compute_operation_cost(insert, delete, replace);\n            }\n        }\n    }\n    return dp[len1][len2];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char s1[1005], s2[1005];\n    scanf(\"%s %s\", s1, s2);\n    printf(\"%d\\n\", compute_edit_distance(s1, s2));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_operation_cost",
+          "signature": "int compute_operation_cost(int insert_cost, int delete_cost, int replace_cost)",
+          "code": "int compute_operation_cost(int insert_cost, int delete_cost, int replace_cost) {\n    int min_cost = insert_cost;\n    if (delete_cost < min_cost) min_cost = delete_cost;\n    if (replace_cost < min_cost) min_cost = replace_cost;\n    return min_cost;\n}"
+        },
+        {
+          "clause_id": "initialize_edit_distance_table",
+          "signature": "void initialize_edit_distance_table(int dp[1005][1005], int len1, int len2)",
+          "code": "void initialize_edit_distance_table(int dp[1005][1005], int len1, int len2) {\n    for (int i = 0; i <= len1; i++) dp[i][0] = i;\n    for (int j = 0; j <= len2; j++) dp[0][j] = j;\n}"
+        },
+        {
+          "clause_id": "compute_edit_distance",
+          "signature": "int compute_edit_distance(char *s1, char *s2)",
+          "code": "int compute_edit_distance(char *s1, char *s2) {\n    int len1 = strlen(s1), len2 = strlen(s2);\n    int dp[1005][1005];\n    initialize_edit_distance_table(dp, len1, len2);\n    \n    for (int i = 1; i <= len1; i++) {\n        for (int j = 1; j <= len2; j++) {\n            if (s1[i-1] == s2[j-1]) {\n                dp[i][j] = dp[i-1][j-1];\n            } else {\n                int insert = dp[i][j-1] + 1;\n                int delete = dp[i-1][j] + 1;\n                int replace = dp[i-1][j-1] + 1;\n                dp[i][j] = compute_operation_cost(insert, delete, replace);\n            }\n        }\n    }\n    return dp[len1][len2];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char s1[1005], s2[1005];\n    scanf(\"%s %s\", s1, s2);\n    printf(\"%d\\n\", compute_edit_distance(s1, s2));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_operation_cost",
+          "signature": "int compute_operation_cost(int insert_cost, int delete_cost, int replace_cost)",
+          "code": "int compute_operation_cost(int insert_cost, int delete_cost, int replace_cost) {\n    int min_cost = insert_cost;\n    if (delete_cost < min_cost) min_cost = delete_cost;\n    if (replace_cost < min_cost) min_cost = replace_cost;\n    return min_cost;\n}"
+        },
+        {
+          "clause_id": "initialize_edit_distance_table",
+          "signature": "void initialize_edit_distance_table(int dp[1005][1005], int len1, int len2)",
+          "code": "void initialize_edit_distance_table(int dp[1005][1005], int len1, int len2) {\n    for (int i = 0; i <= len1; i++) dp[i][0] = i;\n    for (int j = 0; j <= len2; j++) dp[0][j] = j;\n}"
+        },
+        {
+          "clause_id": "compute_edit_distance",
+          "signature": "int compute_edit_distance(char *s1, char *s2)",
+          "code": "int compute_edit_distance(char *s1, char *s2) {\n    int len1 = strlen(s1), len2 = strlen(s2);\n    int dp[1005][1005];\n    initialize_edit_distance_table(dp, len1, len2);\n    \n    for (int i = 1; i <= len1; i++) {\n        for (int j = 1; j <= len2; j++) {\n            if (s1[i-1] == s2[j-1]) {\n                dp[i][j] = dp[i-1][j-1];\n            } else {\n                int insert = dp[i][j-1] + 1;\n                int delete = dp[i-1][j] + 1;\n                int replace = dp[i-1][j-1] + 1;\n                dp[i][j] = compute_operation_cost(insert, delete, replace);\n            }\n        }\n    }\n    return dp[len1][len2];\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char s1[1005], s2[1005];\n    scanf(\"%s %s\", s1, s2);\n    printf(\"%d\\n\", compute_edit_distance(s1, s2));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

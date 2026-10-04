@@ -1,0 +1,12 @@
+Find the number of positive integers not exceeding N that can be expressed as the product of two consecutive positive integers.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N
+
+**Output:**
+Print the answer.
+
+**Constraints:**
+- 1 <= N <= 10^{18}
+- All input values are integers

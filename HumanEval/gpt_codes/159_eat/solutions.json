@@ -1,0 +1,76 @@
+{
+  "problem_num": 159,
+  "problem_name": "eat",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\nint main() {\n    int number, need, remaining; scanf(\"%d %d %d\", &number, &need, &remaining);\n    int eaten = (need<=remaining) ? need : remaining;\n    printf(\"%d\\\\n%d\\\\n\", number+eaten, remaining-eaten);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\nint main() {\n    int number, need, remaining; scanf(\"%d %d %d\", &number, &need, &remaining);\n    int eaten = (need<=remaining) ? need : remaining;\n    printf(\"%d\\\\n%d\\\\n\", number+eaten, remaining-eaten);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\nint main() {\n    int number, need, remaining; scanf(\"%d %d %d\", &number, &need, &remaining);\n    int eaten = (need<=remaining) ? need : remaining;\n    printf(\"%d\\\\n%d\\\\n\", number+eaten, remaining-eaten);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\nint main() {\n    int number, need, remaining; scanf(\"%d %d %d\", &number, &need, &remaining);\n    int eaten = (need<=remaining) ? need : remaining;\n    printf(\"%d\\\\n%d\\\\n\", number+eaten, remaining-eaten);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\nint main() {\n    int number, need, remaining; scanf(\"%d %d %d\", &number, &need, &remaining);\n    int eaten = (need<=remaining) ? need : remaining;\n    printf(\"%d\\\\n%d\\\\n\", number+eaten, remaining-eaten);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    }
+  ]
+}

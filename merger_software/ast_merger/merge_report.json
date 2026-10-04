@@ -1,0 +1,65 @@
+{
+  "merged_program_file": "ast_merger/merged.c",
+  "timestamp": "2026-08-15T16:44:24.260889",
+  "clauses": {
+    "sum_array": {
+      "confidence": 0.9359999999999999,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 0.9359999999999999,
+          "cluster_size": 5,
+          "total": 5,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 5
+    },
+    "max_array": {
+      "confidence": 0.9359999999999999,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 0.9359999999999999,
+          "cluster_size": 5,
+          "total": 5,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 0.9925792391581865,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 0.9925792391581865,
+          "cluster_size": 5,
+          "total": 5,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 5
+    }
+  },
+  "compile_status": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "test_results": {
+    "passed": 0,
+    "total": 0,
+    "details": []
+  },
+  "metrics": {
+    "total_clauses": 3,
+    "total_fragments": 3,
+    "average_confidence": 0.9548597463860622,
+    "compile_success": true
+  },
+  "logs": ""
+}

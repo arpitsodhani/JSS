@@ -1,0 +1,25 @@
+{
+  "average_confidence": 0.86,
+  "clauses": [
+    {
+      "clause": "copy_matrix",
+      "confidence": 1.0
+    },
+    {
+      "clause": "initialize_identity_matrix",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "matrix_power_binary",
+      "confidence": 0.29999999999999993
+    },
+    {
+      "clause": "multiply_matrices_mod",
+      "confidence": 1.0
+    }
+  ]
+}

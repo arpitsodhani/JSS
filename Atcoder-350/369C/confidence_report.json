@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_fibonacci_modulo",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_matrix_power_modulo",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "multiply_matrices_modulo",
+      "confidence": 1.0
+    }
+  ]
+}

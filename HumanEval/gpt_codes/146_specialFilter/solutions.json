@@ -1,0 +1,126 @@
+{
+  "problem_num": 146,
+  "problem_name": "specialFilter",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "check_special",
+          "code": "int check_special(int num) {\n    if (num < 10) return 0;\n    \n    int first = -1, last = -1;\n    int temp = num < 0 ? -num : num;\n    \n    last = temp % 10;\n    while (temp > 0) {\n        first = temp % 10;\n        temp /= 10;\n    }\n    \n    return (first % 2 == 1 && last % 2 == 1);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int nums[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &nums[i]);\n    }\n    \n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        if (nums[i] > 10 && check_special(nums[i])) {\n            count++;\n        }\n    }\n    \n    printf(\"%d\\n\", count);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "check_special",
+          "code": "int check_special(int num) {\n    if (num < 10) return 0;\n    \n    int first = -1, last = -1;\n    int temp = num < 0 ? -num : num;\n    \n    last = temp % 10;\n    while (temp > 0) {\n        first = temp % 10;\n        temp /= 10;\n    }\n    \n    return (first % 2 == 1 && last % 2 == 1);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int nums[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &nums[i]);\n    }\n    \n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        if (nums[i] > 10 && check_special(nums[i])) {\n            count++;\n        }\n    }\n    \n    printf(\"%d\\n\", count);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "check_special",
+          "code": "int check_special(int num) {\n    if (num < 10) return 0;\n    \n    int first = -1, last = -1;\n    int temp = num < 0 ? -num : num;\n    \n    last = temp % 10;\n    while (temp > 0) {\n        first = temp % 10;\n        temp /= 10;\n    }\n    \n    return (first % 2 == 1 && last % 2 == 1);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int nums[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &nums[i]);\n    }\n    \n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        if (nums[i] > 10 && check_special(nums[i])) {\n            count++;\n        }\n    }\n    \n    printf(\"%d\\n\", count);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "check_special",
+          "code": "int check_special(int num) {\n    if (num < 10) return 0;\n    \n    int first = -1, last = -1;\n    int temp = num < 0 ? -num : num;\n    \n    last = temp % 10;\n    while (temp > 0) {\n        first = temp % 10;\n        temp /= 10;\n    }\n    \n    return (first % 2 == 1 && last % 2 == 1);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int nums[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &nums[i]);\n    }\n    \n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        if (nums[i] > 10 && check_special(nums[i])) {\n            count++;\n        }\n    }\n    \n    printf(\"%d\\n\", count);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "check_special",
+          "code": "int check_special(int num) {\n    if (num < 10) return 0;\n    \n    int first = -1, last = -1;\n    int temp = num < 0 ? -num : num;\n    \n    last = temp % 10;\n    while (temp > 0) {\n        first = temp % 10;\n        temp /= 10;\n    }\n    \n    return (first % 2 == 1 && last % 2 == 1);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int nums[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &nums[i]);\n    }\n    \n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        if (nums[i] > 10 && check_special(nums[i])) {\n            count++;\n        }\n    }\n    \n    printf(\"%d\\n\", count);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

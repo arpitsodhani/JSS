@@ -1,0 +1,31 @@
+{
+  "contestId": 946,
+  "index": "B",
+  "problem_id": "946B",
+  "name": "Weird Subtraction Process",
+  "rating": 1100,
+  "tags": [
+    "math",
+    "number theory"
+  ],
+  "points": null,
+  "solvedCount": 11512,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Weird Subtraction Process",
+  "legend": "You have two variables a and b. Consider the following sequence of actions performed with these variables:\n\nIf a = 0 or b = 0, end the process. Otherwise, go to step 2;\nIf a ≥ 2·b, then set the value of a to a - 2·b, and repeat step 1. Otherwise, go to step 3;\nIf b ≥ 2·a, then set the value of b to b - 2·a, and repeat step 1. Otherwise, end the process.\n\nInitially the values of a and b are positive integers, and so the process will be finite.\n\nYou have to determine the values of a and b after the process ends.",
+  "input_spec": "The only line of the input contains two integers n and m (1 ≤ n, m ≤ 1018). n is the initial value of variable a, and m is the initial value of variable b.",
+  "output_spec": "Print two integers — the values of a and b after the end of the process.",
+  "note": "Explanations to the samples:\n\na = 12, b = 5  a = 2, b = 5  a = 2, b = 1  a = 0, b = 1;\na = 31, b = 12  a = 7, b = 12.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "12 5\n",
+      "output": "0 1"
+    },
+    {
+      "input": "31 12\n",
+      "output": "7 12"
+    }
+  ]
+}

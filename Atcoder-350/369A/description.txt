@@ -1,0 +1,5 @@
+You are given two integers A and B . How many integers x satisfy the following condition? Condition: It is possible to arrange the three integers A , B , and x in some order to form an arithmetic sequence. A sequence of three integers p , q , and r in this order is an arithmetic sequence if and only if q-p is equal to r-q .
+
+**Constraints:**
+- -100 <= A, B <= 100
+- A and B are integers

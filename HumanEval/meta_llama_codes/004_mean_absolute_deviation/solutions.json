@@ -1,0 +1,143 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "compute_mad",
+          "code": "double compute_mad(double *arr, int n) {\n    double sum = 0.0;\n    for (int i = 0; i < n; i++) sum += arr[i];\n    double mean = sum / n;\n    double mad_sum = 0.0;\n    for (int i = 0; i < n; i++) {\n        mad_sum += fabs(arr[i] - mean);\n    }\n    return mad_sum / n;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    double arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%lf\", &arr[i]);\n    double result = compute_mad(arr, n);\n    printf(\"%g\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "compute_mad",
+          "code": "double compute_mad(double *arr, int n) {\n    double sum = 0.0;\n    for (int i = 0; i < n; i++) sum += arr[i];\n    double mean = sum / n;\n    double mad_sum = 0.0;\n    for (int i = 0; i < n; i++) {\n        mad_sum += fabs(arr[i] - mean);\n    }\n    return mad_sum / n;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    double nums[n];\n    for (int i = 0; i < n; i++) scanf(\"%lf\", &nums[i]);\n    double result = compute_mad(nums, n);\n    printf(\"%g\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "compute_mad",
+          "code": "double compute_mad(double *arr, int n) {\n    double sum = 0.0;\n    for (int i = 0; i < n; i++) sum += arr[i];\n    double mean = sum / n;\n    double mad_sum = 0.0;\n    for (int i = 0; i < n; i++) {\n        mad_sum += fabs(arr[i] - mean);\n    }\n    return mad_sum / n;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    double values[count];\n    for (int i = 0; i < count; i++) scanf(\"%lf\", &values[i]);\n    double result = compute_mad(values, count);\n    printf(\"%g\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "compute_mad",
+          "code": "double compute_mad(double *arr, int n) {\n    double sum = 0.0;\n    for (int i = 0; i < n; i++) sum += arr[i];\n    double mean = sum / n;\n    double mad_sum = 0.0;\n    for (int i = 0; i < n; i++) {\n        mad_sum += fabs(arr[i] - mean);\n    }\n    return mad_sum / n;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    double data[n];\n    for (int i = 0; i < n; i++) scanf(\"%lf\", &data[i]);\n    double result = compute_mad(data, n);\n    printf(\"%g\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "compute_mad",
+          "code": "double compute_mad(double *arr, int n) {\n    double sum = 0.0;\n    for (int i = 0; i < n; i++) sum += arr[i];\n    double mean = sum / n;\n    double mad_sum = 0.0;\n    for (int i = 0; i < n; i++) {\n        mad_sum += fabs(arr[i] - mean);\n    }\n    return mad_sum / n;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    double x[n];\n    for (int i = 0; i < n; i++) scanf(\"%lf\", &x[i]);\n    double result = compute_mad(x, n);\n    printf(\"%g\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
+    }
+  ],
+  "global_includes": [],
+  "tests": {
+    "clause_tests": {},
+    "program_tests": [
+      {
+        "test_id": "test_0",
+        "input": "4\n1.0 2.0 3.0 4.0\n",
+        "expected": "1\n"
+      },
+      {
+        "test_id": "test_1",
+        "input": "5\n1.0 2.0 3.0 4.0 5.0\n",
+        "expected": "1.2\n"
+      }
+    ]
+  },
+  "merge_settings": {
+    "consensus_threshold": 0.6,
+    "max_rounds": 3
+  },
+  "includes": [
+    "<stdio.h>",
+    "<math.h>"
+  ]
+}

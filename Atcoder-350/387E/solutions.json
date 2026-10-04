@@ -1,0 +1,201 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *N)",
+          "code": "scanf(\"%s\", N);\n"
+        },
+        {
+          "clause_id": "add1",
+          "signature": "void add1(char *s)",
+          "code": "int n=strlen(s); int i=n-1; while(i>=0 && s[i]=='9'){ s[i]='0'; i--; }\nif(i>=0) s[i]++; else { memmove(s+1,s,n+1); s[0]='1'; }\n"
+        },
+        {
+          "clause_id": "mod_str",
+          "signature": "int mod_str(const char *s,int mod)",
+          "code": "long long r=0; for(int i=0;s[i];i++) r=(r*10+(s[i]-'0'))%mod; return (int)r;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(const char *N,char *outA,char *outB)",
+          "code": "/* heuristic search up to 100000 steps */\nchar cur[100005]; strcpy(cur,N);\nfor(int step=0; step<100000; step++){\n  char next[100005]; strcpy(next,cur); add1(next);\n  int sum1=0,sum2=0; for(int i=0;cur[i];i++) sum1+=cur[i]-'0'; for(int i=0;next[i];i++) sum2+=next[i]-'0';\n  if(sum1>0 && sum2>0 && mod_str(cur,sum1)==0 && mod_str(next,sum2)==0){ strcpy(outA,cur); strcpy(outB,next); return; }\n  add1(cur);\n}\nstrcpy(outA,\"-1\"); strcpy(outB,\"-1\");\n"
+        },
+        {
+          "clause_id": "print_strs",
+          "signature": "void print_strs(const char *a,const char *b)",
+          "code": "if(strcmp(a,\"-1\")==0) printf(\"-1\\n\"); else printf(\"%s %s\\n\", a,b);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char N[100005],a[100005],b[100005]; read_input(N); solve(N,a,b); print_strs(a,b); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *N)",
+          "code": "scanf(\"%s\", N);\n"
+        },
+        {
+          "clause_id": "add1",
+          "signature": "void add1(char *s)",
+          "code": "int n=strlen(s); int i=n-1; while(i>=0 && s[i]=='9'){ s[i]='0'; i--; }\nif(i>=0) s[i]++; else { memmove(s+1,s,n+1); s[0]='1'; }\n"
+        },
+        {
+          "clause_id": "mod_str",
+          "signature": "int mod_str(const char *s,int mod)",
+          "code": "long long r=0; for(int i=0;s[i];i++) r=(r*10+(s[i]-'0'))%mod; return (int)r;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(const char *N,char *outA,char *outB)",
+          "code": "/* heuristic search up to 100000 steps */\nchar cur[100005]; strcpy(cur,N);\nfor(int step=0; step<100000; step++){\n  char next[100005]; strcpy(next,cur); add1(next);\n  int sum1=0,sum2=0; for(int i=0;cur[i];i++) sum1+=cur[i]-'0'; for(int i=0;next[i];i++) sum2+=next[i]-'0';\n  if(sum1>0 && sum2>0 && mod_str(cur,sum1)==0 && mod_str(next,sum2)==0){ strcpy(outA,cur); strcpy(outB,next); return; }\n  add1(cur);\n}\nstrcpy(outA,\"-1\"); strcpy(outB,\"-1\");\n"
+        },
+        {
+          "clause_id": "print_strs",
+          "signature": "void print_strs(const char *a,const char *b)",
+          "code": "if(strcmp(a,\"-1\")==0) printf(\"-1\\n\"); else printf(\"%s %s\\n\", a,b);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char N[100005],a[100005],b[100005]; read_input(N); solve(N,a,b); print_strs(a,b); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *N)",
+          "code": "scanf(\"%s\", N);\n"
+        },
+        {
+          "clause_id": "add1",
+          "signature": "void add1(char *s)",
+          "code": "int n=strlen(s); int i=n-1; while(i>=0 && s[i]=='9'){ s[i]='0'; i--; }\nif(i>=0) s[i]++; else { memmove(s+1,s,n+1); s[0]='1'; }\n"
+        },
+        {
+          "clause_id": "mod_str",
+          "signature": "int mod_str(const char *s,int mod)",
+          "code": "long long r=0; for(int i=0;s[i];i++) r=(r*10+(s[i]-'0'))%mod; return (int)r;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(const char *N,char *outA,char *outB)",
+          "code": "/* heuristic search up to 100000 steps */\nchar cur[100005]; strcpy(cur,N);\nfor(int step=0; step<100000; step++){\n  char next[100005]; strcpy(next,cur); add1(next);\n  int sum1=0,sum2=0; for(int i=0;cur[i];i++) sum1+=cur[i]-'0'; for(int i=0;next[i];i++) sum2+=next[i]-'0';\n  if(sum1>0 && sum2>0 && mod_str(cur,sum1)==0 && mod_str(next,sum2)==0){ strcpy(outA,cur); strcpy(outB,next); return; }\n  add1(cur);\n}\nstrcpy(outA,\"-1\"); strcpy(outB,\"-1\");\n"
+        },
+        {
+          "clause_id": "print_strs",
+          "signature": "void print_strs(const char *a,const char *b)",
+          "code": "if(strcmp(a,\"-1\")==0) printf(\"-1\\n\"); else printf(\"%s %s\\n\", a,b);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char N[100005],a[100005],b[100005]; read_input(N); solve(N,a,b); print_strs(a,b); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *N)",
+          "code": "scanf(\"%s\", N);\n"
+        },
+        {
+          "clause_id": "add1",
+          "signature": "void add1(char *s)",
+          "code": "int n=strlen(s); int i=n-1; while(i>=0 && s[i]=='9'){ s[i]='0'; i--; }\nif(i>=0) s[i]++; else { memmove(s+1,s,n+1); s[0]='1'; }\n"
+        },
+        {
+          "clause_id": "mod_str",
+          "signature": "int mod_str(const char *s,int mod)",
+          "code": "long long r=0; for(int i=0;s[i];i++) r=(r*10+(s[i]-'0'))%mod; return (int)r;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(const char *N,char *outA,char *outB)",
+          "code": "/* heuristic search up to 100000 steps */\nchar cur[100005]; strcpy(cur,N);\nfor(int step=0; step<100000; step++){\n  char next[100005]; strcpy(next,cur); add1(next);\n  int sum1=0,sum2=0; for(int i=0;cur[i];i++) sum1+=cur[i]-'0'; for(int i=0;next[i];i++) sum2+=next[i]-'0';\n  if(sum1>0 && sum2>0 && mod_str(cur,sum1)==0 && mod_str(next,sum2)==0){ strcpy(outA,cur); strcpy(outB,next); return; }\n  add1(cur);\n}\nstrcpy(outA,\"-1\"); strcpy(outB,\"-1\");\n"
+        },
+        {
+          "clause_id": "print_strs",
+          "signature": "void print_strs(const char *a,const char *b)",
+          "code": "if(strcmp(a,\"-1\")==0) printf(\"-1\\n\"); else printf(\"%s %s\\n\", a,b);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char N[100005],a[100005],b[100005]; read_input(N); solve(N,a,b); print_strs(a,b); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *N)",
+          "code": "scanf(\"%s\", N);\n"
+        },
+        {
+          "clause_id": "add1",
+          "signature": "void add1(char *s)",
+          "code": "int n=strlen(s); int i=n-1; while(i>=0 && s[i]=='9'){ s[i]='0'; i--; }\nif(i>=0) s[i]++; else { memmove(s+1,s,n+1); s[0]='1'; }\n"
+        },
+        {
+          "clause_id": "mod_str",
+          "signature": "int mod_str(const char *s,int mod)",
+          "code": "long long r=0; for(int i=0;s[i];i++) r=(r*10+(s[i]-'0'))%mod; return (int)r;\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(const char *N,char *outA,char *outB)",
+          "code": "/* heuristic search up to 100000 steps */\nchar cur[100005]; strcpy(cur,N);\nfor(int step=0; step<100000; step++){\n  char next[100005]; strcpy(next,cur); add1(next);\n  int sum1=0,sum2=0; for(int i=0;cur[i];i++) sum1+=cur[i]-'0'; for(int i=0;next[i];i++) sum2+=next[i]-'0';\n  if(sum1>0 && sum2>0 && mod_str(cur,sum1)==0 && mod_str(next,sum2)==0){ strcpy(outA,cur); strcpy(outB,next); return; }\n  add1(cur);\n}\nstrcpy(outA,\"-1\"); strcpy(outB,\"-1\");\n"
+        },
+        {
+          "clause_id": "print_strs",
+          "signature": "void print_strs(const char *a,const char *b)",
+          "code": "if(strcmp(a,\"-1\")==0) printf(\"-1\\n\"); else printf(\"%s %s\\n\", a,b);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char N[100005],a[100005],b[100005]; read_input(N); solve(N,a,b); print_strs(a,b); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "387E",
+  "total_programs": 5
+}

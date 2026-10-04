@@ -1,0 +1,154 @@
+{
+  "problem_id": "360B",
+  "includes": [
+    "#include <stdio.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_strings",
+          "signature": "void read_strings(char s[], char t[])",
+          "code": "void read_strings(char s[], char t[]) { scanf(\"%s%s\", s, t); }"
+        },
+        {
+          "clause_id": "try_extraction",
+          "signature": "int try_extraction(char s[], char t[], int w, int c)",
+          "code": "int try_extraction(char s[], char t[], int w, int c) { int s_len = strlen(s), t_len = strlen(t); char result[105]; int idx = 0; for(int i = c - 1; i < s_len; i += w) { result[idx++] = s[i]; } result[idx] = '\\0'; return strcmp(result, t) == 0; }"
+        },
+        {
+          "clause_id": "find_valid_pair",
+          "signature": "int find_valid_pair(char s[], char t[])",
+          "code": "int find_valid_pair(char s[], char t[]) { int s_len = strlen(s); for(int w = 1; w < s_len; w++) { for(int c = 1; c <= w; c++) { if(try_extraction(s, t, w, c)) return 1; } } return 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[105], t[105]; read_strings(s, t); printf(\"%s\\n\", find_valid_pair(s, t) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_strings",
+          "signature": "void read_strings(char s[], char t[])",
+          "code": "void read_strings(char s[], char t[]) { scanf(\"%s %s\", s, t); }"
+        },
+        {
+          "clause_id": "try_extraction",
+          "signature": "int try_extraction(char s[], char t[], int w, int c)",
+          "code": "int try_extraction(char s[], char t[], int w, int c) { int len_s = strlen(s), len_t = strlen(t); char extracted[105]; int pos = 0; for(int j = c - 1; j < len_s; j += w) extracted[pos++] = s[j]; extracted[pos] = '\\0'; return !strcmp(extracted, t); }"
+        },
+        {
+          "clause_id": "find_valid_pair",
+          "signature": "int find_valid_pair(char s[], char t[])",
+          "code": "int find_valid_pair(char s[], char t[]) { int n = strlen(s); for(int width = 1; width < n; width++) { for(int col = 1; col <= width; col++) { if(try_extraction(s, t, width, col)) return 1; } } return 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char str_s[105], str_t[105]; read_strings(str_s, str_t); puts(find_valid_pair(str_s, str_t) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_strings",
+          "signature": "void read_strings(char s[], char t[])",
+          "code": "void read_strings(char s[], char t[]) { scanf(\"%s%s\", s, t); }"
+        },
+        {
+          "clause_id": "try_extraction",
+          "signature": "int try_extraction(char s[], char t[], int w, int c)",
+          "code": "int try_extraction(char s[], char t[], int w, int c) { int s_size = strlen(s), t_size = strlen(t); char temp[105]; int k = 0; for(int i = c - 1; i < s_size; i += w) temp[k++] = s[i]; temp[k] = '\\0'; return strcmp(temp, t) == 0; }"
+        },
+        {
+          "clause_id": "find_valid_pair",
+          "signature": "int find_valid_pair(char s[], char t[])",
+          "code": "int find_valid_pair(char s[], char t[]) { int length = strlen(s); int w, c; for(w = 1; w < length; w++) { for(c = 1; c <= w; c++) { if(try_extraction(s, t, w, c)) return 1; } } return 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char source[105], target[105]; read_strings(source, target); printf(find_valid_pair(source, target) ? \"Yes\\n\" : \"No\\n\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_strings",
+          "signature": "void read_strings(char s[], char t[])",
+          "code": "void read_strings(char s[], char t[]) { scanf(\"%s %s\", s, t); }"
+        },
+        {
+          "clause_id": "try_extraction",
+          "signature": "int try_extraction(char s[], char t[], int w, int c)",
+          "code": "int try_extraction(char s[], char t[], int w, int c) { int s_length = strlen(s); char buffer[105]; int index = 0; for(int m = c - 1; m < s_length; m += w) buffer[index++] = s[m]; buffer[index] = '\\0'; return strcmp(buffer, t) == 0; }"
+        },
+        {
+          "clause_id": "find_valid_pair",
+          "signature": "int find_valid_pair(char s[], char t[])",
+          "code": "int find_valid_pair(char s[], char t[]) { int max_w = strlen(s); for(int step = 1; step < max_w; step++) { for(int offset = 1; offset <= step; offset++) { if(try_extraction(s, t, step, offset)) return 1; } } return 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char input_s[105], input_t[105]; read_strings(input_s, input_t); printf(\"%s\\n\", find_valid_pair(input_s, input_t) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_strings",
+          "signature": "void read_strings(char s[], char t[])",
+          "code": "void read_strings(char s[], char t[]) { scanf(\"%s%s\", s, t); }"
+        },
+        {
+          "clause_id": "try_extraction",
+          "signature": "int try_extraction(char s[], char t[], int w, int c)",
+          "code": "int try_extraction(char s[], char t[], int w, int c) { int total = strlen(s); char output[105]; int count = 0; for(int p = c - 1; p < total; p += w) output[count++] = s[p]; output[count] = '\\0'; return !strcmp(output, t); }"
+        },
+        {
+          "clause_id": "find_valid_pair",
+          "signature": "int find_valid_pair(char s[], char t[])",
+          "code": "int find_valid_pair(char s[], char t[]) { int size = strlen(s); for(int width = 1; width < size; width++) for(int column = 1; column <= width; column++) if(try_extraction(s, t, width, column)) return 1; return 0; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char string1[105], string2[105]; read_strings(string1, string2); puts(find_valid_pair(string1, string2) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    }
+  ]
+}

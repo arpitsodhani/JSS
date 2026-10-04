@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9815,
+  "clauses": [
+    {
+      "clause": "check_achievable",
+      "confidence": 0.97
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "process_queries",
+      "confidence": 0.9640000000000001
+    },
+    {
+      "clause": "read_styles",
+      "confidence": 0.992
+    }
+  ]
+}

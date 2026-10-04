@@ -1,0 +1,5 @@
+You are given an integer Y between 1583 and 2023 . Find the number of days in the year Y of the Gregorian calendar. Within the given range, the year Y has the following number of days: if Y is not a multiple of 4 , then 365 days; if Y is a multiple of 4 but not a multiple of 100 , then 366 days; if Y is a multiple of 100 but not a multiple of 400 , then 365 days; if Y is a multiple of 400 , then 366 days.
+
+**Constraints:**
+- y is an integer
+- 1600 <= y <= 3000

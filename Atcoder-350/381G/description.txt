@@ -1,0 +1,7 @@
+Define a sequence a_1, a_2, a_3, \dots as follows: a_n = \begin{cases} x & (n=1) \\ y & (n=2) \\ a_{n-1} + a_{n-2} & (n \geq 3) \\ \end{cases} Find \left( \displaystyle \prod_{i=1}^N a_i \right) \bmod{998244353} . You are given T test cases to solve.
+
+**Constraints:**
+- 1 <= N <= 5000
+- 1 <= M <= 10^9
+- 1 <= A_i <= M
+- All input values are integers

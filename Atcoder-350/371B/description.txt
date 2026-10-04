@@ -1,0 +1,7 @@
+In the Kingdom of AtCoder, the eldest son is always given the name Taro. No one else is given the name Taro. The eldest son is the earliest born male child in each family. There are N families in the Kingdom, and M babies were born. Before the M babies were born, none of the N families had had any babies. Information about the babies is given in chronological order of their birth. The i -th baby born was born in family A_i , and the baby is male if B_i is M , and female if it is F . Determine for each of the M babies whether the name given is Taro.
+
+**Constraints:**
+- 1 <= N, M <= 100
+- 1 <= a_i <= N
+- b_i is 'M' or 'F'
+- All input values are integers

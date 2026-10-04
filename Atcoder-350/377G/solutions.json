@@ -1,0 +1,199 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,char S[][100005])",
+          "code": "void read_input(int *N,char S[][100005]){ scanf(\"%d\", N); for(int i=0;i<*N;i++) scanf(\"%s\", S[i]); }\n"
+        },
+        {
+          "clause_id": "lcp",
+          "signature": "int lcp(char *a,char *b)",
+          "code": "int lcp(char *a,char *b){ int i=0; while(a[i] && b[i] && a[i]==b[i]) i++; return i; }\n"
+        },
+        {
+          "clause_id": "cost_to",
+          "signature": "int cost_to(char *s,char *t)",
+          "code": "int cost_to(char *s,char *t){ int l=lcp(s,t); int ls=strlen(s), lt=strlen(t); return (ls-l)+(lt-l); }\n"
+        },
+        {
+          "clause_id": "solve_all",
+          "signature": "void solve_all(int N,char S[][100005],int *out)",
+          "code": "void solve_all(int N,char S[][100005],int *out){\n    for(int k=0;k<N;k++){\n        int best=strlen(S[k]);\n        for(int j=0;j<k;j++){\n            int c=cost_to(S[k],S[j]);\n            if(c<best) best=c;\n        }\n        out[k]=best;\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int *out)",
+          "code": "void print_answer(int N,int *out){ for(int i=0;i<N;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; static char S[65][100005]; read_input(&N,S); int out[65]; solve_all(N,S,out); print_answer(N,out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,char S[][100005])",
+          "code": "void read_input(int *N,char S[][100005]){ scanf(\"%d\", N); for(int i=0;i<*N;i++) scanf(\"%s\", S[i]); }\n"
+        },
+        {
+          "clause_id": "lcp",
+          "signature": "int lcp(char *a,char *b)",
+          "code": "int lcp(char *a,char *b){ int i=0; while(a[i] && b[i] && a[i]==b[i]) i++; return i; }\n"
+        },
+        {
+          "clause_id": "cost_to",
+          "signature": "int cost_to(char *s,char *t)",
+          "code": "int cost_to(char *s,char *t){ int l=lcp(s,t); int ls=strlen(s), lt=strlen(t); return (ls-l)+(lt-l); }\n"
+        },
+        {
+          "clause_id": "solve_all",
+          "signature": "void solve_all(int N,char S[][100005],int *out)",
+          "code": "void solve_all(int N,char S[][100005],int *out){\n    for(int k=0;k<N;k++){\n        int best=strlen(S[k]);\n        for(int j=0;j<k;j++){\n            int c=cost_to(S[k],S[j]);\n            if(c<best) best=c;\n        }\n        out[k]=best;\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int *out)",
+          "code": "void print_answer(int N,int *out){ for(int i=0;i<N;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; static char S[65][100005]; read_input(&N,S); int out[65]; solve_all(N,S,out); print_answer(N,out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,char S[][100005])",
+          "code": "void read_input(int *N,char S[][100005]){ scanf(\"%d\", N); for(int i=0;i<*N;i++) scanf(\"%s\", S[i]); }\n"
+        },
+        {
+          "clause_id": "lcp",
+          "signature": "int lcp(char *a,char *b)",
+          "code": "int lcp(char *a,char *b){ int i=0; while(a[i] && b[i] && a[i]==b[i]) i++; return i; }\n"
+        },
+        {
+          "clause_id": "cost_to",
+          "signature": "int cost_to(char *s,char *t)",
+          "code": "int cost_to(char *s,char *t){ int l=lcp(s,t); int ls=strlen(s), lt=strlen(t); return (ls-l)+(lt-l); }\n"
+        },
+        {
+          "clause_id": "solve_all",
+          "signature": "void solve_all(int N,char S[][100005],int *out)",
+          "code": "void solve_all(int N,char S[][100005],int *out){\n    for(int k=0;k<N;k++){\n        int best=strlen(S[k]);\n        for(int j=0;j<k;j++){\n            int c=cost_to(S[k],S[j]);\n            if(c<best) best=c;\n        }\n        out[k]=best;\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int *out)",
+          "code": "void print_answer(int N,int *out){ for(int i=0;i<N;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; static char S[65][100005]; read_input(&N,S); int out[65]; solve_all(N,S,out); print_answer(N,out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,char S[][100005])",
+          "code": "void read_input(int *N,char S[][100005]){ scanf(\"%d\", N); for(int i=0;i<*N;i++) scanf(\"%s\", S[i]); }\n"
+        },
+        {
+          "clause_id": "lcp",
+          "signature": "int lcp(char *a,char *b)",
+          "code": "int lcp(char *a,char *b){ int i=0; while(a[i] && b[i] && a[i]==b[i]) i++; return i; }\n"
+        },
+        {
+          "clause_id": "cost_to",
+          "signature": "int cost_to(char *s,char *t)",
+          "code": "int cost_to(char *s,char *t){ int l=lcp(s,t); int ls=strlen(s), lt=strlen(t); return (ls-l)+(lt-l); }\n"
+        },
+        {
+          "clause_id": "solve_all",
+          "signature": "void solve_all(int N,char S[][100005],int *out)",
+          "code": "void solve_all(int N,char S[][100005],int *out){\n    for(int k=0;k<N;k++){\n        int best=strlen(S[k]);\n        for(int j=0;j<k;j++){\n            int c=cost_to(S[k],S[j]);\n            if(c<best) best=c;\n        }\n        out[k]=best;\n    }\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int *out)",
+          "code": "void print_answer(int N,int *out){ for(int i=0;i<N;i++) printf(\"%d\\n\", out[i]); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; static char S[65][100005]; read_input(&N,S); int out[65]; solve_all(N,S,out); print_answer(N,out); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,char S[][100005])",
+          "code": "void read_input(int *N,char S[][100005]){ scanf(\"%d\", N); for(int i=0;i<*N;i++) scanf(\"%s\", S[i]); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "lcp",
+          "signature": "int lcp(char *a,char *b)",
+          "code": "int lcp(char *a,char *b){ int i=0; while(a[i] && b[i] && a[i]==b[i]) i++; return i; \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "cost_to",
+          "signature": "int cost_to(char *s,char *t)",
+          "code": "int cost_to(char *s,char *t){ int l=lcp(s,t); int ls=strlen(s), lt=strlen(t); return (ls-l)+(lt-l); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "solve_all",
+          "signature": "void solve_all(int N,char S[][100005],int *out)",
+          "code": "void solve_all(int N,char S[][100005],int *out){\n    for(int k=0;k<N;k++){\n        int best=strlen(S[k]);\n        for(int j=0;j<k;j++){\n            int c=cost_to(S[k],S[j]);\n            if(c<best) best=c;\n        }\n        out[k]=best;\n    }\n\n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int N,int *out)",
+          "code": "void print_answer(int N,int *out){ for(int i=0;i<N;i++) printf(\"%d\\n\", out[i]); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; static char S[65][100005]; read_input(&N,S); int out[65]; solve_all(N,S,out); print_answer(N,out); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "problem_id": "059_largest_prime_factor",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "largest_prime_factor",
+          "code": "int largest_prime_factor(int n) {\n    int largest = -1;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n            largest = i;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        largest = n;\n    }\n    return largest;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int result = largest_prime_factor(n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "largest_prime_factor",
+          "code": "int largest_prime_factor(int n) {\n    int largest = -1;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n            largest = i;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        largest = n;\n    }\n    return largest;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int result = largest_prime_factor(n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "largest_prime_factor",
+          "code": "int largest_prime_factor(int n) {\n    int largest = -1;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n            largest = i;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        largest = n;\n    }\n    return largest;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int result = largest_prime_factor(n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "largest_prime_factor",
+          "code": "int largest_prime_factor(int n) {\n    int largest = -1;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n            largest = i;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        largest = n;\n    }\n    return largest;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int result = largest_prime_factor(n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "largest_prime_factor",
+          "code": "int largest_prime_factor(int n) {\n    int largest = -1;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n            largest = i;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        largest = n;\n    }\n    return largest;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int result = largest_prime_factor(n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ],
+  "includes": [
+    "<stdio.h>"
+  ]
+}

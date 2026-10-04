@@ -1,0 +1,179 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "build_graph",
+          "signature": "void build_graph(int n, char *C, int **rev_head, int **rev_to, int **rev_nx, int **rev_ch, int **fwd_head, int **fwd_to, int **fwd_nx, int **fwd_ch)",
+          "code": "int m=0;\nfor(int i=0;i<n*n;i++) if(C[i]!='-') m++;\nint *rh=(int*)malloc((size_t)n*sizeof(int));\nint *fh=(int*)malloc((size_t)n*sizeof(int));\nint *rto=(int*)malloc((size_t)m*sizeof(int));\nint *rn=(int*)malloc((size_t)m*sizeof(int));\nint *rch=(int*)malloc((size_t)m*sizeof(int));\nint *fto=(int*)malloc((size_t)m*sizeof(int));\nint *fn=(int*)malloc((size_t)m*sizeof(int));\nint *fch=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++){ rh[i]=-1; fh[i]=-1; }\nint ec=0;\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    char ch=C[i*n+j];\n    if(ch=='-') continue;\n    // forward i->j\n    fto[ec]=j; fch[ec]=ch-'a'; fn[ec]=fh[i]; fh[i]=ec;\n    // reverse edge into j: i->j means incoming to j from i\n    rto[ec]=i; rch[ec]=ch-'a'; rn[ec]=rh[j]; rh[j]=ec;\n    ec++;\n  }\n}\n*rev_head=rh; *rev_to=rto; *rev_nx=rn; *rev_ch=rch;\n*fwd_head=fh; *fwd_to=fto; *fwd_nx=fn; *fwd_ch=fch;\n"
+        },
+        {
+          "clause_id": "pal_bfs",
+          "signature": "void pal_bfs(int n, const int *rev_head, const int *rev_to, const int *rev_nx, const int *rev_ch, const int *fwd_head, const int *fwd_to, const int *fwd_nx, const int *fwd_ch, int *dist)",
+          "code": "int N=n*n;\nfor(int i=0;i<N;i++) dist[i]=-1;\nint *q=(int*)malloc((size_t)N*sizeof(int));\nint qh=0, qt=0;\nfor(int i=0;i<n;i++){\n  dist[i*n+i]=0;\n  q[qt++]=i*n+i;\n}\nfor(int a=0;a<n;a++){\n  for(int e=fwd_head[a]; e!=-1; e=fwd_nx[e]){\n    int b=fwd_to[e];\n    if(dist[a*n+b]==-1){ dist[a*n+b]=1; q[qt++]=a*n+b; }\n  }\n}\nwhile(qh<qt){\n  int s=q[qh++];\n  int i=s/n, j=s%n;\n  int d=dist[s];\n  for(int ie=rev_head[i]; ie!=-1; ie=rev_nx[ie]){\n    int u=rev_to[ie]; int c=rev_ch[ie];\n    for(int je=fwd_head[j]; je!=-1; je=fwd_nx[je]){\n      if(fwd_ch[je]!=c) continue;\n      int v=fwd_to[je];\n      int ns=u*n+v;\n      if(dist[ns]==-1){ dist[ns]=d+2; q[qt++]=ns; }\n    }\n  }\n}\nfree(q);\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int n, const int *dist)",
+          "code": "for(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    if(j) putchar(' ');\n    printf(\"%d\", dist[i*n+j]);\n  }\n  putchar('\\n');\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n();\nchar *C=(char*)malloc((size_t)n*(size_t)n);\nfor(int i=0;i<n;i++){\n  char buf[205]; scanf(\"%s\", buf);\n  for(int j=0;j<n;j++) C[i*n+j]=buf[j];\n}\nint *rh,*rto,*rn,*rch,*fh,*fto,*fn,*fch;\nbuild_graph(n,C,&rh,&rto,&rn,&rch,&fh,&fto,&fn,&fch);\nint *dist=(int*)malloc((size_t)n*(size_t)n*sizeof(int));\npal_bfs(n,rh,rto,rn,rch,fh,fto,fn,fch,dist);\nprint_all(n,dist);\nfree(C); free(rh); free(rto); free(rn); free(rch); free(fh); free(fto); free(fn); free(fch); free(dist);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "build_graph",
+          "signature": "void build_graph(int n, char *C, int **rev_head, int **rev_to, int **rev_nx, int **rev_ch, int **fwd_head, int **fwd_to, int **fwd_nx, int **fwd_ch)",
+          "code": "int m=0;\nfor(int i=0;i<n*n;i++) if(C[i]!='-') m++;\nint *rh=(int*)malloc((size_t)n*sizeof(int));\nint *fh=(int*)malloc((size_t)n*sizeof(int));\nint *rto=(int*)malloc((size_t)m*sizeof(int));\nint *rn=(int*)malloc((size_t)m*sizeof(int));\nint *rch=(int*)malloc((size_t)m*sizeof(int));\nint *fto=(int*)malloc((size_t)m*sizeof(int));\nint *fn=(int*)malloc((size_t)m*sizeof(int));\nint *fch=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++){ rh[i]=-1; fh[i]=-1; }\nint ec=0;\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    char ch=C[i*n+j];\n    if(ch=='-') continue;\n    // forward i->j\n    fto[ec]=j; fch[ec]=ch-'a'; fn[ec]=fh[i]; fh[i]=ec;\n    // reverse edge into j: i->j means incoming to j from i\n    rto[ec]=i; rch[ec]=ch-'a'; rn[ec]=rh[j]; rh[j]=ec;\n    ec++;\n  }\n}\n*rev_head=rh; *rev_to=rto; *rev_nx=rn; *rev_ch=rch;\n*fwd_head=fh; *fwd_to=fto; *fwd_nx=fn; *fwd_ch=fch;\n"
+        },
+        {
+          "clause_id": "pal_bfs",
+          "signature": "void pal_bfs(int n, const int *rev_head, const int *rev_to, const int *rev_nx, const int *rev_ch, const int *fwd_head, const int *fwd_to, const int *fwd_nx, const int *fwd_ch, int *dist)",
+          "code": "int N=n*n;\nfor(int i=0;i<N;i++) dist[i]=-1;\nint *q=(int*)malloc((size_t)N*sizeof(int));\nint qh=0, qt=0;\nfor(int i=0;i<n;i++){\n  dist[i*n+i]=0;\n  q[qt++]=i*n+i;\n}\nfor(int a=0;a<n;a++){\n  for(int e=fwd_head[a]; e!=-1; e=fwd_nx[e]){\n    int b=fwd_to[e];\n    if(dist[a*n+b]==-1){ dist[a*n+b]=1; q[qt++]=a*n+b; }\n  }\n}\nwhile(qh<qt){\n  int s=q[qh++];\n  int i=s/n, j=s%n;\n  int d=dist[s];\n  for(int ie=rev_head[i]; ie!=-1; ie=rev_nx[ie]){\n    int u=rev_to[ie]; int c=rev_ch[ie];\n    for(int je=fwd_head[j]; je!=-1; je=fwd_nx[je]){\n      if(fwd_ch[je]!=c) continue;\n      int v=fwd_to[je];\n      int ns=u*n+v;\n      if(dist[ns]==-1){ dist[ns]=d+2; q[qt++]=ns; }\n    }\n  }\n}\nfree(q);\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int n, const int *dist)",
+          "code": "for(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    if(j) putchar(' ');\n    printf(\"%d\", dist[i*n+j]);\n  }\n  putchar('\\n');\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n();\nchar *C=(char*)malloc((size_t)n*(size_t)n);\nfor(int i=0;i<n;i++){\n  char buf[205]; scanf(\"%s\", buf);\n  for(int j=0;j<n;j++) C[i*n+j]=buf[j];\n}\nint *rh,*rto,*rn,*rch,*fh,*fto,*fn,*fch;\nbuild_graph(n,C,&rh,&rto,&rn,&rch,&fh,&fto,&fn,&fch);\nint *dist=(int*)malloc((size_t)n*(size_t)n*sizeof(int));\npal_bfs(n,rh,rto,rn,rch,fh,fto,fn,fch,dist);\nprint_all(n,dist);\nfree(C); free(rh); free(rto); free(rn); free(rch); free(fh); free(fto); free(fn); free(fch); free(dist);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "build_graph",
+          "signature": "void build_graph(int n, char *C, int **rev_head, int **rev_to, int **rev_nx, int **rev_ch, int **fwd_head, int **fwd_to, int **fwd_nx, int **fwd_ch)",
+          "code": "int m=0;\nfor(int i=0;i<n*n;i++) if(C[i]!='-') m++;\nint *rh=(int*)malloc((size_t)n*sizeof(int));\nint *fh=(int*)malloc((size_t)n*sizeof(int));\nint *rto=(int*)malloc((size_t)m*sizeof(int));\nint *rn=(int*)malloc((size_t)m*sizeof(int));\nint *rch=(int*)malloc((size_t)m*sizeof(int));\nint *fto=(int*)malloc((size_t)m*sizeof(int));\nint *fn=(int*)malloc((size_t)m*sizeof(int));\nint *fch=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++){ rh[i]=-1; fh[i]=-1; }\nint ec=0;\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    char ch=C[i*n+j];\n    if(ch=='-') continue;\n    // forward i->j\n    fto[ec]=j; fch[ec]=ch-'a'; fn[ec]=fh[i]; fh[i]=ec;\n    // reverse edge into j: i->j means incoming to j from i\n    rto[ec]=i; rch[ec]=ch-'a'; rn[ec]=rh[j]; rh[j]=ec;\n    ec++;\n  }\n}\n*rev_head=rh; *rev_to=rto; *rev_nx=rn; *rev_ch=rch;\n*fwd_head=fh; *fwd_to=fto; *fwd_nx=fn; *fwd_ch=fch;\n"
+        },
+        {
+          "clause_id": "pal_bfs",
+          "signature": "void pal_bfs(int n, const int *rev_head, const int *rev_to, const int *rev_nx, const int *rev_ch, const int *fwd_head, const int *fwd_to, const int *fwd_nx, const int *fwd_ch, int *dist)",
+          "code": "int N=n*n;\nfor(int i=0;i<N;i++) dist[i]=-1;\nint *q=(int*)malloc((size_t)N*sizeof(int));\nint qh=0, qt=0;\nfor(int i=0;i<n;i++){\n  dist[i*n+i]=0;\n  q[qt++]=i*n+i;\n}\nfor(int a=0;a<n;a++){\n  for(int e=fwd_head[a]; e!=-1; e=fwd_nx[e]){\n    int b=fwd_to[e];\n    if(dist[a*n+b]==-1){ dist[a*n+b]=1; q[qt++]=a*n+b; }\n  }\n}\nwhile(qh<qt){\n  int s=q[qh++];\n  int i=s/n, j=s%n;\n  int d=dist[s];\n  for(int ie=rev_head[i]; ie!=-1; ie=rev_nx[ie]){\n    int u=rev_to[ie]; int c=rev_ch[ie];\n    for(int je=fwd_head[j]; je!=-1; je=fwd_nx[je]){\n      if(fwd_ch[je]!=c) continue;\n      int v=fwd_to[je];\n      int ns=u*n+v;\n      if(dist[ns]==-1){ dist[ns]=d+2; q[qt++]=ns; }\n    }\n  }\n}\nfree(q);\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int n, const int *dist)",
+          "code": "for(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    if(j) putchar(' ');\n    printf(\"%d\", dist[i*n+j]);\n  }\n  putchar('\\n');\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n();\nchar *C=(char*)malloc((size_t)n*(size_t)n);\nfor(int i=0;i<n;i++){\n  char buf[205]; scanf(\"%s\", buf);\n  for(int j=0;j<n;j++) C[i*n+j]=buf[j];\n}\nint *rh,*rto,*rn,*rch,*fh,*fto,*fn,*fch;\nbuild_graph(n,C,&rh,&rto,&rn,&rch,&fh,&fto,&fn,&fch);\nint *dist=(int*)malloc((size_t)n*(size_t)n*sizeof(int));\npal_bfs(n,rh,rto,rn,rch,fh,fto,fn,fch,dist);\nprint_all(n,dist);\nfree(C); free(rh); free(rto); free(rn); free(rch); free(fh); free(fto); free(fn); free(fch); free(dist);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "build_graph",
+          "signature": "void build_graph(int n, char *C, int **rev_head, int **rev_to, int **rev_nx, int **rev_ch, int **fwd_head, int **fwd_to, int **fwd_nx, int **fwd_ch)",
+          "code": "int m=0;\nfor(int i=0;i<n*n;i++) if(C[i]!='-') m++;\nint *rh=(int*)malloc((size_t)n*sizeof(int));\nint *fh=(int*)malloc((size_t)n*sizeof(int));\nint *rto=(int*)malloc((size_t)m*sizeof(int));\nint *rn=(int*)malloc((size_t)m*sizeof(int));\nint *rch=(int*)malloc((size_t)m*sizeof(int));\nint *fto=(int*)malloc((size_t)m*sizeof(int));\nint *fn=(int*)malloc((size_t)m*sizeof(int));\nint *fch=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++){ rh[i]=-1; fh[i]=-1; }\nint ec=0;\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    char ch=C[i*n+j];\n    if(ch=='-') continue;\n    // forward i->j\n    fto[ec]=j; fch[ec]=ch-'a'; fn[ec]=fh[i]; fh[i]=ec;\n    // reverse edge into j: i->j means incoming to j from i\n    rto[ec]=i; rch[ec]=ch-'a'; rn[ec]=rh[j]; rh[j]=ec;\n    ec++;\n  }\n}\n*rev_head=rh; *rev_to=rto; *rev_nx=rn; *rev_ch=rch;\n*fwd_head=fh; *fwd_to=fto; *fwd_nx=fn; *fwd_ch=fch;\n"
+        },
+        {
+          "clause_id": "pal_bfs",
+          "signature": "void pal_bfs(int n, const int *rev_head, const int *rev_to, const int *rev_nx, const int *rev_ch, const int *fwd_head, const int *fwd_to, const int *fwd_nx, const int *fwd_ch, int *dist)",
+          "code": "int N=n*n;\nfor(int i=0;i<N;i++) dist[i]=-1;\nint *q=(int*)malloc((size_t)N*sizeof(int));\nint qh=0, qt=0;\nfor(int i=0;i<n;i++){\n  dist[i*n+i]=0;\n  q[qt++]=i*n+i;\n}\nfor(int a=0;a<n;a++){\n  for(int e=fwd_head[a]; e!=-1; e=fwd_nx[e]){\n    int b=fwd_to[e];\n    if(dist[a*n+b]==-1){ dist[a*n+b]=1; q[qt++]=a*n+b; }\n  }\n}\nwhile(qh<qt){\n  int s=q[qh++];\n  int i=s/n, j=s%n;\n  int d=dist[s];\n  for(int ie=rev_head[i]; ie!=-1; ie=rev_nx[ie]){\n    int u=rev_to[ie]; int c=rev_ch[ie];\n    for(int je=fwd_head[j]; je!=-1; je=fwd_nx[je]){\n      if(fwd_ch[je]!=c) continue;\n      int v=fwd_to[je];\n      int ns=u*n+v;\n      if(dist[ns]==-1){ dist[ns]=d+2; q[qt++]=ns; }\n    }\n  }\n}\nfree(q);\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int n, const int *dist)",
+          "code": "for(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    if(j) putchar(' ');\n    printf(\"%d\", dist[i*n+j]);\n  }\n  putchar('\\n');\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n();\nchar *C=(char*)malloc((size_t)n*(size_t)n);\nfor(int i=0;i<n;i++){\n  char buf[205]; scanf(\"%s\", buf);\n  for(int j=0;j<n;j++) C[i*n+j]=buf[j];\n}\nint *rh,*rto,*rn,*rch,*fh,*fto,*fn,*fch;\nbuild_graph(n,C,&rh,&rto,&rn,&rch,&fh,&fto,&fn,&fch);\nint *dist=(int*)malloc((size_t)n*(size_t)n*sizeof(int));\npal_bfs(n,rh,rto,rn,rch,fh,fto,fn,fch,dist);\nprint_all(n,dist);\nfree(C); free(rh); free(rto); free(rn); free(rch); free(fh); free(fto); free(fn); free(fch); free(dist);\nreturn 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "build_graph",
+          "signature": "void build_graph(int n, char *C, int **rev_head, int **rev_to, int **rev_nx, int **rev_ch, int **fwd_head, int **fwd_to, int **fwd_nx, int **fwd_ch)",
+          "code": "int m=0;\nfor(int i=0;i<n*n;i++) if(C[i]!='-') m++;\nint *rh=(int*)malloc((size_t)n*sizeof(int));\nint *fh=(int*)malloc((size_t)n*sizeof(int));\nint *rto=(int*)malloc((size_t)m*sizeof(int));\nint *rn=(int*)malloc((size_t)m*sizeof(int));\nint *rch=(int*)malloc((size_t)m*sizeof(int));\nint *fto=(int*)malloc((size_t)m*sizeof(int));\nint *fn=(int*)malloc((size_t)m*sizeof(int));\nint *fch=(int*)malloc((size_t)m*sizeof(int));\nfor(int i=0;i<n;i++){ rh[i]=-1; fh[i]=-1; }\nint ec=0;\nfor(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    char ch=C[i*n+j];\n    if(ch=='-') continue;\n    // forward i->j\n    fto[ec]=j; fch[ec]=ch-'a'; fn[ec]=fh[i]; fh[i]=ec;\n    // reverse edge into j: i->j means incoming to j from i\n    rto[ec]=i; rch[ec]=ch-'a'; rn[ec]=rh[j]; rh[j]=ec;\n    ec++;\n  }\n}\n*rev_head=rh; *rev_to=rto; *rev_nx=rn; *rev_ch=rch;\n*fwd_head=fh; *fwd_to=fto; *fwd_nx=fn; *fwd_ch=fch;\n"
+        },
+        {
+          "clause_id": "pal_bfs",
+          "signature": "void pal_bfs(int n, const int *rev_head, const int *rev_to, const int *rev_nx, const int *rev_ch, const int *fwd_head, const int *fwd_to, const int *fwd_nx, const int *fwd_ch, int *dist)",
+          "code": "int N=n*n;\nfor(int i=0;i<N;i++) dist[i]=-1;\nint *q=(int*)malloc((size_t)N*sizeof(int));\nint qh=0, qt=0;\nfor(int i=0;i<n;i++){\n  dist[i*n+i]=0;\n  q[qt++]=i*n+i;\n}\nfor(int a=0;a<n;a++){\n  for(int e=fwd_head[a]; e!=-1; e=fwd_nx[e]){\n    int b=fwd_to[e];\n    if(dist[a*n+b]==-1){ dist[a*n+b]=1; q[qt++]=a*n+b; }\n  }\n}\nwhile(qh<qt){\n  int s=q[qh++];\n  int i=s/n, j=s%n;\n  int d=dist[s];\n  for(int ie=rev_head[i]; ie!=-1; ie=rev_nx[ie]){\n    int u=rev_to[ie]; int c=rev_ch[ie];\n    for(int je=fwd_head[j]; je!=-1; je=fwd_nx[je]){\n      if(fwd_ch[je]!=c) continue;\n      int v=fwd_to[je];\n      int ns=u*n+v;\n      if(dist[ns]==-1){ dist[ns]=d+2; q[qt++]=ns; }\n    }\n  }\n}\nfree(q);\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int n, const int *dist)",
+          "code": "for(int i=0;i<n;i++){\n  for(int j=0;j<n;j++){\n    if(j) putchar(' ');\n    printf(\"%d\", dist[i*n+j]);\n  }\n  putchar('\\n');\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n();\nchar *C=(char*)malloc((size_t)n*(size_t)n);\nfor(int i=0;i<n;i++){\n  char buf[205]; scanf(\"%s\", buf);\n  for(int j=0;j<n;j++) C[i*n+j]=buf[j];\n}\nint *rh,*rto,*rn,*rch,*fh,*fto,*fn,*fch;\nbuild_graph(n,C,&rh,&rto,&rn,&rch,&fh,&fto,&fn,&fch);\nint *dist=(int*)malloc((size_t)n*(size_t)n*sizeof(int));\npal_bfs(n,rh,rto,rn,rch,fh,fto,fn,fch,dist);\nprint_all(n,dist);\nfree(C); free(rh); free(rto); free(rn); free(rch); free(fh); free(fto); free(fn); free(fch); free(dist);\nreturn 0; }\n"
+        }
+      ]
+    }
+  ]
+}

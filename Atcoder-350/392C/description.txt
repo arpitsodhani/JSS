@@ -1,0 +1,6 @@
+There are N people numbered from 1 to N . Person i is wearing a bib with the number Q_i and is staring at person P_i . For each i = 1,2,\ldots,N , find the number written on the bib of the person that the person wearing the bib with number i is staring at.
+
+**Constraints:**
+- 1 <= N, K <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

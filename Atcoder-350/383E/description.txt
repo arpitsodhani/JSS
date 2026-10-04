@@ -1,0 +1,11 @@
+You are given a simple connected undirected graph with N vertices and M edges, where vertices are numbered 1 to N and edges are numbered 1 to M . Edge i (1 \leq i \leq M) connects vertices u_i and v_i bidirectionally and has weight w_i . For a path, define its weight as the maximum weight of an edge in the path. Define f(x, y) as the minimum possible path weight of a path from vertex x to vertex y . You are given two sequences of length K : (A_1, A_2, \ldots, A_K) and (B_1, B_2, \ldots, B_K) . It is guaranteed that A_i \neq B_j (1 \leq i,j \leq K) . Permute the sequence B freely so that \displaystyle \sum_{i=1}^{K} f(A_i, B_i) is minimized.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= 2 * 10^5
+- 1 <= K <= N
+- 1 <= U_i, V_i <= N
+- U_i != V_i
+- The graph is simple
+- 1 <= A_i, B_i <= 10^9
+- All input values are integers

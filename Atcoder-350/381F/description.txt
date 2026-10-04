@@ -1,0 +1,8 @@
+A sequence X = (X_1, X_2, \ldots) of positive integers (possibly empty) is called a 1122 sequence if and only if it satisfies all of the following three conditions: (The definition of a 1122 sequence is the same as in Problem D.) \lvert X \rvert is even. Here, \lvert X \rvert denotes the length of X . For each integer i satisfying 1\leq i\leq \frac{|X|}{2} , X_{2i-1} and X_{2i} are equal. Each positive integer appears in X either not at all or exactly twice. That is, every positive integer contained in X appears exactly twice in X . Given a sequence A = (A_1, A_2, \ldots, A_N) of length N consisting of positive integers, print the maximum length of a subsequence (not necessarily contiguous) of A that is a 1122 sequence.
+
+**Constraints:**
+- 1 <= N <= 20
+- 1 <= W <= 10^9
+- S is a string of length N consisting of lowercase English letters
+- 1 <= w_i <= 10^9
+- All input values are integers

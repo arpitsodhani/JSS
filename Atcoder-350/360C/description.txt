@@ -1,0 +1,7 @@
+There are N boxes numbered 1 to N and N items numbered 1 to N . Item i (1 \leq i \leq N) is in box A_i and has a weight of W_i . You can repeatedly perform the operation of choosing an item and moving it to another box zero or more times. If the weight of the item being moved is w , the cost of the operation is w . Find the minimum total cost required to make each box contain exactly one item.
+
+**Constraints:**
+- 1 <= N <= 10^5
+- 1 <= A_i <= N
+- 1 <= W_i <= 10^9
+- All input values are integers

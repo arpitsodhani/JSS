@@ -1,0 +1,8 @@
+You are given a tree T with N vertices. The vertices are numbered 1 to N , and the i -th edge (1 \leq i \leq N-1) connects vertices u_i and v_i bidirectionally. Using T , define a complete graph G with N vertices as follows: The weight w(x,y) of the edge between vertices x and y in G is the shortest distance between vertices x and y in T . Find one maximum weight maximum matching in G . That is, find a set of \lfloor N/2 \rfloor pairs of vertices M=\{(x_1,y_1),(x_2,y_2),\dots,(x_{\lfloor N/2 \rfloor},y_{\lfloor N/2 \rfloor})\} such that each vertex 1,2,\dots, N appears in M at most once, and \displaystyle \sum_{i=1}^{\lfloor N/2 \rfloor} w(x_i,y_i) is maximized.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The given edges form a tree
+- All input values are integers

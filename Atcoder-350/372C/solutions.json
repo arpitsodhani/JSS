@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_implication_edge",
+          "signature": "void add_implication_edge(int from, int to, int adj[2005][2005], int *deg)",
+          "code": "void add_implication_edge(int from, int to, int adj[2005][2005], int *deg) {\n    adj[from][deg[from]++] = to;\n}"
+        },
+        {
+          "clause_id": "tarjan_dfs_scc",
+          "signature": "void tarjan_dfs_scc(int u, int adj[2005][2005], int *deg, int *disc, int *low, int *on_stack, int *stack, int *top, int *scc_id, int *scc_count, int *time_counter)",
+          "code": "void tarjan_dfs_scc(int u, int adj[2005][2005], int *deg, int *disc, int *low, int *on_stack, int *stack, int *top, int *scc_id, int *scc_count, int *time_counter) {\n    disc[u] = low[u] = (*time_counter)++;\n    stack[(*top)++] = u;\n    on_stack[u] = 1;\n    \n    for (int i = 0; i < deg[u]; i++) {\n        int v = adj[u][i];\n        if (disc[v] == -1) {\n            tarjan_dfs_scc(v, adj, deg, disc, low, on_stack, stack, top, scc_id, scc_count, time_counter);\n            if (low[v] < low[u]) low[u] = low[v];\n        } else if (on_stack[v] && disc[v] < low[u]) {\n            low[u] = disc[v];\n        }\n    }\n    \n    if (low[u] == disc[u]) {\n        while (1) {\n            int v = stack[--(*top)];\n            on_stack[v] = 0;\n            scc_id[v] = *scc_count;\n            if (v == u) break;\n        }\n        (*scc_count)++;\n    }\n}"
+        },
+        {
+          "clause_id": "solve_2sat_instance",
+          "signature": "int solve_2sat_instance(int n, int clauses[][2], int clause_count, int *assignment)",
+          "code": "int solve_2sat_instance(int n, int clauses[][2], int clause_count, int *assignment) {\n    int adj[2005][2005], deg[2005] = {0};\n    \n    for (int i = 0; i < clause_count; i++) {\n        int a = clauses[i][0];\n        int b = clauses[i][1];\n        int na = (a > 0) ? (2 * (a - 1) + 1) : (2 * (-a - 1));\n        int nb = (b > 0) ? (2 * (b - 1)) : (2 * (-b - 1) + 1);\n        int not_a = (a > 0) ? (2 * (a - 1)) : (2 * (-a - 1) + 1);\n        int not_b = (b > 0) ? (2 * (b - 1) + 1) : (2 * (-b - 1));\n        \n        add_implication_edge(not_a, b > 0 ? 2*(b-1) : 2*(-b-1)+1, adj, deg);\n        add_implication_edge(not_b, a > 0 ? 2*(a-1) : 2*(-a-1)+1, adj, deg);\n    }\n    \n    int disc[2005], low[2005], on_stack[2005] = {0}, stack[2005], top = 0;\n    int scc_id[2005], scc_count = 0, time_counter = 0;\n    for (int i = 0; i < 2 * n; i++) disc[i] = low[i] = -1;\n    \n    for (int i = 0; i < 2 * n; i++) {\n        if (disc[i] == -1) {\n            tarjan_dfs_scc(i, adj, deg, disc, low, on_stack, stack, &top, scc_id, &scc_count, &time_counter);\n        }\n    }\n    \n    for (int i = 0; i < n; i++) {\n        if (scc_id[2*i] == scc_id[2*i+1]) return 0;\n        assignment[i] = scc_id[2*i] > scc_id[2*i+1];\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, clauses[1005][2], assignment[1005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d\", &clauses[i][0], &clauses[i][1]);\n    }\n    \n    if (solve_2sat_instance(n, clauses, m, assignment)) {\n        for (int i = 0; i < n; i++) {\n            printf(\"%d \", assignment[i]);\n        }\n    } else {\n        printf(\"UNSATISFIABLE\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_implication_edge",
+          "signature": "void add_implication_edge(int from, int to, int adj[2005][2005], int *deg)",
+          "code": "void add_implication_edge(int from, int to, int adj[2005][2005], int *deg) {\n    adj[from][deg[from]++] = to;\n}"
+        },
+        {
+          "clause_id": "tarjan_dfs_scc",
+          "signature": "void tarjan_dfs_scc(int u, int adj[2005][2005], int *deg, int *disc, int *low, int *on_stack, int *stack, int *top, int *scc_id, int *scc_count, int *time_counter)",
+          "code": "void tarjan_dfs_scc(int u, int adj[2005][2005], int *deg, int *disc, int *low, int *on_stack, int *stack, int *top, int *scc_id, int *scc_count, int *time_counter) {\n    disc[u] = low[u] = (*time_counter)++;\n    stack[(*top)++] = u;\n    on_stack[u] = 1;\n    \n    for (int i = 0; i < deg[u]; i++) {\n        int v = adj[u][i];\n        if (disc[v] == -1) {\n            tarjan_dfs_scc(v, adj, deg, disc, low, on_stack, stack, top, scc_id, scc_count, time_counter);\n            if (low[v] < low[u]) low[u] = low[v];\n        } else if (on_stack[v] && disc[v] < low[u]) {\n            low[u] = disc[v];\n        }\n    }\n    \n    if (low[u] == disc[u]) {\n        while (1) {\n            int v = stack[--(*top)];\n            on_stack[v] = 0;\n            scc_id[v] = *scc_count;\n            if (v == u) break;\n        }\n        (*scc_count)++;\n    }\n}"
+        },
+        {
+          "clause_id": "solve_2sat_instance",
+          "signature": "int solve_2sat_instance(int n, int clauses[][2], int clause_count, int *assignment)",
+          "code": "int solve_2sat_instance(int n, int clauses[][2], int clause_count, int *assignment) {\n    int adj[2005][2005], deg[2005] = {0};\n    \n    for (int i = 0; i < clause_count; i++) {\n        int a = clauses[i][0];\n        int b = clauses[i][1];\n        int na = (a > 0) ? (2 * (a - 1) + 1) : (2 * (-a - 1));\n        int nb = (b > 0) ? (2 * (b - 1)) : (2 * (-b - 1) + 1);\n        int not_a = (a > 0) ? (2 * (a - 1)) : (2 * (-a - 1) + 1);\n        int not_b = (b > 0) ? (2 * (b - 1) + 1) : (2 * (-b - 1));\n        \n        add_implication_edge(not_a, b > 0 ? 2*(b-1) : 2*(-b-1)+1, adj, deg);\n        add_implication_edge(not_b, a > 0 ? 2*(a-1) : 2*(-a-1)+1, adj, deg);\n    }\n    \n    int disc[2005], low[2005], on_stack[2005] = {0}, stack[2005], top = 0;\n    int scc_id[2005], scc_count = 0, time_counter = 0;\n    for (int i = 0; i < 2 * n; i++) disc[i] = low[i] = -1;\n    \n    for (int i = 0; i < 2 * n; i++) {\n        if (disc[i] == -1) {\n            tarjan_dfs_scc(i, adj, deg, disc, low, on_stack, stack, &top, scc_id, &scc_count, &time_counter);\n        }\n    }\n    \n    for (int i = 0; i < n; i++) {\n        if (scc_id[2*i] == scc_id[2*i+1]) return 0;\n        assignment[i] = scc_id[2*i] > scc_id[2*i+1];\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, clauses[1005][2], assignment[1005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d\", &clauses[i][0], &clauses[i][1]);\n    }\n    \n    if (solve_2sat_instance(n, clauses, m, assignment)) {\n        for (int i = 0; i < n; i++) {\n            printf(\"%d \", assignment[i]);\n        }\n    } else {\n        printf(\"UNSATISFIABLE\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_implication_edge",
+          "signature": "void add_implication_edge(int from, int to, int adj[2005][2005], int *deg)",
+          "code": "void add_implication_edge(int from, int to, int adj[2005][2005], int *deg) {\n    adj[from][deg[from]++] = to;\n}"
+        },
+        {
+          "clause_id": "tarjan_dfs_scc",
+          "signature": "void tarjan_dfs_scc(int u, int adj[2005][2005], int *deg, int *disc, int *low, int *on_stack, int *stack, int *top, int *scc_id, int *scc_count, int *time_counter)",
+          "code": "void tarjan_dfs_scc(int u, int adj[2005][2005], int *deg, int *disc, int *low, int *on_stack, int *stack, int *top, int *scc_id, int *scc_count, int *time_counter) {\n    disc[u] = low[u] = (*time_counter)++;\n    stack[(*top)++] = u;\n    on_stack[u] = 1;\n    \n    for (int i = 0; i < deg[u]; i++) {\n        int v = adj[u][i];\n        if (disc[v] == -1) {\n            tarjan_dfs_scc(v, adj, deg, disc, low, on_stack, stack, top, scc_id, scc_count, time_counter);\n            if (low[v] < low[u]) low[u] = low[v];\n        } else if (on_stack[v] && disc[v] < low[u]) {\n            low[u] = disc[v];\n        }\n    }\n    \n    if (low[u] == disc[u]) {\n        while (1) {\n            int v = stack[--(*top)];\n            on_stack[v] = 0;\n            scc_id[v] = *scc_count;\n            if (v == u) break;\n        }\n        (*scc_count)++;\n    }\n}"
+        },
+        {
+          "clause_id": "solve_2sat_instance",
+          "signature": "int solve_2sat_instance(int n, int clauses[][2], int clause_count, int *assignment)",
+          "code": "int solve_2sat_instance(int n, int clauses[][2], int clause_count, int *assignment) {\n    int adj[2005][2005], deg[2005] = {0};\n    \n    for (int i = 0; i < clause_count; i++) {\n        int a = clauses[i][0];\n        int b = clauses[i][1];\n        int na = (a > 0) ? (2 * (a - 1) + 1) : (2 * (-a - 1));\n        int nb = (b > 0) ? (2 * (b - 1)) : (2 * (-b - 1) + 1);\n        int not_a = (a > 0) ? (2 * (a - 1)) : (2 * (-a - 1) + 1);\n        int not_b = (b > 0) ? (2 * (b - 1) + 1) : (2 * (-b - 1));\n        \n        add_implication_edge(not_a, b > 0 ? 2*(b-1) : 2*(-b-1)+1, adj, deg);\n        add_implication_edge(not_b, a > 0 ? 2*(a-1) : 2*(-a-1)+1, adj, deg);\n    }\n    \n    int disc[2005], low[2005], on_stack[2005] = {0}, stack[2005], top = 0;\n    int scc_id[2005], scc_count = 0, time_counter = 0;\n    for (int i = 0; i < 2 * n; i++) disc[i] = low[i] = -1;\n    \n    for (int i = 0; i < 2 * n; i++) {\n        if (disc[i] == -1) {\n            tarjan_dfs_scc(i, adj, deg, disc, low, on_stack, stack, &top, scc_id, &scc_count, &time_counter);\n        }\n    }\n    \n    for (int i = 0; i < n; i++) {\n        if (scc_id[2*i] == scc_id[2*i+1]) return 0;\n        assignment[i] = scc_id[2*i] > scc_id[2*i+1];\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, clauses[1005][2], assignment[1005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d\", &clauses[i][0], &clauses[i][1]);\n    }\n    \n    if (solve_2sat_instance(n, clauses, m, assignment)) {\n        for (int i = 0; i < n; i++) {\n            printf(\"%d \", assignment[i]);\n        }\n    } else {\n        printf(\"UNSATISFIABLE\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_implication_edge",
+          "signature": "void add_implication_edge(int from, int to, int adj[2005][2005], int *deg)",
+          "code": "void add_implication_edge(int from, int to, int adj[2005][2005], int *deg) {\n    adj[from][deg[from]++] = to;\n}"
+        },
+        {
+          "clause_id": "tarjan_dfs_scc",
+          "signature": "void tarjan_dfs_scc(int u, int adj[2005][2005], int *deg, int *disc, int *low, int *on_stack, int *stack, int *top, int *scc_id, int *scc_count, int *time_counter)",
+          "code": "void tarjan_dfs_scc(int u, int adj[2005][2005], int *deg, int *disc, int *low, int *on_stack, int *stack, int *top, int *scc_id, int *scc_count, int *time_counter) {\n    disc[u] = low[u] = (*time_counter)++;\n    stack[(*top)++] = u;\n    on_stack[u] = 1;\n    \n    for (int i = 0; i < deg[u]; i++) {\n        int v = adj[u][i];\n        if (disc[v] == -1) {\n            tarjan_dfs_scc(v, adj, deg, disc, low, on_stack, stack, top, scc_id, scc_count, time_counter);\n            if (low[v] < low[u]) low[u] = low[v];\n        } else if (on_stack[v] && disc[v] < low[u]) {\n            low[u] = disc[v];\n        }\n    }\n    \n    if (low[u] == disc[u]) {\n        while (1) {\n            int v = stack[--(*top)];\n            on_stack[v] = 0;\n            scc_id[v] = *scc_count;\n            if (v == u) break;\n        }\n        (*scc_count)++;\n    }\n}"
+        },
+        {
+          "clause_id": "solve_2sat_instance",
+          "signature": "int solve_2sat_instance(int n, int clauses[][2], int clause_count, int *assignment)",
+          "code": "int solve_2sat_instance(int n, int clauses[][2], int clause_count, int *assignment) {\n    int adj[2005][2005], deg[2005] = {0};\n    \n    for (int i = 0; i < clause_count; i++) {\n        int a = clauses[i][0];\n        int b = clauses[i][1];\n        int na = (a > 0) ? (2 * (a - 1) + 1) : (2 * (-a - 1));\n        int nb = (b > 0) ? (2 * (b - 1)) : (2 * (-b - 1) + 1);\n        int not_a = (a > 0) ? (2 * (a - 1)) : (2 * (-a - 1) + 1);\n        int not_b = (b > 0) ? (2 * (b - 1) + 1) : (2 * (-b - 1));\n        \n        add_implication_edge(not_a, b > 0 ? 2*(b-1) : 2*(-b-1)+1, adj, deg);\n        add_implication_edge(not_b, a > 0 ? 2*(a-1) : 2*(-a-1)+1, adj, deg);\n    }\n    \n    int disc[2005], low[2005], on_stack[2005] = {0}, stack[2005], top = 0;\n    int scc_id[2005], scc_count = 0, time_counter = 0;\n    for (int i = 0; i < 2 * n; i++) disc[i] = low[i] = -1;\n    \n    for (int i = 0; i < 2 * n; i++) {\n        if (disc[i] == -1) {\n            tarjan_dfs_scc(i, adj, deg, disc, low, on_stack, stack, &top, scc_id, &scc_count, &time_counter);\n        }\n    }\n    \n    for (int i = 0; i < n; i++) {\n        if (scc_id[2*i] == scc_id[2*i+1]) return 0;\n        assignment[i] = scc_id[2*i] > scc_id[2*i+1];\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, clauses[1005][2], assignment[1005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d\", &clauses[i][0], &clauses[i][1]);\n    }\n    \n    if (solve_2sat_instance(n, clauses, m, assignment)) {\n        for (int i = 0; i < n; i++) {\n            printf(\"%d \", assignment[i]);\n        }\n    } else {\n        printf(\"UNSATISFIABLE\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_implication_edge",
+          "signature": "void add_implication_edge(int from, int to, int adj[2005][2005], int *deg)",
+          "code": "void add_implication_edge(int from, int to, int adj[2005][2005], int *deg) {\n    adj[from][deg[from]++] = to;\n}"
+        },
+        {
+          "clause_id": "tarjan_dfs_scc",
+          "signature": "void tarjan_dfs_scc(int u, int adj[2005][2005], int *deg, int *disc, int *low, int *on_stack, int *stack, int *top, int *scc_id, int *scc_count, int *time_counter)",
+          "code": "void tarjan_dfs_scc(int u, int adj[2005][2005], int *deg, int *disc, int *low, int *on_stack, int *stack, int *top, int *scc_id, int *scc_count, int *time_counter) {\n    disc[u] = low[u] = (*time_counter)++;\n    stack[(*top)++] = u;\n    on_stack[u] = 1;\n    \n    for (int i = 0; i < deg[u]; i++) {\n        int v = adj[u][i];\n        if (disc[v] == -1) {\n            tarjan_dfs_scc(v, adj, deg, disc, low, on_stack, stack, top, scc_id, scc_count, time_counter);\n            if (low[v] < low[u]) low[u] = low[v];\n        } else if (on_stack[v] && disc[v] < low[u]) {\n            low[u] = disc[v];\n        }\n    }\n    \n    if (low[u] == disc[u]) {\n        while (1) {\n            int v = stack[--(*top)];\n            on_stack[v] = 0;\n            scc_id[v] = *scc_count;\n            if (v == u) break;\n        }\n        (*scc_count)++;\n    }\n}"
+        },
+        {
+          "clause_id": "solve_2sat_instance",
+          "signature": "int solve_2sat_instance(int n, int clauses[][2], int clause_count, int *assignment)",
+          "code": "int solve_2sat_instance(int n, int clauses[][2], int clause_count, int *assignment) {\n    int adj[2005][2005], deg[2005] = {0};\n    \n    for (int i = 0; i < clause_count; i++) {\n        int a = clauses[i][0];\n        int b = clauses[i][1];\n        int na = (a > 0) ? (2 * (a - 1) + 1) : (2 * (-a - 1));\n        int nb = (b > 0) ? (2 * (b - 1)) : (2 * (-b - 1) + 1);\n        int not_a = (a > 0) ? (2 * (a - 1)) : (2 * (-a - 1) + 1);\n        int not_b = (b > 0) ? (2 * (b - 1) + 1) : (2 * (-b - 1));\n        \n        add_implication_edge(not_a, b > 0 ? 2*(b-1) : 2*(-b-1)+1, adj, deg);\n        add_implication_edge(not_b, a > 0 ? 2*(a-1) : 2*(-a-1)+1, adj, deg);\n    }\n    \n    int disc[2005], low[2005], on_stack[2005] = {0}, stack[2005], top = 0;\n    int scc_id[2005], scc_count = 0, time_counter = 0;\n    for (int i = 0; i < 2 * n; i++) disc[i] = low[i] = -1;\n    \n    for (int i = 0; i < 2 * n; i++) {\n        if (disc[i] == -1) {\n            tarjan_dfs_scc(i, adj, deg, disc, low, on_stack, stack, &top, scc_id, &scc_count, &time_counter);\n        }\n    }\n    \n    for (int i = 0; i < n; i++) {\n        if (scc_id[2*i] == scc_id[2*i+1]) return 0;\n        assignment[i] = scc_id[2*i] > scc_id[2*i+1];\n    }\n    return 1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, clauses[1005][2], assignment[1005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d\", &clauses[i][0], &clauses[i][1]);\n    }\n    \n    if (solve_2sat_instance(n, clauses, m, assignment)) {\n        for (int i = 0; i < n; i++) {\n            printf(\"%d \", assignment[i]);\n        }\n    } else {\n        printf(\"UNSATISFIABLE\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

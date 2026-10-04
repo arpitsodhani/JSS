@@ -1,0 +1,129 @@
+{
+  "problem_id": "358A",
+  "includes": [
+    "#include <stdio.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_strings",
+          "signature": "void read_strings(char s[], char t[])",
+          "code": "void read_strings(char s[], char t[]) { scanf(\"%s%s\", s, t); }"
+        },
+        {
+          "clause_id": "check_match",
+          "signature": "int check_match(char s[], char t[])",
+          "code": "int check_match(char s[], char t[]) { return (strcmp(s, \"AtCoder\") == 0 && strcmp(t, \"Land\") == 0); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char s[105], t[105]; read_strings(s, t); printf(\"%s\\n\", check_match(s, t) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_strings",
+          "signature": "void read_strings(char s[], char t[])",
+          "code": "void read_strings(char s[], char t[]) { scanf(\"%s %s\", s, t); }"
+        },
+        {
+          "clause_id": "check_match",
+          "signature": "int check_match(char s[], char t[])",
+          "code": "int check_match(char s[], char t[]) { int first = (strcmp(s, \"AtCoder\") == 0); int second = (strcmp(t, \"Land\") == 0); return first && second; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char word1[105], word2[105]; read_strings(word1, word2); puts(check_match(word1, word2) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_strings",
+          "signature": "void read_strings(char s[], char t[])",
+          "code": "void read_strings(char s[], char t[]) { scanf(\"%s%s\", s, t); }"
+        },
+        {
+          "clause_id": "check_match",
+          "signature": "int check_match(char s[], char t[])",
+          "code": "int check_match(char s[], char t[]) { if(strcmp(s, \"AtCoder\") != 0) return 0; if(strcmp(t, \"Land\") != 0) return 0; return 1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char str1[105], str2[105]; read_strings(str1, str2); printf(check_match(str1, str2) ? \"Yes\\n\" : \"No\\n\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_strings",
+          "signature": "void read_strings(char s[], char t[])",
+          "code": "void read_strings(char s[], char t[]) { scanf(\"%s %s\", s, t); }"
+        },
+        {
+          "clause_id": "check_match",
+          "signature": "int check_match(char s[], char t[])",
+          "code": "int check_match(char s[], char t[]) { char expected1[] = \"AtCoder\"; char expected2[] = \"Land\"; return (strcmp(s, expected1) == 0) && (strcmp(t, expected2) == 0); }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char first[105], second[105]; read_strings(first, second); printf(\"%s\\n\", check_match(first, second) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_strings",
+          "signature": "void read_strings(char s[], char t[])",
+          "code": "void read_strings(char s[], char t[]) { scanf(\"%s%s\", s, t); }"
+        },
+        {
+          "clause_id": "check_match",
+          "signature": "int check_match(char s[], char t[])",
+          "code": "int check_match(char s[], char t[]) { int match_s = 1, match_t = 1; char *target_s = \"AtCoder\", *target_t = \"Land\"; if(strcmp(s, target_s) != 0) match_s = 0; if(strcmp(t, target_t) != 0) match_t = 0; return match_s && match_t; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { char input1[105], input2[105]; read_strings(input1, input2); printf(check_match(input1, input2) ? \"Yes\\n\" : \"No\\n\"); return 0; }"
+        }
+      ]
+    }
+  ]
+}

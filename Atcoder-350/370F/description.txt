@@ -1,0 +1,7 @@
+There is a circular cake divided into N pieces by cut lines. Each cut line is a line segment connecting the center of the circle to a on the arc. The pieces and cut lines are numbered 1, 2, \ldots, N in clockwise order, and piece i has a mass of A_i . Piece 1 is also called piece N + 1 . Cut line i is between pieces i and i + 1 , and they are arranged clockwise in this order: piece 1 , cut line 1 , piece 2 , cut line 2 , \ldots , piece N , cut line N . We want to divide this cake among K people under the following conditions. Let w_i be the sum of the masses of the pieces received by the i -th person. Each person receives one or more consecutive pieces. There are no pieces that no one receives. Under the above two conditions, \min(w_1, w_2, \ldots, w_K) is maximized. Find the value of \min(w_1, w_2, \ldots, w_K) in a division that satisfies the conditions, and the number of cut lines that are never cut in the divisions that satisfy the conditions. Here, cut line i is considered cut if pieces i and i + 1 are given to different people.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= K <= 10^{18}
+- 1 <= A_i <= 10^9
+- All input values are integers

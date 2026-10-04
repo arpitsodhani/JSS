@@ -1,0 +1,27 @@
+{
+  "contestId": 1497,
+  "index": "C2",
+  "problem_id": "1497C2",
+  "name": "k-LCM (hard version)",
+  "rating": 1600,
+  "tags": [
+    "constructive algorithms",
+    "math"
+  ],
+  "points": 500.0,
+  "solvedCount": 19693,
+  "source": "verbatim_cf_fetch",
+  "title": "C2. k-LCM (hard version)",
+  "legend": "It is the hard version of the problem. The only difference is that in this version 3≤k≤n.\n\nYou are given a positive integer n. Find k positive integers a1,a2,…,ak, such that:\n\na1+a2+…+ak=n\nLCM(a1,a2,…,ak)≤\nn\n\n\n2\n\nHere LCM is the least common multiple of numbers a1,a2,…,ak.\n\nWe can show that for given constraints the answer always exists.",
+  "input_spec": "The first line contains a single integer t (1≤t≤104)  — the number of test cases.\n\nThe only line of each test case contains two integers n, k (3≤n≤109, 3≤k≤n).\n\nIt is guaranteed that the sum of k over all test cases does not exceed 105.",
+  "output_spec": "For each test case print k positive integers a1,a2,…,ak, for which all conditions are satisfied.",
+  "note": "",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n6 4\n9 5\n",
+      "output": "1 2 2 1\n1 3 3 1 1"
+    }
+  ]
+}

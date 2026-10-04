@@ -1,0 +1,5 @@
+You are given three integers A,B,C . Determine whether it is possible to divide these three integers into two or more groups so that these groups have equal sums.
+
+**Constraints:**
+- 1 <= S_1, S_2, S_3 <= 100
+- All input values are integers

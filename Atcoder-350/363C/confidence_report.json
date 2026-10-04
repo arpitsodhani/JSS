@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9706776556776556,
+  "clauses": [
+    {
+      "clause": "check_has_k_palindrome",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9634615384615384
+    },
+    {
+      "clause": "read_string",
+      "confidence": 0.9485714285714287
+    }
+  ]
+}

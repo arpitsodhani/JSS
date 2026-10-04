@@ -1,0 +1,69 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i <= n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", i);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    int num;\n    scanf(\"%d\", &num);\n    for (int j = 0; j <= num; j++) {\n        printf(\"%d\", j);\n        if (j < num) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int i;\n    for (i = 0; i <= n; i++) {\n        printf(\"%d\", i);\n        if (i < n) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    for (int k = 0; k <= count; k++) {\n        if (k) printf(\" \");\n        printf(\"%d\", k);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d \", i);\n    }\n    printf(\"%d\\n\", n);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

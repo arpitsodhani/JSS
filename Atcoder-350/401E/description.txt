@@ -1,0 +1,21 @@
+You are given N items. The i-th item has a deliciousness of A_i and a price of B_i.
+You will choose some items to buy. You want to maximize the sum of deliciousness, but you also have budget constraints.
+Specifically, if you buy items with a total deliciousness of x and total price of y, your satisfaction will be x - max(0, y - X) * Y.
+Find the maximum possible satisfaction.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N X Y
+A_1 B_1
+A_2 B_2
+...
+A_N B_N
+
+**Output:**
+Print the answer.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= X, Y <= 2 * 10^5
+- 1 <= A_i, B_i <= 10^9
+- All input values are integers

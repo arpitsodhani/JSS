@@ -1,0 +1,33 @@
+{
+  "average_confidence": 0.9745697272123196,
+  "clauses": [
+    {
+      "clause": "read_input",
+      "confidence": 0.9723076923076924
+    },
+    {
+      "clause": "make_value_array",
+      "confidence": 0.9742857142857142
+    },
+    {
+      "clause": "count_bits",
+      "confidence": 0.9759999999999998
+    },
+    {
+      "clause": "solve",
+      "confidence": 0.9880000000000001
+    },
+    {
+      "clause": "determine_winner",
+      "confidence": 0.9810526315789474
+    },
+    {
+      "clause": "print_answer",
+      "confidence": 0.9600000000000002
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9703420523138832
+    }
+  ]
+}

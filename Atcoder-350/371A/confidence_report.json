@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "build_failure_links_bfs",
+      "confidence": 1.0
+    },
+    {
+      "clause": "insert_pattern_into_automaton",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "search_text_with_automaton",
+      "confidence": 1.0
+    }
+  ]
+}

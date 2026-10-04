@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_prime_exponent_factorial",
+      "confidence": 1.0
+    },
+    {
+      "clause": "factorize_factorial",
+      "confidence": 1.0
+    },
+    {
+      "clause": "generate_primes_up_to",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "sieve_primes_optimized",
+      "confidence": 1.0
+    }
+  ]
+}

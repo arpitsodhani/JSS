@@ -1,0 +1,8 @@
+For strings x and y , define f(x, y) as follows: f(x, y) is the length of the longest common prefix of x and y . You are given N strings (S_1, \ldots, S_N) consisting of lowercase English letters. Find the value of the following expression: \displaystyle \sum_{i=1}^{N-1}\sum_{j=i+1}^N f(S_i,S_j) .
+
+**Constraints:**
+- 2\leq N\leq 3\times 10^5
+- S_i string
+- 1\leq |S_i|
+- |S_1|+|S_2|+\ldots+|S_N|\leq 3\times 10^5
+- integers

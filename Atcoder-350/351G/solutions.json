@@ -1,0 +1,209 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int n, int q, int p[], long long a[])",
+          "code": "void read_tree(int n, int q, int p[], long long a[]) {\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 2; i <= n; i++) {\n        scanf(\"%d\", &p[i]);\n    }\n    for (int i = 1; i <= n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "build_children",
+          "signature": "void build_children(int n, int p[], int children[][100001], int child_cnt[])",
+          "code": "void build_children(int n, int p[], int children[][100001], int child_cnt[]) {\n    for (int i = 1; i <= n; i++) {\n        child_cnt[i] = 0;\n    }\n    \n    for (int i = 2; i <= n; i++) {\n        int parent = p[i];\n        children[parent][child_cnt[parent]++] = i;\n    }\n}"
+        },
+        {
+          "clause_id": "is_leaf",
+          "signature": "int is_leaf(int node, int child_cnt[])",
+          "code": "int is_leaf(int node, int child_cnt[]) {\n    return child_cnt[node] == 0;\n}"
+        },
+        {
+          "clause_id": "compute_hash",
+          "signature": "long long compute_hash(int n, long long a[], int children[][100001], int child_cnt[], long long f[])",
+          "code": "long long compute_hash(int n, long long a[], int children[][100001], int child_cnt[], long long f[]) {\n    const long long MOD = 998244353;\n    \n    for (int node = n; node >= 1; node--) {\n        if (is_leaf(node, child_cnt)) {\n            f[node] = a[node] % MOD;\n        } else {\n            long long prod = 1;\n            for (int i = 0; i < child_cnt[node]; i++) {\n                int child = children[node][i];\n                prod = (prod * f[child]) % MOD;\n            }\n            f[node] = (a[node] + prod) % MOD;\n        }\n    }\n    \n    return f[1];\n}"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int n, int q, long long a[], int children[][100001], int child_cnt[])",
+          "code": "void process_queries(int n, int q, long long a[], int children[][100001], int child_cnt[]) {\n    long long f[n + 1];\n    \n    for (int query = 0; query < q; query++) {\n        int v;\n        long long x;\n        scanf(\"%d %lld\", &v, &x);\n        a[v] = x;\n        \n        long long hash_val = compute_hash(n, a, children, child_cnt, f);\n        printf(\"%lld\\n\", hash_val);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, q;\n    int p[100001];\n    long long a[100001];\n    int children[100001][100001];\n    int child_cnt[100001];\n    \n    read_tree(n, q, p, a);\n    build_children(n, p, children, child_cnt);\n    process_queries(n, q, a, children, child_cnt);\n    \n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "input_tree_data",
+          "signature": "void input_tree_data(int *n, int *q, int parents[], long long values[])",
+          "code": "void input_tree_data(int *n, int *q, int parents[], long long values[]) {\n    scanf(\"%d %d\", n, q);\n    for (int i = 2; i <= *n; i++) scanf(\"%d\", &parents[i]);\n    for (int i = 1; i <= *n; i++) scanf(\"%lld\", &values[i]);\n}"
+        },
+        {
+          "clause_id": "construct_adj",
+          "signature": "void construct_adj(int n, int parents[], int adj[][100001], int deg[])",
+          "code": "void construct_adj(int n, int parents[], int adj[][100001], int deg[]) {\n    for (int i = 1; i <= n; i++) deg[i] = 0;\n    \n    for (int i = 2; i <= n; i++) {\n        int par = parents[i];\n        adj[par][deg[par]++] = i;\n    }\n}"
+        },
+        {
+          "clause_id": "check_leaf",
+          "signature": "int check_leaf(int v, int deg[])",
+          "code": "int check_leaf(int v, int deg[]) {\n    return deg[v] == 0;\n}"
+        },
+        {
+          "clause_id": "calc_f",
+          "signature": "long long calc_f(int n, long long values[], int adj[][100001], int deg[], long long memo[])",
+          "code": "long long calc_f(int n, long long values[], int adj[][100001], int deg[], long long memo[]) {\n    const long long M = 998244353;\n    \n    for (int v = n; v >= 1; v--) {\n        if (check_leaf(v, deg)) {\n            memo[v] = values[v] % M;\n        } else {\n            long long p = 1;\n            for (int j = 0; j < deg[v]; j++) {\n                int c = adj[v][j];\n                p = (p * memo[c]) % M;\n            }\n            memo[v] = (values[v] + p) % M;\n        }\n    }\n    \n    return memo[1];\n}"
+        },
+        {
+          "clause_id": "handle_queries",
+          "signature": "void handle_queries(int n, int q, long long values[], int adj[][100001], int deg[])",
+          "code": "void handle_queries(int n, int q, long long values[], int adj[][100001], int deg[]) {\n    long long memo[n + 1];\n    \n    for (int i = 0; i < q; i++) {\n        int v;\n        long long x;\n        scanf(\"%d %lld\", &v, &x);\n        values[v] = x;\n        \n        long long res = calc_f(n, values, adj, deg, memo);\n        printf(\"%lld\\n\", res);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, q;\n    int parents[100001];\n    long long values[100001];\n    int adj[100001][100001];\n    int deg[100001];\n    \n    input_tree_data(&n, &q, parents, values);\n    construct_adj(n, parents, adj, deg);\n    handle_queries(n, q, values, adj, deg);\n    \n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "scan_tree",
+          "signature": "void scan_tree(int *n, int *q, int par[], long long val[])",
+          "code": "void scan_tree(int *n, int *q, int par[], long long val[]) {\n    scanf(\"%d %d\", n, q);\n    for (int i = 2; i <= *n; i++) scanf(\"%d\", &par[i]);\n    for (int j = 1; j <= *n; j++) scanf(\"%lld\", &val[j]);\n}"
+        },
+        {
+          "clause_id": "setup_children",
+          "signature": "void setup_children(int n, int par[], int ch[][100001], int cnt[])",
+          "code": "void setup_children(int n, int par[], int ch[][100001], int cnt[]) {\n    for (int i = 1; i <= n; i++) cnt[i] = 0;\n    for (int i = 2; i <= n; i++) {\n        ch[par[i]][cnt[par[i]]++] = i;\n    }\n}"
+        },
+        {
+          "clause_id": "leaf_check",
+          "signature": "int leaf_check(int node, int cnt[])",
+          "code": "int leaf_check(int node, int cnt[]) {\n    return cnt[node] == 0 ? 1 : 0;\n}"
+        },
+        {
+          "clause_id": "evaluate",
+          "signature": "long long evaluate(int n, long long val[], int ch[][100001], int cnt[], long long dp[])",
+          "code": "long long evaluate(int n, long long val[], int ch[][100001], int cnt[], long long dp[]) {\n    const long long MOD = 998244353;\n    \n    for (int node = n; node >= 1; node--) {\n        if (leaf_check(node, cnt)) {\n            dp[node] = val[node] % MOD;\n        } else {\n            long long mult = 1;\n            for (int k = 0; k < cnt[node]; k++) {\n                mult = (mult * dp[ch[node][k]]) % MOD;\n            }\n            dp[node] = (val[node] + mult) % MOD;\n        }\n    }\n    \n    return dp[1];\n}"
+        },
+        {
+          "clause_id": "answer_queries",
+          "signature": "void answer_queries(int n, int q, long long val[], int ch[][100001], int cnt[])",
+          "code": "void answer_queries(int n, int q, long long val[], int ch[][100001], int cnt[]) {\n    long long dp[n + 1];\n    \n    for (int t = 0; t < q; t++) {\n        int v;\n        long long x;\n        scanf(\"%d %lld\", &v, &x);\n        val[v] = x;\n        \n        long long ans = evaluate(n, val, ch, cnt, dp);\n        printf(\"%lld\\n\", ans);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, q;\n    int par[100001];\n    long long val[100001];\n    int ch[100001][100001];\n    int cnt[100001];\n    \n    scan_tree(&n, &q, par, val);\n    setup_children(n, par, ch, cnt);\n    answer_queries(n, q, val, ch, cnt);\n    \n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "get_tree",
+          "signature": "void get_tree(int *nv, int *nq, int p[], long long a[])",
+          "code": "void get_tree(int *nv, int *nq, int p[], long long a[]) {\n    scanf(\"%d %d\", nv, nq);\n    for (int i = 2; i <= *nv; i++) scanf(\"%d\", &p[i]);\n    for (int i = 1; i <= *nv; i++) scanf(\"%lld\", &a[i]);\n}"
+        },
+        {
+          "clause_id": "make_adj_list",
+          "signature": "void make_adj_list(int nv, int p[], int g[][100001], int sz[])",
+          "code": "void make_adj_list(int nv, int p[], int g[][100001], int sz[]) {\n    for (int i = 1; i <= nv; i++) sz[i] = 0;\n    for (int i = 2; i <= nv; i++) {\n        g[p[i]][sz[p[i]]++] = i;\n    }\n}"
+        },
+        {
+          "clause_id": "is_leaf_node",
+          "signature": "int is_leaf_node(int u, int sz[])",
+          "code": "int is_leaf_node(int u, int sz[]) {\n    if (sz[u] == 0) return 1;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "hash_tree",
+          "signature": "long long hash_tree(int nv, long long a[], int g[][100001], int sz[], long long h[])",
+          "code": "long long hash_tree(int nv, long long a[], int g[][100001], int sz[], long long h[]) {\n    const long long MOD = 998244353;\n    \n    for (int u = nv; u >= 1; u--) {\n        if (is_leaf_node(u, sz)) {\n            h[u] = a[u] % MOD;\n        } else {\n            long long prod = 1;\n            for (int i = 0; i < sz[u]; i++) {\n                prod = (prod * h[g[u][i]]) % MOD;\n            }\n            h[u] = (a[u] + prod) % MOD;\n        }\n    }\n    \n    return h[1];\n}"
+        },
+        {
+          "clause_id": "run_queries",
+          "signature": "void run_queries(int nv, int nq, long long a[], int g[][100001], int sz[])",
+          "code": "void run_queries(int nv, int nq, long long a[], int g[][100001], int sz[]) {\n    long long h[nv + 1];\n    \n    for (int i = 0; i < nq; i++) {\n        int v;\n        long long x;\n        scanf(\"%d %lld\", &v, &x);\n        a[v] = x;\n        \n        long long result = hash_tree(nv, a, g, sz, h);\n        printf(\"%lld\\n\", result);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int nv, nq;\n    int p[100001];\n    long long a[100001];\n    int g[100001][100001];\n    int sz[100001];\n    \n    get_tree(&nv, &nq, p, a);\n    make_adj_list(nv, p, g, sz);\n    run_queries(nv, nq, a, g, sz);\n    \n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "load_tree",
+          "signature": "void load_tree(int *n, int *q, int parent[], long long arr[])",
+          "code": "void load_tree(int *n, int *q, int parent[], long long arr[]) {\n    scanf(\"%d %d\", n, q);\n    for (int idx = 2; idx <= *n; idx++) scanf(\"%d\", &parent[idx]);\n    for (int idx = 1; idx <= *n; idx++) scanf(\"%lld\", &arr[idx]);\n}"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int n, int parent[], int adj[][100001], int degree[])",
+          "code": "void build_adj(int n, int parent[], int adj[][100001], int degree[]) {\n    for (int i = 1; i <= n; i++) degree[i] = 0;\n    for (int i = 2; i <= n; i++) {\n        adj[parent[i]][degree[parent[i]]++] = i;\n    }\n}"
+        },
+        {
+          "clause_id": "test_leaf",
+          "signature": "int test_leaf(int node, int degree[])",
+          "code": "int test_leaf(int node, int degree[]) {\n    return (degree[node] == 0) ? 1 : 0;\n}"
+        },
+        {
+          "clause_id": "compute_fn",
+          "signature": "long long compute_fn(int n, long long arr[], int adj[][100001], int degree[], long long fn[])",
+          "code": "long long compute_fn(int n, long long arr[], int adj[][100001], int degree[], long long fn[]) {\n    const long long MOD = 998244353;\n    \n    for (int node = n; node >= 1; node--) {\n        if (test_leaf(node, degree)) {\n            fn[node] = arr[node] % MOD;\n        } else {\n            long long product = 1;\n            for (int i = 0; i < degree[node]; i++) {\n                int child = adj[node][i];\n                product = (product * fn[child]) % MOD;\n            }\n            fn[node] = (arr[node] + product) % MOD;\n        }\n    }\n    \n    return fn[1];\n}"
+        },
+        {
+          "clause_id": "solve_queries",
+          "signature": "void solve_queries(int n, int q, long long arr[], int adj[][100001], int degree[])",
+          "code": "void solve_queries(int n, int q, long long arr[], int adj[][100001], int degree[]) {\n    long long fn[n + 1];\n    \n    for (int iter = 0; iter < q; iter++) {\n        int v;\n        long long x;\n        scanf(\"%d %lld\", &v, &x);\n        arr[v] = x;\n        \n        long long hash = compute_fn(n, arr, adj, degree, fn);\n        printf(\"%lld\\n\", hash);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, q;\n    int parent[100001];\n    long long arr[100001];\n    int adj[100001][100001];\n    int degree[100001];\n    \n    load_tree(&n, &q, parent, arr);\n    build_adj(n, parent, adj, degree);\n    solve_queries(n, q, arr, adj, degree);\n    \n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ],
+  "global_includes": [],
+  "tests": {
+    "clause_tests": {},
+    "program_tests": [
+      {
+        "test_id": "test_1",
+        "input": "3 2\\n1 1\\n3 5 1\\n3 4\\n2 1\\n",
+        "expected": "23\\n7\\n"
+      }
+    ]
+  },
+  "merge_settings": {
+    "consensus_threshold": 0.6,
+    "max_rounds": 3
+  }
+}

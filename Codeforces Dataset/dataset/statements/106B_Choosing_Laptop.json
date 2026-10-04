@@ -1,0 +1,27 @@
+{
+  "contestId": 106,
+  "index": "B",
+  "problem_id": "106B",
+  "name": "Choosing Laptop",
+  "rating": 1000,
+  "tags": [
+    "brute force",
+    "implementation"
+  ],
+  "points": 1000.0,
+  "solvedCount": 6914,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Choosing Laptop",
+  "legend": "Vasya is choosing a laptop. The shop has n laptops to all tastes.\n\nVasya is interested in the following properties: processor speed, ram and hdd. Vasya is a programmer and not a gamer which is why he is not interested in all other properties.\n\nIf all three properties of a laptop are strictly less than those properties of some other laptop, then the first laptop is considered outdated by Vasya. Among all laptops Vasya does not consider outdated, he chooses the cheapest one.\n\nThere are very many laptops, which is why Vasya decided to write a program that chooses the suitable laptop. However, Vasya doesn't have his own laptop yet and he asks you to help him.",
+  "input_spec": "The first line contains number n (1 ≤ n ≤ 100).\n\nThen follow n lines. Each describes a laptop as speed ram hdd cost. Besides,\n\nspeed, ram, hdd and cost are integers\n1000 ≤ speed ≤ 4200 is the processor's speed in megahertz\n256 ≤ ram ≤ 4096 the RAM volume in megabytes\n1 ≤ hdd ≤ 500 is the HDD in gigabytes\n100 ≤ cost ≤ 1000 is price in tugriks\n\nAll laptops have different prices.",
+  "output_spec": "Print a single number — the number of a laptop Vasya will choose. The laptops are numbered with positive integers from 1 to n in the order in which they are given in the input data.",
+  "note": "In the third sample Vasya considers the first and fifth laptops outdated as all of their properties cannot match those of the third laptop. The fourth one is the cheapest among the laptops that are left. Thus, Vasya chooses the fourth laptop.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n2100 512 150 200\n2000 2048 240 350\n2300 1024 200 320\n2500 2048 80 300\n2000 512 180 150\n",
+      "output": "4"
+    }
+  ]
+}

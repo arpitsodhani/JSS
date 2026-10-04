@@ -1,0 +1,7 @@
+In the nation of AtCoder, there are N cities numbered 1 to N and N-1 roads numbered 1 to N-1 . Road i connects cities A_i and B_i bidirectionally, and its length is C_i . Any pair of cities can be reached from each other by traveling through some roads. Find the minimum travel distance required to start from a city and visit all cities at least once using the roads.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= A_i, B_i, C_i <= 10^9
+- The given edges form a tree
+- All input values are integers

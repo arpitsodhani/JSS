@@ -1,0 +1,4 @@
+How many integers x between 1 and N , inclusive, can be expressed as x = a^b using some positive integer a and a positive integer b not less than 2 ?
+
+**Constraints:**
+- 1 <= N <= 10^{18}

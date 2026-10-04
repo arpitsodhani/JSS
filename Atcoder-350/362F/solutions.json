@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, int *u, int *v)",
+          "code": "void read_tree(int *n, int *u, int *v) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n - 1; i++) {\n        scanf(\"%d %d\", &u[i], &v[i]);\n        u[i]--; v[i]--;\n    }\n}"
+        },
+        {
+          "clause_id": "compute_tree_distances",
+          "signature": "void compute_tree_distances(int n, int *u, int *v, int dist[][205])",
+          "code": "void compute_tree_distances(int n, int *u, int *v, int dist[][205]) {\n    for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) dist[i][j] = (i == j) ? 0 : 1000000;\n    for (int i = 0; i < n - 1; i++) {\n        dist[u[i]][v[i]] = 1;\n        dist[v[i]][u[i]] = 1;\n    }\n    for (int k = 0; k < n; k++)\n        for (int i = 0; i < n; i++)\n            for (int j = 0; j < n; j++)\n                if (dist[i][k] + dist[k][j] < dist[i][j])\n                    dist[i][j] = dist[i][k] + dist[k][j];\n}"
+        },
+        {
+          "clause_id": "find_maximum_matching",
+          "signature": "void find_maximum_matching(int n, int dist[][205], int *pairs)",
+          "code": "void find_maximum_matching(int n, int dist[][205], int *pairs) {\n    int used[205] = {0};\n    int count = 0;\n    for (int total = 0; total < n / 2; total++) {\n        int best_i = -1, best_j = -1, best_dist = -1;\n        for (int i = 0; i < n; i++) {\n            if (used[i]) continue;\n            for (int j = i + 1; j < n; j++) {\n                if (used[j]) continue;\n                if (dist[i][j] > best_dist) {\n                    best_dist = dist[i][j];\n                    best_i = i;\n                    best_j = j;\n                }\n            }\n        }\n        pairs[count++] = best_i + 1;\n        pairs[count++] = best_j + 1;\n        used[best_i] = 1;\n        used[best_j] = 1;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, u[205], v[205], dist[205][205], pairs[410];\n    read_tree(&n, u, v);\n    compute_tree_distances(n, u, v, dist);\n    find_maximum_matching(n, dist, pairs);\n    for (int i = 0; i < n; i++) printf(\"%d%c\", pairs[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "int read_tree(int *n, int edges_u[], int edges_v[])",
+          "code": "int read_tree(int *n, int edges_u[], int edges_v[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n - 1; i++) {\n        scanf(\"%d %d\", &edges_u[i], &edges_v[i]);\n        edges_u[i]--; edges_v[i]--;\n    }\n    return *n;\n}"
+        },
+        {
+          "clause_id": "compute_tree_distances",
+          "signature": "void compute_tree_distances(int n, int edges_u[], int edges_v[], int d[][205])",
+          "code": "void compute_tree_distances(int n, int edges_u[], int edges_v[], int d[][205]) {\n    for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) d[i][j] = (i == j) ? 0 : 999999;\n    for (int i = 0; i < n - 1; i++) {\n        d[edges_u[i]][edges_v[i]] = 1;\n        d[edges_v[i]][edges_u[i]] = 1;\n    }\n    for (int k = 0; k < n; k++)\n        for (int i = 0; i < n; i++)\n            for (int j = 0; j < n; j++)\n                if (d[i][k] + d[k][j] < d[i][j])\n                    d[i][j] = d[i][k] + d[k][j];\n}"
+        },
+        {
+          "clause_id": "find_maximum_matching",
+          "signature": "void find_maximum_matching(int n, int d[][205], int *result)",
+          "code": "void find_maximum_matching(int n, int d[][205], int *result) {\n    int selected[205] = {0};\n    int idx = 0;\n    for (int round = 0; round < n / 2; round++) {\n        int max_d = -1, bi = -1, bj = -1;\n        for (int i = 0; i < n; i++) {\n            if (selected[i]) continue;\n            for (int j = i + 1; j < n; j++) {\n                if (selected[j]) continue;\n                if (d[i][j] > max_d) {\n                    max_d = d[i][j];\n                    bi = i;\n                    bj = j;\n                }\n            }\n        }\n        result[idx++] = bi + 1;\n        result[idx++] = bj + 1;\n        selected[bi] = 1;\n        selected[bj] = 1;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, edges_u[205], edges_v[205], d[205][205], result[410];\n    read_tree(&n, edges_u, edges_v);\n    compute_tree_distances(n, edges_u, edges_v, d);\n    find_maximum_matching(n, d, result);\n    for (int i = 0; i < n; i++) printf(\"%d \", result[i]);\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, int *from, int *to)",
+          "code": "void read_tree(int *n, int *from, int *to) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n - 1; i++) {\n        scanf(\"%d %d\", &from[i], &to[i]);\n        from[i]--; to[i]--;\n    }\n}"
+        },
+        {
+          "clause_id": "compute_tree_distances",
+          "signature": "void compute_tree_distances(int n, int *from, int *to, int distance[][205])",
+          "code": "void compute_tree_distances(int n, int *from, int *to, int distance[][205]) {\n    for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) distance[i][j] = (i == j) ? 0 : 1e6;\n    for (int i = 0; i < n - 1; i++) {\n        distance[from[i]][to[i]] = 1;\n        distance[to[i]][from[i]] = 1;\n    }\n    for (int k = 0; k < n; k++)\n        for (int i = 0; i < n; i++)\n            for (int j = 0; j < n; j++)\n                if (distance[i][k] + distance[k][j] < distance[i][j])\n                    distance[i][j] = distance[i][k] + distance[k][j];\n}"
+        },
+        {
+          "clause_id": "find_maximum_matching",
+          "signature": "void find_maximum_matching(int n, int distance[][205], int *output)",
+          "code": "void find_maximum_matching(int n, int distance[][205], int *output) {\n    int taken[205] = {0};\n    int pos = 0;\n    for (int iter = 0; iter < n / 2; iter++) {\n        int max_dist = -1, x = -1, y = -1;\n        for (int i = 0; i < n; i++) {\n            if (taken[i]) continue;\n            for (int j = i + 1; j < n; j++) {\n                if (taken[j]) continue;\n                if (distance[i][j] > max_dist) {\n                    max_dist = distance[i][j];\n                    x = i;\n                    y = j;\n                }\n            }\n        }\n        output[pos++] = x + 1;\n        output[pos++] = y + 1;\n        taken[x] = 1;\n        taken[y] = 1;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, from[205], to[205], distance[205][205], output[410];\n    read_tree(&n, from, to);\n    compute_tree_distances(n, from, to, distance);\n    find_maximum_matching(n, distance, output);\n    for (int i = 0; i < n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", output[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "long long read_tree(int *n, int u[], int v[])",
+          "code": "long long read_tree(int *n, int u[], int v[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n - 1; i++) {\n        scanf(\"%d %d\", &u[i], &v[i]);\n        u[i]--; v[i]--;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_tree_distances",
+          "signature": "void compute_tree_distances(int n, int u[], int v[], int w[][205])",
+          "code": "void compute_tree_distances(int n, int u[], int v[], int w[][205]) {\n    for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) w[i][j] = (i == j) ? 0 : 1000000;\n    for (int i = 0; i < n - 1; i++) {\n        w[u[i]][v[i]] = 1;\n        w[v[i]][u[i]] = 1;\n    }\n    for (int k = 0; k < n; k++)\n        for (int i = 0; i < n; i++)\n            for (int j = 0; j < n; j++)\n                if (w[i][k] + w[k][j] < w[i][j])\n                    w[i][j] = w[i][k] + w[k][j];\n}"
+        },
+        {
+          "clause_id": "find_maximum_matching",
+          "signature": "void find_maximum_matching(int n, int w[][205], int *ans)",
+          "code": "void find_maximum_matching(int n, int w[][205], int *ans) {\n    int matched[205] = {0};\n    int k = 0;\n    for (int t = 0; t < n / 2; t++) {\n        int best = -1, p = -1, q = -1;\n        for (int i = 0; i < n; i++) {\n            if (matched[i]) continue;\n            for (int j = i + 1; j < n; j++) {\n                if (matched[j]) continue;\n                if (w[i][j] > best) {\n                    best = w[i][j];\n                    p = i;\n                    q = j;\n                }\n            }\n        }\n        ans[k++] = p + 1;\n        ans[k++] = q + 1;\n        matched[p] = 1;\n        matched[q] = 1;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, u[205], v[205], w[205][205], ans[410];\n    read_tree(&n, u, v);\n    compute_tree_distances(n, u, v, w);\n    find_maximum_matching(n, w, ans);\n    for (int i = 0; i < n; i++) printf(\"%d%c\", ans[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_tree",
+          "signature": "void read_tree(int *n, int a[], int b[])",
+          "code": "void read_tree(int *n, int a[], int b[]) {\n    scanf(\"%d\", n);\n    for (int i = 0; i < *n - 1; i++) {\n        scanf(\"%d %d\", &a[i], &b[i]);\n        a[i]--; b[i]--;\n    }\n}"
+        },
+        {
+          "clause_id": "compute_tree_distances",
+          "signature": "void compute_tree_distances(int n, int a[], int b[], int dist[][205])",
+          "code": "void compute_tree_distances(int n, int a[], int b[], int dist[][205]) {\n    for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) dist[i][j] = (i == j) ? 0 : 999999;\n    for (int i = 0; i < n - 1; i++) {\n        dist[a[i]][b[i]] = 1;\n        dist[b[i]][a[i]] = 1;\n    }\n    for (int k = 0; k < n; k++)\n        for (int i = 0; i < n; i++)\n            for (int j = 0; j < n; j++)\n                if (dist[i][k] + dist[k][j] < dist[i][j])\n                    dist[i][j] = dist[i][k] + dist[k][j];\n}"
+        },
+        {
+          "clause_id": "find_maximum_matching",
+          "signature": "void find_maximum_matching(int n, int dist[][205], int *matching)",
+          "code": "void find_maximum_matching(int n, int dist[][205], int *matching) {\n    int used[205] = {0};\n    int cnt = 0;\n    for (int iteration = 0; iteration < n / 2; iteration++) {\n        int max_val = -1, vertex1 = -1, vertex2 = -1;\n        for (int i = 0; i < n; i++) {\n            if (used[i]) continue;\n            for (int j = i + 1; j < n; j++) {\n                if (used[j]) continue;\n                if (dist[i][j] > max_val) {\n                    max_val = dist[i][j];\n                    vertex1 = i;\n                    vertex2 = j;\n                }\n            }\n        }\n        matching[cnt++] = vertex1 + 1;\n        matching[cnt++] = vertex2 + 1;\n        used[vertex1] = 1;\n        used[vertex2] = 1;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, a[205], b[205], dist[205][205], matching[410];\n    read_tree(&n, a, b);\n    compute_tree_distances(n, a, b, dist);\n    find_maximum_matching(n, dist, matching);\n    for (int i = 0; i < n; i++) printf(\"%d \", matching[i]);\n    printf(\"\\n\");\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+You are given a 3 -character string S , where the first character is a digit, the second character is the character x , and the third character is a digit. Find the product of the two numbers in S .
+
+**Constraints:**
+- 1 <= M <= 11
+- M is an integer

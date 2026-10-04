@@ -1,0 +1,36 @@
+{
+  "contestId": 251,
+  "index": "A",
+  "problem_id": "251A",
+  "name": "Points on Line",
+  "rating": 1300,
+  "tags": [
+    "binary search",
+    "combinatorics",
+    "two pointers"
+  ],
+  "points": 500.0,
+  "solvedCount": 21817,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Points on Line",
+  "legend": "Little Petya likes points a lot. Recently his mom has presented him n points lying on the line OX. Now Petya is wondering in how many ways he can choose three distinct points so that the distance between the two farthest of them doesn't exceed d.\n\nNote that the order of the points inside the group of three chosen points doesn't matter.",
+  "input_spec": "The first line contains two integers: n and d (1 ≤ n ≤ 105; 1 ≤ d ≤ 109). The next line contains n integers x1, x2, ..., xn, their absolute value doesn't exceed 109 — the x-coordinates of the points that Petya has got.\n\nIt is guaranteed that the coordinates of the points in the input strictly increase.",
+  "output_spec": "Print a single integer — the number of groups of three points, where the distance between two farthest points doesn't exceed d.\n\nPlease do not use the %lld specifier to read or write 64-bit integers in С++. It is preferred to use the cin, cout streams or the %I64d specifier.",
+  "note": "In the first sample any group of three points meets our conditions.\n\nIn the seconds sample only 2 groups of three points meet our conditions: {-3, -2, -1} and {-2, -1, 0}.\n\nIn the third sample only one group does: {1, 10, 20}.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4 3\n1 2 3 4\n",
+      "output": "4"
+    },
+    {
+      "input": "4 2\n-3 -2 -1 0\n",
+      "output": "2"
+    },
+    {
+      "input": "5 19\n1 10 20 30 50\n",
+      "output": "1"
+    }
+  ]
+}

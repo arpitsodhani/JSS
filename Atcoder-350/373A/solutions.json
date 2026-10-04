@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_polynomial_mod",
+          "signature": "void add_polynomial_mod(long long *a, long long *b, int len, long long mod, long long *result)",
+          "code": "void add_polynomial_mod(long long *a, long long *b, int len, long long mod, long long *result) {\n    for (int i = 0; i < len; i++) {\n        result[i] = (a[i] + b[i]) % mod;\n    }\n}"
+        },
+        {
+          "clause_id": "multiply_polynomial_mod",
+          "signature": "void multiply_polynomial_mod(long long *a, int len_a, long long *b, int len_b, long long mod, long long *result)",
+          "code": "void multiply_polynomial_mod(long long *a, int len_a, long long *b, int len_b, long long mod, long long *result) {\n    for (int i = 0; i < len_a + len_b - 1; i++) result[i] = 0;\n    for (int i = 0; i < len_a; i++) {\n        for (int j = 0; j < len_b; j++) {\n            result[i + j] = (result[i + j] + a[i] * b[j]) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "berlekamp_massey_recurrence",
+          "signature": "int berlekamp_massey_recurrence(long long *sequence, int n, long long mod, long long *coeffs)",
+          "code": "int berlekamp_massey_recurrence(long long *sequence, int n, long long mod, long long *coeffs) {\n    long long cur[1005] = {0}, ls[1005] = {0};\n    int lf = 0, ld = 0;\n    cur[0] = ls[0] = 1;\n    \n    for (int i = 0; i < n; i++) {\n        long long delta = sequence[i];\n        for (int j = 1; j <= lf; j++) {\n            delta = (delta + cur[j] * sequence[i - j]) % mod;\n        }\n        \n        if (delta == 0) continue;\n        \n        if (lf == 0) {\n            lf = i + 1;\n            ld = delta;\n            continue;\n        }\n        \n        long long temp[1005];\n        for (int j = 0; j <= lf; j++) temp[j] = cur[j];\n        \n        long long c = delta * (ld % mod == 0 ? 1 : mod / ld) % mod;\n        for (int j = 0; j <= i - lf; j++) {\n            cur[j + i - lf + 1] = (cur[j + i - lf + 1] - c * ls[j] % mod + mod) % mod;\n        }\n        \n        if (i + 1 - lf > lf) {\n            lf = i + 1 - lf;\n            ld = delta;\n            for (int j = 0; j <= lf; j++) ls[j] = temp[j];\n        }\n    }\n    \n    for (int i = 0; i <= lf; i++) coeffs[i] = cur[i];\n    return lf;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long sequence[1005], coeffs[1005], mod = 1000000007;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &sequence[i]);\n    }\n    \n    int len = berlekamp_massey_recurrence(sequence, n, mod, coeffs);\n    printf(\"%d\\n\", len);\n    for (int i = 0; i <= len; i++) {\n        printf(\"%lld \", coeffs[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_polynomial_mod",
+          "signature": "void add_polynomial_mod(long long *a, long long *b, int len, long long mod, long long *result)",
+          "code": "void add_polynomial_mod(long long *a, long long *b, int len, long long mod, long long *result) {\n    for (int i = 0; i < len; i++) {\n        result[i] = (a[i] + b[i]) % mod;\n    }\n}"
+        },
+        {
+          "clause_id": "multiply_polynomial_mod",
+          "signature": "void multiply_polynomial_mod(long long *a, int len_a, long long *b, int len_b, long long mod, long long *result)",
+          "code": "void multiply_polynomial_mod(long long *a, int len_a, long long *b, int len_b, long long mod, long long *result) {\n    for (int i = 0; i < len_a + len_b - 1; i++) result[i] = 0;\n    for (int i = 0; i < len_a; i++) {\n        for (int j = 0; j < len_b; j++) {\n            result[i + j] = (result[i + j] + a[i] * b[j]) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "berlekamp_massey_recurrence",
+          "signature": "int berlekamp_massey_recurrence(long long *sequence, int n, long long mod, long long *coeffs)",
+          "code": "int berlekamp_massey_recurrence(long long *sequence, int n, long long mod, long long *coeffs) {\n    long long cur[1005] = {0}, ls[1005] = {0};\n    int lf = 0, ld = 0;\n    cur[0] = ls[0] = 1;\n    \n    for (int i = 0; i < n; i++) {\n        long long delta = sequence[i];\n        for (int j = 1; j <= lf; j++) {\n            delta = (delta + cur[j] * sequence[i - j]) % mod;\n        }\n        \n        if (delta == 0) continue;\n        \n        if (lf == 0) {\n            lf = i + 1;\n            ld = delta;\n            continue;\n        }\n        \n        long long temp[1005];\n        for (int j = 0; j <= lf; j++) temp[j] = cur[j];\n        \n        long long c = delta * (ld % mod == 0 ? 1 : mod / ld) % mod;\n        for (int j = 0; j <= i - lf; j++) {\n            cur[j + i - lf + 1] = (cur[j + i - lf + 1] - c * ls[j] % mod + mod) % mod;\n        }\n        \n        if (i + 1 - lf > lf) {\n            lf = i + 1 - lf;\n            ld = delta;\n            for (int j = 0; j <= lf; j++) ls[j] = temp[j];\n        }\n    }\n    \n    for (int i = 0; i <= lf; i++) coeffs[i] = cur[i];\n    return lf;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long sequence[1005], coeffs[1005], mod = 1000000007;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &sequence[i]);\n    }\n    \n    int len = berlekamp_massey_recurrence(sequence, n, mod, coeffs);\n    printf(\"%d\\n\", len);\n    for (int i = 0; i <= len; i++) {\n        printf(\"%lld \", coeffs[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_polynomial_mod",
+          "signature": "void add_polynomial_mod(long long *a, long long *b, int len, long long mod, long long *result)",
+          "code": "void add_polynomial_mod(long long *a, long long *b, int len, long long mod, long long *result) {\n    for (int i = 0; i < len; i++) {\n        result[i] = (a[i] + b[i]) % mod;\n    }\n}"
+        },
+        {
+          "clause_id": "multiply_polynomial_mod",
+          "signature": "void multiply_polynomial_mod(long long *a, int len_a, long long *b, int len_b, long long mod, long long *result)",
+          "code": "void multiply_polynomial_mod(long long *a, int len_a, long long *b, int len_b, long long mod, long long *result) {\n    for (int i = 0; i < len_a + len_b - 1; i++) result[i] = 0;\n    for (int i = 0; i < len_a; i++) {\n        for (int j = 0; j < len_b; j++) {\n            result[i + j] = (result[i + j] + a[i] * b[j]) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "berlekamp_massey_recurrence",
+          "signature": "int berlekamp_massey_recurrence(long long *sequence, int n, long long mod, long long *coeffs)",
+          "code": "int berlekamp_massey_recurrence(long long *sequence, int n, long long mod, long long *coeffs) {\n    long long cur[1005] = {0}, ls[1005] = {0};\n    int lf = 0, ld = 0;\n    cur[0] = ls[0] = 1;\n    \n    for (int i = 0; i < n; i++) {\n        long long delta = sequence[i];\n        for (int j = 1; j <= lf; j++) {\n            delta = (delta + cur[j] * sequence[i - j]) % mod;\n        }\n        \n        if (delta == 0) continue;\n        \n        if (lf == 0) {\n            lf = i + 1;\n            ld = delta;\n            continue;\n        }\n        \n        long long temp[1005];\n        for (int j = 0; j <= lf; j++) temp[j] = cur[j];\n        \n        long long c = delta * (ld % mod == 0 ? 1 : mod / ld) % mod;\n        for (int j = 0; j <= i - lf; j++) {\n            cur[j + i - lf + 1] = (cur[j + i - lf + 1] - c * ls[j] % mod + mod) % mod;\n        }\n        \n        if (i + 1 - lf > lf) {\n            lf = i + 1 - lf;\n            ld = delta;\n            for (int j = 0; j <= lf; j++) ls[j] = temp[j];\n        }\n    }\n    \n    for (int i = 0; i <= lf; i++) coeffs[i] = cur[i];\n    return lf;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long sequence[1005], coeffs[1005], mod = 1000000007;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &sequence[i]);\n    }\n    \n    int len = berlekamp_massey_recurrence(sequence, n, mod, coeffs);\n    printf(\"%d\\n\", len);\n    for (int i = 0; i <= len; i++) {\n        printf(\"%lld \", coeffs[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_polynomial_mod",
+          "signature": "void add_polynomial_mod(long long *a, long long *b, int len, long long mod, long long *result)",
+          "code": "void add_polynomial_mod(long long *a, long long *b, int len, long long mod, long long *result) {\n    for (int i = 0; i < len; i++) {\n        result[i] = (a[i] + b[i]) % mod;\n    }\n}"
+        },
+        {
+          "clause_id": "multiply_polynomial_mod",
+          "signature": "void multiply_polynomial_mod(long long *a, int len_a, long long *b, int len_b, long long mod, long long *result)",
+          "code": "void multiply_polynomial_mod(long long *a, int len_a, long long *b, int len_b, long long mod, long long *result) {\n    for (int i = 0; i < len_a + len_b - 1; i++) result[i] = 0;\n    for (int i = 0; i < len_a; i++) {\n        for (int j = 0; j < len_b; j++) {\n            result[i + j] = (result[i + j] + a[i] * b[j]) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "berlekamp_massey_recurrence",
+          "signature": "int berlekamp_massey_recurrence(long long *sequence, int n, long long mod, long long *coeffs)",
+          "code": "int berlekamp_massey_recurrence(long long *sequence, int n, long long mod, long long *coeffs) {\n    long long cur[1005] = {0}, ls[1005] = {0};\n    int lf = 0, ld = 0;\n    cur[0] = ls[0] = 1;\n    \n    for (int i = 0; i < n; i++) {\n        long long delta = sequence[i];\n        for (int j = 1; j <= lf; j++) {\n            delta = (delta + cur[j] * sequence[i - j]) % mod;\n        }\n        \n        if (delta == 0) continue;\n        \n        if (lf == 0) {\n            lf = i + 1;\n            ld = delta;\n            continue;\n        }\n        \n        long long temp[1005];\n        for (int j = 0; j <= lf; j++) temp[j] = cur[j];\n        \n        long long c = delta * (ld % mod == 0 ? 1 : mod / ld) % mod;\n        for (int j = 0; j <= i - lf; j++) {\n            cur[j + i - lf + 1] = (cur[j + i - lf + 1] - c * ls[j] % mod + mod) % mod;\n        }\n        \n        if (i + 1 - lf > lf) {\n            lf = i + 1 - lf;\n            ld = delta;\n            for (int j = 0; j <= lf; j++) ls[j] = temp[j];\n        }\n    }\n    \n    for (int i = 0; i <= lf; i++) coeffs[i] = cur[i];\n    return lf;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long sequence[1005], coeffs[1005], mod = 1000000007;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &sequence[i]);\n    }\n    \n    int len = berlekamp_massey_recurrence(sequence, n, mod, coeffs);\n    printf(\"%d\\n\", len);\n    for (int i = 0; i <= len; i++) {\n        printf(\"%lld \", coeffs[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_polynomial_mod",
+          "signature": "void add_polynomial_mod(long long *a, long long *b, int len, long long mod, long long *result)",
+          "code": "void add_polynomial_mod(long long *a, long long *b, int len, long long mod, long long *result) {\n    for (int i = 0; i < len; i++) {\n        result[i] = (a[i] + b[i]) % mod;\n    }\n}"
+        },
+        {
+          "clause_id": "multiply_polynomial_mod",
+          "signature": "void multiply_polynomial_mod(long long *a, int len_a, long long *b, int len_b, long long mod, long long *result)",
+          "code": "void multiply_polynomial_mod(long long *a, int len_a, long long *b, int len_b, long long mod, long long *result) {\n    for (int i = 0; i < len_a + len_b - 1; i++) result[i] = 0;\n    for (int i = 0; i < len_a; i++) {\n        for (int j = 0; j < len_b; j++) {\n            result[i + j] = (result[i + j] + a[i] * b[j]) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "berlekamp_massey_recurrence",
+          "signature": "int berlekamp_massey_recurrence(long long *sequence, int n, long long mod, long long *coeffs)",
+          "code": "int berlekamp_massey_recurrence(long long *sequence, int n, long long mod, long long *coeffs) {\n    long long cur[1005] = {0}, ls[1005] = {0};\n    int lf = 0, ld = 0;\n    cur[0] = ls[0] = 1;\n    \n    for (int i = 0; i < n; i++) {\n        long long delta = sequence[i];\n        for (int j = 1; j <= lf; j++) {\n            delta = (delta + cur[j] * sequence[i - j]) % mod;\n        }\n        \n        if (delta == 0) continue;\n        \n        if (lf == 0) {\n            lf = i + 1;\n            ld = delta;\n            continue;\n        }\n        \n        long long temp[1005];\n        for (int j = 0; j <= lf; j++) temp[j] = cur[j];\n        \n        long long c = delta * (ld % mod == 0 ? 1 : mod / ld) % mod;\n        for (int j = 0; j <= i - lf; j++) {\n            cur[j + i - lf + 1] = (cur[j + i - lf + 1] - c * ls[j] % mod + mod) % mod;\n        }\n        \n        if (i + 1 - lf > lf) {\n            lf = i + 1 - lf;\n            ld = delta;\n            for (int j = 0; j <= lf; j++) ls[j] = temp[j];\n        }\n    }\n    \n    for (int i = 0; i <= lf; i++) coeffs[i] = cur[i];\n    return lf;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long sequence[1005], coeffs[1005], mod = 1000000007;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &sequence[i]);\n    }\n    \n    int len = berlekamp_massey_recurrence(sequence, n, mod, coeffs);\n    printf(\"%d\\n\", len);\n    for (int i = 0; i <= len; i++) {\n        printf(\"%lld \", coeffs[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

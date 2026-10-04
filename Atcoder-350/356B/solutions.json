@@ -1,0 +1,123 @@
+{
+  "problem_id": "356B",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int goals[], int nutrients[][105])",
+          "code": "void read_input(int *n, int *m, int goals[], int nutrients[][105]) { scanf(\"%d%d\", n, m); for(int i = 0; i < *m; i++) scanf(\"%d\", &goals[i]); for(int i = 0; i < *n; i++) for(int j = 0; j < *m; j++) scanf(\"%d\", &nutrients[i][j]); }"
+        },
+        {
+          "clause_id": "check_nutrients",
+          "signature": "int check_nutrients(int n, int m, int goals[], int nutrients[][105])",
+          "code": "int check_nutrients(int n, int m, int goals[], int nutrients[][105]) { for(int j = 0; j < m; j++) { int total = 0; for(int i = 0; i < n; i++) total += nutrients[i][j]; if(total < goals[j]) return 0; } return 1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m, goals[105], nutrients[105][105]; read_input(&n, &m, goals, nutrients); printf(\"%s\\n\", check_nutrients(n, m, goals, nutrients) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int goals[], int nutrients[][105])",
+          "code": "void read_input(int *n, int *m, int goals[], int nutrients[][105]) { scanf(\"%d %d\", n, m); for(int i = 0; i < *m; i++) scanf(\"%d\", &goals[i]); for(int i = 0; i < *n; i++) for(int j = 0; j < *m; j++) scanf(\"%d\", &nutrients[i][j]); }"
+        },
+        {
+          "clause_id": "check_nutrients",
+          "signature": "int check_nutrients(int n, int m, int goals[], int nutrients[][105])",
+          "code": "int check_nutrients(int n, int m, int goals[], int nutrients[][105]) { int sum[105] = {0}; for(int i = 0; i < n; i++) for(int j = 0; j < m; j++) sum[j] += nutrients[i][j]; for(int j = 0; j < m; j++) if(sum[j] < goals[j]) return 0; return 1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m, a[105], x[105][105]; read_input(&n, &m, a, x); int result = check_nutrients(n, m, a, x); printf(result ? \"Yes\\n\" : \"No\\n\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int goals[], int nutrients[][105])",
+          "code": "void read_input(int *n, int *m, int goals[], int nutrients[][105]) { scanf(\"%d%d\", n, m); int i, j; for(i = 0; i < *m; i++) scanf(\"%d\", &goals[i]); for(i = 0; i < *n; i++) for(j = 0; j < *m; j++) scanf(\"%d\", &nutrients[i][j]); }"
+        },
+        {
+          "clause_id": "check_nutrients",
+          "signature": "int check_nutrients(int n, int m, int goals[], int nutrients[][105])",
+          "code": "int check_nutrients(int n, int m, int goals[], int nutrients[][105]) { for(int nutrient = 0; nutrient < m; nutrient++) { int intake = 0; for(int food = 0; food < n; food++) intake += nutrients[food][nutrient]; if(intake < goals[nutrient]) return 0; } return 1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m, goal[105], food[105][105]; read_input(&n, &m, goal, food); printf(check_nutrients(n, m, goal, food) ? \"Yes\\n\" : \"No\\n\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int goals[], int nutrients[][105])",
+          "code": "void read_input(int *n, int *m, int goals[], int nutrients[][105]) { scanf(\"%d %d\", n, m); for(int k = 0; k < *m; k++) scanf(\"%d\", &goals[k]); for(int i = 0; i < *n; i++) for(int j = 0; j < *m; j++) scanf(\"%d\", &nutrients[i][j]); }"
+        },
+        {
+          "clause_id": "check_nutrients",
+          "signature": "int check_nutrients(int n, int m, int goals[], int nutrients[][105])",
+          "code": "int check_nutrients(int n, int m, int goals[], int nutrients[][105]) { int ok = 1; for(int j = 0; j < m && ok; j++) { int total = 0; for(int i = 0; i < n; i++) total += nutrients[i][j]; ok = (total >= goals[j]); } return ok; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m, target[105], intake[105][105]; read_input(&n, &m, target, intake); puts(check_nutrients(n, m, target, intake) ? \"Yes\" : \"No\"); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, int goals[], int nutrients[][105])",
+          "code": "void read_input(int *n, int *m, int goals[], int nutrients[][105]) { scanf(\"%d%d\", n, m); for(int i = 0; i < *m; i++) scanf(\"%d\", goals + i); for(int i = 0; i < *n; i++) for(int j = 0; j < *m; j++) scanf(\"%d\", &nutrients[i][j]); }"
+        },
+        {
+          "clause_id": "check_nutrients",
+          "signature": "int check_nutrients(int n, int m, int goals[], int nutrients[][105])",
+          "code": "int check_nutrients(int n, int m, int goals[], int nutrients[][105]) { for(int type = 0; type < m; type++) { int consumed = 0; for(int item = 0; item < n; item++) consumed += nutrients[item][type]; if(consumed < goals[type]) return 0; } return 1; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, m, required[105], consumed[105][105]; read_input(&n, &m, required, consumed); printf(check_nutrients(n, m, required, consumed) ? \"Yes\\n\" : \"No\\n\"); return 0; }"
+        }
+      ]
+    }
+  ]
+}

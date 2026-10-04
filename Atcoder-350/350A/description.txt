@@ -1,0 +1,4 @@
+You are given a string S of length 6 . It is guaranteed that the first three characters of S are ABC and the last three characters are digits. Determine if S is the abbreviation of a contest held and concluded on AtCoder before the start of this contest. Here, a string T is "the abbreviation of a contest held and concluded on AtCoder before the start of this contest" if and only if it equals one of the following 348 strings: ABC001 , ABC002 , \ldots , ABC314 , ABC315 , ABC317 , ABC318 , \ldots , ABC348 , ABC349 . Note that ABC316 is not included.
+
+**Constraints:**
+- S 3 ABC, 3 6 string

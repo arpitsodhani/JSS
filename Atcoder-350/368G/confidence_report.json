@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_node_indegrees",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_zero_indegree_node",
+      "confidence": 1.0
+    },
+    {
+      "clause": "generate_topological_order",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    }
+  ]
+}

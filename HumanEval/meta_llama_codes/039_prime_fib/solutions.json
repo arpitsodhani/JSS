@@ -1,0 +1,125 @@
+{
+  "problem_id": "039_prime_fib",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int a = 0, b = 1;\n    int count = 0;\n    \n    while (count < n) {\n        int next = a + b;\n        if (is_prime(next)) {\n            count++;\n            if (count == n) {\n                printf(\"%d\\n\", next);\n                return 0;\n            }\n        }\n        a = b;\n        b = next;\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int a = 0, b = 1;\n    int count = 0;\n    \n    while (count < n) {\n        int next = a + b;\n        if (is_prime(next)) {\n            count++;\n            if (count == n) {\n                printf(\"%d\\n\", next);\n                return 0;\n            }\n        }\n        a = b;\n        b = next;\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int a = 0, b = 1;\n    int count = 0;\n    \n    while (count < n) {\n        int next = a + b;\n        if (is_prime(next)) {\n            count++;\n            if (count == n) {\n                printf(\"%d\\n\", next);\n                return 0;\n            }\n        }\n        a = b;\n        b = next;\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int a = 0, b = 1;\n    int count = 0;\n    \n    while (count < n) {\n        int next = a + b;\n        if (is_prime(next)) {\n            count++;\n            if (count == n) {\n                printf(\"%d\\n\", next);\n                return 0;\n            }\n        }\n        a = b;\n        b = next;\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int a = 0, b = 1;\n    int count = 0;\n    \n    while (count < n) {\n        int next = a + b;\n        if (is_prime(next)) {\n            count++;\n            if (count == n) {\n                printf(\"%d\\n\", next);\n                return 0;\n            }\n        }\n        a = b;\n        b = next;\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

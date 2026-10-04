@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.825,
+  "clauses": [
+    {
+      "clause": "add_polynomial_mod",
+      "confidence": 1.0
+    },
+    {
+      "clause": "berlekamp_massey_recurrence",
+      "confidence": 0.29999999999999993
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "multiply_polynomial_mod",
+      "confidence": 1.0
+    }
+  ]
+}

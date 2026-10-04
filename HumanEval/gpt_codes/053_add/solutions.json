@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "add",
+          "code": "int add(int x, int y) {\n    return x + y;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    printf(\"%d\\n\", add(x, y));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "sum_two",
+          "code": "int sum_two(int x, int y) {\n    return x + y;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int x,y;\n    scanf(\"%d %d\",&x,&y);\n    printf(\"%d\\n\",sum_two(x,y));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "add_vals",
+          "code": "int add_vals(int a, int b) {\n    int res=a;\n    res+=b;\n    return res;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int a,b;\n    scanf(\"%d %d\",&a,&b);\n    printf(\"%d\\n\",add_vals(a,b));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "plus",
+          "code": "int plus(int m, int n) {\n    return m + n;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int m,n;\n    scanf(\"%d %d\",&m,&n);\n    printf(\"%d\\n\",plus(m,n));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "integer_add",
+          "code": "int integer_add(int p, int q) {\n    return p + q;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int p,q;\n    scanf(\"%d %d\",&p,&q);\n    printf(\"%d\\n\",integer_add(p,q));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

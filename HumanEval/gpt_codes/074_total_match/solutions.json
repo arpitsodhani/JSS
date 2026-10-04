@@ -1,0 +1,139 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "clause1_0",
+          "code": "void total_match(char** lst1, int n1, char** lst2, int n2, char*** result, int* result_n) {\n    int len1 = 0, len2 = 0;\n    for (int i = 0; i < n1; i++) len1 += strlen(lst1[i]);\n    for (int i = 0; i < n2; i++) len2 += strlen(lst2[i]);\n    if (len1 <= len2) {\n        *result = lst1;\n        *result_n = n1;\n    } else {\n        *result = lst2;\n        *result_n = n2;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n1, n2;\n    scanf(\"%d\", &n1);\n    char* lst1[n1];\n    char buffer1[100][100];\n    for (int i = 0; i < n1; i++) {\n        scanf(\"%s\", buffer1[i]);\n        lst1[i] = buffer1[i];\n    }\n    scanf(\"%d\", &n2);\n    char* lst2[n2];\n    char buffer2[100][100];\n    for (int i = 0; i < n2; i++) {\n        scanf(\"%s\", buffer2[i]);\n        lst2[i] = buffer2[i];\n    }\n    char** result;\n    int result_n;\n    total_match(lst1, n1, lst2, n2, &result, &result_n);\n    for (int i = 0; i < result_n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%s\", result[i]);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "clause2_0",
+          "code": "void total_match(char** lst1, int n1, char** lst2, int n2, char*** result, int* result_n) {\n    int len1 = 0, len2 = 0;\n    for (int i = 0; i < n1; i++) len1 += strlen(lst1[i]);\n    for (int i = 0; i < n2; i++) len2 += strlen(lst2[i]);\n    if (len1 <= len2) {\n        *result = lst1;\n        *result_n = n1;\n    } else {\n        *result = lst2;\n        *result_n = n2;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n1, n2;\n    scanf(\"%d\", &n1);\n    char* lst1[n1];\n    char buffer1[100][100];\n    for (int i = 0; i < n1; i++) {\n        scanf(\"%s\", buffer1[i]);\n        lst1[i] = buffer1[i];\n    }\n    scanf(\"%d\", &n2);\n    char* lst2[n2];\n    char buffer2[100][100];\n    for (int i = 0; i < n2; i++) {\n        scanf(\"%s\", buffer2[i]);\n        lst2[i] = buffer2[i];\n    }\n    char** result;\n    int result_n;\n    total_match(lst1, n1, lst2, n2, &result, &result_n);\n    for (int i = 0; i < result_n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%s\", result[i]);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "clause3_0",
+          "code": "void total_match(char** lst1, int n1, char** lst2, int n2, char*** result, int* result_n) {\n    int len1 = 0, len2 = 0;\n    for (int i = 0; i < n1; i++) len1 += strlen(lst1[i]);\n    for (int i = 0; i < n2; i++) len2 += strlen(lst2[i]);\n    if (len1 <= len2) {\n        *result = lst1;\n        *result_n = n1;\n    } else {\n        *result = lst2;\n        *result_n = n2;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n1, n2;\n    scanf(\"%d\", &n1);\n    char* lst1[n1];\n    char buffer1[100][100];\n    for (int i = 0; i < n1; i++) {\n        scanf(\"%s\", buffer1[i]);\n        lst1[i] = buffer1[i];\n    }\n    scanf(\"%d\", &n2);\n    char* lst2[n2];\n    char buffer2[100][100];\n    for (int i = 0; i < n2; i++) {\n        scanf(\"%s\", buffer2[i]);\n        lst2[i] = buffer2[i];\n    }\n    char** result;\n    int result_n;\n    total_match(lst1, n1, lst2, n2, &result, &result_n);\n    for (int i = 0; i < result_n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%s\", result[i]);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "clause4_0",
+          "code": "void total_match(char** lst1, int n1, char** lst2, int n2, char*** result, int* result_n) {\n    int len1 = 0, len2 = 0;\n    for (int i = 0; i < n1; i++) len1 += strlen(lst1[i]);\n    for (int i = 0; i < n2; i++) len2 += strlen(lst2[i]);\n    if (len1 <= len2) {\n        *result = lst1;\n        *result_n = n1;\n    } else {\n        *result = lst2;\n        *result_n = n2;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n1, n2;\n    scanf(\"%d\", &n1);\n    char* lst1[n1];\n    char buffer1[100][100];\n    for (int i = 0; i < n1; i++) {\n        scanf(\"%s\", buffer1[i]);\n        lst1[i] = buffer1[i];\n    }\n    scanf(\"%d\", &n2);\n    char* lst2[n2];\n    char buffer2[100][100];\n    for (int i = 0; i < n2; i++) {\n        scanf(\"%s\", buffer2[i]);\n        lst2[i] = buffer2[i];\n    }\n    char** result;\n    int result_n;\n    total_match(lst1, n1, lst2, n2, &result, &result_n);\n    for (int i = 0; i < result_n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%s\", result[i]);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "clause5_0",
+          "code": "void total_match(char** lst1, int n1, char** lst2, int n2, char*** result, int* result_n) {\n    int len1 = 0, len2 = 0;\n    for (int i = 0; i < n1; i++) len1 += strlen(lst1[i]);\n    for (int i = 0; i < n2; i++) len2 += strlen(lst2[i]);\n    if (len1 <= len2) {\n        *result = lst1;\n        *result_n = n1;\n    } else {\n        *result = lst2;\n        *result_n = n2;\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n1, n2;\n    scanf(\"%d\", &n1);\n    char* lst1[n1];\n    char buffer1[100][100];\n    for (int i = 0; i < n1; i++) {\n        scanf(\"%s\", buffer1[i]);\n        lst1[i] = buffer1[i];\n    }\n    scanf(\"%d\", &n2);\n    char* lst2[n2];\n    char buffer2[100][100];\n    for (int i = 0; i < n2; i++) {\n        scanf(\"%s\", buffer2[i]);\n        lst2[i] = buffer2[i];\n    }\n    char** result;\n    int result_n;\n    total_match(lst1, n1, lst2, n2, &result, &result_n);\n    for (int i = 0; i < result_n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%s\", result[i]);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

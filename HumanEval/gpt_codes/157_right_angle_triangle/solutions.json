@@ -1,0 +1,76 @@
+{
+  "problem_num": 157,
+  "problem_name": "right_angle_triangle",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\nint main() {\n    int a, b, c; scanf(\"%d %d %d\", &a, &b, &c);\n    int ok = (a*a+b*b==c*c) || (a*a+c*c==b*b) || (b*b+c*c==a*a);\n    printf(\"%s\\\\n\", ok?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\nint main() {\n    int a, b, c; scanf(\"%d %d %d\", &a, &b, &c);\n    int ok = (a*a+b*b==c*c) || (a*a+c*c==b*b) || (b*b+c*c==a*a);\n    printf(\"%s\\\\n\", ok?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\nint main() {\n    int a, b, c; scanf(\"%d %d %d\", &a, &b, &c);\n    int ok = (a*a+b*b==c*c) || (a*a+c*c==b*b) || (b*b+c*c==a*a);\n    printf(\"%s\\\\n\", ok?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\nint main() {\n    int a, b, c; scanf(\"%d %d %d\", &a, &b, &c);\n    int ok = (a*a+b*b==c*c) || (a*a+c*c==b*b) || (b*b+c*c==a*a);\n    printf(\"%s\\\\n\", ok?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\nint main() {\n    int a, b, c; scanf(\"%d %d %d\", &a, &b, &c);\n    int ok = (a*a+b*b==c*c) || (a*a+c*c==b*b) || (b*b+c*c==a*a);\n    printf(\"%s\\\\n\", ok?\"True\":\"False\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    }
+  ]
+}

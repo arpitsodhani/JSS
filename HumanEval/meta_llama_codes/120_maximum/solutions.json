@@ -1,0 +1,118 @@
+{
+  "problem_id": "120_maximum",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "get_k_largest",
+          "code": "void get_k_largest(int *arr, int n, int k, int *result, int *result_len) {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (arr[i] > arr[j]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n    *result_len = k < n ? k : n;\n    for (int i = 0; i < *result_len; i++) {\n        result[i] = arr[n - *result_len + i];\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[k];\n    int result_len;\n    get_k_largest(arr, n, k, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "get_k_largest",
+          "code": "void get_k_largest(int *arr, int n, int k, int *result, int *result_len) {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (arr[i] > arr[j]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n    *result_len = k < n ? k : n;\n    for (int i = 0; i < *result_len; i++) {\n        result[i] = arr[n - *result_len + i];\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[k];\n    int result_len;\n    get_k_largest(arr, n, k, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "get_k_largest",
+          "code": "void get_k_largest(int *arr, int n, int k, int *result, int *result_len) {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (arr[i] > arr[j]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n    *result_len = k < n ? k : n;\n    for (int i = 0; i < *result_len; i++) {\n        result[i] = arr[n - *result_len + i];\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[k];\n    int result_len;\n    get_k_largest(arr, n, k, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "get_k_largest",
+          "code": "void get_k_largest(int *arr, int n, int k, int *result, int *result_len) {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (arr[i] > arr[j]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n    *result_len = k < n ? k : n;\n    for (int i = 0; i < *result_len; i++) {\n        result[i] = arr[n - *result_len + i];\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[k];\n    int result_len;\n    get_k_largest(arr, n, k, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "get_k_largest",
+          "code": "void get_k_largest(int *arr, int n, int k, int *result, int *result_len) {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (arr[i] > arr[j]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n    *result_len = k < n ? k : n;\n    for (int i = 0; i < *result_len; i++) {\n        result[i] = arr[n - *result_len + i];\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[k];\n    int result_len;\n    get_k_largest(arr, n, k, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ],
+  "includes": [
+    "<stdio.h>"
+  ]
+}

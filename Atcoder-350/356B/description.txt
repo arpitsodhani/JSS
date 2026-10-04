@@ -1,0 +1,8 @@
+Takahashi is health-conscious and concerned about whether he is getting enough of M types of nutrients from his diet. For the i -th nutrient, his goal is to take at least A_i units per day. Today, he ate N foods, and from the i -th food, he took X_{i,j} units of nutrient j . Determine whether he has met the goal for all M types of nutrients.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= M <= 20
+- 1 <= A_i <= 10^6
+- 1 <= X_{i,j} <= 10^6
+- All input values are integers

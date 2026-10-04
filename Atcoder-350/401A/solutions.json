@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "sign_nonzero",
+          "signature": "int sign_nonzero(int n)",
+          "code": "return n>0?1:-1;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); int s=sign_nonzero(n); print_int(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "sign_nonzero",
+          "signature": "int sign_nonzero(int n)",
+          "code": "if(n>0) return 1; return -1;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); int s=sign_nonzero(n); print_int(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "sign_nonzero",
+          "signature": "int sign_nonzero(int n)",
+          "code": "return (n<0)?-1:1;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); int s=sign_nonzero(n); print_int(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "sign_nonzero",
+          "signature": "int sign_nonzero(int n)",
+          "code": "int s=1; if(n<0) s=-1; return s;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); int s=sign_nonzero(n); print_int(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "int read_n(void)",
+          "code": "int n; scanf(\"%d\", &n); return n;\n"
+        },
+        {
+          "clause_id": "sign_nonzero",
+          "signature": "int sign_nonzero(int n)",
+          "code": "return (n>>31)?-1:1;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n=read_n(); int s=sign_nonzero(n); print_int(s); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+You are given a positive integer M . Find a positive integer N and a sequence of non-negative integers A = (A_1, A_2, \ldots, A_N) that satisfy all of the following conditions: 1 \le N \le 20 0 \le A_i \le 10 (1 \le i \le N) \displaystyle \sum_{i=1}^N 3^{A_i} = M It can be proved that under the , there always exists at least one such pair of N and A satisfying the conditions.
+
+**Constraints:**
+- 0 <= M <= 10^5
+- M is an integer

@@ -1,0 +1,31 @@
+{
+  "contestId": 567,
+  "index": "A",
+  "problem_id": "567A",
+  "name": "Lineland Mail",
+  "rating": 900,
+  "tags": [
+    "greedy",
+    "implementation"
+  ],
+  "points": 500.0,
+  "solvedCount": 36277,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Lineland Mail",
+  "legend": "All cities of Lineland are located on the Ox coordinate axis. Thus, each city is associated with its position xi — a coordinate on the Ox axis. No two cities are located at a single point.\n\nLineland residents love to send letters to each other. A person may send a letter only if the recipient lives in another city (because if they live in the same city, then it is easier to drop in).\n\nStrange but true, the cost of sending the letter is exactly equal to the distance between the sender's city and the recipient's city.\n\nFor each city calculate two values ​​mini and maxi, where mini is the minimum cost of sending a letter from the i-th city to some other city, and maxi is the the maximum cost of sending a letter from the i-th city to some other city",
+  "input_spec": "The first line of the input contains integer n (2 ≤ n ≤ 105) — the number of cities in Lineland. The second line contains the sequence of n distinct integers x1, x2, ..., xn ( - 109 ≤ xi ≤ 109), where xi is the x-coordinate of the i-th city. All the xi's are distinct and follow in ascending order.",
+  "output_spec": "Print n lines, the i-th line must contain two integers mini, maxi, separated by a space, where mini is the minimum cost of sending a letter from the i-th city, and maxi is the maximum cost of sending a letter from the i-th city.",
+  "note": "",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n-5 -2 2 7\n",
+      "output": "3 12\n3 9\n4 7\n5 12"
+    },
+    {
+      "input": "2\n-1 1\n",
+      "output": "2 2\n2 2"
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_persistent_node",
+          "signature": "int create_persistent_node(int left, int right, long long value)",
+          "implementations": [
+            {
+              "code": "int create_persistent_node(int left, int right, long long value) {\n    persistent_tree[node_counter].left = left;\n    persistent_tree[node_counter].right = right;\n    persistent_tree[node_counter].sum = value;\n    return node_counter++;\n}"
+            },
+            {
+              "code": "int create_persistent_node(int left, int right, long long value) {\n    persistent_tree[node_counter].left = left;\n    persistent_tree[node_counter].right = right;\n    persistent_tree[node_counter].sum = value;\n    return node_counter++;\n}"
+            },
+            {
+              "code": "int create_persistent_node(int left, int right, long long value) {\n    persistent_tree[node_counter].left = left;\n    persistent_tree[node_counter].right = right;\n    persistent_tree[node_counter].sum = value;\n    return node_counter++;\n}"
+            },
+            {
+              "code": "int create_persistent_node(int left, int right, long long value) {\n    persistent_tree[node_counter].left = left;\n    persistent_tree[node_counter].right = right;\n    persistent_tree[node_counter].sum = value;\n    return node_counter++;\n}"
+            },
+            {
+              "code": "int create_persistent_node(int left, int right, long long value) {\n    persistent_tree[node_counter].left = left;\n    persistent_tree[node_counter].right = right;\n    persistent_tree[node_counter].sum = value;\n    return node_counter++;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "update_persistent_tree",
+          "signature": "int update_persistent_tree(int node, int left, int right, int pos, long long val)",
+          "implementations": [
+            {
+              "code": "int update_persistent_tree(int node, int left, int right, int pos, long long val) {\n    if (left == right) {\n        return create_persistent_node(-1, -1, val);\n    }\n    int mid = (left + right) / 2;\n    int new_left = persistent_tree[node].left;\n    int new_right = persistent_tree[node].right;\n    if (pos <= mid)\n        new_left = update_persistent_tree(persistent_tree[node].left, left, mid, pos, val);\n    else\n        new_right = update_persistent_tree(persistent_tree[node].right, mid + 1, right, pos, val);\n    long long new_sum = persistent_tree[new_left].sum + persistent_tree[new_right].sum;\n    return create_persistent_node(new_left, new_right, new_sum);\n}"
+            },
+            {
+              "code": "int update_persistent_tree(int node, int left, int right, int pos, long long val) {\n    if (left == right) {\n        return create_persistent_node(-1, -1, val);\n    }\n    int mid = (left + right) / 2;\n    int new_left = persistent_tree[node].left;\n    int new_right = persistent_tree[node].right;\n    if (pos <= mid)\n        new_left = update_persistent_tree(persistent_tree[node].left, left, mid, pos, val);\n    else\n        new_right = update_persistent_tree(persistent_tree[node].right, mid + 1, right, pos, val);\n    long long new_sum = persistent_tree[new_left].sum + persistent_tree[new_right].sum;\n    return create_persistent_node(new_left, new_right, new_sum);\n}"
+            },
+            {
+              "code": "int update_persistent_tree(int node, int left, int right, int pos, long long val) {\n    if (left == right) {\n        return create_persistent_node(-1, -1, val);\n    }\n    int mid = (left + right) / 2;\n    int new_left = persistent_tree[node].left;\n    int new_right = persistent_tree[node].right;\n    if (pos <= mid)\n        new_left = update_persistent_tree(persistent_tree[node].left, left, mid, pos, val);\n    else\n        new_right = update_persistent_tree(persistent_tree[node].right, mid + 1, right, pos, val);\n    long long new_sum = persistent_tree[new_left].sum + persistent_tree[new_right].sum;\n    return create_persistent_node(new_left, new_right, new_sum);\n}"
+            },
+            {
+              "code": "int update_persistent_tree(int node, int left, int right, int pos, long long val) {\n    if (left == right) {\n        return create_persistent_node(-1, -1, val);\n    }\n    int mid = (left + right) / 2;\n    int new_left = persistent_tree[node].left;\n    int new_right = persistent_tree[node].right;\n    if (pos <= mid)\n        new_left = update_persistent_tree(persistent_tree[node].left, left, mid, pos, val);\n    else\n        new_right = update_persistent_tree(persistent_tree[node].right, mid + 1, right, pos, val);\n    long long new_sum = persistent_tree[new_left].sum + persistent_tree[new_right].sum;\n    return create_persistent_node(new_left, new_right, new_sum);\n}"
+            },
+            {
+              "code": "int update_persistent_tree(int node, int left, int right, int pos, long long val) {\n    if (left == right) {\n        return create_persistent_node(-1, -1, val);\n    }\n    int mid = (left + right) / 2;\n    int new_left = persistent_tree[node].left;\n    int new_right = persistent_tree[node].right;\n    if (pos <= mid)\n        new_left = update_persistent_tree(persistent_tree[node].left, left, mid, pos, val);\n    else\n        new_right = update_persistent_tree(persistent_tree[node].right, mid + 1, right, pos, val);\n    long long new_sum = persistent_tree[new_left].sum + persistent_tree[new_right].sum;\n    return create_persistent_node(new_left, new_right, new_sum);\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "query_persistent_range",
+          "signature": "long long query_persistent_range(int node, int left, int right, int qleft, int qright)",
+          "implementations": [
+            {
+              "code": "long long query_persistent_range(int node, int left, int right, int qleft, int qright) {\n    if (qleft > right || qright < left) return 0;\n    if (qleft <= left && right <= qright) return persistent_tree[node].sum;\n    int mid = (left + right) / 2;\n    long long left_sum = query_persistent_range(persistent_tree[node].left, left, mid, qleft, qright);\n    long long right_sum = query_persistent_range(persistent_tree[node].right, mid + 1, right, qleft, qright);\n    return left_sum + right_sum;\n}"
+            },
+            {
+              "code": "long long query_persistent_range(int node, int left, int right, int qleft, int qright) {\n    if (qleft > right || qright < left) return 0;\n    if (qleft <= left && right <= qright) return persistent_tree[node].sum;\n    int mid = (left + right) / 2;\n    long long left_sum = query_persistent_range(persistent_tree[node].left, left, mid, qleft, qright);\n    long long right_sum = query_persistent_range(persistent_tree[node].right, mid + 1, right, qleft, qright);\n    return left_sum + right_sum;\n}"
+            },
+            {
+              "code": "long long query_persistent_range(int node, int left, int right, int qleft, int qright) {\n    if (qleft > right || qright < left) return 0;\n    if (qleft <= left && right <= qright) return persistent_tree[node].sum;\n    int mid = (left + right) / 2;\n    long long left_sum = query_persistent_range(persistent_tree[node].left, left, mid, qleft, qright);\n    long long right_sum = query_persistent_range(persistent_tree[node].right, mid + 1, right, qleft, qright);\n    return left_sum + right_sum;\n}"
+            },
+            {
+              "code": "long long query_persistent_range(int node, int left, int right, int qleft, int qright) {\n    if (qleft > right || qright < left) return 0;\n    if (qleft <= left && right <= qright) return persistent_tree[node].sum;\n    int mid = (left + right) / 2;\n    long long left_sum = query_persistent_range(persistent_tree[node].left, left, mid, qleft, qright);\n    long long right_sum = query_persistent_range(persistent_tree[node].right, mid + 1, right, qleft, qright);\n    return left_sum + right_sum;\n}"
+            },
+            {
+              "code": "long long query_persistent_range(int node, int left, int right, int qleft, int qright) {\n    if (qleft > right || qright < left) return 0;\n    if (qleft <= left && right <= qright) return persistent_tree[node].sum;\n    int mid = (left + right) / 2;\n    long long left_sum = query_persistent_range(persistent_tree[node].left, left, mid, qleft, qright);\n    long long right_sum = query_persistent_range(persistent_tree[node].right, mid + 1, right, qleft, qright);\n    return left_sum + right_sum;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "get_tree_sum",
+          "signature": "long long get_tree_sum(int node)",
+          "implementations": [
+            {
+              "code": "long long get_tree_sum(int node) {\n    if (node == -1) return 0;\n    return persistent_tree[node].sum;\n}"
+            },
+            {
+              "code": "long long get_tree_sum(int node) {\n    if (node == -1) return 0;\n    return persistent_tree[node].sum;\n}"
+            },
+            {
+              "code": "long long get_tree_sum(int node) {\n    if (node == -1) return 0;\n    return persistent_tree[node].sum;\n}"
+            },
+            {
+              "code": "long long get_tree_sum(int node) {\n    if (node == -1) return 0;\n    return persistent_tree[node].sum;\n}"
+            },
+            {
+              "code": "long long get_tree_sum(int node) {\n    if (node == -1) return 0;\n    return persistent_tree[node].sum;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    version_root[0] = create_persistent_node(-1, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int type, ver, pos;\n        scanf(\"%d %d %d\", &type, &ver, &pos);\n        if (type == 1) {\n            long long val;\n            scanf(\"%lld\", &val);\n            version_root[i + 1] = update_persistent_tree(version_root[ver], 0, n - 1, pos, val);\n        } else {\n            int qright;\n            scanf(\"%d\", &qright);\n            printf(\"%lld\\n\", query_persistent_range(version_root[ver], 0, n - 1, pos, qright));\n        }\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    version_root[0] = create_persistent_node(-1, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int type, ver, pos;\n        scanf(\"%d %d %d\", &type, &ver, &pos);\n        if (type == 1) {\n            long long val;\n            scanf(\"%lld\", &val);\n            version_root[i + 1] = update_persistent_tree(version_root[ver], 0, n - 1, pos, val);\n        } else {\n            int qright;\n            scanf(\"%d\", &qright);\n            printf(\"%lld\\n\", query_persistent_range(version_root[ver], 0, n - 1, pos, qright));\n        }\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    version_root[0] = create_persistent_node(-1, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int type, ver, pos;\n        scanf(\"%d %d %d\", &type, &ver, &pos);\n        if (type == 1) {\n            long long val;\n            scanf(\"%lld\", &val);\n            version_root[i + 1] = update_persistent_tree(version_root[ver], 0, n - 1, pos, val);\n        } else {\n            int qright;\n            scanf(\"%d\", &qright);\n            printf(\"%lld\\n\", query_persistent_range(version_root[ver], 0, n - 1, pos, qright));\n        }\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    version_root[0] = create_persistent_node(-1, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int type, ver, pos;\n        scanf(\"%d %d %d\", &type, &ver, &pos);\n        if (type == 1) {\n            long long val;\n            scanf(\"%lld\", &val);\n            version_root[i + 1] = update_persistent_tree(version_root[ver], 0, n - 1, pos, val);\n        } else {\n            int qright;\n            scanf(\"%d\", &qright);\n            printf(\"%lld\\n\", query_persistent_range(version_root[ver], 0, n - 1, pos, qright));\n        }\n    }\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    version_root[0] = create_persistent_node(-1, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int type, ver, pos;\n        scanf(\"%d %d %d\", &type, &ver, &pos);\n        if (type == 1) {\n            long long val;\n            scanf(\"%lld\", &val);\n            version_root[i + 1] = update_persistent_tree(version_root[ver], 0, n - 1, pos, val);\n        } else {\n            int qright;\n            scanf(\"%d\", &qright);\n            printf(\"%lld\\n\", query_persistent_range(version_root[ver], 0, n - 1, pos, qright));\n        }\n    }\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_persistent_node",
+          "signature": "int create_persistent_node(int left, int right, long long value)",
+          "code": "int create_persistent_node(int left, int right, long long value) {\n    persistent_tree[node_counter].left = left;\n    persistent_tree[node_counter].right = right;\n    persistent_tree[node_counter].sum = value;\n    return node_counter++;\n}"
+        },
+        {
+          "clause_id": "update_persistent_tree",
+          "signature": "int update_persistent_tree(int node, int left, int right, int pos, long long val)",
+          "code": "int update_persistent_tree(int node, int left, int right, int pos, long long val) {\n    if (left == right) {\n        return create_persistent_node(-1, -1, val);\n    }\n    int mid = (left + right) / 2;\n    int new_left = persistent_tree[node].left;\n    int new_right = persistent_tree[node].right;\n    if (pos <= mid)\n        new_left = update_persistent_tree(persistent_tree[node].left, left, mid, pos, val);\n    else\n        new_right = update_persistent_tree(persistent_tree[node].right, mid + 1, right, pos, val);\n    long long new_sum = persistent_tree[new_left].sum + persistent_tree[new_right].sum;\n    return create_persistent_node(new_left, new_right, new_sum);\n}"
+        },
+        {
+          "clause_id": "query_persistent_range",
+          "signature": "long long query_persistent_range(int node, int left, int right, int qleft, int qright)",
+          "code": "long long query_persistent_range(int node, int left, int right, int qleft, int qright) {\n    if (qleft > right || qright < left) return 0;\n    if (qleft <= left && right <= qright) return persistent_tree[node].sum;\n    int mid = (left + right) / 2;\n    long long left_sum = query_persistent_range(persistent_tree[node].left, left, mid, qleft, qright);\n    long long right_sum = query_persistent_range(persistent_tree[node].right, mid + 1, right, qleft, qright);\n    return left_sum + right_sum;\n}"
+        },
+        {
+          "clause_id": "get_tree_sum",
+          "signature": "long long get_tree_sum(int node)",
+          "code": "long long get_tree_sum(int node) {\n    if (node == -1) return 0;\n    return persistent_tree[node].sum;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    version_root[0] = create_persistent_node(-1, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int type, ver, pos;\n        scanf(\"%d %d %d\", &type, &ver, &pos);\n        if (type == 1) {\n            long long val;\n            scanf(\"%lld\", &val);\n            version_root[i + 1] = update_persistent_tree(version_root[ver], 0, n - 1, pos, val);\n        } else {\n            int qright;\n            scanf(\"%d\", &qright);\n            printf(\"%lld\\n\", query_persistent_range(version_root[ver], 0, n - 1, pos, qright));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_persistent_node",
+          "signature": "int create_persistent_node(int left, int right, long long value)",
+          "code": "int create_persistent_node(int left, int right, long long value) {\n    persistent_tree[node_counter].left = left;\n    persistent_tree[node_counter].right = right;\n    persistent_tree[node_counter].sum = value;\n    return node_counter++;\n}"
+        },
+        {
+          "clause_id": "update_persistent_tree",
+          "signature": "int update_persistent_tree(int node, int left, int right, int pos, long long val)",
+          "code": "int update_persistent_tree(int node, int left, int right, int pos, long long val) {\n    if (left == right) {\n        return create_persistent_node(-1, -1, val);\n    }\n    int mid = (left + right) / 2;\n    int new_left = persistent_tree[node].left;\n    int new_right = persistent_tree[node].right;\n    if (pos <= mid)\n        new_left = update_persistent_tree(persistent_tree[node].left, left, mid, pos, val);\n    else\n        new_right = update_persistent_tree(persistent_tree[node].right, mid + 1, right, pos, val);\n    long long new_sum = persistent_tree[new_left].sum + persistent_tree[new_right].sum;\n    return create_persistent_node(new_left, new_right, new_sum);\n}"
+        },
+        {
+          "clause_id": "query_persistent_range",
+          "signature": "long long query_persistent_range(int node, int left, int right, int qleft, int qright)",
+          "code": "long long query_persistent_range(int node, int left, int right, int qleft, int qright) {\n    if (qleft > right || qright < left) return 0;\n    if (qleft <= left && right <= qright) return persistent_tree[node].sum;\n    int mid = (left + right) / 2;\n    long long left_sum = query_persistent_range(persistent_tree[node].left, left, mid, qleft, qright);\n    long long right_sum = query_persistent_range(persistent_tree[node].right, mid + 1, right, qleft, qright);\n    return left_sum + right_sum;\n}"
+        },
+        {
+          "clause_id": "get_tree_sum",
+          "signature": "long long get_tree_sum(int node)",
+          "code": "long long get_tree_sum(int node) {\n    if (node == -1) return 0;\n    return persistent_tree[node].sum;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    version_root[0] = create_persistent_node(-1, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int type, ver, pos;\n        scanf(\"%d %d %d\", &type, &ver, &pos);\n        if (type == 1) {\n            long long val;\n            scanf(\"%lld\", &val);\n            version_root[i + 1] = update_persistent_tree(version_root[ver], 0, n - 1, pos, val);\n        } else {\n            int qright;\n            scanf(\"%d\", &qright);\n            printf(\"%lld\\n\", query_persistent_range(version_root[ver], 0, n - 1, pos, qright));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_persistent_node",
+          "signature": "int create_persistent_node(int left, int right, long long value)",
+          "code": "int create_persistent_node(int left, int right, long long value) {\n    persistent_tree[node_counter].left = left;\n    persistent_tree[node_counter].right = right;\n    persistent_tree[node_counter].sum = value;\n    return node_counter++;\n}"
+        },
+        {
+          "clause_id": "update_persistent_tree",
+          "signature": "int update_persistent_tree(int node, int left, int right, int pos, long long val)",
+          "code": "int update_persistent_tree(int node, int left, int right, int pos, long long val) {\n    if (left == right) {\n        return create_persistent_node(-1, -1, val);\n    }\n    int mid = (left + right) / 2;\n    int new_left = persistent_tree[node].left;\n    int new_right = persistent_tree[node].right;\n    if (pos <= mid)\n        new_left = update_persistent_tree(persistent_tree[node].left, left, mid, pos, val);\n    else\n        new_right = update_persistent_tree(persistent_tree[node].right, mid + 1, right, pos, val);\n    long long new_sum = persistent_tree[new_left].sum + persistent_tree[new_right].sum;\n    return create_persistent_node(new_left, new_right, new_sum);\n}"
+        },
+        {
+          "clause_id": "query_persistent_range",
+          "signature": "long long query_persistent_range(int node, int left, int right, int qleft, int qright)",
+          "code": "long long query_persistent_range(int node, int left, int right, int qleft, int qright) {\n    if (qleft > right || qright < left) return 0;\n    if (qleft <= left && right <= qright) return persistent_tree[node].sum;\n    int mid = (left + right) / 2;\n    long long left_sum = query_persistent_range(persistent_tree[node].left, left, mid, qleft, qright);\n    long long right_sum = query_persistent_range(persistent_tree[node].right, mid + 1, right, qleft, qright);\n    return left_sum + right_sum;\n}"
+        },
+        {
+          "clause_id": "get_tree_sum",
+          "signature": "long long get_tree_sum(int node)",
+          "code": "long long get_tree_sum(int node) {\n    if (node == -1) return 0;\n    return persistent_tree[node].sum;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    version_root[0] = create_persistent_node(-1, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int type, ver, pos;\n        scanf(\"%d %d %d\", &type, &ver, &pos);\n        if (type == 1) {\n            long long val;\n            scanf(\"%lld\", &val);\n            version_root[i + 1] = update_persistent_tree(version_root[ver], 0, n - 1, pos, val);\n        } else {\n            int qright;\n            scanf(\"%d\", &qright);\n            printf(\"%lld\\n\", query_persistent_range(version_root[ver], 0, n - 1, pos, qright));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "create_persistent_node",
+          "signature": "int create_persistent_node(int left, int right, long long value)",
+          "code": "int create_persistent_node(int left, int right, long long value) {\n    persistent_tree[node_counter].left = left;\n    persistent_tree[node_counter].right = right;\n    persistent_tree[node_counter].sum = value;\n    return node_counter++;\n}"
+        },
+        {
+          "clause_id": "update_persistent_tree",
+          "signature": "int update_persistent_tree(int node, int left, int right, int pos, long long val)",
+          "code": "int update_persistent_tree(int node, int left, int right, int pos, long long val) {\n    if (left == right) {\n        return create_persistent_node(-1, -1, val);\n    }\n    int mid = (left + right) / 2;\n    int new_left = persistent_tree[node].left;\n    int new_right = persistent_tree[node].right;\n    if (pos <= mid)\n        new_left = update_persistent_tree(persistent_tree[node].left, left, mid, pos, val);\n    else\n        new_right = update_persistent_tree(persistent_tree[node].right, mid + 1, right, pos, val);\n    long long new_sum = persistent_tree[new_left].sum + persistent_tree[new_right].sum;\n    return create_persistent_node(new_left, new_right, new_sum);\n}"
+        },
+        {
+          "clause_id": "query_persistent_range",
+          "signature": "long long query_persistent_range(int node, int left, int right, int qleft, int qright)",
+          "code": "long long query_persistent_range(int node, int left, int right, int qleft, int qright) {\n    if (qleft > right || qright < left) return 0;\n    if (qleft <= left && right <= qright) return persistent_tree[node].sum;\n    int mid = (left + right) / 2;\n    long long left_sum = query_persistent_range(persistent_tree[node].left, left, mid, qleft, qright);\n    long long right_sum = query_persistent_range(persistent_tree[node].right, mid + 1, right, qleft, qright);\n    return left_sum + right_sum;\n}"
+        },
+        {
+          "clause_id": "get_tree_sum",
+          "signature": "long long get_tree_sum(int node)",
+          "code": "long long get_tree_sum(int node) {\n    if (node == -1) return 0;\n    return persistent_tree[node].sum;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    version_root[0] = create_persistent_node(-1, -1, 0);\n    for (int i = 0; i < q; i++) {\n        int type, ver, pos;\n        scanf(\"%d %d %d\", &type, &ver, &pos);\n        if (type == 1) {\n            long long val;\n            scanf(\"%lld\", &val);\n            version_root[i + 1] = update_persistent_tree(version_root[ver], 0, n - 1, pos, val);\n        } else {\n            int qright;\n            scanf(\"%d\", &qright);\n            printf(\"%lld\\n\", query_persistent_range(version_root[ver], 0, n - 1, pos, qright));\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

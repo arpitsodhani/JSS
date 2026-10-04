@@ -1,0 +1,26 @@
+{
+  "contestId": 1837,
+  "index": "B",
+  "problem_id": "1837B",
+  "name": "Comparison String",
+  "rating": 900,
+  "tags": [
+    "greedy"
+  ],
+  "points": null,
+  "solvedCount": 53169,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Comparison String",
+  "legend": "You are given a string s of length n, where each character is either < or >.\n\nAn array a consisting of n+1 elements is compatible with the string s if, for every i from 1 to n, the character si represents the result of comparing ai and ai+1, i. e.:\n\nsi is < if and only if ai<ai+1;\nsi is > if and only if ai>ai+1.\n\nFor example, the array [1,2,5,4,2] is compatible with the string <<>>. There are other arrays with are compatible with that string, for example, [13,37,42,37,13].\n\nThe cost of the array is the number of different elements in it. For example, the cost of [1,2,5,4,2] is 4; the cost of [13,37,42,37,13] is 3.\n\nYou have to calculate the minimum cost among all arrays which are compatible with the given string s.",
+  "input_spec": "The first line contains one integer t (1≤t≤500) — the number of test cases.\n\nEach test case consists of two lines:\n\nthe first line contains one integer n (1≤n≤100);\nthe second line contains the string s, consisting of n characters. Each character of s is either < or >.",
+  "output_spec": "For each test case, print one integer — the minimum cost among all arrays which are compatible with the given string s.",
+  "note": "In the first test case of the example, the array can be [13,37,42,37,13].\n\nIn the second test case of the example, the array can be [42,37,13,37,42].",
+  "time_limit": "2 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "4\n4\n<<>>\n4\n>><<\n5\n>>>>>\n7\n<><><><\n",
+      "output": "3\n3\n6\n2"
+    }
+  ]
+}

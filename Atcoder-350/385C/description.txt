@@ -1,0 +1,6 @@
+There are N buildings arranged in a line at equal intervals. The height of the i -th building from the front is H_i . You want to decorate some of these buildings with illuminations so that both of the following conditions are satisfied: The chosen buildings all have the same height. The chosen buildings are arranged at equal intervals. What is the maximum number of buildings you can choose? If you choose exactly one building, it is considered to satisfy the conditions.
+
+**Constraints:**
+- 1 <= N <= 3000
+- 1 <= H_i <= 3000
+- All input values are integers

@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_cross_product_term",
+          "signature": "long long compute_cross_product_term(long long x1, long long y1, long long x2, long long y2)",
+          "code": "long long compute_cross_product_term(long long x1, long long y1, long long x2, long long y2) {\n    return x1 * y2 - x2 * y1;\n}"
+        },
+        {
+          "clause_id": "accumulate_polygon_area_terms",
+          "signature": "long long accumulate_polygon_area_terms(int n, long long *x, long long *y)",
+          "code": "long long accumulate_polygon_area_terms(int n, long long *x, long long *y) {\n    long long area_sum = 0;\n    for (int i = 0; i < n; i++) {\n        int next = (i + 1) % n;\n        area_sum += compute_cross_product_term(x[i], y[i], x[next], y[next]);\n    }\n    return area_sum;\n}"
+        },
+        {
+          "clause_id": "compute_polygon_area",
+          "signature": "double compute_polygon_area(int n, long long *x, long long *y)",
+          "code": "double compute_polygon_area(int n, long long *x, long long *y) {\n    long long area_sum = accumulate_polygon_area_terms(n, x, y);\n    return fabs(area_sum) / 2.0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long x[10005], y[10005];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld %lld\", &x[i], &y[i]);\n    }\n    printf(\"%.1f\\n\", compute_polygon_area(n, x, y));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_cross_product_term",
+          "signature": "long long compute_cross_product_term(long long x1, long long y1, long long x2, long long y2)",
+          "code": "long long compute_cross_product_term(long long x1, long long y1, long long x2, long long y2) {\n    return x1 * y2 - x2 * y1;\n}"
+        },
+        {
+          "clause_id": "accumulate_polygon_area_terms",
+          "signature": "long long accumulate_polygon_area_terms(int n, long long *x, long long *y)",
+          "code": "long long accumulate_polygon_area_terms(int n, long long *x, long long *y) {\n    long long area_sum = 0;\n    for (int i = 0; i < n; i++) {\n        int next = (i + 1) % n;\n        area_sum += compute_cross_product_term(x[i], y[i], x[next], y[next]);\n    }\n    return area_sum;\n}"
+        },
+        {
+          "clause_id": "compute_polygon_area",
+          "signature": "double compute_polygon_area(int n, long long *x, long long *y)",
+          "code": "double compute_polygon_area(int n, long long *x, long long *y) {\n    long long area_sum = accumulate_polygon_area_terms(n, x, y);\n    return fabs(area_sum) / 2.0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long x[10005], y[10005];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld %lld\", &x[i], &y[i]);\n    }\n    printf(\"%.1f\\n\", compute_polygon_area(n, x, y));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_cross_product_term",
+          "signature": "long long compute_cross_product_term(long long x1, long long y1, long long x2, long long y2)",
+          "code": "long long compute_cross_product_term(long long x1, long long y1, long long x2, long long y2) {\n    return x1 * y2 - x2 * y1;\n}"
+        },
+        {
+          "clause_id": "accumulate_polygon_area_terms",
+          "signature": "long long accumulate_polygon_area_terms(int n, long long *x, long long *y)",
+          "code": "long long accumulate_polygon_area_terms(int n, long long *x, long long *y) {\n    long long area_sum = 0;\n    for (int i = 0; i < n; i++) {\n        int next = (i + 1) % n;\n        area_sum += compute_cross_product_term(x[i], y[i], x[next], y[next]);\n    }\n    return area_sum;\n}"
+        },
+        {
+          "clause_id": "compute_polygon_area",
+          "signature": "double compute_polygon_area(int n, long long *x, long long *y)",
+          "code": "double compute_polygon_area(int n, long long *x, long long *y) {\n    long long area_sum = accumulate_polygon_area_terms(n, x, y);\n    return fabs(area_sum) / 2.0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long x[10005], y[10005];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld %lld\", &x[i], &y[i]);\n    }\n    printf(\"%.1f\\n\", compute_polygon_area(n, x, y));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_cross_product_term",
+          "signature": "long long compute_cross_product_term(long long x1, long long y1, long long x2, long long y2)",
+          "code": "long long compute_cross_product_term(long long x1, long long y1, long long x2, long long y2) {\n    return x1 * y2 - x2 * y1;\n}"
+        },
+        {
+          "clause_id": "accumulate_polygon_area_terms",
+          "signature": "long long accumulate_polygon_area_terms(int n, long long *x, long long *y)",
+          "code": "long long accumulate_polygon_area_terms(int n, long long *x, long long *y) {\n    long long area_sum = 0;\n    for (int i = 0; i < n; i++) {\n        int next = (i + 1) % n;\n        area_sum += compute_cross_product_term(x[i], y[i], x[next], y[next]);\n    }\n    return area_sum;\n}"
+        },
+        {
+          "clause_id": "compute_polygon_area",
+          "signature": "double compute_polygon_area(int n, long long *x, long long *y)",
+          "code": "double compute_polygon_area(int n, long long *x, long long *y) {\n    long long area_sum = accumulate_polygon_area_terms(n, x, y);\n    return fabs(area_sum) / 2.0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long x[10005], y[10005];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld %lld\", &x[i], &y[i]);\n    }\n    printf(\"%.1f\\n\", compute_polygon_area(n, x, y));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_cross_product_term",
+          "signature": "long long compute_cross_product_term(long long x1, long long y1, long long x2, long long y2)",
+          "code": "long long compute_cross_product_term(long long x1, long long y1, long long x2, long long y2) {\n    return x1 * y2 - x2 * y1;\n}"
+        },
+        {
+          "clause_id": "accumulate_polygon_area_terms",
+          "signature": "long long accumulate_polygon_area_terms(int n, long long *x, long long *y)",
+          "code": "long long accumulate_polygon_area_terms(int n, long long *x, long long *y) {\n    long long area_sum = 0;\n    for (int i = 0; i < n; i++) {\n        int next = (i + 1) % n;\n        area_sum += compute_cross_product_term(x[i], y[i], x[next], y[next]);\n    }\n    return area_sum;\n}"
+        },
+        {
+          "clause_id": "compute_polygon_area",
+          "signature": "double compute_polygon_area(int n, long long *x, long long *y)",
+          "code": "double compute_polygon_area(int n, long long *x, long long *y) {\n    long long area_sum = accumulate_polygon_area_terms(n, x, y);\n    return fabs(area_sum) / 2.0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    long long x[10005], y[10005];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld %lld\", &x[i], &y[i]);\n    }\n    printf(\"%.1f\\n\", compute_polygon_area(n, x, y));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

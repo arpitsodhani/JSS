@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_maximum_flow",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_path_bottleneck",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_augmenting_path_bfs",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    }
+  ]
+}

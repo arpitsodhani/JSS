@@ -1,0 +1,198 @@
+{
+  "problem_id": "357F",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrays",
+          "signature": "int read_arrays(long long a[], long long b[])",
+          "code": "int read_arrays(long long a[], long long b[]) { int n; scanf(\"%d\", &n); for(int i = 1; i <= n; i++) scanf(\"%lld\", &a[i]); for(int i = 1; i <= n; i++) scanf(\"%lld\", &b[i]); return n; }"
+        },
+        {
+          "clause_id": "apply_range_update_a",
+          "signature": "void apply_range_update_a(long long a[], int l, int r, long long x)",
+          "code": "void apply_range_update_a(long long a[], int l, int r, long long x) { for(int i = l; i <= r; i++) a[i] += x; }"
+        },
+        {
+          "clause_id": "apply_range_update_b",
+          "signature": "void apply_range_update_b(long long b[], int l, int r, long long x)",
+          "code": "void apply_range_update_b(long long b[], int l, int r, long long x) { for(int i = l; i <= r; i++) b[i] += x; }"
+        },
+        {
+          "clause_id": "compute_product_sum",
+          "signature": "long long compute_product_sum(long long a[], long long b[], int l, int r)",
+          "code": "long long compute_product_sum(long long a[], long long b[], int l, int r) { const long long MOD = 998244353; long long sum = 0; for(int i = l; i <= r; i++) { sum = (sum + (a[i] % MOD) * (b[i] % MOD)) % MOD; } return sum; }"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int n, long long a[], long long b[], int q)",
+          "code": "void process_queries(int n, long long a[], long long b[], int q) { for(int i = 0; i < q; i++) { int type; scanf(\"%d\", &type); if(type == 1) { int l, r; long long x; scanf(\"%d%d%lld\", &l, &r, &x); apply_range_update_a(a, l, r, x); } else if(type == 2) { int l, r; long long x; scanf(\"%d%d%lld\", &l, &r, &x); apply_range_update_b(b, l, r, x); } else { int l, r; scanf(\"%d%d\", &l, &r); printf(\"%lld\\n\", compute_product_sum(a, b, l, r)); } } }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long a[200005], b[200005]; int n = read_arrays(a, b); int q; scanf(\"%d\", &q); process_queries(n, a, b, q); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrays",
+          "signature": "int read_arrays(long long a[], long long b[])",
+          "code": "int read_arrays(long long a[], long long b[]) { int n; scanf(\"%d\", &n); for(int i = 1; i <= n; i++) scanf(\"%lld\", &a[i]); for(int i = 1; i <= n; i++) scanf(\"%lld\", &b[i]); return n; }"
+        },
+        {
+          "clause_id": "apply_range_update_a",
+          "signature": "void apply_range_update_a(long long a[], int l, int r, long long x)",
+          "code": "void apply_range_update_a(long long a[], int l, int r, long long x) { for(int j = l; j <= r; j++) a[j] = a[j] + x; }"
+        },
+        {
+          "clause_id": "apply_range_update_b",
+          "signature": "void apply_range_update_b(long long b[], int l, int r, long long x)",
+          "code": "void apply_range_update_b(long long b[], int l, int r, long long x) { for(int j = l; j <= r; j++) b[j] = b[j] + x; }"
+        },
+        {
+          "clause_id": "compute_product_sum",
+          "signature": "long long compute_product_sum(long long a[], long long b[], int l, int r)",
+          "code": "long long compute_product_sum(long long a[], long long b[], int l, int r) { long long P = 998244353; long long total = 0; for(int k = l; k <= r; k++) { long long prod = ((a[k] % P) * (b[k] % P)) % P; total = (total + prod) % P; } return total; }"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int n, long long a[], long long b[], int q)",
+          "code": "void process_queries(int n, long long a[], long long b[], int q) { for(int qi = 0; qi < q; qi++) { int op; scanf(\"%d\", &op); if(op == 1) { int left, right; long long val; scanf(\"%d %d %lld\", &left, &right, &val); apply_range_update_a(a, left, right, val); } else if(op == 2) { int left, right; long long val; scanf(\"%d %d %lld\", &left, &right, &val); apply_range_update_b(b, left, right, val); } else { int left, right; scanf(\"%d %d\", &left, &right); printf(\"%lld\\n\", compute_product_sum(a, b, left, right)); } } }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long arr_a[200005], arr_b[200005]; int size = read_arrays(arr_a, arr_b); int queries; scanf(\"%d\", &queries); process_queries(size, arr_a, arr_b, queries); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrays",
+          "signature": "int read_arrays(long long a[], long long b[])",
+          "code": "int read_arrays(long long a[], long long b[]) { int n; scanf(\"%d\", &n); int i; for(i = 1; i <= n; i++) scanf(\"%lld\", &a[i]); for(i = 1; i <= n; i++) scanf(\"%lld\", &b[i]); return n; }"
+        },
+        {
+          "clause_id": "apply_range_update_a",
+          "signature": "void apply_range_update_a(long long a[], int l, int r, long long x)",
+          "code": "void apply_range_update_a(long long a[], int l, int r, long long x) { int idx; for(idx = l; idx <= r; idx++) a[idx] += x; }"
+        },
+        {
+          "clause_id": "apply_range_update_b",
+          "signature": "void apply_range_update_b(long long b[], int l, int r, long long x)",
+          "code": "void apply_range_update_b(long long b[], int l, int r, long long x) { int idx; for(idx = l; idx <= r; idx++) b[idx] += x; }"
+        },
+        {
+          "clause_id": "compute_product_sum",
+          "signature": "long long compute_product_sum(long long a[], long long b[], int l, int r)",
+          "code": "long long compute_product_sum(long long a[], long long b[], int l, int r) { long long M = 998244353; long long res = 0; int i; for(i = l; i <= r; i++) { long long p = (a[i] % M) * (b[i] % M) % M; res = (res + p) % M; } return res; }"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int n, long long a[], long long b[], int q)",
+          "code": "void process_queries(int n, long long a[], long long b[], int q) { int query; for(query = 0; query < q; query++) { int t; scanf(\"%d\", &t); if(t == 1) { int l, r; long long x; scanf(\"%d%d%lld\", &l, &r, &x); apply_range_update_a(a, l, r, x); } else if(t == 2) { int l, r; long long x; scanf(\"%d%d%lld\", &l, &r, &x); apply_range_update_b(b, l, r, x); } else { int l, r; scanf(\"%d%d\", &l, &r); printf(\"%lld\\n\", compute_product_sum(a, b, l, r)); } } }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long seq_a[200005], seq_b[200005]; int len = read_arrays(seq_a, seq_b); int num_queries; scanf(\"%d\", &num_queries); process_queries(len, seq_a, seq_b, num_queries); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrays",
+          "signature": "int read_arrays(long long a[], long long b[])",
+          "code": "int read_arrays(long long a[], long long b[]) { int n; scanf(\"%d\", &n); for(int p = 1; p <= n; p++) scanf(\"%lld\", a + p); for(int p = 1; p <= n; p++) scanf(\"%lld\", b + p); return n; }"
+        },
+        {
+          "clause_id": "apply_range_update_a",
+          "signature": "void apply_range_update_a(long long a[], int l, int r, long long x)",
+          "code": "void apply_range_update_a(long long a[], int l, int r, long long x) { for(int pos = l; pos <= r; pos++) a[pos] = a[pos] + x; }"
+        },
+        {
+          "clause_id": "apply_range_update_b",
+          "signature": "void apply_range_update_b(long long b[], int l, int r, long long x)",
+          "code": "void apply_range_update_b(long long b[], int l, int r, long long x) { for(int pos = l; pos <= r; pos++) b[pos] = b[pos] + x; }"
+        },
+        {
+          "clause_id": "compute_product_sum",
+          "signature": "long long compute_product_sum(long long a[], long long b[], int l, int r)",
+          "code": "long long compute_product_sum(long long a[], long long b[], int l, int r) { long long MOD = 998244353; long long answer = 0; for(int index = l; index <= r; index++) { long long mult = ((a[index] % MOD) * (b[index] % MOD)) % MOD; answer = (answer + mult) % MOD; } return answer; }"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int n, long long a[], long long b[], int q)",
+          "code": "void process_queries(int n, long long a[], long long b[], int q) { for(int qnum = 0; qnum < q; qnum++) { int cmd; scanf(\"%d\", &cmd); if(cmd == 1) { int start, end; long long delta; scanf(\"%d %d %lld\", &start, &end, &delta); apply_range_update_a(a, start, end, delta); } else if(cmd == 2) { int start, end; long long delta; scanf(\"%d %d %lld\", &start, &end, &delta); apply_range_update_b(b, start, end, delta); } else { int start, end; scanf(\"%d %d\", &start, &end); printf(\"%lld\\n\", compute_product_sum(a, b, start, end)); } } }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long data_a[200005], data_b[200005]; int count = read_arrays(data_a, data_b); int q; scanf(\"%d\", &q); process_queries(count, data_a, data_b, q); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_arrays",
+          "signature": "int read_arrays(long long a[], long long b[])",
+          "code": "int read_arrays(long long a[], long long b[]) { int n; scanf(\"%d\", &n); for(int k = 1; k <= n; k++) scanf(\"%lld\", &a[k]); for(int k = 1; k <= n; k++) scanf(\"%lld\", &b[k]); return n; }"
+        },
+        {
+          "clause_id": "apply_range_update_a",
+          "signature": "void apply_range_update_a(long long a[], int l, int r, long long x)",
+          "code": "void apply_range_update_a(long long a[], int l, int r, long long x) { for(int m = l; m <= r; m++) a[m] += x; }"
+        },
+        {
+          "clause_id": "apply_range_update_b",
+          "signature": "void apply_range_update_b(long long b[], int l, int r, long long x)",
+          "code": "void apply_range_update_b(long long b[], int l, int r, long long x) { for(int m = l; m <= r; m++) b[m] += x; }"
+        },
+        {
+          "clause_id": "compute_product_sum",
+          "signature": "long long compute_product_sum(long long a[], long long b[], int l, int r)",
+          "code": "long long compute_product_sum(long long a[], long long b[], int l, int r) { long long MODULO = 998244353; long long sum = 0; for(int j = l; j <= r; j++) { long long product = (a[j] % MODULO) * (b[j] % MODULO) % MODULO; sum = (sum + product) % MODULO; } return sum; }"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int n, long long a[], long long b[], int q)",
+          "code": "void process_queries(int n, long long a[], long long b[], int q) { for(int iteration = 0; iteration < q; iteration++) { int operation_type; scanf(\"%d\", &operation_type); if(operation_type == 1) { int from, to; long long add_val; scanf(\"%d%d%lld\", &from, &to, &add_val); apply_range_update_a(a, from, to, add_val); } else if(operation_type == 2) { int from, to; long long add_val; scanf(\"%d%d%lld\", &from, &to, &add_val); apply_range_update_b(b, from, to, add_val); } else { int from, to; scanf(\"%d%d\", &from, &to); printf(\"%lld\\n\", compute_product_sum(a, b, from, to)); } } }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long values_a[200005], values_b[200005]; int n = read_arrays(values_a, values_b); int num_operations; scanf(\"%d\", &num_operations); process_queries(n, values_a, values_b, num_operations); return 0; }"
+        }
+      ]
+    }
+  ]
+}

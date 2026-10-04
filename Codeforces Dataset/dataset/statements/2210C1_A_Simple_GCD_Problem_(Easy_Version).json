@@ -1,0 +1,27 @@
+{
+  "contestId": 2210,
+  "index": "C1",
+  "problem_id": "2210C1",
+  "name": "A Simple GCD Problem (Easy Version)",
+  "rating": 1200,
+  "tags": [
+    "greedy",
+    "number theory"
+  ],
+  "points": 1250.0,
+  "solvedCount": 14409,
+  "source": "verbatim_cf_fetch",
+  "title": "C1. A Simple GCD Problem (Easy Version)",
+  "legend": "This is the easy version of the problem. The difference between the versions is that in this version, 1≤n≤2⋅105 and bi=ai for 1≤i≤n. Note that a solution for one version does not necessarily solve the other version. You can hack only if you solved all versions of this problem.\n\nYou are given two arrays a and b of length n.\n\nFor each index i (1≤i≤n) of array a, you can perform the following operation at most once:\n\nchoose an arbitrary integer m (m≠ai) such that 1≤m≤bi, and set ai:=m.\n\nLet the array after performing all the operations be a′. You can only perform operations in such a way that the following condition holds:\n\nfor all 1≤l<r≤n, gcd(al,al+1,…,ar)=gcd(a\n′\nl\n,a\n′\nl+1\n,…,a\n′\nr\n).\n\nHere, gcd(x,y) denotes the greatest common divisor (GCD) of integers x and y.\n\nYou have to determine the maximum number of operations that can be performed while ensuring that the condition remains satisfied.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe first line of each test case contains an integer n (2≤n≤2⋅105) — the length of a.\n\nThe following line of each test case contains n space-separated integers a1,a2,…,an (1≤ai≤109).\n\nThe next line of each test case contains n space-separated integers b1,b2,…,bn (bi=ai).\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, output the maximum number of operations that can be done on a newline.",
+  "note": "For the first test case, the GCD of all subarrays is 1. Hence, we can perform 6 operations and change the array to a′=[1,1,1,1,1,1,1]. It can be shown that the maximum number of operations that can be performed in this case is 6.\n\nFor the second test case, note that all the values are equal, and reducing any value causes the GCD of subarrays to decrease. Hence, 0 operations can be performed.\n\nFor the third test case, it can be shown that at most 2 operations can be performed.",
+  "time_limit": "2 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "4\n7\n1 2 3 4 5 6 7\n1 2 3 4 5 6 7\n3\n67 67 67\n67 67 67\n6\n8 10 10 12 12 14\n8 10 10 12 12 14\n8\n2 4 8 16 32 64 128 256\n2 4 8 16 32 64 128 256\n",
+      "output": "6\n0\n2\n1"
+    }
+  ]
+}

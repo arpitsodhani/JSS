@@ -1,0 +1,124 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "cmp_interval",
+          "signature": "int cmp_interval(const void *a, const void *b)",
+          "code": "int cmp_interval(const void*a,const void*b){ const long long*x=(const long long*)a; const long long*y=(const long long*)b; if(x[1]<y[1]) return -1; if(x[1]>y[1]) return 1; if(x[0]<y[0]) return -1; if(x[0]>y[0]) return 1; return 0; }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N; scanf(\"%d\", &N); long long (*iv)[2]=(long long(*)[2])malloc((size_t)N*sizeof(long long[2])); for(int i=0;i<N;i++) scanf(\"%lld %lld\", &iv[i][0], &iv[i][1]); qsort(iv,N,sizeof(iv[0]),cmp_interval); long long last=-(1LL<<60); int ans=0; for(int i=0;i<N;i++){ if(last<iv[i][0]){ last=iv[i][1]; ans++; } } printf(\"%d\\n\", ans); free(iv); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "cmp_interval",
+          "signature": "int cmp_interval(const void *a, const void *b)",
+          "code": "int cmp_interval(const void*a,const void*b){ const long long*x=(const long long*)a; const long long*y=(const long long*)b; if(x[1]==y[1]) return (x[0]>y[0])-(x[0]<y[0]); return (x[1]>y[1])-(x[1]<y[1]); }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N; scanf(\"%d\", &N); long long (*iv)[2]=(long long(*)[2])malloc((size_t)N*sizeof(long long[2])); for(int i=0;i<N;i++) scanf(\"%lld %lld\", &iv[i][0], &iv[i][1]); qsort(iv,N,sizeof(iv[0]),cmp_interval); long long p=-(1LL<<60); int ans=0; for(int i=0;i<N;i++){ if(p < iv[i][0]){ p=iv[i][1]; ans++; } } printf(\"%d\\n\", ans); free(iv); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "cmp_interval",
+          "signature": "int cmp_interval(const void *a, const void *b)",
+          "code": "int cmp_interval(const void*a,const void*b){ const long long*x=(const long long*)a; const long long*y=(const long long*)b; if(x[1]<y[1]) return -1; if(x[1]>y[1]) return 1; return (x[0]>y[0])-(x[0]<y[0]); }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N; scanf(\"%d\", &N); long long (*iv)[2]=(long long(*)[2])malloc((size_t)N*sizeof(long long[2])); for(int i=0;i<N;i++) scanf(\"%lld %lld\", &iv[i][0], &iv[i][1]); qsort(iv,N,sizeof(iv[0]),cmp_interval); long long point=-(1LL<<60); int ans=0; for(int i=0;i<N;i++){ if(iv[i][0]>point){ point=iv[i][1]; ans++; } } printf(\"%d\\n\", ans); free(iv); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "cmp_interval",
+          "signature": "int cmp_interval(const void *a, const void *b)",
+          "code": "int cmp_interval(const void*a,const void*b){ const long long*x=(const long long*)a; const long long*y=(const long long*)b; if(x[1]==y[1]) return (x[0]>y[0])-(x[0]<y[0]); return (x[1]>y[1])-(x[1]<y[1]); }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N; scanf(\"%d\", &N); long long (*iv)[2]=(long long(*)[2])malloc((size_t)N*sizeof(long long[2])); for(int i=0;i<N;i++) scanf(\"%lld %lld\", &iv[i][0], &iv[i][1]); qsort(iv,N,sizeof(iv[0]),cmp_interval); long long point=-(1LL<<60); int ans=0; for(int i=0;i<N;i++){ if(point < iv[i][0]){ ans++; point=iv[i][1]; } } printf(\"%d\\n\", ans); free(iv); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "cmp_interval",
+          "signature": "int cmp_interval(const void *a, const void *b)",
+          "code": "int cmp_interval(const void*a,const void*b){ const long long*x=(const long long*)a; const long long*y=(const long long*)b; if(x[1]<y[1]) return -1; if(x[1]>y[1]) return 1; return (x[0]>y[0])-(x[0]<y[0]); }\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(void)",
+          "code": "void solve(void){ int N; scanf(\"%d\", &N); long long (*iv)[2]=(long long(*)[2])malloc((size_t)N*sizeof(long long[2])); for(int i=0;i<N;i++) scanf(\"%lld %lld\", &iv[i][0], &iv[i][1]); qsort(iv,N,sizeof(iv[0]),cmp_interval); long long point=-(1LL<<60); int ans=0; for(int i=0;i<N;i++){ if(iv[i][0]<=point) continue; ans++; point=iv[i][1]; } printf(\"%d\\n\", ans); free(iv); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ solve(); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

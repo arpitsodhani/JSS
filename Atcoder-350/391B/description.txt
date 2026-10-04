@@ -1,0 +1,5 @@
+You are given an N \times N grid S and an M \times M grid T . The cell at the i -th row from the top and the j -th column from the left is denoted by (i,j) . The colors of the cells in S and T are represented by N^2 characters S_{i,j} ( 1\leq i,j\leq N ) and M^2 characters T_{i,j} ( 1\leq i,j\leq M ), respectively. In grid S , cell (i,j) is white if S_{i,j} is . , and black if S_{i,j} is # . The same applies for grid T . Find T within S . More precisely, output integers a and b ( 1 \leq a,b \leq N-M+1 ) that satisfy the following condition: S_{a+i-1,b+j-1} = T_{i,j} for every i,j ( 1\leq i,j \leq M ).
+
+**Constraints:**
+- 1 <= N, M <= 100
+- S_{i,j} is 'o' or 'x'

@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9725188209115301,
+  "clauses": [
+    {
+      "clause": "build_adjacency_list",
+      "confidence": 0.9639999999999999
+    },
+    {
+      "clause": "dijkstra_shortest_paths",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.953767591338428
+    },
+    {
+      "clause": "read_graph",
+      "confidence": 0.9723076923076924
+    }
+  ]
+}

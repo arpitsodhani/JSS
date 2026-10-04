@@ -1,0 +1,6 @@
+You are given a positive integer N and an integer sequence A = (A_1,A_2,\dots,A_N) of length N . Determine whether there exists a non-empty (contiguous) subarray of A that has a repeated value, occurring multiple times in A . If such a subarray exists, find the length of the shortest such subarray.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 2 * 10^5
+- All input values are integers

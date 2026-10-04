@@ -1,0 +1,3 @@
+'B')  == 0
+    assert candidate('U')  == 1
+    assert candidate(''

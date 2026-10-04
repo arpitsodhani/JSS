@@ -1,0 +1,10 @@
+You are given an integer sequence A=(A_1,A_2,\ldots,A_N) of length N . For each integer pair (L,R) with 1 \le L \le R \le N , define f(L,R) as follows: Start with an empty blackboard. Write the R-L+1 integers A_L, A_{L+1}, \ldots, A_R on the blackboard in order. Repeat the following operation until all integers on the blackboard are erased: Choose integers l, r with l \le r such that every integer from l through r appears at least once on the blackboard. Then, erase all integers from l through r that are on the blackboard. Let f(L,R) be the minimum number of such operations needed to erase all the integers from the blackboard. Find \displaystyle \sum_{L=1}^N \sum_{R=L}^N f(L,R) .
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple
+- 1 <= w_i <= 10^9
+- All input values are integers

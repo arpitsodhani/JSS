@@ -1,0 +1,6 @@
+You are given a sequence of integers A = (A_1, A_2, \ldots, A_N) of length N . Define f(l, r) as: the number of distinct values in the subsequence (A_l, A_{l+1}, \ldots, A_r) . Evaluate the following expression: \displaystyle \sum_{i=1}^{N}\sum_{j=i}^N f(i,j) .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= N
+- All input values are integers

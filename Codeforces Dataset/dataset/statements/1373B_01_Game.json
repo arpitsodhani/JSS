@@ -1,0 +1,26 @@
+{
+  "contestId": 1373,
+  "index": "B",
+  "problem_id": "1373B",
+  "name": "01 Game",
+  "rating": 900,
+  "tags": [
+    "games"
+  ],
+  "points": null,
+  "solvedCount": 55134,
+  "source": "verbatim_cf_fetch",
+  "title": "B. 01 Game",
+  "legend": "Alica and Bob are playing a game.\n\nInitially they have a binary string s consisting of only characters 0 and 1.\n\nAlice and Bob make alternating moves: Alice makes the first move, Bob makes the second move, Alice makes the third one, and so on. During each move, the current player must choose two different adjacent characters of string s and delete them. For example, if s=1011001 then the following moves are possible:\n\ndelete s1 and s2: 1011001→11001;\ndelete s2 and s3: 1011001→11001;\ndelete s4 and s5: 1011001→10101;\ndelete s6 and s7: 1011001→10110.\n\nIf a player can't make any move, they lose. Both players play optimally. You have to determine if Alice can win.",
+  "input_spec": "First line contains one integer t (1≤t≤1000) — the number of test cases.\n\nOnly line of each test case contains one string s (1≤|s|≤100), consisting of only characters 0 and 1.",
+  "output_spec": "For each test case print answer in the single line.\n\nIf Alice can win print DA (YES in Russian) in any register. Otherwise print NET (NO in Russian) in any register.",
+  "note": "In the first test case after Alice's move string s become empty and Bob can not make any move.\n\nIn the second test case Alice can not make any move initially.\n\nIn the third test case after Alice's move string s turn into 01. Then, after Bob's move string s become empty and Alice can not make any move.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n01\n1111\n0011\n",
+      "output": "DA\nNET\nNET"
+    }
+  ]
+}

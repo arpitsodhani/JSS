@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_minimum_spanning_tree",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_with_path_compression",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "sort_edges_by_weight",
+      "confidence": 1.0
+    }
+  ]
+}

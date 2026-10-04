@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_subtree_sizes",
+          "signature": "void compute_subtree_sizes(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size)",
+          "code": "void compute_subtree_sizes(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent) {\n            compute_subtree_sizes(child, node, adj, adj_count, subtree_size);\n            subtree_size[node] += subtree_size[child];\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "decompose_into_heavy_chains",
+          "signature": "void decompose_into_heavy_chains(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size, int *chain_id, int *current_chain, int *chain_head)",
+          "code": "void decompose_into_heavy_chains(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size, int *chain_id, int *current_chain, int *chain_head) {\n    if (chain_head[*current_chain] == -1) {\n        chain_head[*current_chain] = node;\n    }\n    chain_id[node] = *current_chain;\n    \n    int heavy_child = -1, max_size = 0;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent && subtree_size[child] > max_size) {\n            max_size = subtree_size[child];\n            heavy_child = child;\n        }\n    }\n    \n    if (heavy_child != -1) {\n        decompose_into_heavy_chains(heavy_child, node, adj, adj_count, subtree_size, chain_id, current_chain, chain_head);\n    }\n    \n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent && child != heavy_child) {\n            (*current_chain)++;\n            decompose_into_heavy_chains(child, node, adj, adj_count, subtree_size, chain_id, current_chain, chain_head);\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "query_path_in_tree",
+          "signature": "int query_path_in_tree(int u, int v, int *chain_id, int *parent)",
+          "code": "int query_path_in_tree(int u, int v, int *chain_id, int *parent) {\n    int result = 0;\n    while (chain_id[u] != chain_id[v]) {\n        if (chain_id[u] < chain_id[v]) {\n            int tmp = u; u = v; v = tmp;\n        }\n        result++;\n        u = parent[u];\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, adj[1005][1005], adj_count[1005] = {0}, subtree_size[1005], chain_id[1005], parent[1005];\n    int current_chain = 0, chain_head[1005];\n    for (int i = 0; i < 1005; i++) chain_head[i] = -1;\n    \n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n        parent[v] = u;\n    }\n    \n    compute_subtree_sizes(0, -1, adj, adj_count, subtree_size);\n    decompose_into_heavy_chains(0, -1, adj, adj_count, subtree_size, chain_id, &current_chain, chain_head);\n    \n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        printf(\"%d\\n\", query_path_in_tree(u, v, chain_id, parent));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_subtree_sizes",
+          "signature": "void compute_subtree_sizes(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size)",
+          "code": "void compute_subtree_sizes(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent) {\n            compute_subtree_sizes(child, node, adj, adj_count, subtree_size);\n            subtree_size[node] += subtree_size[child];\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "decompose_into_heavy_chains",
+          "signature": "void decompose_into_heavy_chains(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size, int *chain_id, int *current_chain, int *chain_head)",
+          "code": "void decompose_into_heavy_chains(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size, int *chain_id, int *current_chain, int *chain_head) {\n    if (chain_head[*current_chain] == -1) {\n        chain_head[*current_chain] = node;\n    }\n    chain_id[node] = *current_chain;\n    \n    int heavy_child = -1, max_size = 0;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent && subtree_size[child] > max_size) {\n            max_size = subtree_size[child];\n            heavy_child = child;\n        }\n    }\n    \n    if (heavy_child != -1) {\n        decompose_into_heavy_chains(heavy_child, node, adj, adj_count, subtree_size, chain_id, current_chain, chain_head);\n    }\n    \n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent && child != heavy_child) {\n            (*current_chain)++;\n            decompose_into_heavy_chains(child, node, adj, adj_count, subtree_size, chain_id, current_chain, chain_head);\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "query_path_in_tree",
+          "signature": "int query_path_in_tree(int u, int v, int *chain_id, int *parent)",
+          "code": "int query_path_in_tree(int u, int v, int *chain_id, int *parent) {\n    int result = 0;\n    while (chain_id[u] != chain_id[v]) {\n        if (chain_id[u] < chain_id[v]) {\n            int tmp = u; u = v; v = tmp;\n        }\n        result++;\n        u = parent[u];\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, adj[1005][1005], adj_count[1005] = {0}, subtree_size[1005], chain_id[1005], parent[1005];\n    int current_chain = 0, chain_head[1005];\n    for (int i = 0; i < 1005; i++) chain_head[i] = -1;\n    \n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n        parent[v] = u;\n    }\n    \n    compute_subtree_sizes(0, -1, adj, adj_count, subtree_size);\n    decompose_into_heavy_chains(0, -1, adj, adj_count, subtree_size, chain_id, &current_chain, chain_head);\n    \n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        printf(\"%d\\n\", query_path_in_tree(u, v, chain_id, parent));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_subtree_sizes",
+          "signature": "void compute_subtree_sizes(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size)",
+          "code": "void compute_subtree_sizes(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent) {\n            compute_subtree_sizes(child, node, adj, adj_count, subtree_size);\n            subtree_size[node] += subtree_size[child];\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "decompose_into_heavy_chains",
+          "signature": "void decompose_into_heavy_chains(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size, int *chain_id, int *current_chain, int *chain_head)",
+          "code": "void decompose_into_heavy_chains(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size, int *chain_id, int *current_chain, int *chain_head) {\n    if (chain_head[*current_chain] == -1) {\n        chain_head[*current_chain] = node;\n    }\n    chain_id[node] = *current_chain;\n    \n    int heavy_child = -1, max_size = 0;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent && subtree_size[child] > max_size) {\n            max_size = subtree_size[child];\n            heavy_child = child;\n        }\n    }\n    \n    if (heavy_child != -1) {\n        decompose_into_heavy_chains(heavy_child, node, adj, adj_count, subtree_size, chain_id, current_chain, chain_head);\n    }\n    \n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent && child != heavy_child) {\n            (*current_chain)++;\n            decompose_into_heavy_chains(child, node, adj, adj_count, subtree_size, chain_id, current_chain, chain_head);\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "query_path_in_tree",
+          "signature": "int query_path_in_tree(int u, int v, int *chain_id, int *parent)",
+          "code": "int query_path_in_tree(int u, int v, int *chain_id, int *parent) {\n    int result = 0;\n    while (chain_id[u] != chain_id[v]) {\n        if (chain_id[u] < chain_id[v]) {\n            int tmp = u; u = v; v = tmp;\n        }\n        result++;\n        u = parent[u];\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, adj[1005][1005], adj_count[1005] = {0}, subtree_size[1005], chain_id[1005], parent[1005];\n    int current_chain = 0, chain_head[1005];\n    for (int i = 0; i < 1005; i++) chain_head[i] = -1;\n    \n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n        parent[v] = u;\n    }\n    \n    compute_subtree_sizes(0, -1, adj, adj_count, subtree_size);\n    decompose_into_heavy_chains(0, -1, adj, adj_count, subtree_size, chain_id, &current_chain, chain_head);\n    \n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        printf(\"%d\\n\", query_path_in_tree(u, v, chain_id, parent));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_subtree_sizes",
+          "signature": "void compute_subtree_sizes(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size)",
+          "code": "void compute_subtree_sizes(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent) {\n            compute_subtree_sizes(child, node, adj, adj_count, subtree_size);\n            subtree_size[node] += subtree_size[child];\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "decompose_into_heavy_chains",
+          "signature": "void decompose_into_heavy_chains(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size, int *chain_id, int *current_chain, int *chain_head)",
+          "code": "void decompose_into_heavy_chains(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size, int *chain_id, int *current_chain, int *chain_head) {\n    if (chain_head[*current_chain] == -1) {\n        chain_head[*current_chain] = node;\n    }\n    chain_id[node] = *current_chain;\n    \n    int heavy_child = -1, max_size = 0;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent && subtree_size[child] > max_size) {\n            max_size = subtree_size[child];\n            heavy_child = child;\n        }\n    }\n    \n    if (heavy_child != -1) {\n        decompose_into_heavy_chains(heavy_child, node, adj, adj_count, subtree_size, chain_id, current_chain, chain_head);\n    }\n    \n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent && child != heavy_child) {\n            (*current_chain)++;\n            decompose_into_heavy_chains(child, node, adj, adj_count, subtree_size, chain_id, current_chain, chain_head);\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "query_path_in_tree",
+          "signature": "int query_path_in_tree(int u, int v, int *chain_id, int *parent)",
+          "code": "int query_path_in_tree(int u, int v, int *chain_id, int *parent) {\n    int result = 0;\n    while (chain_id[u] != chain_id[v]) {\n        if (chain_id[u] < chain_id[v]) {\n            int tmp = u; u = v; v = tmp;\n        }\n        result++;\n        u = parent[u];\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, adj[1005][1005], adj_count[1005] = {0}, subtree_size[1005], chain_id[1005], parent[1005];\n    int current_chain = 0, chain_head[1005];\n    for (int i = 0; i < 1005; i++) chain_head[i] = -1;\n    \n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n        parent[v] = u;\n    }\n    \n    compute_subtree_sizes(0, -1, adj, adj_count, subtree_size);\n    decompose_into_heavy_chains(0, -1, adj, adj_count, subtree_size, chain_id, &current_chain, chain_head);\n    \n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        printf(\"%d\\n\", query_path_in_tree(u, v, chain_id, parent));\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_subtree_sizes",
+          "signature": "void compute_subtree_sizes(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size)",
+          "code": "void compute_subtree_sizes(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size) {\n    subtree_size[node] = 1;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent) {\n            compute_subtree_sizes(child, node, adj, adj_count, subtree_size);\n            subtree_size[node] += subtree_size[child];\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "decompose_into_heavy_chains",
+          "signature": "void decompose_into_heavy_chains(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size, int *chain_id, int *current_chain, int *chain_head)",
+          "code": "void decompose_into_heavy_chains(int node, int parent, int adj[1005][1005], int *adj_count, int *subtree_size, int *chain_id, int *current_chain, int *chain_head) {\n    if (chain_head[*current_chain] == -1) {\n        chain_head[*current_chain] = node;\n    }\n    chain_id[node] = *current_chain;\n    \n    int heavy_child = -1, max_size = 0;\n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent && subtree_size[child] > max_size) {\n            max_size = subtree_size[child];\n            heavy_child = child;\n        }\n    }\n    \n    if (heavy_child != -1) {\n        decompose_into_heavy_chains(heavy_child, node, adj, adj_count, subtree_size, chain_id, current_chain, chain_head);\n    }\n    \n    for (int i = 0; i < adj_count[node]; i++) {\n        int child = adj[node][i];\n        if (child != parent && child != heavy_child) {\n            (*current_chain)++;\n            decompose_into_heavy_chains(child, node, adj, adj_count, subtree_size, chain_id, current_chain, chain_head);\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "query_path_in_tree",
+          "signature": "int query_path_in_tree(int u, int v, int *chain_id, int *parent)",
+          "code": "int query_path_in_tree(int u, int v, int *chain_id, int *parent) {\n    int result = 0;\n    while (chain_id[u] != chain_id[v]) {\n        if (chain_id[u] < chain_id[v]) {\n            int tmp = u; u = v; v = tmp;\n        }\n        result++;\n        u = parent[u];\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, adj[1005][1005], adj_count[1005] = {0}, subtree_size[1005], chain_id[1005], parent[1005];\n    int current_chain = 0, chain_head[1005];\n    for (int i = 0; i < 1005; i++) chain_head[i] = -1;\n    \n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n        adj[v][adj_count[v]++] = u;\n        parent[v] = u;\n    }\n    \n    compute_subtree_sizes(0, -1, adj, adj_count, subtree_size);\n    decompose_into_heavy_chains(0, -1, adj, adj_count, subtree_size, chain_id, &current_chain, chain_head);\n    \n    for (int i = 0; i < q; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        printf(\"%d\\n\", query_path_in_tree(u, v, chain_id, parent));\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

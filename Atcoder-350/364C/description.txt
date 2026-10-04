@@ -1,0 +1,6 @@
+There are N dishes, and the i -th dish has a sweetness of A_i and a saltiness of B_i . Takahashi plans to arrange these N dishes in any order he likes and eat them in that order. He will eat the dishes in the arranged order, but he will stop eating as soon as the total sweetness of the dishes he has eaten exceeds X or the total saltiness exceeds Y . Find the minimum possible number of dishes that he will end up eating.
+
+**Constraints:**
+- 1 <= N, X, Y <= 2 * 10^5
+- 1 <= A_i, B_i <= 10^9
+- All input values are integers

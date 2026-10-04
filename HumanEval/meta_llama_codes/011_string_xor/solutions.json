@@ -1,0 +1,74 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char a[1001], b[1001], result[1001];\n    scanf(\"%s %s\", a, b);\n    int len = strlen(a);\n    for (int i = 0; i < len; i++) {\n        result[i] = (a[i] == b[i]) ? '0' : '1';\n    }\n    result[len] = '\\0';\n    printf(\"%s\\n\", result);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char s1[1001], s2[1001], out[1001];\n    scanf(\"%s %s\", s1, s2);\n    int n = strlen(s1);\n    for (int j = 0; j < n; j++) {\n        out[j] = (s1[j] != s2[j]) ? '1' : '0';\n    }\n    out[n] = '\\0';\n    printf(\"%s\\n\", out);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char x[1001], y[1001], res[1001];\n    scanf(\"%s %s\", x, y);\n    for (int i = 0; x[i]; i++) {\n        res[i] = (x[i] == y[i]) ? '0' : '1';\n    }\n    res[strlen(x)] = '\\0';\n    printf(\"%s\\n\", res);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char str1[1001], str2[1001], output[1001];\n    scanf(\"%s %s\", str1, str2);\n    int length = strlen(str1);\n    for (int k = 0; k < length; k++) {\n        if (str1[k] == str2[k]) {\n            output[k] = '0';\n        } else {\n            output[k] = '1';\n        }\n    }\n    output[length] = '\\0';\n    printf(\"%s\\n\", output);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "",
+          "code": "int main(void) {\n    char a[1001], b[1001];\n    scanf(\"%s %s\", a, b);\n    char result[1001];\n    int len = strlen(a);\n    for (int i = 0; i < len; i++) {\n        result[i] = (a[i] == b[i]) ? '0' : '1';\n    }\n    result[len] = 0;\n    puts(result);\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

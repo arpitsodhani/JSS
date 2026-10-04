@@ -1,0 +1,8 @@
+You are given a tree with N vertices. The vertices are numbered 1 , 2 , \ldots , N . The i -th edge ( 1\leq i\leq N-1 ) connects vertices U_i and V_i , with a length of L_i . For each K=1,2,\ldots, N , solve the following problem. Takahashi and Aoki play a game. The game proceeds as follows. First, Aoki specifies K distinct vertices on the tree. Then, Takahashi constructs a walk that starts and ends at vertex 1 , and passes through all the vertices specified by Aoki. The is defined as the length of the walk constructed by Takahashi. Takahashi wants to minimize the , while Aoki wants to maximize it. Find the when both players play optimally. Definition of a walk A walk on an undirected graph (possibly a tree) is a sequence of k vertices and k-1 edges v_1,e_1,v_2,\ldots,v_{k-1},e_{k-1},v_k (where k is a positive integer) such that edge e_i connects vertices v_i and v_{i+1} . The same vertex or edge can appear multiple times in the sequence. A walk is said to pass through vertex x if there exists at least one i ( 1\leq i\leq k ) such that v_i=x . (There can be multiple such i .) The walk is said to start and end at v_1 and v_k , respectively, and the length of the walk is the sum of the lengths of e_1 , e_2 , \ldots , e_{k-1} .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- 1 <= Q <= 2 * 10^5
+- 1 <= L_i <= R_i <= N
+- All input values are integers

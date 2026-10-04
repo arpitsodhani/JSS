@@ -1,0 +1,140 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>",
+    "#include <math.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_limit",
+          "signature": "void read_limit(long long *n)",
+          "code": "void read_limit(long long *n) {\n    scanf(\"%lld\", n);\n}"
+        },
+        {
+          "clause_id": "count_perfect_powers",
+          "signature": "long long count_perfect_powers(long long n)",
+          "code": "long long count_perfect_powers(long long n) {\n    int marked[100000] = {0};\n    int count = 0;\n    for (long long b = 2; b <= 60; b++) {\n        long long max_a = (long long)pow(n, 1.0 / b);\n        for (long long a = 2; a <= max_a + 1; a++) {\n            long long val = 1;\n            int overflow = 0;\n            for (int i = 0; i < b; i++) {\n                if (val > n / a) {\n                    overflow = 1;\n                    break;\n                }\n                val *= a;\n            }\n            if (!overflow && val <= n) {\n                if (val < 100000) {\n                    if (!marked[val]) {\n                        marked[val] = 1;\n                        count++;\n                    }\n                }\n            }\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    read_limit(&n);\n    printf(\"%lld\\n\", count_perfect_powers(n));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_limit",
+          "signature": "long long read_limit(long long *n)",
+          "code": "long long read_limit(long long *n) {\n    scanf(\"%lld\", n);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "count_perfect_powers",
+          "signature": "long long count_perfect_powers(long long n)",
+          "code": "long long count_perfect_powers(long long n) {\n    long long ans = 0;\n    int seen[90000] = {0};\n    for (int exp = 2; exp <= 60; exp++) {\n        long long base = 2;\n        while (1) {\n            long long power = 1;\n            int valid = 1;\n            for (int i = 0; i < exp; i++) {\n                if (power > n / base) {\n                    valid = 0;\n                    break;\n                }\n                power *= base;\n            }\n            if (!valid || power > n) break;\n            if (power < 90000 && !seen[power]) {\n                seen[power] = 1;\n                ans++;\n            }\n            base++;\n        }\n    }\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    read_limit(&n);\n    long long ans = count_perfect_powers(n);\n    printf(\"%lld\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_limit",
+          "signature": "void read_limit(long long *limit)",
+          "code": "void read_limit(long long *limit) {\n    scanf(\"%lld\", limit);\n}"
+        },
+        {
+          "clause_id": "count_perfect_powers",
+          "signature": "long long count_perfect_powers(long long limit)",
+          "code": "long long count_perfect_powers(long long limit) {\n    int used[85000] = {0};\n    long long total = 0;\n    for (long long b = 2; b <= 60; b++) {\n        long long a = 2;\n        while (1) {\n            long long result = 1;\n            int ok = 1;\n            for (long long i = 0; i < b; i++) {\n                if (result > limit / a) {\n                    ok = 0;\n                    break;\n                }\n                result *= a;\n            }\n            if (!ok || result > limit) break;\n            if (result < 85000 && !used[result]) {\n                used[result] = 1;\n                total++;\n            }\n            a++;\n        }\n    }\n    return total;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long limit;\n    read_limit(&limit);\n    long long total = count_perfect_powers(limit);\n    printf(\"%lld\\n\", total);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_limit",
+          "signature": "int read_limit(long long *n)",
+          "code": "int read_limit(long long *n) {\n    scanf(\"%lld\", n);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "count_perfect_powers",
+          "signature": "long long count_perfect_powers(long long n)",
+          "code": "long long count_perfect_powers(long long n) {\n    int flags[95000] = {0};\n    long long cnt = 0;\n    for (int power = 2; power <= 60; power++) {\n        for (long long base = 2; ; base++) {\n            long long val = 1;\n            int fail = 0;\n            for (int j = 0; j < power; j++) {\n                if (val > n / base) {\n                    fail = 1;\n                    break;\n                }\n                val *= base;\n            }\n            if (fail || val > n) break;\n            if (val < 95000 && !flags[val]) {\n                flags[val] = 1;\n                cnt++;\n            }\n        }\n    }\n    return cnt;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n;\n    read_limit(&n);\n    printf(\"%lld\\n\", count_perfect_powers(n));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_limit",
+          "signature": "void read_limit(long long *max_val)",
+          "code": "void read_limit(long long *max_val) {\n    scanf(\"%lld\", max_val);\n}"
+        },
+        {
+          "clause_id": "count_perfect_powers",
+          "signature": "long long count_perfect_powers(long long max_val)",
+          "code": "long long count_perfect_powers(long long max_val) {\n    int map[80000] = {0};\n    long long result = 0;\n    for (long long exp = 2; exp <= 60; exp++) {\n        long long base = 2;\n        while (1) {\n            long long num = 1;\n            int overflow = 0;\n            for (long long k = 0; k < exp; k++) {\n                if (num > max_val / base) {\n                    overflow = 1;\n                    break;\n                }\n                num *= base;\n            }\n            if (overflow || num > max_val) break;\n            if (num < 80000 && !map[num]) {\n                map[num] = 1;\n                result++;\n            }\n            base++;\n        }\n    }\n    return result;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long max_val;\n    read_limit(&max_val);\n    printf(\"%lld\\n\", count_perfect_powers(max_val));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

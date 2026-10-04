@@ -1,0 +1,28 @@
+{
+  "contestId": 1471,
+  "index": "A",
+  "problem_id": "1471A",
+  "name": "Strange Partition",
+  "rating": 900,
+  "tags": [
+    "greedy",
+    "math",
+    "number theory"
+  ],
+  "points": 500.0,
+  "solvedCount": 40199,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Strange Partition",
+  "legend": "You are given an array a of length n, and an integer x. You can perform the following operation as many times as you would like (possibly zero): replace two adjacent elements of the array by their sum. For example, if the initial array was [3,6,9], in a single operation one can replace the last two elements by their sum, yielding an array [3,15], or replace the first two elements to get an array [9,9]. Note that the size of the array decreases after each operation.\n\nThe beauty of an array b=[b1,…,bk] is defined as ∑\nk\ni=1\n⌈\nbi\n\n\nx\n⌉, which means that we divide each element by x, round it up to the nearest integer, and sum up the resulting values. For example, if x=3, and the array is [4,11,6], the beauty of the array is equal to ⌈\n4\n\n\n3\n⌉+⌈\n11\n\n\n3\n⌉+⌈\n6\n\n\n3\n⌉=2+4+2=8.\n\nPlease determine the minimum and the maximum beauty you can get by performing some operations on the original array.",
+  "input_spec": "The first input line contains a single integer t — the number of test cases (1≤t≤1000).\n\nThe first line of each test case contains two integers n and x (1≤n≤105, 1≤x≤109).\n\nThe next line contains n integers a1,a2,…,an (1≤ai≤109), the elements of the array a.\n\nIt is guaranteed that the sum of values of n over all test cases does not exceed 105.",
+  "output_spec": "For each test case output two integers — the minimal and the maximal possible beauty.",
+  "note": "In the first test case the beauty of the array does not change if we perform any operations.\n\nIn the second example we can leave the array unchanged to attain the maximum beauty, and to get the minimum beauty one can replace two elements 4 and 11 with their sum, yielding an array [6,15], which has its beauty equal to 7.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n3 3\n3 6 9\n3 3\n6 4 11\n",
+      "output": "6 6\n7 8"
+    }
+  ]
+}

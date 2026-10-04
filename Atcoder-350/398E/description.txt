@@ -1,0 +1,9 @@
+This problem is an interactive problem (in which your program and the judge system communicate via input and output). You are given a tree G with N vertices numbered 1 to N . The i -th edge connects vertices U_i and V_i . You will play a game with Takahashi using this tree G . First, you decide who is first and who is second. Then, starting from the first player, take turns performing the following operation: Choose a pair of integers (i,j) with 1 \leq i < j \leq N that satisfies both of the following conditions, then add an edge connecting vertices i and j to G . G does not already have an edge connecting vertices i and j . Adding an edge connecting vertices i and j does not create an odd cycle. A player who cannot perform this operation loses, and the other player wins. Play this game against Takahashi and win. What is an odd cycle? A sequence of vertices (v_0,v_1,\ldots,v_k) of G is called an odd cycle if and only if all of the following conditions are satisfied: k is odd. v_0=v_k . For every 1\leq i \leq k , there is an edge connecting v_{i-1} and v_{i} .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= X <= 10^{18}
+- 1 <= T_i <= 2
+- 1 <= A_i <= 10^9
+- 1 <= B_i <= 10^{18}
+- All input values are integers

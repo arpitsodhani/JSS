@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "validate_even_sum",
+          "signature": "int validate_even_sum(int a, int b)",
+          "code": "int validate_even_sum(int a, int b) {\n    return (a + b) % 2 == 0;\n}"
+        },
+        {
+          "clause_id": "compute_midpoint",
+          "signature": "int compute_midpoint(int a, int b)",
+          "code": "int compute_midpoint(int a, int b) {\n    return (a + b) / 2;\n}"
+        },
+        {
+          "clause_id": "determine_midpoint_existence",
+          "signature": "int determine_midpoint_existence(int a, int b, int *result)",
+          "code": "int determine_midpoint_existence(int a, int b, int *result) {\n    if (validate_even_sum(a, b)) {\n        *result = compute_midpoint(a, b);\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int a, b, result;\n    scanf(\"%d %d\", &a, &b);\n    if (determine_midpoint_existence(a, b, &result)) {\n        printf(\"%d\\n\", result);\n    } else {\n        printf(\"Impossible\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "validate_even_sum",
+          "signature": "int validate_even_sum(int a, int b)",
+          "code": "int validate_even_sum(int a, int b) {\n    return (a + b) % 2 == 0;\n}"
+        },
+        {
+          "clause_id": "compute_midpoint",
+          "signature": "int compute_midpoint(int a, int b)",
+          "code": "int compute_midpoint(int a, int b) {\n    return (a + b) / 2;\n}"
+        },
+        {
+          "clause_id": "determine_midpoint_existence",
+          "signature": "int determine_midpoint_existence(int a, int b, int *result)",
+          "code": "int determine_midpoint_existence(int a, int b, int *result) {\n    if (validate_even_sum(a, b)) {\n        *result = compute_midpoint(a, b);\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int a, b, result;\n    scanf(\"%d %d\", &a, &b);\n    if (determine_midpoint_existence(a, b, &result)) {\n        printf(\"%d\\n\", result);\n    } else {\n        printf(\"Impossible\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "validate_even_sum",
+          "signature": "int validate_even_sum(int a, int b)",
+          "code": "int validate_even_sum(int a, int b) {\n    return (a + b) % 2 == 0;\n}"
+        },
+        {
+          "clause_id": "compute_midpoint",
+          "signature": "int compute_midpoint(int a, int b)",
+          "code": "int compute_midpoint(int a, int b) {\n    return (a + b) / 2;\n}"
+        },
+        {
+          "clause_id": "determine_midpoint_existence",
+          "signature": "int determine_midpoint_existence(int a, int b, int *result)",
+          "code": "int determine_midpoint_existence(int a, int b, int *result) {\n    if (validate_even_sum(a, b)) {\n        *result = compute_midpoint(a, b);\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int a, b, result;\n    scanf(\"%d %d\", &a, &b);\n    if (determine_midpoint_existence(a, b, &result)) {\n        printf(\"%d\\n\", result);\n    } else {\n        printf(\"Impossible\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "validate_even_sum",
+          "signature": "int validate_even_sum(int a, int b)",
+          "code": "int validate_even_sum(int a, int b) {\n    return (a + b) % 2 == 0;\n}"
+        },
+        {
+          "clause_id": "compute_midpoint",
+          "signature": "int compute_midpoint(int a, int b)",
+          "code": "int compute_midpoint(int a, int b) {\n    return (a + b) / 2;\n}"
+        },
+        {
+          "clause_id": "determine_midpoint_existence",
+          "signature": "int determine_midpoint_existence(int a, int b, int *result)",
+          "code": "int determine_midpoint_existence(int a, int b, int *result) {\n    if (validate_even_sum(a, b)) {\n        *result = compute_midpoint(a, b);\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int a, b, result;\n    scanf(\"%d %d\", &a, &b);\n    if (determine_midpoint_existence(a, b, &result)) {\n        printf(\"%d\\n\", result);\n    } else {\n        printf(\"Impossible\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "validate_even_sum",
+          "signature": "int validate_even_sum(int a, int b)",
+          "code": "int validate_even_sum(int a, int b) {\n    return (a + b) % 2 == 0;\n}"
+        },
+        {
+          "clause_id": "compute_midpoint",
+          "signature": "int compute_midpoint(int a, int b)",
+          "code": "int compute_midpoint(int a, int b) {\n    return (a + b) / 2;\n}"
+        },
+        {
+          "clause_id": "determine_midpoint_existence",
+          "signature": "int determine_midpoint_existence(int a, int b, int *result)",
+          "code": "int determine_midpoint_existence(int a, int b, int *result) {\n    if (validate_even_sum(a, b)) {\n        *result = compute_midpoint(a, b);\n        return 1;\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int a, b, result;\n    scanf(\"%d %d\", &a, &b);\n    if (determine_midpoint_existence(a, b, &result)) {\n        printf(\"%d\\n\", result);\n    } else {\n        printf(\"Impossible\\n\");\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

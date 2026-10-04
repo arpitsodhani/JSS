@@ -1,0 +1,6 @@
+You are given a sequence of N positive integers A = (A_1, A_2, \dots ,A_N) . Takahashi repeats the following operation until A contains one or fewer positive elements: Sort A in descending order. Then, decrease both A_1 and A_2 by 1 . Find the number of times he performs this operation.
+
+**Constraints:**
+- 2 <= N <= 100
+- 1 <= A_i <= 100
+- All input values are integers

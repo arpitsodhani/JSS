@@ -1,0 +1,36 @@
+{
+  "contestId": 1143,
+  "index": "B",
+  "problem_id": "1143B",
+  "name": "Nirvana",
+  "rating": 1200,
+  "tags": [
+    "brute force",
+    "math",
+    "number theory"
+  ],
+  "points": 1000.0,
+  "solvedCount": 11693,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Nirvana",
+  "legend": "Kurt reaches nirvana when he finds the product of all the digits of some positive integer. Greater value of the product makes the nirvana deeper.\n\nHelp Kurt find the maximum possible product of digits among all integers from 1 to n.",
+  "input_spec": "The only input line contains the integer n (1≤n≤2⋅109).",
+  "output_spec": "Print the maximum product of digits among all integers from 1 to n.",
+  "note": "In the first example the maximum product is achieved for 389 (the product of digits is 3⋅8⋅9=216).\n\nIn the second example the maximum product is achieved for 7 (the product of digits is 7).\n\nIn the third example the maximum product is achieved for 999999999 (the product of digits is 99=387420489).",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "390\n",
+      "output": "216"
+    },
+    {
+      "input": "7\n",
+      "output": "7"
+    },
+    {
+      "input": "1000000000\n",
+      "output": "387420489"
+    }
+  ]
+}

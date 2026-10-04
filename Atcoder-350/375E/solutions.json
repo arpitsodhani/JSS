@@ -1,0 +1,240 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_element_to_window",
+          "signature": "void add_element_to_window(int pos)",
+          "implementations": [
+            {
+              "code": "void add_element_to_window(int pos) {\n    int value = array[pos];\n    frequency[value]++;\n    if (frequency[value] == 1) distinct_count++;\n}"
+            },
+            {
+              "code": "void add_element_to_window(int pos) {\n    int value = array[pos];\n    frequency[value]++;\n    if (frequency[value] == 1) distinct_count++;\n}"
+            },
+            {
+              "code": "void add_element_to_window(int pos) {\n    int value = array[pos];\n    frequency[value]++;\n    if (frequency[value] == 1) distinct_count++;\n}"
+            },
+            {
+              "code": "void add_element_to_window(int pos) {\n    int value = array[pos];\n    frequency[value]++;\n    if (frequency[value] == 1) distinct_count++;\n}"
+            },
+            {
+              "code": "void add_element_to_window(int pos) {\n    int value = array[pos];\n    frequency[value]++;\n    if (frequency[value] == 1) distinct_count++;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "remove_element_from_window",
+          "signature": "void remove_element_from_window(int pos)",
+          "implementations": [
+            {
+              "code": "void remove_element_from_window(int pos) {\n    int value = array[pos];\n    frequency[value]--;\n    if (frequency[value] == 0) distinct_count--;\n}"
+            },
+            {
+              "code": "void remove_element_from_window(int pos) {\n    int value = array[pos];\n    frequency[value]--;\n    if (frequency[value] == 0) distinct_count--;\n}"
+            },
+            {
+              "code": "void remove_element_from_window(int pos) {\n    int value = array[pos];\n    frequency[value]--;\n    if (frequency[value] == 0) distinct_count--;\n}"
+            },
+            {
+              "code": "void remove_element_from_window(int pos) {\n    int value = array[pos];\n    frequency[value]--;\n    if (frequency[value] == 0) distinct_count--;\n}"
+            },
+            {
+              "code": "void remove_element_from_window(int pos) {\n    int value = array[pos];\n    frequency[value]--;\n    if (frequency[value] == 0) distinct_count--;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "compare_mo_queries",
+          "signature": "int compare_mo_queries(const void *a, const void *b)",
+          "implementations": [
+            {
+              "code": "int compare_mo_queries(const void *a, const void *b) {\n    Query *qa = (Query *)a;\n    Query *qb = (Query *)b;\n    int block_a = qa->left / block_size;\n    int block_b = qb->left / block_size;\n    if (block_a != block_b) return block_a - block_b;\n    return (block_a & 1) ? (qb->right - qa->right) : (qa->right - qb->right);\n}"
+            },
+            {
+              "code": "int compare_mo_queries(const void *a, const void *b) {\n    Query *qa = (Query *)a;\n    Query *qb = (Query *)b;\n    int block_a = qa->left / block_size;\n    int block_b = qb->left / block_size;\n    if (block_a != block_b) return block_a - block_b;\n    return (block_a & 1) ? (qb->right - qa->right) : (qa->right - qb->right);\n}"
+            },
+            {
+              "code": "int compare_mo_queries(const void *a, const void *b) {\n    Query *qa = (Query *)a;\n    Query *qb = (Query *)b;\n    int block_a = qa->left / block_size;\n    int block_b = qb->left / block_size;\n    if (block_a != block_b) return block_a - block_b;\n    return (block_a & 1) ? (qb->right - qa->right) : (qa->right - qb->right);\n}"
+            },
+            {
+              "code": "int compare_mo_queries(const void *a, const void *b) {\n    Query *qa = (Query *)a;\n    Query *qb = (Query *)b;\n    int block_a = qa->left / block_size;\n    int block_b = qb->left / block_size;\n    if (block_a != block_b) return block_a - block_b;\n    return (block_a & 1) ? (qb->right - qa->right) : (qa->right - qb->right);\n}"
+            },
+            {
+              "code": "int compare_mo_queries(const void *a, const void *b) {\n    Query *qa = (Query *)a;\n    Query *qb = (Query *)b;\n    int block_a = qa->left / block_size;\n    int block_b = qb->left / block_size;\n    if (block_a != block_b) return block_a - block_b;\n    return (block_a & 1) ? (qb->right - qa->right) : (qa->right - qb->right);\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "process_mo_queries",
+          "signature": "void process_mo_queries(int num_queries)",
+          "implementations": [
+            {
+              "code": "void process_mo_queries(int num_queries) {\n    qsort(queries, num_queries, sizeof(Query), compare_mo_queries);\n    int current_left = 0, current_right = -1;\n    for (int i = 0; i < num_queries; i++) {\n        while (current_right < queries[i].right)\n            add_element_to_window(++current_right);\n        while (current_right > queries[i].right)\n            remove_element_from_window(current_right--);\n        while (current_left < queries[i].left)\n            remove_element_from_window(current_left++);\n        while (current_left > queries[i].left)\n            add_element_to_window(--current_left);\n        answers[queries[i].index] = distinct_count;\n    }\n}"
+            },
+            {
+              "code": "void process_mo_queries(int num_queries) {\n    qsort(queries, num_queries, sizeof(Query), compare_mo_queries);\n    int current_left = 0, current_right = -1;\n    for (int i = 0; i < num_queries; i++) {\n        while (current_right < queries[i].right)\n            add_element_to_window(++current_right);\n        while (current_right > queries[i].right)\n            remove_element_from_window(current_right--);\n        while (current_left < queries[i].left)\n            remove_element_from_window(current_left++);\n        while (current_left > queries[i].left)\n            add_element_to_window(--current_left);\n        answers[queries[i].index] = distinct_count;\n    }\n}"
+            },
+            {
+              "code": "void process_mo_queries(int num_queries) {\n    qsort(queries, num_queries, sizeof(Query), compare_mo_queries);\n    int current_left = 0, current_right = -1;\n    for (int i = 0; i < num_queries; i++) {\n        while (current_right < queries[i].right)\n            add_element_to_window(++current_right);\n        while (current_right > queries[i].right)\n            remove_element_from_window(current_right--);\n        while (current_left < queries[i].left)\n            remove_element_from_window(current_left++);\n        while (current_left > queries[i].left)\n            add_element_to_window(--current_left);\n        answers[queries[i].index] = distinct_count;\n    }\n}"
+            },
+            {
+              "code": "void process_mo_queries(int num_queries) {\n    qsort(queries, num_queries, sizeof(Query), compare_mo_queries);\n    int current_left = 0, current_right = -1;\n    for (int i = 0; i < num_queries; i++) {\n        while (current_right < queries[i].right)\n            add_element_to_window(++current_right);\n        while (current_right > queries[i].right)\n            remove_element_from_window(current_right--);\n        while (current_left < queries[i].left)\n            remove_element_from_window(current_left++);\n        while (current_left > queries[i].left)\n            add_element_to_window(--current_left);\n        answers[queries[i].index] = distinct_count;\n    }\n}"
+            },
+            {
+              "code": "void process_mo_queries(int num_queries) {\n    qsort(queries, num_queries, sizeof(Query), compare_mo_queries);\n    int current_left = 0, current_right = -1;\n    for (int i = 0; i < num_queries; i++) {\n        while (current_right < queries[i].right)\n            add_element_to_window(++current_right);\n        while (current_right > queries[i].right)\n            remove_element_from_window(current_right--);\n        while (current_left < queries[i].left)\n            remove_element_from_window(current_left++);\n        while (current_left > queries[i].left)\n            add_element_to_window(--current_left);\n        answers[queries[i].index] = distinct_count;\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    block_size = (int)sqrt(n) + 1;\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d\", &queries[i].left, &queries[i].right);\n        queries[i].index = i;\n    }\n    process_mo_queries(q);\n    for (int i = 0; i < q; i++)\n        printf(\"%d\\n\", answers[i]);\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    block_size = (int)sqrt(n) + 1;\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d\", &queries[i].left, &queries[i].right);\n        queries[i].index = i;\n    }\n    process_mo_queries(q);\n    for (int i = 0; i < q; i++)\n        printf(\"%d\\n\", answers[i]);\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    block_size = (int)sqrt(n) + 1;\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d\", &queries[i].left, &queries[i].right);\n        queries[i].index = i;\n    }\n    process_mo_queries(q);\n    for (int i = 0; i < q; i++)\n        printf(\"%d\\n\", answers[i]);\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    block_size = (int)sqrt(n) + 1;\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d\", &queries[i].left, &queries[i].right);\n        queries[i].index = i;\n    }\n    process_mo_queries(q);\n    for (int i = 0; i < q; i++)\n        printf(\"%d\\n\", answers[i]);\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    block_size = (int)sqrt(n) + 1;\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d\", &queries[i].left, &queries[i].right);\n        queries[i].index = i;\n    }\n    process_mo_queries(q);\n    for (int i = 0; i < q; i++)\n        printf(\"%d\\n\", answers[i]);\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_element_to_window",
+          "signature": "void add_element_to_window(int pos)",
+          "code": "void add_element_to_window(int pos) {\n    int value = array[pos];\n    frequency[value]++;\n    if (frequency[value] == 1) distinct_count++;\n}"
+        },
+        {
+          "clause_id": "remove_element_from_window",
+          "signature": "void remove_element_from_window(int pos)",
+          "code": "void remove_element_from_window(int pos) {\n    int value = array[pos];\n    frequency[value]--;\n    if (frequency[value] == 0) distinct_count--;\n}"
+        },
+        {
+          "clause_id": "compare_mo_queries",
+          "signature": "int compare_mo_queries(const void *a, const void *b)",
+          "code": "int compare_mo_queries(const void *a, const void *b) {\n    Query *qa = (Query *)a;\n    Query *qb = (Query *)b;\n    int block_a = qa->left / block_size;\n    int block_b = qb->left / block_size;\n    if (block_a != block_b) return block_a - block_b;\n    return (block_a & 1) ? (qb->right - qa->right) : (qa->right - qb->right);\n}"
+        },
+        {
+          "clause_id": "process_mo_queries",
+          "signature": "void process_mo_queries(int num_queries)",
+          "code": "void process_mo_queries(int num_queries) {\n    qsort(queries, num_queries, sizeof(Query), compare_mo_queries);\n    int current_left = 0, current_right = -1;\n    for (int i = 0; i < num_queries; i++) {\n        while (current_right < queries[i].right)\n            add_element_to_window(++current_right);\n        while (current_right > queries[i].right)\n            remove_element_from_window(current_right--);\n        while (current_left < queries[i].left)\n            remove_element_from_window(current_left++);\n        while (current_left > queries[i].left)\n            add_element_to_window(--current_left);\n        answers[queries[i].index] = distinct_count;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    block_size = (int)sqrt(n) + 1;\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d\", &queries[i].left, &queries[i].right);\n        queries[i].index = i;\n    }\n    process_mo_queries(q);\n    for (int i = 0; i < q; i++)\n        printf(\"%d\\n\", answers[i]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_element_to_window",
+          "signature": "void add_element_to_window(int pos)",
+          "code": "void add_element_to_window(int pos) {\n    int value = array[pos];\n    frequency[value]++;\n    if (frequency[value] == 1) distinct_count++;\n}"
+        },
+        {
+          "clause_id": "remove_element_from_window",
+          "signature": "void remove_element_from_window(int pos)",
+          "code": "void remove_element_from_window(int pos) {\n    int value = array[pos];\n    frequency[value]--;\n    if (frequency[value] == 0) distinct_count--;\n}"
+        },
+        {
+          "clause_id": "compare_mo_queries",
+          "signature": "int compare_mo_queries(const void *a, const void *b)",
+          "code": "int compare_mo_queries(const void *a, const void *b) {\n    Query *qa = (Query *)a;\n    Query *qb = (Query *)b;\n    int block_a = qa->left / block_size;\n    int block_b = qb->left / block_size;\n    if (block_a != block_b) return block_a - block_b;\n    return (block_a & 1) ? (qb->right - qa->right) : (qa->right - qb->right);\n}"
+        },
+        {
+          "clause_id": "process_mo_queries",
+          "signature": "void process_mo_queries(int num_queries)",
+          "code": "void process_mo_queries(int num_queries) {\n    qsort(queries, num_queries, sizeof(Query), compare_mo_queries);\n    int current_left = 0, current_right = -1;\n    for (int i = 0; i < num_queries; i++) {\n        while (current_right < queries[i].right)\n            add_element_to_window(++current_right);\n        while (current_right > queries[i].right)\n            remove_element_from_window(current_right--);\n        while (current_left < queries[i].left)\n            remove_element_from_window(current_left++);\n        while (current_left > queries[i].left)\n            add_element_to_window(--current_left);\n        answers[queries[i].index] = distinct_count;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    block_size = (int)sqrt(n) + 1;\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d\", &queries[i].left, &queries[i].right);\n        queries[i].index = i;\n    }\n    process_mo_queries(q);\n    for (int i = 0; i < q; i++)\n        printf(\"%d\\n\", answers[i]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_element_to_window",
+          "signature": "void add_element_to_window(int pos)",
+          "code": "void add_element_to_window(int pos) {\n    int value = array[pos];\n    frequency[value]++;\n    if (frequency[value] == 1) distinct_count++;\n}"
+        },
+        {
+          "clause_id": "remove_element_from_window",
+          "signature": "void remove_element_from_window(int pos)",
+          "code": "void remove_element_from_window(int pos) {\n    int value = array[pos];\n    frequency[value]--;\n    if (frequency[value] == 0) distinct_count--;\n}"
+        },
+        {
+          "clause_id": "compare_mo_queries",
+          "signature": "int compare_mo_queries(const void *a, const void *b)",
+          "code": "int compare_mo_queries(const void *a, const void *b) {\n    Query *qa = (Query *)a;\n    Query *qb = (Query *)b;\n    int block_a = qa->left / block_size;\n    int block_b = qb->left / block_size;\n    if (block_a != block_b) return block_a - block_b;\n    return (block_a & 1) ? (qb->right - qa->right) : (qa->right - qb->right);\n}"
+        },
+        {
+          "clause_id": "process_mo_queries",
+          "signature": "void process_mo_queries(int num_queries)",
+          "code": "void process_mo_queries(int num_queries) {\n    qsort(queries, num_queries, sizeof(Query), compare_mo_queries);\n    int current_left = 0, current_right = -1;\n    for (int i = 0; i < num_queries; i++) {\n        while (current_right < queries[i].right)\n            add_element_to_window(++current_right);\n        while (current_right > queries[i].right)\n            remove_element_from_window(current_right--);\n        while (current_left < queries[i].left)\n            remove_element_from_window(current_left++);\n        while (current_left > queries[i].left)\n            add_element_to_window(--current_left);\n        answers[queries[i].index] = distinct_count;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    block_size = (int)sqrt(n) + 1;\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d\", &queries[i].left, &queries[i].right);\n        queries[i].index = i;\n    }\n    process_mo_queries(q);\n    for (int i = 0; i < q; i++)\n        printf(\"%d\\n\", answers[i]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "add_element_to_window",
+          "signature": "void add_element_to_window(int pos)",
+          "code": "void add_element_to_window(int pos) {\n    int value = array[pos];\n    frequency[value]++;\n    if (frequency[value] == 1) distinct_count++;\n}"
+        },
+        {
+          "clause_id": "remove_element_from_window",
+          "signature": "void remove_element_from_window(int pos)",
+          "code": "void remove_element_from_window(int pos) {\n    int value = array[pos];\n    frequency[value]--;\n    if (frequency[value] == 0) distinct_count--;\n}"
+        },
+        {
+          "clause_id": "compare_mo_queries",
+          "signature": "int compare_mo_queries(const void *a, const void *b)",
+          "code": "int compare_mo_queries(const void *a, const void *b) {\n    Query *qa = (Query *)a;\n    Query *qb = (Query *)b;\n    int block_a = qa->left / block_size;\n    int block_b = qb->left / block_size;\n    if (block_a != block_b) return block_a - block_b;\n    return (block_a & 1) ? (qb->right - qa->right) : (qa->right - qb->right);\n}"
+        },
+        {
+          "clause_id": "process_mo_queries",
+          "signature": "void process_mo_queries(int num_queries)",
+          "code": "void process_mo_queries(int num_queries) {\n    qsort(queries, num_queries, sizeof(Query), compare_mo_queries);\n    int current_left = 0, current_right = -1;\n    for (int i = 0; i < num_queries; i++) {\n        while (current_right < queries[i].right)\n            add_element_to_window(++current_right);\n        while (current_right > queries[i].right)\n            remove_element_from_window(current_right--);\n        while (current_left < queries[i].left)\n            remove_element_from_window(current_left++);\n        while (current_left > queries[i].left)\n            add_element_to_window(--current_left);\n        answers[queries[i].index] = distinct_count;\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q;\n    scanf(\"%d %d\", &n, &q);\n    block_size = (int)sqrt(n) + 1;\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &array[i]);\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d %d\", &queries[i].left, &queries[i].right);\n        queries[i].index = i;\n    }\n    process_mo_queries(q);\n    for (int i = 0; i < q; i++)\n        printf(\"%d\\n\", answers[i]);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,432 @@
+
+================ Program P1 ================
+--- Clause C1 AST ---
+└── module
+    └── if_statement
+        ├── if [if]
+        ├── boolean_operator
+        │   ├── comparison_operator
+        │   │   ├── identifier [v0]
+        │   │   ├── is [is]
+        │   │   └── none [LIT]
+        │   ├── or [or]
+        │   └── comparison_operator
+        │       ├── identifier [v1]
+        │       ├── <= [<=]
+        │       └── integer [LIT]
+        ├── : [:]
+        └── block
+            └── return_statement
+                ├── return [return]
+                └── unary_operator
+                    ├── - [-]
+                    └── integer [LIT]
+Normalized Sequence Path:
+module -> if_statement -> if:if -> boolean_operator -> comparison_operator -> identifier:ID -> is:is -> none:LIT -> or:or -> comparison_operator -> identifier:ID -> <=:<= -> integer:LIT -> : -> block -> return_statement -> return:return -> unary_operator -> -:- -> integer:LIT
+----------------------------------------
+--- Clause C2 AST ---
+└── module
+    ├── expression_statement
+    │   └── assignment
+    │       ├── identifier [v0]
+    │       ├── = [=]
+    │       └── subscript
+    │           ├── identifier [v1]
+    │           ├── [ [[]
+    │           ├── integer [LIT]
+    │           └── ] []]
+    ├── expression_statement
+    │   └── assignment
+    │       ├── identifier [v2]
+    │       ├── = [=]
+    │       └── integer [LIT]
+    ├── for_statement
+    │   ├── for [for]
+    │   ├── identifier [v3]
+    │   ├── in [in]
+    │   ├── call
+    │   │   ├── identifier [range]
+    │   │   └── argument_list
+    │   │       ├── ( [(]
+    │   │       ├── integer [LIT]
+    │   │       ├── , [,]
+    │   │       ├── identifier [v4]
+    │   │       └── ) [)]
+    │   ├── : [:]
+    │   └── block
+    │       └── if_statement
+    │           ├── if [if]
+    │           ├── comparison_operator
+    │           │   ├── subscript
+    │           │   │   ├── identifier [v1]
+    │           │   │   ├── [ [[]
+    │           │   │   ├── identifier [v3]
+    │           │   │   └── ] []]
+    │           │   ├── >= [>=]
+    │           │   └── identifier [v0]
+    │           ├── : [:]
+    │           └── block
+    │               ├── expression_statement
+    │               │   └── assignment
+    │               │       ├── identifier [v0]
+    │               │       ├── = [=]
+    │               │       └── subscript
+    │               │           ├── identifier [v1]
+    │               │           ├── [ [[]
+    │               │           ├── identifier [v3]
+    │               │           └── ] []]
+    │               └── expression_statement
+    │                   └── assignment
+    │                       ├── identifier [v2]
+    │                       ├── = [=]
+    │                       └── identifier [v3]
+    └── return_statement
+        ├── return [return]
+        └── identifier [v2]
+Normalized Sequence Path:
+module -> expression_statement -> assignment -> identifier:ID -> =:= -> subscript -> identifier:ID -> [ -> integer:LIT -> ] -> expression_statement -> assignment -> identifier:ID -> =:= -> integer:LIT -> for_statement -> for:for -> identifier:ID -> in:in -> call -> identifier:ID -> argument_list -> ( -> integer:LIT -> , -> identifier:ID -> ) -> : -> block -> if_statement -> if:if -> comparison_operator -> subscript -> identifier:ID -> [ -> identifier:ID -> ] -> >=:>= -> identifier:ID -> : -> block -> expression_statement -> assignment -> identifier:ID -> =:= -> subscript -> identifier:ID -> [ -> identifier:ID -> ] -> expression_statement -> assignment -> identifier:ID -> =:= -> identifier:ID -> return_statement -> return:return -> identifier:ID
+----------------------------------------
+
+================ Program P2 ================
+--- Clause C1 AST ---
+└── module
+    └── if_statement
+        ├── if [if]
+        ├── boolean_operator
+        │   ├── comparison_operator
+        │   │   ├── identifier [v0]
+        │   │   ├── is [is]
+        │   │   └── none [LIT]
+        │   ├── or [or]
+        │   └── comparison_operator
+        │       ├── identifier [v1]
+        │       ├── <= [<=]
+        │       └── integer [LIT]
+        ├── : [:]
+        └── block
+            └── return_statement
+                ├── return [return]
+                └── unary_operator
+                    ├── - [-]
+                    └── integer [LIT]
+Normalized Sequence Path:
+module -> if_statement -> if:if -> boolean_operator -> comparison_operator -> identifier:ID -> is:is -> none:LIT -> or:or -> comparison_operator -> identifier:ID -> <=:<= -> integer:LIT -> : -> block -> return_statement -> return:return -> unary_operator -> -:- -> integer:LIT
+----------------------------------------
+--- Clause C2 AST ---
+└── module
+    ├── expression_statement
+    │   └── assignment
+    │       ├── identifier [v0]
+    │       ├── = [=]
+    │       └── subscript
+    │           ├── identifier [v1]
+    │           ├── [ [[]
+    │           ├── integer [LIT]
+    │           └── ] []]
+    ├── expression_statement
+    │   └── assignment
+    │       ├── identifier [v2]
+    │       ├── = [=]
+    │       └── integer [LIT]
+    ├── for_statement
+    │   ├── for [for]
+    │   ├── identifier [v3]
+    │   ├── in [in]
+    │   ├── call
+    │   │   ├── identifier [range]
+    │   │   └── argument_list
+    │   │       ├── ( [(]
+    │   │       ├── integer [LIT]
+    │   │       ├── , [,]
+    │   │       ├── identifier [v4]
+    │   │       └── ) [)]
+    │   ├── : [:]
+    │   └── block
+    │       └── if_statement
+    │           ├── if [if]
+    │           ├── comparison_operator
+    │           │   ├── subscript
+    │           │   │   ├── identifier [v1]
+    │           │   │   ├── [ [[]
+    │           │   │   ├── identifier [v3]
+    │           │   │   └── ] []]
+    │           │   ├── >= [>=]
+    │           │   └── identifier [v0]
+    │           ├── : [:]
+    │           └── block
+    │               ├── expression_statement
+    │               │   └── assignment
+    │               │       ├── identifier [v0]
+    │               │       ├── = [=]
+    │               │       └── subscript
+    │               │           ├── identifier [v1]
+    │               │           ├── [ [[]
+    │               │           ├── identifier [v3]
+    │               │           └── ] []]
+    │               └── expression_statement
+    │                   └── assignment
+    │                       ├── identifier [v2]
+    │                       ├── = [=]
+    │                       └── identifier [v3]
+    └── return_statement
+        ├── return [return]
+        └── identifier [v2]
+Normalized Sequence Path:
+module -> expression_statement -> assignment -> identifier:ID -> =:= -> subscript -> identifier:ID -> [ -> integer:LIT -> ] -> expression_statement -> assignment -> identifier:ID -> =:= -> integer:LIT -> for_statement -> for:for -> identifier:ID -> in:in -> call -> identifier:ID -> argument_list -> ( -> integer:LIT -> , -> identifier:ID -> ) -> : -> block -> if_statement -> if:if -> comparison_operator -> subscript -> identifier:ID -> [ -> identifier:ID -> ] -> >=:>= -> identifier:ID -> : -> block -> expression_statement -> assignment -> identifier:ID -> =:= -> subscript -> identifier:ID -> [ -> identifier:ID -> ] -> expression_statement -> assignment -> identifier:ID -> =:= -> identifier:ID -> return_statement -> return:return -> identifier:ID
+----------------------------------------
+
+================ Program P3 ================
+--- Clause C1 AST ---
+└── module
+    └── if_statement
+        ├── if [if]
+        ├── boolean_operator
+        │   ├── not_operator
+        │   │   ├── not [not]
+        │   │   └── identifier [v0]
+        │   ├── or [or]
+        │   └── comparison_operator
+        │       ├── identifier [v1]
+        │       ├── <= [<=]
+        │       └── integer [LIT]
+        ├── : [:]
+        └── block
+            └── return_statement
+                ├── return [return]
+                └── unary_operator
+                    ├── - [-]
+                    └── integer [LIT]
+Normalized Sequence Path:
+module -> if_statement -> if:if -> boolean_operator -> not_operator -> not:not -> identifier:ID -> or:or -> comparison_operator -> identifier:ID -> <=:<= -> integer:LIT -> : -> block -> return_statement -> return:return -> unary_operator -> -:- -> integer:LIT
+----------------------------------------
+--- Clause C2 AST ---
+└── module
+    ├── expression_statement
+    │   └── assignment
+    │       ├── identifier [v0]
+    │       ├── = [=]
+    │       └── subscript
+    │           ├── identifier [v1]
+    │           ├── [ [[]
+    │           ├── integer [LIT]
+    │           └── ] []]
+    ├── expression_statement
+    │   └── assignment
+    │       ├── identifier [v2]
+    │       ├── = [=]
+    │       └── integer [LIT]
+    ├── for_statement
+    │   ├── for [for]
+    │   ├── identifier [v3]
+    │   ├── in [in]
+    │   ├── call
+    │   │   ├── identifier [range]
+    │   │   └── argument_list
+    │   │       ├── ( [(]
+    │   │       ├── integer [LIT]
+    │   │       ├── , [,]
+    │   │       ├── call
+    │   │       │   ├── identifier [len]
+    │   │       │   └── argument_list
+    │   │       │       ├── ( [(]
+    │   │       │       ├── identifier [v1]
+    │   │       │       └── ) [)]
+    │   │       └── ) [)]
+    │   ├── : [:]
+    │   └── block
+    │       └── if_statement
+    │           ├── if [if]
+    │           ├── comparison_operator
+    │           │   ├── subscript
+    │           │   │   ├── identifier [v1]
+    │           │   │   ├── [ [[]
+    │           │   │   ├── identifier [v3]
+    │           │   │   └── ] []]
+    │           │   ├── > [>]
+    │           │   └── identifier [v0]
+    │           ├── : [:]
+    │           └── block
+    │               ├── expression_statement
+    │               │   └── assignment
+    │               │       ├── identifier [v0]
+    │               │       ├── = [=]
+    │               │       └── subscript
+    │               │           ├── identifier [v1]
+    │               │           ├── [ [[]
+    │               │           ├── identifier [v3]
+    │               │           └── ] []]
+    │               └── expression_statement
+    │                   └── assignment
+    │                       ├── identifier [v2]
+    │                       ├── = [=]
+    │                       └── identifier [v3]
+    └── return_statement
+        ├── return [return]
+        └── identifier [v2]
+Normalized Sequence Path:
+module -> expression_statement -> assignment -> identifier:ID -> =:= -> subscript -> identifier:ID -> [ -> integer:LIT -> ] -> expression_statement -> assignment -> identifier:ID -> =:= -> integer:LIT -> for_statement -> for:for -> identifier:ID -> in:in -> call -> identifier:ID -> argument_list -> ( -> integer:LIT -> , -> call -> identifier:ID -> argument_list -> ( -> identifier:ID -> ) -> ) -> : -> block -> if_statement -> if:if -> comparison_operator -> subscript -> identifier:ID -> [ -> identifier:ID -> ] -> >:> -> identifier:ID -> : -> block -> expression_statement -> assignment -> identifier:ID -> =:= -> subscript -> identifier:ID -> [ -> identifier:ID -> ] -> expression_statement -> assignment -> identifier:ID -> =:= -> identifier:ID -> return_statement -> return:return -> identifier:ID
+----------------------------------------
+
+================ Program P4 ================
+--- Clause C1 AST ---
+└── module
+    └── if_statement
+        ├── if [if]
+        ├── comparison_operator
+        │   ├── identifier [v0]
+        │   ├── <= [<=]
+        │   └── integer [LIT]
+        ├── : [:]
+        └── block
+            └── return_statement
+                ├── return [return]
+                └── unary_operator
+                    ├── - [-]
+                    └── integer [LIT]
+Normalized Sequence Path:
+module -> if_statement -> if:if -> comparison_operator -> identifier:ID -> <=:<= -> integer:LIT -> : -> block -> return_statement -> return:return -> unary_operator -> -:- -> integer:LIT
+----------------------------------------
+--- Clause C2 AST ---
+└── module
+    ├── expression_statement
+    │   └── assignment
+    │       ├── identifier [v0]
+    │       ├── = [=]
+    │       └── subscript
+    │           ├── identifier [v1]
+    │           ├── [ [[]
+    │           ├── integer [LIT]
+    │           └── ] []]
+    ├── expression_statement
+    │   └── assignment
+    │       ├── identifier [v2]
+    │       ├── = [=]
+    │       └── integer [LIT]
+    ├── for_statement
+    │   ├── for [for]
+    │   ├── identifier [v3]
+    │   ├── in [in]
+    │   ├── call
+    │   │   ├── identifier [range]
+    │   │   └── argument_list
+    │   │       ├── ( [(]
+    │   │       ├── integer [LIT]
+    │   │       ├── , [,]
+    │   │       ├── identifier [v4]
+    │   │       └── ) [)]
+    │   ├── : [:]
+    │   └── block
+    │       └── if_statement
+    │           ├── if [if]
+    │           ├── comparison_operator
+    │           │   ├── subscript
+    │           │   │   ├── identifier [v1]
+    │           │   │   ├── [ [[]
+    │           │   │   ├── identifier [v3]
+    │           │   │   └── ] []]
+    │           │   ├── >= [>=]
+    │           │   └── identifier [v0]
+    │           ├── : [:]
+    │           └── block
+    │               ├── expression_statement
+    │               │   └── assignment
+    │               │       ├── identifier [v0]
+    │               │       ├── = [=]
+    │               │       └── subscript
+    │               │           ├── identifier [v1]
+    │               │           ├── [ [[]
+    │               │           ├── identifier [v3]
+    │               │           └── ] []]
+    │               └── expression_statement
+    │                   └── assignment
+    │                       ├── identifier [v2]
+    │                       ├── = [=]
+    │                       └── identifier [v3]
+    └── return_statement
+        ├── return [return]
+        └── identifier [v2]
+Normalized Sequence Path:
+module -> expression_statement -> assignment -> identifier:ID -> =:= -> subscript -> identifier:ID -> [ -> integer:LIT -> ] -> expression_statement -> assignment -> identifier:ID -> =:= -> integer:LIT -> for_statement -> for:for -> identifier:ID -> in:in -> call -> identifier:ID -> argument_list -> ( -> integer:LIT -> , -> identifier:ID -> ) -> : -> block -> if_statement -> if:if -> comparison_operator -> subscript -> identifier:ID -> [ -> identifier:ID -> ] -> >=:>= -> identifier:ID -> : -> block -> expression_statement -> assignment -> identifier:ID -> =:= -> subscript -> identifier:ID -> [ -> identifier:ID -> ] -> expression_statement -> assignment -> identifier:ID -> =:= -> identifier:ID -> return_statement -> return:return -> identifier:ID
+----------------------------------------
+
+================ Program P5 ================
+--- Clause C1 AST ---
+└── module
+    └── if_statement
+        ├── if [if]
+        ├── comparison_operator
+        │   ├── identifier [v0]
+        │   ├── <= [<=]
+        │   └── integer [LIT]
+        ├── : [:]
+        └── block
+            └── return_statement
+                ├── return [return]
+                └── unary_operator
+                    ├── - [-]
+                    └── integer [LIT]
+Normalized Sequence Path:
+module -> if_statement -> if:if -> comparison_operator -> identifier:ID -> <=:<= -> integer:LIT -> : -> block -> return_statement -> return:return -> unary_operator -> -:- -> integer:LIT
+----------------------------------------
+--- Clause C2 AST ---
+└── module
+    ├── expression_statement
+    │   └── assignment
+    │       ├── identifier [v0]
+    │       ├── = [=]
+    │       └── subscript
+    │           ├── identifier [v1]
+    │           ├── [ [[]
+    │           ├── integer [LIT]
+    │           └── ] []]
+    ├── expression_statement
+    │   └── assignment
+    │       ├── identifier [v2]
+    │       ├── = [=]
+    │       └── integer [LIT]
+    ├── for_statement
+    │   ├── for [for]
+    │   ├── identifier [v3]
+    │   ├── in [in]
+    │   ├── call
+    │   │   ├── identifier [range]
+    │   │   └── argument_list
+    │   │       ├── ( [(]
+    │   │       ├── integer [LIT]
+    │   │       ├── , [,]
+    │   │       ├── identifier [v4]
+    │   │       └── ) [)]
+    │   ├── : [:]
+    │   └── block
+    │       └── if_statement
+    │           ├── if [if]
+    │           ├── comparison_operator
+    │           │   ├── subscript
+    │           │   │   ├── identifier [v1]
+    │           │   │   ├── [ [[]
+    │           │   │   ├── identifier [v3]
+    │           │   │   └── ] []]
+    │           │   ├── >= [>=]
+    │           │   └── identifier [v0]
+    │           ├── : [:]
+    │           └── block
+    │               ├── expression_statement
+    │               │   └── assignment
+    │               │       ├── identifier [v0]
+    │               │       ├── = [=]
+    │               │       └── subscript
+    │               │           ├── identifier [v1]
+    │               │           ├── [ [[]
+    │               │           ├── identifier [v3]
+    │               │           └── ] []]
+    │               └── expression_statement
+    │                   └── assignment
+    │                       ├── identifier [v2]
+    │                       ├── = [=]
+    │                       └── identifier [v3]
+    └── return_statement
+        ├── return [return]
+        └── identifier [v2]
+Normalized Sequence Path:
+module -> expression_statement -> assignment -> identifier:ID -> =:= -> subscript -> identifier:ID -> [ -> integer:LIT -> ] -> expression_statement -> assignment -> identifier:ID -> =:= -> integer:LIT -> for_statement -> for:for -> identifier:ID -> in:in -> call -> identifier:ID -> argument_list -> ( -> integer:LIT -> , -> identifier:ID -> ) -> : -> block -> if_statement -> if:if -> comparison_operator -> subscript -> identifier:ID -> [ -> identifier:ID -> ] -> >=:>= -> identifier:ID -> : -> block -> expression_statement -> assignment -> identifier:ID -> =:= -> subscript -> identifier:ID -> [ -> identifier:ID -> ] -> expression_statement -> assignment -> identifier:ID -> =:= -> identifier:ID -> return_statement -> return:return -> identifier:ID
+----------------------------------------

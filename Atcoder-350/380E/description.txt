@@ -1,0 +1,6 @@
+You are given an integer sequence A of length N. Find the maximum value in the sequence.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

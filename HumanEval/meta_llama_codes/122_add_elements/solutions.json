@@ -1,0 +1,76 @@
+{
+  "problem_num": 122,
+  "problem_name": "add_elements",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    \n    int array[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &array[i]);\n    }\n    \n    int sum_of_two_digit_numbers = 0;\n    for (int i = 0; i < k; i++) {\n        int absolute_value = abs(array[i]);\n        if (absolute_value <= 99) {\n            sum_of_two_digit_numbers += array[i];\n        }\n    }\n    \n    printf(\"%d\\n\", sum_of_two_digit_numbers);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    \n    int elements[1000];\n    int idx = 0;\n    while (idx < n) {\n        scanf(\"%d\", &elements[idx]);\n        idx++;\n    }\n    \n    int total = 0;\n    for (int j = 0; j < k; j++) {\n        int val = elements[j];\n        int abs_val = (val < 0) ? -val : val;\n        if (abs_val < 100) {\n            total += val;\n        }\n    }\n    \n    printf(\"%d\\n\", total);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, k, arr[1000], sum = 0;\n    scanf(\"%d %d\", &n, &k);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    for (int i = 0; i < k; i++) {\n        if (abs(arr[i]) <= 99) sum += arr[i];\n    }\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    \n    int nums[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &nums[i]);\n    }\n    \n    int result = 0;\n    int counter = 0;\n    while (counter < k) {\n        int current = nums[counter];\n        int magnitude = current >= 0 ? current : -current;\n        if (magnitude <= 99) {\n            result += current;\n        }\n        counter++;\n    }\n    \n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, k, a[1000], s = 0;\n    scanf(\"%d %d\", &n, &k);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (int i = 0; i < k; i++) if (abs(a[i]) < 100) s += a[i];\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": []
+    }
+  ]
+}

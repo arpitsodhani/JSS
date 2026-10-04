@@ -1,0 +1,5 @@
+You are given a string S consisting of lowercase and uppercase English letters. The length of S is odd. If the number of uppercase letters in S is greater than the number of lowercase letters, convert all lowercase letters in S to uppercase. Otherwise, convert all uppercase letters in S to lowercase.
+
+**Constraints:**
+- S consists of uppercase and lowercase English letters
+- 1 <= |S| <= 100

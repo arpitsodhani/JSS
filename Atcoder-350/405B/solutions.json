@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_s",
+          "signature": "void read_s(char *s)",
+          "code": "scanf(\"%200s\", s);\n"
+        },
+        {
+          "clause_id": "count_sub",
+          "signature": "int count_sub(const char *s)",
+          "code": "int n=(int)strlen(s), ans=0; for(int i=0;i+7<=n;i++) if(strncmp(s+i,\"ATCODER\",7)==0) ans++; return ans;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205]; read_s(s); int ans=count_sub(s); print_ans(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_s",
+          "signature": "void read_s(char *s)",
+          "code": "scanf(\"%200s\", s);\n"
+        },
+        {
+          "clause_id": "count_sub",
+          "signature": "int count_sub(const char *s)",
+          "code": "int n=(int)strlen(s); int ans=0; const char*t=\"ATCODER\"; for(int i=0;i+6<n;i++){ int ok=1; for(int k=0;k<7;k++) if(s[i+k]!=t[k]){ ok=0; break; } ans+=ok; } return ans;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205]; read_s(s); int ans=count_sub(s); print_ans(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_s",
+          "signature": "void read_s(char *s)",
+          "code": "scanf(\"%200s\", s);\n"
+        },
+        {
+          "clause_id": "count_sub",
+          "signature": "int count_sub(const char *s)",
+          "code": "int n=(int)strlen(s), ans=0; for(int i=0;i+6<n;i++){ if(s[i]=='A'&&s[i+1]=='T'&&s[i+2]=='C'&&s[i+3]=='O'&&s[i+4]=='D'&&s[i+5]=='E'&&s[i+6]=='R') ans++; } return ans;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205]; read_s(s); int ans=count_sub(s); print_ans(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_s",
+          "signature": "void read_s(char *s)",
+          "code": "scanf(\"%200s\", s);\n"
+        },
+        {
+          "clause_id": "count_sub",
+          "signature": "int count_sub(const char *s)",
+          "code": "int n=(int)strlen(s), ans=0; for(int i=0;i+6<n;i++){ if(s[i]!='A') continue; if(memcmp(s+i,\"ATCODER\",7)==0) ans++; } return ans;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205]; read_s(s); int ans=count_sub(s); print_ans(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_s",
+          "signature": "void read_s(char *s)",
+          "code": "scanf(\"%200s\", s);\n"
+        },
+        {
+          "clause_id": "count_sub",
+          "signature": "int count_sub(const char *s)",
+          "code": "int n=(int)strlen(s); unsigned long long target=0; const char*t=\"ATCODER\"; for(int k=0;k<7;k++) target=target*131ull+(unsigned long long)t[k]; int ans=0; for(int i=0;i+7<=n;i++){ unsigned long long h=0; for(int k=0;k<7;k++) h=h*131ull+(unsigned long long)s[i+k]; if(h==target) ans++; } return ans;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205]; read_s(s); int ans=count_sub(s); print_ans(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

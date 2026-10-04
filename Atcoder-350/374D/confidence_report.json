@@ -1,0 +1,25 @@
+{
+  "average_confidence": 0.86,
+  "clauses": [
+    {
+      "clause": "compute_legendre_symbol",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_quadratic_nonresidue",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "modular_power_fast",
+      "confidence": 1.0
+    },
+    {
+      "clause": "tonelli_shanks_sqrt",
+      "confidence": 0.29999999999999993
+    }
+  ]
+}

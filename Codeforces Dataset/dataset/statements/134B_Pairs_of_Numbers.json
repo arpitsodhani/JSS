@@ -1,0 +1,33 @@
+{
+  "contestId": 134,
+  "index": "B",
+  "problem_id": "134B",
+  "name": "Pairs of Numbers",
+  "rating": 1900,
+  "tags": [
+    "brute force",
+    "dfs and similar",
+    "math",
+    "number theory"
+  ],
+  "points": 1000.0,
+  "solvedCount": 2536,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Pairs of Numbers",
+  "legend": "Let's assume that we have a pair of numbers (a, b). We can get a new pair (a + b, b) or (a, a + b) from the given pair in a single step.\n\nLet the initial pair of numbers be (1,1). Your task is to find number k, that is, the least number of steps needed to transform (1,1) into the pair where at least one number equals n.",
+  "input_spec": "The input contains the only integer n (1 ≤ n ≤ 106).",
+  "output_spec": "Print the only integer k.",
+  "note": "The pair (1,1) can be transformed into a pair containing 5 in three moves: (1,1)  →  (1,2)  →  (3,2)  →  (5,2).",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n",
+      "output": "3"
+    },
+    {
+      "input": "1\n",
+      "output": "0"
+    }
+  ]
+}

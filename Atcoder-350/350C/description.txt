@@ -1,0 +1,6 @@
+You are given a permutation A=(A_1,\ldots,A_N) of (1,2,\ldots,N) . Transform A into (1,2,\ldots,N) by performing the following operation between 0 and N-1 times, inclusive: Operation: Choose any pair of integers (i,j) such that 1\leq i < j \leq N . Swap the elements at the i -th and j -th positions of A . It can be proved that under the given , it is always possible to transform A into (1,2,\ldots,N) .
+
+**Constraints:**
+- 2 \leq N \leq 2\times 10^5
+- (A_1,\ldots,A_N) (1,2,\ldots,N)
+- integers

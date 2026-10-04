@@ -1,0 +1,7 @@
+You are given permutations P = (P_1, P_2, \ldots, P_N) and A = (A_1, A_2, \ldots, A_N) of (1,2,\ldots,N) . You can perform the following operation any number of times, possibly zero: replace A_i with A_{P_i} simultaneously for all i=1,2,\ldots,N . Print the lexicographically smallest A that can be obtained. What is lexicographical order? For sequences of length N , A = (A_1, A_2, \ldots, A_N) and B = (B_1, B_2, \ldots, B_N) , A is lexicographically smaller than B if and only if: there exists an integer i\ (1\leq i\leq N) such that A_i < B_i , and A_j = B_j for all 1\leq j < i .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- P is a permutation of (1, 2, ..., N)
+- 1 <= A_i <= N
+- All input values are integers

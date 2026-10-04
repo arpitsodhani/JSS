@@ -1,0 +1,6 @@
+Team Takahashi and Team Aoki are playing a baseball game, with Team Takahashi batting first. Currently, the game has finished through the top of the ninth inning, and the bottom of the ninth is about to begin. Team Takahashi scored A_i runs in the top of the i -th inning (1\leq i\leq 9) , and Team Aoki scored B_j runs in the bottom of the j -th inning (1\leq j\leq 8) . At the end of the top of the ninth, Team Takahashi's is not less than Team Aoki's . Determine the minimum number of runs Team Aoki needs to in the bottom of the ninth to win the game. Here, if the game is tied at the end of the bottom of the ninth, it results in a draw. Therefore, for Team Aoki to win, they must strictly more runs than Team Takahashi by the end of the bottom of the ninth. Team Takahashi's at any is the total runs scored in the tops of the innings up to that , and Team Aoki's is the total runs scored in the bottoms of the innings.
+
+**Constraints:**
+- 0\leq A_i, B_j\leq 99
+- A_1 + A_2 + A_3 + A_4 + A_5 + A_6 + A_7 + A_8 + A_9 \geq B_1 + B_2 + B_3 + B_4 + B_5 + B_6 + B_7 + B_8
+- allintegers

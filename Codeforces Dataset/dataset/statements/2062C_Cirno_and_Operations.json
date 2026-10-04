@@ -1,0 +1,27 @@
+{
+  "contestId": 2062,
+  "index": "C",
+  "problem_id": "2062C",
+  "name": "Cirno and Operations",
+  "rating": 1200,
+  "tags": [
+    "brute force",
+    "math"
+  ],
+  "points": 1000.0,
+  "solvedCount": 18660,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Cirno and Operations",
+  "legend": "Cirno has a sequence a of length n. She can perform either of the following two operations for any (possibly, zero) times unless the current length of a is 1:\n\nReverse the sequence. Formally, [a1,a2,…,an] becomes [an,an−1,…,a1] after the operation.\nReplace the sequence with its difference sequence. Formally, [a1,a2,…,an] becomes [a2−a1,a3−a2,…,an−an−1] after the operation.\n\nFind the maximum possible sum of elements of a after all operations.",
+  "input_spec": "The first line of input contains a single integer t (1≤t≤100) — the number of input test cases.\n\nThe first line of each test case contains a single integer n (1≤n≤50) — the length of sequence a.\n\nThe second line of each test case contains n integers a1,a2,…,an (|ai|≤1000) — the sequence a.",
+  "output_spec": "For each test case, print an integer representing the maximum possible sum.",
+  "note": "In the first test case, Cirno can not perform any operation, so the answer is −1000.\n\nIn the second test case, Cirno firstly reverses the sequence, then replaces the sequence with its difference sequence: [5,−3]→[−3,5]→[8]. It can be proven that this maximizes the sum, so the answer is 8.\n\nIn the third test case, Cirno can choose not to operate, so the answer is 1001.",
+  "time_limit": "2 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "5\n1\n-1000\n2\n5 -3\n2\n1000 1\n9\n9 7 9 -9 9 -8 7 -8 9\n11\n678 201 340 444 453 922 128 987 127 752 0\n",
+      "output": "-1000\n8\n1001\n2056\n269891"
+    }
+  ]
+}

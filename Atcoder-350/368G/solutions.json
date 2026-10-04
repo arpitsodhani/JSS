@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_node_indegrees",
+          "signature": "void compute_node_indegrees(int n, int adj[1005][1005], int *adj_count, int *indegree)",
+          "code": "void compute_node_indegrees(int n, int adj[1005][1005], int *adj_count, int *indegree) {\n    for (int i = 0; i < n; i++) {\n        indegree[i] = 0;\n    }\n    for (int u = 0; u < n; u++) {\n        for (int i = 0; i < adj_count[u]; i++) {\n            int v = adj[u][i];\n            indegree[v]++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "find_zero_indegree_node",
+          "signature": "int find_zero_indegree_node(int n, int *indegree, int *processed)",
+          "code": "int find_zero_indegree_node(int n, int *indegree, int *processed) {\n    for (int i = 0; i < n; i++) {\n        if (!processed[i] && indegree[i] == 0) {\n            return i;\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "generate_topological_order",
+          "signature": "int generate_topological_order(int n, int adj[1005][1005], int *adj_count, int *order)",
+          "code": "int generate_topological_order(int n, int adj[1005][1005], int *adj_count, int *order) {\n    int indegree[1005], processed[1005] = {0};\n    compute_node_indegrees(n, adj, adj_count, indegree);\n    int count = 0;\n    \n    while (1) {\n        int node = find_zero_indegree_node(n, indegree, processed);\n        if (node == -1) break;\n        processed[node] = 1;\n        order[count++] = node;\n        for (int i = 0; i < adj_count[node]; i++) {\n            indegree[adj[node][i]]--;\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, adj[1005][1005], adj_count[1005] = {0}, order[1005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n    }\n    int count = generate_topological_order(n, adj, adj_count, order);\n    if (count != n) {\n        printf(\"-1\\n\");\n    } else {\n        for (int i = 0; i < n; i++) {\n            printf(\"%d \", order[i] + 1);\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_node_indegrees",
+          "signature": "void compute_node_indegrees(int n, int adj[1005][1005], int *adj_count, int *indegree)",
+          "code": "void compute_node_indegrees(int n, int adj[1005][1005], int *adj_count, int *indegree) {\n    for (int i = 0; i < n; i++) {\n        indegree[i] = 0;\n    }\n    for (int u = 0; u < n; u++) {\n        for (int i = 0; i < adj_count[u]; i++) {\n            int v = adj[u][i];\n            indegree[v]++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "find_zero_indegree_node",
+          "signature": "int find_zero_indegree_node(int n, int *indegree, int *processed)",
+          "code": "int find_zero_indegree_node(int n, int *indegree, int *processed) {\n    for (int i = 0; i < n; i++) {\n        if (!processed[i] && indegree[i] == 0) {\n            return i;\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "generate_topological_order",
+          "signature": "int generate_topological_order(int n, int adj[1005][1005], int *adj_count, int *order)",
+          "code": "int generate_topological_order(int n, int adj[1005][1005], int *adj_count, int *order) {\n    int indegree[1005], processed[1005] = {0};\n    compute_node_indegrees(n, adj, adj_count, indegree);\n    int count = 0;\n    \n    while (1) {\n        int node = find_zero_indegree_node(n, indegree, processed);\n        if (node == -1) break;\n        processed[node] = 1;\n        order[count++] = node;\n        for (int i = 0; i < adj_count[node]; i++) {\n            indegree[adj[node][i]]--;\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, adj[1005][1005], adj_count[1005] = {0}, order[1005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n    }\n    int count = generate_topological_order(n, adj, adj_count, order);\n    if (count != n) {\n        printf(\"-1\\n\");\n    } else {\n        for (int i = 0; i < n; i++) {\n            printf(\"%d \", order[i] + 1);\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_node_indegrees",
+          "signature": "void compute_node_indegrees(int n, int adj[1005][1005], int *adj_count, int *indegree)",
+          "code": "void compute_node_indegrees(int n, int adj[1005][1005], int *adj_count, int *indegree) {\n    for (int i = 0; i < n; i++) {\n        indegree[i] = 0;\n    }\n    for (int u = 0; u < n; u++) {\n        for (int i = 0; i < adj_count[u]; i++) {\n            int v = adj[u][i];\n            indegree[v]++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "find_zero_indegree_node",
+          "signature": "int find_zero_indegree_node(int n, int *indegree, int *processed)",
+          "code": "int find_zero_indegree_node(int n, int *indegree, int *processed) {\n    for (int i = 0; i < n; i++) {\n        if (!processed[i] && indegree[i] == 0) {\n            return i;\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "generate_topological_order",
+          "signature": "int generate_topological_order(int n, int adj[1005][1005], int *adj_count, int *order)",
+          "code": "int generate_topological_order(int n, int adj[1005][1005], int *adj_count, int *order) {\n    int indegree[1005], processed[1005] = {0};\n    compute_node_indegrees(n, adj, adj_count, indegree);\n    int count = 0;\n    \n    while (1) {\n        int node = find_zero_indegree_node(n, indegree, processed);\n        if (node == -1) break;\n        processed[node] = 1;\n        order[count++] = node;\n        for (int i = 0; i < adj_count[node]; i++) {\n            indegree[adj[node][i]]--;\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, adj[1005][1005], adj_count[1005] = {0}, order[1005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n    }\n    int count = generate_topological_order(n, adj, adj_count, order);\n    if (count != n) {\n        printf(\"-1\\n\");\n    } else {\n        for (int i = 0; i < n; i++) {\n            printf(\"%d \", order[i] + 1);\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_node_indegrees",
+          "signature": "void compute_node_indegrees(int n, int adj[1005][1005], int *adj_count, int *indegree)",
+          "code": "void compute_node_indegrees(int n, int adj[1005][1005], int *adj_count, int *indegree) {\n    for (int i = 0; i < n; i++) {\n        indegree[i] = 0;\n    }\n    for (int u = 0; u < n; u++) {\n        for (int i = 0; i < adj_count[u]; i++) {\n            int v = adj[u][i];\n            indegree[v]++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "find_zero_indegree_node",
+          "signature": "int find_zero_indegree_node(int n, int *indegree, int *processed)",
+          "code": "int find_zero_indegree_node(int n, int *indegree, int *processed) {\n    for (int i = 0; i < n; i++) {\n        if (!processed[i] && indegree[i] == 0) {\n            return i;\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "generate_topological_order",
+          "signature": "int generate_topological_order(int n, int adj[1005][1005], int *adj_count, int *order)",
+          "code": "int generate_topological_order(int n, int adj[1005][1005], int *adj_count, int *order) {\n    int indegree[1005], processed[1005] = {0};\n    compute_node_indegrees(n, adj, adj_count, indegree);\n    int count = 0;\n    \n    while (1) {\n        int node = find_zero_indegree_node(n, indegree, processed);\n        if (node == -1) break;\n        processed[node] = 1;\n        order[count++] = node;\n        for (int i = 0; i < adj_count[node]; i++) {\n            indegree[adj[node][i]]--;\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, adj[1005][1005], adj_count[1005] = {0}, order[1005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n    }\n    int count = generate_topological_order(n, adj, adj_count, order);\n    if (count != n) {\n        printf(\"-1\\n\");\n    } else {\n        for (int i = 0; i < n; i++) {\n            printf(\"%d \", order[i] + 1);\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_node_indegrees",
+          "signature": "void compute_node_indegrees(int n, int adj[1005][1005], int *adj_count, int *indegree)",
+          "code": "void compute_node_indegrees(int n, int adj[1005][1005], int *adj_count, int *indegree) {\n    for (int i = 0; i < n; i++) {\n        indegree[i] = 0;\n    }\n    for (int u = 0; u < n; u++) {\n        for (int i = 0; i < adj_count[u]; i++) {\n            int v = adj[u][i];\n            indegree[v]++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "find_zero_indegree_node",
+          "signature": "int find_zero_indegree_node(int n, int *indegree, int *processed)",
+          "code": "int find_zero_indegree_node(int n, int *indegree, int *processed) {\n    for (int i = 0; i < n; i++) {\n        if (!processed[i] && indegree[i] == 0) {\n            return i;\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "generate_topological_order",
+          "signature": "int generate_topological_order(int n, int adj[1005][1005], int *adj_count, int *order)",
+          "code": "int generate_topological_order(int n, int adj[1005][1005], int *adj_count, int *order) {\n    int indegree[1005], processed[1005] = {0};\n    compute_node_indegrees(n, adj, adj_count, indegree);\n    int count = 0;\n    \n    while (1) {\n        int node = find_zero_indegree_node(n, indegree, processed);\n        if (node == -1) break;\n        processed[node] = 1;\n        order[count++] = node;\n        for (int i = 0; i < adj_count[node]; i++) {\n            indegree[adj[node][i]]--;\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, m, adj[1005][1005], adj_count[1005] = {0}, order[1005];\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        adj[u][adj_count[u]++] = v;\n    }\n    int count = generate_topological_order(n, adj, adj_count, order);\n    if (count != n) {\n        printf(\"-1\\n\");\n    } else {\n        for (int i = 0; i < n; i++) {\n            printf(\"%d \", order[i] + 1);\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

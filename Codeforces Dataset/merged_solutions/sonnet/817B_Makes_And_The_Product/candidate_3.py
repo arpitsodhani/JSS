@@ -1,0 +1,31 @@
+import sys
+
+
+# --- clause: read_input :: () -> list[int] ---
+def read_input():
+    fields = list(map(int, sys.stdin.buffer.read().split()))
+    return fields[1:1 + fields[0]]
+
+
+# --- clause: count_triples :: (a: list[int]) -> int ---
+def count_triples(a):
+    arranged = sorted(a)
+    first = arranged[0]
+    follow = arranged[1]
+    third = arranged[2]
+    if first == third:
+        total = a.count(first)
+        return total * (total - 1) * (total - 2) // 6
+    if follow == third:
+        total = a.count(follow)
+        return total * (total - 1) // 2
+    return a.count(third)
+
+
+# --- clause: main :: () -> None ---
+def main():
+    sys.stdout.write("%d\n" % count_triples(read_input()))
+
+
+if __name__ == "__main__":
+    main()

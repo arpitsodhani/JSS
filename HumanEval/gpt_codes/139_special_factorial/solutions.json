@@ -1,0 +1,139 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main_prog1",
+          "code": "long long factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nlong long special_factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= factorial(i);\n    }\n    return result;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    long long result = special_factorial(n);\n    printf(\"%lld\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main_prog2",
+          "code": "long long factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nlong long special_factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= factorial(i);\n    }\n    return result;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    long long result = special_factorial(n);\n    printf(\"%lld\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main_prog3",
+          "code": "long long factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nlong long special_factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= factorial(i);\n    }\n    return result;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    long long result = special_factorial(n);\n    printf(\"%lld\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main_prog4",
+          "code": "long long factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nlong long special_factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= factorial(i);\n    }\n    return result;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    long long result = special_factorial(n);\n    printf(\"%lld\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main_prog5",
+          "code": "long long factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nlong long special_factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= factorial(i);\n    }\n    return result;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    long long result = special_factorial(n);\n    printf(\"%lld\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+You are given the first N terms A _ 1,A _ 2,\dotsc,A _ N of an infinite sequence A=(A _ 1,A _ 2,A _ 3,\dotsc) that has period N . Determine if there exists a non-empty contiguous subsequence of this infinite sequence whose sum is S . Here, an infinite sequence A has period N when A _ i=A _ {i-N} for every integer i>N .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= S <= 10^{18}
+- 1 <= A_i <= 10^9
+- All input values are integers

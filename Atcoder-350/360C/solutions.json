@@ -1,0 +1,148 @@
+{
+  "problem_id": "360C",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_items",
+          "signature": "int read_items(int a[], int w[])",
+          "code": "int read_items(int a[], int w[]) { int n; scanf(\"%d\", &n); for(int i = 0; i < n; i++) scanf(\"%d\", &a[i]); for(int i = 0; i < n; i++) scanf(\"%d\", &w[i]); return n; }"
+        },
+        {
+          "clause_id": "find_box_weights",
+          "signature": "void find_box_weights(int n, int a[], int w[], int box_max[])",
+          "code": "void find_box_weights(int n, int a[], int w[], int box_max[]) { for(int i = 1; i <= n; i++) box_max[i] = 0; for(int i = 0; i < n; i++) { int box = a[i]; if(w[i] > box_max[box]) box_max[box] = w[i]; } }"
+        },
+        {
+          "clause_id": "compute_minimum_cost",
+          "signature": "long long compute_minimum_cost(int n, int a[], int w[], int box_max[])",
+          "code": "long long compute_minimum_cost(int n, int a[], int w[], int box_max[]) { long long total = 0; for(int i = 0; i < n; i++) total += w[i]; for(int i = 1; i <= n; i++) total -= box_max[i]; return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int a[100005], w[100005], box_max[100005]; int n = read_items(a, w); find_box_weights(n, a, w, box_max); printf(\"%lld\\n\", compute_minimum_cost(n, a, w, box_max)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_items",
+          "signature": "int read_items(int a[], int w[])",
+          "code": "int read_items(int a[], int w[]) { int n; scanf(\"%d\", &n); int i; for(i = 0; i < n; i++) scanf(\"%d\", &a[i]); for(i = 0; i < n; i++) scanf(\"%d\", &w[i]); return n; }"
+        },
+        {
+          "clause_id": "find_box_weights",
+          "signature": "void find_box_weights(int n, int a[], int w[], int box_max[])",
+          "code": "void find_box_weights(int n, int a[], int w[], int box_max[]) { int j; for(j = 1; j <= n; j++) box_max[j] = 0; for(j = 0; j < n; j++) { int b = a[j]; if(w[j] > box_max[b]) box_max[b] = w[j]; } }"
+        },
+        {
+          "clause_id": "compute_minimum_cost",
+          "signature": "long long compute_minimum_cost(int n, int a[], int w[], int box_max[])",
+          "code": "long long compute_minimum_cost(int n, int a[], int w[], int box_max[]) { long long sum = 0; int k; for(k = 0; k < n; k++) sum += w[k]; for(k = 1; k <= n; k++) sum -= box_max[k]; return sum; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int boxes[100005], weights[100005], max_weights[100005]; int count = read_items(boxes, weights); find_box_weights(count, boxes, weights, max_weights); printf(\"%lld\\n\", compute_minimum_cost(count, boxes, weights, max_weights)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_items",
+          "signature": "int read_items(int a[], int w[])",
+          "code": "int read_items(int a[], int w[]) { int n; scanf(\"%d\", &n); for(int p = 0; p < n; p++) scanf(\"%d\", a + p); for(int p = 0; p < n; p++) scanf(\"%d\", w + p); return n; }"
+        },
+        {
+          "clause_id": "find_box_weights",
+          "signature": "void find_box_weights(int n, int a[], int w[], int box_max[])",
+          "code": "void find_box_weights(int n, int a[], int w[], int box_max[]) { for(int q = 1; q <= n; q++) box_max[q] = 0; for(int q = 0; q < n; q++) { int target = a[q]; if(w[q] > box_max[target]) box_max[target] = w[q]; } }"
+        },
+        {
+          "clause_id": "compute_minimum_cost",
+          "signature": "long long compute_minimum_cost(int n, int a[], int w[], int box_max[])",
+          "code": "long long compute_minimum_cost(int n, int a[], int w[], int box_max[]) { long long result = 0; for(int r = 0; r < n; r++) result = result + w[r]; for(int r = 1; r <= n; r++) result = result - box_max[r]; return result; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int locations[100005], item_weights[100005], heaviest[100005]; int size = read_items(locations, item_weights); find_box_weights(size, locations, item_weights, heaviest); printf(\"%lld\\n\", compute_minimum_cost(size, locations, item_weights, heaviest)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_items",
+          "signature": "int read_items(int a[], int w[])",
+          "code": "int read_items(int a[], int w[]) { int n; scanf(\"%d\", &n); for(int idx = 0; idx < n; idx++) scanf(\"%d\", &a[idx]); for(int idx = 0; idx < n; idx++) scanf(\"%d\", &w[idx]); return n; }"
+        },
+        {
+          "clause_id": "find_box_weights",
+          "signature": "void find_box_weights(int n, int a[], int w[], int box_max[])",
+          "code": "void find_box_weights(int n, int a[], int w[], int box_max[]) { for(int m = 1; m <= n; m++) box_max[m] = 0; for(int m = 0; m < n; m++) { int box_id = a[m]; if(w[m] > box_max[box_id]) box_max[box_id] = w[m]; } }"
+        },
+        {
+          "clause_id": "compute_minimum_cost",
+          "signature": "long long compute_minimum_cost(int n, int a[], int w[], int box_max[])",
+          "code": "long long compute_minimum_cost(int n, int a[], int w[], int box_max[]) { long long total_weight = 0; for(int s = 0; s < n; s++) total_weight += w[s]; for(int s = 1; s <= n; s++) total_weight -= box_max[s]; return total_weight; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int box_ids[100005], item_w[100005], max_per_box[100005]; int num = read_items(box_ids, item_w); find_box_weights(num, box_ids, item_w, max_per_box); printf(\"%lld\\n\", compute_minimum_cost(num, box_ids, item_w, max_per_box)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_items",
+          "signature": "int read_items(int a[], int w[])",
+          "code": "int read_items(int a[], int w[]) { int n; scanf(\"%d\", &n); for(int t = 0; t < n; t++) scanf(\"%d\", &a[t]); for(int t = 0; t < n; t++) scanf(\"%d\", &w[t]); return n; }"
+        },
+        {
+          "clause_id": "find_box_weights",
+          "signature": "void find_box_weights(int n, int a[], int w[], int box_max[])",
+          "code": "void find_box_weights(int n, int a[], int w[], int box_max[]) { for(int u = 1; u <= n; u++) box_max[u] = 0; for(int u = 0; u < n; u++) { int container = a[u]; if(w[u] > box_max[container]) box_max[container] = w[u]; } }"
+        },
+        {
+          "clause_id": "compute_minimum_cost",
+          "signature": "long long compute_minimum_cost(int n, int a[], int w[], int box_max[])",
+          "code": "long long compute_minimum_cost(int n, int a[], int w[], int box_max[]) { long long cost = 0; for(int v = 0; v < n; v++) cost += w[v]; for(int v = 1; v <= n; v++) cost -= box_max[v]; return cost; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int container_ids[100005], weights[100005], maximum[100005]; int n = read_items(container_ids, weights); find_box_weights(n, container_ids, weights, maximum); printf(\"%lld\\n\", compute_minimum_cost(n, container_ids, weights, maximum)); return 0; }"
+        }
+      ]
+    }
+  ]
+}

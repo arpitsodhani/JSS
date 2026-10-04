@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "fizz_buzz",
+          "code": "int fizz_buzz(int n) {\n    int count = 0;\n    for (int i = 1; i < n; i++) {\n        if (i % 11 == 0 || i % 13 == 0) {\n            int temp = i;\n            while (temp > 0) {\n                if (temp % 10 == 7) count++;\n                temp /= 10;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fizz_buzz(n));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "count_sevens",
+          "code": "int count_sevens(int limit) {\n    int total = 0;\n    for (int i = 1; i < limit; i++) {\n        if (i % 11 == 0 || i % 13 == 0) {\n            int num = i;\n            while (num > 0) {\n                if (num % 10 == 7) total++;\n                num /= 10;\n            }\n        }\n    }\n    return total;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int x;\n    scanf(\"%d\", &x);\n    printf(\"%d\\n\", count_sevens(x));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "count_digit7",
+          "code": "int count_digit7(int n) {\n    int res=0;\n    for(int i=1;i<n;i++) if(i%11==0||i%13==0){int t=i;while(t>0){if(t%10==7)res++;t/=10;}}\n    return res;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\",&n);\n    printf(\"%d\\n\",count_digit7(n));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "sevens_in_multiples",
+          "code": "int sevens_in_multiples(int lim) {\n    int cnt=0;\n    int i=1;\n    while(i<lim){if(i%11==0||i%13==0){int v=i;while(v){if(v%10==7)cnt++;v/=10;}}i++;}\n    return cnt;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int lim;\n    scanf(\"%d\",&lim);\n    printf(\"%d\\n\",sevens_in_multiples(lim));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "digit7_count",
+          "code": "int digit7_count(int bound) {\n    int total=0;\n    for(int k=1;k<bound;k++) if(k%11==0||k%13==0){int num=k;do{if(num%10==7)total++;num/=10;}while(num);}\n    return total;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int bound;\n    scanf(\"%d\",&bound);\n    printf(\"%d\\n\",digit7_count(bound));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

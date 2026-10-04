@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "push_lazy_updates",
+      "confidence": 1.0
+    },
+    {
+      "clause": "query_range_sum_lazy",
+      "confidence": 1.0
+    },
+    {
+      "clause": "update_range_lazy",
+      "confidence": 1.0
+    }
+  ]
+}

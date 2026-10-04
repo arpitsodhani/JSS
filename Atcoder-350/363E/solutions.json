@@ -1,0 +1,110 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(int *h, int *w, int *y, char grid[][1005])",
+          "code": "void read_grid(int *h, int *w, int *y, char grid[][1005]) {\n    scanf(\"%d %d %d\", h, w, y);\n    for (int i = 0; i < *h; i++) scanf(\"%s\", grid[i]);\n}"
+        },
+        {
+          "clause_id": "simulate_sinking",
+          "signature": "void simulate_sinking(int h, int w, int y, char grid[][1005], int *result)",
+          "code": "void simulate_sinking(int h, int w, int y, char grid[][1005], int *result) {\n    for (int year = 0; year <= y; year++) {\n        int count = 0;\n        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n                if (grid[i][j] == '#') count++;\n            }\n        }\n        result[year] = count;\n        if (year == y) break;\n        char temp[1005][1005];\n        for (int i = 0; i < h; i++) strcpy(temp[i], grid[i]);\n        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n                if (grid[i][j] == '#') {\n                    int water_count = 0;\n                    if (i > 0 && grid[i-1][j] == '.') water_count++;\n                    if (i < h-1 && grid[i+1][j] == '.') water_count++;\n                    if (j > 0 && grid[i][j-1] == '.') water_count++;\n                    if (j < w-1 && grid[i][j+1] == '.') water_count++;\n                    if (water_count >= 2) temp[i][j] = '.';\n                }\n            }\n        }\n        for (int i = 0; i < h; i++) strcpy(grid[i], temp[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int h, w, y;\n    char grid[1005][1005];\n    int result[100005];\n    read_grid(&h, &w, &y, grid);\n    simulate_sinking(h, w, y, grid, result);\n    for (int i = 0; i <= y; i++) printf(\"%d\\n\", result[i]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "int read_grid(int *h, int *w, int *y, char map[][1005])",
+          "code": "int read_grid(int *h, int *w, int *y, char map[][1005]) {\n    scanf(\"%d %d %d\", h, w, y);\n    for (int i = 0; i < *h; i++) scanf(\"%s\", map[i]);\n    return *h;\n}"
+        },
+        {
+          "clause_id": "simulate_sinking",
+          "signature": "void simulate_sinking(int h, int w, int y, char map[][1005], int *ans)",
+          "code": "void simulate_sinking(int h, int w, int y, char map[][1005], int *ans) {\n    for (int t = 0; t <= y; t++) {\n        int cnt = 0;\n        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n                if (map[i][j] == '#') cnt++;\n            }\n        }\n        ans[t] = cnt;\n        if (t == y) break;\n        char copy[1005][1005];\n        for (int i = 0; i < h; i++) strcpy(copy[i], map[i]);\n        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n                if (map[i][j] == '#') {\n                    int adj = 0;\n                    if (i > 0 && map[i-1][j] == '.') adj++;\n                    if (i < h-1 && map[i+1][j] == '.') adj++;\n                    if (j > 0 && map[i][j-1] == '.') adj++;\n                    if (j < w-1 && map[i][j+1] == '.') adj++;\n                    if (adj >= 2) copy[i][j] = '.';\n                }\n            }\n        }\n        for (int i = 0; i < h; i++) strcpy(map[i], copy[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int h, w, y;\n    char map[1005][1005];\n    int ans[100005];\n    read_grid(&h, &w, &y, map);\n    simulate_sinking(h, w, y, map, ans);\n    for (int i = 0; i <= y; i++) printf(\"%d\\n\", ans[i]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(int *h, int *w, int *years, char *island)",
+          "code": "void read_grid(int *h, int *w, int *years, char *island) {\n    scanf(\"%d %d %d\", h, w, years);\n    for (int i = 0; i < *h; i++) scanf(\"%s\", island + i * 1005);\n}"
+        },
+        {
+          "clause_id": "simulate_sinking",
+          "signature": "void simulate_sinking(int h, int w, int years, char *island, int *output)",
+          "code": "void simulate_sinking(int h, int w, int years, char *island, int *output) {\n    for (int yr = 0; yr <= years; yr++) {\n        int total = 0;\n        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n                if (island[i * 1005 + j] == '#') total++;\n            }\n        }\n        output[yr] = total;\n        if (yr == years) break;\n        char backup[1005 * 1005];\n        memcpy(backup, island, h * 1005);\n        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n                if (island[i * 1005 + j] == '#') {\n                    int water = 0;\n                    if (i > 0 && island[(i-1) * 1005 + j] == '.') water++;\n                    if (i < h-1 && island[(i+1) * 1005 + j] == '.') water++;\n                    if (j > 0 && island[i * 1005 + j-1] == '.') water++;\n                    if (j < w-1 && island[i * 1005 + j+1] == '.') water++;\n                    if (water >= 2) backup[i * 1005 + j] = '.';\n                }\n            }\n        }\n        memcpy(island, backup, h * 1005);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int h, w, years;\n    char island[1005 * 1005];\n    int output[100005];\n    read_grid(&h, &w, &years, &island);\n    simulate_sinking(h, w, years, &island, output);\n    for (int i = 0; i <= years; i++) printf(\"%d\\n\", output[i]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "long long read_grid(int *h, int *w, int *y, char grid[][1005])",
+          "code": "long long read_grid(int *h, int *w, int *y, char grid[][1005]) {\n    scanf(\"%d %d %d\", h, w, y);\n    for (int i = 0; i < *h; i++) scanf(\"%s\", grid[i]);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "simulate_sinking",
+          "signature": "void simulate_sinking(int h, int w, int y, char grid[][1005], int *res)",
+          "code": "void simulate_sinking(int h, int w, int y, char grid[][1005], int *res) {\n    for (int step = 0; step <= y; step++) {\n        int land = 0;\n        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n                if (grid[i][j] == '#') land++;\n            }\n        }\n        res[step] = land;\n        if (step == y) break;\n        char next[1005][1005];\n        for (int i = 0; i < h; i++) strcpy(next[i], grid[i]);\n        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n                if (grid[i][j] == '#') {\n                    int seas = 0;\n                    if (i > 0 && grid[i-1][j] == '.') seas++;\n                    if (i < h-1 && grid[i+1][j] == '.') seas++;\n                    if (j > 0 && grid[i][j-1] == '.') seas++;\n                    if (j < w-1 && grid[i][j+1] == '.') seas++;\n                    if (seas >= 2) next[i][j] = '.';\n                }\n            }\n        }\n        for (int i = 0; i < h; i++) strcpy(grid[i], next[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int h, w, y;\n    char grid[1005][1005];\n    int res[100005];\n    read_grid(&h, &w, &y, grid);\n    simulate_sinking(h, w, y, grid, res);\n    for (int i = 0; i <= y; i++) printf(\"%d\\n\", res[i]);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "read_grid",
+          "signature": "void read_grid(int *height, int *width, int *duration, char cells[][1005])",
+          "code": "void read_grid(int *height, int *width, int *duration, char cells[][1005]) {\n    scanf(\"%d %d %d\", height, width, duration);\n    for (int i = 0; i < *height; i++) scanf(\"%s\", cells[i]);\n}"
+        },
+        {
+          "clause_id": "simulate_sinking",
+          "signature": "void simulate_sinking(int height, int width, int duration, char cells[][1005], int *areas)",
+          "code": "void simulate_sinking(int height, int width, int duration, char cells[][1005], int *areas) {\n    for (int year = 0; year <= duration; year++) {\n        int area = 0;\n        for (int i = 0; i < height; i++) {\n            for (int j = 0; j < width; j++) {\n                if (cells[i][j] == '#') area++;\n            }\n        }\n        areas[year] = area;\n        if (year == duration) break;\n        char new_state[1005][1005];\n        for (int i = 0; i < height; i++) strcpy(new_state[i], cells[i]);\n        for (int i = 0; i < height; i++) {\n            for (int j = 0; j < width; j++) {\n                if (cells[i][j] == '#') {\n                    int adjacent_water = 0;\n                    if (i > 0 && cells[i-1][j] == '.') adjacent_water++;\n                    if (i < height-1 && cells[i+1][j] == '.') adjacent_water++;\n                    if (j > 0 && cells[i][j-1] == '.') adjacent_water++;\n                    if (j < width-1 && cells[i][j+1] == '.') adjacent_water++;\n                    if (adjacent_water >= 2) new_state[i][j] = '.';\n                }\n            }\n        }\n        for (int i = 0; i < height; i++) strcpy(cells[i], new_state[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int height, width, duration;\n    char cells[1005][1005];\n    int areas[100005];\n    read_grid(&height, &width, &duration, cells);\n    simulate_sinking(height, width, duration, cells, areas);\n    for (int i = 0; i <= duration; i++) printf(\"%d\\n\", areas[i]);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "check_value_in_range",
+          "signature": "int check_value_in_range(int value, int min_val, int max_val)",
+          "code": "int check_value_in_range(int value, int min_val, int max_val) {\n    return value > min_val && value < max_val;\n}"
+        },
+        {
+          "clause_id": "validate_bst_subtree",
+          "signature": "int validate_bst_subtree(int *tree, int *left, int *right, int node, int min_val, int max_val)",
+          "code": "int validate_bst_subtree(int *tree, int *left, int *right, int node, int min_val, int max_val) {\n    if (node == -1) return 1;\n    if (!check_value_in_range(tree[node], min_val, max_val)) return 0;\n    return validate_bst_subtree(tree, left, right, left[node], min_val, tree[node]) &&\n           validate_bst_subtree(tree, left, right, right[node], tree[node], max_val);\n}"
+        },
+        {
+          "clause_id": "verify_binary_search_tree",
+          "signature": "int verify_binary_search_tree(int *tree, int *left, int *right, int root)",
+          "code": "int verify_binary_search_tree(int *tree, int *left, int *right, int root) {\n    return validate_bst_subtree(tree, left, right, root, -1000000000, 1000000000);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, root, tree[10005], left[10005], right[10005];\n    scanf(\"%d %d\", &n, &root);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d %d\", &tree[i], &left[i], &right[i]);\n    }\n    printf(\"%s\\n\", verify_binary_search_tree(tree, left, right, root) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "check_value_in_range",
+          "signature": "int check_value_in_range(int value, int min_val, int max_val)",
+          "code": "int check_value_in_range(int value, int min_val, int max_val) {\n    return value > min_val && value < max_val;\n}"
+        },
+        {
+          "clause_id": "validate_bst_subtree",
+          "signature": "int validate_bst_subtree(int *tree, int *left, int *right, int node, int min_val, int max_val)",
+          "code": "int validate_bst_subtree(int *tree, int *left, int *right, int node, int min_val, int max_val) {\n    if (node == -1) return 1;\n    if (!check_value_in_range(tree[node], min_val, max_val)) return 0;\n    return validate_bst_subtree(tree, left, right, left[node], min_val, tree[node]) &&\n           validate_bst_subtree(tree, left, right, right[node], tree[node], max_val);\n}"
+        },
+        {
+          "clause_id": "verify_binary_search_tree",
+          "signature": "int verify_binary_search_tree(int *tree, int *left, int *right, int root)",
+          "code": "int verify_binary_search_tree(int *tree, int *left, int *right, int root) {\n    return validate_bst_subtree(tree, left, right, root, -1000000000, 1000000000);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, root, tree[10005], left[10005], right[10005];\n    scanf(\"%d %d\", &n, &root);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d %d\", &tree[i], &left[i], &right[i]);\n    }\n    printf(\"%s\\n\", verify_binary_search_tree(tree, left, right, root) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "check_value_in_range",
+          "signature": "int check_value_in_range(int value, int min_val, int max_val)",
+          "code": "int check_value_in_range(int value, int min_val, int max_val) {\n    return value > min_val && value < max_val;\n}"
+        },
+        {
+          "clause_id": "validate_bst_subtree",
+          "signature": "int validate_bst_subtree(int *tree, int *left, int *right, int node, int min_val, int max_val)",
+          "code": "int validate_bst_subtree(int *tree, int *left, int *right, int node, int min_val, int max_val) {\n    if (node == -1) return 1;\n    if (!check_value_in_range(tree[node], min_val, max_val)) return 0;\n    return validate_bst_subtree(tree, left, right, left[node], min_val, tree[node]) &&\n           validate_bst_subtree(tree, left, right, right[node], tree[node], max_val);\n}"
+        },
+        {
+          "clause_id": "verify_binary_search_tree",
+          "signature": "int verify_binary_search_tree(int *tree, int *left, int *right, int root)",
+          "code": "int verify_binary_search_tree(int *tree, int *left, int *right, int root) {\n    return validate_bst_subtree(tree, left, right, root, -1000000000, 1000000000);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, root, tree[10005], left[10005], right[10005];\n    scanf(\"%d %d\", &n, &root);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d %d\", &tree[i], &left[i], &right[i]);\n    }\n    printf(\"%s\\n\", verify_binary_search_tree(tree, left, right, root) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "check_value_in_range",
+          "signature": "int check_value_in_range(int value, int min_val, int max_val)",
+          "code": "int check_value_in_range(int value, int min_val, int max_val) {\n    return value > min_val && value < max_val;\n}"
+        },
+        {
+          "clause_id": "validate_bst_subtree",
+          "signature": "int validate_bst_subtree(int *tree, int *left, int *right, int node, int min_val, int max_val)",
+          "code": "int validate_bst_subtree(int *tree, int *left, int *right, int node, int min_val, int max_val) {\n    if (node == -1) return 1;\n    if (!check_value_in_range(tree[node], min_val, max_val)) return 0;\n    return validate_bst_subtree(tree, left, right, left[node], min_val, tree[node]) &&\n           validate_bst_subtree(tree, left, right, right[node], tree[node], max_val);\n}"
+        },
+        {
+          "clause_id": "verify_binary_search_tree",
+          "signature": "int verify_binary_search_tree(int *tree, int *left, int *right, int root)",
+          "code": "int verify_binary_search_tree(int *tree, int *left, int *right, int root) {\n    return validate_bst_subtree(tree, left, right, root, -1000000000, 1000000000);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, root, tree[10005], left[10005], right[10005];\n    scanf(\"%d %d\", &n, &root);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d %d\", &tree[i], &left[i], &right[i]);\n    }\n    printf(\"%s\\n\", verify_binary_search_tree(tree, left, right, root) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "check_value_in_range",
+          "signature": "int check_value_in_range(int value, int min_val, int max_val)",
+          "code": "int check_value_in_range(int value, int min_val, int max_val) {\n    return value > min_val && value < max_val;\n}"
+        },
+        {
+          "clause_id": "validate_bst_subtree",
+          "signature": "int validate_bst_subtree(int *tree, int *left, int *right, int node, int min_val, int max_val)",
+          "code": "int validate_bst_subtree(int *tree, int *left, int *right, int node, int min_val, int max_val) {\n    if (node == -1) return 1;\n    if (!check_value_in_range(tree[node], min_val, max_val)) return 0;\n    return validate_bst_subtree(tree, left, right, left[node], min_val, tree[node]) &&\n           validate_bst_subtree(tree, left, right, right[node], tree[node], max_val);\n}"
+        },
+        {
+          "clause_id": "verify_binary_search_tree",
+          "signature": "int verify_binary_search_tree(int *tree, int *left, int *right, int root)",
+          "code": "int verify_binary_search_tree(int *tree, int *left, int *right, int root) {\n    return validate_bst_subtree(tree, left, right, root, -1000000000, 1000000000);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, root, tree[10005], left[10005], right[10005];\n    scanf(\"%d %d\", &n, &root);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d %d\", &tree[i], &left[i], &right[i]);\n    }\n    printf(\"%s\\n\", verify_binary_search_tree(tree, left, right, root) ? \"Yes\" : \"No\");\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

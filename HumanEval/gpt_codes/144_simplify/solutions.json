@@ -1,0 +1,126 @@
+{
+  "problem_num": 144,
+  "problem_name": "simplify",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "parse_and_multiply",
+          "code": "int gcd(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint parse_and_multiply(char* x, char* n) {\n    int x_num, x_den, n_num, n_den;\n    sscanf(x, \"%d/%d\", &x_num, &x_den);\n    sscanf(n, \"%d/%d\", &n_num, &n_den);\n    \n    int result_num = x_num * n_num;\n    int result_den = x_den * n_den;\n    \n    int g = gcd(result_num < 0 ? -result_num : result_num, result_den);\n    result_num /= g;\n    result_den /= g;\n    \n    return (result_den == 1 && result_num == result_den);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char x[100], n[100];\n    scanf(\"%s %s\", x, n);\n    \n    if (parse_and_multiply(x, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "parse_and_multiply",
+          "code": "int gcd(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint parse_and_multiply(char* x, char* n) {\n    int x_num, x_den, n_num, n_den;\n    sscanf(x, \"%d/%d\", &x_num, &x_den);\n    sscanf(n, \"%d/%d\", &n_num, &n_den);\n    \n    int result_num = x_num * n_num;\n    int result_den = x_den * n_den;\n    \n    int g = gcd(result_num < 0 ? -result_num : result_num, result_den);\n    result_num /= g;\n    result_den /= g;\n    \n    return (result_den == 1 && result_num == result_den);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char x[100], n[100];\n    scanf(\"%s %s\", x, n);\n    \n    if (parse_and_multiply(x, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "parse_and_multiply",
+          "code": "int gcd(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint parse_and_multiply(char* x, char* n) {\n    int x_num, x_den, n_num, n_den;\n    sscanf(x, \"%d/%d\", &x_num, &x_den);\n    sscanf(n, \"%d/%d\", &n_num, &n_den);\n    \n    int result_num = x_num * n_num;\n    int result_den = x_den * n_den;\n    \n    int g = gcd(result_num < 0 ? -result_num : result_num, result_den);\n    result_num /= g;\n    result_den /= g;\n    \n    return (result_den == 1 && result_num == result_den);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char x[100], n[100];\n    scanf(\"%s %s\", x, n);\n    \n    if (parse_and_multiply(x, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "parse_and_multiply",
+          "code": "int gcd(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint parse_and_multiply(char* x, char* n) {\n    int x_num, x_den, n_num, n_den;\n    sscanf(x, \"%d/%d\", &x_num, &x_den);\n    sscanf(n, \"%d/%d\", &n_num, &n_den);\n    \n    int result_num = x_num * n_num;\n    int result_den = x_den * n_den;\n    \n    int g = gcd(result_num < 0 ? -result_num : result_num, result_den);\n    result_num /= g;\n    result_den /= g;\n    \n    return (result_den == 1 && result_num == result_den);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char x[100], n[100];\n    scanf(\"%s %s\", x, n);\n    \n    if (parse_and_multiply(x, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "parse_and_multiply",
+          "code": "int gcd(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint parse_and_multiply(char* x, char* n) {\n    int x_num, x_den, n_num, n_den;\n    sscanf(x, \"%d/%d\", &x_num, &x_den);\n    sscanf(n, \"%d/%d\", &n_num, &n_den);\n    \n    int result_num = x_num * n_num;\n    int result_den = x_den * n_den;\n    \n    int g = gcd(result_num < 0 ? -result_num : result_num, result_den);\n    result_num /= g;\n    result_den /= g;\n    \n    return (result_den == 1 && result_num == result_den);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    char x[100], n[100];\n    scanf(\"%s %s\", x, n);\n    \n    if (parse_and_multiply(x, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

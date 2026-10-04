@@ -1,0 +1,169 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *p)",
+          "code": "void read_input(int *n, int *k, int *p) { scanf(\"%d%d\", n, k); for(int i = 0; i < *n; i++) scanf(\"%d\", &p[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "void find_positions(int *p, int n, int *pos)",
+          "code": "void find_positions(int *p, int n, int *pos) { for(int i = 0; i < n; i++) pos[p[i]] = i; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "int check_range(int *pos, int start, int k)",
+          "code": "int check_range(int *pos, int start, int k) { int minp = pos[start], maxp = pos[start]; for(int i = start + 1; i < start + k; i++) { if(pos[i] < minp) minp = pos[i]; if(pos[i] > maxp) maxp = pos[i]; } return maxp - minp; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int min_span(int *pos, int n, int k)",
+          "code": "int min_span(int *pos, int n, int k) { int ans = n; for(int i = 1; i <= n - k + 1; i++) { int span = check_range(pos, i, k); if(span < ans) ans = span; } return ans; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k, p[200000], pos[200001]; read_input(&n, &k, p); find_positions(p, n, pos); printf(\"%d\\n\", min_span(pos, n, k)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_data(int *n, int *k, int arr[])",
+          "code": "void get_data(int *n, int *k, int arr[]) { scanf(\"%d%d\", n, k); for(int i = 0; i < *n; i++) scanf(\"%d\", &arr[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "void build_pos_map(int arr[], int n, int map[])",
+          "code": "void build_pos_map(int arr[], int n, int map[]) { for(int i = 0; i < n; i++) map[arr[i]] = i; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "int compute_span(int map[], int val, int k)",
+          "code": "int compute_span(int map[], int val, int k) { int lo = map[val], hi = map[val]; for(int j = val; j < val + k; j++) { if(map[j] < lo) lo = map[j]; if(map[j] > hi) hi = map[j]; } return hi - lo; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int find_min(int map[], int n, int k)",
+          "code": "int find_min(int map[], int n, int k) { int result = n; for(int v = 1; v <= n - k + 1; v++) { int s = compute_span(map, v, k); if(s < result) result = s; } return result; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k, arr[200000], map[200001]; get_data(&n, &k, arr); build_pos_map(arr, n, map); printf(\"%d\\n\", find_min(map, n, k)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *p)",
+          "code": "void read_input(int *n, int *k, int *p) { scanf(\"%d%d\", n, k); for(int i = 0; i < *n; i++) scanf(\"%d\", &p[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "void find_positions(int *p, int n, int *pos)",
+          "code": "void find_positions(int *p, int n, int *pos) { for(int i = 0; i < n; i++) pos[p[i]] = i; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "int check_range(int *pos, int start, int k)",
+          "code": "int check_range(int *pos, int start, int k) { int minp = pos[start], maxp = pos[start]; for(int i = start + 1; i < start + k; i++) { if(pos[i] < minp) minp = pos[i]; if(pos[i] > maxp) maxp = pos[i]; } return maxp - minp; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int min_span(int *pos, int n, int k)",
+          "code": "int min_span(int *pos, int n, int k) { int ans = n; for(int i = 1; i <= n - k + 1; i++) { int span = check_range(pos, i, k); if(span < ans) ans = span; } return ans; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k, p[200000], pos[200001]; read_input(&n, &k, p); find_positions(p, n, pos); printf(\"%d\\n\", min_span(pos, n, k)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void get_data(int *n, int *k, int arr[])",
+          "code": "void get_data(int *n, int *k, int arr[]) { scanf(\"%d%d\", n, k); for(int i = 0; i < *n; i++) scanf(\"%d\", &arr[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "void build_pos_map(int arr[], int n, int map[])",
+          "code": "void build_pos_map(int arr[], int n, int map[]) { for(int i = 0; i < n; i++) map[arr[i]] = i; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "int compute_span(int map[], int val, int k)",
+          "code": "int compute_span(int map[], int val, int k) { int lo = map[val], hi = map[val]; for(int j = val; j < val + k; j++) { if(map[j] < lo) lo = map[j]; if(map[j] > hi) hi = map[j]; } return hi - lo; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int find_min(int map[], int n, int k)",
+          "code": "int find_min(int map[], int n, int k) { int result = n; for(int v = 1; v <= n - k + 1; v++) { int s = compute_span(map, v, k); if(s < result) result = s; } return result; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k, arr[200000], map[200001]; get_data(&n, &k, arr); build_pos_map(arr, n, map); printf(\"%d\\n\", find_min(map, n, k)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, int *p)",
+          "code": "void read_input(int *n, int *k, int *p) { scanf(\"%d%d\", n, k); for(int i = 0; i < *n; i++) scanf(\"%d\", &p[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "void find_positions(int *p, int n, int *pos)",
+          "code": "void find_positions(int *p, int n, int *pos) { for(int i = 0; i < n; i++) pos[p[i]] = i; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "int check_range(int *pos, int start, int k)",
+          "code": "int check_range(int *pos, int start, int k) { int minp = pos[start], maxp = pos[start]; for(int i = start + 1; i < start + k; i++) { if(pos[i] < minp) minp = pos[i]; if(pos[i] > maxp) maxp = pos[i]; } return maxp - minp; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "int min_span(int *pos, int n, int k)",
+          "code": "int min_span(int *pos, int n, int k) { int ans = n; for(int i = 1; i <= n - k + 1; i++) { int span = check_range(pos, i, k); if(span < ans) ans = span; } return ans; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k, p[200000], pos[200001]; read_input(&n, &k, p); find_positions(p, n, pos); printf(\"%d\\n\", min_span(pos, n, k)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

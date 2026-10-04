@@ -1,0 +1,220 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_companion_matrix",
+          "signature": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105])",
+          "implementations": [
+            {
+              "code": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105]) {\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            matrix[i][j] = 0;\n        }\n    }\n    \n    for (int i = 0; i < k - 1; i++) {\n        matrix[i + 1][i] = 1;\n    }\n    \n    for (int i = 0; i < k; i++) {\n        matrix[i][k - 1] = coeffs[k - 1 - i];\n    }\n}"
+            },
+            {
+              "code": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105]) {\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            matrix[i][j] = 0;\n        }\n    }\n    \n    for (int i = 0; i < k - 1; i++) {\n        matrix[i + 1][i] = 1;\n    }\n    \n    for (int i = 0; i < k; i++) {\n        matrix[i][k - 1] = coeffs[k - 1 - i];\n    }\n}"
+            },
+            {
+              "code": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105]) {\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            matrix[i][j] = 0;\n        }\n    }\n    \n    for (int i = 0; i < k - 1; i++) {\n        matrix[i + 1][i] = 1;\n    }\n    \n    for (int i = 0; i < k; i++) {\n        matrix[i][k - 1] = coeffs[k - 1 - i];\n    }\n}"
+            },
+            {
+              "code": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105]) {\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            matrix[i][j] = 0;\n        }\n    }\n    \n    for (int i = 0; i < k - 1; i++) {\n        matrix[i + 1][i] = 1;\n    }\n    \n    for (int i = 0; i < k; i++) {\n        matrix[i][k - 1] = coeffs[k - 1 - i];\n    }\n}"
+            },
+            {
+              "code": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105]) {\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            matrix[i][j] = 0;\n        }\n    }\n    \n    for (int i = 0; i < k - 1; i++) {\n        matrix[i + 1][i] = 1;\n    }\n    \n    for (int i = 0; i < k; i++) {\n        matrix[i][k - 1] = coeffs[k - 1 - i];\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "multiply_matrix_vector_mod",
+          "signature": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result)",
+          "implementations": [
+            {
+              "code": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result) {\n    for (int i = 0; i < k; i++) {\n        result[i] = 0;\n        for (int j = 0; j < k; j++) {\n            result[i] = (result[i] + matrix[i][j] * vec[j]) % mod;\n        }\n    }\n}"
+            },
+            {
+              "code": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result) {\n    for (int i = 0; i < k; i++) {\n        result[i] = 0;\n        for (int j = 0; j < k; j++) {\n            result[i] = (result[i] + matrix[i][j] * vec[j]) % mod;\n        }\n    }\n}"
+            },
+            {
+              "code": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result) {\n    for (int i = 0; i < k; i++) {\n        result[i] = 0;\n        for (int j = 0; j < k; j++) {\n            result[i] = (result[i] + matrix[i][j] * vec[j]) % mod;\n        }\n    }\n}"
+            },
+            {
+              "code": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result) {\n    for (int i = 0; i < k; i++) {\n        result[i] = 0;\n        for (int j = 0; j < k; j++) {\n            result[i] = (result[i] + matrix[i][j] * vec[j]) % mod;\n        }\n    }\n}"
+            },
+            {
+              "code": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result) {\n    for (int i = 0; i < k; i++) {\n        result[i] = 0;\n        for (int j = 0; j < k; j++) {\n            result[i] = (result[i] + matrix[i][j] * vec[j]) % mod;\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "compute_nth_term_matrix",
+          "signature": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod)",
+          "implementations": [
+            {
+              "code": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod) {\n    if (n < k) return init[n];\n    \n    long long matrix[105][105], result[105][105];\n    build_companion_matrix(coeffs, k, matrix);\n    \n    long long temp[105][105];\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            result[i][j] = (i == j) ? 1 : 0;\n            temp[i][j] = matrix[i][j];\n        }\n    }\n    \n    long long exp = n - k + 1;\n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105] = {0};\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    for (int l = 0; l < k; l++) {\n                        prod[i][j] = (prod[i][j] + result[i][l] * temp[l][j]) % mod;\n                    }\n                }\n            }\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105] = {0};\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                for (int l = 0; l < k; l++) {\n                    sq[i][j] = (sq[i][j] + temp[i][l] * temp[l][j]) % mod;\n                }\n            }\n        }\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n    \n    long long ans = 0;\n    for (int i = 0; i < k; i++) {\n        ans = (ans + result[0][i] * init[k - 1 - i]) % mod;\n    }\n    return ans;\n}"
+            },
+            {
+              "code": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod) {\n    if (n < k) return init[n];\n    \n    long long matrix[105][105], result[105][105];\n    build_companion_matrix(coeffs, k, matrix);\n    \n    long long temp[105][105];\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            result[i][j] = (i == j) ? 1 : 0;\n            temp[i][j] = matrix[i][j];\n        }\n    }\n    \n    long long exp = n - k + 1;\n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105] = {0};\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    for (int l = 0; l < k; l++) {\n                        prod[i][j] = (prod[i][j] + result[i][l] * temp[l][j]) % mod;\n                    }\n                }\n            }\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105] = {0};\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                for (int l = 0; l < k; l++) {\n                    sq[i][j] = (sq[i][j] + temp[i][l] * temp[l][j]) % mod;\n                }\n            }\n        }\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n    \n    long long ans = 0;\n    for (int i = 0; i < k; i++) {\n        ans = (ans + result[0][i] * init[k - 1 - i]) % mod;\n    }\n    return ans;\n}"
+            },
+            {
+              "code": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod) {\n    if (n < k) return init[n];\n    \n    long long matrix[105][105], result[105][105];\n    build_companion_matrix(coeffs, k, matrix);\n    \n    long long temp[105][105];\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            result[i][j] = (i == j) ? 1 : 0;\n            temp[i][j] = matrix[i][j];\n        }\n    }\n    \n    long long exp = n - k + 1;\n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105] = {0};\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    for (int l = 0; l < k; l++) {\n                        prod[i][j] = (prod[i][j] + result[i][l] * temp[l][j]) % mod;\n                    }\n                }\n            }\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105] = {0};\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                for (int l = 0; l < k; l++) {\n                    sq[i][j] = (sq[i][j] + temp[i][l] * temp[l][j]) % mod;\n                }\n            }\n        }\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n    \n    long long ans = 0;\n    for (int i = 0; i < k; i++) {\n        ans = (ans + result[0][i] * init[k - 1 - i]) % mod;\n    }\n    return ans;\n}"
+            },
+            {
+              "code": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod) {\n    if (n < k) return init[n];\n    \n    long long matrix[105][105], result[105][105];\n    build_companion_matrix(coeffs, k, matrix);\n    \n    long long temp[105][105];\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            result[i][j] = (i == j) ? 1 : 0;\n            temp[i][j] = matrix[i][j];\n        }\n    }\n    \n    long long exp = n - k + 1;\n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105] = {0};\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    for (int l = 0; l < k; l++) {\n                        prod[i][j] = (prod[i][j] + result[i][l] * temp[l][j]) % mod;\n                    }\n                }\n            }\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105] = {0};\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                for (int l = 0; l < k; l++) {\n                    sq[i][j] = (sq[i][j] + temp[i][l] * temp[l][j]) % mod;\n                }\n            }\n        }\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n    \n    long long ans = 0;\n    for (int i = 0; i < k; i++) {\n        ans = (ans + result[0][i] * init[k - 1 - i]) % mod;\n    }\n    return ans;\n}"
+            },
+            {
+              "code": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod) {\n    if (n < k) return init[n];\n    \n    long long matrix[105][105], result[105][105];\n    build_companion_matrix(coeffs, k, matrix);\n    \n    long long temp[105][105];\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            result[i][j] = (i == j) ? 1 : 0;\n            temp[i][j] = matrix[i][j];\n        }\n    }\n    \n    long long exp = n - k + 1;\n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105] = {0};\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    for (int l = 0; l < k; l++) {\n                        prod[i][j] = (prod[i][j] + result[i][l] * temp[l][j]) % mod;\n                    }\n                }\n            }\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105] = {0};\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                for (int l = 0; l < k; l++) {\n                    sq[i][j] = (sq[i][j] + temp[i][l] * temp[l][j]) % mod;\n                }\n            }\n        }\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n    \n    long long ans = 0;\n    for (int i = 0; i < k; i++) {\n        ans = (ans + result[0][i] * init[k - 1 - i]) % mod;\n    }\n    return ans;\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "initialize_base_vector",
+          "signature": "void initialize_base_vector(long long *vec, long long *init_vals, int k)",
+          "implementations": [
+            {
+              "code": "void initialize_base_vector(long long *vec, long long *init_vals, int k) {\n    for (int i = 0; i < k; i++) {\n        vec[i] = init_vals[k - 1 - i];\n    }\n}"
+            },
+            {
+              "code": "void initialize_base_vector(long long *vec, long long *init_vals, int k) {\n    for (int i = 0; i < k; i++) {\n        vec[i] = init_vals[k - 1 - i];\n    }\n}"
+            },
+            {
+              "code": "void initialize_base_vector(long long *vec, long long *init_vals, int k) {\n    for (int i = 0; i < k; i++) {\n        vec[i] = init_vals[k - 1 - i];\n    }\n}"
+            },
+            {
+              "code": "void initialize_base_vector(long long *vec, long long *init_vals, int k) {\n    for (int i = 0; i < k; i++) {\n        vec[i] = init_vals[k - 1 - i];\n    }\n}"
+            },
+            {
+              "code": "void initialize_base_vector(long long *vec, long long *init_vals, int k) {\n    for (int i = 0; i < k; i++) {\n        vec[i] = init_vals[k - 1 - i];\n    }\n}"
+            }
+          ]
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "implementations": [
+            {
+              "code": "int main() {\n    int k;\n    long long n, init[105], coeffs[105], mod = 1000000007;\n    scanf(\"%d %lld\", &k, &n);\n    \n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &init[i]);\n    }\n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &coeffs[i]);\n    }\n    \n    printf(\"%lld\\n\", compute_nth_term_matrix(init, coeffs, k, n, mod));\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int k;\n    long long n, init[105], coeffs[105], mod = 1000000007;\n    scanf(\"%d %lld\", &k, &n);\n    \n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &init[i]);\n    }\n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &coeffs[i]);\n    }\n    \n    printf(\"%lld\\n\", compute_nth_term_matrix(init, coeffs, k, n, mod));\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int k;\n    long long n, init[105], coeffs[105], mod = 1000000007;\n    scanf(\"%d %lld\", &k, &n);\n    \n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &init[i]);\n    }\n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &coeffs[i]);\n    }\n    \n    printf(\"%lld\\n\", compute_nth_term_matrix(init, coeffs, k, n, mod));\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int k;\n    long long n, init[105], coeffs[105], mod = 1000000007;\n    scanf(\"%d %lld\", &k, &n);\n    \n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &init[i]);\n    }\n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &coeffs[i]);\n    }\n    \n    printf(\"%lld\\n\", compute_nth_term_matrix(init, coeffs, k, n, mod));\n    return 0;\n}"
+            },
+            {
+              "code": "int main() {\n    int k;\n    long long n, init[105], coeffs[105], mod = 1000000007;\n    scanf(\"%d %lld\", &k, &n);\n    \n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &init[i]);\n    }\n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &coeffs[i]);\n    }\n    \n    printf(\"%lld\\n\", compute_nth_term_matrix(init, coeffs, k, n, mod));\n    return 0;\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_companion_matrix",
+          "signature": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105])",
+          "code": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105]) {\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            matrix[i][j] = 0;\n        }\n    }\n    \n    for (int i = 0; i < k - 1; i++) {\n        matrix[i + 1][i] = 1;\n    }\n    \n    for (int i = 0; i < k; i++) {\n        matrix[i][k - 1] = coeffs[k - 1 - i];\n    }\n}"
+        },
+        {
+          "clause_id": "multiply_matrix_vector_mod",
+          "signature": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result)",
+          "code": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result) {\n    for (int i = 0; i < k; i++) {\n        result[i] = 0;\n        for (int j = 0; j < k; j++) {\n            result[i] = (result[i] + matrix[i][j] * vec[j]) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "compute_nth_term_matrix",
+          "signature": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod)",
+          "code": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod) {\n    if (n < k) return init[n];\n    \n    long long matrix[105][105], result[105][105];\n    build_companion_matrix(coeffs, k, matrix);\n    \n    long long temp[105][105];\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            result[i][j] = (i == j) ? 1 : 0;\n            temp[i][j] = matrix[i][j];\n        }\n    }\n    \n    long long exp = n - k + 1;\n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105] = {0};\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    for (int l = 0; l < k; l++) {\n                        prod[i][j] = (prod[i][j] + result[i][l] * temp[l][j]) % mod;\n                    }\n                }\n            }\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105] = {0};\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                for (int l = 0; l < k; l++) {\n                    sq[i][j] = (sq[i][j] + temp[i][l] * temp[l][j]) % mod;\n                }\n            }\n        }\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n    \n    long long ans = 0;\n    for (int i = 0; i < k; i++) {\n        ans = (ans + result[0][i] * init[k - 1 - i]) % mod;\n    }\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int k;\n    long long n, init[105], coeffs[105], mod = 1000000007;\n    scanf(\"%d %lld\", &k, &n);\n    \n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &init[i]);\n    }\n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &coeffs[i]);\n    }\n    \n    printf(\"%lld\\n\", compute_nth_term_matrix(init, coeffs, k, n, mod));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_companion_matrix",
+          "signature": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105])",
+          "code": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105]) {\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            matrix[i][j] = 0;\n        }\n    }\n    \n    for (int i = 0; i < k - 1; i++) {\n        matrix[i + 1][i] = 1;\n    }\n    \n    for (int i = 0; i < k; i++) {\n        matrix[i][k - 1] = coeffs[k - 1 - i];\n    }\n}"
+        },
+        {
+          "clause_id": "multiply_matrix_vector_mod",
+          "signature": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result)",
+          "code": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result) {\n    for (int i = 0; i < k; i++) {\n        result[i] = 0;\n        for (int j = 0; j < k; j++) {\n            result[i] = (result[i] + matrix[i][j] * vec[j]) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "compute_nth_term_matrix",
+          "signature": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod)",
+          "code": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod) {\n    if (n < k) return init[n];\n    \n    long long matrix[105][105], result[105][105];\n    build_companion_matrix(coeffs, k, matrix);\n    \n    long long temp[105][105];\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            result[i][j] = (i == j) ? 1 : 0;\n            temp[i][j] = matrix[i][j];\n        }\n    }\n    \n    long long exp = n - k + 1;\n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105] = {0};\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    for (int l = 0; l < k; l++) {\n                        prod[i][j] = (prod[i][j] + result[i][l] * temp[l][j]) % mod;\n                    }\n                }\n            }\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105] = {0};\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                for (int l = 0; l < k; l++) {\n                    sq[i][j] = (sq[i][j] + temp[i][l] * temp[l][j]) % mod;\n                }\n            }\n        }\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n    \n    long long ans = 0;\n    for (int i = 0; i < k; i++) {\n        ans = (ans + result[0][i] * init[k - 1 - i]) % mod;\n    }\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int k;\n    long long n, init[105], coeffs[105], mod = 1000000007;\n    scanf(\"%d %lld\", &k, &n);\n    \n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &init[i]);\n    }\n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &coeffs[i]);\n    }\n    \n    printf(\"%lld\\n\", compute_nth_term_matrix(init, coeffs, k, n, mod));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_companion_matrix",
+          "signature": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105])",
+          "code": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105]) {\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            matrix[i][j] = 0;\n        }\n    }\n    \n    for (int i = 0; i < k - 1; i++) {\n        matrix[i + 1][i] = 1;\n    }\n    \n    for (int i = 0; i < k; i++) {\n        matrix[i][k - 1] = coeffs[k - 1 - i];\n    }\n}"
+        },
+        {
+          "clause_id": "multiply_matrix_vector_mod",
+          "signature": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result)",
+          "code": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result) {\n    for (int i = 0; i < k; i++) {\n        result[i] = 0;\n        for (int j = 0; j < k; j++) {\n            result[i] = (result[i] + matrix[i][j] * vec[j]) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "compute_nth_term_matrix",
+          "signature": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod)",
+          "code": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod) {\n    if (n < k) return init[n];\n    \n    long long matrix[105][105], result[105][105];\n    build_companion_matrix(coeffs, k, matrix);\n    \n    long long temp[105][105];\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            result[i][j] = (i == j) ? 1 : 0;\n            temp[i][j] = matrix[i][j];\n        }\n    }\n    \n    long long exp = n - k + 1;\n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105] = {0};\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    for (int l = 0; l < k; l++) {\n                        prod[i][j] = (prod[i][j] + result[i][l] * temp[l][j]) % mod;\n                    }\n                }\n            }\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105] = {0};\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                for (int l = 0; l < k; l++) {\n                    sq[i][j] = (sq[i][j] + temp[i][l] * temp[l][j]) % mod;\n                }\n            }\n        }\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n    \n    long long ans = 0;\n    for (int i = 0; i < k; i++) {\n        ans = (ans + result[0][i] * init[k - 1 - i]) % mod;\n    }\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int k;\n    long long n, init[105], coeffs[105], mod = 1000000007;\n    scanf(\"%d %lld\", &k, &n);\n    \n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &init[i]);\n    }\n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &coeffs[i]);\n    }\n    \n    printf(\"%lld\\n\", compute_nth_term_matrix(init, coeffs, k, n, mod));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_companion_matrix",
+          "signature": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105])",
+          "code": "void build_companion_matrix(long long *coeffs, int k, long long matrix[105][105]) {\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            matrix[i][j] = 0;\n        }\n    }\n    \n    for (int i = 0; i < k - 1; i++) {\n        matrix[i + 1][i] = 1;\n    }\n    \n    for (int i = 0; i < k; i++) {\n        matrix[i][k - 1] = coeffs[k - 1 - i];\n    }\n}"
+        },
+        {
+          "clause_id": "multiply_matrix_vector_mod",
+          "signature": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result)",
+          "code": "void multiply_matrix_vector_mod(long long matrix[105][105], long long *vec, int k, long long mod, long long *result) {\n    for (int i = 0; i < k; i++) {\n        result[i] = 0;\n        for (int j = 0; j < k; j++) {\n            result[i] = (result[i] + matrix[i][j] * vec[j]) % mod;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "compute_nth_term_matrix",
+          "signature": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod)",
+          "code": "long long compute_nth_term_matrix(long long *init, long long *coeffs, int k, long long n, long long mod) {\n    if (n < k) return init[n];\n    \n    long long matrix[105][105], result[105][105];\n    build_companion_matrix(coeffs, k, matrix);\n    \n    long long temp[105][105];\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            result[i][j] = (i == j) ? 1 : 0;\n            temp[i][j] = matrix[i][j];\n        }\n    }\n    \n    long long exp = n - k + 1;\n    while (exp > 0) {\n        if (exp & 1) {\n            long long prod[105][105] = {0};\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    for (int l = 0; l < k; l++) {\n                        prod[i][j] = (prod[i][j] + result[i][l] * temp[l][j]) % mod;\n                    }\n                }\n            }\n            for (int i = 0; i < k; i++) {\n                for (int j = 0; j < k; j++) {\n                    result[i][j] = prod[i][j];\n                }\n            }\n        }\n        long long sq[105][105] = {0};\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                for (int l = 0; l < k; l++) {\n                    sq[i][j] = (sq[i][j] + temp[i][l] * temp[l][j]) % mod;\n                }\n            }\n        }\n        for (int i = 0; i < k; i++) {\n            for (int j = 0; j < k; j++) {\n                temp[i][j] = sq[i][j];\n            }\n        }\n        exp >>= 1;\n    }\n    \n    long long ans = 0;\n    for (int i = 0; i < k; i++) {\n        ans = (ans + result[0][i] * init[k - 1 - i]) % mod;\n    }\n    return ans;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int k;\n    long long n, init[105], coeffs[105], mod = 1000000007;\n    scanf(\"%d %lld\", &k, &n);\n    \n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &init[i]);\n    }\n    for (int i = 0; i < k; i++) {\n        scanf(\"%lld\", &coeffs[i]);\n    }\n    \n    printf(\"%lld\\n\", compute_nth_term_matrix(init, coeffs, k, n, mod));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

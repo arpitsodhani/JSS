@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(void)",
+          "code": "long long n; scanf(\"%lld\", &n); return n;\n"
+        },
+        {
+          "clause_id": "count_consecutive_products",
+          "signature": "long long count_consecutive_products(long long n)",
+          "code": "long long lo=0,hi=2000000000LL; while(lo+1<hi){ long long mid=(lo+hi)/2; __int128 v=(__int128)mid*(mid+1); if(v<=n) lo=mid; else hi=mid; } return lo;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n=read_n(); long long ans=count_consecutive_products(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(void)",
+          "code": "long long n; scanf(\"%lld\", &n); return n;\n"
+        },
+        {
+          "clause_id": "count_consecutive_products",
+          "signature": "long long count_consecutive_products(long long n)",
+          "code": "long long x=0; long long lo=0,hi=2000000000LL; while(lo<=hi){ long long mid=(lo+hi)/2; __int128 v=(__int128)mid*(mid+1); if(v<=n){ x=mid; lo=mid+1; } else hi=mid-1; } return x;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n=read_n(); long long ans=count_consecutive_products(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(void)",
+          "code": "long long n; scanf(\"%lld\", &n); return n;\n"
+        },
+        {
+          "clause_id": "count_consecutive_products",
+          "signature": "long long count_consecutive_products(long long n)",
+          "code": "long long lo=0,hi=2000000000LL; for(int it=0;it<70;it++){ long long mid=(lo+hi+1)/2; __int128 v=(__int128)mid*(mid+1); if(v<=n) lo=mid; else hi=mid-1; } return lo;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n=read_n(); long long ans=count_consecutive_products(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(void)",
+          "code": "long long n; scanf(\"%lld\", &n); return n;\n"
+        },
+        {
+          "clause_id": "count_consecutive_products",
+          "signature": "long long count_consecutive_products(long long n)",
+          "code": "long long lo=0,hi=2000000000LL; while(lo<hi){ long long mid=(lo+hi+1)/2; __int128 v=(__int128)mid*(mid+1); if(v<=n) lo=mid; else hi=mid-1; } return lo;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n=read_n(); long long ans=count_consecutive_products(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(void)",
+          "code": "long long n; scanf(\"%lld\", &n); return n;\n"
+        },
+        {
+          "clause_id": "count_consecutive_products",
+          "signature": "long long count_consecutive_products(long long n)",
+          "code": "long long lo=0,hi=2000000000LL; while(lo+1<hi){ long long mid=(lo+hi)/2; __int128 v=(__int128)mid*(mid+1); if(v<=n) lo=mid; else hi=mid; } return lo;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long v)",
+          "code": "printf(\"%lld\\n\", v);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n=read_n(); long long ans=count_consecutive_products(n); print_ll(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

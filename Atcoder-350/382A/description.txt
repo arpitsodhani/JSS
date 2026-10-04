@@ -1,0 +1,6 @@
+There are N boxes arranged in a row, and some of these boxes contain cookies. The state of these boxes is represented by a string S of length N . Specifically, the i -th box (1\leq i \leq N) from the left contains one cookie if the i -th character of S is @ , and is empty if it is . . Over the next D days, Takahashi will choose and eat one cookie per day from among the cookies in these boxes. Determine how many of the N boxes will be empty after D days have passed. (It can be proved that this value does not depend on which cookies Takahashi chooses each day.) It is guaranteed that S contains at least D occurrences of @ .
+
+**Constraints:**
+- 1 <= N, D <= 100
+- S is a string of length N consisting of '@' and '.'
+- All input values are integers

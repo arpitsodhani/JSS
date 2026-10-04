@@ -1,0 +1,20 @@
+You are given a simple undirected graph with N vertices and M edges.
+Determine if the graph is bipartite.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N M
+a_1 b_1
+a_2 b_2
+...
+a_M b_M
+
+**Output:**
+Print `Yes` if the graph is bipartite, and `No` otherwise.
+
+**Constraints:**
+- 1 <= N, M <= 2 * 10^5
+- 1 <= a_i, b_i <= N
+- a_i != b_i
+- The graph is simple
+- All input values are integers

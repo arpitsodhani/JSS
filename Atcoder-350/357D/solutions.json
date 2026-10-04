@@ -1,0 +1,173 @@
+{
+  "problem_id": "357D",
+  "includes": [
+    "#include <stdio.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_number",
+          "signature": "long long read_number()",
+          "code": "long long read_number() { long long n; scanf(\"%lld\", &n); return n; }"
+        },
+        {
+          "clause_id": "count_digits",
+          "signature": "int count_digits(long long n)",
+          "code": "int count_digits(long long n) { int d = 0; long long temp = n; while(temp > 0) { d++; temp /= 10; } return d; }"
+        },
+        {
+          "clause_id": "compute_power_mod",
+          "signature": "long long compute_power_mod(long long base, long long exp, long long mod)",
+          "code": "long long compute_power_mod(long long base, long long exp, long long mod) { long long result = 1; base %= mod; while(exp > 0) { if(exp % 2 == 1) result = (result * base) % mod; base = (base * base) % mod; exp /= 2; } return result; }"
+        },
+        {
+          "clause_id": "calculate_concatenation_value",
+          "signature": "long long calculate_concatenation_value(long long n)",
+          "code": "long long calculate_concatenation_value(long long n) { const long long MOD = 998244353; int digits = count_digits(n); long long power = compute_power_mod(10, (long long)digits * n, MOD); long long numerator = (n % MOD) * ((power - 1 + MOD) % MOD) % MOD; long long denom_inv = compute_power_mod(compute_power_mod(10, digits, MOD) - 1 + MOD, MOD - 2, MOD); return (numerator * denom_inv) % MOD; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long n = read_number(); printf(\"%lld\\n\", calculate_concatenation_value(n)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_number",
+          "signature": "long long read_number()",
+          "code": "long long read_number() { long long n; scanf(\"%lld\", &n); return n; }"
+        },
+        {
+          "clause_id": "count_digits",
+          "signature": "int count_digits(long long n)",
+          "code": "int count_digits(long long n) { if(n == 0) return 1; int cnt = 0; while(n) { cnt++; n /= 10; } return cnt; }"
+        },
+        {
+          "clause_id": "compute_power_mod",
+          "signature": "long long compute_power_mod(long long base, long long exp, long long mod)",
+          "code": "long long compute_power_mod(long long base, long long exp, long long mod) { long long res = 1; for(; exp; exp >>= 1, base = base * base % mod) if(exp & 1) res = res * base % mod; return res; }"
+        },
+        {
+          "clause_id": "calculate_concatenation_value",
+          "signature": "long long calculate_concatenation_value(long long n)",
+          "code": "long long calculate_concatenation_value(long long n) { long long MOD = 998244353; int d = count_digits(n); long long ten_d = compute_power_mod(10, d, MOD); long long ten_nd = compute_power_mod(10, (long long)d * n, MOD); long long num = (n % MOD) * ((ten_nd - 1 + MOD) % MOD) % MOD; long long den = (ten_d - 1 + MOD) % MOD; long long inv = compute_power_mod(den, MOD - 2, MOD); return (num * inv) % MOD; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { printf(\"%lld\\n\", calculate_concatenation_value(read_number())); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_number",
+          "signature": "long long read_number()",
+          "code": "long long read_number() { long long val; scanf(\"%lld\", &val); return val; }"
+        },
+        {
+          "clause_id": "count_digits",
+          "signature": "int count_digits(long long n)",
+          "code": "int count_digits(long long n) { int len = 0; for(long long x = n; x > 0; x /= 10) len++; return len; }"
+        },
+        {
+          "clause_id": "compute_power_mod",
+          "signature": "long long compute_power_mod(long long base, long long exp, long long mod)",
+          "code": "long long compute_power_mod(long long base, long long exp, long long mod) { if(exp == 0) return 1; long long half = compute_power_mod(base, exp / 2, mod); half = (half * half) % mod; return (exp % 2 == 0) ? half : (half * base % mod); }"
+        },
+        {
+          "clause_id": "calculate_concatenation_value",
+          "signature": "long long calculate_concatenation_value(long long n)",
+          "code": "long long calculate_concatenation_value(long long n) { const long long P = 998244353; int digit_count = count_digits(n); long long base = compute_power_mod(10, digit_count, P); long long total_power = compute_power_mod(10, (long long)digit_count * n, P); long long geometric = ((total_power - 1 + P) % P) * compute_power_mod((base - 1 + P) % P, P - 2, P) % P; return (n % P) * geometric % P; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long num = read_number(); long long result = calculate_concatenation_value(num); printf(\"%lld\\n\", result); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_number",
+          "signature": "long long read_number()",
+          "code": "long long read_number() { long long n; scanf(\"%lld\", &n); return n; }"
+        },
+        {
+          "clause_id": "count_digits",
+          "signature": "int count_digits(long long n)",
+          "code": "int count_digits(long long n) { int c = 0; do { c++; n /= 10; } while(n > 0); return c; }"
+        },
+        {
+          "clause_id": "compute_power_mod",
+          "signature": "long long compute_power_mod(long long base, long long exp, long long mod)",
+          "code": "long long compute_power_mod(long long base, long long exp, long long mod) { long long ans = 1; base %= mod; for(; exp; exp /= 2) { if(exp & 1) ans = ans * base % mod; base = base * base % mod; } return ans; }"
+        },
+        {
+          "clause_id": "calculate_concatenation_value",
+          "signature": "long long calculate_concatenation_value(long long n)",
+          "code": "long long calculate_concatenation_value(long long n) { long long M = 998244353; int dlen = count_digits(n); long long r = compute_power_mod(10, dlen, M); long long big = compute_power_mod(r, n, M); long long top = (n % M) * ((big + M - 1) % M) % M; long long bot = (r + M - 1) % M; long long inv_bot = compute_power_mod(bot, M - 2, M); return (top * inv_bot) % M; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long n = read_number(); printf(\"%lld\\n\", calculate_concatenation_value(n)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_number",
+          "signature": "long long read_number()",
+          "code": "long long read_number() { long long x; scanf(\"%lld\", &x); return x; }"
+        },
+        {
+          "clause_id": "count_digits",
+          "signature": "int count_digits(long long n)",
+          "code": "int count_digits(long long n) { int digits = 0; while(n > 0) { digits++; n /= 10; } return digits; }"
+        },
+        {
+          "clause_id": "compute_power_mod",
+          "signature": "long long compute_power_mod(long long base, long long exp, long long mod)",
+          "code": "long long compute_power_mod(long long base, long long exp, long long mod) { long long product = 1; while(exp > 0) { if(exp & 1) product = (product * base) % mod; base = (base * base) % mod; exp >>= 1; } return product; }"
+        },
+        {
+          "clause_id": "calculate_concatenation_value",
+          "signature": "long long calculate_concatenation_value(long long n)",
+          "code": "long long calculate_concatenation_value(long long n) { long long MODULO = 998244353; int num_digits = count_digits(n); long long multiplier = compute_power_mod(10, num_digits, MODULO); long long full_power = compute_power_mod(multiplier, n, MODULO); long long sum = ((n % MODULO) * ((full_power - 1 + MODULO) % MODULO)) % MODULO; long long divisor_inverse = compute_power_mod((multiplier - 1 + MODULO) % MODULO, MODULO - 2, MODULO); return (sum * divisor_inverse) % MODULO; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { long long input = read_number(); long long answer = calculate_concatenation_value(input); printf(\"%lld\\n\", answer); return 0; }"
+        }
+      ]
+    }
+  ]
+}

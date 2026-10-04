@@ -1,0 +1,30 @@
+{
+  "contestId": 264,
+  "index": "C",
+  "problem_id": "264C",
+  "name": "Choosing Balls",
+  "rating": 2000,
+  "tags": [
+    "dp"
+  ],
+  "points": 1500.0,
+  "solvedCount": 3316,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Choosing Balls",
+  "legend": "There are n balls. They are arranged in a row. Each ball has a color (for convenience an integer) and an integer value. The color of the i-th ball is ci and the value of the i-th ball is vi.\n\nSquirrel Liss chooses some balls and makes a new sequence without changing the relative order of the balls. She wants to maximize the value of this sequence.\n\nThe value of the sequence is defined as the sum of following values for each ball (where a and b are given constants):\n\nIf the ball is not in the beginning of the sequence and the color of the ball is same as previous ball's color, add (the value of the ball)  ×  a.\nOtherwise, add (the value of the ball)  ×  b.\n\nYou are given q queries. Each query contains two integers ai and bi. For each query find the maximal value of the sequence she can make when a = ai and b = bi.\n\nNote that the new sequence can be empty, and the value of an empty sequence is defined as zero.",
+  "input_spec": "The first line contains two integers n and q (1 ≤ n ≤ 105; 1 ≤ q ≤ 500). The second line contains n integers: v1, v2, ..., vn (|vi| ≤ 105). The third line contains n integers: c1, c2, ..., cn (1 ≤ ci ≤ n).\n\nThe following q lines contain the values of the constants a and b for queries. The i-th of these lines contains two integers ai and bi (|ai|, |bi| ≤ 105).\n\nIn each line integers are separated by single spaces.",
+  "output_spec": "For each query, output a line containing an integer — the answer to the query. The i-th line contains the answer to the i-th query in the input order.\n\nPlease, do not write the %lld specifier to read or write 64-bit integers in С++. It is preferred to use the cin, cout streams or the %I64d specifier.",
+  "note": "In the first example, to achieve the maximal value:\n\nIn the first query, you should select 1st, 3rd, and 4th ball.\nIn the second query, you should select 3rd, 4th, 5th and 6th ball.\nIn the third query, you should select 2nd and 4th ball.\n\nNote that there may be other ways to achieve the maximal value.",
+  "time_limit": "5 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6 3\n1 -2 3 4 0 -1\n1 2 1 2 1 1\n5 1\n-2 1\n1 0\n",
+      "output": "20\n9\n4"
+    },
+    {
+      "input": "4 1\n-3 6 -1 2\n1 2 3 1\n1 -1\n",
+      "output": "5"
+    }
+  ]
+}

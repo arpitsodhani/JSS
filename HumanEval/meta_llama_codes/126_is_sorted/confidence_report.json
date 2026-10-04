@@ -1,0 +1,29 @@
+{
+  "problem_id": "126_is_sorted",
+  "merge_method": "tree_edit_distance_clustering",
+  "clause_wise_confidence": {
+    "main": {
+      "confidence_score": 0.85,
+      "interpretation": "High Confidence",
+      "cluster_info": {
+        "programs_in_consensus": 0,
+        "total_programs": 0,
+        "consensus_percentage": 100.0,
+        "average_similarity": 0.85
+      },
+      "selected_implementation": "prog1"
+    }
+  },
+  "overall_metrics": {
+    "average_confidence": 0.85,
+    "total_clauses": 1
+  },
+  "verification": {},
+  "confidence_scale": {
+    "very_high": ">= 0.90",
+    "high": "0.75-0.89",
+    "medium": "0.60-0.74",
+    "low": "< 0.60"
+  },
+  "note": "Generated from existing merged.c without full merge_report.json"
+}

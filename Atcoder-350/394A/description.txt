@@ -1,0 +1,5 @@
+You are given a string S consisting of digits. Remove all characters from S except for 2 , and then concatenate the remaining characters in their original order to form a new string.
+
+**Constraints:**
+- 1 <= N <= 100
+- S is a string of length N consisting of lowercase English letters

@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "check_item_fits_capacity",
+          "signature": "int check_item_fits_capacity(int item_weight, int remaining_capacity)",
+          "code": "int check_item_fits_capacity(int item_weight, int remaining_capacity) {\n    return item_weight <= remaining_capacity;\n}"
+        },
+        {
+          "clause_id": "select_maximum_value_item",
+          "signature": "int select_maximum_value_item(int n, int *weights, int *values, int capacity, int *selected)",
+          "code": "int select_maximum_value_item(int n, int *weights, int *values, int capacity, int *selected) {\n    int best_idx = -1;\n    int best_value = 0;\n    for (int i = 0; i < n; i++) {\n        if (!selected[i] && check_item_fits_capacity(weights[i], capacity)) {\n            if (values[i] > best_value) {\n                best_value = values[i];\n                best_idx = i;\n            }\n        }\n    }\n    return best_idx;\n}"
+        },
+        {
+          "clause_id": "compute_knapsack_greedy",
+          "signature": "int compute_knapsack_greedy(int n, int *weights, int *values, int capacity)",
+          "code": "int compute_knapsack_greedy(int n, int *weights, int *values, int capacity) {\n    int selected[105] = {0};\n    int total_value = 0;\n    int remaining = capacity;\n    \n    while (1) {\n        int idx = select_maximum_value_item(n, weights, values, remaining, selected);\n        if (idx == -1) break;\n        selected[idx] = 1;\n        total_value += values[idx];\n        remaining -= weights[idx];\n    }\n    return total_value;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, capacity, weights[105], values[105];\n    scanf(\"%d %d\", &n, &capacity);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &weights[i], &values[i]);\n    }\n    printf(\"%d\\n\", compute_knapsack_greedy(n, weights, values, capacity));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "check_item_fits_capacity",
+          "signature": "int check_item_fits_capacity(int item_weight, int remaining_capacity)",
+          "code": "int check_item_fits_capacity(int item_weight, int remaining_capacity) {\n    return item_weight <= remaining_capacity;\n}"
+        },
+        {
+          "clause_id": "select_maximum_value_item",
+          "signature": "int select_maximum_value_item(int n, int *weights, int *values, int capacity, int *selected)",
+          "code": "int select_maximum_value_item(int n, int *weights, int *values, int capacity, int *selected) {\n    int best_idx = -1;\n    int best_value = 0;\n    for (int i = 0; i < n; i++) {\n        if (!selected[i] && check_item_fits_capacity(weights[i], capacity)) {\n            if (values[i] > best_value) {\n                best_value = values[i];\n                best_idx = i;\n            }\n        }\n    }\n    return best_idx;\n}"
+        },
+        {
+          "clause_id": "compute_knapsack_greedy",
+          "signature": "int compute_knapsack_greedy(int n, int *weights, int *values, int capacity)",
+          "code": "int compute_knapsack_greedy(int n, int *weights, int *values, int capacity) {\n    int selected[105] = {0};\n    int total_value = 0;\n    int remaining = capacity;\n    \n    while (1) {\n        int idx = select_maximum_value_item(n, weights, values, remaining, selected);\n        if (idx == -1) break;\n        selected[idx] = 1;\n        total_value += values[idx];\n        remaining -= weights[idx];\n    }\n    return total_value;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, capacity, weights[105], values[105];\n    scanf(\"%d %d\", &n, &capacity);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &weights[i], &values[i]);\n    }\n    printf(\"%d\\n\", compute_knapsack_greedy(n, weights, values, capacity));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "check_item_fits_capacity",
+          "signature": "int check_item_fits_capacity(int item_weight, int remaining_capacity)",
+          "code": "int check_item_fits_capacity(int item_weight, int remaining_capacity) {\n    return item_weight <= remaining_capacity;\n}"
+        },
+        {
+          "clause_id": "select_maximum_value_item",
+          "signature": "int select_maximum_value_item(int n, int *weights, int *values, int capacity, int *selected)",
+          "code": "int select_maximum_value_item(int n, int *weights, int *values, int capacity, int *selected) {\n    int best_idx = -1;\n    int best_value = 0;\n    for (int i = 0; i < n; i++) {\n        if (!selected[i] && check_item_fits_capacity(weights[i], capacity)) {\n            if (values[i] > best_value) {\n                best_value = values[i];\n                best_idx = i;\n            }\n        }\n    }\n    return best_idx;\n}"
+        },
+        {
+          "clause_id": "compute_knapsack_greedy",
+          "signature": "int compute_knapsack_greedy(int n, int *weights, int *values, int capacity)",
+          "code": "int compute_knapsack_greedy(int n, int *weights, int *values, int capacity) {\n    int selected[105] = {0};\n    int total_value = 0;\n    int remaining = capacity;\n    \n    while (1) {\n        int idx = select_maximum_value_item(n, weights, values, remaining, selected);\n        if (idx == -1) break;\n        selected[idx] = 1;\n        total_value += values[idx];\n        remaining -= weights[idx];\n    }\n    return total_value;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, capacity, weights[105], values[105];\n    scanf(\"%d %d\", &n, &capacity);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &weights[i], &values[i]);\n    }\n    printf(\"%d\\n\", compute_knapsack_greedy(n, weights, values, capacity));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "check_item_fits_capacity",
+          "signature": "int check_item_fits_capacity(int item_weight, int remaining_capacity)",
+          "code": "int check_item_fits_capacity(int item_weight, int remaining_capacity) {\n    return item_weight <= remaining_capacity;\n}"
+        },
+        {
+          "clause_id": "select_maximum_value_item",
+          "signature": "int select_maximum_value_item(int n, int *weights, int *values, int capacity, int *selected)",
+          "code": "int select_maximum_value_item(int n, int *weights, int *values, int capacity, int *selected) {\n    int best_idx = -1;\n    int best_value = 0;\n    for (int i = 0; i < n; i++) {\n        if (!selected[i] && check_item_fits_capacity(weights[i], capacity)) {\n            if (values[i] > best_value) {\n                best_value = values[i];\n                best_idx = i;\n            }\n        }\n    }\n    return best_idx;\n}"
+        },
+        {
+          "clause_id": "compute_knapsack_greedy",
+          "signature": "int compute_knapsack_greedy(int n, int *weights, int *values, int capacity)",
+          "code": "int compute_knapsack_greedy(int n, int *weights, int *values, int capacity) {\n    int selected[105] = {0};\n    int total_value = 0;\n    int remaining = capacity;\n    \n    while (1) {\n        int idx = select_maximum_value_item(n, weights, values, remaining, selected);\n        if (idx == -1) break;\n        selected[idx] = 1;\n        total_value += values[idx];\n        remaining -= weights[idx];\n    }\n    return total_value;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, capacity, weights[105], values[105];\n    scanf(\"%d %d\", &n, &capacity);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &weights[i], &values[i]);\n    }\n    printf(\"%d\\n\", compute_knapsack_greedy(n, weights, values, capacity));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "check_item_fits_capacity",
+          "signature": "int check_item_fits_capacity(int item_weight, int remaining_capacity)",
+          "code": "int check_item_fits_capacity(int item_weight, int remaining_capacity) {\n    return item_weight <= remaining_capacity;\n}"
+        },
+        {
+          "clause_id": "select_maximum_value_item",
+          "signature": "int select_maximum_value_item(int n, int *weights, int *values, int capacity, int *selected)",
+          "code": "int select_maximum_value_item(int n, int *weights, int *values, int capacity, int *selected) {\n    int best_idx = -1;\n    int best_value = 0;\n    for (int i = 0; i < n; i++) {\n        if (!selected[i] && check_item_fits_capacity(weights[i], capacity)) {\n            if (values[i] > best_value) {\n                best_value = values[i];\n                best_idx = i;\n            }\n        }\n    }\n    return best_idx;\n}"
+        },
+        {
+          "clause_id": "compute_knapsack_greedy",
+          "signature": "int compute_knapsack_greedy(int n, int *weights, int *values, int capacity)",
+          "code": "int compute_knapsack_greedy(int n, int *weights, int *values, int capacity) {\n    int selected[105] = {0};\n    int total_value = 0;\n    int remaining = capacity;\n    \n    while (1) {\n        int idx = select_maximum_value_item(n, weights, values, remaining, selected);\n        if (idx == -1) break;\n        selected[idx] = 1;\n        total_value += values[idx];\n        remaining -= weights[idx];\n    }\n    return total_value;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, capacity, weights[105], values[105];\n    scanf(\"%d %d\", &n, &capacity);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &weights[i], &values[i]);\n    }\n    printf(\"%d\\n\", compute_knapsack_greedy(n, weights, values, capacity));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

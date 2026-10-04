@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(void)",
+          "code": "long long n; scanf(\"%lld\", &n); return n;\n"
+        },
+        {
+          "clause_id": "count_good",
+          "signature": "long long count_good(long long n)",
+          "code": "long long ans=0;\nfor(long long b=1;b*b<=n;b++){\n  long long sq=b*b;\n  long long x=sq;\n  while(x<=n){ ans++; if(x>n/2) break; x*=2; }\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n=read_n(); long long ans=count_good(n); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(void)",
+          "code": "long long n; scanf(\"%lld\", &n); return n;\n"
+        },
+        {
+          "clause_id": "count_good",
+          "signature": "long long count_good(long long n)",
+          "code": "long long ans=0;\nfor(long long b=1;b*b<=n;b++){\n  long long sq=b*b;\n  long long x=sq;\n  while(x<=n){ ans++; if(x>n/2) break; x*=2; }\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n=read_n(); long long ans=count_good(n); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(void)",
+          "code": "long long n; scanf(\"%lld\", &n); return n;\n"
+        },
+        {
+          "clause_id": "count_good",
+          "signature": "long long count_good(long long n)",
+          "code": "long long ans=0;\nfor(long long b=1;b*b<=n;b++){\n  long long sq=b*b;\n  long long x=sq;\n  while(x<=n){ ans++; if(x>n/2) break; x*=2; }\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n=read_n(); long long ans=count_good(n); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(void)",
+          "code": "long long n; scanf(\"%lld\", &n); return n;\n"
+        },
+        {
+          "clause_id": "count_good",
+          "signature": "long long count_good(long long n)",
+          "code": "long long ans=0;\nfor(long long b=1;b*b<=n;b++){\n  long long sq=b*b;\n  long long x=sq;\n  while(x<=n){ ans++; if(x>n/2) break; x*=2; }\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n=read_n(); long long ans=count_good(n); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_n",
+          "signature": "long long read_n(void)",
+          "code": "long long n; scanf(\"%lld\", &n); return n;\n"
+        },
+        {
+          "clause_id": "count_good",
+          "signature": "long long count_good(long long n)",
+          "code": "long long ans=0;\nfor(long long b=1;b*b<=n;b++){\n  long long sq=b*b;\n  long long x=sq;\n  while(x<=n){ ans++; if(x>n/2) break; x*=2; }\n}\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n=read_n(); long long ans=count_good(n); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

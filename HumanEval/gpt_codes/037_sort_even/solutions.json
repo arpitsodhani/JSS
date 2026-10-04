@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "sort_even",
+          "code": "void sort_even(int *arr, int n) {\n    for (int i = 0; i < n; i += 2) {\n        for (int j = i+2; j < n; j += 2) {\n            if (arr[i] > arr[j]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n-1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    sort_even(arr, n);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "sort_evens",
+          "code": "void sort_evens(int *nums, int size) {\n    for (int i = 0; i < size; i += 2) {\n        for (int j = i+2; j < size; j += 2) {\n            if (nums[i] > nums[j]) {\n                int tmp = nums[i];\n                nums[i] = nums[j];\n                nums[j] = tmp;\n            }\n        }\n    }\n    for (int i = 0; i < size; i++) {\n        printf(\"%d\", nums[i]);\n        if (i < size-1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    int data[count];\n    for (int i = 0; i < count; i++) scanf(\"%d\", &data[i]);\n    sort_evens(data, count);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "sort_even_indices",
+          "code": "void sort_even_indices(int *arr, int n) {\n    for(int i=0;i<n;i+=2) for(int j=i+2;j<n;j+=2) if(arr[i]>arr[j]){int t=arr[i];arr[i]=arr[j];arr[j]=t;}\n    for(int i=0;i<n;i++){printf(\"%d\",arr[i]);if(i<n-1)printf(\" \");}\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\",&n);\n    int arr[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&arr[i]);\n    sort_even_indices(arr,n);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "order_even_pos",
+          "code": "void order_even_pos(int *v, int sz) {\n    for(int i=0;i<sz;i+=2) for(int j=i+2;j<sz;j+=2) if(v[i]>v[j]){int t=v[i];v[i]=v[j];v[j]=t;}\n    for(int i=0;i<sz;i++){if(i)printf(\" \");printf(\"%d\",v[i]);}\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int sz;\n    scanf(\"%d\",&sz);\n    int v[sz];\n    for(int i=0;i<sz;i++) scanf(\"%d\",&v[i]);\n    order_even_pos(v,sz);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "sort_even_slots",
+          "code": "void sort_even_slots(int *nums, int cnt) {\n    for(int a=0;a<cnt;a+=2) for(int b=a+2;b<cnt;b+=2) if(nums[a]>nums[b]){int tmp=nums[a];nums[a]=nums[b];nums[b]=tmp;}\n    for(int i=0;i<cnt;i++){printf(\"%d\",nums[i]);if(i<cnt-1)printf(\" \");}\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int cnt;\n    scanf(\"%d\",&cnt);\n    int nums[cnt];\n    for(int i=0;i<cnt;i++) scanf(\"%d\",&nums[i]);\n    sort_even_slots(nums,cnt);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

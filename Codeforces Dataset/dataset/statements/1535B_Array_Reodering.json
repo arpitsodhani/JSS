@@ -1,0 +1,30 @@
+{
+  "contestId": 1535,
+  "index": "B",
+  "problem_id": "1535B",
+  "name": "Array Reodering",
+  "rating": 900,
+  "tags": [
+    "brute force",
+    "greedy",
+    "math",
+    "number theory",
+    "sortings"
+  ],
+  "points": null,
+  "solvedCount": 34456,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Array Reodering",
+  "legend": "You are given an array a consisting of n integers.\n\nLet's call a pair of indices i, j good if 1≤i<j≤n and gcd(ai,2aj)>1 (where gcd(x,y) is the greatest common divisor of x and y).\n\nFind the maximum number of good index pairs if you can reorder the array a in an arbitrary way.",
+  "input_spec": "The first line contains a single integer t (1≤t≤1000) — the number of test cases.\n\nThe first line of the test case contains a single integer n (2≤n≤2000) — the number of elements in the array.\n\nThe second line of the test case contains n integers a1,a2,…,an (1≤ai≤105).\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2000.",
+  "output_spec": "For each test case, output a single integer — the maximum number of good index pairs if you can reorder the array a in an arbitrary way.",
+  "note": "In the first example, the array elements can be rearranged as follows: [6,3,5,3].\n\nIn the third example, the array elements can be rearranged as follows: [4,4,2,1,1].",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n4\n3 6 5 3\n2\n1 7\n5\n1 4 2 4 1\n",
+      "output": "4\n0\n9"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "problem_id": "044_change_base",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "convert_base",
+          "code": "void convert_base(int num, int base, char* result) {\n    if (num == 0) {\n        result[0] = '0';\n        result[1] = '\\0';\n        return;\n    }\n    \n    char temp[100];\n    int i = 0;\n    while (num > 0) {\n        temp[i++] = '0' + (num % base);\n        num /= base;\n    }\n    \n    for (int j = 0; j < i; j++) {\n        result[j] = temp[i - 1 - j];\n    }\n    result[i] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int num, base;\n    scanf(\"%d %d\", &num, &base);\n    \n    char result[100];\n    convert_base(num, base, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "convert_base",
+          "code": "void convert_base(int num, int base, char* result) {\n    if (num == 0) {\n        result[0] = '0';\n        result[1] = '\\0';\n        return;\n    }\n    \n    char temp[100];\n    int i = 0;\n    while (num > 0) {\n        temp[i++] = '0' + (num % base);\n        num /= base;\n    }\n    \n    for (int j = 0; j < i; j++) {\n        result[j] = temp[i - 1 - j];\n    }\n    result[i] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int num, base;\n    scanf(\"%d %d\", &num, &base);\n    \n    char result[100];\n    convert_base(num, base, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "convert_base",
+          "code": "void convert_base(int num, int base, char* result) {\n    if (num == 0) {\n        result[0] = '0';\n        result[1] = '\\0';\n        return;\n    }\n    \n    char temp[100];\n    int i = 0;\n    while (num > 0) {\n        temp[i++] = '0' + (num % base);\n        num /= base;\n    }\n    \n    for (int j = 0; j < i; j++) {\n        result[j] = temp[i - 1 - j];\n    }\n    result[i] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int num, base;\n    scanf(\"%d %d\", &num, &base);\n    \n    char result[100];\n    convert_base(num, base, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "convert_base",
+          "code": "void convert_base(int num, int base, char* result) {\n    if (num == 0) {\n        result[0] = '0';\n        result[1] = '\\0';\n        return;\n    }\n    \n    char temp[100];\n    int i = 0;\n    while (num > 0) {\n        temp[i++] = '0' + (num % base);\n        num /= base;\n    }\n    \n    for (int j = 0; j < i; j++) {\n        result[j] = temp[i - 1 - j];\n    }\n    result[i] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int num, base;\n    scanf(\"%d %d\", &num, &base);\n    \n    char result[100];\n    convert_base(num, base, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "convert_base",
+          "code": "void convert_base(int num, int base, char* result) {\n    if (num == 0) {\n        result[0] = '0';\n        result[1] = '\\0';\n        return;\n    }\n    \n    char temp[100];\n    int i = 0;\n    while (num > 0) {\n        temp[i++] = '0' + (num % base);\n        num /= base;\n    }\n    \n    for (int j = 0; j < i; j++) {\n        result[j] = temp[i - 1 - j];\n    }\n    result[i] = '\\0';\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int num, base;\n    scanf(\"%d %d\", &num, &base);\n    \n    char result[100];\n    convert_base(num, base, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

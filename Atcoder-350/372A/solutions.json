@@ -1,0 +1,160 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_gcd_iterative",
+          "signature": "long long compute_gcd_iterative(long long a, long long b)",
+          "code": "long long compute_gcd_iterative(long long a, long long b) {\n    while (b != 0) {\n        long long temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}"
+        },
+        {
+          "clause_id": "pollard_rho_step",
+          "signature": "long long pollard_rho_step(long long x, long long c, long long n)",
+          "code": "long long pollard_rho_step(long long x, long long c, long long n) {\n    return ((__int128)x * x % n + c) % n;\n}"
+        },
+        {
+          "clause_id": "find_factor_pollard_rho",
+          "signature": "long long find_factor_pollard_rho(long long n)",
+          "code": "long long find_factor_pollard_rho(long long n) {\n    if (n % 2 == 0) return 2;\n    long long x = 2, y = 2, c = 1, d = 1;\n    \n    while (d == 1) {\n        x = pollard_rho_step(x, c, n);\n        y = pollard_rho_step(pollard_rho_step(y, c, n), c, n);\n        d = compute_gcd_iterative(labs(x - y), n);\n        \n        if (d == n) {\n            c++;\n            x = y = 2;\n            d = 1;\n        }\n    }\n    return d;\n}"
+        },
+        {
+          "clause_id": "factorize_number_recursively",
+          "signature": "void factorize_number_recursively(long long n, long long *factors, int *count)",
+          "code": "void factorize_number_recursively(long long n, long long *factors, int *count) {\n    if (n == 1) return;\n    if (n % 2 == 0) {\n        factors[(*count)++] = 2;\n        factorize_number_recursively(n / 2, factors, count);\n        return;\n    }\n    \n    long long factor = find_factor_pollard_rho(n);\n    if (factor == n) {\n        factors[(*count)++] = n;\n    } else {\n        factorize_number_recursively(factor, factors, count);\n        factorize_number_recursively(n / factor, factors, count);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, factors[100];\n    int count = 0;\n    scanf(\"%lld\", &n);\n    factorize_number_recursively(n, factors, &count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%lld \", factors[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_gcd_iterative",
+          "signature": "long long compute_gcd_iterative(long long a, long long b)",
+          "code": "long long compute_gcd_iterative(long long a, long long b) {\n    while (b != 0) {\n        long long temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}"
+        },
+        {
+          "clause_id": "pollard_rho_step",
+          "signature": "long long pollard_rho_step(long long x, long long c, long long n)",
+          "code": "long long pollard_rho_step(long long x, long long c, long long n) {\n    return ((__int128)x * x % n + c) % n;\n}"
+        },
+        {
+          "clause_id": "find_factor_pollard_rho",
+          "signature": "long long find_factor_pollard_rho(long long n)",
+          "code": "long long find_factor_pollard_rho(long long n) {\n    if (n % 2 == 0) return 2;\n    long long x = 2, y = 2, c = 1, d = 1;\n    \n    while (d == 1) {\n        x = pollard_rho_step(x, c, n);\n        y = pollard_rho_step(pollard_rho_step(y, c, n), c, n);\n        d = compute_gcd_iterative(labs(x - y), n);\n        \n        if (d == n) {\n            c++;\n            x = y = 2;\n            d = 1;\n        }\n    }\n    return d;\n}"
+        },
+        {
+          "clause_id": "factorize_number_recursively",
+          "signature": "void factorize_number_recursively(long long n, long long *factors, int *count)",
+          "code": "void factorize_number_recursively(long long n, long long *factors, int *count) {\n    if (n == 1) return;\n    if (n % 2 == 0) {\n        factors[(*count)++] = 2;\n        factorize_number_recursively(n / 2, factors, count);\n        return;\n    }\n    \n    long long factor = find_factor_pollard_rho(n);\n    if (factor == n) {\n        factors[(*count)++] = n;\n    } else {\n        factorize_number_recursively(factor, factors, count);\n        factorize_number_recursively(n / factor, factors, count);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, factors[100];\n    int count = 0;\n    scanf(\"%lld\", &n);\n    factorize_number_recursively(n, factors, &count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%lld \", factors[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_gcd_iterative",
+          "signature": "long long compute_gcd_iterative(long long a, long long b)",
+          "code": "long long compute_gcd_iterative(long long a, long long b) {\n    while (b != 0) {\n        long long temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}"
+        },
+        {
+          "clause_id": "pollard_rho_step",
+          "signature": "long long pollard_rho_step(long long x, long long c, long long n)",
+          "code": "long long pollard_rho_step(long long x, long long c, long long n) {\n    return ((__int128)x * x % n + c) % n;\n}"
+        },
+        {
+          "clause_id": "find_factor_pollard_rho",
+          "signature": "long long find_factor_pollard_rho(long long n)",
+          "code": "long long find_factor_pollard_rho(long long n) {\n    if (n % 2 == 0) return 2;\n    long long x = 2, y = 2, c = 1, d = 1;\n    \n    while (d == 1) {\n        x = pollard_rho_step(x, c, n);\n        y = pollard_rho_step(pollard_rho_step(y, c, n), c, n);\n        d = compute_gcd_iterative(labs(x - y), n);\n        \n        if (d == n) {\n            c++;\n            x = y = 2;\n            d = 1;\n        }\n    }\n    return d;\n}"
+        },
+        {
+          "clause_id": "factorize_number_recursively",
+          "signature": "void factorize_number_recursively(long long n, long long *factors, int *count)",
+          "code": "void factorize_number_recursively(long long n, long long *factors, int *count) {\n    if (n == 1) return;\n    if (n % 2 == 0) {\n        factors[(*count)++] = 2;\n        factorize_number_recursively(n / 2, factors, count);\n        return;\n    }\n    \n    long long factor = find_factor_pollard_rho(n);\n    if (factor == n) {\n        factors[(*count)++] = n;\n    } else {\n        factorize_number_recursively(factor, factors, count);\n        factorize_number_recursively(n / factor, factors, count);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, factors[100];\n    int count = 0;\n    scanf(\"%lld\", &n);\n    factorize_number_recursively(n, factors, &count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%lld \", factors[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_gcd_iterative",
+          "signature": "long long compute_gcd_iterative(long long a, long long b)",
+          "code": "long long compute_gcd_iterative(long long a, long long b) {\n    while (b != 0) {\n        long long temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}"
+        },
+        {
+          "clause_id": "pollard_rho_step",
+          "signature": "long long pollard_rho_step(long long x, long long c, long long n)",
+          "code": "long long pollard_rho_step(long long x, long long c, long long n) {\n    return ((__int128)x * x % n + c) % n;\n}"
+        },
+        {
+          "clause_id": "find_factor_pollard_rho",
+          "signature": "long long find_factor_pollard_rho(long long n)",
+          "code": "long long find_factor_pollard_rho(long long n) {\n    if (n % 2 == 0) return 2;\n    long long x = 2, y = 2, c = 1, d = 1;\n    \n    while (d == 1) {\n        x = pollard_rho_step(x, c, n);\n        y = pollard_rho_step(pollard_rho_step(y, c, n), c, n);\n        d = compute_gcd_iterative(labs(x - y), n);\n        \n        if (d == n) {\n            c++;\n            x = y = 2;\n            d = 1;\n        }\n    }\n    return d;\n}"
+        },
+        {
+          "clause_id": "factorize_number_recursively",
+          "signature": "void factorize_number_recursively(long long n, long long *factors, int *count)",
+          "code": "void factorize_number_recursively(long long n, long long *factors, int *count) {\n    if (n == 1) return;\n    if (n % 2 == 0) {\n        factors[(*count)++] = 2;\n        factorize_number_recursively(n / 2, factors, count);\n        return;\n    }\n    \n    long long factor = find_factor_pollard_rho(n);\n    if (factor == n) {\n        factors[(*count)++] = n;\n    } else {\n        factorize_number_recursively(factor, factors, count);\n        factorize_number_recursively(n / factor, factors, count);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, factors[100];\n    int count = 0;\n    scanf(\"%lld\", &n);\n    factorize_number_recursively(n, factors, &count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%lld \", factors[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_gcd_iterative",
+          "signature": "long long compute_gcd_iterative(long long a, long long b)",
+          "code": "long long compute_gcd_iterative(long long a, long long b) {\n    while (b != 0) {\n        long long temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}"
+        },
+        {
+          "clause_id": "pollard_rho_step",
+          "signature": "long long pollard_rho_step(long long x, long long c, long long n)",
+          "code": "long long pollard_rho_step(long long x, long long c, long long n) {\n    return ((__int128)x * x % n + c) % n;\n}"
+        },
+        {
+          "clause_id": "find_factor_pollard_rho",
+          "signature": "long long find_factor_pollard_rho(long long n)",
+          "code": "long long find_factor_pollard_rho(long long n) {\n    if (n % 2 == 0) return 2;\n    long long x = 2, y = 2, c = 1, d = 1;\n    \n    while (d == 1) {\n        x = pollard_rho_step(x, c, n);\n        y = pollard_rho_step(pollard_rho_step(y, c, n), c, n);\n        d = compute_gcd_iterative(labs(x - y), n);\n        \n        if (d == n) {\n            c++;\n            x = y = 2;\n            d = 1;\n        }\n    }\n    return d;\n}"
+        },
+        {
+          "clause_id": "factorize_number_recursively",
+          "signature": "void factorize_number_recursively(long long n, long long *factors, int *count)",
+          "code": "void factorize_number_recursively(long long n, long long *factors, int *count) {\n    if (n == 1) return;\n    if (n % 2 == 0) {\n        factors[(*count)++] = 2;\n        factorize_number_recursively(n / 2, factors, count);\n        return;\n    }\n    \n    long long factor = find_factor_pollard_rho(n);\n    if (factor == n) {\n        factors[(*count)++] = n;\n    } else {\n        factorize_number_recursively(factor, factors, count);\n        factorize_number_recursively(n / factor, factors, count);\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    long long n, factors[100];\n    int count = 0;\n    scanf(\"%lld\", &n);\n    factorize_number_recursively(n, factors, &count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%lld \", factors[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

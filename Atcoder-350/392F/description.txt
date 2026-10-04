@@ -1,0 +1,10 @@
+There is an empty array A . For i = 1,2,\ldots,N , perform the following operation in order: Insert the number i into A so that it becomes the P_i -th element from the beginning. More precisely, replace A with the concatenation of the first P_i-1 elements of A , then i , then the remaining elements of A starting from the P_i -th element, in this order. Output the final array A after all operations have been completed.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= u_i, v_i <= N
+- u_i != v_i
+- The graph is simple
+- 1 <= c_i <= 10^9
+- All input values are integers

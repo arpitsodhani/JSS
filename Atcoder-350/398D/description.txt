@@ -1,0 +1,8 @@
+There is an infinitely large two-dimensional grid, with a campfire at coordinate (0,0) . At time t=0 , smoke exists only at cell (0,0) . You are given a length- N string S consisting of N , W , S , E . At times t=1,2,\dots,N , the following happen in order: Wind blows, and all the smoke present at that time moves as follows: If the t -th character of S is N , smoke in cell (r,c) moves to cell (r-1,c) . If it is W , smoke in cell (r,c) moves to cell (r,c-1) . If it is S , smoke in cell (r,c) moves to cell (r+1,c) . If it is E , smoke in cell (r,c) moves to cell (r,c+1) . If there is no smoke in cell (0,0) , new smoke is generated at cell (0,0) . Takahashi is standing at cell (R,C) . For each integer 1 \le t \le N , determine if smoke exists at cell (R,C) at time t+0.5 , and print the response according to the required format.
+
+**Constraints:**
+- 2 <= H, W <= 1000
+- 1 <= N <= 2 * 10^5
+- 1 <= A_i, C_i <= H
+- 1 <= B_i, D_i <= W
+- All input values are integers

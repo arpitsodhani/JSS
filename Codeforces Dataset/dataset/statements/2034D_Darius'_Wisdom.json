@@ -1,0 +1,29 @@
+{
+  "contestId": 2034,
+  "index": "D",
+  "problem_id": "2034D",
+  "name": "Darius' Wisdom",
+  "rating": 1600,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "implementation",
+    "sortings"
+  ],
+  "points": 1500.0,
+  "solvedCount": 6773,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Darius' Wisdom",
+  "legend": "Darius the Great is constructing n stone columns, each consisting of a base and between 0, 1, or 2 inscription pieces stacked on top.\n\nIn each move, Darius can choose two columns u and v such that the difference in the number of inscriptions between these columns is exactly 1, and transfer one inscription from the column with more inscriptions to the other one. It is guaranteed that at least one column contains exactly 1 inscription.\n\nSince beauty is the main pillar of historical buildings, Darius wants the columns to have ascending heights. To avoid excessive workers' efforts, he asks you to plan a sequence of at most n moves to arrange the columns in non-decreasing order based on the number of inscriptions. Minimizing the number of moves is not required.",
+  "input_spec": "The first line contains an integer t — the number of test cases. (1≤t≤3000)\n\nThe first line of each test case contains an integer n — the number of stone columns. (1≤n≤2⋅105)\n\nThe second line contains n integers a1,a2,…,an, where ai∈{0,1,2} represents the initial number of inscriptions in the i-th column. It is guaranteed that at least one column has exactly 1 inscription.\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, output an integer k — the number of moves used to sort the columns. (0≤k≤n)\n\nThen, output k lines, each containing two integers ui and vi (1≤ui,vi≤n), representing the indices of the columns involved in the i-th move. During each move, it must hold that |aui−avi|=1, and one inscription is transferred from the column with more inscriptions to the other.\n\nIt can be proven that a valid solution always exists under the given constraints.",
+  "note": "Columns state in the first test case:\n\nInitial: 0,2,0,1\nAfter the first move: 0,1,0,2\nAfter the second move: 0,0,1,2\n\nColumns state in the second test case:\n\nInitial: 1,2,0\nAfter the first move: 0,2,1\nAfter the second move: 0,1,2\n\nIn the third test case, the column heights are already sorted in ascending order.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n4\n0 2 0 1\n3\n1 2 0\n6\n0 1 1 2 2 2\n",
+      "output": "2\n2 4\n2 3\n2\n3 1\n2 3\n0"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "contestId": 1042,
+  "index": "F",
+  "problem_id": "1042F",
+  "name": "Leaf Sets",
+  "rating": 2400,
+  "tags": [
+    "data structures",
+    "dfs and similar",
+    "dsu",
+    "graphs",
+    "greedy",
+    "sortings",
+    "trees"
+  ],
+  "points": 2750.0,
+  "solvedCount": 1548,
+  "source": "verbatim_cf_fetch",
+  "title": "F. Leaf Sets",
+  "legend": "You are given an undirected tree, consisting of n vertices.\n\nThe vertex is called a leaf if it has exactly one vertex adjacent to it.\n\nThe distance between some pair of vertices is the number of edges in the shortest path between them.\n\nLet's call some set of leaves beautiful if the maximum distance between any pair of leaves in it is less or equal to k.\n\nYou want to split all leaves into non-intersecting beautiful sets. What is the minimal number of sets in such a split?",
+  "input_spec": "The first line contains two integers n and k (3≤n≤106, 1≤k≤106) — the number of vertices in the tree and the maximum distance between any pair of leaves in each beautiful set.\n\nEach of the next n−1 lines contains two integers vi and ui (1≤vi,ui≤n) — the description of the i-th edge.\n\nIt is guaranteed that the given edges form a tree.",
+  "output_spec": "Print a single integer — the minimal number of beautiful sets the split can have.",
+  "note": "Here is the graph for the first example:",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "9 3\n1 2\n1 3\n2 4\n2 5\n3 6\n6 7\n6 8\n3 9\n",
+      "output": "2"
+    },
+    {
+      "input": "5 3\n1 2\n2 3\n3 4\n4 5\n",
+      "output": "2"
+    },
+    {
+      "input": "6 1\n1 2\n1 3\n1 4\n1 5\n1 6\n",
+      "output": "5"
+    }
+  ]
+}

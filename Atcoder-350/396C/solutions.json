@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, long long *b, long long *w)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*n;i++) scanf(\"%lld\", &b[i]); for(int j=0;j<*m;j++) scanf(\"%lld\", &w[j]);\n"
+        },
+        {
+          "clause_id": "cmp_ll_desc",
+          "signature": "int cmp_ll_desc(const void *p, const void *q)",
+          "code": "long long a=*(const long long*)p, b=*(const long long*)q; if(a>b) return -1; if(a<b) return 1; return 0;\n"
+        },
+        {
+          "clause_id": "max_sum",
+          "signature": "long long max_sum(int n, int m, long long *b, long long *w)",
+          "code": "qsort(b,(size_t)n,sizeof(long long),cmp_ll_desc);\nqsort(w,(size_t)m,sizeof(long long),cmp_ll_desc);\nlong long *pb=(long long*)malloc((size_t)(n+1)*sizeof(long long));\nlong long *pw=(long long*)malloc((size_t)(m+1)*sizeof(long long));\npb[0]=0; for(int i=0;i<n;i++) pb[i+1]=pb[i]+b[i];\npw[0]=0; for(int j=0;j<m;j++) pw[j+1]=pw[j]+w[j];\nfor(int i=0;i<=n;i++) if(pb[i]<0) pb[i]=-(1LL<<60);\nlong long bestw=0; long long ans=0;\nint jmax=0;\nfor(int i=0;i<=n;i++){\n  int lim=i; if(lim>m) lim=m;\n  while(jmax<lim){ jmax++; if(pw[jmax]>bestw) bestw=pw[jmax]; }\n  long long cand=pb[i] + bestw;\n  if(cand>ans) ans=cand;\n}\nfree(pb); free(pw);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static long long b[200005], w[200005]; read_input(&n,&m,b,w); long long ans=max_sum(n,m,b,w); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, long long *b, long long *w)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*n;i++) scanf(\"%lld\", &b[i]); for(int j=0;j<*m;j++) scanf(\"%lld\", &w[j]);\n"
+        },
+        {
+          "clause_id": "cmp_ll_desc",
+          "signature": "int cmp_ll_desc(const void *p, const void *q)",
+          "code": "long long a=*(const long long*)p, b=*(const long long*)q; if(a>b) return -1; if(a<b) return 1; return 0;\n"
+        },
+        {
+          "clause_id": "max_sum",
+          "signature": "long long max_sum(int n, int m, long long *b, long long *w)",
+          "code": "qsort(b,(size_t)n,sizeof(long long),cmp_ll_desc);\nqsort(w,(size_t)m,sizeof(long long),cmp_ll_desc);\nlong long *pb=(long long*)malloc((size_t)(n+1)*sizeof(long long));\nlong long *pw=(long long*)malloc((size_t)(m+1)*sizeof(long long));\npb[0]=0; for(int i=0;i<n;i++) pb[i+1]=pb[i]+b[i];\npw[0]=0; for(int j=0;j<m;j++) pw[j+1]=pw[j]+w[j];\nfor(int i=0;i<=n;i++) if(pb[i]<0) pb[i]=-(1LL<<60);\nlong long bestw=0; long long ans=0;\nint jmax=0;\nfor(int i=0;i<=n;i++){\n  int lim=i; if(lim>m) lim=m;\n  while(jmax<lim){ jmax++; if(pw[jmax]>bestw) bestw=pw[jmax]; }\n  long long cand=pb[i] + bestw;\n  if(cand>ans) ans=cand;\n}\nfree(pb); free(pw);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static long long b[200005], w[200005]; read_input(&n,&m,b,w); long long ans=max_sum(n,m,b,w); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, long long *b, long long *w)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*n;i++) scanf(\"%lld\", &b[i]); for(int j=0;j<*m;j++) scanf(\"%lld\", &w[j]);\n"
+        },
+        {
+          "clause_id": "cmp_ll_desc",
+          "signature": "int cmp_ll_desc(const void *p, const void *q)",
+          "code": "long long a=*(const long long*)p, b=*(const long long*)q; if(a>b) return -1; if(a<b) return 1; return 0;\n"
+        },
+        {
+          "clause_id": "max_sum",
+          "signature": "long long max_sum(int n, int m, long long *b, long long *w)",
+          "code": "qsort(b,(size_t)n,sizeof(long long),cmp_ll_desc);\nqsort(w,(size_t)m,sizeof(long long),cmp_ll_desc);\nlong long *pb=(long long*)malloc((size_t)(n+1)*sizeof(long long));\nlong long *pw=(long long*)malloc((size_t)(m+1)*sizeof(long long));\npb[0]=0; for(int i=0;i<n;i++) pb[i+1]=pb[i]+b[i];\npw[0]=0; for(int j=0;j<m;j++) pw[j+1]=pw[j]+w[j];\nfor(int i=0;i<=n;i++) if(pb[i]<0) pb[i]=-(1LL<<60);\nlong long bestw=0; long long ans=0;\nint jmax=0;\nfor(int i=0;i<=n;i++){\n  int lim=i; if(lim>m) lim=m;\n  while(jmax<lim){ jmax++; if(pw[jmax]>bestw) bestw=pw[jmax]; }\n  long long cand=pb[i] + bestw;\n  if(cand>ans) ans=cand;\n}\nfree(pb); free(pw);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static long long b[200005], w[200005]; read_input(&n,&m,b,w); long long ans=max_sum(n,m,b,w); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, long long *b, long long *w)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*n;i++) scanf(\"%lld\", &b[i]); for(int j=0;j<*m;j++) scanf(\"%lld\", &w[j]);\n"
+        },
+        {
+          "clause_id": "cmp_ll_desc",
+          "signature": "int cmp_ll_desc(const void *p, const void *q)",
+          "code": "long long a=*(const long long*)p, b=*(const long long*)q; if(a>b) return -1; if(a<b) return 1; return 0;\n"
+        },
+        {
+          "clause_id": "max_sum",
+          "signature": "long long max_sum(int n, int m, long long *b, long long *w)",
+          "code": "qsort(b,(size_t)n,sizeof(long long),cmp_ll_desc);\nqsort(w,(size_t)m,sizeof(long long),cmp_ll_desc);\nlong long *pb=(long long*)malloc((size_t)(n+1)*sizeof(long long));\nlong long *pw=(long long*)malloc((size_t)(m+1)*sizeof(long long));\npb[0]=0; for(int i=0;i<n;i++) pb[i+1]=pb[i]+b[i];\npw[0]=0; for(int j=0;j<m;j++) pw[j+1]=pw[j]+w[j];\nfor(int i=0;i<=n;i++) if(pb[i]<0) pb[i]=-(1LL<<60);\nlong long bestw=0; long long ans=0;\nint jmax=0;\nfor(int i=0;i<=n;i++){\n  int lim=i; if(lim>m) lim=m;\n  while(jmax<lim){ jmax++; if(pw[jmax]>bestw) bestw=pw[jmax]; }\n  long long cand=pb[i] + bestw;\n  if(cand>ans) ans=cand;\n}\nfree(pb); free(pw);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static long long b[200005], w[200005]; read_input(&n,&m,b,w); long long ans=max_sum(n,m,b,w); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *m, long long *b, long long *w)",
+          "code": "scanf(\"%d %d\", n, m); for(int i=0;i<*n;i++) scanf(\"%lld\", &b[i]); for(int j=0;j<*m;j++) scanf(\"%lld\", &w[j]);\n"
+        },
+        {
+          "clause_id": "cmp_ll_desc",
+          "signature": "int cmp_ll_desc(const void *p, const void *q)",
+          "code": "long long a=*(const long long*)p, b=*(const long long*)q; if(a>b) return -1; if(a<b) return 1; return 0;\n"
+        },
+        {
+          "clause_id": "max_sum",
+          "signature": "long long max_sum(int n, int m, long long *b, long long *w)",
+          "code": "qsort(b,(size_t)n,sizeof(long long),cmp_ll_desc);\nqsort(w,(size_t)m,sizeof(long long),cmp_ll_desc);\nlong long *pb=(long long*)malloc((size_t)(n+1)*sizeof(long long));\nlong long *pw=(long long*)malloc((size_t)(m+1)*sizeof(long long));\npb[0]=0; for(int i=0;i<n;i++) pb[i+1]=pb[i]+b[i];\npw[0]=0; for(int j=0;j<m;j++) pw[j+1]=pw[j]+w[j];\nfor(int i=0;i<=n;i++) if(pb[i]<0) pb[i]=-(1LL<<60);\nlong long bestw=0; long long ans=0;\nint jmax=0;\nfor(int i=0;i<=n;i++){\n  int lim=i; if(lim>m) lim=m;\n  while(jmax<lim){ jmax++; if(pw[jmax]>bestw) bestw=pw[jmax]; }\n  long long cand=pb[i] + bestw;\n  if(cand>ans) ans=cand;\n}\nfree(pb); free(pw);\nreturn ans;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static long long b[200005], w[200005]; read_input(&n,&m,b,w); long long ans=max_sum(n,m,b,w); printf(\"%lld\\n\", ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

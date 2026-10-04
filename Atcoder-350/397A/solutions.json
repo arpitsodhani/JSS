@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "double read_x(void)",
+          "code": "double x; scanf(\"%lf\", &x); return x;\n"
+        },
+        {
+          "clause_id": "classify",
+          "signature": "int classify(double x)",
+          "code": "if(x>=38.0) return 1; if(x>=37.5) return 2; return 3;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ double x=read_x(); int a=classify(x); print_int(a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "double read_x(void)",
+          "code": "double x; scanf(\"%lf\", &x); return x;\n"
+        },
+        {
+          "clause_id": "classify",
+          "signature": "int classify(double x)",
+          "code": "if(x<37.5) return 3; if(x<38.0) return 2; return 1;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ double x=read_x(); int a=classify(x); print_int(a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "double read_x(void)",
+          "code": "double x; scanf(\"%lf\", &x); return x;\n"
+        },
+        {
+          "clause_id": "classify",
+          "signature": "int classify(double x)",
+          "code": "int a=(x>=38.0); int b=(x>=37.5); if(a) return 1; if(b) return 2; return 3;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ double x=read_x(); int a=classify(x); print_int(a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "double read_x(void)",
+          "code": "double x; scanf(\"%lf\", &x); return x;\n"
+        },
+        {
+          "clause_id": "classify",
+          "signature": "int classify(double x)",
+          "code": "if(x>=38.0) return 1; else if(x>=37.5) return 2; else return 3;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ double x=read_x(); int a=classify(x); print_int(a); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_x",
+          "signature": "double read_x(void)",
+          "code": "double x; scanf(\"%lf\", &x); return x;\n"
+        },
+        {
+          "clause_id": "classify",
+          "signature": "int classify(double x)",
+          "code": "return (x>=38.0)?1:((x>=37.5)?2:3);\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ double x=read_x(); int a=classify(x); print_int(a); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

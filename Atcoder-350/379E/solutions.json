@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S)",
+          "code": "void read_input(char *S){ scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "accumulate_sum",
+          "signature": "long long accumulate_sum(char *S)",
+          "code": "long long accumulate_sum(char *S){ long long ans=0,cur=0; for(int i=0; S[i]; i++){ int d=S[i]-'0'; cur = cur*10 + (long long)d*(i+1); ans += cur; } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[300000]; read_input(S); long long ans=accumulate_sum(S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S)",
+          "code": "void read_input(char *S){ scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "accumulate_sum",
+          "signature": "long long accumulate_sum(char *S)",
+          "code": "long long accumulate_sum(char *S){ long long ans=0,cur=0; for(int i=0; S[i]; i++){ int d=S[i]-'0'; cur = cur*10 + (long long)d*(i+1); ans += cur; } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[300000]; read_input(S); long long ans=accumulate_sum(S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S)",
+          "code": "void read_input(char *S){ scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "accumulate_sum",
+          "signature": "long long accumulate_sum(char *S)",
+          "code": "long long accumulate_sum(char *S){ long long ans=0,cur=0; for(int i=0; S[i]; i++){ int d=S[i]-'0'; cur = cur*10 + (long long)d*(i+1); ans += cur; } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[300000]; read_input(S); long long ans=accumulate_sum(S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S)",
+          "code": "void read_input(char *S){ scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "accumulate_sum",
+          "signature": "long long accumulate_sum(char *S)",
+          "code": "long long accumulate_sum(char *S){ long long ans=0,cur=0; for(int i=0; S[i]; i++){ int d=S[i]-'0'; cur = cur*10 + (long long)d*(i+1); ans += cur; } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[300000]; read_input(S); long long ans=accumulate_sum(S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(char *S)",
+          "code": "void read_input(char *S){ scanf(\"%s\", S); }\n"
+        },
+        {
+          "clause_id": "accumulate_sum",
+          "signature": "long long accumulate_sum(char *S)",
+          "code": "long long accumulate_sum(char *S){ long long ans=0,cur=0; for(int i=0; S[i]; i++){ int d=S[i]-'0'; cur = cur*10 + (long long)d*(i+1); ans += cur; } return ans; }\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char S[300000]; read_input(S); long long ans=accumulate_sum(S); print_answer(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

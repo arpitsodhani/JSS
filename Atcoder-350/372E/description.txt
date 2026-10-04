@@ -1,0 +1,9 @@
+There is an undirected graph with N vertices and 0 edges. The vertices are numbered 1 to N . You are given Q queries to process in order. Each query is of one of the following two types: Type 1 : Given in the format 1 u v . Add an edge between vertices u and v . Type 2 : Given in the format 2 v k . Print the k -th largest vertex number among the vertices connected to vertex v . If there are fewer than k vertices connected to v , print -1 .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= Q <= 2 * 10^5
+- 1 <= u_i, v_i <= N (for type 1 queries)
+- 1 <= v_i <= N (for type 2 queries)
+- 1 <= k_i <= 10 (for type 2 queries)
+- All input values are integers

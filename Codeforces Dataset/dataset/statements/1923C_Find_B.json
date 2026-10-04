@@ -1,0 +1,27 @@
+{
+  "contestId": 1923,
+  "index": "C",
+  "problem_id": "1923C",
+  "name": "Find B",
+  "rating": 1400,
+  "tags": [
+    "constructive algorithms",
+    "greedy"
+  ],
+  "points": null,
+  "solvedCount": 18735,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Find B",
+  "legend": "An array a of length m is considered good if there exists an integer array b of length m such that the following conditions hold:\n\nm\n∑\n\ni=1ai=\nm\n∑\n\ni=1bi;\nai≠bi for every index i from 1 to m;\nbi>0 for every index i from 1 to m.\n\nYou are given an array c of length n. Each element of this array is greater than 0.\n\nYou have to answer q queries. During the i-th query, you have to determine whether the subarray cli,cli+1,…,cri is good.",
+  "input_spec": "The first line contains one integer t (1≤t≤104) — the number of test cases.\n\nThe first line of each test case contains two integers n and q (1≤n,q≤3⋅105) — the length of the array c and the number of queries.\n\nThe second line of each test case contains n integers c1,c2,…,cn (1≤ci≤109).\n\nThen q lines follow. The i-th of them contains two integers li and ri (1≤li≤ri≤n) — the borders of the i-th subarray.\n\nAdditional constraints on the input: the sum of n over all test cases does not exceed 3⋅105; the sum of q over all test cases does not exceed 3⋅105.",
+  "output_spec": "For each query, print YES if the subarray is good. Otherwise, print NO.\n\nYou can output each letter of the answer in any case (upper or lower). For example, the strings yEs, yes, Yes, and YES will all be recognized as positive responses.",
+  "note": "",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "1\n5 4\n1 2 1 4 5\n1 5\n4 4\n3 4\n1 3\n",
+      "output": "YES\nNO\nYES\nNO"
+    }
+  ]
+}

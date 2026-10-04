@@ -1,0 +1,27 @@
+{
+  "contestId": 2070,
+  "index": "A",
+  "problem_id": "2070A",
+  "name": "FizzBuzz Remixed",
+  "rating": 800,
+  "tags": [
+    "brute force",
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 26694,
+  "source": "verbatim_cf_fetch",
+  "title": "A. FizzBuzz Remixed",
+  "legend": "FizzBuzz is one of the most well-known problems from coding interviews. In this problem, we will consider a remixed version of FizzBuzz:\n\nGiven an integer n, process all integers from 0 to n. For every integer such that its remainders modulo 3 and modulo 5 are the same (so, for every integer i such that imod3=imod5), print FizzBuzz.\n\nHowever, you don't have to solve it. Instead, given the integer n, you have to report how many times the correct solution to that problem will print FizzBuzz.",
+  "input_spec": "The first line contains one integer t (1≤t≤104) — the number of test cases.\n\nEach test case contains one line consisting of one integer n (0≤n≤109).",
+  "output_spec": "For each test case, print one integer — the number of times the correct solution will print FizzBuzz with the given value of n.",
+  "note": "In the first test case, the solution will print FizzBuzz for the integer 0.\n\nIn the second test case, the solution will print FizzBuzz for the integers 0,1,2.\n\nIn the third test case, the solution will print FizzBuzz for the integers 0,1,2,15.",
+  "time_limit": "1 second",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "7\n0\n5\n15\n42\n1337\n17101997\n998244353\n",
+      "output": "1\n3\n4\n9\n270\n3420402\n199648872"
+    }
+  ]
+}

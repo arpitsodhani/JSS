@@ -1,0 +1,27 @@
+{
+  "contestId": 2020,
+  "index": "B",
+  "problem_id": "2020B",
+  "name": "Brightness Begins",
+  "rating": 1200,
+  "tags": [
+    "binary search",
+    "math"
+  ],
+  "points": 750.0,
+  "solvedCount": 22016,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Brightness Begins",
+  "legend": "Imagine you have n light bulbs numbered 1,2,…,n. Initially, all bulbs are on. To flip the state of a bulb means to turn it off if it used to be on, and to turn it on otherwise.\n\nNext, you do the following:\n\nfor each i=1,2,…,n, flip the state of all bulbs j such that j is divisible by i†.\n\nAfter performing all operations, there will be several bulbs that are still on. Your goal is to make this number exactly k.\n\nFind the smallest suitable n such that after performing the operations there will be exactly k bulbs on. We can show that an answer always exists.\n\n† An integer x is divisible by y if there exists an integer z such that x=y⋅z.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nThe only line of each test case contains a single integer k (1≤k≤1018).",
+  "output_spec": "For each test case, output n — the minimum number of bulbs.",
+  "note": "In the first test case, the minimum number of bulbs is 2. Let's denote the state of all bulbs with an array, where 1 corresponds to a turned on bulb, and 0 corresponds to a turned off bulb. Initially, the array is [1,1].\n\nAfter performing the operation with i=1, the array becomes [0\n_,0\n_].\nAfter performing the operation with i=2, the array becomes [0,1\n_].\n\nIn the end, there are k=1 bulbs on. We can also show that the answer cannot be less than 2.\n\nIn the second test case, the minimum number of bulbs is 5. Initially, the array is [1,1,1,1,1].\n\nAfter performing the operation with i=1, the array becomes [0\n_,0\n_,0\n_,0\n_,0\n_].\nAfter performing the operation with i=2, the array becomes [0,1\n_,0,1\n_,0].\nAfter performing the operation with i=3, the array becomes [0,1,1\n_,1,0].\nAfter performing the operation with i=4, the array becomes [0,1,1,0\n_,0].\nAfter performing the operation with i=5, the array becomes [0,1,1,0,1\n_].\n\nIn the end, there are k=3 bulbs on. We can also show that the answer cannot be smaller than 5.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n1\n3\n8\n",
+      "output": "2\n5\n11"
+    }
+  ]
+}

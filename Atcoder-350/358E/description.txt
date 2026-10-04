@@ -1,0 +1,6 @@
+AtCoder Land sells tiles with English letters written on them. Takahashi is thinking of making a nameplate by arranging these tiles in a row. Find the number, modulo 998244353 , of strings consisting of uppercase English letters with a length between 1 and K , inclusive, that satisfy the following conditions: For every integer i satisfying 1 \leq i \leq 26 , the following holds: Let a_i be the i -th uppercase English letter in lexicographical order. For example, a_1 = A , a_5 = E , a_{26} = Z . The number of occurrences of a_i in the string is between 0 and C_i , inclusive.
+
+**Constraints:**
+- 1 <= K <= 26
+- 1 <= C_i <= 10^6
+- All input values are integers

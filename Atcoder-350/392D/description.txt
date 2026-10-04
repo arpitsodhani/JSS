@@ -1,0 +1,6 @@
+There are N dice. The i -th die has K_i faces, with the numbers A_{i,1}, A_{i,2}, \ldots, A_{i,K_i} written on them. When you roll this die, each face appears with probability \frac{1}{K_i} . You choose two dice from the N dice and roll them. Determine the maximum probability that the two dice show the same number, when the dice are chosen optimally.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 1 <= L_i <= R_i <= 10^9
+- All input values are integers

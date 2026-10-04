@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "check_hamiltonian_path_exists",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "mark_node_as_visited",
+      "confidence": 1.0
+    },
+    {
+      "clause": "search_hamiltonian_path_dfs",
+      "confidence": 1.0
+    }
+  ]
+}

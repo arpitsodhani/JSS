@@ -1,0 +1,48 @@
+import sys
+
+
+# --- clause: read_input :: () -> list[int] ---
+def read_input():
+    data = sys.stdin.buffer.read().split()
+    counts = []
+    for token in data[:4]:
+        counts.append(int(token))
+    return counts
+
+
+# --- clause: try_start :: (counts: list[int], start: int) -> list[int] ---
+def try_start(counts, start):
+    left = list(counts)
+    if left[start] == 0:
+        return None
+    left[start] -= 1
+    made = [start]
+    cur = start
+    while True:
+        if cur > 0 and left[cur - 1] > 0:
+            cur -= 1
+        elif cur < 3 and left[cur + 1] > 0:
+            cur += 1
+        else:
+            break
+        left[cur] -= 1
+        made.append(cur)
+    if any(left):
+        return None
+    return made
+
+
+# --- clause: main :: () -> None ---
+def main():
+    counts = read_input()
+    for start in range(4):
+        made = try_start(counts, start)
+        if made is not None:
+            print("YES")
+            print(" ".join(map(str, made)))
+            return
+    sys.stdout.write("NO\n")
+
+
+if __name__ == "__main__":
+    main()

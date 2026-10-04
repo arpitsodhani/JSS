@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "check_obstacle_at_position",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_next_position_from_direction",
+      "confidence": 1.0
+    },
+    {
+      "clause": "execute_navigation_sequence",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "validate_move_within_bounds",
+      "confidence": 1.0
+    }
+  ]
+}

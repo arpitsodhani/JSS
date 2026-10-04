@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *R,int *D,int *A)",
+          "code": "void read_input(int *N,int *R,int *D,int *A){ scanf(\"%d%d\", N,R); for(int i=0;i<*N;i++) scanf(\"%d%d\", &D[i], &A[i]); }\n"
+        },
+        {
+          "clause_id": "final_rating",
+          "signature": "int final_rating(int N,int R,int *D,int *A)",
+          "code": "int final_rating(int N,int R,int *D,int *A){\n    int r=R;\n    for(int i=0;i<N;i++){\n        if(D[i]==1){\n            if(r>=1600 && r<=2799) r += A[i];\n        } else {\n            if(r>=1200 && r<=2399) r += A[i];\n        }\n    }\n    return r;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int r)",
+          "code": "void print_answer(int r){ printf(\"%d\\n\", r); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int N,R; static int D[105], A[105];\n    read_input(&N,&R,D,A);\n    int r = final_rating(N,R,D,A);\n    print_answer(r);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *R,int *D,int *A)",
+          "code": "void read_input(int *N,int *R,int *D,int *A){ scanf(\"%d%d\", N,R); for(int i=0;i<*N;i++) scanf(\"%d%d\", &D[i], &A[i]); }\n"
+        },
+        {
+          "clause_id": "final_rating",
+          "signature": "int final_rating(int N,int R,int *D,int *A)",
+          "code": "int final_rating(int N,int R,int *D,int *A){\n    int r=R;\n    int i=0;\n    while(i<N){\n        if(D[i]==1){\n            if(r>=1600 && r<=2799) r = r + A[i];\n        } else {\n            if(r>=1200 && r<=2399) r = r + A[i];\n        }\n        i++;\n    }\n    return r;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int r)",
+          "code": "void print_answer(int r){ printf(\"%d\\n\", r); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int N,R; static int D[105], A[105];\n    read_input(&N,&R,D,A);\n    int r = final_rating(N,R,D,A);\n    print_answer(r);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *R,int *D,int *A)",
+          "code": "void read_input(int *N,int *R,int *D,int *A){ scanf(\"%d%d\", N,R); for(int i=0;i<*N;i++) scanf(\"%d%d\", &D[i], &A[i]); }\n"
+        },
+        {
+          "clause_id": "final_rating",
+          "signature": "int final_rating(int N,int R,int *D,int *A)",
+          "code": "int final_rating(int N,int R,int *D,int *A){\n    int r=R;\n    for(int i=0;i<N;i++){\n        if(D[i]==1){\n            if(r>=1600 && r<=2799) r += A[i];\n        } else {\n            if(r>=1200 && r<=2399) r += A[i];\n        }\n    }\n    return r;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int r)",
+          "code": "void print_answer(int r){ printf(\"%d\\n\", r); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int N,R; static int D[105], A[105];\n    read_input(&N,&R,D,A);\n    int r = final_rating(N,R,D,A);\n    print_answer(r);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *R,int *D,int *A)",
+          "code": "void read_input(int *N,int *R,int *D,int *A){ scanf(\"%d%d\", N,R); for(int i=0;i<*N;i++) scanf(\"%d%d\", &D[i], &A[i]); }\n"
+        },
+        {
+          "clause_id": "final_rating",
+          "signature": "int final_rating(int N,int R,int *D,int *A)",
+          "code": "int final_rating(int N,int R,int *D,int *A){\n    int r=R;\n    int i=0;\n    while(i<N){\n        if(D[i]==1){\n            if(r>=1600 && r<=2799) r = r + A[i];\n        } else {\n            if(r>=1200 && r<=2399) r = r + A[i];\n        }\n        i++;\n    }\n    return r;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int r)",
+          "code": "void print_answer(int r){ printf(\"%d\\n\", r); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int N,R; static int D[105], A[105];\n    read_input(&N,&R,D,A);\n    int r = final_rating(N,R,D,A);\n    print_answer(r);\n    return 0;\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *R,int *D,int *A)",
+          "code": "void read_input(int *N,int *R,int *D,int *A){ scanf(\"%d%d\", N,R); for(int i=0;i<*N;i++) scanf(\"%d%d\", &D[i], &A[i]); }\n"
+        },
+        {
+          "clause_id": "final_rating",
+          "signature": "int final_rating(int N,int R,int *D,int *A)",
+          "code": "int final_rating(int N,int R,int *D,int *A){\n    int r=R;\n    for(int i=0;i<N;i++){\n        if(D[i]==1){\n            if(r>=1600 && r<=2799) r += A[i];\n        } else {\n            if(r>=1200 && r<=2399) r += A[i];\n        }\n    }\n    return r;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int r)",
+          "code": "void print_answer(int r){ printf(\"%d\\n\", r); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){\n    int N,R; static int D[105], A[105];\n    read_input(&N,&R,D,A);\n    int r = final_rating(N,R,D,A);\n    print_answer(r);\n    return 0;\n}\n"
+        }
+      ]
+    }
+  ]
+}

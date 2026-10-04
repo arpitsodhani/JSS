@@ -1,0 +1,30 @@
+{
+  "contestId": 514,
+  "index": "C",
+  "problem_id": "514C",
+  "name": "Watto and Mechanism",
+  "rating": 2000,
+  "tags": [
+    "binary search",
+    "data structures",
+    "hashing",
+    "string suffix structures",
+    "strings"
+  ],
+  "points": 2000.0,
+  "solvedCount": 8314,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Watto and Mechanism",
+  "legend": "Watto, the owner of a spare parts store, has recently got an order for the mechanism that can process strings in a certain way. Initially the memory of the mechanism is filled with n strings. Then the mechanism should be able to process queries of the following type: \"Given string s, determine if the memory of the mechanism contains string t that consists of the same number of characters as s and differs from s in exactly one position\".\n\nWatto has already compiled the mechanism, all that's left is to write a program for it and check it on the data consisting of n initial lines and m queries. He decided to entrust this job to you.",
+  "input_spec": "The first line contains two non-negative numbers n and m (0 ≤ n ≤ 3·105, 0 ≤ m ≤ 3·105) — the number of the initial strings and the number of queries, respectively.\n\nNext follow n non-empty strings that are uploaded to the memory of the mechanism.\n\nNext follow m non-empty strings that are the queries to the mechanism.\n\nThe total length of lines in the input doesn't exceed 6·105. Each line consists only of letters 'a', 'b', 'c'.",
+  "output_spec": "For each query print on a single line \"YES\" (without the quotes), if the memory of the mechanism contains the required string, otherwise print \"NO\" (without the quotes).",
+  "note": "",
+  "time_limit": "3 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2 3\naaaaa\nacacaca\naabaa\nccacacc\ncaaac\n",
+      "output": "YES\nNO\nNO"
+    }
+  ]
+}

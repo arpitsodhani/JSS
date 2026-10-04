@@ -1,0 +1,36 @@
+{
+  "contestId": 1138,
+  "index": "A",
+  "problem_id": "1138A",
+  "name": "Sushi for Two",
+  "rating": 900,
+  "tags": [
+    "binary search",
+    "greedy",
+    "implementation"
+  ],
+  "points": 500.0,
+  "solvedCount": 22533,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Sushi for Two",
+  "legend": "Arkady invited Anna for a dinner to a sushi restaurant. The restaurant is a bit unusual: it offers n pieces of sushi aligned in a row, and a customer has to choose a continuous subsegment of these sushi to buy.\n\nThe pieces of sushi are of two types: either with tuna or with eel. Let's denote the type of the i-th from the left sushi as ti, where ti=1 means it is with tuna, and ti=2 means it is with eel.\n\nArkady does not like tuna, Anna does not like eel. Arkady wants to choose such a continuous subsegment of sushi that it has equal number of sushi of each type and each half of the subsegment has only sushi of one type. For example, subsegment [2,2,2,1,1,1] is valid, but subsegment [1,2,1,2,1,2] is not, because both halves contain both types of sushi.\n\nFind the length of the longest continuous subsegment of sushi Arkady can buy.",
+  "input_spec": "The first line contains a single integer n (2≤n≤100000) — the number of pieces of sushi.\n\nThe second line contains n integers t1, t2, ..., tn (ti=1, denoting a sushi with tuna or ti=2, denoting a sushi with eel), representing the types of sushi from left to right.\n\nIt is guaranteed that there is at least one piece of sushi of each type. Note that it means that there is at least one valid continuous segment.",
+  "output_spec": "Print a single integer — the maximum length of a valid continuous segment.",
+  "note": "In the first example Arkady can choose the subsegment [2,2,1,1] or the subsegment [1,1,2,2] with length 4.\n\nIn the second example there is no way but to choose one of the subsegments [2,1] or [1,2] with length 2.\n\nIn the third example Arkady's best choice is the subsegment [1,1,1,2,2,2].",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "7\n2 2 2 1 1 2 2\n",
+      "output": "4"
+    },
+    {
+      "input": "6\n1 2 1 2 1 2\n",
+      "output": "2"
+    },
+    {
+      "input": "9\n2 2 1 1 1 2 2 2 2\n",
+      "output": "6"
+    }
+  ]
+}

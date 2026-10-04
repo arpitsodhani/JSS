@@ -1,0 +1,28 @@
+{
+  "contestId": 1788,
+  "index": "C",
+  "problem_id": "1788C",
+  "name": "Matching Numbers",
+  "rating": 1300,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "math"
+  ],
+  "points": 1500.0,
+  "solvedCount": 19615,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Matching Numbers",
+  "legend": "You are given an integer n. Pair the integers 1 to 2n (i.e. each integer should be in exactly one pair) so that each sum of matched pairs is consecutive and distinct.\n\nFormally, let (ai,bi) be the pairs that you matched. {a1,b1,a2,b2,…,an,bn} should be a permutation of {1,2,…,2n}. Let the sorted list of {a1+b1,a2+b2,…,an+bn} be s1<s2<…<sn. We must have si+1−si=1 for 1≤i≤n−1.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤500). The description of the test cases follows.\n\nFor each test case, a single integer n (1≤n≤105) is given.\n\nIt is guaranteed that the sum of n over all test cases doesn't exceed 105.",
+  "output_spec": "For each test case, if it is impossible to make such a pairing, print \"No\".\n\nOtherwise, print \"Yes\" followed by n lines.\n\nAt each line, print two integers that are paired.\n\nYou can output the answer in any case (upper or lower). For example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will be recognized as positive responses.\n\nIf there are multiple solutions, print any.",
+  "note": "For the third test case, each integer from 1 to 6 appears once. The sums of matched pairs are 4+2=6, 1+6=7, and 3+5=8, which are consecutive and distinct.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n1\n2\n3\n4\n",
+      "output": "Yes\n1 2\nNo\nYes\n1 6\n3 5\n4 2\nNo"
+    }
+  ]
+}

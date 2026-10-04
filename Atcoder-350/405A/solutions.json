@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_abc",
+          "signature": "void read_abc(int *a, int *b, int *c)",
+          "code": "scanf(\"%d %d %d\", a, b, c);\n"
+        },
+        {
+          "clause_id": "compute_sum",
+          "signature": "int compute_sum(int a, int b, int c)",
+          "code": "return a+b+c;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c; read_abc(&a,&b,&c); int s=compute_sum(a,b,c); print_ans(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_abc",
+          "signature": "void read_abc(int *a, int *b, int *c)",
+          "code": "int x,y,z; scanf(\"%d%d%d\", &x, &y, &z); *a=x; *b=y; *c=z;\n"
+        },
+        {
+          "clause_id": "compute_sum",
+          "signature": "int compute_sum(int a, int b, int c)",
+          "code": "int s=a; s+=b; s+=c; return s;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c; read_abc(&a,&b,&c); int s=compute_sum(a,b,c); print_ans(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_abc",
+          "signature": "void read_abc(int *a, int *b, int *c)",
+          "code": "scanf(\"%d %d %d\", a, b, c);\n"
+        },
+        {
+          "clause_id": "compute_sum",
+          "signature": "int compute_sum(int a, int b, int c)",
+          "code": "int t[3]={a,b,c}; int s=0; for(int i=0;i<3;i++) s+=t[i]; return s;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c; read_abc(&a,&b,&c); int s=compute_sum(a,b,c); print_ans(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_abc",
+          "signature": "void read_abc(int *a, int *b, int *c)",
+          "code": "scanf(\"%d %d %d\", a, b, c);\n"
+        },
+        {
+          "clause_id": "compute_sum",
+          "signature": "int compute_sum(int a, int b, int c)",
+          "code": "return (a+c)+b;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c; read_abc(&a,&b,&c); int s=compute_sum(a,b,c); print_ans(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_abc",
+          "signature": "void read_abc(int *a, int *b, int *c)",
+          "code": "scanf(\"%d %d %d\", a, b, c);\n"
+        },
+        {
+          "clause_id": "compute_sum",
+          "signature": "int compute_sum(int a, int b, int c)",
+          "code": "int s=a+(b+c); return s;\n"
+        },
+        {
+          "clause_id": "print_ans",
+          "signature": "void print_ans(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c; read_abc(&a,&b,&c); int s=compute_sum(a,b,c); print_ans(s); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

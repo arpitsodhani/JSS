@@ -1,0 +1,32 @@
+{
+  "contestId": 1661,
+  "index": "B",
+  "problem_id": "1661B",
+  "name": "Getting Zero",
+  "rating": 1300,
+  "tags": [
+    "bitmasks",
+    "brute force",
+    "dfs and similar",
+    "dp",
+    "graphs",
+    "greedy",
+    "shortest paths"
+  ],
+  "points": null,
+  "solvedCount": 21037,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Getting Zero",
+  "legend": "Suppose you have an integer v. In one operation, you can:\n\neither set v=(v+1)mod32768\nor set v=(2⋅v)mod32768.\n\nYou are given n integers a1,a2,…,an. What is the minimum number of operations you need to make each ai equal to 0?",
+  "input_spec": "The first line contains the single integer n (1≤n≤32768) — the number of integers.\n\nThe second line contains n integers a1,a2,…,an (0≤ai<32768).",
+  "output_spec": "Print n integers. The i-th integer should be equal to the minimum number of operations required to make ai equal to 0.",
+  "note": "Let's consider each ai:\n\na1=19. You can, firstly, increase it by one to get 20 and then multiply it by two 13 times. You'll get 0 in 1+13=14 steps.\na2=32764. You can increase it by one 4 times: 32764→32765→32766→32767→0.\na3=10240. You can multiply it by two 4 times: 10240→20480→8192→16384→0.\na4=49. You can multiply it by two 15 times.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n19 32764 10240 49\n",
+      "output": "14 4 4 15"
+    }
+  ]
+}

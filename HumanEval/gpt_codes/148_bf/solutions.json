@@ -1,0 +1,141 @@
+{
+  "problem_num": 148,
+  "problem_name": "bf",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "get_planets_between",
+          "code": "void get_planets_between(char* planet1, char* planet2, char result[][20], int* result_len) {\n    char* planets[] = {\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"};\n    int p1_idx = -1, p2_idx = -1;\n    \n    for (int i = 0; i < 8; i++) {\n        if (strcmp(planets[i], planet1) == 0) p1_idx = i;\n        if (strcmp(planets[i], planet2) == 0) p2_idx = i;\n    }\n    \n    *result_len = 0;\n    if (p1_idx == -1 || p2_idx == -1) return;\n    \n    int start = (p1_idx < p2_idx) ? p1_idx : p2_idx;\n    int end = (p1_idx > p2_idx) ? p1_idx : p2_idx;\n    \n    for (int i = start + 1; i < end; i++) {\n        strcpy(result[*result_len], planets[i]);\n        (*result_len)++;\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char planet1[20], planet2[20];\n    scanf(\"%s %s\", planet1, planet2);\n    \n    char result[10][20];\n    int result_len;\n    get_planets_between(planet1, planet2, result, &result_len);\n    \n    printf(\"(\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"\\\"%s\\\"\", result[i]);\n    }\n    printf(\")\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "get_planets_between",
+          "code": "void get_planets_between(char* planet1, char* planet2, char result[][20], int* result_len) {\n    char* planets[] = {\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"};\n    int p1_idx = -1, p2_idx = -1;\n    \n    for (int i = 0; i < 8; i++) {\n        if (strcmp(planets[i], planet1) == 0) p1_idx = i;\n        if (strcmp(planets[i], planet2) == 0) p2_idx = i;\n    }\n    \n    *result_len = 0;\n    if (p1_idx == -1 || p2_idx == -1) return;\n    \n    int start = (p1_idx < p2_idx) ? p1_idx : p2_idx;\n    int end = (p1_idx > p2_idx) ? p1_idx : p2_idx;\n    \n    for (int i = start + 1; i < end; i++) {\n        strcpy(result[*result_len], planets[i]);\n        (*result_len)++;\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char planet1[20], planet2[20];\n    scanf(\"%s %s\", planet1, planet2);\n    \n    char result[10][20];\n    int result_len;\n    get_planets_between(planet1, planet2, result, &result_len);\n    \n    printf(\"(\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"\\\"%s\\\"\", result[i]);\n    }\n    printf(\")\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "get_planets_between",
+          "code": "void get_planets_between(char* planet1, char* planet2, char result[][20], int* result_len) {\n    char* planets[] = {\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"};\n    int p1_idx = -1, p2_idx = -1;\n    \n    for (int i = 0; i < 8; i++) {\n        if (strcmp(planets[i], planet1) == 0) p1_idx = i;\n        if (strcmp(planets[i], planet2) == 0) p2_idx = i;\n    }\n    \n    *result_len = 0;\n    if (p1_idx == -1 || p2_idx == -1) return;\n    \n    int start = (p1_idx < p2_idx) ? p1_idx : p2_idx;\n    int end = (p1_idx > p2_idx) ? p1_idx : p2_idx;\n    \n    for (int i = start + 1; i < end; i++) {\n        strcpy(result[*result_len], planets[i]);\n        (*result_len)++;\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char planet1[20], planet2[20];\n    scanf(\"%s %s\", planet1, planet2);\n    \n    char result[10][20];\n    int result_len;\n    get_planets_between(planet1, planet2, result, &result_len);\n    \n    printf(\"(\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"\\\"%s\\\"\", result[i]);\n    }\n    printf(\")\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "get_planets_between",
+          "code": "void get_planets_between(char* planet1, char* planet2, char result[][20], int* result_len) {\n    char* planets[] = {\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"};\n    int p1_idx = -1, p2_idx = -1;\n    \n    for (int i = 0; i < 8; i++) {\n        if (strcmp(planets[i], planet1) == 0) p1_idx = i;\n        if (strcmp(planets[i], planet2) == 0) p2_idx = i;\n    }\n    \n    *result_len = 0;\n    if (p1_idx == -1 || p2_idx == -1) return;\n    \n    int start = (p1_idx < p2_idx) ? p1_idx : p2_idx;\n    int end = (p1_idx > p2_idx) ? p1_idx : p2_idx;\n    \n    for (int i = start + 1; i < end; i++) {\n        strcpy(result[*result_len], planets[i]);\n        (*result_len)++;\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char planet1[20], planet2[20];\n    scanf(\"%s %s\", planet1, planet2);\n    \n    char result[10][20];\n    int result_len;\n    get_planets_between(planet1, planet2, result, &result_len);\n    \n    printf(\"(\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"\\\"%s\\\"\", result[i]);\n    }\n    printf(\")\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "get_planets_between",
+          "code": "void get_planets_between(char* planet1, char* planet2, char result[][20], int* result_len) {\n    char* planets[] = {\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"};\n    int p1_idx = -1, p2_idx = -1;\n    \n    for (int i = 0; i < 8; i++) {\n        if (strcmp(planets[i], planet1) == 0) p1_idx = i;\n        if (strcmp(planets[i], planet2) == 0) p2_idx = i;\n    }\n    \n    *result_len = 0;\n    if (p1_idx == -1 || p2_idx == -1) return;\n    \n    int start = (p1_idx < p2_idx) ? p1_idx : p2_idx;\n    int end = (p1_idx > p2_idx) ? p1_idx : p2_idx;\n    \n    for (int i = start + 1; i < end; i++) {\n        strcpy(result[*result_len], planets[i]);\n        (*result_len)++;\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char planet1[20], planet2[20];\n    scanf(\"%s %s\", planet1, planet2);\n    \n    char result[10][20];\n    int result_len;\n    get_planets_between(planet1, planet2, result, &result_len);\n    \n    printf(\"(\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"\\\"%s\\\"\", result[i]);\n    }\n    printf(\")\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

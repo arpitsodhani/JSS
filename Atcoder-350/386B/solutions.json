@@ -1,0 +1,151 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(char *s)",
+          "code": "scanf(\"%s\", s); return (int)strlen(s);\n"
+        },
+        {
+          "clause_id": "min_presses",
+          "signature": "int min_presses(const char *s,int n)",
+          "code": "int dp[205]; for(int i=0;i<=n;i++) dp[i]=1e9; dp[0]=0;\nconst char *btns[] = {\"00\",\"0\",\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\"};\nint blen[] = {2,1,1,1,1,1,1,1,1,1,1};\nfor(int i=0;i<n;i++) if(dp[i]<1e9){\n  for(int b=0;b<11;b++){\n    int L=blen[b]; if(i+L>n) continue; int ok=1; for(int k=0;k<L;k++) if(s[i+k]!=btns[b][k]) ok=0; if(ok && dp[i]+1<dp[i+L]) dp[i+L]=dp[i]+1;\n  }\n}\nreturn dp[n];\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205]; int n=read_input(s); int ans=min_presses(s,n); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(char *s)",
+          "code": "scanf(\"%s\", s); return (int)strlen(s);\n"
+        },
+        {
+          "clause_id": "min_presses",
+          "signature": "int min_presses(const char *s,int n)",
+          "code": "int dp[205]; for(int i=0;i<=n;i++) dp[i]=1e9; dp[0]=0;\nconst char *btns[] = {\"00\",\"0\",\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\"};\nint blen[] = {2,1,1,1,1,1,1,1,1,1,1};\nfor(int i=0;i<n;i++) if(dp[i]<1e9){\n  for(int b=0;b<11;b++){\n    int L=blen[b]; if(i+L>n) continue; int ok=1; for(int k=0;k<L;k++) if(s[i+k]!=btns[b][k]) ok=0; if(ok && dp[i]+1<dp[i+L]) dp[i+L]=dp[i]+1;\n  }\n}\nreturn dp[n];\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205]; int n=read_input(s); int ans=min_presses(s,n); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(char *s)",
+          "code": "scanf(\"%s\", s); return (int)strlen(s);\n"
+        },
+        {
+          "clause_id": "min_presses",
+          "signature": "int min_presses(const char *s,int n)",
+          "code": "int dp[205]; for(int i=0;i<=n;i++) dp[i]=1e9; dp[0]=0;\nconst char *btns[] = {\"00\",\"0\",\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\"};\nint blen[] = {2,1,1,1,1,1,1,1,1,1,1};\nfor(int i=0;i<n;i++) if(dp[i]<1e9){\n  for(int b=0;b<11;b++){\n    int L=blen[b]; if(i+L>n) continue; int ok=1; for(int k=0;k<L;k++) if(s[i+k]!=btns[b][k]) ok=0; if(ok && dp[i]+1<dp[i+L]) dp[i+L]=dp[i]+1;\n  }\n}\nreturn dp[n];\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205]; int n=read_input(s); int ans=min_presses(s,n); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(char *s)",
+          "code": "scanf(\"%s\", s); return (int)strlen(s);\n"
+        },
+        {
+          "clause_id": "min_presses",
+          "signature": "int min_presses(const char *s,int n)",
+          "code": "int dp[205]; for(int i=0;i<=n;i++) dp[i]=1e9; dp[0]=0;\nconst char *btns[] = {\"00\",\"0\",\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\"};\nint blen[] = {2,1,1,1,1,1,1,1,1,1,1};\nfor(int i=0;i<n;i++) if(dp[i]<1e9){\n  for(int b=0;b<11;b++){\n    int L=blen[b]; if(i+L>n) continue; int ok=1; for(int k=0;k<L;k++) if(s[i+k]!=btns[b][k]) ok=0; if(ok && dp[i]+1<dp[i+L]) dp[i+L]=dp[i]+1;\n  }\n}\nreturn dp[n];\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205]; int n=read_input(s); int ans=min_presses(s,n); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(char *s)",
+          "code": "scanf(\"%s\", s); return (int)strlen(s);\n"
+        },
+        {
+          "clause_id": "min_presses",
+          "signature": "int min_presses(const char *s,int n)",
+          "code": "int dp[205]; for(int i=0;i<=n;i++) dp[i]=1e9; dp[0]=0;\nconst char *btns[] = {\"00\",\"0\",\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\"};\nint blen[] = {2,1,1,1,1,1,1,1,1,1,1};\nfor(int i=0;i<n;i++) if(dp[i]<1e9){\n  for(int b=0;b<11;b++){\n    int L=blen[b]; if(i+L>n) continue; int ok=1; for(int k=0;k<L;k++) if(s[i+k]!=btns[b][k]) ok=0; if(ok && dp[i]+1<dp[i+L]) dp[i+L]=dp[i]+1;\n  }\n}\nreturn dp[n];\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ char s[205]; int n=read_input(s); int ans=min_presses(s,n); print_int(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "386B",
+  "total_programs": 5
+}

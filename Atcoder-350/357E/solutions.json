@@ -1,0 +1,179 @@
+{
+  "problem_id": "357E",
+  "includes": [
+    "#include <stdio.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "int read_graph(int next[])",
+          "code": "int read_graph(int next[]) { int n; scanf(\"%d\", &n); for(int i = 1; i <= n; i++) scanf(\"%d\", &next[i]); return n; }"
+        },
+        {
+          "clause_id": "find_cycle",
+          "signature": "int find_cycle(int start, int next[], int visited[], int cycle_nodes[])",
+          "code": "int find_cycle(int start, int next[], int visited[], int cycle_nodes[]) { int current = start; while(!visited[current]) { visited[current] = 1; current = next[current]; } int cycle_start = current; int cycle_size = 0; do { cycle_nodes[current] = 1; cycle_size++; current = next[current]; } while(current != cycle_start); return cycle_size; }"
+        },
+        {
+          "clause_id": "count_reachable_from",
+          "signature": "long long count_reachable_from(int start, int next[], int visited[], int cycle_nodes[])",
+          "code": "long long count_reachable_from(int start, int next[], int visited[], int cycle_nodes[]) { long long count = 0; int current = start; while(!visited[current]) { visited[current] = 1; count++; current = next[current]; } if(cycle_nodes[current]) { int cycle_start = current; do { count++; current = next[current]; } while(current != cycle_start); } return count; }"
+        },
+        {
+          "clause_id": "compute_total_pairs",
+          "signature": "long long compute_total_pairs(int n, int next[])",
+          "code": "long long compute_total_pairs(int n, int next[]) { long long total = 0; for(int u = 1; u <= n; u++) { int visited[200005] = {0}; int cycle_nodes[200005] = {0}; find_cycle(u, next, visited, cycle_nodes); memset(visited, 0, sizeof(visited)); total += count_reachable_from(u, next, visited, cycle_nodes); } return total; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int next[200005]; int n = read_graph(next); printf(\"%lld\\n\", compute_total_pairs(n, next)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "int read_graph(int next[])",
+          "code": "int read_graph(int next[]) { int n; scanf(\"%d\", &n); for(int i = 1; i <= n; i++) scanf(\"%d\", &next[i]); return n; }"
+        },
+        {
+          "clause_id": "find_cycle",
+          "signature": "int find_cycle(int start, int next[], int visited[], int cycle_nodes[])",
+          "code": "int find_cycle(int start, int next[], int visited[], int cycle_nodes[]) { int v = start; while(visited[v] == 0) { visited[v] = 1; v = next[v]; } int loop_node = v; int len = 0; do { cycle_nodes[v] = 1; len++; v = next[v]; } while(v != loop_node); return len; }"
+        },
+        {
+          "clause_id": "count_reachable_from",
+          "signature": "long long count_reachable_from(int start, int next[], int visited[], int cycle_nodes[])",
+          "code": "long long count_reachable_from(int start, int next[], int visited[], int cycle_nodes[]) { long long cnt = 0; int node = start; while(visited[node] == 0) { visited[node] = 1; cnt++; node = next[node]; } if(cycle_nodes[node]) { int first = node; do { cnt++; node = next[node]; } while(node != first); } return cnt; }"
+        },
+        {
+          "clause_id": "compute_total_pairs",
+          "signature": "long long compute_total_pairs(int n, int next[])",
+          "code": "long long compute_total_pairs(int n, int next[]) { long long sum = 0; for(int i = 1; i <= n; i++) { int vis[200005] = {0}; int in_cycle[200005] = {0}; find_cycle(i, next, vis, in_cycle); memset(vis, 0, sizeof(vis)); sum += count_reachable_from(i, next, vis, in_cycle); } return sum; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int edges[200005]; int n = read_graph(edges); long long result = compute_total_pairs(n, edges); printf(\"%lld\\n\", result); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "int read_graph(int next[])",
+          "code": "int read_graph(int next[]) { int n; scanf(\"%d\", &n); int i; for(i = 1; i <= n; i++) scanf(\"%d\", &next[i]); return n; }"
+        },
+        {
+          "clause_id": "find_cycle",
+          "signature": "int find_cycle(int start, int next[], int visited[], int cycle_nodes[])",
+          "code": "int find_cycle(int start, int next[], int visited[], int cycle_nodes[]) { int pos = start; while(!visited[pos]) { visited[pos] = 1; pos = next[pos]; } int begin = pos; int size = 0; do { cycle_nodes[pos] = 1; size++; pos = next[pos]; } while(pos != begin); return size; }"
+        },
+        {
+          "clause_id": "count_reachable_from",
+          "signature": "long long count_reachable_from(int start, int next[], int visited[], int cycle_nodes[])",
+          "code": "long long count_reachable_from(int start, int next[], int visited[], int cycle_nodes[]) { long long total = 0; int curr = start; while(!visited[curr]) { visited[curr] = 1; total++; curr = next[curr]; } if(cycle_nodes[curr]) { int cycle_begin = curr; do { total++; curr = next[curr]; } while(curr != cycle_begin); } return total; }"
+        },
+        {
+          "clause_id": "compute_total_pairs",
+          "signature": "long long compute_total_pairs(int n, int next[])",
+          "code": "long long compute_total_pairs(int n, int next[]) { long long answer = 0; int vertex; for(vertex = 1; vertex <= n; vertex++) { int seen[200005] = {0}; int in_loop[200005] = {0}; find_cycle(vertex, next, seen, in_loop); memset(seen, 0, sizeof(seen)); answer += count_reachable_from(vertex, next, seen, in_loop); } return answer; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int successors[200005]; int n = read_graph(successors); printf(\"%lld\\n\", compute_total_pairs(n, successors)); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "int read_graph(int next[])",
+          "code": "int read_graph(int next[]) { int n; scanf(\"%d\", &n); for(int idx = 1; idx <= n; idx++) scanf(\"%d\", next + idx); return n; }"
+        },
+        {
+          "clause_id": "find_cycle",
+          "signature": "int find_cycle(int start, int next[], int visited[], int cycle_nodes[])",
+          "code": "int find_cycle(int start, int next[], int visited[], int cycle_nodes[]) { int p = start; while(visited[p] == 0) { visited[p] = 1; p = next[p]; } int head = p; int count = 0; do { cycle_nodes[p] = 1; count++; p = next[p]; } while(p != head); return count; }"
+        },
+        {
+          "clause_id": "count_reachable_from",
+          "signature": "long long count_reachable_from(int start, int next[], int visited[], int cycle_nodes[])",
+          "code": "long long count_reachable_from(int start, int next[], int visited[], int cycle_nodes[]) { long long reaches = 0; int at = start; while(visited[at] == 0) { visited[at] = 1; reaches++; at = next[at]; } if(cycle_nodes[at]) { int loop_start = at; do { reaches++; at = next[at]; } while(at != loop_start); } return reaches; }"
+        },
+        {
+          "clause_id": "compute_total_pairs",
+          "signature": "long long compute_total_pairs(int n, int next[])",
+          "code": "long long compute_total_pairs(int n, int next[]) { long long pairs = 0; for(int source = 1; source <= n; source++) { int marked[200005] = {0}; int cycle_member[200005] = {0}; find_cycle(source, next, marked, cycle_member); memset(marked, 0, sizeof(marked)); pairs += count_reachable_from(source, next, marked, cycle_member); } return pairs; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int graph[200005]; int vertices = read_graph(graph); long long ans = compute_total_pairs(vertices, graph); printf(\"%lld\\n\", ans); return 0; }"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_graph",
+          "signature": "int read_graph(int next[])",
+          "code": "int read_graph(int next[]) { int n; scanf(\"%d\", &n); for(int j = 1; j <= n; j++) scanf(\"%d\", &next[j]); return n; }"
+        },
+        {
+          "clause_id": "find_cycle",
+          "signature": "int find_cycle(int start, int next[], int visited[], int cycle_nodes[])",
+          "code": "int find_cycle(int start, int next[], int visited[], int cycle_nodes[]) { int x = start; while(!visited[x]) { visited[x] = 1; x = next[x]; } int entry = x; int length = 0; do { cycle_nodes[x] = 1; length++; x = next[x]; } while(x != entry); return length; }"
+        },
+        {
+          "clause_id": "count_reachable_from",
+          "signature": "long long count_reachable_from(int start, int next[], int visited[], int cycle_nodes[])",
+          "code": "long long count_reachable_from(int start, int next[], int visited[], int cycle_nodes[]) { long long num = 0; int w = start; while(!visited[w]) { visited[w] = 1; num++; w = next[w]; } if(cycle_nodes[w]) { int start_cycle = w; do { num++; w = next[w]; } while(w != start_cycle); } return num; }"
+        },
+        {
+          "clause_id": "compute_total_pairs",
+          "signature": "long long compute_total_pairs(int n, int next[])",
+          "code": "long long compute_total_pairs(int n, int next[]) { long long total_reachable = 0; for(int origin = 1; origin <= n; origin++) { int check[200005] = {0}; int loop[200005] = {0}; find_cycle(origin, next, check, loop); memset(check, 0, sizeof(check)); total_reachable += count_reachable_from(origin, next, check, loop); } return total_reachable; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int transitions[200005]; int size = read_graph(transitions); printf(\"%lld\\n\", compute_total_pairs(size, transitions)); return 0; }"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "average_confidence": 0.9701719576719577,
+  "clauses": [
+    {
+      "clause": "count_perfect_powers",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9694444444444444
+    },
+    {
+      "clause": "read_limit",
+      "confidence": 0.9410714285714287
+    }
+  ]
+}

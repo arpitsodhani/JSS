@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(void)",
+          "code": "int q; scanf(\"%d\", &q); return q;\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int q)",
+          "code": "int st[500]; int top=0;\nfor(int i=0;i<100;i++) st[top++]=0;\nfor(int qi=0;qi<q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int x; scanf(\"%d\", &x); st[top++]=x; }\n  else { int x=st[--top]; printf(\"%d\\n\", x); }\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int q=read_q(); process(q); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(void)",
+          "code": "int q; scanf(\"%d\", &q); return q;\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int q)",
+          "code": "int st[500]; int top=0;\nfor(int i=0;i<100;i++) st[top++]=0;\nfor(int qi=0;qi<q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int x; scanf(\"%d\", &x); st[top++]=x; }\n  else { int x=st[--top]; printf(\"%d\\n\", x); }\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int q=read_q(); process(q); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(void)",
+          "code": "int q; scanf(\"%d\", &q); return q;\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int q)",
+          "code": "int st[500]; int top=0;\nfor(int i=0;i<100;i++) st[top++]=0;\nfor(int qi=0;qi<q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int x; scanf(\"%d\", &x); st[top++]=x; }\n  else { int x=st[--top]; printf(\"%d\\n\", x); }\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int q=read_q(); process(q); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(void)",
+          "code": "int q; scanf(\"%d\", &q); return q;\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int q)",
+          "code": "int st[500]; int top=0;\nfor(int i=0;i<100;i++) st[top++]=0;\nfor(int qi=0;qi<q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int x; scanf(\"%d\", &x); st[top++]=x; }\n  else { int x=st[--top]; printf(\"%d\\n\", x); }\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int q=read_q(); process(q); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_q",
+          "signature": "int read_q(void)",
+          "code": "int q; scanf(\"%d\", &q); return q;\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int q)",
+          "code": "int st[500]; int top=0;\nfor(int i=0;i<100;i++) st[top++]=0;\nfor(int qi=0;qi<q;qi++){\n  int t; scanf(\"%d\", &t);\n  if(t==1){ int x; scanf(\"%d\", &x); st[top++]=x; }\n  else { int x=st[--top]; printf(\"%d\\n\", x); }\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int q=read_q(); process(q); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "contestId": 2036,
+  "index": "A",
+  "problem_id": "2036A",
+  "name": "Quintomania",
+  "rating": 800,
+  "tags": [
+    "implementation"
+  ],
+  "points": null,
+  "solvedCount": 41093,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Quintomania",
+  "legend": "Boris Notkin composes melodies. He represents them as a sequence of notes, where each note is encoded as an integer from 0 to 127 inclusive. The interval between two notes a and b is equal to |a−b| semitones.\n\nBoris considers a melody perfect if the interval between each two adjacent notes is either 5 semitones or 7 semitones.\n\nAfter composing his latest melodies, he enthusiastically shows you his collection of works. Help Boris Notkin understand whether his melodies are perfect.",
+  "input_spec": "The first line contains an integer t (1≤t≤1000) — the number of melodies.\n\nEach melody is described by two lines.\n\nThe first line contains an integer n (2≤n≤50) — the number of notes in the melody.\n\nThe second line contains n integers a1,a2,…,an (0≤ai≤127) — the notes of the melody.",
+  "output_spec": "For each melody, output \"YES\", if it is perfect; otherwise, output \"NO\".\n\nYou can output the answer in any case (upper or lower). For example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will be recognized as positive responses.",
+  "note": "",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "8\n2\n114 109\n2\n17 10\n3\n76 83 88\n8\n38 45 38 80 85 92 99 106\n5\n63 58 65 58 65\n8\n117 124 48 53 48 43 54 49\n5\n95 102 107 114 121\n10\n72 77 82 75 70 75 68 75 68 75\n",
+      "output": "YES\nYES\nYES\nNO\nYES\nNO\nYES\nYES"
+    }
+  ]
+}

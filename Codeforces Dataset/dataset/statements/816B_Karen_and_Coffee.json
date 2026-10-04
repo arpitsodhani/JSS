@@ -1,0 +1,32 @@
+{
+  "contestId": 816,
+  "index": "B",
+  "problem_id": "816B",
+  "name": "Karen and Coffee",
+  "rating": 1400,
+  "tags": [
+    "binary search",
+    "data structures",
+    "implementation"
+  ],
+  "points": 1000.0,
+  "solvedCount": 29001,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Karen and Coffee",
+  "legend": "To stay woke and attentive during classes, Karen needs some coffee!\n\nKaren, a coffee aficionado, wants to know the optimal temperature for brewing the perfect cup of coffee. Indeed, she has spent some time reading several recipe books, including the universally acclaimed \"The Art of the Covfefe\".\n\nShe knows n coffee recipes. The i-th recipe suggests that coffee should be brewed between li and ri degrees, inclusive, to achieve the optimal taste.\n\nKaren thinks that a temperature is admissible if at least k recipes recommend it.\n\nKaren has a rather fickle mind, and so she asks q questions. In each question, given that she only wants to prepare coffee with a temperature between a and b, inclusive, can you tell her how many admissible integer temperatures fall within the range?",
+  "input_spec": "The first line of input contains three integers, n, k (1 ≤ k ≤ n ≤ 200000), and q (1 ≤ q ≤ 200000), the number of recipes, the minimum number of recipes a certain temperature must be recommended by to be admissible, and the number of questions Karen has, respectively.\n\nThe next n lines describe the recipes. Specifically, the i-th line among these contains two integers li and ri (1 ≤ li ≤ ri ≤ 200000), describing that the i-th recipe suggests that the coffee be brewed between li and ri degrees, inclusive.\n\nThe next q lines describe the questions. Each of these lines contains a and b, (1 ≤ a ≤ b ≤ 200000), describing that she wants to know the number of admissible integer temperatures between a and b degrees, inclusive.",
+  "output_spec": "For each question, output a single integer on a line by itself, the number of admissible integer temperatures between a and b degrees, inclusive.",
+  "note": "In the first test case, Karen knows 3 recipes.\n\nThe first one recommends brewing the coffee between 91 and 94 degrees, inclusive.\nThe second one recommends brewing the coffee between 92 and 97 degrees, inclusive.\nThe third one recommends brewing the coffee between 97 and 99 degrees, inclusive.\n\nA temperature is admissible if at least 2 recipes recommend it.\n\nShe asks 4 questions.\n\nIn her first question, she wants to know the number of admissible integer temperatures between 92 and 94 degrees, inclusive. There are 3: 92, 93 and 94 degrees are all admissible.\n\nIn her second question, she wants to know the number of admissible integer temperatures between 93 and 97 degrees, inclusive. There are 3: 93, 94 and 97 degrees are all admissible.\n\nIn her third question, she wants to know the number of admissible integer temperatures between 95 and 96 degrees, inclusive. There are none.\n\nIn her final question, she wants to know the number of admissible integer temperatures between 90 and 100 degrees, inclusive. There are 4: 92, 93, 94 and 97 degrees are all admissible.\n\nIn the second test case, Karen knows 2 recipes.\n\nThe first one, \"wikiHow to make Cold Brew Coffee\", recommends brewing the coffee at exactly 1 degree.\nThe second one, \"What good is coffee that isn't brewed at at least 36.3306 times the temperature of the surface of the sun?\", recommends brewing the coffee at exactly 200000 degrees.\n\nA temperature is admissible if at least 1 recipe recommends it.\n\nIn her first and only question, she wants to know the number of admissible integer temperatures that are actually reasonable. There are none.",
+  "time_limit": "2.5 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "3 2 4\n91 94\n92 97\n97 99\n92 94\n93 97\n95 96\n90 100\n",
+      "output": "3\n3\n0\n4"
+    },
+    {
+      "input": "2 1 1\n1 1\n200000 200000\n90 100\n",
+      "output": "0"
+    }
+  ]
+}

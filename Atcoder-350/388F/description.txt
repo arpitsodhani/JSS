@@ -1,0 +1,7 @@
+There are N squares arranged in a row, labeled 1, 2, \ldots, N from left to right. You are given M pairs of integers (L_1, R_1), \ldots, (L_M, R_M) . A square j is defined to be bad if and only if there exists some i such that L_i \leq j \leq R_i . Determine whether you can move from square 1 to square N by repeatedly performing the following action: Let your current square be x . Choose an integer i that satisfies all of the following conditions, and move to square x + i . A \leq i \leq B x + i \leq N Square x + i is not bad.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= P_i <= 10^9
+- 1 <= L_i, R_i <= N
+- All input values are integers

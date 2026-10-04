@@ -1,0 +1,6 @@
+You are given a positive integer N . Determine whether there exists a pair of positive integers (x,y) such that x^3 - y^3 = N . If such a pair exists, print one such pair (x,y) .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- 0 <= A_i <= 10^9
+- All input values are integers

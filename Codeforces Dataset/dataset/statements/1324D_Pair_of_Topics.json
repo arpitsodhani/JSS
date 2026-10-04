@@ -1,0 +1,33 @@
+{
+  "contestId": 1324,
+  "index": "D",
+  "problem_id": "1324D",
+  "name": "Pair of Topics",
+  "rating": 1400,
+  "tags": [
+    "binary search",
+    "data structures",
+    "sortings",
+    "two pointers"
+  ],
+  "points": null,
+  "solvedCount": 34843,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Pair of Topics",
+  "legend": "The next lecture in a high school requires two topics to be discussed. The i-th topic is interesting by ai units for the teacher and by bi units for the students.\n\nThe pair of topics i and j (i<j) is called good if ai+aj>bi+bj (i.e. it is more interesting for the teacher).\n\nYour task is to find the number of good pairs of topics.",
+  "input_spec": "The first line of the input contains one integer n (2≤n≤2⋅105) — the number of topics.\n\nThe second line of the input contains n integers a1,a2,…,an (1≤ai≤109), where ai is the interestingness of the i-th topic for the teacher.\n\nThe third line of the input contains n integers b1,b2,…,bn (1≤bi≤109), where bi is the interestingness of the i-th topic for the students.",
+  "output_spec": "Print one integer — the number of good pairs of topic.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n4 8 2 6 2\n4 5 4 1 3\n",
+      "output": "7"
+    },
+    {
+      "input": "4\n1 3 2 4\n1 3 2 4\n",
+      "output": "0"
+    }
+  ]
+}

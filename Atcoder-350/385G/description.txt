@@ -1,0 +1,9 @@
+For a permutation P=(P_1,P_2,\dots,P_N) of (1,2,\dots,N) , define integers L(P) and R(P) as follows: Consider N buildings arranged in a row from left to right, with the height of the i -th building from the left being P_i . Then L(P) is the number of buildings visible when viewed from the left, and R(P) is the number of buildings visible when viewed from the right. More formally, L(P) is the count of indices i such that P_j < P_i for all j < i , and R(P) is the count of indices i such that P_i > P_j for all j > i . You are given integers N and K . Find, modulo 998244353 , the count of all permutations P of (1,2,\dots,N) such that L(P)-R(P)=K .
+
+**Constraints:**
+- 2 <= N <= 400
+- 1 <= M <= min(N(N-1)/2, 2 * 10^5)
+- 1 <= A_i, B_i <= N
+- A_i != B_i
+- The graph is simple
+- All input values are integers

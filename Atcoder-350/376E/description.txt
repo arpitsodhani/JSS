@@ -1,0 +1,8 @@
+You are given sequences of length N : A = (A_1, A_2, \dots, A_N) and B = (B_1, B_2, \dots, B_N) . Let S be a subset of \lbrace1, 2, \dots, N\rbrace of size K . Here, find the minimum possible value of the following expression: \displaystyle \left(\max_{i \in S} A_i\right) \times \left(\sum_{i \in S} B_i\right). You are given T test cases; solve each of them.
+
+**Constraints:**
+- 1 <= T <= 100
+- 1 <= N, K <= 2 * 10^5
+- 1 <= A_i, B_i <= 10^9
+- The sum of N over all test cases does not exceed 2 * 10^5
+- All input values are integers

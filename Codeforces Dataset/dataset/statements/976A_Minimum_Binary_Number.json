@@ -1,0 +1,30 @@
+{
+  "contestId": 976,
+  "index": "A",
+  "problem_id": "976A",
+  "name": "Minimum Binary Number",
+  "rating": 800,
+  "tags": [
+    "implementation"
+  ],
+  "points": null,
+  "solvedCount": 11025,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Minimum Binary Number",
+  "legend": "String can be called correct if it consists of characters \"0\" and \"1\" and there are no redundant leading zeroes. Here are some examples: \"0\", \"10\", \"1001\".\n\nYou are given a correct string s.\n\nYou can perform two different operations on this string:\n\nswap any pair of adjacent characters (for example, \"101\"  \"110\");\nreplace \"11\" with \"1\" (for example, \"110\"  \"10\").\n\nLet val(s) be such a number that s is its binary representation.\n\nCorrect string a is less than some other correct string b iff val(a) < val(b).\n\nYour task is to find the minimum correct string that you can obtain from the given one using the operations described above. You can use these operations any number of times in any order (or even use no operations at all).",
+  "input_spec": "The first line contains integer number n (1 ≤ n ≤ 100) — the length of string s.\n\nThe second line contains the string s consisting of characters \"0\" and \"1\". It is guaranteed that the string s is correct.",
+  "output_spec": "Print one string — the minimum correct string that you can obtain from the given one.",
+  "note": "In the first example you can obtain the answer by the following sequence of operations: \"1001\"  \"1010\"  \"1100\"  \"100\".\n\nIn the second example you can't obtain smaller answer no matter what operations you use.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n1001\n",
+      "output": "100"
+    },
+    {
+      "input": "1\n1\n",
+      "output": "1"
+    }
+  ]
+}

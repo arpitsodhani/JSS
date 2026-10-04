@@ -1,0 +1,7 @@
+KEYENCE is famous for quick delivery. In this problem, the calendar proceeds as Day 1 , Day 2 , Day 3 , \dots . There are orders 1,2,\dots,N , and it is known that order i will be placed on Day T_i . For these orders, shipping is carried out according to the following rules. At most K orders can be shipped together. Order i can only be shipped on Day T_i or later. Once a shipment is made, the next shipment cannot be made until X days later. That is, if a shipment is made on Day a , the next shipment can be made on Day a+X . For each day that passes from order placement to shipping, dissatisfaction accumulates by 1 per day. That is, if order i is shipped on Day S_i , the dissatisfaction accumulated for that order is (S_i - T_i) . Find the minimum possible total dissatisfaction accumulated over all orders when you optimally schedule the shipping dates.
+
+**Constraints:**
+- 1 <= N, K <= 2 * 10^5
+- 1 <= T_i <= 10^9
+- T_i <= T_{i+1}
+- All input values are integers

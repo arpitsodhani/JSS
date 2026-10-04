@@ -1,0 +1,9 @@
+You are given a string S of length N consisting of 0 and 1 . It is guaranteed that S contains at least one 1 . You may perform the following operation any number of times (possibly zero): Choose an integer i ( 1 \leq i \leq N-1 ) and swap the i -th and (i+1) -th characters of S . Find the minimum number of operations needed so that all 1 s are contiguous. Here, all 1 s are said to be contiguous if and only if there exist integers l and r ( 1 \leq l \leq r \leq N ) such that the i -th character of S is 1 if and only if l \leq i \leq r , and 0 otherwise.
+
+**Constraints:**
+- 2 <= H, W <= 500
+- 1 <= N <= H * W
+- 1 <= R_i <= H
+- 1 <= C_i <= W
+- All pairs (R_i, C_i) are distinct
+- All input values are integers

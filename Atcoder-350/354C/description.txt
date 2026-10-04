@@ -1,0 +1,8 @@
+Takahashi has N cards from the card game "AtCoder Magics." The i -th card will be called card i . Each card has two parameters: strength and cost. Card i has a strength of A_i and a cost of C_i . He does not like weak cards, so he will discard them. Specifically, he will repeat the following operation until it can no longer be performed: Choose two cards x and y such that A_x > A_y and C_x < C_y . Discard card y . It can be proved that the set of remaining cards when the operations can no longer be performed is uniquely determined. Find this set of cards.
+
+**Constraints:**
+- 2 \leq N \leq 2 \times 10^5
+- 1 \leq A_i, C_i \leq 10^9
+- A_1, A_2, \dots ,A_N distinct
+- C_1, C_2, \dots ,C_N distinct
+- allintegers

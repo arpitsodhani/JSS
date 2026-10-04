@@ -1,0 +1,34 @@
+{
+  "contestId": 111,
+  "index": "A",
+  "problem_id": "111A",
+  "name": "Petya and Inequiations",
+  "rating": 1400,
+  "tags": [
+    "greedy"
+  ],
+  "points": 500.0,
+  "solvedCount": 5204,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Petya and Inequiations",
+  "legend": "Little Petya loves inequations. Help him find n positive integers a1, a2, ..., an, such that the following two conditions are satisfied:\n\na12 + a22 + ... + an2 ≥ x\na1 + a2 + ... + an ≤ y",
+  "input_spec": "The first line contains three space-separated integers n, x and y (1 ≤ n ≤ 105, 1 ≤ x ≤ 1012, 1 ≤ y ≤ 106).\n\nPlease do not use the %lld specificator to read or write 64-bit integers in С++. It is recommended to use cin, cout streams or the %I64d specificator.",
+  "output_spec": "Print n positive integers that satisfy the conditions, one integer per line. If such numbers do not exist, print a single number \"-1\". If there are several solutions, print any of them.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5 15 15\n",
+      "output": "4\n4\n1\n1\n2"
+    },
+    {
+      "input": "2 3 2\n",
+      "output": "-1"
+    },
+    {
+      "input": "1 99 11\n",
+      "output": "11"
+    }
+  ]
+}

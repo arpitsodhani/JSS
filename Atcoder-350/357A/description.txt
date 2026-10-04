@@ -1,0 +1,6 @@
+There is a bottle of disinfectant that can disinfect exactly M hands. N aliens come one by one to disinfect their hands. The i -th alien ( 1 \leq i \leq N ) has H_i hands and wants to disinfect all of their hands once. Determine how many aliens can disinfect all of their hands. Here, even if there is not enough disinfectant left for an alien to disinfect all of their hands when they start, they will use up the remaining disinfectant.
+
+**Constraints:**
+- 1 <= N, M <= 100
+- 0 <= H_i <= 100
+- All input values are integers

@@ -1,0 +1,151 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char *s)",
+          "code": "scanf(\"%d%d\", H,W); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "bfs",
+          "signature": "int bfs(int H,int W,char *s)",
+          "code": "int n=H*W; int sx=-1, sy=-1, gx=-1, gy=-1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++){ char c=s[i*W+j]; if(c=='S'){sx=i;sy=j;} if(c=='G'){gx=i;gy=j;} }\nint dist[2][250005]; for(int t=0;t<2;t++) for(int i=0;i<n;i++) dist[t][i]=-1;\nint q[500005],qh=0,qt=0; dist[0][sx*W+sy]=0; dist[1][sx*W+sy]=0; q[qt++]=sx*W+sy; q[qt++]=sx*W+sy+H*W; /* encode state */\nwhile(qh<qt){ int v=q[qh++]; int mode=0; if(v>=H*W){ mode=1; v-=H*W; } int x=v/W, y=v%W; int d=dist[mode][v];\n  int dirs= (mode==0)?1:0; /* 0 means last was vertical, so next horizontal */\n  if(dirs==1){ int dx[2]={-1,1}; for(int k=0;k<2;k++){ int nx=x+dx[k], ny=y; if(nx<0||nx>=H) continue; char c=s[nx*W+ny]; if(c=='#') continue; if(dist[1][nx*W+ny]==-1){ dist[1][nx*W+ny]=d+1; q[qt++]=nx*W+ny+H*W; } } }\n  else { int dy[2]={-1,1}; for(int k=0;k<2;k++){ int nx=x, ny=y+dy[k]; if(ny<0||ny>=W) continue; char c=s[nx*W+ny]; if(c=='#') continue; if(dist[0][nx*W+ny]==-1){ dist[0][nx*W+ny]=d+1; q[qt++]=nx*W+ny; } } }\n}\nint a=dist[0][gx*W+gy], b=dist[1][gx*W+gy]; if(a==-1) return b; if(b==-1) return a; return a<b?a:b;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; static char s[250005]; read_input(&H,&W,s); int ans=bfs(H,W,s); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char *s)",
+          "code": "scanf(\"%d%d\", H,W); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "bfs",
+          "signature": "int bfs(int H,int W,char *s)",
+          "code": "int n=H*W; int sx=-1, sy=-1, gx=-1, gy=-1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++){ char c=s[i*W+j]; if(c=='S'){sx=i;sy=j;} if(c=='G'){gx=i;gy=j;} }\nint dist[2][250005]; for(int t=0;t<2;t++) for(int i=0;i<n;i++) dist[t][i]=-1;\nint q[500005],qh=0,qt=0; dist[0][sx*W+sy]=0; dist[1][sx*W+sy]=0; q[qt++]=sx*W+sy; q[qt++]=sx*W+sy+H*W; /* encode state */\nwhile(qh<qt){ int v=q[qh++]; int mode=0; if(v>=H*W){ mode=1; v-=H*W; } int x=v/W, y=v%W; int d=dist[mode][v];\n  int dirs= (mode==0)?1:0; /* 0 means last was vertical, so next horizontal */\n  if(dirs==1){ int dx[2]={-1,1}; for(int k=0;k<2;k++){ int nx=x+dx[k], ny=y; if(nx<0||nx>=H) continue; char c=s[nx*W+ny]; if(c=='#') continue; if(dist[1][nx*W+ny]==-1){ dist[1][nx*W+ny]=d+1; q[qt++]=nx*W+ny+H*W; } } }\n  else { int dy[2]={-1,1}; for(int k=0;k<2;k++){ int nx=x, ny=y+dy[k]; if(ny<0||ny>=W) continue; char c=s[nx*W+ny]; if(c=='#') continue; if(dist[0][nx*W+ny]==-1){ dist[0][nx*W+ny]=d+1; q[qt++]=nx*W+ny; } } }\n}\nint a=dist[0][gx*W+gy], b=dist[1][gx*W+gy]; if(a==-1) return b; if(b==-1) return a; return a<b?a:b;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; static char s[250005]; read_input(&H,&W,s); int ans=bfs(H,W,s); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char *s)",
+          "code": "scanf(\"%d%d\", H,W); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "bfs",
+          "signature": "int bfs(int H,int W,char *s)",
+          "code": "int n=H*W; int sx=-1, sy=-1, gx=-1, gy=-1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++){ char c=s[i*W+j]; if(c=='S'){sx=i;sy=j;} if(c=='G'){gx=i;gy=j;} }\nint dist[2][250005]; for(int t=0;t<2;t++) for(int i=0;i<n;i++) dist[t][i]=-1;\nint q[500005],qh=0,qt=0; dist[0][sx*W+sy]=0; dist[1][sx*W+sy]=0; q[qt++]=sx*W+sy; q[qt++]=sx*W+sy+H*W; /* encode state */\nwhile(qh<qt){ int v=q[qh++]; int mode=0; if(v>=H*W){ mode=1; v-=H*W; } int x=v/W, y=v%W; int d=dist[mode][v];\n  int dirs= (mode==0)?1:0; /* 0 means last was vertical, so next horizontal */\n  if(dirs==1){ int dx[2]={-1,1}; for(int k=0;k<2;k++){ int nx=x+dx[k], ny=y; if(nx<0||nx>=H) continue; char c=s[nx*W+ny]; if(c=='#') continue; if(dist[1][nx*W+ny]==-1){ dist[1][nx*W+ny]=d+1; q[qt++]=nx*W+ny+H*W; } } }\n  else { int dy[2]={-1,1}; for(int k=0;k<2;k++){ int nx=x, ny=y+dy[k]; if(ny<0||ny>=W) continue; char c=s[nx*W+ny]; if(c=='#') continue; if(dist[0][nx*W+ny]==-1){ dist[0][nx*W+ny]=d+1; q[qt++]=nx*W+ny; } } }\n}\nint a=dist[0][gx*W+gy], b=dist[1][gx*W+gy]; if(a==-1) return b; if(b==-1) return a; return a<b?a:b;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; static char s[250005]; read_input(&H,&W,s); int ans=bfs(H,W,s); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char *s)",
+          "code": "scanf(\"%d%d\", H,W); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "bfs",
+          "signature": "int bfs(int H,int W,char *s)",
+          "code": "int n=H*W; int sx=-1, sy=-1, gx=-1, gy=-1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++){ char c=s[i*W+j]; if(c=='S'){sx=i;sy=j;} if(c=='G'){gx=i;gy=j;} }\nint dist[2][250005]; for(int t=0;t<2;t++) for(int i=0;i<n;i++) dist[t][i]=-1;\nint q[500005],qh=0,qt=0; dist[0][sx*W+sy]=0; dist[1][sx*W+sy]=0; q[qt++]=sx*W+sy; q[qt++]=sx*W+sy+H*W; /* encode state */\nwhile(qh<qt){ int v=q[qh++]; int mode=0; if(v>=H*W){ mode=1; v-=H*W; } int x=v/W, y=v%W; int d=dist[mode][v];\n  int dirs= (mode==0)?1:0; /* 0 means last was vertical, so next horizontal */\n  if(dirs==1){ int dx[2]={-1,1}; for(int k=0;k<2;k++){ int nx=x+dx[k], ny=y; if(nx<0||nx>=H) continue; char c=s[nx*W+ny]; if(c=='#') continue; if(dist[1][nx*W+ny]==-1){ dist[1][nx*W+ny]=d+1; q[qt++]=nx*W+ny+H*W; } } }\n  else { int dy[2]={-1,1}; for(int k=0;k<2;k++){ int nx=x, ny=y+dy[k]; if(ny<0||ny>=W) continue; char c=s[nx*W+ny]; if(c=='#') continue; if(dist[0][nx*W+ny]==-1){ dist[0][nx*W+ny]=d+1; q[qt++]=nx*W+ny; } } }\n}\nint a=dist[0][gx*W+gy], b=dist[1][gx*W+gy]; if(a==-1) return b; if(b==-1) return a; return a<b?a:b;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; static char s[250005]; read_input(&H,&W,s); int ans=bfs(H,W,s); print_int(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *H,int *W,char *s)",
+          "code": "scanf(\"%d%d\", H,W); scanf(\"%s\", s);\n"
+        },
+        {
+          "clause_id": "bfs",
+          "signature": "int bfs(int H,int W,char *s)",
+          "code": "int n=H*W; int sx=-1, sy=-1, gx=-1, gy=-1;\nfor(int i=0;i<H;i++) for(int j=0;j<W;j++){ char c=s[i*W+j]; if(c=='S'){sx=i;sy=j;} if(c=='G'){gx=i;gy=j;} }\nint dist[2][250005]; for(int t=0;t<2;t++) for(int i=0;i<n;i++) dist[t][i]=-1;\nint q[500005],qh=0,qt=0; dist[0][sx*W+sy]=0; dist[1][sx*W+sy]=0; q[qt++]=sx*W+sy; q[qt++]=sx*W+sy+H*W; /* encode state */\nwhile(qh<qt){ int v=q[qh++]; int mode=0; if(v>=H*W){ mode=1; v-=H*W; } int x=v/W, y=v%W; int d=dist[mode][v];\n  int dirs= (mode==0)?1:0; /* 0 means last was vertical, so next horizontal */\n  if(dirs==1){ int dx[2]={-1,1}; for(int k=0;k<2;k++){ int nx=x+dx[k], ny=y; if(nx<0||nx>=H) continue; char c=s[nx*W+ny]; if(c=='#') continue; if(dist[1][nx*W+ny]==-1){ dist[1][nx*W+ny]=d+1; q[qt++]=nx*W+ny+H*W; } } }\n  else { int dy[2]={-1,1}; for(int k=0;k<2;k++){ int nx=x, ny=y+dy[k]; if(ny<0||ny>=W) continue; char c=s[nx*W+ny]; if(c=='#') continue; if(dist[0][nx*W+ny]==-1){ dist[0][nx*W+ny]=d+1; q[qt++]=nx*W+ny; } } }\n}\nint a=dist[0][gx*W+gy], b=dist[1][gx*W+gy]; if(a==-1) return b; if(b==-1) return a; return a<b?a:b;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int H,W; static char s[250005]; read_input(&H,&W,s); int ans=bfs(H,W,s); print_int(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "387D",
+  "total_programs": 5
+}

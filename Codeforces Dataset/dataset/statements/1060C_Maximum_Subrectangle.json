@@ -1,0 +1,32 @@
+{
+  "contestId": 1060,
+  "index": "C",
+  "problem_id": "1060C",
+  "name": "Maximum Subrectangle",
+  "rating": 1600,
+  "tags": [
+    "binary search",
+    "implementation",
+    "two pointers"
+  ],
+  "points": 1250.0,
+  "solvedCount": 5234,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Maximum Subrectangle",
+  "legend": "You are given two arrays a and b of positive integers, with length n and m respectively.\n\nLet c be an n×m matrix, where ci,j=ai⋅bj.\n\nYou need to find a subrectangle of the matrix c such that the sum of its elements is at most x, and its area (the total number of elements) is the largest possible.\n\nFormally, you need to find the largest number s such that it is possible to choose integers x1,x2,y1,y2 subject to 1≤x1≤x2≤n, 1≤y1≤y2≤m, (x2−x1+1)×(y2−y1+1)=s, and\nx2\n∑\n\ni=x1\ny2\n∑\n\nj=y1ci,j≤x.",
+  "input_spec": "The first line contains two integers n and m (1≤n,m≤2000).\n\nThe second line contains n integers a1,a2,…,an (1≤ai≤2000).\n\nThe third line contains m integers b1,b2,…,bm (1≤bi≤2000).\n\nThe fourth line contains a single integer x (1≤x≤2⋅109).",
+  "output_spec": "If it is possible to choose four integers x1,x2,y1,y2 such that 1≤x1≤x2≤n, 1≤y1≤y2≤m, and ∑\nx2\ni=x1\n∑\ny2\nj=y1\nci,j≤x, output the largest value of (x2−x1+1)×(y2−y1+1) among all such quadruplets, otherwise output 0.",
+  "note": "Matrix from the first sample and the chosen subrectangle (of blue color):\n\nMatrix from the second sample and the chosen subrectangle (of blue color):",
+  "time_limit": "2 seconds",
+  "mem_limit": "512 megabytes",
+  "samples": [
+    {
+      "input": "3 3\n1 2 3\n1 2 3\n9\n",
+      "output": "4"
+    },
+    {
+      "input": "5 1\n5 4 2 4 5\n2\n5\n",
+      "output": "1"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+import math
+import sys
+
+# Clause read_input [Confidence: 0.80]
+def read_input():
+    data = sys.stdin.buffer.read().split()
+    values = [float(token) for token in data[:7]]
+    return values[0], values[1], values[2], values[3], values[4], values[5], values[6]
+
+# Clause travel_distance [Confidence: 1.00]
+def travel_distance(ax, ay, bx, by, r):
+    da = math.hypot(ax, ay)
+    db = math.hypot(bx, by)
+    dx = bx - ax
+    dy = by - ay
+    span = dx * dx + dy * dy
+    if span == 0.0:
+        near = da
+    else:
+        t = -(ax * dx + ay * dy) / span
+        if t < 0.0:
+            t = 0.0
+        elif t > 1.0:
+            t = 1.0
+        near = math.hypot(ax + t * dx, ay + t * dy)
+    if near >= r:
+        return math.hypot(dx, dy)
+    first = math.sqrt(max(da * da - r * r, 0.0))
+    second = math.sqrt(max(db * db - r * r, 0.0))
+    cosine = (ax * bx + ay * by) / (da * db)
+    if cosine > 1.0:
+        cosine = 1.0
+    elif cosine < -1.0:
+        cosine = -1.0
+    sweep = math.acos(cosine) - math.acos(min(1.0, r / da)) - math.acos(min(1.0, r / db))
+    if sweep < 0.0:
+        sweep = 0.0
+    return first + second + r * sweep
+
+# Clause earliest_time [Confidence: 1.00]
+def earliest_time(xp, yp, vp, x, y, v, r):
+    radius = math.hypot(xp, yp)
+    start = math.atan2(yp, xp)
+    low = 0.0
+    high = 1e9
+    for _ in range(200):
+        mid = (low + high) / 2.0
+        angle = start + vp * mid / radius
+        tx = radius * math.cos(angle)
+        ty = radius * math.sin(angle)
+        if travel_distance(x, y, tx, ty, r) <= v * mid:
+            high = mid
+        else:
+            low = mid
+    return high
+
+# Clause main [Confidence: 1.00]
+def main():
+    xp, yp, vp, x, y, v, r = read_input()
+    sys.stdout.write("%.9f\n" % earliest_time(xp, yp, vp, x, y, v, r))
+
+
+if __name__ == "__main__":
+    main()
+

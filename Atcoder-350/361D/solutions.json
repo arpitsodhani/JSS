@@ -1,0 +1,159 @@
+{
+  "includes": [
+    "#include <stdio.h>",
+    "#include <stdlib.h>",
+    "#include <string.h>"
+  ],
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_configurations",
+          "signature": "void read_configurations(int *n, char *s, char *t)",
+          "code": "void read_configurations(int *n, char *s, char *t) {\n    scanf(\"%d\", n);\n    scanf(\"%s\", s);\n    scanf(\"%s\", t);\n}"
+        },
+        {
+          "clause_id": "encode_state",
+          "signature": "long long encode_state(int n, char *config, int empty_pos)",
+          "code": "long long encode_state(int n, char *config, int empty_pos) {\n    long long hash = 0;\n    for (int i = 0; i < n; i++) {\n        hash = hash * 3 + (config[i] == 'W' ? 1 : (config[i] == 'B' ? 2 : 0));\n    }\n    return hash * 100 + empty_pos;\n}"
+        },
+        {
+          "clause_id": "bfs_minimum_moves",
+          "signature": "int bfs_minimum_moves(int n, char *s, char *t)",
+          "code": "int bfs_minimum_moves(int n, char *s, char *t) {\n    long long start = encode_state(n, s, n);\n    long long target = encode_state(n, t, n);\n    if (start == target) return 0;\n    long long queue[100000], visited[100000];\n    int dist[100000];\n    int head = 0, tail = 0, vis_cnt = 0;\n    queue[tail++] = start;\n    visited[vis_cnt++] = start;\n    dist[0] = 0;\n    while (head < tail) {\n        long long curr = queue[head];\n        int d = dist[head];\n        head++;\n        char state[20];\n        int emp = curr % 100;\n        long long tmp = curr / 100;\n        for (int i = n - 1; i >= 0; i--) {\n            state[i] = (tmp % 3 == 1 ? 'W' : (tmp % 3 == 2 ? 'B' : '.'));\n            tmp /= 3;\n        }\n        for (int i = 0; i <= n; i++) {\n            if (i == emp || i + 1 == emp) continue;\n            char new_state[20];\n            for (int j = 0; j < n; j++) new_state[j] = state[j];\n            new_state[emp] = state[i];\n            new_state[emp + 1] = state[i + 1];\n            new_state[i] = '.';\n            new_state[i + 1] = '.';\n            long long next = encode_state(n, new_state, i);\n            int found = 0;\n            for (int j = 0; j < vis_cnt; j++) {\n                if (visited[j] == next) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                if (next == target) return d + 1;\n                queue[tail] = next;\n                dist[tail] = d + 1;\n                tail++;\n                visited[vis_cnt++] = next;\n            }\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    char s[20], t[20];\n    read_configurations(&n, s, t);\n    printf(\"%d\\n\", bfs_minimum_moves(n, s, t));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_configurations",
+          "signature": "int read_configurations(int *n, char s[], char t[])",
+          "code": "int read_configurations(int *n, char s[], char t[]) {\n    scanf(\"%d %s %s\", n, s, t);\n    return *n;\n}"
+        },
+        {
+          "clause_id": "encode_state",
+          "signature": "long long encode_state(int n, char cfg[], int emp)",
+          "code": "long long encode_state(int n, char cfg[], int emp) {\n    long long val = emp;\n    for (int i = 0; i < n; i++) {\n        val = val * 3 + (cfg[i] == 'W' ? 0 : (cfg[i] == 'B' ? 1 : 2));\n    }\n    return val;\n}"
+        },
+        {
+          "clause_id": "bfs_minimum_moves",
+          "signature": "int bfs_minimum_moves(int n, char s[], char t[])",
+          "code": "int bfs_minimum_moves(int n, char s[], char t[]) {\n    long long init = encode_state(n, s, n);\n    long long goal = encode_state(n, t, n);\n    if (init == goal) return 0;\n    long long q[50000], seen[50000];\n    int steps[50000];\n    int qh = 0, qt = 0, sc = 0;\n    q[qt] = init;\n    steps[qt] = 0;\n    qt++;\n    seen[sc++] = init;\n    while (qh < qt) {\n        long long cur = q[qh];\n        int step = steps[qh++];\n        char st[20];\n        int ep = cur % 100;\n        long long v = cur / 100;\n        for (int i = n - 1; i >= 0; i--) {\n            st[i] = (v % 3 == 1 ? 'W' : (v % 3 == 2 ? 'B' : '.'));\n            v /= 3;\n        }\n        for (int pos = 0; pos <= n; pos++) {\n            if (pos == ep || pos + 1 == ep) continue;\n            char nst[20];\n            for (int j = 0; j < n; j++) nst[j] = st[j];\n            nst[ep] = st[pos];\n            nst[ep + 1] = st[pos + 1];\n            nst[pos] = '.';\n            nst[pos + 1] = '.';\n            long long nxt = encode_state(n, nst, pos);\n            int vis = 0;\n            for (int j = 0; j < sc; j++) {\n                if (seen[j] == nxt) {\n                    vis = 1;\n                    break;\n                }\n            }\n            if (!vis) {\n                if (nxt == goal) return step + 1;\n                q[qt] = nxt;\n                steps[qt++] = step + 1;\n                seen[sc++] = nxt;\n            }\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    char s[20], t[20];\n    read_configurations(&n, s, t);\n    int result = bfs_minimum_moves(n, s, t);\n    printf(\"%d\\n\", result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_configurations",
+          "signature": "void read_configurations(int *n, char *initial, char *target)",
+          "code": "void read_configurations(int *n, char *initial, char *target) {\n    scanf(\"%d\", n);\n    scanf(\"%s %s\", initial, target);\n}"
+        },
+        {
+          "clause_id": "encode_state",
+          "signature": "long long encode_state(int n, char *state, int empty)",
+          "code": "long long encode_state(int n, char *state, int empty) {\n    long long code = 0;\n    for (int i = 0; i < n; i++) {\n        code *= 3;\n        if (state[i] == 'W') code += 1;\n        else if (state[i] == 'B') code += 2;\n    }\n    return code * 20 + empty;\n}"
+        },
+        {
+          "clause_id": "bfs_minimum_moves",
+          "signature": "int bfs_minimum_moves(int n, char *initial, char *target)",
+          "code": "int bfs_minimum_moves(int n, char *initial, char *target) {\n    long long s = encode_state(n, initial, n);\n    long long g = encode_state(n, target, n);\n    if (s == g) return 0;\n    long long que[80000], vis[80000];\n    int d[80000];\n    int h = 0, t = 0, vc = 0;\n    que[t] = s;\n    d[t++] = 0;\n    vis[vc++] = s;\n    while (h < t) {\n        long long c = que[h];\n        int cd = d[h++];\n        char cfg[20];\n        int e = c % 20;\n        long long val = c / 20;\n        for (int i = n - 1; i >= 0; i--) {\n            cfg[i] = (val % 3 == 1 ? 'W' : (val % 3 == 2 ? 'B' : '.'));\n            val /= 3;\n        }\n        for (int p = 0; p <= n; p++) {\n            if (p == e || p + 1 == e) continue;\n            char ncfg[20];\n            for (int i = 0; i < n; i++) ncfg[i] = cfg[i];\n            ncfg[e] = cfg[p];\n            ncfg[e + 1] = cfg[p + 1];\n            ncfg[p] = '.';\n            ncfg[p + 1] = '.';\n            long long nx = encode_state(n, ncfg, p);\n            int f = 0;\n            for (int i = 0; i < vc; i++) {\n                if (vis[i] == nx) {\n                    f = 1;\n                    break;\n                }\n            }\n            if (!f) {\n                if (nx == g) return cd + 1;\n                que[t] = nx;\n                d[t++] = cd + 1;\n                vis[vc++] = nx;\n            }\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    char initial[20], target[20];\n    read_configurations(&n, initial, target);\n    int ans = bfs_minimum_moves(n, initial, target);\n    printf(\"%d\\n\", ans);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_configurations",
+          "signature": "long long read_configurations(int *n, char s[], char t[])",
+          "code": "long long read_configurations(int *n, char s[], char t[]) {\n    scanf(\"%d\", n);\n    scanf(\"%s\", s);\n    scanf(\"%s\", t);\n    return 0;\n}"
+        },
+        {
+          "clause_id": "encode_state",
+          "signature": "long long encode_state(int n, char s[], int e)",
+          "code": "long long encode_state(int n, char s[], int e) {\n    long long h = e;\n    for (int i = 0; i < n; i++) {\n        h = h * 4 + (s[i] == 'W' ? 1 : 2);\n    }\n    return h;\n}"
+        },
+        {
+          "clause_id": "bfs_minimum_moves",
+          "signature": "int bfs_minimum_moves(int n, char s[], char t[])",
+          "code": "int bfs_minimum_moves(int n, char s[], char t[]) {\n    long long start_state = encode_state(n, s, n);\n    long long end_state = encode_state(n, t, n);\n    if (start_state == end_state) return 0;\n    long long bfs_q[60000], bfs_v[60000];\n    int bfs_d[60000];\n    int qf = 0, qb = 0, vn = 0;\n    bfs_q[qb] = start_state;\n    bfs_d[qb++] = 0;\n    bfs_v[vn++] = start_state;\n    while (qf < qb) {\n        long long cs = bfs_q[qf];\n        int csd = bfs_d[qf++];\n        char arr[20];\n        int emp = cs % 100;\n        long long code = cs / 100;\n        for (int i = n - 1; i >= 0; i--) {\n            arr[i] = (code % 3 == 1 ? 'W' : (code % 3 == 2 ? 'B' : '.'));\n            code /= 3;\n        }\n        for (int i = 0; i <= n; i++) {\n            if (i == emp || i + 1 == emp) continue;\n            char narr[20];\n            for (int j = 0; j < n; j++) narr[j] = arr[j];\n            narr[emp] = arr[i];\n            narr[emp + 1] = arr[i + 1];\n            narr[i] = '.';\n            narr[i + 1] = '.';\n            long long ns = encode_state(n, narr, i);\n            int seen = 0;\n            for (int j = 0; j < vn; j++) {\n                if (bfs_v[j] == ns) {\n                    seen = 1;\n                    break;\n                }\n            }\n            if (!seen) {\n                if (ns == end_state) return csd + 1;\n                bfs_q[qb] = ns;\n                bfs_d[qb++] = csd + 1;\n                bfs_v[vn++] = ns;\n            }\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    char s[20], t[20];\n    read_configurations(&n, s, t);\n    printf(\"%d\\n\", bfs_minimum_moves(n, s, t));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_configurations",
+          "signature": "void read_configurations(int *n, char start[], char end[])",
+          "code": "void read_configurations(int *n, char start[], char end[]) {\n    scanf(\"%d\", n);\n    scanf(\"%s %s\", start, end);\n}"
+        },
+        {
+          "clause_id": "encode_state",
+          "signature": "long long encode_state(int n, char config[], int empty_idx)",
+          "code": "long long encode_state(int n, char config[], int empty_idx) {\n    long long id = 0;\n    for (int i = 0; i < n; i++) {\n        id = id * 3 + (config[i] == 'W' ? 0 : (config[i] == 'B' ? 1 : 2));\n    }\n    return id * 100 + empty_idx;\n}"
+        },
+        {
+          "clause_id": "bfs_minimum_moves",
+          "signature": "int bfs_minimum_moves(int n, char start[], char end[])",
+          "code": "int bfs_minimum_moves(int n, char start[], char end[]) {\n    long long initial = encode_state(n, start, n);\n    long long final = encode_state(n, end, n);\n    if (initial == final) return 0;\n    long long queue[70000], visited[70000];\n    int distance[70000];\n    int front = 0, back = 0, v_count = 0;\n    queue[back] = initial;\n    distance[back++] = 0;\n    visited[v_count++] = initial;\n    while (front < back) {\n        long long current = queue[front];\n        int cur_dist = distance[front++];\n        char state[20];\n        int empty = current % 100;\n        long long hash = current / 100;\n        for (int i = n - 1; i >= 0; i--) {\n            state[i] = (hash % 3 == 1 ? 'W' : (hash % 3 == 2 ? 'B' : '.'));\n            hash /= 3;\n        }\n        for (int move = 0; move <= n; move++) {\n            if (move == empty || move + 1 == empty) continue;\n            char next_state[20];\n            for (int j = 0; j < n; j++) next_state[j] = state[j];\n            next_state[empty] = state[move];\n            next_state[empty + 1] = state[move + 1];\n            next_state[move] = '.';\n            next_state[move + 1] = '.';\n            long long next = encode_state(n, next_state, move);\n            int already_visited = 0;\n            for (int j = 0; j < v_count; j++) {\n                if (visited[j] == next) {\n                    already_visited = 1;\n                    break;\n                }\n            }\n            if (!already_visited) {\n                if (next == final) return cur_dist + 1;\n                queue[back] = next;\n                distance[back++] = cur_dist + 1;\n                visited[v_count++] = next;\n            }\n        }\n    }\n    return -1;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    char start[20], end[20];\n    read_configurations(&n, start, end);\n    printf(\"%d\\n\", bfs_minimum_moves(n, start, end));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

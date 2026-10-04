@@ -1,0 +1,23 @@
+{
+  "contestId": 2052,
+  "index": "J",
+  "problem_id": "2052J",
+  "name": "Judicious Watching",
+  "rating": 2000,
+  "tags": [
+    "binary search",
+    "greedy",
+    "sortings"
+  ],
+  "points": null,
+  "solvedCount": 1570,
+  "source": "verbatim_cf_fetch",
+  "title": null,
+  "legend": null,
+  "input_spec": null,
+  "output_spec": null,
+  "note": null,
+  "time_limit": null,
+  "mem_limit": null,
+  "samples": null
+}

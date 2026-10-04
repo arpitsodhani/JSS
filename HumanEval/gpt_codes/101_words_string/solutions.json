@@ -1,0 +1,139 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "words_string",
+          "code": "void words_string(const char *s, char words[][100], int *count) {\n    *count = 0;\n    char temp[1000];\n    strcpy(temp, s);\n    \n    int word_start = 0;\n    int word_len = 0;\n    \n    for (int i = 0; temp[i]; i++) {\n        if (temp[i] == ',') {\n            temp[i] = ' ';\n        }\n    }\n    \n    char *token = strtok(temp, \" \");\n    while (token != NULL) {\n        strcpy(words[*count], token);\n        (*count)++;\n        token = strtok(NULL, \" \");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char s[10000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    \n    char words[1000][100];\n    int count;\n    words_string(s, words, &count);\n    \n    for (int i = 0; i < count; i++) {\n        printf(\"%s\", words[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "words_string",
+          "code": "void words_string(const char *s, char words[][100], int *count) {\n    *count = 0;\n    char temp[1000];\n    strcpy(temp, s);\n    \n    int word_start = 0;\n    int word_len = 0;\n    \n    for (int i = 0; temp[i]; i++) {\n        if (temp[i] == ',') {\n            temp[i] = ' ';\n        }\n    }\n    \n    char *token = strtok(temp, \" \");\n    while (token != NULL) {\n        strcpy(words[*count], token);\n        (*count)++;\n        token = strtok(NULL, \" \");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char s[10000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    \n    char words[1000][100];\n    int count;\n    words_string(s, words, &count);\n    \n    for (int i = 0; i < count; i++) {\n        printf(\"%s\", words[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "words_string",
+          "code": "void words_string(const char *s, char words[][100], int *count) {\n    *count = 0;\n    char temp[1000];\n    strcpy(temp, s);\n    \n    int word_start = 0;\n    int word_len = 0;\n    \n    for (int i = 0; temp[i]; i++) {\n        if (temp[i] == ',') {\n            temp[i] = ' ';\n        }\n    }\n    \n    char *token = strtok(temp, \" \");\n    while (token != NULL) {\n        strcpy(words[*count], token);\n        (*count)++;\n        token = strtok(NULL, \" \");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char s[10000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    \n    char words[1000][100];\n    int count;\n    words_string(s, words, &count);\n    \n    for (int i = 0; i < count; i++) {\n        printf(\"%s\", words[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "words_string",
+          "code": "void words_string(const char *s, char words[][100], int *count) {\n    *count = 0;\n    char temp[1000];\n    strcpy(temp, s);\n    \n    int word_start = 0;\n    int word_len = 0;\n    \n    for (int i = 0; temp[i]; i++) {\n        if (temp[i] == ',') {\n            temp[i] = ' ';\n        }\n    }\n    \n    char *token = strtok(temp, \" \");\n    while (token != NULL) {\n        strcpy(words[*count], token);\n        (*count)++;\n        token = strtok(NULL, \" \");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char s[10000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    \n    char words[1000][100];\n    int count;\n    words_string(s, words, &count);\n    \n    for (int i = 0; i < count; i++) {\n        printf(\"%s\", words[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "words_string",
+          "code": "void words_string(const char *s, char words[][100], int *count) {\n    *count = 0;\n    char temp[1000];\n    strcpy(temp, s);\n    \n    int word_start = 0;\n    int word_len = 0;\n    \n    for (int i = 0; temp[i]; i++) {\n        if (temp[i] == ',') {\n            temp[i] = ' ';\n        }\n    }\n    \n    char *token = strtok(temp, \" \");\n    while (token != NULL) {\n        strcpy(words[*count], token);\n        (*count)++;\n        token = strtok(NULL, \" \");\n    }\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char s[10000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    \n    char words[1000][100];\n    int count;\n    words_string(s, words, &count);\n    \n    for (int i = 0; i < count; i++) {\n        printf(\"%s\", words[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

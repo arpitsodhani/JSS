@@ -1,0 +1,234 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_parameters",
+          "signature": "void read_parameters(int *n, int *q)",
+          "code": "void read_parameters(int *n, int *q) {\n    scanf(\"%d %d\", n, q);\n}"
+        },
+        {
+          "clause_id": "init_graph",
+          "signature": "void init_graph(int adj[][100], int n)",
+          "code": "void init_graph(int adj[][100], int n) {\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= n; j++) {\n            adj[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "decrypt_query",
+          "signature": "void decrypt_query(long long a, long long b, long long c, long long x_prev, int n, int *A, int *B, int *C)",
+          "code": "void decrypt_query(long long a, long long b, long long c, long long x_prev, int n, int *A, int *B, int *C) {\n    long long MOD = 998244353;\n    long long mult = 1 + x_prev;\n    \n    *A = 1 + (((a * mult) % MOD) % 2);\n    *B = 1 + (((b * mult) % MOD) % n);\n    *C = 1 + (((c * mult) % MOD) % n);\n}"
+        },
+        {
+          "clause_id": "add_edge",
+          "signature": "void add_edge(int adj[][100], int u, int v)",
+          "code": "void add_edge(int adj[][100], int u, int v) {\n    adj[u][v] = 1;\n    adj[v][u] = 1;\n}"
+        },
+        {
+          "clause_id": "find_mediator",
+          "signature": "int find_mediator(int adj[][100], int u, int v, int n)",
+          "code": "int find_mediator(int adj[][100], int u, int v, int n) {\n    for (int m = 1; m <= n; m++) {\n        if (adj[u][m] && adj[v][m]) {\n            return m;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "process_queries",
+          "signature": "void process_queries(int adj[][100], int n, int q)",
+          "code": "void process_queries(int adj[][100], int n, int q) {\n    long long x_last = 0;\n    \n    for (int i = 0; i < q; i++) {\n        long long a, b, c;\n        scanf(\"%lld %lld %lld\", &a, &b, &c);\n        \n        int A, B, C;\n        decrypt_query(a, b, c, x_last, n, &A, &B, &C);\n        \n        if (A == 1) {\n            add_edge(adj, B, C);\n        } else {\n            int result = find_mediator(adj, B, C, n);\n            printf(\"%d\\n\", result);\n            x_last = result;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, q;\n    read_parameters(&n, &q);\n    \n    int adj[100][100];\n    init_graph(adj, n);\n    \n    process_queries(adj, n, q);\n    \n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "scan_input",
+          "signature": "void scan_input(int *n, int *q)",
+          "code": "void scan_input(int *n, int *q) {\n    scanf(\"%d %d\", n, q);\n}"
+        },
+        {
+          "clause_id": "setup_adjacency",
+          "signature": "void setup_adjacency(int graph[][100], int nodes)",
+          "code": "void setup_adjacency(int graph[][100], int nodes) {\n    for (int i = 0; i <= nodes; i++) {\n        for (int j = 0; j <= nodes; j++) {\n            graph[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "decode_values",
+          "signature": "void decode_values(long long enc_a, long long enc_b, long long enc_c, long long prev_ans, int n, int *real_A, int *real_B, int *real_C)",
+          "code": "void decode_values(long long enc_a, long long enc_b, long long enc_c, long long prev_ans, int n, int *real_A, int *real_B, int *real_C) {\n    long long MOD = 998244353LL;\n    long long factor = 1LL + prev_ans;\n    \n    *real_A = 1 + (int)(((enc_a * factor) % MOD) % 2);\n    *real_B = 1 + (int)(((enc_b * factor) % MOD) % n);\n    *real_C = 1 + (int)(((enc_c * factor) % MOD) % n);\n}"
+        },
+        {
+          "clause_id": "connect_vertices",
+          "signature": "void connect_vertices(int graph[][100], int x, int y)",
+          "code": "void connect_vertices(int graph[][100], int x, int y) {\n    graph[x][y] = 1;\n    graph[y][x] = 1;\n}"
+        },
+        {
+          "clause_id": "search_common_neighbor",
+          "signature": "int search_common_neighbor(int graph[][100], int u, int v, int nodes)",
+          "code": "int search_common_neighbor(int graph[][100], int u, int v, int nodes) {\n    for (int node = 1; node <= nodes; node++) {\n        if (graph[u][node] == 1 && graph[v][node] == 1) {\n            return node;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "handle_all_queries",
+          "signature": "void handle_all_queries(int graph[][100], int n, int q)",
+          "code": "void handle_all_queries(int graph[][100], int n, int q) {\n    long long last_answer = 0;\n    \n    for (int query = 0; query < q; query++) {\n        long long a, b, c;\n        scanf(\"%lld %lld %lld\", &a, &b, &c);\n        \n        int A, B, C;\n        decode_values(a, b, c, last_answer, n, &A, &B, &C);\n        \n        if (A == 1) {\n            connect_vertices(graph, B, C);\n        } else {\n            int ans = search_common_neighbor(graph, B, C, n);\n            printf(\"%d\\n\", ans);\n            last_answer = ans;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, q;\n    scan_input(&n, &q);\n    \n    int graph[100][100];\n    setup_adjacency(graph, n);\n    \n    handle_all_queries(graph, n, q);\n    \n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "get_problem_size",
+          "signature": "void get_problem_size(int *vertices, int *queries)",
+          "code": "void get_problem_size(int *vertices, int *queries) {\n    scanf(\"%d %d\", vertices, queries);\n}"
+        },
+        {
+          "clause_id": "initialize_edges",
+          "signature": "void initialize_edges(int edges[][100], int v_count)",
+          "code": "void initialize_edges(int edges[][100], int v_count) {\n    int i, j;\n    for (i = 0; i <= v_count; i++) {\n        for (j = 0; j <= v_count; j++) {\n            edges[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "decrypt_parameters",
+          "signature": "void decrypt_parameters(long long a, long long b, long long c, long long x, int n, int *type, int *u, int *v)",
+          "code": "void decrypt_parameters(long long a, long long b, long long c, long long x, int n, int *type, int *u, int *v) {\n    const long long MOD = 998244353LL;\n    long long multiplier = 1LL + x;\n    \n    *type = 1 + (int)(((a * multiplier) % MOD) % 2LL);\n    *u = 1 + (int)(((b * multiplier) % MOD) % (long long)n);\n    *v = 1 + (int)(((c * multiplier) % MOD) % (long long)n);\n}"
+        },
+        {
+          "clause_id": "create_connection",
+          "signature": "void create_connection(int edges[][100], int from, int to)",
+          "code": "void create_connection(int edges[][100], int from, int to) {\n    edges[from][to] = 1;\n    edges[to][from] = 1;\n}"
+        },
+        {
+          "clause_id": "locate_mediator",
+          "signature": "int locate_mediator(int edges[][100], int node1, int node2, int v_count)",
+          "code": "int locate_mediator(int edges[][100], int node1, int node2, int v_count) {\n    int candidate;\n    for (candidate = 1; candidate <= v_count; candidate++) {\n        if (edges[node1][candidate] && edges[node2][candidate]) {\n            return candidate;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "execute_queries",
+          "signature": "void execute_queries(int edges[][100], int v_count, int q_count)",
+          "code": "void execute_queries(int edges[][100], int v_count, int q_count) {\n    long long prev_result = 0;\n    int idx;\n    \n    for (idx = 0; idx < q_count; idx++) {\n        long long a, b, c;\n        scanf(\"%lld %lld %lld\", &a, &b, &c);\n        \n        int type, u, v;\n        decrypt_parameters(a, b, c, prev_result, v_count, &type, &u, &v);\n        \n        if (type == 1) {\n            create_connection(edges, u, v);\n        } else {\n            int answer = locate_mediator(edges, u, v, v_count);\n            printf(\"%d\\n\", answer);\n            prev_result = answer;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int vertices, queries;\n    get_problem_size(&vertices, &queries);\n    \n    int edges[100][100];\n    initialize_edges(edges, vertices);\n    \n    execute_queries(edges, vertices, queries);\n    \n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_n_q",
+          "signature": "void read_n_q(int *n, int *q)",
+          "code": "void read_n_q(int *n, int *q) {\n    scanf(\"%d %d\", n, q);\n}"
+        },
+        {
+          "clause_id": "clear_adjacency_matrix",
+          "signature": "void clear_adjacency_matrix(int adj[][100], int size)",
+          "code": "void clear_adjacency_matrix(int adj[][100], int size) {\n    for (int row = 0; row <= size; row++) {\n        for (int col = 0; col <= size; col++) {\n            adj[row][col] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "unscramble_query",
+          "signature": "void unscramble_query(long long a, long long b, long long c, long long prev_x, int n, int *decoded_a, int *decoded_b, int *decoded_c)",
+          "code": "void unscramble_query(long long a, long long b, long long c, long long prev_x, int n, int *decoded_a, int *decoded_b, int *decoded_c) {\n    const long long P = 998244353LL;\n    long long key = 1LL + prev_x;\n    \n    *decoded_a = 1 + (int)(((a * key) % P) % 2LL);\n    *decoded_b = 1 + (int)(((b * key) % P) % (long long)n);\n    *decoded_c = 1 + (int)(((c * key) % P) % (long long)n);\n}"
+        },
+        {
+          "clause_id": "make_edge",
+          "signature": "void make_edge(int adj[][100], int p, int q)",
+          "code": "void make_edge(int adj[][100], int p, int q) {\n    adj[p][q] = 1;\n    adj[q][p] = 1;\n}"
+        },
+        {
+          "clause_id": "find_common_neighbor",
+          "signature": "int find_common_neighbor(int adj[][100], int p, int q, int size)",
+          "code": "int find_common_neighbor(int adj[][100], int p, int q, int size) {\n    for (int vertex = 1; vertex <= size; vertex++) {\n        if (adj[p][vertex] != 0 && adj[q][vertex] != 0) {\n            return vertex;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "run_all_queries",
+          "signature": "void run_all_queries(int adj[][100], int n, int q)",
+          "code": "void run_all_queries(int adj[][100], int n, int q) {\n    long long x = 0;\n    \n    for (int i = 0; i < q; i++) {\n        long long a_enc, b_enc, c_enc;\n        scanf(\"%lld %lld %lld\", &a_enc, &b_enc, &c_enc);\n        \n        int op_type, node_u, node_v;\n        unscramble_query(a_enc, b_enc, c_enc, x, n, &op_type, &node_u, &node_v);\n        \n        if (op_type == 1) {\n            make_edge(adj, node_u, node_v);\n        } else {\n            int result = find_common_neighbor(adj, node_u, node_v, n);\n            printf(\"%d\\n\", result);\n            x = result;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, q;\n    read_n_q(&n, &q);\n    \n    int adj[100][100];\n    clear_adjacency_matrix(adj, n);\n    \n    run_all_queries(adj, n, q);\n    \n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "input_problem_params",
+          "signature": "void input_problem_params(int *num_nodes, int *num_queries)",
+          "code": "void input_problem_params(int *num_nodes, int *num_queries) {\n    scanf(\"%d %d\", num_nodes, num_queries);\n}"
+        },
+        {
+          "clause_id": "prepare_graph_storage",
+          "signature": "void prepare_graph_storage(int matrix[][100], int node_count)",
+          "code": "void prepare_graph_storage(int matrix[][100], int node_count) {\n    for (int i = 0; i <= node_count; i++) {\n        for (int j = 0; j <= node_count; j++) {\n            matrix[i][j] = 0;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "decipher_input",
+          "signature": "void decipher_input(long long enc1, long long enc2, long long enc3, long long last_output, int nodes, int *cmd, int *arg1, int *arg2)",
+          "code": "void decipher_input(long long enc1, long long enc2, long long enc3, long long last_output, int nodes, int *cmd, int *arg1, int *arg2) {\n    long long MODULO = 998244353LL;\n    long long factor = 1LL + last_output;\n    \n    *cmd = 1 + (int)(((enc1 * factor) % MODULO) % 2LL);\n    *arg1 = 1 + (int)(((enc2 * factor) % MODULO) % (long long)nodes);\n    *arg2 = 1 + (int)(((enc3 * factor) % MODULO) % (long long)nodes);\n}"
+        },
+        {
+          "clause_id": "insert_edge",
+          "signature": "void insert_edge(int matrix[][100], int a, int b)",
+          "code": "void insert_edge(int matrix[][100], int a, int b) {\n    matrix[a][b] = 1;\n    matrix[b][a] = 1;\n}"
+        },
+        {
+          "clause_id": "query_common_adjacent",
+          "signature": "int query_common_adjacent(int matrix[][100], int x, int y, int nodes)",
+          "code": "int query_common_adjacent(int matrix[][100], int x, int y, int nodes) {\n    for (int mid = 1; mid <= nodes; mid++) {\n        if (matrix[x][mid] == 1 && matrix[y][mid] == 1) {\n            return mid;\n        }\n    }\n    return 0;\n}"
+        },
+        {
+          "clause_id": "solve_queries",
+          "signature": "void solve_queries(int matrix[][100], int nodes, int queries)",
+          "code": "void solve_queries(int matrix[][100], int nodes, int queries) {\n    long long last_ans = 0;\n    \n    for (int q = 0; q < queries; q++) {\n        long long e1, e2, e3;\n        scanf(\"%lld %lld %lld\", &e1, &e2, &e3);\n        \n        int command, param1, param2;\n        decipher_input(e1, e2, e3, last_ans, nodes, &command, &param1, &param2);\n        \n        if (command == 1) {\n            insert_edge(matrix, param1, param2);\n        } else {\n            int ans = query_common_adjacent(matrix, param1, param2, nodes);\n            printf(\"%d\\n\", ans);\n            last_ans = ans;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int num_nodes, num_queries;\n    input_problem_params(&num_nodes, &num_queries);\n    \n    int matrix[100][100];\n    prepare_graph_storage(matrix, num_nodes);\n    \n    solve_queries(matrix, num_nodes, num_queries);\n    \n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ],
+  "global_includes": [],
+  "tests": {
+    "clause_tests": {},
+    "program_tests": [
+      {
+        "test_id": "test_1",
+        "input": "2 1\\n377373366 41280240 33617925\\n",
+        "expected": ""
+      }
+    ]
+  },
+  "merge_settings": {
+    "consensus_threshold": 0.6,
+    "max_rounds": 3
+  }
+}

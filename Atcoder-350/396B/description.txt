@@ -1,0 +1,6 @@
+There is a stack of 100 cards, each labeled with the integer 0 . Process Q queries. Each query is of one of the following: Type 1 : Place a card labeled with an integer x on top of the stack. Type 2 : Remove the top card of the stack and output the integer written on that removed card. Under the of this problem, the stack always has at least one card.
+
+**Constraints:**
+- 1 <= N, K <= 100
+- S is a string of length N consisting of uppercase English letters
+- All input values are integers

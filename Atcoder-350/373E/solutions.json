@@ -1,0 +1,110 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_prefix_function",
+          "signature": "void compute_prefix_function(char *pattern, int m, int *prefix)",
+          "code": "void compute_prefix_function(char *pattern, int m, int *prefix) {\n    prefix[0] = 0;\n    int k = 0;\n    \n    for (int i = 1; i < m; i++) {\n        while (k > 0 && pattern[k] != pattern[i]) {\n            k = prefix[k - 1];\n        }\n        if (pattern[k] == pattern[i]) {\n            k++;\n        }\n        prefix[i] = k;\n    }\n}"
+        },
+        {
+          "clause_id": "search_pattern_kmp",
+          "signature": "int search_pattern_kmp(char *text, char *pattern, int *prefix, int *positions)",
+          "code": "int search_pattern_kmp(char *text, char *pattern, int *prefix, int *positions) {\n    int n = strlen(text);\n    int m = strlen(pattern);\n    int count = 0, k = 0;\n    \n    for (int i = 0; i < n; i++) {\n        while (k > 0 && pattern[k] != text[i]) {\n            k = prefix[k - 1];\n        }\n        if (pattern[k] == text[i]) {\n            k++;\n        }\n        if (k == m) {\n            positions[count++] = i - m + 1;\n            k = prefix[k - 1];\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char text[100005], pattern[100005];\n    int prefix[100005], positions[100005];\n    scanf(\"%s %s\", text, pattern);\n    \n    int m = strlen(pattern);\n    compute_prefix_function(pattern, m, prefix);\n    int count = search_pattern_kmp(text, pattern, prefix, positions);\n    \n    printf(\"%d\\n\", count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%d \", positions[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_prefix_function",
+          "signature": "void compute_prefix_function(char *pattern, int m, int *prefix)",
+          "code": "void compute_prefix_function(char *pattern, int m, int *prefix) {\n    prefix[0] = 0;\n    int k = 0;\n    \n    for (int i = 1; i < m; i++) {\n        while (k > 0 && pattern[k] != pattern[i]) {\n            k = prefix[k - 1];\n        }\n        if (pattern[k] == pattern[i]) {\n            k++;\n        }\n        prefix[i] = k;\n    }\n}"
+        },
+        {
+          "clause_id": "search_pattern_kmp",
+          "signature": "int search_pattern_kmp(char *text, char *pattern, int *prefix, int *positions)",
+          "code": "int search_pattern_kmp(char *text, char *pattern, int *prefix, int *positions) {\n    int n = strlen(text);\n    int m = strlen(pattern);\n    int count = 0, k = 0;\n    \n    for (int i = 0; i < n; i++) {\n        while (k > 0 && pattern[k] != text[i]) {\n            k = prefix[k - 1];\n        }\n        if (pattern[k] == text[i]) {\n            k++;\n        }\n        if (k == m) {\n            positions[count++] = i - m + 1;\n            k = prefix[k - 1];\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char text[100005], pattern[100005];\n    int prefix[100005], positions[100005];\n    scanf(\"%s %s\", text, pattern);\n    \n    int m = strlen(pattern);\n    compute_prefix_function(pattern, m, prefix);\n    int count = search_pattern_kmp(text, pattern, prefix, positions);\n    \n    printf(\"%d\\n\", count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%d \", positions[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_prefix_function",
+          "signature": "void compute_prefix_function(char *pattern, int m, int *prefix)",
+          "code": "void compute_prefix_function(char *pattern, int m, int *prefix) {\n    prefix[0] = 0;\n    int k = 0;\n    \n    for (int i = 1; i < m; i++) {\n        while (k > 0 && pattern[k] != pattern[i]) {\n            k = prefix[k - 1];\n        }\n        if (pattern[k] == pattern[i]) {\n            k++;\n        }\n        prefix[i] = k;\n    }\n}"
+        },
+        {
+          "clause_id": "search_pattern_kmp",
+          "signature": "int search_pattern_kmp(char *text, char *pattern, int *prefix, int *positions)",
+          "code": "int search_pattern_kmp(char *text, char *pattern, int *prefix, int *positions) {\n    int n = strlen(text);\n    int m = strlen(pattern);\n    int count = 0, k = 0;\n    \n    for (int i = 0; i < n; i++) {\n        while (k > 0 && pattern[k] != text[i]) {\n            k = prefix[k - 1];\n        }\n        if (pattern[k] == text[i]) {\n            k++;\n        }\n        if (k == m) {\n            positions[count++] = i - m + 1;\n            k = prefix[k - 1];\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char text[100005], pattern[100005];\n    int prefix[100005], positions[100005];\n    scanf(\"%s %s\", text, pattern);\n    \n    int m = strlen(pattern);\n    compute_prefix_function(pattern, m, prefix);\n    int count = search_pattern_kmp(text, pattern, prefix, positions);\n    \n    printf(\"%d\\n\", count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%d \", positions[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_prefix_function",
+          "signature": "void compute_prefix_function(char *pattern, int m, int *prefix)",
+          "code": "void compute_prefix_function(char *pattern, int m, int *prefix) {\n    prefix[0] = 0;\n    int k = 0;\n    \n    for (int i = 1; i < m; i++) {\n        while (k > 0 && pattern[k] != pattern[i]) {\n            k = prefix[k - 1];\n        }\n        if (pattern[k] == pattern[i]) {\n            k++;\n        }\n        prefix[i] = k;\n    }\n}"
+        },
+        {
+          "clause_id": "search_pattern_kmp",
+          "signature": "int search_pattern_kmp(char *text, char *pattern, int *prefix, int *positions)",
+          "code": "int search_pattern_kmp(char *text, char *pattern, int *prefix, int *positions) {\n    int n = strlen(text);\n    int m = strlen(pattern);\n    int count = 0, k = 0;\n    \n    for (int i = 0; i < n; i++) {\n        while (k > 0 && pattern[k] != text[i]) {\n            k = prefix[k - 1];\n        }\n        if (pattern[k] == text[i]) {\n            k++;\n        }\n        if (k == m) {\n            positions[count++] = i - m + 1;\n            k = prefix[k - 1];\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char text[100005], pattern[100005];\n    int prefix[100005], positions[100005];\n    scanf(\"%s %s\", text, pattern);\n    \n    int m = strlen(pattern);\n    compute_prefix_function(pattern, m, prefix);\n    int count = search_pattern_kmp(text, pattern, prefix, positions);\n    \n    printf(\"%d\\n\", count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%d \", positions[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "compute_prefix_function",
+          "signature": "void compute_prefix_function(char *pattern, int m, int *prefix)",
+          "code": "void compute_prefix_function(char *pattern, int m, int *prefix) {\n    prefix[0] = 0;\n    int k = 0;\n    \n    for (int i = 1; i < m; i++) {\n        while (k > 0 && pattern[k] != pattern[i]) {\n            k = prefix[k - 1];\n        }\n        if (pattern[k] == pattern[i]) {\n            k++;\n        }\n        prefix[i] = k;\n    }\n}"
+        },
+        {
+          "clause_id": "search_pattern_kmp",
+          "signature": "int search_pattern_kmp(char *text, char *pattern, int *prefix, int *positions)",
+          "code": "int search_pattern_kmp(char *text, char *pattern, int *prefix, int *positions) {\n    int n = strlen(text);\n    int m = strlen(pattern);\n    int count = 0, k = 0;\n    \n    for (int i = 0; i < n; i++) {\n        while (k > 0 && pattern[k] != text[i]) {\n            k = prefix[k - 1];\n        }\n        if (pattern[k] == text[i]) {\n            k++;\n        }\n        if (k == m) {\n            positions[count++] = i - m + 1;\n            k = prefix[k - 1];\n        }\n    }\n    return count;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    char text[100005], pattern[100005];\n    int prefix[100005], positions[100005];\n    scanf(\"%s %s\", text, pattern);\n    \n    int m = strlen(pattern);\n    compute_prefix_function(pattern, m, prefix);\n    int count = search_pattern_kmp(text, pattern, prefix, positions);\n    \n    printf(\"%d\\n\", count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%d \", positions[i]);\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

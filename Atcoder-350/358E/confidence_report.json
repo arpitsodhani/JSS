@@ -1,0 +1,25 @@
+{
+  "average_confidence": 0.971795169536346,
+  "clauses": [
+    {
+      "clause": "compute_factorial",
+      "confidence": 0.989090909090909
+    },
+    {
+      "clause": "count_arrangements",
+      "confidence": 0.9861538461538462
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "power_mod",
+      "confidence": 0.9377310924369748
+    },
+    {
+      "clause": "read_counts",
+      "confidence": 0.9460000000000001
+    }
+  ]
+}

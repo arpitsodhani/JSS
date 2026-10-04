@@ -1,0 +1,6 @@
+Iroha has a sequence of positive integers A = (A_1, A_2, \dots, A_N) of length N ( N \ge 1 ). She generated a string S using A as follows: Start with S = | . For i = 1, 2, \dots, N , perform the following operations in order: Append A_i copies of - to the end of S . Then, append one | to the end of S . Given the generated string S , reconstruct the sequence A .
+
+**Constraints:**
+- S is a string consisting of '|' and '-'
+- S starts and ends with '|'
+- 3 <= |S| <= 100

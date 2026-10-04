@@ -1,0 +1,9 @@
+AtCoder Land is represented by a grid with H rows and W columns. Let (i, j) denote the cell at the i -th row and j -th column. Takahashi starts at cell (S_i, S_j) and repeats the following action K times: He either stays in the current cell or moves to an adjacent cell. After this action, if he is in cell (i, j) , he gains a fun value of A_{i, j} . Find the maximum total fun value he can gain. Here, a cell (x', y') is considered adjacent to cell (x, y) if and only if |x - x'| + |y - y'| = 1 .
+
+**Constraints:**
+- 2 <= H, W <= 50
+- 1 <= K <= 10^6
+- 1 <= S_i, S_j <= H
+- 1 <= T_i, T_j <= W
+- 0 <= A_{i,j} <= 10^9
+- All input values are integers

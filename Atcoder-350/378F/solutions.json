@@ -1,0 +1,199 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int **U,int **V)",
+          "code": "void read_input(int *N,int **U,int **V){ scanf(\"%d\", N); *U=(int*)malloc((size_t)(*N-1)*sizeof(int)); *V=(int*)malloc((size_t)(*N-1)*sizeof(int)); for(int i=0;i<*N-1;i++) scanf(\"%d%d\", &(*U)[i], &(*V)[i]); }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int N,int *U,int *V,int *head,int *to,int *next)",
+          "code": "void build_adj(int N,int *U,int *V,int *head,int *to,int *next){ for(int i=1;i<=N;i++) head[i]=-1; int ec=0; for(int i=0;i<N-1;i++){ int a=U[i], b=V[i]; to[ec]=b; next[ec]=head[a]; head[a]=ec++; to[ec]=a; next[ec]=head[b]; head[b]=ec++; } }\n"
+        },
+        {
+          "clause_id": "find_path",
+          "signature": "int find_path(int N,int s,int t,int *head,int *to,int *next,int *par)",
+          "code": "int find_path(int N,int s,int t,int *head,int *to,int *next,int *par){\n    int *q=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) par[i]=-1;\n    int h=0,tt=0; q[tt++]=s; par[s]=s;\n    while(h<tt){\n        int v=q[h++]; if(v==t) break;\n        for(int e=head[v]; e!=-1; e=next[e]){\n            int u=to[e];\n            if(par[u]==-1){ par[u]=v; q[tt++]=u; }\n        }\n    }\n    free(q);\n    return par[t]!=-1;\n}\n"
+        },
+        {
+          "clause_id": "count_cycles",
+          "signature": "long long count_cycles(int N,int *U,int *V)",
+          "code": "long long count_cycles(int N,int *U,int *V){\n    int *head=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *to=(int*)malloc((size_t)2*(N-1)*sizeof(int));\n    int *next=(int*)malloc((size_t)2*(N-1)*sizeof(int));\n    build_adj(N,U,V,head,to,next);\n    int *deg=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) deg[i]=0;\n    for(int i=0;i<N-1;i++){ deg[U[i]]++; deg[V[i]]++; }\n    long long ans=0;\n    int *par=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int u=1; u<=N; u++){\n        for(int v=u+1; v<=N; v++){\n            if(!find_path(N,u,v,head,to,next,par)) continue;\n            int ok=1;\n            int x=v;\n            while(x!=u){\n                int p=par[x];\n                if(x!=u && x!=v){ if(deg[x]!=3) ok=0; }\n                x=p;\n            }\n            if(deg[u]!=2 || deg[v]!=2) ok=0;\n            if(ok) ans++;\n        }\n    }\n    free(head); free(to); free(next); free(deg); free(par);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int *U=NULL,*V=NULL; read_input(&N,&U,&V); long long ans=count_cycles(N,U,V); print_answer(ans); free(U); free(V); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int **U,int **V)",
+          "code": "void read_input(int *N,int **U,int **V){ scanf(\"%d\", N); *U=(int*)malloc((size_t)(*N-1)*sizeof(int)); *V=(int*)malloc((size_t)(*N-1)*sizeof(int)); for(int i=0;i<*N-1;i++) scanf(\"%d%d\", &(*U)[i], &(*V)[i]); }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int N,int *U,int *V,int *head,int *to,int *next)",
+          "code": "void build_adj(int N,int *U,int *V,int *head,int *to,int *next){ for(int i=1;i<=N;i++) head[i]=-1; int ec=0; for(int i=0;i<N-1;i++){ int a=U[i], b=V[i]; to[ec]=b; next[ec]=head[a]; head[a]=ec++; to[ec]=a; next[ec]=head[b]; head[b]=ec++; } }\n"
+        },
+        {
+          "clause_id": "find_path",
+          "signature": "int find_path(int N,int s,int t,int *head,int *to,int *next,int *par)",
+          "code": "int find_path(int N,int s,int t,int *head,int *to,int *next,int *par){\n    int *q=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) par[i]=-1;\n    int h=0,tt=0; q[tt++]=s; par[s]=s;\n    while(h<tt){\n        int v=q[h++]; if(v==t) break;\n        for(int e=head[v]; e!=-1; e=next[e]){\n            int u=to[e];\n            if(par[u]==-1){ par[u]=v; q[tt++]=u; }\n        }\n    }\n    free(q);\n    return par[t]!=-1;\n}\n"
+        },
+        {
+          "clause_id": "count_cycles",
+          "signature": "long long count_cycles(int N,int *U,int *V)",
+          "code": "long long count_cycles(int N,int *U,int *V){\n    int *head=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *to=(int*)malloc((size_t)2*(N-1)*sizeof(int));\n    int *next=(int*)malloc((size_t)2*(N-1)*sizeof(int));\n    build_adj(N,U,V,head,to,next);\n    int *deg=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) deg[i]=0;\n    for(int i=0;i<N-1;i++){ deg[U[i]]++; deg[V[i]]++; }\n    long long ans=0;\n    int *par=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int u=1; u<=N; u++){\n        for(int v=u+1; v<=N; v++){\n            if(!find_path(N,u,v,head,to,next,par)) continue;\n            int ok=1;\n            int x=v;\n            while(x!=u){\n                int p=par[x];\n                if(x!=u && x!=v){ if(deg[x]!=3) ok=0; }\n                x=p;\n            }\n            if(deg[u]!=2 || deg[v]!=2) ok=0;\n            if(ok) ans++;\n        }\n    }\n    free(head); free(to); free(next); free(deg); free(par);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int *U=NULL,*V=NULL; read_input(&N,&U,&V); long long ans=count_cycles(N,U,V); print_answer(ans); free(U); free(V); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int **U,int **V)",
+          "code": "void read_input(int *N,int **U,int **V){ scanf(\"%d\", N); *U=(int*)malloc((size_t)(*N-1)*sizeof(int)); *V=(int*)malloc((size_t)(*N-1)*sizeof(int)); for(int i=0;i<*N-1;i++) scanf(\"%d%d\", &(*U)[i], &(*V)[i]); }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int N,int *U,int *V,int *head,int *to,int *next)",
+          "code": "void build_adj(int N,int *U,int *V,int *head,int *to,int *next){ for(int i=1;i<=N;i++) head[i]=-1; int ec=0; for(int i=0;i<N-1;i++){ int a=U[i], b=V[i]; to[ec]=b; next[ec]=head[a]; head[a]=ec++; to[ec]=a; next[ec]=head[b]; head[b]=ec++; } }\n"
+        },
+        {
+          "clause_id": "find_path",
+          "signature": "int find_path(int N,int s,int t,int *head,int *to,int *next,int *par)",
+          "code": "int find_path(int N,int s,int t,int *head,int *to,int *next,int *par){\n    int *q=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) par[i]=-1;\n    int h=0,tt=0; q[tt++]=s; par[s]=s;\n    while(h<tt){\n        int v=q[h++]; if(v==t) break;\n        for(int e=head[v]; e!=-1; e=next[e]){\n            int u=to[e];\n            if(par[u]==-1){ par[u]=v; q[tt++]=u; }\n        }\n    }\n    free(q);\n    return par[t]!=-1;\n}\n"
+        },
+        {
+          "clause_id": "count_cycles",
+          "signature": "long long count_cycles(int N,int *U,int *V)",
+          "code": "long long count_cycles(int N,int *U,int *V){\n    int *head=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *to=(int*)malloc((size_t)2*(N-1)*sizeof(int));\n    int *next=(int*)malloc((size_t)2*(N-1)*sizeof(int));\n    build_adj(N,U,V,head,to,next);\n    int *deg=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) deg[i]=0;\n    for(int i=0;i<N-1;i++){ deg[U[i]]++; deg[V[i]]++; }\n    long long ans=0;\n    int *par=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int u=1; u<=N; u++){\n        for(int v=u+1; v<=N; v++){\n            if(!find_path(N,u,v,head,to,next,par)) continue;\n            int ok=1;\n            int x=v;\n            while(x!=u){\n                int p=par[x];\n                if(x!=u && x!=v){ if(deg[x]!=3) ok=0; }\n                x=p;\n            }\n            if(deg[u]!=2 || deg[v]!=2) ok=0;\n            if(ok) ans++;\n        }\n    }\n    free(head); free(to); free(next); free(deg); free(par);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int *U=NULL,*V=NULL; read_input(&N,&U,&V); long long ans=count_cycles(N,U,V); print_answer(ans); free(U); free(V); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int **U,int **V)",
+          "code": "void read_input(int *N,int **U,int **V){ scanf(\"%d\", N); *U=(int*)malloc((size_t)(*N-1)*sizeof(int)); *V=(int*)malloc((size_t)(*N-1)*sizeof(int)); for(int i=0;i<*N-1;i++) scanf(\"%d%d\", &(*U)[i], &(*V)[i]); }\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int N,int *U,int *V,int *head,int *to,int *next)",
+          "code": "void build_adj(int N,int *U,int *V,int *head,int *to,int *next){ for(int i=1;i<=N;i++) head[i]=-1; int ec=0; for(int i=0;i<N-1;i++){ int a=U[i], b=V[i]; to[ec]=b; next[ec]=head[a]; head[a]=ec++; to[ec]=a; next[ec]=head[b]; head[b]=ec++; } }\n"
+        },
+        {
+          "clause_id": "find_path",
+          "signature": "int find_path(int N,int s,int t,int *head,int *to,int *next,int *par)",
+          "code": "int find_path(int N,int s,int t,int *head,int *to,int *next,int *par){\n    int *q=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) par[i]=-1;\n    int h=0,tt=0; q[tt++]=s; par[s]=s;\n    while(h<tt){\n        int v=q[h++]; if(v==t) break;\n        for(int e=head[v]; e!=-1; e=next[e]){\n            int u=to[e];\n            if(par[u]==-1){ par[u]=v; q[tt++]=u; }\n        }\n    }\n    free(q);\n    return par[t]!=-1;\n}\n"
+        },
+        {
+          "clause_id": "count_cycles",
+          "signature": "long long count_cycles(int N,int *U,int *V)",
+          "code": "long long count_cycles(int N,int *U,int *V){\n    int *head=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *to=(int*)malloc((size_t)2*(N-1)*sizeof(int));\n    int *next=(int*)malloc((size_t)2*(N-1)*sizeof(int));\n    build_adj(N,U,V,head,to,next);\n    int *deg=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) deg[i]=0;\n    for(int i=0;i<N-1;i++){ deg[U[i]]++; deg[V[i]]++; }\n    long long ans=0;\n    int *par=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int u=1; u<=N; u++){\n        for(int v=u+1; v<=N; v++){\n            if(!find_path(N,u,v,head,to,next,par)) continue;\n            int ok=1;\n            int x=v;\n            while(x!=u){\n                int p=par[x];\n                if(x!=u && x!=v){ if(deg[x]!=3) ok=0; }\n                x=p;\n            }\n            if(deg[u]!=2 || deg[v]!=2) ok=0;\n            if(ok) ans++;\n        }\n    }\n    free(head); free(to); free(next); free(deg); free(par);\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int *U=NULL,*V=NULL; read_input(&N,&U,&V); long long ans=count_cycles(N,U,V); print_answer(ans); free(U); free(V); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int **U,int **V)",
+          "code": "void read_input(int *N,int **U,int **V){ scanf(\"%d\", N); *U=(int*)malloc((size_t)(*N-1)*sizeof(int)); *V=(int*)malloc((size_t)(*N-1)*sizeof(int)); for(int i=0;i<*N-1;i++) scanf(\"%d%d\", &(*U)[i], &(*V)[i]); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "build_adj",
+          "signature": "void build_adj(int N,int *U,int *V,int *head,int *to,int *next)",
+          "code": "void build_adj(int N,int *U,int *V,int *head,int *to,int *next){ for(int i=1;i<=N;i++) head[i]=-1; int ec=0; for(int i=0;i<N-1;i++){ int a=U[i], b=V[i]; to[ec]=b; next[ec]=head[a]; head[a]=ec++; to[ec]=a; next[ec]=head[b]; head[b]=ec++; } \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "find_path",
+          "signature": "int find_path(int N,int s,int t,int *head,int *to,int *next,int *par)",
+          "code": "int find_path(int N,int s,int t,int *head,int *to,int *next,int *par){\n    int *q=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) par[i]=-1;\n    int h=0,tt=0; q[tt++]=s; par[s]=s;\n    while(h<tt){\n        int v=q[h++]; if(v==t) break;\n        for(int e=head[v]; e!=-1; e=next[e]){\n            int u=to[e];\n            if(par[u]==-1){ par[u]=v; q[tt++]=u; }\n        }\n    }\n    free(q);\n    return par[t]!=-1;\n\n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "count_cycles",
+          "signature": "long long count_cycles(int N,int *U,int *V)",
+          "code": "long long count_cycles(int N,int *U,int *V){\n    int *head=(int*)malloc((size_t)(N+1)*sizeof(int));\n    int *to=(int*)malloc((size_t)2*(N-1)*sizeof(int));\n    int *next=(int*)malloc((size_t)2*(N-1)*sizeof(int));\n    build_adj(N,U,V,head,to,next);\n    int *deg=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int i=1;i<=N;i++) deg[i]=0;\n    for(int i=0;i<N-1;i++){ deg[U[i]]++; deg[V[i]]++; }\n    long long ans=0;\n    int *par=(int*)malloc((size_t)(N+1)*sizeof(int));\n    for(int u=1; u<=N; u++){\n        for(int v=u+1; v<=N; v++){\n            if(!find_path(N,u,v,head,to,next,par)) continue;\n            int ok=1;\n            int x=v;\n            while(x!=u){\n                int p=par[x];\n                if(x!=u && x!=v){ if(deg[x]!=3) ok=0; }\n                x=p;\n            }\n            if(deg[u]!=2 || deg[v]!=2) ok=0;\n            if(ok) ans++;\n        }\n    }\n    free(head); free(to); free(next); free(deg); free(par);\n    return ans;\n\n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); \n    /* noop */\n    if(0){;}\n}\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; int *U=NULL,*V=NULL; read_input(&N,&U,&V); long long ans=count_cycles(N,U,V); print_answer(ans); free(U); free(V); return 0; \n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ]
+}

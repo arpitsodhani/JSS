@@ -1,0 +1,8 @@
+In the nation of AtCoder, there are N cities numbered 1 to N , and M roads numbered 1 to M . Road i connects cities A_i and B_i bidirectionally and has a length of C_i . For each i = 1, \ldots, M , determine whether the following two values are different. The shortest distance from city 1 to city N when all roads are passable The shortest distance from city 1 to city N when the M - 1 roads other than road i are passable If city N can be reached from city 1 in one of these cases but not the other, the two values are considered different.
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= a_i, b_i <= N
+- a_i != b_i
+- The given edges form a tree
+- All input values are integers

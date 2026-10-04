@@ -1,0 +1,6 @@
+You are given integer sequences A=(A_1,A_2,\ldots,A_N) and B=(B_1,B_2,\ldots,B_N) of length N , and integer sequences X=(X_1,X_2,\ldots,X_K) and Y=(Y_1,Y_2,\ldots,Y_K) of length K . For each k=1,2,\ldots,K , find \displaystyle \sum_{i=1}^{X_k} \sum_{j=1}^{Y_k} |A_i-B_j| .
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= A_i <= 10^9
+- All input values are integers

@@ -1,0 +1,36 @@
+{
+  "contestId": 505,
+  "index": "A",
+  "problem_id": "505A",
+  "name": "Mr. Kitayuta's Gift",
+  "rating": 1100,
+  "tags": [
+    "brute force",
+    "implementation",
+    "strings"
+  ],
+  "points": 500.0,
+  "solvedCount": 6957,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Mr. Kitayuta's Gift",
+  "legend": "Mr. Kitayuta has kindly given you a string s consisting of lowercase English letters. You are asked to insert exactly one lowercase English letter into s to make it a palindrome. A palindrome is a string that reads the same forward and backward. For example, \"noon\", \"testset\" and \"a\" are all palindromes, while \"test\" and \"kitayuta\" are not.\n\nYou can choose any lowercase English letter, and insert it to any position of s, possibly to the beginning or the end of s. You have to insert a letter even if the given string is already a palindrome.\n\nIf it is possible to insert one lowercase English letter into s so that the resulting string will be a palindrome, print the string after the insertion. Otherwise, print \"NA\" (without quotes, case-sensitive). In case there is more than one palindrome that can be obtained, you are allowed to print any of them.",
+  "input_spec": "The only line of the input contains a string s (1 ≤ |s| ≤ 10). Each character in s is a lowercase English letter.",
+  "output_spec": "If it is possible to turn s into a palindrome by inserting one lowercase English letter, print the resulting string in a single line. Otherwise, print \"NA\" (without quotes, case-sensitive). In case there is more than one solution, any of them will be accepted.",
+  "note": "For the first sample, insert 'r' to the end of \"revive\" to obtain a palindrome \"reviver\".\n\nFor the second sample, there is more than one solution. For example, \"eve\" will also be accepted.\n\nFor the third sample, it is not possible to turn \"kitayuta\" into a palindrome by just inserting one letter.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "revive\n",
+      "output": "reviver"
+    },
+    {
+      "input": "ee\n",
+      "output": "eye"
+    },
+    {
+      "input": "kitayuta\n",
+      "output": "NA"
+    }
+  ]
+}

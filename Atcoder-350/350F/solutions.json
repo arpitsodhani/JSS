@@ -1,0 +1,129 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "prog1_initialize_parser",
+          "signature": "void initialize_parser()",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nchar s[500005];\nchar result[500005];\nint stack[500005];\nint sp;\n\nvoid initialize_parser() {\n    sp = 0;\n}\n\nvoid process_string() {\n    int len = strlen(s);\n    int pos = 0;\n    int uppercase = 0;\n    \n    for (int i = 0; i < len; i++) {\n        if (s[i] == '(') {\n            stack[sp++] = pos;\n            stack[sp++] = uppercase;\n        } else if (s[i] == ')') {\n            uppercase = stack[--sp];\n            int start = stack[--sp];\n            int end = pos - 1;\n            while (start < end) {\n                char tmp = result[start];\n                result[start] = result[end];\n                result[end] = tmp;\n                start++;\n                end--;\n            }\n        } else {\n            char ch = s[i];\n            if (uppercase) {\n                result[pos++] = isupper(ch) ? tolower(ch) : toupper(ch);\n            } else {\n                result[pos++] = ch;\n            }\n        }\n    }\n    result[pos] = '\\0';\n}\n\nvoid output_result() {\n    printf(\"%s\\n\", result);\n}\n\nint main() {\n    scanf(\"%s\", s);\n    initialize_parser();\n    process_string();\n    output_result();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog1_process_string",
+          "signature": "void process_string()",
+          "code": "void process_string() {\n    int len = strlen(s);\n    int pos = 0;\n    int uppercase = 0;\n    \n    for (int i = 0; i < len; i++) {\n        if (s[i] == '(') {\n            stack[sp++] = pos;\n            stack[sp++] = uppercase;\n        }"
+        },
+        {
+          "clause_id": "prog1_output_result",
+          "signature": "void output_result()",
+          "code": "void output_result() {\n    printf(\"%s\\n\", result);\n}"
+        },
+        {
+          "clause_id": "prog1_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%s\", s);\n    initialize_parser();\n    process_string();\n    output_result();\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "prog2_initialize_parser",
+          "signature": "void initialize_parser()",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nchar s[500005];\nchar result[500005];\nint stk[500005];\nint top;\n\nvoid initialize_parser() {\n    top = 0;\n}\n\nvoid process_string() {\n    int n = strlen(s);\n    int write_pos = 0;\n    int flip = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (s[i] == '(') {\n            stk[top++] = write_pos;\n            stk[top++] = flip;\n            flip = 1 - flip;\n        } else if (s[i] == ')') {\n            flip = stk[--top];\n            int left = stk[--top];\n            int right = write_pos - 1;\n            while (left < right) {\n                char t = result[left];\n                result[left++] = result[right];\n                result[right--] = t;\n            }\n        } else {\n            if (flip) {\n                result[write_pos++] = islower(s[i]) ? toupper(s[i]) : tolower(s[i]);\n            } else {\n                result[write_pos++] = s[i];\n            }\n        }\n    }\n    result[write_pos] = '\\0';\n}\n\nvoid output_result() {\n    printf(\"%s\\n\", result);\n}\n\nint main() {\n    scanf(\"%s\", s);\n    initialize_parser();\n    process_string();\n    output_result();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog2_process_string",
+          "signature": "void process_string()",
+          "code": "void process_string() {\n    int n = strlen(s);\n    int write_pos = 0;\n    int flip = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (s[i] == '(') {\n            stk[top++] = write_pos;\n            stk[top++] = flip;\n            flip = 1 - flip;\n        }"
+        },
+        {
+          "clause_id": "prog2_output_result",
+          "signature": "void output_result()",
+          "code": "void output_result() {\n    printf(\"%s\\n\", result);\n}"
+        },
+        {
+          "clause_id": "prog2_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%s\", s);\n    initialize_parser();\n    process_string();\n    output_result();\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "prog3_initialize_parser",
+          "signature": "void initialize_parser()",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nchar s[500005];\nchar result[500005];\nint position_stack[500005];\nint case_stack[500005];\nint stack_ptr;\n\nvoid initialize_parser() {\n    stack_ptr = 0;\n}\n\nvoid process_string() {\n    int length = strlen(s);\n    int idx = 0;\n    int should_flip = 0;\n    \n    int i = 0;\n    while (i < length) {\n        if (s[i] == '(') {\n            position_stack[stack_ptr] = idx;\n            case_stack[stack_ptr] = should_flip;\n            stack_ptr++;\n            should_flip = !should_flip;\n        } else if (s[i] == ')') {\n            stack_ptr--;\n            should_flip = case_stack[stack_ptr];\n            int begin = position_stack[stack_ptr];\n            int finish = idx - 1;\n            while (begin < finish) {\n                char temp = result[begin];\n                result[begin] = result[finish];\n                result[finish] = temp;\n                begin++;\n                finish--;\n            }\n        } else {\n            if (should_flip) {\n                if (isupper(s[i])) {\n                    result[idx++] = tolower(s[i]);\n                } else {\n                    result[idx++] = toupper(s[i]);\n                }\n            } else {\n                result[idx++] = s[i];\n            }\n        }\n        i++;\n    }\n    result[idx] = '\\0';\n}\n\nvoid output_result() {\n    printf(\"%s\\n\", result);\n}\n\nint main() {\n    scanf(\"%s\", s);\n    initialize_parser();\n    process_string();\n    output_result();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog3_process_string",
+          "signature": "void process_string()",
+          "code": "void process_string() {\n    int length = strlen(s);\n    int idx = 0;\n    int should_flip = 0;\n    \n    int i = 0;\n    while (i < length) {\n        if (s[i] == '(') {\n            position_stack[stack_ptr] = idx;\n            case_stack[stack_ptr] = should_flip;\n            stack_ptr++;\n            should_flip = !should_flip;\n        }"
+        },
+        {
+          "clause_id": "prog3_output_result",
+          "signature": "void output_result()",
+          "code": "void output_result() {\n    printf(\"%s\\n\", result);\n}"
+        },
+        {
+          "clause_id": "prog3_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%s\", s);\n    initialize_parser();\n    process_string();\n    output_result();\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "prog4_initialize_parser",
+          "signature": "void initialize_parser()",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nchar s[500005];\nchar result[500005];\nint st[500005];\nint ptr;\n\nvoid initialize_parser() {\n    ptr = 0;\n}\n\nvoid process_string() {\n    int len = strlen(s);\n    int out = 0;\n    int toggle = 0;\n    \n    for (int k = 0; k < len; k++) {\n        char c = s[k];\n        if (c == '(') {\n            st[ptr++] = out;\n            st[ptr++] = toggle;\n            toggle ^= 1;\n        } else if (c == ')') {\n            toggle = st[--ptr];\n            int l = st[--ptr];\n            int r = out - 1;\n            while (l < r) {\n                char swap = result[l];\n                result[l] = result[r];\n                result[r] = swap;\n                l++; r--;\n            }\n        } else {\n            if (toggle) {\n                result[out++] = isupper(c) ? tolower(c) : toupper(c);\n            } else {\n                result[out++] = c;\n            }\n        }\n    }\n    result[out] = '\\0';\n}\n\nvoid output_result() {\n    printf(\"%s\\n\", result);\n}\n\nint main() {\n    scanf(\"%s\", s);\n    initialize_parser();\n    process_string();\n    output_result();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog4_process_string",
+          "signature": "void process_string()",
+          "code": "void process_string() {\n    int len = strlen(s);\n    int out = 0;\n    int toggle = 0;\n    \n    for (int k = 0; k < len; k++) {\n        char c = s[k];\n        if (c == '(') {\n            st[ptr++] = out;\n            st[ptr++] = toggle;\n            toggle ^= 1;\n        }"
+        },
+        {
+          "clause_id": "prog4_output_result",
+          "signature": "void output_result()",
+          "code": "void output_result() {\n    printf(\"%s\\n\", result);\n}"
+        },
+        {
+          "clause_id": "prog4_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%s\", s);\n    initialize_parser();\n    process_string();\n    output_result();\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "prog5_initialize_parser",
+          "signature": "void initialize_parser()",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nchar s[500005];\nchar result[500005];\nint pos_stk[500005], case_stk[500005], sp;\n\nvoid initialize_parser() {\n    sp = 0;\n}\n\nvoid process_string() {\n    int n = strlen(s), p = 0, flip = 0;\n    for (int i = 0; i < n; i++) {\n        if (s[i] == '(') {\n            pos_stk[sp] = p;\n            case_stk[sp++] = flip;\n            flip ^= 1;\n        } else if (s[i] == ')') {\n            flip = case_stk[--sp];\n            int a = pos_stk[sp], b = p - 1;\n            while (a < b) {\n                char t = result[a]; result[a++] = result[b]; result[b--] = t;\n            }\n        } else {\n            result[p++] = flip ? (isupper(s[i]) ? tolower(s[i]) : toupper(s[i])) : s[i];\n        }\n    }\n    result[p] = '\\0';\n}\n\nvoid output_result() {\n    printf(\"%s\\n\", result);\n}\n\nint main() {\n    scanf(\"%s\", s);\n    initialize_parser();\n    process_string();\n    output_result();\n    return 0;\n}\n"
+        },
+        {
+          "clause_id": "prog5_process_string",
+          "signature": "void process_string()",
+          "code": "void process_string() {\n    int n = strlen(s), p = 0, flip = 0;\n    for (int i = 0; i < n; i++) {\n        if (s[i] == '(') {\n            pos_stk[sp] = p;\n            case_stk[sp++] = flip;\n            flip ^= 1;\n        }"
+        },
+        {
+          "clause_id": "prog5_output_result",
+          "signature": "void output_result()",
+          "code": "void output_result() {\n    printf(\"%s\\n\", result);\n}"
+        },
+        {
+          "clause_id": "prog5_main",
+          "signature": "int main()",
+          "code": "int main() {\n    scanf(\"%s\", s);\n    initialize_parser();\n    process_string();\n    output_result();\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

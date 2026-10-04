@@ -1,0 +1,126 @@
+{
+  "problem_num": 152,
+  "problem_name": "compare",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n; scanf(\"%d\", &n);\n    int game[100], guess[100];\n    for(int i=0; i<n; i++) scanf(\"%d\", &game[i]);\n    for(int i=0; i<n; i++) scanf(\"%d\", &guess[i]);\n    for(int i=0; i<n; i++) printf(\"%d%c\", abs(game[i]-guess[i]), i<n-1?' ':'\\\\n');\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n; scanf(\"%d\", &n);\n    int game[100], guess[100];\n    for(int i=0; i<n; i++) scanf(\"%d\", &game[i]);\n    for(int i=0; i<n; i++) scanf(\"%d\", &guess[i]);\n    for(int i=0; i<n; i++) printf(\"%d%c\", abs(game[i]-guess[i]), i<n-1?' ':'\\\\n');\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n; scanf(\"%d\", &n);\n    int game[100], guess[100];\n    for(int i=0; i<n; i++) scanf(\"%d\", &game[i]);\n    for(int i=0; i<n; i++) scanf(\"%d\", &guess[i]);\n    for(int i=0; i<n; i++) printf(\"%d%c\", abs(game[i]-guess[i]), i<n-1?' ':'\\\\n');\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n; scanf(\"%d\", &n);\n    int game[100], guess[100];\n    for(int i=0; i<n; i++) scanf(\"%d\", &game[i]);\n    for(int i=0; i<n; i++) scanf(\"%d\", &guess[i]);\n    for(int i=0; i<n; i++) printf(\"%d%c\", abs(game[i]-guess[i]), i<n-1?' ':'\\\\n');\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": []
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n#include <stdlib.h>",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    int n; scanf(\"%d\", &n);\n    int game[100], guess[100];\n    for(int i=0; i<n; i++) scanf(\"%d\", &game[i]);\n    for(int i=0; i<n; i++) scanf(\"%d\", &guess[i]);\n    for(int i=0; i<n; i++) printf(\"%d%c\", abs(game[i]-guess[i]), i<n-1?' ':'\\\\n');\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": []
+    }
+  ]
+}

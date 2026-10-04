@@ -1,0 +1,28 @@
+{
+  "contestId": 1680,
+  "index": "E",
+  "problem_id": "1680E",
+  "name": "Moving Chips",
+  "rating": 2000,
+  "tags": [
+    "bitmasks",
+    "dp",
+    "greedy"
+  ],
+  "points": null,
+  "solvedCount": 4412,
+  "source": "verbatim_cf_fetch",
+  "title": "E. Moving Chips",
+  "legend": "You are given a board of size 2×n (2 rows, n columns). Some cells of the board contain chips. The chip is represented as '*', and an empty space is represented as '.'. It is guaranteed that there is at least one chip on the board.\n\nIn one move, you can choose any chip and move it to any adjacent (by side) cell of the board (if this cell is inside the board). It means that if the chip is in the first row, you can move it left, right or down (but it shouldn't leave the board). Same, if the chip is in the second row, you can move it left, right or up.\n\nIf the chip moves to the cell with another chip, the chip in the destination cell disappears (i. e. our chip captures it).\n\nYour task is to calculate the minimum number of moves required to leave exactly one chip on the board.\n\nYou have to answer t independent test cases.",
+  "input_spec": "The first line of the input contains one integer t (1≤t≤2⋅104) — the number of test cases. Then t test cases follow.\n\nThe first line of the test case contains one integer n (1≤n≤2⋅105) — the length of the board. The second line of the test case contains the string s1 consisting of n characters '*' (chip) and/or '.' (empty cell). The third line of the test case contains the string s2 consisting of n characters '*' (chip) and/or '.' (empty cell).\n\nAdditional constraints on the input:\n\nin each test case, there is at least one chip on a board;\nthe sum of n over all test cases does not exceed 2⋅105 (∑n≤2⋅105).",
+  "output_spec": "For each test case, print one integer — the minimum number of moves required to leave exactly one chip on the board.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n1\n*\n.\n2\n.*\n**\n3\n*.*\n.*.\n4\n**.*\n**..\n5\n**...\n...**\n",
+      "output": "0\n2\n3\n5\n5"
+    }
+  ]
+}

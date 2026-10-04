@@ -1,0 +1,4 @@
+There are four types of oysters, labeled 1 , 2 , 3 , and 4 . Exactly one of these types causes stomach trouble if eaten. The other types do not cause stomach trouble when eaten. Takahashi ate oysters 1 and 2 , and Aoki ate oysters 1 and 3 . The information on whether each person got sick is given as two strings S_1 and S_2 . Specifically, S_1 = sick means Takahashi got sick, and S_1 = fine means Takahashi did not get sick. Likewise, S_2 = sick means Aoki got sick, and S_2 = fine means Aoki did not get sick. Based on the given information, find which type of oyster causes stomach trouble.
+
+**Constraints:**
+- S is a string of length 3 consisting of lowercase English letters

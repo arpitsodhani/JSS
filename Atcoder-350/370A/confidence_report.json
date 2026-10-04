@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "check_same_component",
+      "confidence": 1.0
+    },
+    {
+      "clause": "find_set_with_compression",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "union_sets_by_rank",
+      "confidence": 1.0
+    }
+  ]
+}

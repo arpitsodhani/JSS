@@ -1,0 +1,7 @@
+There are N types of products, each having 10^{100} units in stock. You can buy any non-negative number of units of each product. To buy k units of the i -th product, it costs k^2 P_i yen. If your total purchase cost is at most M yen, what is the maximum number of units you can buy in total?
+
+**Constraints:**
+- 2 <= N <= 2 * 10^5
+- 1 <= p_i < i
+- 1 <= A_i <= 10^9
+- All input values are integers

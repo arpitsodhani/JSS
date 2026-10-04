@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_set_with_compression",
+          "signature": "int find_set_with_compression(int *parent, int x)",
+          "code": "int find_set_with_compression(int *parent, int x) {\n    if (parent[x] != x) {\n        parent[x] = find_set_with_compression(parent, parent[x]);\n    }\n    return parent[x];\n}"
+        },
+        {
+          "clause_id": "union_sets_by_rank",
+          "signature": "void union_sets_by_rank(int *parent, int *rank, int x, int y)",
+          "code": "void union_sets_by_rank(int *parent, int *rank, int x, int y) {\n    int root_x = find_set_with_compression(parent, x);\n    int root_y = find_set_with_compression(parent, y);\n    \n    if (root_x != root_y) {\n        if (rank[root_x] < rank[root_y]) {\n            parent[root_x] = root_y;\n        } else if (rank[root_x] > rank[root_y]) {\n            parent[root_y] = root_x;\n        } else {\n            parent[root_y] = root_x;\n            rank[root_x]++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "check_same_component",
+          "signature": "int check_same_component(int *parent, int x, int y)",
+          "code": "int check_same_component(int *parent, int x, int y) {\n    return find_set_with_compression(parent, x) == find_set_with_compression(parent, y);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, parent[100005], rank[100005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) {\n        parent[i] = i;\n        rank[i] = 0;\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int type, x, y;\n        scanf(\"%d %d %d\", &type, &x, &y);\n        x--; y--;\n        if (type == 1) {\n            union_sets_by_rank(parent, rank, x, y);\n        } else {\n            printf(\"%s\\n\", check_same_component(parent, x, y) ? \"Yes\" : \"No\");\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_set_with_compression",
+          "signature": "int find_set_with_compression(int *parent, int x)",
+          "code": "int find_set_with_compression(int *parent, int x) {\n    if (parent[x] != x) {\n        parent[x] = find_set_with_compression(parent, parent[x]);\n    }\n    return parent[x];\n}"
+        },
+        {
+          "clause_id": "union_sets_by_rank",
+          "signature": "void union_sets_by_rank(int *parent, int *rank, int x, int y)",
+          "code": "void union_sets_by_rank(int *parent, int *rank, int x, int y) {\n    int root_x = find_set_with_compression(parent, x);\n    int root_y = find_set_with_compression(parent, y);\n    \n    if (root_x != root_y) {\n        if (rank[root_x] < rank[root_y]) {\n            parent[root_x] = root_y;\n        } else if (rank[root_x] > rank[root_y]) {\n            parent[root_y] = root_x;\n        } else {\n            parent[root_y] = root_x;\n            rank[root_x]++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "check_same_component",
+          "signature": "int check_same_component(int *parent, int x, int y)",
+          "code": "int check_same_component(int *parent, int x, int y) {\n    return find_set_with_compression(parent, x) == find_set_with_compression(parent, y);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, parent[100005], rank[100005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) {\n        parent[i] = i;\n        rank[i] = 0;\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int type, x, y;\n        scanf(\"%d %d %d\", &type, &x, &y);\n        x--; y--;\n        if (type == 1) {\n            union_sets_by_rank(parent, rank, x, y);\n        } else {\n            printf(\"%s\\n\", check_same_component(parent, x, y) ? \"Yes\" : \"No\");\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_set_with_compression",
+          "signature": "int find_set_with_compression(int *parent, int x)",
+          "code": "int find_set_with_compression(int *parent, int x) {\n    if (parent[x] != x) {\n        parent[x] = find_set_with_compression(parent, parent[x]);\n    }\n    return parent[x];\n}"
+        },
+        {
+          "clause_id": "union_sets_by_rank",
+          "signature": "void union_sets_by_rank(int *parent, int *rank, int x, int y)",
+          "code": "void union_sets_by_rank(int *parent, int *rank, int x, int y) {\n    int root_x = find_set_with_compression(parent, x);\n    int root_y = find_set_with_compression(parent, y);\n    \n    if (root_x != root_y) {\n        if (rank[root_x] < rank[root_y]) {\n            parent[root_x] = root_y;\n        } else if (rank[root_x] > rank[root_y]) {\n            parent[root_y] = root_x;\n        } else {\n            parent[root_y] = root_x;\n            rank[root_x]++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "check_same_component",
+          "signature": "int check_same_component(int *parent, int x, int y)",
+          "code": "int check_same_component(int *parent, int x, int y) {\n    return find_set_with_compression(parent, x) == find_set_with_compression(parent, y);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, parent[100005], rank[100005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) {\n        parent[i] = i;\n        rank[i] = 0;\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int type, x, y;\n        scanf(\"%d %d %d\", &type, &x, &y);\n        x--; y--;\n        if (type == 1) {\n            union_sets_by_rank(parent, rank, x, y);\n        } else {\n            printf(\"%s\\n\", check_same_component(parent, x, y) ? \"Yes\" : \"No\");\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_set_with_compression",
+          "signature": "int find_set_with_compression(int *parent, int x)",
+          "code": "int find_set_with_compression(int *parent, int x) {\n    if (parent[x] != x) {\n        parent[x] = find_set_with_compression(parent, parent[x]);\n    }\n    return parent[x];\n}"
+        },
+        {
+          "clause_id": "union_sets_by_rank",
+          "signature": "void union_sets_by_rank(int *parent, int *rank, int x, int y)",
+          "code": "void union_sets_by_rank(int *parent, int *rank, int x, int y) {\n    int root_x = find_set_with_compression(parent, x);\n    int root_y = find_set_with_compression(parent, y);\n    \n    if (root_x != root_y) {\n        if (rank[root_x] < rank[root_y]) {\n            parent[root_x] = root_y;\n        } else if (rank[root_x] > rank[root_y]) {\n            parent[root_y] = root_x;\n        } else {\n            parent[root_y] = root_x;\n            rank[root_x]++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "check_same_component",
+          "signature": "int check_same_component(int *parent, int x, int y)",
+          "code": "int check_same_component(int *parent, int x, int y) {\n    return find_set_with_compression(parent, x) == find_set_with_compression(parent, y);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, parent[100005], rank[100005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) {\n        parent[i] = i;\n        rank[i] = 0;\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int type, x, y;\n        scanf(\"%d %d %d\", &type, &x, &y);\n        x--; y--;\n        if (type == 1) {\n            union_sets_by_rank(parent, rank, x, y);\n        } else {\n            printf(\"%s\\n\", check_same_component(parent, x, y) ? \"Yes\" : \"No\");\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "find_set_with_compression",
+          "signature": "int find_set_with_compression(int *parent, int x)",
+          "code": "int find_set_with_compression(int *parent, int x) {\n    if (parent[x] != x) {\n        parent[x] = find_set_with_compression(parent, parent[x]);\n    }\n    return parent[x];\n}"
+        },
+        {
+          "clause_id": "union_sets_by_rank",
+          "signature": "void union_sets_by_rank(int *parent, int *rank, int x, int y)",
+          "code": "void union_sets_by_rank(int *parent, int *rank, int x, int y) {\n    int root_x = find_set_with_compression(parent, x);\n    int root_y = find_set_with_compression(parent, y);\n    \n    if (root_x != root_y) {\n        if (rank[root_x] < rank[root_y]) {\n            parent[root_x] = root_y;\n        } else if (rank[root_x] > rank[root_y]) {\n            parent[root_y] = root_x;\n        } else {\n            parent[root_y] = root_x;\n            rank[root_x]++;\n        }\n    }\n}"
+        },
+        {
+          "clause_id": "check_same_component",
+          "signature": "int check_same_component(int *parent, int x, int y)",
+          "code": "int check_same_component(int *parent, int x, int y) {\n    return find_set_with_compression(parent, x) == find_set_with_compression(parent, y);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n, q, parent[100005], rank[100005];\n    scanf(\"%d %d\", &n, &q);\n    for (int i = 0; i < n; i++) {\n        parent[i] = i;\n        rank[i] = 0;\n    }\n    \n    for (int i = 0; i < q; i++) {\n        int type, x, y;\n        scanf(\"%d %d %d\", &type, &x, &y);\n        x--; y--;\n        if (type == 1) {\n            union_sets_by_rank(parent, rank, x, y);\n        } else {\n            printf(\"%s\\n\", check_same_component(parent, x, y) ? \"Yes\" : \"No\");\n        }\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

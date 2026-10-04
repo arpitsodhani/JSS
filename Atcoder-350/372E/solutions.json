@@ -1,0 +1,135 @@
+{
+  "includes": [],
+  "programs": [
+    {
+      "id": 0,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_level_graph_bfs",
+          "signature": "int build_level_graph_bfs(int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist)",
+          "code": "int build_level_graph_bfs(int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist) {\n    int queue[1005], front = 0, rear = 0;\n    \n    for (int u = 0; u < n1; u++) {\n        if (pair_u[u] == -1) {\n            dist[u] = 0;\n            queue[rear++] = u;\n        } else {\n            dist[u] = 1e9;\n        }\n    }\n    dist[n1] = 1e9;\n    \n    while (front < rear) {\n        int u = queue[front++];\n        if (dist[u] < dist[n1]) {\n            for (int i = 0; i < deg[u]; i++) {\n                int v = adj[u][i];\n                if (dist[pair_v[v]] == 1e9) {\n                    dist[pair_v[v]] = dist[u] + 1;\n                    queue[rear++] = pair_v[v];\n                }\n            }\n        }\n    }\n    return dist[n1] != 1e9;\n}"
+        },
+        {
+          "clause_id": "find_augmenting_path_dfs",
+          "signature": "int find_augmenting_path_dfs(int u, int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist)",
+          "code": "int find_augmenting_path_dfs(int u, int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist) {\n    if (u == n1) return 1;\n    \n    for (int i = 0; i < deg[u]; i++) {\n        int v = adj[u][i];\n        if (dist[pair_v[v]] == dist[u] + 1) {\n            if (find_augmenting_path_dfs(pair_v[v], n1, adj, deg, pair_u, pair_v, dist)) {\n                pair_v[v] = u;\n                pair_u[u] = v;\n                return 1;\n            }\n        }\n    }\n    dist[u] = 1e9;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_maximum_bipartite_matching",
+          "signature": "int compute_maximum_bipartite_matching(int n1, int n2, int adj[1005][1005], int *deg)",
+          "code": "int compute_maximum_bipartite_matching(int n1, int n2, int adj[1005][1005], int *deg) {\n    int pair_u[1005], pair_v[1005], dist[1005];\n    for (int i = 0; i < n1; i++) pair_u[i] = -1;\n    for (int i = 0; i < n2; i++) pair_v[i] = n1;\n    \n    int matching = 0;\n    while (build_level_graph_bfs(n1, adj, deg, pair_u, pair_v, dist)) {\n        for (int u = 0; u < n1; u++) {\n            if (pair_u[u] == -1 && find_augmenting_path_dfs(u, n1, adj, deg, pair_u, pair_v, dist)) {\n                matching++;\n            }\n        }\n    }\n    return matching;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n1, n2, m, adj[1005][1005], deg[1005] = {0};\n    scanf(\"%d %d %d\", &n1, &n2, &m);\n    \n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][deg[u]++] = v;\n    }\n    \n    printf(\"%d\\n\", compute_maximum_bipartite_matching(n1, n2, adj, deg));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_level_graph_bfs",
+          "signature": "int build_level_graph_bfs(int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist)",
+          "code": "int build_level_graph_bfs(int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist) {\n    int queue[1005], front = 0, rear = 0;\n    \n    for (int u = 0; u < n1; u++) {\n        if (pair_u[u] == -1) {\n            dist[u] = 0;\n            queue[rear++] = u;\n        } else {\n            dist[u] = 1e9;\n        }\n    }\n    dist[n1] = 1e9;\n    \n    while (front < rear) {\n        int u = queue[front++];\n        if (dist[u] < dist[n1]) {\n            for (int i = 0; i < deg[u]; i++) {\n                int v = adj[u][i];\n                if (dist[pair_v[v]] == 1e9) {\n                    dist[pair_v[v]] = dist[u] + 1;\n                    queue[rear++] = pair_v[v];\n                }\n            }\n        }\n    }\n    return dist[n1] != 1e9;\n}"
+        },
+        {
+          "clause_id": "find_augmenting_path_dfs",
+          "signature": "int find_augmenting_path_dfs(int u, int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist)",
+          "code": "int find_augmenting_path_dfs(int u, int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist) {\n    if (u == n1) return 1;\n    \n    for (int i = 0; i < deg[u]; i++) {\n        int v = adj[u][i];\n        if (dist[pair_v[v]] == dist[u] + 1) {\n            if (find_augmenting_path_dfs(pair_v[v], n1, adj, deg, pair_u, pair_v, dist)) {\n                pair_v[v] = u;\n                pair_u[u] = v;\n                return 1;\n            }\n        }\n    }\n    dist[u] = 1e9;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_maximum_bipartite_matching",
+          "signature": "int compute_maximum_bipartite_matching(int n1, int n2, int adj[1005][1005], int *deg)",
+          "code": "int compute_maximum_bipartite_matching(int n1, int n2, int adj[1005][1005], int *deg) {\n    int pair_u[1005], pair_v[1005], dist[1005];\n    for (int i = 0; i < n1; i++) pair_u[i] = -1;\n    for (int i = 0; i < n2; i++) pair_v[i] = n1;\n    \n    int matching = 0;\n    while (build_level_graph_bfs(n1, adj, deg, pair_u, pair_v, dist)) {\n        for (int u = 0; u < n1; u++) {\n            if (pair_u[u] == -1 && find_augmenting_path_dfs(u, n1, adj, deg, pair_u, pair_v, dist)) {\n                matching++;\n            }\n        }\n    }\n    return matching;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n1, n2, m, adj[1005][1005], deg[1005] = {0};\n    scanf(\"%d %d %d\", &n1, &n2, &m);\n    \n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][deg[u]++] = v;\n    }\n    \n    printf(\"%d\\n\", compute_maximum_bipartite_matching(n1, n2, adj, deg));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_level_graph_bfs",
+          "signature": "int build_level_graph_bfs(int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist)",
+          "code": "int build_level_graph_bfs(int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist) {\n    int queue[1005], front = 0, rear = 0;\n    \n    for (int u = 0; u < n1; u++) {\n        if (pair_u[u] == -1) {\n            dist[u] = 0;\n            queue[rear++] = u;\n        } else {\n            dist[u] = 1e9;\n        }\n    }\n    dist[n1] = 1e9;\n    \n    while (front < rear) {\n        int u = queue[front++];\n        if (dist[u] < dist[n1]) {\n            for (int i = 0; i < deg[u]; i++) {\n                int v = adj[u][i];\n                if (dist[pair_v[v]] == 1e9) {\n                    dist[pair_v[v]] = dist[u] + 1;\n                    queue[rear++] = pair_v[v];\n                }\n            }\n        }\n    }\n    return dist[n1] != 1e9;\n}"
+        },
+        {
+          "clause_id": "find_augmenting_path_dfs",
+          "signature": "int find_augmenting_path_dfs(int u, int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist)",
+          "code": "int find_augmenting_path_dfs(int u, int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist) {\n    if (u == n1) return 1;\n    \n    for (int i = 0; i < deg[u]; i++) {\n        int v = adj[u][i];\n        if (dist[pair_v[v]] == dist[u] + 1) {\n            if (find_augmenting_path_dfs(pair_v[v], n1, adj, deg, pair_u, pair_v, dist)) {\n                pair_v[v] = u;\n                pair_u[u] = v;\n                return 1;\n            }\n        }\n    }\n    dist[u] = 1e9;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_maximum_bipartite_matching",
+          "signature": "int compute_maximum_bipartite_matching(int n1, int n2, int adj[1005][1005], int *deg)",
+          "code": "int compute_maximum_bipartite_matching(int n1, int n2, int adj[1005][1005], int *deg) {\n    int pair_u[1005], pair_v[1005], dist[1005];\n    for (int i = 0; i < n1; i++) pair_u[i] = -1;\n    for (int i = 0; i < n2; i++) pair_v[i] = n1;\n    \n    int matching = 0;\n    while (build_level_graph_bfs(n1, adj, deg, pair_u, pair_v, dist)) {\n        for (int u = 0; u < n1; u++) {\n            if (pair_u[u] == -1 && find_augmenting_path_dfs(u, n1, adj, deg, pair_u, pair_v, dist)) {\n                matching++;\n            }\n        }\n    }\n    return matching;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n1, n2, m, adj[1005][1005], deg[1005] = {0};\n    scanf(\"%d %d %d\", &n1, &n2, &m);\n    \n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][deg[u]++] = v;\n    }\n    \n    printf(\"%d\\n\", compute_maximum_bipartite_matching(n1, n2, adj, deg));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_level_graph_bfs",
+          "signature": "int build_level_graph_bfs(int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist)",
+          "code": "int build_level_graph_bfs(int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist) {\n    int queue[1005], front = 0, rear = 0;\n    \n    for (int u = 0; u < n1; u++) {\n        if (pair_u[u] == -1) {\n            dist[u] = 0;\n            queue[rear++] = u;\n        } else {\n            dist[u] = 1e9;\n        }\n    }\n    dist[n1] = 1e9;\n    \n    while (front < rear) {\n        int u = queue[front++];\n        if (dist[u] < dist[n1]) {\n            for (int i = 0; i < deg[u]; i++) {\n                int v = adj[u][i];\n                if (dist[pair_v[v]] == 1e9) {\n                    dist[pair_v[v]] = dist[u] + 1;\n                    queue[rear++] = pair_v[v];\n                }\n            }\n        }\n    }\n    return dist[n1] != 1e9;\n}"
+        },
+        {
+          "clause_id": "find_augmenting_path_dfs",
+          "signature": "int find_augmenting_path_dfs(int u, int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist)",
+          "code": "int find_augmenting_path_dfs(int u, int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist) {\n    if (u == n1) return 1;\n    \n    for (int i = 0; i < deg[u]; i++) {\n        int v = adj[u][i];\n        if (dist[pair_v[v]] == dist[u] + 1) {\n            if (find_augmenting_path_dfs(pair_v[v], n1, adj, deg, pair_u, pair_v, dist)) {\n                pair_v[v] = u;\n                pair_u[u] = v;\n                return 1;\n            }\n        }\n    }\n    dist[u] = 1e9;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_maximum_bipartite_matching",
+          "signature": "int compute_maximum_bipartite_matching(int n1, int n2, int adj[1005][1005], int *deg)",
+          "code": "int compute_maximum_bipartite_matching(int n1, int n2, int adj[1005][1005], int *deg) {\n    int pair_u[1005], pair_v[1005], dist[1005];\n    for (int i = 0; i < n1; i++) pair_u[i] = -1;\n    for (int i = 0; i < n2; i++) pair_v[i] = n1;\n    \n    int matching = 0;\n    while (build_level_graph_bfs(n1, adj, deg, pair_u, pair_v, dist)) {\n        for (int u = 0; u < n1; u++) {\n            if (pair_u[u] == -1 && find_augmenting_path_dfs(u, n1, adj, deg, pair_u, pair_v, dist)) {\n                matching++;\n            }\n        }\n    }\n    return matching;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n1, n2, m, adj[1005][1005], deg[1005] = {0};\n    scanf(\"%d %d %d\", &n1, &n2, &m);\n    \n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][deg[u]++] = v;\n    }\n    \n    printf(\"%d\\n\", compute_maximum_bipartite_matching(n1, n2, adj, deg));\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "includes": [],
+      "clauses": [
+        {
+          "clause_id": "build_level_graph_bfs",
+          "signature": "int build_level_graph_bfs(int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist)",
+          "code": "int build_level_graph_bfs(int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist) {\n    int queue[1005], front = 0, rear = 0;\n    \n    for (int u = 0; u < n1; u++) {\n        if (pair_u[u] == -1) {\n            dist[u] = 0;\n            queue[rear++] = u;\n        } else {\n            dist[u] = 1e9;\n        }\n    }\n    dist[n1] = 1e9;\n    \n    while (front < rear) {\n        int u = queue[front++];\n        if (dist[u] < dist[n1]) {\n            for (int i = 0; i < deg[u]; i++) {\n                int v = adj[u][i];\n                if (dist[pair_v[v]] == 1e9) {\n                    dist[pair_v[v]] = dist[u] + 1;\n                    queue[rear++] = pair_v[v];\n                }\n            }\n        }\n    }\n    return dist[n1] != 1e9;\n}"
+        },
+        {
+          "clause_id": "find_augmenting_path_dfs",
+          "signature": "int find_augmenting_path_dfs(int u, int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist)",
+          "code": "int find_augmenting_path_dfs(int u, int n1, int adj[1005][1005], int *deg, int *pair_u, int *pair_v, int *dist) {\n    if (u == n1) return 1;\n    \n    for (int i = 0; i < deg[u]; i++) {\n        int v = adj[u][i];\n        if (dist[pair_v[v]] == dist[u] + 1) {\n            if (find_augmenting_path_dfs(pair_v[v], n1, adj, deg, pair_u, pair_v, dist)) {\n                pair_v[v] = u;\n                pair_u[u] = v;\n                return 1;\n            }\n        }\n    }\n    dist[u] = 1e9;\n    return 0;\n}"
+        },
+        {
+          "clause_id": "compute_maximum_bipartite_matching",
+          "signature": "int compute_maximum_bipartite_matching(int n1, int n2, int adj[1005][1005], int *deg)",
+          "code": "int compute_maximum_bipartite_matching(int n1, int n2, int adj[1005][1005], int *deg) {\n    int pair_u[1005], pair_v[1005], dist[1005];\n    for (int i = 0; i < n1; i++) pair_u[i] = -1;\n    for (int i = 0; i < n2; i++) pair_v[i] = n1;\n    \n    int matching = 0;\n    while (build_level_graph_bfs(n1, adj, deg, pair_u, pair_v, dist)) {\n        for (int u = 0; u < n1; u++) {\n            if (pair_u[u] == -1 && find_augmenting_path_dfs(u, n1, adj, deg, pair_u, pair_v, dist)) {\n                matching++;\n            }\n        }\n    }\n    return matching;\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n1, n2, m, adj[1005][1005], deg[1005] = {0};\n    scanf(\"%d %d %d\", &n1, &n2, &m);\n    \n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        adj[u][deg[u]++] = v;\n    }\n    \n    printf(\"%d\\n\", compute_maximum_bipartite_matching(n1, n2, adj, deg));\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

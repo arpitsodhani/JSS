@@ -1,0 +1,25 @@
+{
+  "average_confidence": 0.86,
+  "clauses": [
+    {
+      "clause": "create_treap_node",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 0.29999999999999993
+    },
+    {
+      "clause": "merge_treap_nodes",
+      "confidence": 1.0
+    },
+    {
+      "clause": "split_treap_by_position",
+      "confidence": 1.0
+    },
+    {
+      "clause": "update_treap_size",
+      "confidence": 1.0
+    }
+  ]
+}

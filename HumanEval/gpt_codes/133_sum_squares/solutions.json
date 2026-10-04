@@ -1,0 +1,89 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main_prog1",
+          "code": "int my_ceil(double x) {\n    int i = (int)x;\n    if (x > i) return i + 1;\n    return i;\n}\n\nint sum_squares(int n, double arr[]) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        int rounded = my_ceil(arr[i]);\n        sum += rounded * rounded;\n    }\n    return sum;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    scanf(\" %[^\\n]\", line);\n    \n    double arr[1000];\n    int arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atof(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int result = sum_squares(arr_size, arr);\n    printf(\"%d\\n\", result);\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main_prog2",
+          "code": "int my_ceil(double x) {\n    int i = (int)x;\n    if (x > i) return i + 1;\n    return i;\n}\n\nint sum_squares(int n, double arr[]) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        int rounded = my_ceil(arr[i]);\n        sum += rounded * rounded;\n    }\n    return sum;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    scanf(\" %[^\\n]\", line);\n    \n    double arr[1000];\n    int arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atof(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int result = sum_squares(arr_size, arr);\n    printf(\"%d\\n\", result);\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main_prog3",
+          "code": "int my_ceil(double x) {\n    int i = (int)x;\n    if (x > i) return i + 1;\n    return i;\n}\n\nint sum_squares(int n, double arr[]) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        int rounded = my_ceil(arr[i]);\n        sum += rounded * rounded;\n    }\n    return sum;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    scanf(\" %[^\\n]\", line);\n    \n    double arr[1000];\n    int arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atof(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int result = sum_squares(arr_size, arr);\n    printf(\"%d\\n\", result);\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main_prog4",
+          "code": "int my_ceil(double x) {\n    int i = (int)x;\n    if (x > i) return i + 1;\n    return i;\n}\n\nint sum_squares(int n, double arr[]) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        int rounded = my_ceil(arr[i]);\n        sum += rounded * rounded;\n    }\n    return sum;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    scanf(\" %[^\\n]\", line);\n    \n    double arr[1000];\n    int arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atof(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int result = sum_squares(arr_size, arr);\n    printf(\"%d\\n\", result);\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main_prog5",
+          "code": "int my_ceil(double x) {\n    int i = (int)x;\n    if (x > i) return i + 1;\n    return i;\n}\n\nint sum_squares(int n, double arr[]) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        int rounded = my_ceil(arr[i]);\n        sum += rounded * rounded;\n    }\n    return sum;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    scanf(\" %[^\\n]\", line);\n    \n    double arr[1000];\n    int arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atof(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int result = sum_squares(arr_size, arr);\n    printf(\"%d\\n\", result);\n    \n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>",
+        "#include <string.h>",
+        "#include <math.h>",
+        "#include <ctype.h>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "check_value_in_range",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "validate_bst_subtree",
+      "confidence": 1.0
+    },
+    {
+      "clause": "verify_binary_search_tree",
+      "confidence": 1.0
+    }
+  ]
+}

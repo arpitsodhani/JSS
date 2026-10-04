@@ -1,0 +1,6 @@
+You are given a string S . Here, the first character of S is an uppercase English letter, and the second and subsequent characters are lowercase English letters. Print the string formed by concatenating the first character of S and UPC in this order.
+
+**Constraints:**
+- 1 <= N <= 100
+- 1 <= H_i <= 100
+- All input values are integers

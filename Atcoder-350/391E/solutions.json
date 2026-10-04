@@ -1,0 +1,201 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "char* read_input(int *n, int *len)",
+          "code": "scanf(\"%d\", n);\nint L=1; for(int i=0;i<*n;i++) L*=3; *len=L;\nchar *s=(char*)malloc((size_t)L+5);\nscanf(\"%s\", s);\nreturn s;\n"
+        },
+        {
+          "clause_id": "init_costs",
+          "signature": "void init_costs(const char *s, int len, int **c0, int **c1)",
+          "code": "*c0=(int*)malloc((size_t)len*sizeof(int));\n*c1=(int*)malloc((size_t)len*sizeof(int));\nfor(int i=0;i<len;i++){\n  (*c0)[i]=(s[i]=='0')?0:1;\n  (*c1)[i]=(s[i]=='1')?0:1;\n}\n"
+        },
+        {
+          "clause_id": "reduce_level",
+          "signature": "void reduce_level(int len, int *c0, int *c1)",
+          "code": "int newlen=len/3;\nfor(int i=0;i<newlen;i++){\n  int a0=c0[3*i], a1=c1[3*i];\n  int b0=c0[3*i+1], b1=c1[3*i+1];\n  int d0=c0[3*i+2], d1=c1[3*i+2];\n  int best0=1e9, best1=1e9;\n  int v[3][2]={{a0,a1},{b0,b1},{d0,d1}};\n  for(int m=0;m<8;m++){\n    int z=0, sum=0;\n    for(int t=0;t<3;t++){ int bit=(m>>t)&1; if(bit==0) z++; sum+=v[t][bit]; }\n    if(z>=2 && sum<best0) best0=sum;\n    if(z<=1 && sum<best1) best1=sum;\n  }\n  c0[i]=best0; c1[i]=best1;\n}\n"
+        },
+        {
+          "clause_id": "solve_min_flips",
+          "signature": "int solve_min_flips(int n, const char *s, int len)",
+          "code": "int *c0=0,*c1=0; init_costs(s,len,&c0,&c1);\nint L=len; for(int level=0; level<n; level++){ reduce_level(L,c0,c1); L/=3; }\nint cur = (s[0]=='0')?0:1; // original root value\nint ans = (cur==0)?c1[0]:c0[0];\nfree(c0); free(c1); return ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,len; char *s=read_input(&n,&len); int ans=solve_min_flips(n,s,len); print_int(ans); free(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "char* read_input(int *n, int *len)",
+          "code": "scanf(\"%d\", n);\nint L=1; for(int i=0;i<*n;i++) L*=3; *len=L;\nchar *s=(char*)malloc((size_t)L+5);\nscanf(\"%s\", s);\nreturn s;\n"
+        },
+        {
+          "clause_id": "init_costs",
+          "signature": "void init_costs(const char *s, int len, int **c0, int **c1)",
+          "code": "*c0=(int*)malloc((size_t)len*sizeof(int));\n*c1=(int*)malloc((size_t)len*sizeof(int));\nfor(int i=0;i<len;i++){\n  (*c0)[i]=(s[i]=='0')?0:1;\n  (*c1)[i]=(s[i]=='1')?0:1;\n}\n"
+        },
+        {
+          "clause_id": "reduce_level",
+          "signature": "void reduce_level(int len, int *c0, int *c1)",
+          "code": "int newlen=len/3;\nfor(int i=0;i<newlen;i++){\n  int a0=c0[3*i], a1=c1[3*i];\n  int b0=c0[3*i+1], b1=c1[3*i+1];\n  int d0=c0[3*i+2], d1=c1[3*i+2];\n  int best0=1e9, best1=1e9;\n  int v[3][2]={{a0,a1},{b0,b1},{d0,d1}};\n  for(int m=0;m<8;m++){\n    int z=0, sum=0;\n    for(int t=0;t<3;t++){ int bit=(m>>t)&1; if(bit==0) z++; sum+=v[t][bit]; }\n    if(z>=2 && sum<best0) best0=sum;\n    if(z<=1 && sum<best1) best1=sum;\n  }\n  c0[i]=best0; c1[i]=best1;\n}\n"
+        },
+        {
+          "clause_id": "solve_min_flips",
+          "signature": "int solve_min_flips(int n, const char *s, int len)",
+          "code": "int *c0=0,*c1=0; init_costs(s,len,&c0,&c1);\nint L=len; for(int level=0; level<n; level++){ reduce_level(L,c0,c1); L/=3; }\nint root0=c0[0], root1=c1[0];\nint ans = (root0<root1)?root1:root0; // change to opposite of cheaper\nif(root0==0) ans=root1; else if(root1==0) ans=root0;\nfree(c0); free(c1); return ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,len; char *s=read_input(&n,&len); int ans=solve_min_flips(n,s,len); print_int(ans); free(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "char* read_input(int *n, int *len)",
+          "code": "scanf(\"%d\", n);\nint L=1; for(int i=0;i<*n;i++) L*=3; *len=L;\nchar *s=(char*)malloc((size_t)L+5);\nscanf(\"%s\", s);\nreturn s;\n"
+        },
+        {
+          "clause_id": "init_costs",
+          "signature": "void init_costs(const char *s, int len, int **c0, int **c1)",
+          "code": "*c0=(int*)malloc((size_t)len*sizeof(int));\n*c1=(int*)malloc((size_t)len*sizeof(int));\nfor(int i=0;i<len;i++){\n  (*c0)[i]=(s[i]=='0')?0:1;\n  (*c1)[i]=(s[i]=='1')?0:1;\n}\n"
+        },
+        {
+          "clause_id": "reduce_level",
+          "signature": "void reduce_level(int len, int *c0, int *c1)",
+          "code": "int newlen=len/3;\nfor(int i=0;i<newlen;i++){\n  int a0=c0[3*i], a1=c1[3*i];\n  int b0=c0[3*i+1], b1=c1[3*i+1];\n  int d0=c0[3*i+2], d1=c1[3*i+2];\n  int best0=1e9, best1=1e9;\n  int v[3][2]={{a0,a1},{b0,b1},{d0,d1}};\n  for(int m=0;m<8;m++){\n    int z=0, sum=0;\n    for(int t=0;t<3;t++){ int bit=(m>>t)&1; if(bit==0) z++; sum+=v[t][bit]; }\n    if(z>=2 && sum<best0) best0=sum;\n    if(z<=1 && sum<best1) best1=sum;\n  }\n  c0[i]=best0; c1[i]=best1;\n}\n"
+        },
+        {
+          "clause_id": "solve_min_flips",
+          "signature": "int solve_min_flips(int n, const char *s, int len)",
+          "code": "int *c0=0,*c1=0; init_costs(s,len,&c0,&c1);\nint L=len; for(int level=0; level<n; level++){ reduce_level(L,c0,c1); L/=3; }\nint cur = (s[0]=='0')?0:1; // original root value\nint ans = (cur==0)?c1[0]:c0[0];\nfree(c0); free(c1); return ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,len; char *s=read_input(&n,&len); int ans=solve_min_flips(n,s,len); print_int(ans); free(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "char* read_input(int *n, int *len)",
+          "code": "scanf(\"%d\", n);\nint L=1; for(int i=0;i<*n;i++) L*=3; *len=L;\nchar *s=(char*)malloc((size_t)L+5);\nscanf(\"%s\", s);\nreturn s;\n"
+        },
+        {
+          "clause_id": "init_costs",
+          "signature": "void init_costs(const char *s, int len, int **c0, int **c1)",
+          "code": "*c0=(int*)malloc((size_t)len*sizeof(int));\n*c1=(int*)malloc((size_t)len*sizeof(int));\nfor(int i=0;i<len;i++){\n  (*c0)[i]=(s[i]=='0')?0:1;\n  (*c1)[i]=(s[i]=='1')?0:1;\n}\n"
+        },
+        {
+          "clause_id": "reduce_level",
+          "signature": "void reduce_level(int len, int *c0, int *c1)",
+          "code": "int newlen=len/3;\nfor(int i=0;i<newlen;i++){\n  int a0=c0[3*i], a1=c1[3*i];\n  int b0=c0[3*i+1], b1=c1[3*i+1];\n  int d0=c0[3*i+2], d1=c1[3*i+2];\n  int best0=1e9, best1=1e9;\n  int v[3][2]={{a0,a1},{b0,b1},{d0,d1}};\n  for(int m=0;m<8;m++){\n    int z=0, sum=0;\n    for(int t=0;t<3;t++){ int bit=(m>>t)&1; if(bit==0) z++; sum+=v[t][bit]; }\n    if(z>=2 && sum<best0) best0=sum;\n    if(z<=1 && sum<best1) best1=sum;\n  }\n  c0[i]=best0; c1[i]=best1;\n}\n"
+        },
+        {
+          "clause_id": "solve_min_flips",
+          "signature": "int solve_min_flips(int n, const char *s, int len)",
+          "code": "int *c0=0,*c1=0; init_costs(s,len,&c0,&c1);\nint L=len; for(int level=0; level<n; level++){ reduce_level(L,c0,c1); L/=3; }\nint root0=c0[0], root1=c1[0];\nint ans = (root0<root1)?root1:root0; // change to opposite of cheaper\nif(root0==0) ans=root1; else if(root1==0) ans=root0;\nfree(c0); free(c1); return ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,len; char *s=read_input(&n,&len); int ans=solve_min_flips(n,s,len); print_int(ans); free(s); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "char* read_input(int *n, int *len)",
+          "code": "scanf(\"%d\", n);\nint L=1; for(int i=0;i<*n;i++) L*=3; *len=L;\nchar *s=(char*)malloc((size_t)L+5);\nscanf(\"%s\", s);\nreturn s;\n"
+        },
+        {
+          "clause_id": "init_costs",
+          "signature": "void init_costs(const char *s, int len, int **c0, int **c1)",
+          "code": "*c0=(int*)malloc((size_t)len*sizeof(int));\n*c1=(int*)malloc((size_t)len*sizeof(int));\nfor(int i=0;i<len;i++){\n  (*c0)[i]=(s[i]=='0')?0:1;\n  (*c1)[i]=(s[i]=='1')?0:1;\n}\n"
+        },
+        {
+          "clause_id": "reduce_level",
+          "signature": "void reduce_level(int len, int *c0, int *c1)",
+          "code": "int newlen=len/3;\nfor(int i=0;i<newlen;i++){\n  int a0=c0[3*i], a1=c1[3*i];\n  int b0=c0[3*i+1], b1=c1[3*i+1];\n  int d0=c0[3*i+2], d1=c1[3*i+2];\n  int best0=1e9, best1=1e9;\n  int v[3][2]={{a0,a1},{b0,b1},{d0,d1}};\n  for(int m=0;m<8;m++){\n    int z=0, sum=0;\n    for(int t=0;t<3;t++){ int bit=(m>>t)&1; if(bit==0) z++; sum+=v[t][bit]; }\n    if(z>=2 && sum<best0) best0=sum;\n    if(z<=1 && sum<best1) best1=sum;\n  }\n  c0[i]=best0; c1[i]=best1;\n}\n"
+        },
+        {
+          "clause_id": "solve_min_flips",
+          "signature": "int solve_min_flips(int n, const char *s, int len)",
+          "code": "int *c0=0,*c1=0; init_costs(s,len,&c0,&c1);\nint L=len; for(int level=0; level<n; level++){ reduce_level(L,c0,c1); L/=3; }\nint cur = (s[0]=='0')?0:1; // original root value\nint ans = (cur==0)?c1[0]:c0[0];\nfree(c0); free(c1); return ans;\n"
+        },
+        {
+          "clause_id": "print_int",
+          "signature": "void print_int(int x)",
+          "code": "printf(\"%d\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,len; char *s=read_input(&n,&len); int ans=solve_min_flips(n,s,len); print_int(ans); free(s); return 0; }\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "391E",
+  "total_programs": 5
+}

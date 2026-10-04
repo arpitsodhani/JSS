@@ -1,0 +1,194 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nmk",
+          "signature": "void read_nmk(int *n, int *m, int *k)",
+          "code": "scanf(\"%d %d %d\", n, m, k);\n"
+        },
+        {
+          "clause_id": "nCk",
+          "signature": "long long nCk(int n, int k)",
+          "code": "if(k<0||k>n) return 0;\nif(k>n-k) k=n-k;\n__int128 num=1, den=1;\nfor(int i=1;i<=k;i++){ num*= (n-k+i); den*= i; }\nreturn (long long)(num/den);\n"
+        },
+        {
+          "clause_id": "fact",
+          "signature": "long long fact(int n)",
+          "code": "__int128 f=1; for(int i=2;i<=n;i++) f*=i; return (long long)f;\n"
+        },
+        {
+          "clause_id": "solve_count",
+          "signature": "long long solve_count(int n, int m, int k)",
+          "code": "if(k>n||k>m) return 0;\nlong long a=nCk(n,k);\nlong long b=nCk(m,k);\nlong long c=fact(k);\n__int128 res=(__int128)a*b*c;\nreturn (long long)res;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m,k; read_nmk(&n,&m,&k); long long ans=solve_count(n,m,k); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nmk",
+          "signature": "void read_nmk(int *n, int *m, int *k)",
+          "code": "scanf(\"%d %d %d\", n, m, k);\n"
+        },
+        {
+          "clause_id": "nCk",
+          "signature": "long long nCk(int n, int k)",
+          "code": "if(k<0||k>n) return 0;\nif(k>n-k) k=n-k;\n__int128 num=1, den=1;\nfor(int i=1;i<=k;i++){ num*= (n-k+i); den*= i; }\nreturn (long long)(num/den);\n"
+        },
+        {
+          "clause_id": "fact",
+          "signature": "long long fact(int n)",
+          "code": "__int128 f=1; for(int i=2;i<=n;i++) f*=i; return (long long)f;\n"
+        },
+        {
+          "clause_id": "solve_count",
+          "signature": "long long solve_count(int n, int m, int k)",
+          "code": "if(k>n||k>m) return 0;\nlong long a=nCk(n,k);\nlong long b=nCk(m,k);\nlong long c=fact(k);\n__int128 res=(__int128)a*b*c;\nreturn (long long)res;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m,k; read_nmk(&n,&m,&k); long long ans=solve_count(n,m,k); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nmk",
+          "signature": "void read_nmk(int *n, int *m, int *k)",
+          "code": "scanf(\"%d %d %d\", n, m, k);\n"
+        },
+        {
+          "clause_id": "nCk",
+          "signature": "long long nCk(int n, int k)",
+          "code": "if(k<0||k>n) return 0;\nif(k>n-k) k=n-k;\n__int128 num=1, den=1;\nfor(int i=1;i<=k;i++){ num*= (n-k+i); den*= i; }\nreturn (long long)(num/den);\n"
+        },
+        {
+          "clause_id": "fact",
+          "signature": "long long fact(int n)",
+          "code": "__int128 f=1; for(int i=2;i<=n;i++) f*=i; return (long long)f;\n"
+        },
+        {
+          "clause_id": "solve_count",
+          "signature": "long long solve_count(int n, int m, int k)",
+          "code": "if(k>n||k>m) return 0;\nlong long a=nCk(n,k);\nlong long b=nCk(m,k);\nlong long c=fact(k);\n__int128 res=(__int128)a*b*c;\nreturn (long long)res;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m,k; read_nmk(&n,&m,&k); long long ans=solve_count(n,m,k); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nmk",
+          "signature": "void read_nmk(int *n, int *m, int *k)",
+          "code": "scanf(\"%d %d %d\", n, m, k);\n"
+        },
+        {
+          "clause_id": "nCk",
+          "signature": "long long nCk(int n, int k)",
+          "code": "if(k<0||k>n) return 0;\nif(k>n-k) k=n-k;\n__int128 num=1, den=1;\nfor(int i=1;i<=k;i++){ num*= (n-k+i); den*= i; }\nreturn (long long)(num/den);\n"
+        },
+        {
+          "clause_id": "fact",
+          "signature": "long long fact(int n)",
+          "code": "__int128 f=1; for(int i=2;i<=n;i++) f*=i; return (long long)f;\n"
+        },
+        {
+          "clause_id": "solve_count",
+          "signature": "long long solve_count(int n, int m, int k)",
+          "code": "if(k>n||k>m) return 0;\nlong long a=nCk(n,k);\nlong long b=nCk(m,k);\nlong long c=fact(k);\n__int128 res=(__int128)a*b*c;\nreturn (long long)res;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m,k; read_nmk(&n,&m,&k); long long ans=solve_count(n,m,k); print_ll(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nmk",
+          "signature": "void read_nmk(int *n, int *m, int *k)",
+          "code": "scanf(\"%d %d %d\", n, m, k);\n"
+        },
+        {
+          "clause_id": "nCk",
+          "signature": "long long nCk(int n, int k)",
+          "code": "if(k<0||k>n) return 0;\nif(k>n-k) k=n-k;\n__int128 num=1, den=1;\nfor(int i=1;i<=k;i++){ num*= (n-k+i); den*= i; }\nreturn (long long)(num/den);\n"
+        },
+        {
+          "clause_id": "fact",
+          "signature": "long long fact(int n)",
+          "code": "__int128 f=1; for(int i=2;i<=n;i++) f*=i; return (long long)f;\n"
+        },
+        {
+          "clause_id": "solve_count",
+          "signature": "long long solve_count(int n, int m, int k)",
+          "code": "if(k>n||k>m) return 0;\nlong long a=nCk(n,k);\nlong long b=nCk(m,k);\nlong long c=fact(k);\n__int128 res=(__int128)a*b*c;\nreturn (long long)res;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m,k; read_nmk(&n,&m,&k); long long ans=solve_count(n,m,k); print_ll(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

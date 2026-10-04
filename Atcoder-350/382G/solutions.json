@@ -1,0 +1,149 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *K,long long *sx,long long *sy,long long *tx,long long *ty)",
+          "code": "void read_input(long long *K,long long *sx,long long *sy,long long *tx,long long *ty){ scanf(\"%lld%lld%lld%lld%lld\", K,sx,sy,tx,ty); }\n"
+        },
+        {
+          "clause_id": "approx_distance",
+          "signature": "long long approx_distance(long long K,long long sx,long long sy,long long tx,long long ty)",
+          "code": "long long approx_distance(long long K,long long sx,long long sy,long long tx,long long ty){\n    long long dx = sx>tx? sx-tx: tx-sx;\n    long long dy = sy>ty? sy-ty: ty-sy;\n    long long d = dx + dy;\n    long long ans = d / K;\n    if(d % K) ans++;\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long K,sx,sy,tx,ty; read_input(&K,&sx,&sy,&tx,&ty); long long ans=approx_distance(K,sx,sy,tx,ty); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *K,long long *sx,long long *sy,long long *tx,long long *ty)",
+          "code": "void read_input(long long *K,long long *sx,long long *sy,long long *tx,long long *ty){ scanf(\"%lld%lld%lld%lld%lld\", K,sx,sy,tx,ty); }\n"
+        },
+        {
+          "clause_id": "approx_distance",
+          "signature": "long long approx_distance(long long K,long long sx,long long sy,long long tx,long long ty)",
+          "code": "long long approx_distance(long long K,long long sx,long long sy,long long tx,long long ty){\n    long long dx = sx>tx? sx-tx: tx-sx;\n    long long dy = sy>ty? sy-ty: ty-sy;\n    long long d = dx + dy;\n    long long ans = d / K;\n    if(d % K) ans++;\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long K,sx,sy,tx,ty; read_input(&K,&sx,&sy,&tx,&ty); long long ans=approx_distance(K,sx,sy,tx,ty); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *K,long long *sx,long long *sy,long long *tx,long long *ty)",
+          "code": "void read_input(long long *K,long long *sx,long long *sy,long long *tx,long long *ty){ scanf(\"%lld%lld%lld%lld%lld\", K,sx,sy,tx,ty); }\n"
+        },
+        {
+          "clause_id": "approx_distance",
+          "signature": "long long approx_distance(long long K,long long sx,long long sy,long long tx,long long ty)",
+          "code": "long long approx_distance(long long K,long long sx,long long sy,long long tx,long long ty){\n    long long dx = sx>tx? sx-tx: tx-sx;\n    long long dy = sy>ty? sy-ty: ty-sy;\n    long long d = dx + dy;\n    long long ans = d / K;\n    if(d % K) ans++;\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long K,sx,sy,tx,ty; read_input(&K,&sx,&sy,&tx,&ty); long long ans=approx_distance(K,sx,sy,tx,ty); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *K,long long *sx,long long *sy,long long *tx,long long *ty)",
+          "code": "void read_input(long long *K,long long *sx,long long *sy,long long *tx,long long *ty){ scanf(\"%lld%lld%lld%lld%lld\", K,sx,sy,tx,ty); }\n"
+        },
+        {
+          "clause_id": "approx_distance",
+          "signature": "long long approx_distance(long long K,long long sx,long long sy,long long tx,long long ty)",
+          "code": "long long approx_distance(long long K,long long sx,long long sy,long long tx,long long ty){\n    long long dx = sx>tx? sx-tx: tx-sx;\n    long long dy = sy>ty? sy-ty: ty-sy;\n    long long d = dx + dy;\n    long long ans = d / K;\n    if(d % K) ans++;\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long K,sx,sy,tx,ty; read_input(&K,&sx,&sy,&tx,&ty); long long ans=approx_distance(K,sx,sy,tx,ty); print_answer(ans); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(long long *K,long long *sx,long long *sy,long long *tx,long long *ty)",
+          "code": "void read_input(long long *K,long long *sx,long long *sy,long long *tx,long long *ty){ scanf(\"%lld%lld%lld%lld%lld\", K,sx,sy,tx,ty); }\n"
+        },
+        {
+          "clause_id": "approx_distance",
+          "signature": "long long approx_distance(long long K,long long sx,long long sy,long long tx,long long ty)",
+          "code": "long long approx_distance(long long K,long long sx,long long sy,long long tx,long long ty){\n    long long dx = sx>tx? sx-tx: tx-sx;\n    long long dy = sy>ty? sy-ty: ty-sy;\n    long long d = dx + dy;\n    long long ans = d / K;\n    if(d % K) ans++;\n    return ans;\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(long long ans)",
+          "code": "void print_answer(long long ans){ printf(\"%lld\\n\", ans); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long K,sx,sy,tx,ty; read_input(&K,&sx,&sy,&tx,&ty); long long ans=approx_distance(K,sx,sy,tx,ty); print_answer(ans); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

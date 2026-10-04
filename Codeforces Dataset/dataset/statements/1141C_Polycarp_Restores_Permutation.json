@@ -1,0 +1,34 @@
+{
+  "contestId": 1141,
+  "index": "C",
+  "problem_id": "1141C",
+  "name": "Polycarp Restores Permutation",
+  "rating": 1500,
+  "tags": [
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 12381,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Polycarp Restores Permutation",
+  "legend": "An array of integers p1,p2,…,pn is called a permutation if it contains each number from 1 to n exactly once. For example, the following arrays are permutations: [3,1,2], [1], [1,2,3,4,5] and [4,3,1,2]. The following arrays are not permutations: [2], [1,1], [2,3,4].\n\nPolycarp invented a really cool permutation p1,p2,…,pn of length n. It is very disappointing, but he forgot this permutation. He only remembers the array q1,q2,…,qn−1 of length n−1, where qi=pi+1−pi.\n\nGiven n and q=q1,q2,…,qn−1, help Polycarp restore the invented permutation.",
+  "input_spec": "The first line contains the integer n (2≤n≤2⋅105) — the length of the permutation to restore. The second line contains n−1 integers q1,q2,…,qn−1 (−n<qi<n).",
+  "output_spec": "Print the integer -1 if there is no such permutation of length n which corresponds to the given array q. Otherwise, if it exists, print p1,p2,…,pn. Print any such permutation if there are many of them.",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n-2 1\n",
+      "output": "3 1 2"
+    },
+    {
+      "input": "5\n1 1 1 1\n",
+      "output": "1 2 3 4 5"
+    },
+    {
+      "input": "4\n-1 2 2\n",
+      "output": "-1"
+    }
+  ]
+}

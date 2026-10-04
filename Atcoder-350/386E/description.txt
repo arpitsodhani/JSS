@@ -1,0 +1,7 @@
+You are given a sequence A of non-negative integers of length N , and an integer K . It is guaranteed that the binomial coefficient \dbinom{N}{K} is at most 10^6 . When choosing K distinct elements from A , find the maximum possible value of the XOR of the K chosen elements. That is, find \underset{1\leq i_1\lt i_2\lt \ldots\lt i_K\leq N}{\max} A_{i_1}\oplus A_{i_2}\oplus \ldots \oplus A_{i_K} . About XOR For non-negative integers A,B , the XOR A \oplus B is defined as follows: In the binary representation of A \oplus B , the bit corresponding to 2^k (k \ge 0) is 1 if and only if exactly one of the bits corresponding to 2^k in A and B is 1 , and is 0 otherwise. For example, 3 \oplus 5 = 6 (in binary notation: 011 \oplus 101 = 110 ). In general, the XOR of K integers p_1, \dots, p_k is defined as (\cdots((p_1 \oplus p_2) \oplus p_3) \oplus \cdots \oplus p_k) . It can be proved that it does not depend on the order of p_1, \dots, p_k .
+
+**Constraints:**
+- 1 <= N <= 60
+- 0 <= K <= N
+- 1 <= A_i <= 10^{18}
+- All input values are integers

@@ -1,0 +1,151 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *P)",
+          "code": "scanf(\"%d%lld\", N,P);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(int N,long long P,long long *out)",
+          "code": "int Mmin=N-1, Mmax=N*(N-1)/2; for(int m=Mmin;m<=Mmax;m++) out[m]=0;\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int N,long long P,long long *out)",
+          "code": "int Mmin=N-1, Mmax=N*(N-1)/2; for(int m=Mmin;m<=Mmax;m++) printf(\"%lld\\n\", out[m]%P);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long P; static long long out[500000]; read_input(&N,&P); solve(N,P,out); print_all(N,P,out); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *P)",
+          "code": "scanf(\"%d%lld\", N,P);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(int N,long long P,long long *out)",
+          "code": "int Mmin=N-1, Mmax=N*(N-1)/2; for(int m=Mmin;m<=Mmax;m++) out[m]=0;\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int N,long long P,long long *out)",
+          "code": "int Mmin=N-1, Mmax=N*(N-1)/2; for(int m=Mmin;m<=Mmax;m++) printf(\"%lld\\n\", out[m]%P);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long P; static long long out[500000]; read_input(&N,&P); solve(N,P,out); print_all(N,P,out); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *P)",
+          "code": "scanf(\"%d%lld\", N,P);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(int N,long long P,long long *out)",
+          "code": "int Mmin=N-1, Mmax=N*(N-1)/2; for(int m=Mmin;m<=Mmax;m++) out[m]=0;\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int N,long long P,long long *out)",
+          "code": "int Mmin=N-1, Mmax=N*(N-1)/2; for(int m=Mmin;m<=Mmax;m++) printf(\"%lld\\n\", out[m]%P);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long P; static long long out[500000]; read_input(&N,&P); solve(N,P,out); print_all(N,P,out); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *P)",
+          "code": "scanf(\"%d%lld\", N,P);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(int N,long long P,long long *out)",
+          "code": "int Mmin=N-1, Mmax=N*(N-1)/2; for(int m=Mmin;m<=Mmax;m++) out[m]=0;\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int N,long long P,long long *out)",
+          "code": "int Mmin=N-1, Mmax=N*(N-1)/2; for(int m=Mmin;m<=Mmax;m++) printf(\"%lld\\n\", out[m]%P);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long P; static long long out[500000]; read_input(&N,&P); solve(N,P,out); print_all(N,P,out); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,long long *P)",
+          "code": "scanf(\"%d%lld\", N,P);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "void solve(int N,long long P,long long *out)",
+          "code": "int Mmin=N-1, Mmax=N*(N-1)/2; for(int m=Mmin;m<=Mmax;m++) out[m]=0;\n"
+        },
+        {
+          "clause_id": "print_all",
+          "signature": "void print_all(int N,long long P,long long *out)",
+          "code": "int Mmin=N-1, Mmax=N*(N-1)/2; for(int m=Mmin;m<=Mmax;m++) printf(\"%lld\\n\", out[m]%P);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; long long P; static long long out[500000]; read_input(&N,&P); solve(N,P,out); print_all(N,P,out); return 0;\n    /* noop */\n    if(0){;}\n}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "389G",
+  "total_programs": 5
+}

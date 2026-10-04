@@ -1,0 +1,17 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_prefix_function",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "search_pattern_kmp",
+      "confidence": 1.0
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "prog1_initialize_parser",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_output_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_process_string",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_initialize_parser",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_output_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_process_string",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_initialize_parser",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_output_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_process_string",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_initialize_parser",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_output_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_process_string",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_initialize_parser",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_output_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_process_string",
+      "confidence": 1.0
+    }
+  ]
+}

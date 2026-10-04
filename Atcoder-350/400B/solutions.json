@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nm",
+          "signature": "void read_nm(long long *n, long long *m)",
+          "code": "scanf(\"%lld %lld\", n, m);\n"
+        },
+        {
+          "clause_id": "sum_geom",
+          "signature": "int sum_geom(long long n, long long m, long long *out)",
+          "code": "long long x=1;\nlong long cur=1;\nfor(long long i=1;i<=m;i++){\n  if(cur>1000000000LL/n && n!=0) return 0;\n  cur*=n;\n  if(x>1000000000LL-cur) return 0;\n  x+=cur;\n}\n*out=x;\nreturn 1;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n,m; read_nm(&n,&m); long long x=0; if(sum_geom(n,m,&x)) printf(\"%lld\\n\", x); else puts(\"inf\"); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nm",
+          "signature": "void read_nm(long long *n, long long *m)",
+          "code": "scanf(\"%lld %lld\", n, m);\n"
+        },
+        {
+          "clause_id": "sum_geom",
+          "signature": "int sum_geom(long long n, long long m, long long *out)",
+          "code": "long long x=1;\nlong long cur=1;\nfor(long long i=1;i<=m;i++){\n  if(cur>1000000000LL/n && n!=0) return 0;\n  cur*=n;\n  if(x>1000000000LL-cur) return 0;\n  x+=cur;\n}\n*out=x;\nreturn 1;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n,m; read_nm(&n,&m); long long x=0; if(sum_geom(n,m,&x)) printf(\"%lld\\n\", x); else puts(\"inf\"); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nm",
+          "signature": "void read_nm(long long *n, long long *m)",
+          "code": "scanf(\"%lld %lld\", n, m);\n"
+        },
+        {
+          "clause_id": "sum_geom",
+          "signature": "int sum_geom(long long n, long long m, long long *out)",
+          "code": "long long x=1;\nlong long cur=1;\nfor(long long i=1;i<=m;i++){\n  if(cur>1000000000LL/n && n!=0) return 0;\n  cur*=n;\n  if(x>1000000000LL-cur) return 0;\n  x+=cur;\n}\n*out=x;\nreturn 1;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n,m; read_nm(&n,&m); long long x=0; if(sum_geom(n,m,&x)) printf(\"%lld\\n\", x); else puts(\"inf\"); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nm",
+          "signature": "void read_nm(long long *n, long long *m)",
+          "code": "scanf(\"%lld %lld\", n, m);\n"
+        },
+        {
+          "clause_id": "sum_geom",
+          "signature": "int sum_geom(long long n, long long m, long long *out)",
+          "code": "long long x=1;\nlong long cur=1;\nfor(long long i=1;i<=m;i++){\n  if(cur>1000000000LL/n && n!=0) return 0;\n  cur*=n;\n  if(x>1000000000LL-cur) return 0;\n  x+=cur;\n}\n*out=x;\nreturn 1;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n,m; read_nm(&n,&m); long long x=0; if(sum_geom(n,m,&x)) printf(\"%lld\\n\", x); else puts(\"inf\"); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_nm",
+          "signature": "void read_nm(long long *n, long long *m)",
+          "code": "scanf(\"%lld %lld\", n, m);\n"
+        },
+        {
+          "clause_id": "sum_geom",
+          "signature": "int sum_geom(long long n, long long m, long long *out)",
+          "code": "long long x=1;\nlong long cur=1;\nfor(long long i=1;i<=m;i++){\n  if(cur>1000000000LL/n && n!=0) return 0;\n  cur*=n;\n  if(x>1000000000LL-cur) return 0;\n  x+=cur;\n}\n*out=x;\nreturn 1;\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ long long n,m; read_nm(&n,&m); long long x=0; if(sum_geom(n,m,&x)) printf(\"%lld\\n\", x); else puts(\"inf\"); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "problem_id": "385E",
+  "average_confidence": 0.8400000000000001,
+  "clauses": {
+    "read_input": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "build_maps": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "move_and_count": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "print_result": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 0.2,
+      "fragment_count": 1,
+      "num_versions": 5
+    }
+  },
+  "total_clauses": 5,
+  "compile_success": true
+}

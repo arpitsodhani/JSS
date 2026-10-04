@@ -1,0 +1,10 @@
+Given a large integer N (1 <= N <= 10^100000), find an integer a such that:
+- N <= a
+- a + 1 <= 2N
+- a is divisible by the sum of its digits
+- a + 1 is divisible by the sum of its digits
+If no such a exists, output -1.
+
+**Constraints:**
+- 1 <= N <= 10^100000
+- N is given as a decimal string

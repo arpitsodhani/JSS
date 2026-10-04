@@ -1,0 +1,107 @@
+{
+  "merged_program_file": "/home/arpit/Desktop/ISSTA-2026/HumanEval-C/gpt_codes/044_change_base/merged.c",
+  "timestamp": "2026-03-16T17:03:11.691309",
+  "clauses": {
+    "change_base": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "main": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 5,
+          "total": 5,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 5
+    },
+    "to_base": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "convert_base": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "int_to_base": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    },
+    "num_in_base": {
+      "confidence": 1.0,
+      "used_fragments": [
+        {
+          "prog_id": "prog0",
+          "fragment_id": "full_clause",
+          "confidence": 1.0,
+          "cluster_size": 1,
+          "total": 1,
+          "method": "tree_edit_distance_clustering"
+        }
+      ],
+      "num_versions": 1
+    }
+  },
+  "compile_status": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "/tmp/tmp5rrt7iil.c: In function \u2018change_base\u2019:\n/tmp/tmp5rrt7iil.c:6:9: warning: implicit declaration of function \u2018strcpy\u2019 [-Wimplicit-function-declaration]\n    6 |         strcpy(result, \"0\");\n      |         ^~~~~~\n/tmp/tmp5rrt7iil.c:3:1: note: include \u2018<string.h>\u2019 or provide a declaration of \u2018strcpy\u2019\n    2 | #include <stdlib.h>\n  +++ |+#include <string.h>\n    3 | \n/tmp/tmp5rrt7iil.c:6:9: warning: incompatible implicit declaration of built-in function \u2018strcpy\u2019 [-Wbuiltin-declaration-mismatch]\n    6 |         strcpy(result, \"0\");\n      |         ^~~~~~\n/tmp/tmp5rrt7iil.c:6:9: note: include \u2018<string.h>\u2019 or provide a declaration of \u2018strcpy\u2019\n/tmp/tmp5rrt7iil.c: In function \u2018to_base\u2019:\n/tmp/tmp5rrt7iil.c:31:16: warning: incompatible implicit declaration of built-in function \u2018strcpy\u2019 [-Wbuiltin-declaration-mismatch]\n   31 |     if(num==0){strcpy(out,\"0\");return;}\n      |                ^~~~~~\n/tmp/tmp5rrt7iil.c:31:16: note: include \u2018<string.h>\u2019 or provide a declaration of \u2018strcpy\u2019\n"
+  },
+  "test_results": {
+    "passed": 0,
+    "total": 0,
+    "details": []
+  },
+  "metrics": {
+    "total_clauses": 6,
+    "total_fragments": 6,
+    "average_confidence": 1.0,
+    "compile_success": true
+  },
+  "logs": ""
+}

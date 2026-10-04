@@ -1,0 +1,18 @@
+{
+  "problem_id": "404E",
+  "average_confidence": 0.9896532103149605,
+  "clauses": {
+    "solve": {
+      "confidence": 0.979306420629921,
+      "fragment_count": 1,
+      "num_versions": 5
+    },
+    "main": {
+      "confidence": 1.0,
+      "fragment_count": 1,
+      "num_versions": 5
+    }
+  },
+  "total_clauses": 2,
+  "compile_success": true
+}

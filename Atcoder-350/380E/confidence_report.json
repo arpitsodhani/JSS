@@ -1,0 +1,33 @@
+{
+  "average_confidence": 0.961957090528519,
+  "clauses": [
+    {
+      "clause": "read_input",
+      "confidence": 0.9723076923076924
+    },
+    {
+      "clause": "init_max",
+      "confidence": 0.9549999999999998
+    },
+    {
+      "clause": "update_max",
+      "confidence": 0.9549999999999998
+    },
+    {
+      "clause": "finalize_max",
+      "confidence": 0.9549999999999998
+    },
+    {
+      "clause": "find_max",
+      "confidence": 0.9742857142857142
+    },
+    {
+      "clause": "print_answer",
+      "confidence": 0.9549999999999998
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9671062271062268
+    }
+  ]
+}

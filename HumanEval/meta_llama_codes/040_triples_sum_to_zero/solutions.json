@@ -1,0 +1,118 @@
+{
+  "problem_id": "040_triples_sum_to_zero",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "has_triple_sum_zero",
+          "code": "int has_triple_sum_zero(int *arr, int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            for (int k = j + 1; k < n; k++) {\n                if (arr[i] + arr[j] + arr[k] == 0) {\n                    return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (has_triple_sum_zero(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "has_triple_sum_zero",
+          "code": "int has_triple_sum_zero(int *arr, int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            for (int k = j + 1; k < n; k++) {\n                if (arr[i] + arr[j] + arr[k] == 0) {\n                    return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (has_triple_sum_zero(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "has_triple_sum_zero",
+          "code": "int has_triple_sum_zero(int *arr, int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            for (int k = j + 1; k < n; k++) {\n                if (arr[i] + arr[j] + arr[k] == 0) {\n                    return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (has_triple_sum_zero(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "has_triple_sum_zero",
+          "code": "int has_triple_sum_zero(int *arr, int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            for (int k = j + 1; k < n; k++) {\n                if (arr[i] + arr[j] + arr[k] == 0) {\n                    return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (has_triple_sum_zero(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "has_triple_sum_zero",
+          "code": "int has_triple_sum_zero(int *arr, int n) {\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            for (int k = j + 1; k < n; k++) {\n                if (arr[i] + arr[j] + arr[k] == 0) {\n                    return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (has_triple_sum_zero(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ],
+  "includes": [
+    "<stdio.h>"
+  ]
+}

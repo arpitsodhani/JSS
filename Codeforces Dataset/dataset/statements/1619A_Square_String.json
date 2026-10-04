@@ -1,0 +1,27 @@
+{
+  "contestId": 1619,
+  "index": "A",
+  "problem_id": "1619A",
+  "name": "Square String?",
+  "rating": 800,
+  "tags": [
+    "implementation",
+    "strings"
+  ],
+  "points": null,
+  "solvedCount": 63647,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Square String?",
+  "legend": "A string is called square if it is some string written twice in a row. For example, the strings \"aa\", \"abcabc\", \"abab\" and \"baabaa\" are square. But the strings \"aaa\", \"abaaab\" and \"abcdabc\" are not square.\n\nFor a given string s determine if it is square.",
+  "input_spec": "The first line of input data contains an integer t (1≤t≤100) —the number of test cases.\n\nThis is followed by t lines, each containing a description of one test case. The given strings consist only of lowercase Latin letters and have lengths between 1 and 100 inclusive.",
+  "output_spec": "For each test case, output on a separate line:\n\nYES if the string in the corresponding test case is square,\nNO otherwise.\n\nYou can output YES and NO in any case (for example, strings yEs, yes, Yes and YES will be recognized as a positive response).",
+  "note": "",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "10\na\naa\naaa\naaaa\nabab\nabcabc\nabacaba\nxxyy\nxyyx\nxyxy\n",
+      "output": "NO\nYES\nNO\nYES\nYES\nYES\nNO\nNO\nNO\nYES"
+    }
+  ]
+}

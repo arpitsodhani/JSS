@@ -1,0 +1,169 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *k, long long p[])",
+          "code": "int read_input(int *k, long long p[]) { int n; scanf(\"%d%d\", &n, k); for(int i = 0; i < n; i++) scanf(\"%lld\", &p[i]); return n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long compute(int pos, int chosen[], int k)",
+          "code": "long long compute(int pos, int chosen[], int k) { long long min_dist = 1000000000; for(int i = 0; i < k; i++) { long long d = pos > chosen[i] ? pos - chosen[i] : chosen[i] - pos; if(d < min_dist) min_dist = d; } return min_dist; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long process(int chosen[], int k, long long p[], int n)",
+          "code": "long long process(int chosen[], int k, long long p[], int n) { long long sum = 0; for(int y = 0; y < n; y++) { long long dist = compute(y, chosen, k); sum += dist * p[y]; } return sum; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(long long p[], int n, int k)",
+          "code": "long long solve(long long p[], int n, int k) { long long best = 9999999999999LL; int x[100]; for(int mask = 0; mask < (1 << n); mask++) { int cnt = 0; for(int i = 0; i < n; i++) if(mask & (1 << i)) x[cnt++] = i; if(cnt != k) continue; long long val = process(x, k, p, n); if(val < best) best = val; } return best; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int k; long long p[50000]; int n = read_input(&k, p); printf(\"%lld\\n\", solve(p, n, k)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int *k, long long prob[])",
+          "code": "void read_input(int *n, int *k, long long prob[]) { scanf(\"%d%d\", n, k); for(int i = 0; i < *n; i++) scanf(\"%lld\", &prob[i]); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long compute(int y, int x[], int k)",
+          "code": "long long compute(int y, int x[], int k) { long long res = 100000; for(int i = 0; i < k; i++) { long long d = y - x[i]; if(d < 0) d = -d; if(d < res) res = d; } return res; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long process(int x[], int k, long long prob[], int n)",
+          "code": "long long process(int x[], int k, long long prob[], int n) { long long total = 0; for(int y = 0; y < n; y++) { total += compute(y, x, k) * prob[y]; } return total; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(long long prob[], int n, int k)",
+          "code": "long long solve(long long prob[], int n, int k) { long long best = 9999999999999LL; int x[100]; for(int mask = 0; mask < (1 << n); mask++) { int cnt = 0; for(int i = 0; i < n; i++) if(mask & (1 << i)) x[cnt++] = i; if(cnt != k) continue; long long val = process(x, k, prob, n); if(val < best) best = val; } return best; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int n, k; long long prob[50000]; get_data(&n, &k, prob); printf(\"%lld\\n\", solve(prob, n, k)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *num_k, long long arr[])",
+          "code": "int read_input(int *num_k, long long arr[]) { int num_n; scanf(\"%d%d\", &num_n, num_k); for(int i = 0; i < num_n; i++) scanf(\"%lld\", &arr[i]); return num_n; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long compute(int pos, int positions[], int cnt)",
+          "code": "long long compute(int pos, int positions[], int cnt) { long long min_d = 999999; for(int j = 0; j < cnt; j++) { long long d = pos > positions[j] ? pos - positions[j] : positions[j] - pos; if(d < min_d) min_d = d; } return min_d; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long process(int positions[], int cnt, long long arr[], int n)",
+          "code": "long long process(int positions[], int cnt, long long arr[], int n) { long long e = 0; for(int i = 0; i < n; i++) e += compute(i, positions, cnt) * arr[i]; return e; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(long long arr[], int n, int k)",
+          "code": "long long solve(long long arr[], int n, int k) { long long ans = 1e18; int pos[100]; for(int bits = 0; bits < (1<<n); bits++) { int c = 0; for(int i = 0; i < n; i++) if(bits & (1<<i)) pos[c++] = i; if(c == k) { long long v = process(pos, k, arr, n); ans = v < ans ? v : ans; } } return ans; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int num_k; long long arr[50000]; int num_n = input(&num_k, arr); printf(\"%lld\\n\", solve(arr, num_n, num_k)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *sz, int *sel, long long vals[])",
+          "code": "void read_input(int *sz, int *sel, long long vals[]) { scanf(\"%d%d\", sz, sel); for(int i = 0; i < *sz; i++) scanf(\"%lld\", vals + i); }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long compute(int target, int locs[], int num)",
+          "code": "long long compute(int target, int locs[], int num) { long long best = 1000000; for(int i = 0; i < num; i++) { long long gap = target - locs[i]; if(gap < 0) gap = -gap; if(gap < best) best = gap; } return best; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long process(int locs[], int num, long long vals[], int sz)",
+          "code": "long long process(int locs[], int num, long long vals[], int sz) { long long result = 0; for(int t = 0; t < sz; t++) result += compute(t, locs, num) * vals[t]; return result; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(long long vals[], int sz, int sel)",
+          "code": "long long solve(long long vals[], int sz, int sel) { long long minimum = 1e15; int locs[100]; for(int set = 0; set < (1 << sz); set++) { int cnt = 0; for(int b = 0; b < sz; b++) if(set & (1 << b)) locs[cnt++] = b; if(cnt != sel) continue; long long score = process(locs, sel, vals, sz); if(score < minimum) minimum = score; } return minimum; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int sz, sel; long long vals[50000]; scan(&sz, &sel, vals); printf(\"%lld\\n\", solve(vals, sz, sel)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int read_input(int *k_val, long long p_arr[])",
+          "code": "int read_input(int *k_val, long long p_arr[]) { int n_val; scanf(\"%d%d\", &n_val, k_val); int idx; for(idx = 0; idx < n_val; idx++) scanf(\"%lld\", p_arr + idx); return n_val; }"
+        },
+        {
+          "clause_id": "compute",
+          "signature": "long long compute(int y_pos, int x_pos[], int k_cnt)",
+          "code": "long long compute(int y_pos, int x_pos[], int k_cnt) { long long min_val = 1e9; for(int i = 0; i < k_cnt; i++) { long long diff = y_pos - x_pos[i]; if(diff < 0) diff = -diff; min_val = diff < min_val ? diff : min_val; } return min_val; }"
+        },
+        {
+          "clause_id": "process",
+          "signature": "long long process(int x_pos[], int k_cnt, long long p_arr[], int n_val)",
+          "code": "long long process(int x_pos[], int k_cnt, long long p_arr[], int n_val) { long long sum_total = 0; for(int y = 0; y < n_val; y++) sum_total += compute(y, x_pos, k_cnt) * p_arr[y]; return sum_total; }"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(long long p_arr[], int n_val, int k_val)",
+          "code": "long long solve(long long p_arr[], int n_val, int k_val) { long long ans_min = 1e18; int x_pos[100]; for(int mask = 0; mask < (1 << n_val); mask++) { int cnt = 0; for(int bit = 0; bit < n_val; bit++) if(mask & (1 << bit)) x_pos[cnt++] = bit; if(cnt == k_val) { long long cur = process(x_pos, k_val, p_arr, n_val); ans_min = cur < ans_min ? cur : ans_min; } } return ans_min; }"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() { int k_val; long long p_arr[50000]; int n_val = read(&k_val, p_arr); printf(\"%lld\\n\", solve(p_arr, n_val, k_val)); return 0; }"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

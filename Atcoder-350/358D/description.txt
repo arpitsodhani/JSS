@@ -1,0 +1,8 @@
+A souvenir shop at AtCoder Land sells N boxes. The boxes are numbered 1 to N , and box i has a price of A_i yen and contains A_i pieces of candy. Takahashi wants to buy M out of the N boxes and give one box each to M people named 1, 2, \ldots, M . Here, he wants to buy boxes that can satisfy the following condition: For each i = 1, 2, \ldots, M , person i is given a box containing at least B_i pieces of candy. Note that it is not allowed to give more than one box to a single person or to give the same box to multiple people. Determine whether it is possible to buy M boxes that can satisfy the condition, and if it is possible, find the minimum total amount of money Takahashi needs to pay.
+
+**Constraints:**
+- 1 <= N, M <= 2 * 10^5
+- 1 <= A_i, B_i <= 10^9
+- A is sorted in ascending order
+- B is sorted in ascending order
+- All input values are integers

@@ -1,0 +1,9 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_block_size",
+      "confidence": 1.0
+    }
+  ]
+}

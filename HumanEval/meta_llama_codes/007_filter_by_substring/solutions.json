@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    char substr[100];\n    scanf(\"%d\", &n);\n    getchar();\n    fgets(substr, sizeof(substr), stdin);\n    substr[strcspn(substr, \"\\n\")] = 0;\n    for (int i = 0; i < n; i++) {\n        char str[100];\n        fgets(str, sizeof(str), stdin);\n        str[strcspn(str, \"\\n\")] = 0;\n        if (strstr(str, substr) != NULL) {\n            printf(\"%s\\n\", str);\n        }\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int count;\n    char pattern[100];\n    scanf(\"%d\", &count);\n    getchar();\n    fgets(pattern, sizeof(pattern), stdin);\n    pattern[strcspn(pattern, \"\\n\")] = 0;\n    for (int i = 0; i < count; i++) {\n        char line[100];\n        fgets(line, sizeof(line), stdin);\n        line[strcspn(line, \"\\n\")] = 0;\n        if (strstr(line, pattern)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int num;\n    char search[100];\n    scanf(\"%d\", &num);\n    getchar();\n    fgets(search, sizeof(search), stdin);\n    search[strcspn(search, \"\\n\")] = 0;\n    for (int i = 0; i < num; i++) {\n        char text[100];\n        fgets(text, sizeof(text), stdin);\n        text[strcspn(text, \"\\n\")] = 0;\n        char *found = strstr(text, search);\n        if (found != NULL) {\n            printf(\"%s\\n\", text);\n        }\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int size;\n    char sub[100];\n    scanf(\"%d\", &size);\n    getchar();\n    fgets(sub, sizeof(sub), stdin);\n    sub[strcspn(sub, \"\\n\")] = 0;\n    for (int i = 0; i < size; i++) {\n        char s[100];\n        fgets(s, sizeof(s), stdin);\n        s[strcspn(s, \"\\n\")] = 0;\n        if (strstr(s, sub)) {\n            printf(\"%s\\n\", s);\n        }\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    char ss[100];\n    scanf(\"%d\", &n);\n    getchar();\n    fgets(ss, sizeof(ss), stdin);\n    ss[strcspn(ss, \"\\n\")] = 0;\n    for (int i = 0; i < n; i++) {\n        char t[100];\n        fgets(t, sizeof(t), stdin);\n        t[strcspn(t, \"\\n\")] = 0;\n        if (strstr(t, ss)) printf(\"%s\\n\", t);\n    }\n    return 0;\n}"
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ],
+  "global_includes": [],
+  "tests": {
+    "clause_tests": {},
+    "program_tests": [
+      {
+        "test_id": "test_0",
+        "input": "0\ntest\n",
+        "expected": ""
+      },
+      {
+        "test_id": "test_1",
+        "input": "3\na\nabc\nbacd\ncde\n",
+        "expected": "abc\nbacd\n"
+      }
+    ]
+  },
+  "merge_settings": {
+    "consensus_threshold": 0.6,
+    "max_rounds": 3
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "contestId": 808,
+  "index": "A",
+  "problem_id": "808A",
+  "name": "Lucky Year",
+  "rating": 900,
+  "tags": [
+    "implementation"
+  ],
+  "points": null,
+  "solvedCount": 11173,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Lucky Year",
+  "legend": "Apart from having lots of holidays throughout the year, residents of Berland also have whole lucky years. Year is considered lucky if it has no more than 1 non-zero digit in its number. So years 100, 40000, 5 are lucky and 12, 3001 and 12345 are not.\n\nYou are given current year in Berland. Your task is to find how long will residents of Berland wait till the next lucky year.",
+  "input_spec": "The first line contains integer number n (1 ≤ n ≤ 109) — current year in Berland.",
+  "output_spec": "Output amount of years from the current year to the next lucky one.",
+  "note": "In the first example next lucky year is 5. In the second one — 300. In the third — 5000.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "4\n",
+      "output": "1"
+    },
+    {
+      "input": "201\n",
+      "output": "99"
+    },
+    {
+      "input": "4000\n",
+      "output": "1000"
+    }
+  ]
+}

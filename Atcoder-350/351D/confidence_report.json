@@ -1,0 +1,85 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "prog1_bfs_component",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_find_maximum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_bfs_component",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_find_maximum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_bfs_component",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_find_maximum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_bfs_component",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_find_maximum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_read_input",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_bfs_component",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_find_maximum",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_read_input",
+      "confidence": 1.0
+    }
+  ]
+}

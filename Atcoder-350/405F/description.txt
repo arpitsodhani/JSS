@@ -1,0 +1,21 @@
+You are given a simple undirected graph with N vertices and M edges.
+Find the number of spanning trees of this graph.
+
+**Input:**
+The input is given from Standard Input in the following format:
+N M
+u_1 v_1
+u_2 v_2
+...
+u_M v_M
+
+**Output:**
+Print the answer modulo 998244353.
+
+**Constraints:**
+- 2 <= N <= 300
+- N-1 <= M <= N(N-1)/2
+- 1 <= u_i < v_i <= N
+- All pairs (u_i, v_i) are distinct
+- The graph is connected
+- All input values are integers

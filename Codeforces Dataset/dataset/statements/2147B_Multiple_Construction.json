@@ -1,0 +1,26 @@
+{
+  "contestId": 2147,
+  "index": "B",
+  "problem_id": "2147B",
+  "name": "Multiple Construction",
+  "rating": 1000,
+  "tags": [
+    "constructive algorithms"
+  ],
+  "points": 1000.0,
+  "solvedCount": 18212,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Multiple Construction",
+  "legend": "You are given an integer n. Your task is to construct an array of length 2⋅n such that:\n\nEach integer from 1 to n appears exactly twice in the array.\nFor each integer x (1≤x≤n), the distance between the two occurrences of x is a multiple of x. In other words, if px and qx are the indices of the two occurrences of x, |qx−px| must be divisible by x.\n\nIt can be shown that a solution always exists.",
+  "input_spec": "Each test contains multiple test cases. The first line contains the number of test cases t (1≤t≤104). The description of the test cases follows.\n\nEach of the next t lines contains a single integer n (1≤n≤2⋅105).\n\nIt is guaranteed that the sum of n over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, print a line containing 2⋅n integers — the array that satisfies the given conditions.\n\nIf there are multiple valid answers, print any of them.",
+  "note": "Visualizer link\n\nIn the first test case:\n\nThe number 1 appears at positions 1 and 3: the distance is 2, which is divisible by 1.\nThe number 2 appears at positions 2 and 4: the distance is 2, which is divisible by 2.\n\nIn the second test case:\n\nThe number 1 appears at positions 1 and 3: the distance is 2, which is divisible by 1.\nThe number 2 appears at positions 4 and 6: the distance is 2, which is divisible by 2.\nThe number 3 appears at positions 2 and 5: the distance is 3, which is divisible by 3.\n\nIn the third test case, the two occurrences of 1 are at positions 1 and 2, so the distance between them is 1, which is a multiple of 1.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n2\n3\n1\n",
+      "output": "1 2 1 2\n1 3 1 2 3 2\n1 1"
+    }
+  ]
+}

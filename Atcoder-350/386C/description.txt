@@ -1,0 +1,6 @@
+This problem is a sub-problem of Problem F (Operate K), with K=1 . You can solve this problem by submitting a correct solution for Problem F to this problem. Determine whether it is possible to perform the following operation on string S between 0 and K times, inclusive, to make it identical to string T . Choose one of the following three operations and execute it. Insert any one character at any position in S (possibly the beginning or end). Delete one character from S . Choose one character in S and replace it with another character.
+
+**Constraints:**
+- 1 <= K <= 10^6
+- S and T are strings consisting of lowercase English letters
+- 1 <= |S|, |T| <= 5 * 10^5

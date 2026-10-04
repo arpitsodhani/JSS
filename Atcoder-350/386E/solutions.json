@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *k,long long *A)",
+          "code": "scanf(\"%d%d\", n,k); for(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int n,int k,long long *A)",
+          "code": "long long best=0; long long total=0;\nint idx[64]; for(int i=0;i<k;i++) idx[i]=i;\nlong long limit=1; for(int i=0;i<k;i++) limit=limit*(n-i)/(i+1);\nwhile(1){\n  long long x=0; for(int i=0;i<k;i++) x^=A[idx[i]]; if(x>best) best=x;\n  int i=k-1; while(i>=0 && idx[i]==n-k+i) i--; if(i<0) break; idx[i]++; for(int j=i+1;j<k;j++) idx[j]=idx[j-1]+1;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static long long A[64]; read_input(&n,&k,A); long long ans=solve(n,k,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *k,long long *A)",
+          "code": "scanf(\"%d%d\", n,k); for(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int n,int k,long long *A)",
+          "code": "long long best=0; long long total=0;\nint idx[64]; for(int i=0;i<k;i++) idx[i]=i;\nlong long limit=1; for(int i=0;i<k;i++) limit=limit*(n-i)/(i+1);\nwhile(1){\n  long long x=0; for(int i=0;i<k;i++) x^=A[idx[i]]; if(x>best) best=x;\n  int i=k-1; while(i>=0 && idx[i]==n-k+i) i--; if(i<0) break; idx[i]++; for(int j=i+1;j<k;j++) idx[j]=idx[j-1]+1;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static long long A[64]; read_input(&n,&k,A); long long ans=solve(n,k,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *k,long long *A)",
+          "code": "scanf(\"%d%d\", n,k); for(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int n,int k,long long *A)",
+          "code": "long long best=0; long long total=0;\nint idx[64]; for(int i=0;i<k;i++) idx[i]=i;\nlong long limit=1; for(int i=0;i<k;i++) limit=limit*(n-i)/(i+1);\nwhile(1){\n  long long x=0; for(int i=0;i<k;i++) x^=A[idx[i]]; if(x>best) best=x;\n  int i=k-1; while(i>=0 && idx[i]==n-k+i) i--; if(i<0) break; idx[i]++; for(int j=i+1;j<k;j++) idx[j]=idx[j-1]+1;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static long long A[64]; read_input(&n,&k,A); long long ans=solve(n,k,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *k,long long *A)",
+          "code": "scanf(\"%d%d\", n,k); for(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int n,int k,long long *A)",
+          "code": "long long best=0; long long total=0;\nint idx[64]; for(int i=0;i<k;i++) idx[i]=i;\nlong long limit=1; for(int i=0;i<k;i++) limit=limit*(n-i)/(i+1);\nwhile(1){\n  long long x=0; for(int i=0;i<k;i++) x^=A[idx[i]]; if(x>best) best=x;\n  int i=k-1; while(i>=0 && idx[i]==n-k+i) i--; if(i<0) break; idx[i]++; for(int j=i+1;j<k;j++) idx[j]=idx[j-1]+1;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static long long A[64]; read_input(&n,&k,A); long long ans=solve(n,k,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *k,long long *A)",
+          "code": "scanf(\"%d%d\", n,k); for(int i=0;i<*n;i++) scanf(\"%lld\", &A[i]);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int n,int k,long long *A)",
+          "code": "long long best=0; long long total=0;\nint idx[64]; for(int i=0;i<k;i++) idx[i]=i;\nlong long limit=1; for(int i=0;i<k;i++) limit=limit*(n-i)/(i+1);\nwhile(1){\n  long long x=0; for(int i=0;i<k;i++) x^=A[idx[i]]; if(x>best) best=x;\n  int i=k-1; while(i>=0 && idx[i]==n-k+i) i--; if(i<0) break; idx[i]++; for(int j=i+1;j<k;j++) idx[j]=idx[j-1]+1;\n}\nreturn best;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,k; static long long A[64]; read_input(&n,&k,A); long long ans=solve(n,k,A); print_ll(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "386E",
+  "total_programs": 5
+}

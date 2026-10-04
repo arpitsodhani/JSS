@@ -1,0 +1,39 @@
+import sys
+
+
+# --- clause: read_input :: () -> list[tuple[int, int, int, str]] ---
+def read_input():
+    tokens = sys.stdin.buffer.read().split()
+    t = int(tokens[0])
+    at = 1
+    cases = []
+    for _ in range(t):
+        c0 = int(tokens[at + 1])
+        c1 = int(tokens[at + 2])
+        h = int(tokens[at + 3])
+        s = tokens[at + 4].decode()
+        at += 5
+        cases.append((c0, c1, h, s))
+    return cases
+
+
+# --- clause: least_price :: (c0: int, c1: int, h: int, s: str) -> int ---
+def least_price(c0, c1, h, s):
+    zero = c0 if c0 < c1 + h else c1 + h
+    one = c1 if c1 < c0 + h else c0 + h
+    total = 0
+    for ch in s:
+        total += zero if ch == "0" else one
+    return total
+
+
+# --- clause: main :: () -> None ---
+def main():
+    out = []
+    for c0, c1, h, s in read_input():
+        out.append(least_price(c0, c1, h, s))
+    sys.stdout.write("\n".join(map(str, out)) + "\n")
+
+
+if __name__ == "__main__":
+    main()

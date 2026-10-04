@@ -1,0 +1,8 @@
+There is an N \times N grid. Takahashi wants to color each cell black or white so that all of the following conditions are satisfied: For every row, the following condition holds: There exists an integer i\ (0\leq i\leq N) such that the leftmost i cells are colored black, and the rest are colored white. For every column, the following condition holds: There exists an integer i\ (0\leq i\leq N) such that the topmost i cells are colored black, and the rest are colored white. Out of these N^2 cells, M of them have already been colored. Among them, the i -th one is at the X_i -th row from the top and the Y_i -th column from the left, and it is colored black if C_i is B and white if C_i is W . Determine whether he can color the remaining uncolored N^2 - M cells so that all the conditions are satisfied.
+
+**Constraints:**
+- 1 <= N, M <= 2 * 10^5
+- 1 <= X_i <= N
+- 1 <= Y_i <= M
+- C_i is 'W' or 'B'
+- All input values are integers

@@ -1,0 +1,6 @@
+You are given a sequence of M integers A = (A_1, A_2, \dots, A_M) . Each element of A is an integer between 1 and N , inclusive, and all elements are distinct. List all integers between 1 and N that do not appear in A in ascending order.
+
+**Constraints:**
+- 1 <= N, M <= 100
+- 1 <= H, W <= 100
+- All input values are integers

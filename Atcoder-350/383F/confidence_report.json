@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.9715689865689867,
+  "clauses": [
+    {
+      "clause": "read_input",
+      "confidence": 0.9723076923076924
+    },
+    {
+      "clause": "best_satisfaction",
+      "confidence": 0.9885714285714287
+    },
+    {
+      "clause": "print_answer",
+      "confidence": 0.9549999999999998
+    },
+    {
+      "clause": "main",
+      "confidence": 0.9703968253968256
+    }
+  ]
+}

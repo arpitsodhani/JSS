@@ -1,0 +1,141 @@
+{
+  "problem_num": 162,
+  "problem_name": "string_to_md5",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "compute_simple_hash",
+          "code": "void compute_simple_hash(char* text, char* result) {\n    int len = strlen(text);\n    if (len == 0 || (len == 1 && text[0] == '\\n')) {\n        strcpy(result, \"None\");\n        return;\n    }\n    \n    // Simple hash (not real MD5, placeholder)\n    unsigned long hash = 5381;\n    for (int i = 0; text[i] != '\\0' && text[i] != '\\n'; i++) {\n        hash = ((hash << 5) + hash) + text[i];\n    }\n    \n    sprintf(result, \"%032lx\", hash);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "compute_simple_hash",
+          "code": "void compute_simple_hash(char* text, char* result) {\n    int len = strlen(text);\n    if (len == 0 || (len == 1 && text[0] == '\\n')) {\n        strcpy(result, \"None\");\n        return;\n    }\n    \n    // Simple hash (not real MD5, placeholder)\n    unsigned long hash = 5381;\n    for (int i = 0; text[i] != '\\0' && text[i] != '\\n'; i++) {\n        hash = ((hash << 5) + hash) + text[i];\n    }\n    \n    sprintf(result, \"%032lx\", hash);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "compute_simple_hash",
+          "code": "void compute_simple_hash(char* text, char* result) {\n    int len = strlen(text);\n    if (len == 0 || (len == 1 && text[0] == '\\n')) {\n        strcpy(result, \"None\");\n        return;\n    }\n    \n    // Simple hash (not real MD5, placeholder)\n    unsigned long hash = 5381;\n    for (int i = 0; text[i] != '\\0' && text[i] != '\\n'; i++) {\n        hash = ((hash << 5) + hash) + text[i];\n    }\n    \n    sprintf(result, \"%032lx\", hash);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "compute_simple_hash",
+          "code": "void compute_simple_hash(char* text, char* result) {\n    int len = strlen(text);\n    if (len == 0 || (len == 1 && text[0] == '\\n')) {\n        strcpy(result, \"None\");\n        return;\n    }\n    \n    // Simple hash (not real MD5, placeholder)\n    unsigned long hash = 5381;\n    for (int i = 0; text[i] != '\\0' && text[i] != '\\n'; i++) {\n        hash = ((hash << 5) + hash) + text[i];\n    }\n    \n    sprintf(result, \"%032lx\", hash);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "compute_simple_hash",
+          "code": "void compute_simple_hash(char* text, char* result) {\n    int len = strlen(text);\n    if (len == 0 || (len == 1 && text[0] == '\\n')) {\n        strcpy(result, \"None\");\n        return;\n    }\n    \n    // Simple hash (not real MD5, placeholder)\n    unsigned long hash = 5381;\n    for (int i = 0; text[i] != '\\0' && text[i] != '\\n'; i++) {\n        hash = ((hash << 5) + hash) + text[i];\n    }\n    \n    sprintf(result, \"%032lx\", hash);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "run",
+          "code": "void run(void) {\n\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    run();\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

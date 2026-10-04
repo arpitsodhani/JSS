@@ -1,0 +1,35 @@
+{
+  "contestId": 784,
+  "index": "D",
+  "problem_id": "784D",
+  "name": "Touchy-Feely Palindromes",
+  "rating": 1900,
+  "tags": [
+    "*special",
+    "implementation"
+  ],
+  "points": null,
+  "solvedCount": 516,
+  "source": "verbatim_cf_fetch",
+  "title": "D. Touchy-Feely Palindromes",
+  "legend": "",
+  "input_spec": "The only line of the input contains a string of digits. The length of the string is between 1 and 10, inclusive.",
+  "output_spec": "Output \"Yes\" or \"No\".",
+  "note": "",
+  "time_limit": "2 seconds",
+  "mem_limit": "64 megabytes",
+  "samples": [
+    {
+      "input": "373\n",
+      "output": "Yes"
+    },
+    {
+      "input": "121\n",
+      "output": "No"
+    },
+    {
+      "input": "436\n",
+      "output": "Yes"
+    }
+  ]
+}

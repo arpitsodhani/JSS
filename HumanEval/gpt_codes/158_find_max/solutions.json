@@ -1,0 +1,131 @@
+{
+  "problem_num": 158,
+  "problem_name": "find_max",
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "count_unique_chars",
+          "code": "int count_unique_chars(char* word) {\n    int seen[256] = {0};\n    int count = 0;\n    \n    for (int i = 0; word[i] != '\\0'; i++) {\n        if (!seen[(int)word[i]]) {\n            seen[(int)word[i]] = 1;\n            count++;\n        }\n    }\n    \n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    char words[1000][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", words[i]);\n    }\n    \n    int max_unique = -1;\n    char max_word[100];\n    \n    for (int i = 0; i < n; i++) {\n        int unique = count_unique_chars(words[i]);\n        if (unique > max_unique || (unique == max_unique && strcmp(words[i], max_word) < 0)) {\n            max_unique = unique;\n            strcpy(max_word, words[i]);\n        }\n    }\n    \n    printf(\"%s\\n\", max_word);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "count_unique_chars",
+          "code": "int count_unique_chars(char* word) {\n    int seen[256] = {0};\n    int count = 0;\n    \n    for (int i = 0; word[i] != '\\0'; i++) {\n        if (!seen[(int)word[i]]) {\n            seen[(int)word[i]] = 1;\n            count++;\n        }\n    }\n    \n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    char words[1000][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", words[i]);\n    }\n    \n    int max_unique = -1;\n    char max_word[100];\n    \n    for (int i = 0; i < n; i++) {\n        int unique = count_unique_chars(words[i]);\n        if (unique > max_unique || (unique == max_unique && strcmp(words[i], max_word) < 0)) {\n            max_unique = unique;\n            strcpy(max_word, words[i]);\n        }\n    }\n    \n    printf(\"%s\\n\", max_word);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "count_unique_chars",
+          "code": "int count_unique_chars(char* word) {\n    int seen[256] = {0};\n    int count = 0;\n    \n    for (int i = 0; word[i] != '\\0'; i++) {\n        if (!seen[(int)word[i]]) {\n            seen[(int)word[i]] = 1;\n            count++;\n        }\n    }\n    \n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    char words[1000][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", words[i]);\n    }\n    \n    int max_unique = -1;\n    char max_word[100];\n    \n    for (int i = 0; i < n; i++) {\n        int unique = count_unique_chars(words[i]);\n        if (unique > max_unique || (unique == max_unique && strcmp(words[i], max_word) < 0)) {\n            max_unique = unique;\n            strcpy(max_word, words[i]);\n        }\n    }\n    \n    printf(\"%s\\n\", max_word);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "count_unique_chars",
+          "code": "int count_unique_chars(char* word) {\n    int seen[256] = {0};\n    int count = 0;\n    \n    for (int i = 0; word[i] != '\\0'; i++) {\n        if (!seen[(int)word[i]]) {\n            seen[(int)word[i]] = 1;\n            count++;\n        }\n    }\n    \n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    char words[1000][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", words[i]);\n    }\n    \n    int max_unique = -1;\n    char max_word[100];\n    \n    for (int i = 0; i < n; i++) {\n        int unique = count_unique_chars(words[i]);\n        if (unique > max_unique || (unique == max_unique && strcmp(words[i], max_word) < 0)) {\n            max_unique = unique;\n            strcpy(max_word, words[i]);\n        }\n    }\n    \n    printf(\"%s\\n\", max_word);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "count_unique_chars",
+          "code": "int count_unique_chars(char* word) {\n    int seen[256] = {0};\n    int count = 0;\n    \n    for (int i = 0; word[i] != '\\0'; i++) {\n        if (!seen[(int)word[i]]) {\n            seen[(int)word[i]] = 1;\n            count++;\n        }\n    }\n    \n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    char words[1000][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", words[i]);\n    }\n    \n    int max_unique = -1;\n    char max_word[100];\n    \n    for (int i = 0; i < n; i++) {\n        int unique = count_unique_chars(words[i]);\n        if (unique > max_unique || (unique == max_unique && strcmp(words[i], max_word) < 0)) {\n            max_unique = unique;\n            strcpy(max_word, words[i]);\n        }\n    }\n    \n    printf(\"%s\\n\", max_word);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
+    }
+  ]
+}

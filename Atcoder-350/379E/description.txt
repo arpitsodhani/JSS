@@ -1,0 +1,5 @@
+You are given a string S of length N consisting of digits from 1 through 9 . For each pair of integers (i,j) \ (1\leq i\leq j\leq N) , define f(i, j) as the value obtained by interpreting the substring of S from the i -th through the j -th character as a decimal integer. Find \displaystyle \sum_{i=1}^N \sum_{j=i}^N f(i, j) .
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- S is a string of length N consisting of digits

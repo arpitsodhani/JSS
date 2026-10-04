@@ -1,0 +1,28 @@
+{
+  "contestId": 1688,
+  "index": "C",
+  "problem_id": "1688C",
+  "name": "Manipulating History",
+  "rating": 1700,
+  "tags": [
+    "constructive algorithms",
+    "greedy",
+    "strings"
+  ],
+  "points": 1250.0,
+  "solvedCount": 8813,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Manipulating History",
+  "legend": "As a human, she can erase history of its entirety. As a Bai Ze (Hakutaku), she can create history out of nothingness.\n—Perfect Memento in Strict Sense\n\nKeine has the ability to manipulate history.\n\nThe history of Gensokyo is a string s of length 1 initially. To fix the chaos caused by Yukari, she needs to do the following operations n times, for the i-th time:\n\nShe chooses a non-empty substring t2i−1 of s.\nShe replaces t2i−1 with a non-empty string, t2i. Note that the lengths of strings t2i−1 and t2i can be different.\n\nNote that if t2i−1 occurs more than once in s, exactly one of them will be replaced.\n\nFor example, let s=\"marisa\", t2i−1=\"a\", and t2i=\"z\". After the operation, s becomes \"mzrisa\" or \"marisz\".\n\nAfter n operations, Keine got the final string and an operation sequence t of length 2n. Just as Keine thinks she has finished, Yukari appears again and shuffles the order of t. Worse still, Keine forgets the initial history.\n\nHelp Keine find the initial history of Gensokyo!\n\nRecall that a substring is a sequence of consecutive characters of the string. For example, for string \"abc\" its substrings are: \"ab\", \"c\", \"bc\" and some others. But the following strings are not its substring: \"ac\", \"cba\", \"acb\".\n\nHacks\n\nYou cannot make hacks in this problem.",
+  "input_spec": "Each test contains multiple test cases. The first line contains a single integer T (1≤T≤103) — the number of test cases. The description of the test cases follows.\n\nThe first line of each test case contains a single integer n (1≤n<105) — the number of operations.\n\nThe next 2n lines contains one non-empty string ti — the i-th string of the shuffled sequence t.\n\nThe next line contains one non-empty string s — the final string.\n\nIt is guaranteed that the total length of given strings (including ti and s) over all test cases does not exceed 2⋅105. All given strings consist of lowercase English letters only.\n\nIt is guaranteed that the initial string exists. It can be shown that the initial string is unique.",
+  "output_spec": "For each test case, print the initial string in one line.",
+  "note": "Test case 1:\n\nInitially s is \"a\".\n\nIn the first operation, Keine chooses \"a\", and replaces it with \"ab\". s becomes \"ab\".\nIn the second operation, Keine chooses \"b\", and replaces it with \"cd\". s becomes \"acd\".\n\nSo the final string is \"acd\", and t=[\"a\", \"ab\", \"b\", \"cd\"] before being shuffled.\n\nTest case 2:\n\nInitially s is \"z\".\n\nIn the first operation, Keine chooses \"z\", and replaces it with \"aa\". s becomes \"aa\".\nIn the second operation, Keine chooses \"a\", and replaces it with \"ran\". s becomes \"aran\".\nIn the third operation, Keine chooses \"a\", and replaces it with \"yakumo\". s becomes \"yakumoran\".\n\nSo the final string is \"yakumoran\", and t=[\"z\", \"aa\", \"a\", \"ran\", \"a\", \"yakumo\"] before being shuffled.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "2\n2\na\nab\nb\ncd\nacd\n3\nz\na\na\naa\nyakumo\nran\nyakumoran\n",
+      "output": "a\nz"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+You are given a length- N sequence A=(A_1,A_2,\ldots,A_N) of positive integers. Determine whether A is a geometric progression.
+
+**Constraints:**
+- 1 <= N, K <= 100
+- 1 <= A_i <= 100
+- All input values are integers

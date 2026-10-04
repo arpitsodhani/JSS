@@ -1,0 +1,32 @@
+{
+  "contestId": 884,
+  "index": "C",
+  "problem_id": "884C",
+  "name": "Bertown Subway",
+  "rating": 1500,
+  "tags": [
+    "dfs and similar",
+    "greedy",
+    "math"
+  ],
+  "points": null,
+  "solvedCount": 5196,
+  "source": "verbatim_cf_fetch",
+  "title": "C. Bertown Subway",
+  "legend": "The construction of subway in Bertown is almost finished! The President of Berland will visit this city soon to look at the new subway himself.\n\nThere are n stations in the subway. It was built according to the Bertown Transport Law:\n\nFor each station i there exists exactly one train that goes from this station. Its destination station is pi, possibly pi = i;\nFor each station i there exists exactly one station j such that pj = i.\n\nThe President will consider the convenience of subway after visiting it. The convenience is the number of ordered pairs (x, y) such that person can start at station x and, after taking some subway trains (possibly zero), arrive at station y (1 ≤ x, y ≤ n).\n\nThe mayor of Bertown thinks that if the subway is not convenient enough, then the President might consider installing a new mayor (and, of course, the current mayor doesn't want it to happen). Before President visits the city mayor has enough time to rebuild some paths of subway, thus changing the values of pi for not more than two subway stations. Of course, breaking the Bertown Transport Law is really bad, so the subway must be built according to the Law even after changes.\n\nThe mayor wants to do these changes in such a way that the convenience of the subway is maximized. Help him to calculate the maximum possible convenience he can get!",
+  "input_spec": "The first line contains one integer number n (1 ≤ n ≤ 100000) — the number of stations.\n\nThe second line contains n integer numbers p1, p2, ..., pn (1 ≤ pi ≤ n) — the current structure of the subway. All these numbers are distinct.",
+  "output_spec": "Print one number — the maximum possible value of convenience.",
+  "note": "In the first example the mayor can change p2 to 3 and p3 to 1, so there will be 9 pairs: (1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (3, 1), (3, 2), (3, 3).\n\nIn the second example the mayor can change p2 to 4 and p3 to 5.",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\n2 1 3\n",
+      "output": "9"
+    },
+    {
+      "input": "5\n1 5 4 3 2\n",
+      "output": "17"
+    }
+  ]
+}

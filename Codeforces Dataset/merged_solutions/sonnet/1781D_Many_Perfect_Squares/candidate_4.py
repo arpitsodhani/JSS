@@ -1,0 +1,65 @@
+import sys
+
+
+# --- clause: read_input :: () -> list[list[int]] ---
+def read_input():
+    data = sys.stdin.buffer.read().split()
+    pos = 0
+    t = int(data[pos])
+    pos += 1
+    cases = []
+    for _ in range(t):
+        n = int(data[pos])
+        pos += 1
+        cases.append([int(data[pos + i]) for i in range(n)])
+        pos += n
+    return cases
+
+
+# --- clause: square_count :: (values: list[int], shift: int) -> int ---
+def square_count(values, shift):
+    total = 0
+    for value in values:
+        target = value + shift
+        root = int(target ** 0.5)
+        while root * root > target:
+            root -= 1
+        while (root + 1) * (root + 1) <= target:
+            root += 1
+        if root * root == target:
+            total += 1
+    return total
+
+
+# --- clause: best_squareness :: (values: list[int]) -> int ---
+def best_squareness(values):
+    n = len(values)
+    best = 1
+    for i in range(n):
+        for j in range(i + 1, n):
+            gap = values[j] - values[i]
+            divisor = 1
+            while divisor * divisor <= gap:
+                if gap % divisor == 0:
+                    other = gap // divisor
+                    if not (divisor + other) % 2:
+                        low = (other - divisor) >> 1
+                        shift = low * low - values[i]
+                        if shift >= 0:
+                            here = square_count(values, shift)
+                            if best < here:
+                                best = here
+                divisor += 1
+    return best
+
+
+# --- clause: main :: () -> None ---
+def main():
+    out = []
+    for case in read_input():
+        out.append(str(best_squareness(case)))
+    sys.stdout.write("\n".join(out) + "\n")
+
+
+if __name__ == "__main__":
+    main()

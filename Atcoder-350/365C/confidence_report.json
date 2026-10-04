@@ -1,0 +1,25 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "check_substring_uniqueness",
+      "confidence": 1.0
+    },
+    {
+      "clause": "enumerate_and_count_distinct_substrings",
+      "confidence": 1.0
+    },
+    {
+      "clause": "extract_substring",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "register_unique_substring",
+      "confidence": 1.0
+    }
+  ]
+}

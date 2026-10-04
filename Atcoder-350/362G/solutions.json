@@ -1,0 +1,129 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int **arr)",
+          "code": "void read_input(int *n, int **arr) {\n    scanf(\"%d\", n);\n    *arr = malloc(*n * sizeof(int));\n    for (int i = 0; i < *n; i++) {\n        scanf(\"%d\", &(*arr)[i]);\n    }\n}"
+        },
+        {
+          "clause_id": "compute_sum",
+          "signature": "long long compute_sum(int *arr, int n)",
+          "code": "long long compute_sum(int *arr, int n) {\n    long long sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += arr[i];\n    }\n    return sum;\n}"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(long long result)",
+          "code": "void print_result(long long result) {\n    printf(\"%lld\\n\", result);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    int *arr;\n    read_input(&n, &arr);\n    long long result = compute_sum(arr, n);\n    print_result(result);\n    free(arr);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *size, int arr[])",
+          "code": "void read_input(int *size, int arr[]) {\n    scanf(\"%d\", size);\n    for (int j = 0; j < *size; j++) {\n        scanf(\"%d\", &arr[j]);\n    }\n}"
+        },
+        {
+          "clause_id": "compute_sum",
+          "signature": "long long compute_sum(int arr[], int size)",
+          "code": "long long compute_sum(int arr[], int size) {\n    long long total = 0;\n    int k = 0;\n    while (k < size) {\n        total += arr[k];\n        k++;\n    }\n    return total;\n}"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(long long total)",
+          "code": "void print_result(long long total) {\n    printf(\"%lld\\n\", total);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int size;\n    int arr[100000];\n    read_input(&size, arr);\n    long long result = compute_sum(arr, size);\n    print_result(result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "int* read_input(int *len)",
+          "code": "int* read_input(int *len) {\n    scanf(\"%d\", len);\n    int *nums = malloc(*len * sizeof(int));\n    for (int i = 0; i < *len; i++) {\n        scanf(\"%d\", &nums[i]);\n    }\n    return nums;\n}"
+        },
+        {
+          "clause_id": "compute_sum",
+          "signature": "long long compute_sum(int *nums, int len)",
+          "code": "long long compute_sum(int *nums, int len) {\n    long long sum = 0;\n    for (int i = 0; i < len; i++) {\n        sum = sum + nums[i];\n    }\n    return sum;\n}"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(long long sum)",
+          "code": "void print_result(long long sum) {\n    printf(\"%lld\\n\", sum);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int len;\n    int *nums = read_input(&len);\n    long long result = compute_sum(nums, len);\n    print_result(result);\n    free(nums);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *count, int values[])",
+          "code": "void read_input(int *count, int values[]) {\n    scanf(\"%d\", count);\n    int i = 0;\n    do {\n        scanf(\"%d\", &values[i]);\n        i++;\n    } while (i < *count);\n}"
+        },
+        {
+          "clause_id": "compute_sum",
+          "signature": "long long compute_sum(int values[], int count)",
+          "code": "long long compute_sum(int values[], int count) {\n    long long acc = 0;\n    for (int idx = 0; idx < count; idx++) {\n        acc += values[idx];\n    }\n    return acc;\n}"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(long long acc)",
+          "code": "void print_result(long long acc) {\n    printf(\"%lld\\n\", acc);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int count;\n    int values[100000];\n    read_input(&count, values);\n    long long result = compute_sum(values, count);\n    print_result(result);\n    return 0;\n}"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n, int array[])",
+          "code": "void read_input(int *n, int array[]) {\n    scanf(\"%d\", n);\n    for (int p = 0; p < *n; p++) {\n        scanf(\"%d\", &array[p]);\n    }\n}"
+        },
+        {
+          "clause_id": "compute_sum",
+          "signature": "long long compute_sum(int array[], int n)",
+          "code": "long long compute_sum(int array[], int n) {\n    long long answer = 0;\n    for (int q = n - 1; q >= 0; q--) {\n        answer += array[q];\n    }\n    return answer;\n}"
+        },
+        {
+          "clause_id": "print_result",
+          "signature": "void print_result(long long answer)",
+          "code": "void print_result(long long answer) {\n    printf(\"%lld\\n\", answer);\n}"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main()",
+          "code": "int main() {\n    int n;\n    int array[100000];\n    read_input(&n, array);\n    long long result = compute_sum(array, n);\n    print_result(result);\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

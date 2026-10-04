@@ -1,0 +1,7 @@
+There are 2N people standing in a row, and the person at the i -th position from the left is wearing clothes of color A_i . Here, the clothes have N colors from 1 to N , and exactly two people are wearing clothes of each color. Find how many of the integers i=1,2,\ldots,N satisfy the following condition: There is exactly one person between the two people wearing clothes of color i .
+
+**Constraints:**
+- 3 <= N <= 100
+- N is odd
+- 1 <= A_i <= 100
+- All input values are integers

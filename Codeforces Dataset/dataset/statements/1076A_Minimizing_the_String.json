@@ -1,0 +1,31 @@
+{
+  "contestId": 1076,
+  "index": "A",
+  "problem_id": "1076A",
+  "name": "Minimizing the String",
+  "rating": 1200,
+  "tags": [
+    "greedy",
+    "strings"
+  ],
+  "points": null,
+  "solvedCount": 14291,
+  "source": "verbatim_cf_fetch",
+  "title": "A. Minimizing the String",
+  "legend": "You are given a string s consisting of n lowercase Latin letters.\n\nYou have to remove at most one (i.e. zero or one) character of this string in such a way that the string you obtain will be lexicographically smallest among all strings that can be obtained using this operation.\n\nString s=s1s2…sn is lexicographically smaller than string t=t1t2…tm if n<m and s1=t1,s2=t2,…,sn=tn or there exists a number p such that p≤min(n,m) and s1=t1,s2=t2,…,sp−1=tp−1 and sp<tp.\n\nFor example, \"aaa\" is smaller than \"aaaa\", \"abb\" is smaller than \"abc\", \"pqr\" is smaller than \"z\".",
+  "input_spec": "The first line of the input contains one integer n (2≤n≤2⋅105) — the length of s.\n\nThe second line of the input contains exactly n lowercase Latin letters — the string s.",
+  "output_spec": "Print one string — the smallest possible lexicographically string that can be obtained by removing at most one character from the string s.",
+  "note": "In the first example you can remove any character of s to obtain the string \"aa\".\n\nIn the second example \"abca\" < \"abcd\" < \"abcda\" < \"abda\" < \"acda\" < \"bcda\".",
+  "time_limit": "1 second",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "3\naaa\n",
+      "output": "aa"
+    },
+    {
+      "input": "5\nabcda\n",
+      "output": "abca"
+    }
+  ]
+}

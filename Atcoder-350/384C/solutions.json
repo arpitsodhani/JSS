@@ -1,0 +1,154 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b,int *c,int *d,int *e)",
+          "code": "void read_input(int *a,int *b,int *c,int *d,int *e){ scanf(\"%d%d%d%d%d\", a,b,c,d,e); }\n"
+        },
+        {
+          "clause_id": "list_participants",
+          "signature": "void list_participants(int a,int b,int c,int d,int e)",
+          "code": "void list_participants(int a,int b,int c,int d,int e){\n    const char *names = \"ABCDE\";\n    int score[32];\n    char label[32][6];\n    int cnt=0;\n    int vals[5]={a,b,c,d,e};\n    for(int mask=1; mask<32; mask++){\n        int sum=0, len=0;\n        for(int i=0;i<5;i++){\n            if(mask>>i & 1){ sum+=vals[i]; label[cnt][len++]=names[i]; }\n        }\n        label[cnt][len]='\\0';\n        score[cnt]=sum;\n        cnt++;\n    }\n    for(int i=0;i<cnt;i++){\n        for(int j=i+1;j<cnt;j++){\n            if(score[j]>score[i] || (score[j]==score[i] && strcmp(label[j],label[i])<0)){\n                int ts=score[i]; score[i]=score[j]; score[j]=ts;\n                char tmp[6]; strcpy(tmp,label[i]); strcpy(label[i],label[j]); strcpy(label[j],tmp);\n            }\n        }\n    }\n    for(int i=0;i<cnt;i++) printf(\"%s\\n\", label[i]);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(void)",
+          "code": "void print_answer(void){ }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c,d,e; read_input(&a,&b,&c,&d,&e); list_participants(a,b,c,d,e); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b,int *c,int *d,int *e)",
+          "code": "void read_input(int *a,int *b,int *c,int *d,int *e){ scanf(\"%d%d%d%d%d\", a,b,c,d,e); }\n"
+        },
+        {
+          "clause_id": "list_participants",
+          "signature": "void list_participants(int a,int b,int c,int d,int e)",
+          "code": "void list_participants(int a,int b,int c,int d,int e){\n    const char *names=\"ABCDE\";\n    int vals[5]={a,b,c,d,e};\n    int score[31]; char label[31][6];\n    int cnt=0;\n    for(int mask=1; mask<32; mask++){\n        int sum=0; int len=0;\n        for(int i=0;i<5;i++) if(mask&(1<<i)){ sum+=vals[i]; label[cnt][len++]=names[i]; }\n        label[cnt][len]=0; score[cnt]=sum; cnt++;\n    }\n    for(int i=0;i<cnt;i++){\n        for(int j=i+1;j<cnt;j++){\n            if(score[j]>score[i]){ int ts=score[i]; score[i]=score[j]; score[j]=ts; char tmp[6]; strcpy(tmp,label[i]); strcpy(label[i],label[j]); strcpy(label[j],tmp); }\n            else if(score[j]==score[i] && strcmp(label[j],label[i])<0){ char tmp[6]; strcpy(tmp,label[i]); strcpy(label[i],label[j]); strcpy(label[j],tmp); }\n        }\n    }\n    for(int i=0;i<cnt;i++) puts(label[i]);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(void)",
+          "code": "void print_answer(void){ }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c,d,e; read_input(&a,&b,&c,&d,&e); list_participants(a,b,c,d,e); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b,int *c,int *d,int *e)",
+          "code": "void read_input(int *a,int *b,int *c,int *d,int *e){ scanf(\"%d%d%d%d%d\", a,b,c,d,e); }\n"
+        },
+        {
+          "clause_id": "list_participants",
+          "signature": "void list_participants(int a,int b,int c,int d,int e)",
+          "code": "void list_participants(int a,int b,int c,int d,int e){\n    const char *names = \"ABCDE\";\n    int score[32];\n    char label[32][6];\n    int cnt=0;\n    int vals[5]={a,b,c,d,e};\n    for(int mask=1; mask<32; mask++){\n        int sum=0, len=0;\n        for(int i=0;i<5;i++){\n            if(mask>>i & 1){ sum+=vals[i]; label[cnt][len++]=names[i]; }\n        }\n        label[cnt][len]='\\0';\n        score[cnt]=sum;\n        cnt++;\n    }\n    for(int i=0;i<cnt;i++){\n        for(int j=i+1;j<cnt;j++){\n            if(score[j]>score[i] || (score[j]==score[i] && strcmp(label[j],label[i])<0)){\n                int ts=score[i]; score[i]=score[j]; score[j]=ts;\n                char tmp[6]; strcpy(tmp,label[i]); strcpy(label[i],label[j]); strcpy(label[j],tmp);\n            }\n        }\n    }\n    for(int i=0;i<cnt;i++) printf(\"%s\\n\", label[i]);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(void)",
+          "code": "void print_answer(void){ }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c,d,e; read_input(&a,&b,&c,&d,&e); list_participants(a,b,c,d,e); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b,int *c,int *d,int *e)",
+          "code": "void read_input(int *a,int *b,int *c,int *d,int *e){ scanf(\"%d%d%d%d%d\", a,b,c,d,e); }\n"
+        },
+        {
+          "clause_id": "list_participants",
+          "signature": "void list_participants(int a,int b,int c,int d,int e)",
+          "code": "void list_participants(int a,int b,int c,int d,int e){\n    const char *names=\"ABCDE\";\n    int vals[5]={a,b,c,d,e};\n    int score[31]; char label[31][6];\n    int cnt=0;\n    for(int mask=1; mask<32; mask++){\n        int sum=0; int len=0;\n        for(int i=0;i<5;i++) if(mask&(1<<i)){ sum+=vals[i]; label[cnt][len++]=names[i]; }\n        label[cnt][len]=0; score[cnt]=sum; cnt++;\n    }\n    for(int i=0;i<cnt;i++){\n        for(int j=i+1;j<cnt;j++){\n            if(score[j]>score[i]){ int ts=score[i]; score[i]=score[j]; score[j]=ts; char tmp[6]; strcpy(tmp,label[i]); strcpy(label[i],label[j]); strcpy(label[j],tmp); }\n            else if(score[j]==score[i] && strcmp(label[j],label[i])<0){ char tmp[6]; strcpy(tmp,label[i]); strcpy(label[i],label[j]); strcpy(label[j],tmp); }\n        }\n    }\n    for(int i=0;i<cnt;i++) puts(label[i]);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(void)",
+          "code": "void print_answer(void){ }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c,d,e; read_input(&a,&b,&c,&d,&e); list_participants(a,b,c,d,e); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *a,int *b,int *c,int *d,int *e)",
+          "code": "void read_input(int *a,int *b,int *c,int *d,int *e){ scanf(\"%d%d%d%d%d\", a,b,c,d,e); }\n"
+        },
+        {
+          "clause_id": "list_participants",
+          "signature": "void list_participants(int a,int b,int c,int d,int e)",
+          "code": "void list_participants(int a,int b,int c,int d,int e){\n    const char *names = \"ABCDE\";\n    int score[32];\n    char label[32][6];\n    int cnt=0;\n    int vals[5]={a,b,c,d,e};\n    for(int mask=1; mask<32; mask++){\n        int sum=0, len=0;\n        for(int i=0;i<5;i++){\n            if(mask>>i & 1){ sum+=vals[i]; label[cnt][len++]=names[i]; }\n        }\n        label[cnt][len]='\\0';\n        score[cnt]=sum;\n        cnt++;\n    }\n    for(int i=0;i<cnt;i++){\n        for(int j=i+1;j<cnt;j++){\n            if(score[j]>score[i] || (score[j]==score[i] && strcmp(label[j],label[i])<0)){\n                int ts=score[i]; score[i]=score[j]; score[j]=ts;\n                char tmp[6]; strcpy(tmp,label[i]); strcpy(label[i],label[j]); strcpy(label[j],tmp);\n            }\n        }\n    }\n    for(int i=0;i<cnt;i++) printf(\"%s\\n\", label[i]);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(void)",
+          "code": "void print_answer(void){ }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int a,b,c,d,e; read_input(&a,&b,&c,&d,&e); list_participants(a,b,c,d,e); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N)",
+          "code": "void read_input(int *N){ scanf(\"%d\", N); }\n"
+        },
+        {
+          "clause_id": "check_digits",
+          "signature": "int check_digits(int N)",
+          "code": "int check_digits(int N){\n    int cnt1=0,cnt2=0,cnt3=0;\n    for(int i=0;i<6;i++){\n        int d=N%10; N/=10;\n        if(d==1) cnt1++;\n        if(d==2) cnt2++;\n        if(d==3) cnt3++;\n    }\n    return (cnt1==1 && cnt2==2 && cnt3==3);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; read_input(&N); int ok=check_digits(N); print_answer(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N)",
+          "code": "void read_input(int *N){ scanf(\"%d\", N); }\n"
+        },
+        {
+          "clause_id": "check_digits",
+          "signature": "int check_digits(int N)",
+          "code": "int check_digits(int N){\n    int cnt1=0,cnt2=0,cnt3=0;\n    for(int i=0;i<6;i++){\n        int d=N%10; N/=10;\n        if(d==1) cnt1++;\n        if(d==2) cnt2++;\n        if(d==3) cnt3++;\n    }\n    return (cnt1==1 && cnt2==2 && cnt3==3);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; read_input(&N); int ok=check_digits(N); print_answer(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N)",
+          "code": "void read_input(int *N){ scanf(\"%d\", N); }\n"
+        },
+        {
+          "clause_id": "check_digits",
+          "signature": "int check_digits(int N)",
+          "code": "int check_digits(int N){\n    int cnt1=0,cnt2=0,cnt3=0;\n    for(int i=0;i<6;i++){\n        int d=N%10; N/=10;\n        if(d==1) cnt1++;\n        if(d==2) cnt2++;\n        if(d==3) cnt3++;\n    }\n    return (cnt1==1 && cnt2==2 && cnt3==3);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; read_input(&N); int ok=check_digits(N); print_answer(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N)",
+          "code": "void read_input(int *N){ scanf(\"%d\", N); }\n"
+        },
+        {
+          "clause_id": "check_digits",
+          "signature": "int check_digits(int N)",
+          "code": "int check_digits(int N){\n    int cnt1=0,cnt2=0,cnt3=0;\n    for(int i=0;i<6;i++){\n        int d=N%10; N/=10;\n        if(d==1) cnt1++;\n        if(d==2) cnt2++;\n        if(d==3) cnt3++;\n    }\n    return (cnt1==1 && cnt2==2 && cnt3==3);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; read_input(&N); int ok=check_digits(N); print_answer(ok); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N)",
+          "code": "void read_input(int *N){ scanf(\"%d\", N); }\n"
+        },
+        {
+          "clause_id": "check_digits",
+          "signature": "int check_digits(int N)",
+          "code": "int check_digits(int N){\n    int cnt1=0,cnt2=0,cnt3=0;\n    for(int i=0;i<6;i++){\n        int d=N%10; N/=10;\n        if(d==1) cnt1++;\n        if(d==2) cnt2++;\n        if(d==3) cnt3++;\n    }\n    return (cnt1==1 && cnt2==2 && cnt3==3);\n}\n"
+        },
+        {
+          "clause_id": "print_answer",
+          "signature": "void print_answer(int ok)",
+          "code": "void print_answer(int ok){ printf(\"%s\\n\", ok?\"Yes\":\"No\"); }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N; read_input(&N); int ok=check_digits(N); print_answer(ok); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

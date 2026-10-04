@@ -1,0 +1,21 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "compute_edit_distance",
+      "confidence": 1.0
+    },
+    {
+      "clause": "compute_operation_cost",
+      "confidence": 1.0
+    },
+    {
+      "clause": "initialize_edit_distance_table",
+      "confidence": 1.0
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    }
+  ]
+}

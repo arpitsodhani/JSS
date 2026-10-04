@@ -1,0 +1,146 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K)",
+          "code": "scanf(\"%d%d\", N,K);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,int K)",
+          "code": "const long long MOD=998244353LL;\nstatic long long dp[405][405][405];\ndp[1][1][1]=1;\nfor(int n=2;n<=N;n++){\n  for(int l=1;l<=n;l++) for(int r=1;r<=n;r++){\n    long long v=0;\n    if(l>1) v=(v+dp[n-1][l-1][r])%MOD;\n    if(r>1) v=(v+dp[n-1][l][r-1])%MOD;\n    v=(v + dp[n-1][l][r]*(long long)(n-2))%MOD;\n    dp[n][l][r]=v;\n  }\n}\nlong long ans=0;\nfor(int l=1;l<=N;l++) for(int r=1;r<=N;r++) if(l-r==K) ans=(ans+dp[N][l][r])%MOD;\nif(ans<0) ans+=MOD; return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; read_input(&N,&K); long long ans=solve(N,K); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K)",
+          "code": "scanf(\"%d%d\", N,K);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,int K)",
+          "code": "const long long MOD=998244353LL;\nstatic long long dp[405][405][405];\ndp[1][1][1]=1;\nfor(int n=2;n<=N;n++){\n  for(int l=1;l<=n;l++) for(int r=1;r<=n;r++){\n    long long v=0;\n    if(l>1) v=(v+dp[n-1][l-1][r])%MOD;\n    if(r>1) v=(v+dp[n-1][l][r-1])%MOD;\n    v=(v + dp[n-1][l][r]*(long long)(n-2))%MOD;\n    dp[n][l][r]=v;\n  }\n}\nlong long ans=0;\nfor(int l=1;l<=N;l++) for(int r=1;r<=N;r++) if(l-r==K) ans=(ans+dp[N][l][r])%MOD;\nif(ans<0) ans+=MOD; return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; read_input(&N,&K); long long ans=solve(N,K); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K)",
+          "code": "scanf(\"%d%d\", N,K);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,int K)",
+          "code": "const long long MOD=998244353LL;\nstatic long long dp[405][405][405];\ndp[1][1][1]=1;\nfor(int n=2;n<=N;n++){\n  for(int l=1;l<=n;l++) for(int r=1;r<=n;r++){\n    long long v=0;\n    if(l>1) v=(v+dp[n-1][l-1][r])%MOD;\n    if(r>1) v=(v+dp[n-1][l][r-1])%MOD;\n    v=(v + dp[n-1][l][r]*(long long)(n-2))%MOD;\n    dp[n][l][r]=v;\n  }\n}\nlong long ans=0;\nfor(int l=1;l<=N;l++) for(int r=1;r<=N;r++) if(l-r==K) ans=(ans+dp[N][l][r])%MOD;\nif(ans<0) ans+=MOD; return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; read_input(&N,&K); long long ans=solve(N,K); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K)",
+          "code": "scanf(\"%d%d\", N,K);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,int K)",
+          "code": "const long long MOD=998244353LL;\nstatic long long dp[405][405][405];\ndp[1][1][1]=1;\nfor(int n=2;n<=N;n++){\n  for(int l=1;l<=n;l++) for(int r=1;r<=n;r++){\n    long long v=0;\n    if(l>1) v=(v+dp[n-1][l-1][r])%MOD;\n    if(r>1) v=(v+dp[n-1][l][r-1])%MOD;\n    v=(v + dp[n-1][l][r]*(long long)(n-2))%MOD;\n    dp[n][l][r]=v;\n  }\n}\nlong long ans=0;\nfor(int l=1;l<=N;l++) for(int r=1;r<=N;r++) if(l-r==K) ans=(ans+dp[N][l][r])%MOD;\nif(ans<0) ans+=MOD; return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; read_input(&N,&K); long long ans=solve(N,K); print_ll(ans); return 0;}\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *K)",
+          "code": "scanf(\"%d%d\", N,K);\n"
+        },
+        {
+          "clause_id": "solve",
+          "signature": "long long solve(int N,int K)",
+          "code": "const long long MOD=998244353LL;\nstatic long long dp[405][405][405];\ndp[1][1][1]=1;\nfor(int n=2;n<=N;n++){\n  for(int l=1;l<=n;l++) for(int r=1;r<=n;r++){\n    long long v=0;\n    if(l>1) v=(v+dp[n-1][l-1][r])%MOD;\n    if(r>1) v=(v+dp[n-1][l][r-1])%MOD;\n    v=(v + dp[n-1][l][r]*(long long)(n-2))%MOD;\n    dp[n][l][r]=v;\n  }\n}\nlong long ans=0;\nfor(int l=1;l<=N;l++) for(int r=1;r<=N;r++) if(l-r==K) ans=(ans+dp[N][l][r])%MOD;\nif(ans<0) ans+=MOD; return ans;\n"
+        },
+        {
+          "clause_id": "print_ll",
+          "signature": "void print_ll(long long x)",
+          "code": "printf(\"%lld\\n\", x);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,K; read_input(&N,&K); long long ans=solve(N,K); print_ll(ans); return 0;}\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "385G",
+  "total_programs": 5
+}

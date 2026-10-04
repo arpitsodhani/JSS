@@ -1,0 +1,5 @@
+You are given a positive integer N and two strings S and T , each of length N and consisting of lowercase English letters. Find the Hamming distance between S and T . That is, find the number of integers i such that 1 \leq i \leq N and the i -th character of S is different from the i -th character of T .
+
+**Constraints:**
+- 1 <= N <= 100
+- All input values are integers

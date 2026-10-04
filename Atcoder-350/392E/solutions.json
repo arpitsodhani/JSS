@@ -1,0 +1,201 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *m,int *U,int *V)",
+          "code": "scanf(\"%d%d\", n,m); for(int i=0;i<*m;i++) scanf(\"%d%d\", &U[i], &V[i]);\n"
+        },
+        {
+          "clause_id": "find",
+          "signature": "int find(int x,int *p)",
+          "code": "if(p[x]==x) return x; p[x]=find(p[x],p); return p[x];\n"
+        },
+        {
+          "clause_id": "unite",
+          "signature": "int unite(int a,int b,int *p,int *r)",
+          "code": "a=find(a,p); b=find(b,p); if(a==b) return 0; if(r[a]<r[b]){int t=a;a=b;b=t;} p[b]=a; if(r[a]==r[b]) r[a]++; return 1;\n"
+        },
+        {
+          "clause_id": "build_ops",
+          "signature": "int build_ops(int n,int m,int *U,int *V,int *ops)",
+          "code": "int *p=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *r=(int*)calloc((size_t)(n+1),sizeof(int));\nfor(int i=1;i<=n;i++) p[i]=i;\nint *extra=(int*)malloc((size_t)m*sizeof(int)); int ec=0;\nfor(int i=0;i<m;i++){\n  if(!unite(U[i],V[i],p,r)) extra[ec++]=i;\n}\nint *rep=(int*)malloc((size_t)(n+1)*sizeof(int)); int rc=0;\nfor(int i=1;i<=n;i++) if(find(i,p)==i) rep[rc++]=i;\nint opk=0;\nfor(int i=1;i<rc;i++){\n  int ei=extra[i-1];\n  ops[3*opk]=ei+1; ops[3*opk+1]=rep[0]; ops[3*opk+2]=rep[i]; opk++;\n}\nfree(rep); free(extra); free(p); free(r); return opk;\n"
+        },
+        {
+          "clause_id": "print_ops",
+          "signature": "void print_ops(int k,int *ops)",
+          "code": "printf(\"%d\\n\", k); for(int i=0;i<k;i++) printf(\"%d %d %d\\n\", ops[3*i], ops[3*i+1], ops[3*i+2]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int U[200005],V[200005]; read_input(&n,&m,U,V); static int ops[600005]; int k=build_ops(n,m,U,V,ops); print_ops(k,ops); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *m,int *U,int *V)",
+          "code": "scanf(\"%d%d\", n,m); for(int i=0;i<*m;i++) scanf(\"%d%d\", &U[i], &V[i]);\n"
+        },
+        {
+          "clause_id": "find",
+          "signature": "int find(int x,int *p)",
+          "code": "if(p[x]==x) return x; p[x]=find(p[x],p); return p[x];\n"
+        },
+        {
+          "clause_id": "unite",
+          "signature": "int unite(int a,int b,int *p,int *r)",
+          "code": "a=find(a,p); b=find(b,p); if(a==b) return 0; if(r[a]<r[b]){int t=a;a=b;b=t;} p[b]=a; if(r[a]==r[b]) r[a]++; return 1;\n"
+        },
+        {
+          "clause_id": "build_ops",
+          "signature": "int build_ops(int n,int m,int *U,int *V,int *ops)",
+          "code": "int *p=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *r=(int*)calloc((size_t)(n+1),sizeof(int));\nfor(int i=1;i<=n;i++) p[i]=i;\nint *extra=(int*)malloc((size_t)m*sizeof(int)); int ec=0;\nfor(int i=0;i<m;i++){\n  if(!unite(U[i],V[i],p,r)) extra[ec++]=i;\n}\nint *rep=(int*)malloc((size_t)(n+1)*sizeof(int)); int rc=0;\nfor(int i=1;i<=n;i++) if(find(i,p)==i) rep[rc++]=i;\nint opk=0;\nfor(int i=1;i<rc;i++){\n  int ei=extra[i-1];\n  ops[3*opk]=ei+1; ops[3*opk+1]=rep[0]; ops[3*opk+2]=rep[i]; opk++;\n}\nfree(rep); free(extra); free(p); free(r); return opk;\n"
+        },
+        {
+          "clause_id": "print_ops",
+          "signature": "void print_ops(int k,int *ops)",
+          "code": "printf(\"%d\\n\", k); for(int i=0;i<k;i++) printf(\"%d %d %d\\n\", ops[3*i], ops[3*i+1], ops[3*i+2]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int U[200005],V[200005]; read_input(&n,&m,U,V); static int ops[600005]; int k=build_ops(n,m,U,V,ops); print_ops(k,ops); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *m,int *U,int *V)",
+          "code": "scanf(\"%d%d\", n,m); for(int i=0;i<*m;i++) scanf(\"%d%d\", &U[i], &V[i]);\n"
+        },
+        {
+          "clause_id": "find",
+          "signature": "int find(int x,int *p)",
+          "code": "if(p[x]==x) return x; p[x]=find(p[x],p); return p[x];\n"
+        },
+        {
+          "clause_id": "unite",
+          "signature": "int unite(int a,int b,int *p,int *r)",
+          "code": "a=find(a,p); b=find(b,p); if(a==b) return 0; if(r[a]<r[b]){int t=a;a=b;b=t;} p[b]=a; if(r[a]==r[b]) r[a]++; return 1;\n"
+        },
+        {
+          "clause_id": "build_ops",
+          "signature": "int build_ops(int n,int m,int *U,int *V,int *ops)",
+          "code": "int *p=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *r=(int*)calloc((size_t)(n+1),sizeof(int));\nfor(int i=1;i<=n;i++) p[i]=i;\nint *extra=(int*)malloc((size_t)m*sizeof(int)); int ec=0;\nfor(int i=0;i<m;i++){\n  if(!unite(U[i],V[i],p,r)) extra[ec++]=i;\n}\nint *rep=(int*)malloc((size_t)(n+1)*sizeof(int)); int rc=0;\nfor(int i=1;i<=n;i++) if(find(i,p)==i) rep[rc++]=i;\nint opk=0;\nfor(int i=1;i<rc;i++){\n  int ei=extra[i-1];\n  ops[3*opk]=ei+1; ops[3*opk+1]=rep[0]; ops[3*opk+2]=rep[i]; opk++;\n}\nfree(rep); free(extra); free(p); free(r); return opk;\n"
+        },
+        {
+          "clause_id": "print_ops",
+          "signature": "void print_ops(int k,int *ops)",
+          "code": "printf(\"%d\\n\", k); for(int i=0;i<k;i++) printf(\"%d %d %d\\n\", ops[3*i], ops[3*i+1], ops[3*i+2]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int U[200005],V[200005]; read_input(&n,&m,U,V); static int ops[600005]; int k=build_ops(n,m,U,V,ops); print_ops(k,ops); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *m,int *U,int *V)",
+          "code": "scanf(\"%d%d\", n,m); for(int i=0;i<*m;i++) scanf(\"%d%d\", &U[i], &V[i]);\n"
+        },
+        {
+          "clause_id": "find",
+          "signature": "int find(int x,int *p)",
+          "code": "if(p[x]==x) return x; p[x]=find(p[x],p); return p[x];\n"
+        },
+        {
+          "clause_id": "unite",
+          "signature": "int unite(int a,int b,int *p,int *r)",
+          "code": "a=find(a,p); b=find(b,p); if(a==b) return 0; if(r[a]<r[b]){int t=a;a=b;b=t;} p[b]=a; if(r[a]==r[b]) r[a]++; return 1;\n"
+        },
+        {
+          "clause_id": "build_ops",
+          "signature": "int build_ops(int n,int m,int *U,int *V,int *ops)",
+          "code": "int *p=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *r=(int*)calloc((size_t)(n+1),sizeof(int));\nfor(int i=1;i<=n;i++) p[i]=i;\nint *extra=(int*)malloc((size_t)m*sizeof(int)); int ec=0;\nfor(int i=0;i<m;i++){\n  if(!unite(U[i],V[i],p,r)) extra[ec++]=i;\n}\nint *rep=(int*)malloc((size_t)(n+1)*sizeof(int)); int rc=0;\nfor(int i=1;i<=n;i++) if(find(i,p)==i) rep[rc++]=i;\nint opk=0;\nfor(int i=1;i<rc;i++){\n  int ei=extra[i-1];\n  ops[3*opk]=ei+1; ops[3*opk+1]=rep[0]; ops[3*opk+2]=rep[i]; opk++;\n}\nfree(rep); free(extra); free(p); free(r); return opk;\n"
+        },
+        {
+          "clause_id": "print_ops",
+          "signature": "void print_ops(int k,int *ops)",
+          "code": "printf(\"%d\\n\", k); for(int i=0;i<k;i++) printf(\"%d %d %d\\n\", ops[3*i], ops[3*i+1], ops[3*i+2]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int U[200005],V[200005]; read_input(&n,&m,U,V); static int ops[600005]; int k=build_ops(n,m,U,V,ops); print_ops(k,ops); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *n,int *m,int *U,int *V)",
+          "code": "scanf(\"%d%d\", n,m); for(int i=0;i<*m;i++) scanf(\"%d%d\", &U[i], &V[i]);\n"
+        },
+        {
+          "clause_id": "find",
+          "signature": "int find(int x,int *p)",
+          "code": "if(p[x]==x) return x; p[x]=find(p[x],p); return p[x];\n"
+        },
+        {
+          "clause_id": "unite",
+          "signature": "int unite(int a,int b,int *p,int *r)",
+          "code": "a=find(a,p); b=find(b,p); if(a==b) return 0; if(r[a]<r[b]){int t=a;a=b;b=t;} p[b]=a; if(r[a]==r[b]) r[a]++; return 1;\n"
+        },
+        {
+          "clause_id": "build_ops",
+          "signature": "int build_ops(int n,int m,int *U,int *V,int *ops)",
+          "code": "int *p=(int*)malloc((size_t)(n+1)*sizeof(int));\nint *r=(int*)calloc((size_t)(n+1),sizeof(int));\nfor(int i=1;i<=n;i++) p[i]=i;\nint *extra=(int*)malloc((size_t)m*sizeof(int)); int ec=0;\nfor(int i=0;i<m;i++){\n  if(!unite(U[i],V[i],p,r)) extra[ec++]=i;\n}\nint *rep=(int*)malloc((size_t)(n+1)*sizeof(int)); int rc=0;\nfor(int i=1;i<=n;i++) if(find(i,p)==i) rep[rc++]=i;\nint opk=0;\nfor(int i=1;i<rc;i++){\n  int ei=extra[i-1];\n  ops[3*opk]=ei+1; ops[3*opk+1]=rep[0]; ops[3*opk+2]=rep[i]; opk++;\n}\nfree(rep); free(extra); free(p); free(r); return opk;\n"
+        },
+        {
+          "clause_id": "print_ops",
+          "signature": "void print_ops(int k,int *ops)",
+          "code": "printf(\"%d\\n\", k); for(int i=0;i<k;i++) printf(\"%d %d %d\\n\", ops[3*i], ops[3*i+1], ops[3*i+2]);\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int n,m; static int U[200005],V[200005]; read_input(&n,&m,U,V); static int ops[600005]; int k=build_ops(n,m,U,V,ops); print_ops(k,ops); return 0; }\n"
+        }
+      ]
+    }
+  ],
+  "problem_id": "392E",
+  "total_programs": 5
+}

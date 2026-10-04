@@ -1,0 +1,5 @@
+You are given a grid S with H rows and W columns consisting of 1 , 2 , 3 , and ? . The character at the i -th row and j -th column is S_{i,j} . By replacing each ? in S with 1 , 2 , or 3 , we can obtain 3^q different grids, where q is the number of ? . Among these grids, how many satisfy the following condition? Print the count modulo 998244353 . Any two adjacent (edge-sharing) cells contain different digits.
+
+**Constraints:**
+- 1 <= H, W <= 500
+- S_{i,j} is 'o' or 'x'

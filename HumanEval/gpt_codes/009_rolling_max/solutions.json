@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "rolling_max",
+          "code": "void rolling_max(int *arr, int n) {\n    int max_val = arr[0];\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > max_val) max_val = arr[i];\n        printf(\"%d\", max_val);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    rolling_max(arr, n);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "compute_rolling",
+          "code": "void compute_rolling(int *data, int size) {\n    int current_max = data[0];\n    for (int i = 0; i < size; i++) {\n        if (data[i] > current_max) current_max = data[i];\n        printf(\"%d\", current_max);\n        if (i < size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    int nums[count];\n    for (int i = 0; i < count; i++) scanf(\"%d\", &nums[i]);\n    compute_rolling(nums, count);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "running_peak",
+          "code": "void running_peak(int *arr, int n) {\n    int peak = arr[0];\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > peak) peak = arr[i];\n        printf(\"%d\", peak);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    running_peak(arr, n);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "print_max_so_far",
+          "code": "void print_max_so_far(int *vals, int sz) {\n    int best = vals[0];\n    int i = 0;\n    while (i < sz) {\n        if (vals[i] > best) best = vals[i];\n        if (i > 0) printf(\" \");\n        printf(\"%d\", best);\n        i++;\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int sz;\n    scanf(\"%d\", &sz);\n    int vals[sz];\n    for (int i = 0; i < sz; i++) scanf(\"%d\", &vals[i]);\n    print_max_so_far(vals, sz);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "seq_maximum",
+          "code": "void seq_maximum(int *data, int len) {\n    int mx = data[0];\n    for (int k = 0; k < len; k++) {\n        if (data[k] > mx) mx = data[k];\n        printf(\"%d\", mx);\n        if (k < len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int len;\n    scanf(\"%d\", &len);\n    int data[len];\n    for (int i = 0; i < len; i++) scanf(\"%d\", &data[i]);\n    seq_maximum(data, len);\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

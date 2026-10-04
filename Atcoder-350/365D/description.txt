@@ -1,0 +1,5 @@
+Takahashi and Aoki played rock-paper-scissors N times. [Note: In this game, Rock beats Scissors, Scissors beats Paper, and Paper beats Rock.] Aoki's moves are represented by a string S of length N consisting of the characters R , P , and S . The i -th character of S indicates Aoki's move in the i -th game: R for Rock, P for Paper, and S for Scissors. Takahashi's moves satisfy the following conditions: Takahashi never lost to Aoki. For i=1,2,\ldots,N-1 , Takahashi's move in the i -th game is different from his move in the (i+1) -th game. Determine the maximum number of games Takahashi could have won. It is guaranteed that there exists a sequence of moves for Takahashi that satisfies these conditions.
+
+**Constraints:**
+- 1 <= N <= 2 * 10^5
+- S is a string of length N consisting of 'R', 'P', and 'S'

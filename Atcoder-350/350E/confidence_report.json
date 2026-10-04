@@ -1,0 +1,85 @@
+{
+  "average_confidence": 1.0,
+  "clauses": [
+    {
+      "clause": "prog1_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_initialize_dp",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog1_solve_dp",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_initialize_dp",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog2_solve_dp",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_initialize_dp",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog3_solve_dp",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_initialize_dp",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog4_solve_dp",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_calculate_result",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_initialize_dp",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "prog5_solve_dp",
+      "confidence": 1.0
+    }
+  ]
+}

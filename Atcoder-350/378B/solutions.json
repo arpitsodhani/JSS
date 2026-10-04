@@ -1,0 +1,144 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,int *q,int *r,int *t,long long *d)",
+          "code": "void read_input(int *N,int *Q,int *q,int *r,int *t,long long *d){ scanf(\"%d\", N); for(int i=0;i<*N;i++) scanf(\"%d%d\", &q[i], &r[i]); scanf(\"%d\", Q); for(int i=0;i<*Q;i++) scanf(\"%d%lld\", &t[i], &d[i]); }\n"
+        },
+        {
+          "clause_id": "next_day",
+          "signature": "long long next_day(long long d,int q,int r)",
+          "code": "long long next_day(long long d,int q,int r){ int mod = d%q; if(mod<=r) return d + (r-mod); return d + (q - (mod-r)); }\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int N,int Q,int *q,int *r,int *t,long long *d)",
+          "code": "void process(int N,int Q,int *q,int *r,int *t,long long *d){ for(int i=0;i<Q;i++){ int idx=t[i]-1; long long ans=next_day(d[i],q[idx],r[idx]); printf(\"%lld\\n\", ans); } }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; int q[105], r[105], t[105]; long long d[105]; read_input(&N,&Q,q,r,t,d); process(N,Q,q,r,t,d); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog2",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,int *q,int *r,int *t,long long *d)",
+          "code": "void read_input(int *N,int *Q,int *q,int *r,int *t,long long *d){ scanf(\"%d\", N); for(int i=0;i<*N;i++) scanf(\"%d%d\", &q[i], &r[i]); scanf(\"%d\", Q); for(int i=0;i<*Q;i++) scanf(\"%d%lld\", &t[i], &d[i]); }\n"
+        },
+        {
+          "clause_id": "next_day",
+          "signature": "long long next_day(long long d,int q,int r)",
+          "code": "long long next_day(long long d,int q,int r){ int mod = d%q; if(mod<=r) return d + (r-mod); return d + (q - (mod-r)); }\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int N,int Q,int *q,int *r,int *t,long long *d)",
+          "code": "void process(int N,int Q,int *q,int *r,int *t,long long *d){ for(int i=0;i<Q;i++){ int idx=t[i]-1; long long ans=next_day(d[i],q[idx],r[idx]); printf(\"%lld\\n\", ans); } }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; int q[105], r[105], t[105]; long long d[105]; read_input(&N,&Q,q,r,t,d); process(N,Q,q,r,t,d); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog3",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,int *q,int *r,int *t,long long *d)",
+          "code": "void read_input(int *N,int *Q,int *q,int *r,int *t,long long *d){ scanf(\"%d\", N); for(int i=0;i<*N;i++) scanf(\"%d%d\", &q[i], &r[i]); scanf(\"%d\", Q); for(int i=0;i<*Q;i++) scanf(\"%d%lld\", &t[i], &d[i]); }\n"
+        },
+        {
+          "clause_id": "next_day",
+          "signature": "long long next_day(long long d,int q,int r)",
+          "code": "long long next_day(long long d,int q,int r){ int mod = d%q; if(mod<=r) return d + (r-mod); return d + (q - (mod-r)); }\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int N,int Q,int *q,int *r,int *t,long long *d)",
+          "code": "void process(int N,int Q,int *q,int *r,int *t,long long *d){ for(int i=0;i<Q;i++){ int idx=t[i]-1; long long ans=next_day(d[i],q[idx],r[idx]); printf(\"%lld\\n\", ans); } }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; int q[105], r[105], t[105]; long long d[105]; read_input(&N,&Q,q,r,t,d); process(N,Q,q,r,t,d); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog4",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,int *q,int *r,int *t,long long *d)",
+          "code": "void read_input(int *N,int *Q,int *q,int *r,int *t,long long *d){ scanf(\"%d\", N); for(int i=0;i<*N;i++) scanf(\"%d%d\", &q[i], &r[i]); scanf(\"%d\", Q); for(int i=0;i<*Q;i++) scanf(\"%d%lld\", &t[i], &d[i]); }\n"
+        },
+        {
+          "clause_id": "next_day",
+          "signature": "long long next_day(long long d,int q,int r)",
+          "code": "long long next_day(long long d,int q,int r){ int mod = d%q; if(mod<=r) return d + (r-mod); return d + (q - (mod-r)); }\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int N,int Q,int *q,int *r,int *t,long long *d)",
+          "code": "void process(int N,int Q,int *q,int *r,int *t,long long *d){ for(int i=0;i<Q;i++){ int idx=t[i]-1; long long ans=next_day(d[i],q[idx],r[idx]); printf(\"%lld\\n\", ans); } }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; int q[105], r[105], t[105]; long long d[105]; read_input(&N,&Q,q,r,t,d); process(N,Q,q,r,t,d); return 0; }\n"
+        }
+      ]
+    },
+    {
+      "id": "prog5",
+      "includes": [
+        "#include <stdio.h>"
+      ],
+      "clauses": [
+        {
+          "clause_id": "read_input",
+          "signature": "void read_input(int *N,int *Q,int *q,int *r,int *t,long long *d)",
+          "code": "void read_input(int *N,int *Q,int *q,int *r,int *t,long long *d){ scanf(\"%d\", N); for(int i=0;i<*N;i++) scanf(\"%d%d\", &q[i], &r[i]); scanf(\"%d\", Q); for(int i=0;i<*Q;i++) scanf(\"%d%lld\", &t[i], &d[i]); }\n"
+        },
+        {
+          "clause_id": "next_day",
+          "signature": "long long next_day(long long d,int q,int r)",
+          "code": "long long next_day(long long d,int q,int r){ int mod = d%q; if(mod<=r) return d + (r-mod); return d + (q - (mod-r)); }\n"
+        },
+        {
+          "clause_id": "process",
+          "signature": "void process(int N,int Q,int *q,int *r,int *t,long long *d)",
+          "code": "void process(int N,int Q,int *q,int *r,int *t,long long *d){ for(int i=0;i<Q;i++){ int idx=t[i]-1; long long ans=next_day(d[i],q[idx],r[idx]); printf(\"%lld\\n\", ans); } }\n"
+        },
+        {
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void){ int N,Q; int q[105], r[105], t[105]; long long d[105]; read_input(&N,&Q,q,r,t,d); process(N,Q,q,r,t,d); return 0; }\n"
+        }
+      ]
+    }
+  ]
+}

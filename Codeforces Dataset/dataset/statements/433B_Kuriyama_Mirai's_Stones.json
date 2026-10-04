@@ -1,0 +1,32 @@
+{
+  "contestId": 433,
+  "index": "B",
+  "problem_id": "433B",
+  "name": "Kuriyama Mirai's Stones",
+  "rating": 1200,
+  "tags": [
+    "dp",
+    "implementation",
+    "sortings"
+  ],
+  "points": 1500.0,
+  "solvedCount": 55808,
+  "source": "verbatim_cf_fetch",
+  "title": "B. Kuriyama Mirai's Stones",
+  "legend": "Kuriyama Mirai has killed many monsters and got many (namely n) stones. She numbers the stones from 1 to n. The cost of the i-th stone is vi. Kuriyama Mirai wants to know something about these stones so she will ask you two kinds of questions:\n\nShe will tell you two numbers, l and r (1 ≤ l ≤ r ≤ n), and you should tell her .\nLet ui be the cost of the i-th cheapest stone (the cost that will be on the i-th place if we arrange all the stone costs in non-decreasing order). This time she will tell you two numbers, l and r (1 ≤ l ≤ r ≤ n), and you should tell her .\n\nFor every question you should give the correct answer, or Kuriyama Mirai will say \"fuyukai desu\" and then become unhappy.",
+  "input_spec": "The first line contains an integer n (1 ≤ n ≤ 105). The second line contains n integers: v1, v2, ..., vn (1 ≤ vi ≤ 109) — costs of the stones.\n\nThe third line contains an integer m (1 ≤ m ≤ 105) — the number of Kuriyama Mirai's questions. Then follow m lines, each line contains three integers type, l and r (1 ≤ l ≤ r ≤ n; 1 ≤ type ≤ 2), describing a question. If type equal to 1, then you should output the answer for the first question, else you should output the answer for the second one.",
+  "output_spec": "Print m lines. Each line must contain an integer — the answer to Kuriyama Mirai's question. Print the answers to the questions in the order of input.",
+  "note": "Please note that the answers to the questions may overflow 32-bit integer type.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "6\n6 4 2 7 2 7\n3\n2 3 6\n1 3 4\n1 1 6\n",
+      "output": "24\n9\n28"
+    },
+    {
+      "input": "4\n5 5 2 3\n10\n1 2 4\n2 1 4\n1 1 1\n2 1 4\n2 1 2\n1 1 1\n1 3 3\n1 1 3\n1 4 4\n1 2 2\n",
+      "output": "10\n15\n5\n15\n5\n5\n2\n12\n3\n5"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.8951782384282384,
+  "clauses": [
+    {
+      "clause": "check_palindrome",
+      "confidence": 0.8630439560439559
+    },
+    {
+      "clause": "count_good_strings",
+      "confidence": 0.7176689976689976
+    },
+    {
+      "clause": "main",
+      "confidence": 1.0
+    },
+    {
+      "clause": "read_input",
+      "confidence": 1.0
+    }
+  ]
+}

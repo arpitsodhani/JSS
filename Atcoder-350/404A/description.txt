@@ -1,0 +1,13 @@
+You are given two integers A and B.
+Print all integers between A and B (inclusive) in ascending order.
+
+**Input:**
+The input is given from Standard Input in the following format:
+A B
+
+**Output:**
+Print the integers in ascending order, one per line.
+
+**Constraints:**
+- 1 <= A <= B <= 100
+- All input values are integers

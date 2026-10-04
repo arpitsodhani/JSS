@@ -1,0 +1,94 @@
+{
+  "programs": [
+    {
+      "id": "prog1",
+      "clauses": [
+        {
+          "clause_id": "find_divisor",
+          "code": "int find_divisor(int n) {\n    for (int i = n/2; i >= 1; i--) {\n        if (n % i == 0) return i;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", find_divisor(n));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog2",
+      "clauses": [
+        {
+          "clause_id": "largest_div",
+          "code": "int largest_div(int num) {\n    for (int i = num/2; i > 0; i--) {\n        if (num % i == 0) return i;\n    }\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int x;\n    scanf(\"%d\", &x);\n    printf(\"%d\\n\", largest_div(x));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog3",
+      "clauses": [
+        {
+          "clause_id": "top_divisor",
+          "code": "int top_divisor(int n) {\n    for (int i=n/2;i>=1;i--) if(n%i==0) return i;\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\",&n);\n    printf(\"%d\\n\",top_divisor(n));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog4",
+      "clauses": [
+        {
+          "clause_id": "max_factor",
+          "code": "int max_factor(int num) {\n    int i=num/2;\n    while(i>0){if(num%i==0)return i;i--;}\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int num;\n    scanf(\"%d\",&num);\n    printf(\"%d\\n\",max_factor(num));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    },
+    {
+      "id": "prog5",
+      "clauses": [
+        {
+          "clause_id": "biggest_divisor",
+          "code": "int biggest_divisor(int x) {\n    for (int d=x-1;d>=1;d--) if(x%d==0) return d;\n    return 1;\n}",
+          "shared_variables": {}
+        },
+        {
+          "clause_id": "main",
+          "code": "int main(void) {\n    int x;\n    scanf(\"%d\",&x);\n    printf(\"%d\\n\",biggest_divisor(x));\n    return 0;\n}",
+          "shared_variables": {}
+        }
+      ],
+      "includes": [
+        "#include <stdio.h>"
+      ]
+    }
+  ]
+}

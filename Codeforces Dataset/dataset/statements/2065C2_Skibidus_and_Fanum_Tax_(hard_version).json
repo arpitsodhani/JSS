@@ -1,0 +1,27 @@
+{
+  "contestId": 2065,
+  "index": "C2",
+  "problem_id": "2065C2",
+  "name": "Skibidus and Fanum Tax (hard version)",
+  "rating": 1300,
+  "tags": [
+    "binary search",
+    "greedy"
+  ],
+  "points": null,
+  "solvedCount": 19169,
+  "source": "verbatim_cf_fetch",
+  "title": "C2. Skibidus and Fanum Tax (hard version)",
+  "legend": "This is the hard version of the problem. In this version, m≤2⋅105.\n\nSkibidus has obtained two arrays a and b, containing n and m elements respectively. For each integer i from 1 to n, he is allowed to perform the operation at most once:\n\nChoose an integer j such that 1≤j≤m. Set ai:=bj−ai. Note that ai may become non-positive as a result of this operation.\n\nSkibidus needs your help determining whether he can sort a in non-decreasing order∗ by performing the above operation some number of times.\n\n∗a is sorted in non-decreasing order if a1≤a2≤…≤an.",
+  "input_spec": "The first line contains an integer t (1≤t≤104) — the number of test cases.\n\nThe first line of each test case contains two integers n and m (1≤n≤2⋅105, 1≤m≤2⋅105).\n\nThe following line of each test case contains n integers a1,a2,…,an (1≤ai≤109).\n\nThe following line of each test case contains m integers b1,b2,…,bm (1≤bi≤109).\n\nIt is guaranteed that the sum of n and the sum of m over all test cases does not exceed 2⋅105.",
+  "output_spec": "For each test case, if it is possible to sort a in non-decreasing order, print \"YES\" on a new line. Otherwise, print \"NO\" on a new line.\n\nYou can output the answer in any case. For example, the strings \"yEs\", \"yes\", and \"Yes\" will also be recognized as positive responses.",
+  "note": "In the first test case, [5] is already sorted.\n\nIn the second test case, it can be shown that it is impossible.\n\nIn the third test case, we can set a2:=b1−a2=6−4=2 and a3:=b3−a3=8−6=2. The sequence [2,2,2,5] is in nondecreasing order.\n\nIn the last case, we can apply operations on each index. The sequence becomes [−1,0,1], which is in nondecreasing order.",
+  "time_limit": "2 seconds",
+  "mem_limit": "256 megabytes",
+  "samples": [
+    {
+      "input": "5\n1 3\n5\n9 1 1000000000\n3 2\n1 4 3\n3 4\n4 3\n2 4 6 5\n6 1 8\n5 2\n6 4 5 4 5\n4 1000\n3 1\n9 8 7\n8\n",
+      "output": "YES\nNO\nYES\nNO\nYES"
+    }
+  ]
+}

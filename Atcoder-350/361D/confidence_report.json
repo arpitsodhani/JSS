@@ -1,0 +1,21 @@
+{
+  "average_confidence": 0.7956195777906304,
+  "clauses": [
+    {
+      "clause": "bfs_minimum_moves",
+      "confidence": 0.28736842105263155
+    },
+    {
+      "clause": "encode_state",
+      "confidence": 0.9723076923076924
+    },
+    {
+      "clause": "main",
+      "confidence": 0.974230769230769
+    },
+    {
+      "clause": "read_configurations",
+      "confidence": 0.9485714285714287
+    }
+  ]
+}
