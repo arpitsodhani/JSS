@@ -1,42 +1,46 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-void compare_one(const char *a, const char *b, char *result) {
-    char a_copy[100], b_copy[100];
-    strcpy(a_copy, a);
-    strcpy(b_copy, b);
+double parse_number(char* s) {
+    double result = 0.0;
+    double decimal = 0.0;
+    int decimal_places = 0;
+    int in_decimal = 0;
     
-    for (int i = 0; a_copy[i]; i++) {
-        if (a_copy[i] == ',') a_copy[i] = '.';
-    }
-    for (int i = 0; b_copy[i]; i++) {
-        if (b_copy[i] == ',') b_copy[i] = '.';
+    for (int i = 0; s[i] != '\0' && s[i] != '\n'; i++) {
+        if (s[i] == '.' || s[i] == ',') {
+            in_decimal = 1;
+        } else if (s[i] >= '0' && s[i] <= '9') {
+            if (in_decimal) {
+                decimal = decimal * 10 + (s[i] - '0');
+                decimal_places++;
+            } else {
+                result = result * 10 + (s[i] - '0');
+            }
+        }
     }
     
-    double val_a = atof(a_copy);
-    double val_b = atof(b_copy);
-    
-    if (val_a > val_b) {
-        strcpy(result, a);
-    } else if (val_b > val_a) {
-        strcpy(result, b);
-    } else {
-        strcpy(result, "None");
+    while (decimal_places > 0) {
+        decimal /= 10.0;
+        decimal_places--;
     }
+    
+    return result + decimal;
 }
 
 int main() {
     char a[100], b[100];
-    fgets(a, sizeof(a), stdin);
-    a[strcspn(a, "\n")] = 0;
-    fgets(b, sizeof(b), stdin);
-    b[strcspn(b, "\n")] = 0;
+    scanf("%s %s", a, b);
     
-    char result[100];
-    compare_one(a, b, result);
-    printf("%s\n", result);
+    double val_a = parse_number(a);
+    double val_b = parse_number(b);
+    
+    if (val_a > val_b) {
+        printf("%s\n", a);
+    } else if (val_b > val_a) {
+        printf("%s\n", b);
+    } else {
+        printf("None\n");
+    }
+    
     return 0;
 }

@@ -1,37 +1,28 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-const char* exchange(int n1, int lst1[], int n2, int lst2[]) {
-    int odd_count_lst1 = 0;
-    int even_count_lst2 = 0;
-    
+int can_exchange(int *arr1, int n1, int *arr2, int n2) {
+    int odd1 = 0, even2 = 0;
     for (int i = 0; i < n1; i++) {
-        if (lst1[i] % 2 == 1) odd_count_lst1++;
+        if (arr1[i] % 2 == 1) odd1++;
     }
-    
     for (int i = 0; i < n2; i++) {
-        if (lst2[i] % 2 == 0) even_count_lst2++;
+        if (arr2[i] % 2 == 0) even2++;
     }
-    
-    return (even_count_lst2 >= odd_count_lst1) ? "YES" : "NO";
+    return odd1 <= even2;
 }
 
-int main() {
+int main(void) {
     int n1, n2;
     scanf("%d", &n1);
-    int lst1[n1];
-    for (int i = 0; i < n1; i++) {
-        scanf("%d", &lst1[i]);
-    }
+    int arr1[n1];
+    for (int i = 0; i < n1; i++) scanf("%d", &arr1[i]);
     scanf("%d", &n2);
-    int lst2[n2];
-    for (int i = 0; i < n2; i++) {
-        scanf("%d", &lst2[i]);
+    int arr2[n2];
+    for (int i = 0; i < n2; i++) scanf("%d", &arr2[i]);
+    if (can_exchange(arr1, n1, arr2, n2)) {
+        printf("YES\n");
+    } else {
+        printf("NO\n");
     }
-    printf("%s\n", exchange(n1, lst1, n2, lst2));
     return 0;
 }
-

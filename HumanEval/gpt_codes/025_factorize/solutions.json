@@ -1,17 +1,22 @@
 {
+  "problem_id": "025_factorize",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
           "clause_id": "factorize",
-          "code": "void factorize(int n) {\n    int first = 1;\n    for (int i = 2; i <= n; i++) {\n        while (n % i == 0) {\n            if (!first) printf(\" \");\n            printf(\"%d\", i);\n            first = 0;\n            n /= i;\n        }\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "code": "void factorize(int n, int *factors, int *count) {\n    *count = 0;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n            factors[(*count)++] = i;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        factors[(*count)++] = n;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    factorize(n);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int factors[1000];\n    int count;\n    factorize(n, factors, &count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%d\", factors[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -22,14 +27,18 @@
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "get_factors",
-          "code": "void get_factors(int num) {\n    int found = 0;\n    for (int i = 2; i <= num; i++) {\n        while (num % i == 0) {\n            if (found > 0) printf(\" \");\n            printf(\"%d\", i);\n            found++;\n            num /= i;\n        }\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "factorize",
+          "code": "void factorize(int n, int *factors, int *count) {\n    *count = 0;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n            factors[(*count)++] = i;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        factors[(*count)++] = n;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int x;\n    scanf(\"%d\", &x);\n    get_factors(x);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int factors[1000];\n    int count;\n    factorize(n, factors, &count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%d\", factors[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -40,14 +49,18 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "prime_factors",
-          "code": "void prime_factors(int n) {\n    int first=1;\n    for (int i=2;i<=n;i++) while(n%i==0){if(!first)printf(\" \");printf(\"%d\",i);first=0;n/=i;}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "factorize",
+          "code": "void factorize(int n, int *factors, int *count) {\n    *count = 0;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n            factors[(*count)++] = i;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        factors[(*count)++] = n;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int n;\n    scanf(\"%d\",&n);\n    prime_factors(n);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int factors[1000];\n    int count;\n    factorize(n, factors, &count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%d\", factors[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -58,14 +71,18 @@
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "factor_list",
-          "code": "void factor_list(int num) {\n    int cnt=0;\n    for (int d=2;d<=num;d++) while(num%d==0){if(cnt>0)printf(\" \");printf(\"%d\",d);cnt++;num/=d;}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "factorize",
+          "code": "void factorize(int n, int *factors, int *count) {\n    *count = 0;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n            factors[(*count)++] = i;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        factors[(*count)++] = n;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int num;\n    scanf(\"%d\",&num);\n    factor_list(num);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int factors[1000];\n    int count;\n    factorize(n, factors, &count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%d\", factors[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -76,19 +93,26 @@
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "decompose",
-          "code": "void decompose(int v) {\n    int printed=0;\n    int f=2;\n    while(f<=v){while(v%f==0){if(printed)printf(\" \");printf(\"%d\",f);printed=1;v/=f;}f++;}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "factorize",
+          "code": "void factorize(int n, int *factors, int *count) {\n    *count = 0;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n            factors[(*count)++] = i;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        factors[(*count)++] = n;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int v;\n    scanf(\"%d\",&v);\n    decompose(v);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int factors[1000];\n    int count;\n    factorize(n, factors, &count);\n    for (int i = 0; i < count; i++) {\n        printf(\"%d\", factors[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

@@ -1,114 +1,124 @@
 {
+  "problem_id": "065_circular_shift",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "clause1_0",
-          "code": "void circular_shift(int x, int shift, char* result) {\n    char num[20];\n    sprintf(num, \"%d\", x);\n    int len = strlen(num);\n    if (shift > len) {\n        strcpy(result, num);\n        int i = 0, j = len - 1;\n        while (i < j) {\n            char temp = result[i];\n            result[i] = result[j];\n            result[j] = temp;\n            i++; j--;\n        }\n        return;\n    }\n    shift = shift % len;\n    for (int i = 0; i < len; i++) {\n        result[i] = num[(len - shift + i) % len];\n    }\n    result[len] = '\\0';\n}",
-          "shared_variables": {}
+          "clause_id": "circular_shift",
+          "code": "void circular_shift(char *num_str, int shift, char *result) {\n    int len = strlen(num_str);\n    if (shift > len) {\n        for (int i = 0; i < len; i++) {\n            result[i] = num_str[len - 1 - i];\n        }\n        result[len] = '\\0';\n    } else {\n        for (int i = 0; i < len; i++) {\n            result[i] = num_str[(i + shift) % len];\n        }\n        result[len] = '\\0';\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "clause1_1",
-          "code": "int main() {\n    int x, shift;\n    scanf(\"%d %d\", &x, &shift);\n    char result[20];\n    circular_shift(x, shift, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    int num, shift;\n    scanf(\"%d %d\", &num, &shift);\n    char num_str[50];\n    sprintf(num_str, \"%d\", num);\n    char result[50];\n    circular_shift(num_str, shift, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "clause2_0",
-          "code": "void circular_shift(int x, int shift, char* result) {\n    char num[20];\n    sprintf(num, \"%d\", x);\n    int len = strlen(num);\n    if (shift > len) {\n        strcpy(result, num);\n        int i = 0, j = len - 1;\n        while (i < j) {\n            char temp = result[i];\n            result[i] = result[j];\n            result[j] = temp;\n            i++; j--;\n        }\n        return;\n    }\n    shift = shift % len;\n    for (int i = 0; i < len; i++) {\n        result[i] = num[(len - shift + i) % len];\n    }\n    result[len] = '\\0';\n}",
-          "shared_variables": {}
+          "clause_id": "circular_shift",
+          "code": "void circular_shift(char *num_str, int shift, char *result) {\n    int len = strlen(num_str);\n    if (shift > len) {\n        for (int i = 0; i < len; i++) {\n            result[i] = num_str[len - 1 - i];\n        }\n        result[len] = '\\0';\n    } else {\n        for (int i = 0; i < len; i++) {\n            result[i] = num_str[(i + shift) % len];\n        }\n        result[len] = '\\0';\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "clause2_1",
-          "code": "int main() {\n    int x, shift;\n    scanf(\"%d %d\", &x, &shift);\n    char result[20];\n    circular_shift(x, shift, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    int num, shift;\n    scanf(\"%d %d\", &num, &shift);\n    char num_str[50];\n    sprintf(num_str, \"%d\", num);\n    char result[50];\n    circular_shift(num_str, shift, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "clause3_0",
-          "code": "void circular_shift(int x, int shift, char* result) {\n    char num[20];\n    sprintf(num, \"%d\", x);\n    int len = strlen(num);\n    if (shift > len) {\n        strcpy(result, num);\n        int i = 0, j = len - 1;\n        while (i < j) {\n            char temp = result[i];\n            result[i] = result[j];\n            result[j] = temp;\n            i++; j--;\n        }\n        return;\n    }\n    shift = shift % len;\n    for (int i = 0; i < len; i++) {\n        result[i] = num[(len - shift + i) % len];\n    }\n    result[len] = '\\0';\n}",
-          "shared_variables": {}
+          "clause_id": "circular_shift",
+          "code": "void circular_shift(char *num_str, int shift, char *result) {\n    int len = strlen(num_str);\n    if (shift > len) {\n        for (int i = 0; i < len; i++) {\n            result[i] = num_str[len - 1 - i];\n        }\n        result[len] = '\\0';\n    } else {\n        for (int i = 0; i < len; i++) {\n            result[i] = num_str[(i + shift) % len];\n        }\n        result[len] = '\\0';\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "clause3_1",
-          "code": "int main() {\n    int x, shift;\n    scanf(\"%d %d\", &x, &shift);\n    char result[20];\n    circular_shift(x, shift, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    int num, shift;\n    scanf(\"%d %d\", &num, &shift);\n    char num_str[50];\n    sprintf(num_str, \"%d\", num);\n    char result[50];\n    circular_shift(num_str, shift, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "clause4_0",
-          "code": "void circular_shift(int x, int shift, char* result) {\n    char num[20];\n    sprintf(num, \"%d\", x);\n    int len = strlen(num);\n    if (shift > len) {\n        strcpy(result, num);\n        int i = 0, j = len - 1;\n        while (i < j) {\n            char temp = result[i];\n            result[i] = result[j];\n            result[j] = temp;\n            i++; j--;\n        }\n        return;\n    }\n    shift = shift % len;\n    for (int i = 0; i < len; i++) {\n        result[i] = num[(len - shift + i) % len];\n    }\n    result[len] = '\\0';\n}",
-          "shared_variables": {}
+          "clause_id": "circular_shift",
+          "code": "void circular_shift(char *num_str, int shift, char *result) {\n    int len = strlen(num_str);\n    if (shift > len) {\n        for (int i = 0; i < len; i++) {\n            result[i] = num_str[len - 1 - i];\n        }\n        result[len] = '\\0';\n    } else {\n        for (int i = 0; i < len; i++) {\n            result[i] = num_str[(i + shift) % len];\n        }\n        result[len] = '\\0';\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "clause4_1",
-          "code": "int main() {\n    int x, shift;\n    scanf(\"%d %d\", &x, &shift);\n    char result[20];\n    circular_shift(x, shift, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    int num, shift;\n    scanf(\"%d %d\", &num, &shift);\n    char num_str[50];\n    sprintf(num_str, \"%d\", num);\n    char result[50];\n    circular_shift(num_str, shift, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "clause5_0",
-          "code": "void circular_shift(int x, int shift, char* result) {\n    char num[20];\n    sprintf(num, \"%d\", x);\n    int len = strlen(num);\n    if (shift > len) {\n        strcpy(result, num);\n        int i = 0, j = len - 1;\n        while (i < j) {\n            char temp = result[i];\n            result[i] = result[j];\n            result[j] = temp;\n            i++; j--;\n        }\n        return;\n    }\n    shift = shift % len;\n    for (int i = 0; i < len; i++) {\n        result[i] = num[(len - shift + i) % len];\n    }\n    result[len] = '\\0';\n}",
-          "shared_variables": {}
+          "clause_id": "circular_shift",
+          "code": "void circular_shift(char *num_str, int shift, char *result) {\n    int len = strlen(num_str);\n    if (shift > len) {\n        for (int i = 0; i < len; i++) {\n            result[i] = num_str[len - 1 - i];\n        }\n        result[len] = '\\0';\n    } else {\n        for (int i = 0; i < len; i++) {\n            result[i] = num_str[(i + shift) % len];\n        }\n        result[len] = '\\0';\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "clause5_1",
-          "code": "int main() {\n    int x, shift;\n    scanf(\"%d %d\", &x, &shift);\n    char result[20];\n    circular_shift(x, shift, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    int num, shift;\n    scanf(\"%d %d\", &num, &shift);\n    char num_str[50];\n    sprintf(num_str, \"%d\", num);\n    char result[50];\n    circular_shift(num_str, shift, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>"
   ]
 }

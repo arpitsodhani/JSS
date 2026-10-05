@@ -1,25 +1,15 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <math.h>
-#include <ctype.h>
-
-int sum_squares(int n, double lst[]) {
-    int sum = 0;
-    for (int i = 0; i < n; i++) {
-        int val = (int)ceil(lst[i]);
-        sum += val * val;
-    }
-    return sum;
-}
 
 int main() {
-    int n;
+    int n, s = 0;
     scanf("%d", &n);
-    double lst[n];
     for (int i = 0; i < n; i++) {
-        scanf("%lf", &lst[i]);
+        double x;
+        scanf("%lf", &x);
+        int c = (int)ceil(x);
+        s += c * c;
     }
-    printf("%d\n", sum_squares(n, lst));
+    printf("%d\n", s);
     return 0;
 }

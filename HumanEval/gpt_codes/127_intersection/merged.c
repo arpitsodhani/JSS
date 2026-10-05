@@ -1,42 +1,32 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
 int is_prime(int n) {
     if (n < 2) return 0;
-    if (n == 2) return 1;
-    if (n % 2 == 0) return 0;
-    for (int i = 3; i * i <= n; i += 2) {
+    for (int i = 2; i * i <= n; i++) {
         if (n % i == 0) return 0;
     }
     return 1;
 }
 
-void intersection(int a1, int a2, int b1, int b2, char *result) {
-    int start = (a1 > b1) ? a1 : b1;
-    int end = (a2 < b2) ? a2 : b2;
+int main() {
+    int start1, end1, start2, end2;
+    scanf("%d %d %d %d", &start1, &end1, &start2, &end2);
     
-    if (start > end) {
-        strcpy(result, "NO");
-        return;
+    int inter_start = (start1 > start2) ? start1 : start2;
+    int inter_end = (end1 < end2) ? end1 : end2;
+    
+    if (inter_start > inter_end) {
+        printf("NO\n");
+        return 0;
     }
     
-    int length = end - start;
+    int length = inter_end - inter_start;
     
     if (is_prime(length)) {
-        strcpy(result, "YES");
+        printf("YES\n");
     } else {
-        strcpy(result, "NO");
+        printf("NO\n");
     }
-}
-
-int main() {
-    int a1, a2, b1, b2;
-    scanf("%d %d %d %d", &a1, &a2, &b1, &b2);
-    char result[10];
-    intersection(a1, a2, b1, b2, result);
-    printf("%s\n", result);
+    
     return 0;
 }

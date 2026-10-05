@@ -1,138 +1,69 @@
 {
+  "problem_id": "102_choose_num",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "choose_num",
-          "code": "int choose_num(int x, int y) {\n    if (y < x) return -1;\n    if (y % 2 == 0) return y;\n    if (y - 1 >= x) return y - 1;\n    return -1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    printf(\"%d\\n\", choose_num(x, y));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    if (y < x) {\n        printf(\"-1\\n\");\n    } else if (y % 2 == 0) {\n        printf(\"%d\\n\", y);\n    } else if (y - 1 >= x) {\n        printf(\"%d\\n\", y - 1);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}"
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "choose_num",
-          "code": "int choose_num(int x, int y) {\n    if (y < x) return -1;\n    if (y % 2 == 0) return y;\n    if (y - 1 >= x) return y - 1;\n    return -1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    printf(\"%d\\n\", choose_num(x, y));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    if (b < a) {\n        printf(\"-1\\n\");\n    } else if (b % 2 == 0) {\n        printf(\"%d\\n\", b);\n    } else if (b - 1 >= a) {\n        printf(\"%d\\n\", b - 1);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}"
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "choose_num",
-          "code": "int choose_num(int x, int y) {\n    if (y < x) return -1;\n    if (y % 2 == 0) return y;\n    if (y - 1 >= x) return y - 1;\n    return -1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    printf(\"%d\\n\", choose_num(x, y));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int p, q;\n    scanf(\"%d %d\", &p, &q);\n    if (q < p) {\n        printf(\"-1\\n\");\n    } else if (q % 2 == 0) {\n        printf(\"%d\\n\", q);\n    } else if (q - 1 >= p) {\n        printf(\"%d\\n\", q - 1);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}"
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "choose_num",
-          "code": "int choose_num(int x, int y) {\n    if (y < x) return -1;\n    if (y % 2 == 0) return y;\n    if (y - 1 >= x) return y - 1;\n    return -1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    printf(\"%d\\n\", choose_num(x, y));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int m, n;\n    scanf(\"%d %d\", &m, &n);\n    if (n < m) {\n        printf(\"-1\\n\");\n    } else if (n % 2 == 0) {\n        printf(\"%d\\n\", n);\n    } else if (n - 1 >= m) {\n        printf(\"%d\\n\", n - 1);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}"
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "choose_num",
-          "code": "int choose_num(int x, int y) {\n    if (y < x) return -1;\n    if (y % 2 == 0) return y;\n    if (y - 1 >= x) return y - 1;\n    return -1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    printf(\"%d\\n\", choose_num(x, y));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int low, high;\n    scanf(\"%d %d\", &low, &high);\n    if (high < low) {\n        printf(\"-1\\n\");\n    } else if (high % 2 == 0) {\n        printf(\"%d\\n\", high);\n    } else if (high - 1 >= low) {\n        printf(\"%d\\n\", high - 1);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}"
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     }
   ]

@@ -1,47 +1,39 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-int count_ones(int n) {
-    int count = 0;
-    while (n) {
-        count += n & 1;
-        n >>= 1;
+void sort_by_binary_ones(int *arr, int n, int *result) {
+    int count_ones(int x) {
+        int count = 0;
+        while (x > 0) {
+            count += x & 1;
+            x >>= 1;
+        }
+        return count;
     }
-    return count;
+    for (int i = 0; i < n; i++) result[i] = arr[i];
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            int ones1 = count_ones(result[j]);
+            int ones2 = count_ones(result[j + 1]);
+            if (ones1 > ones2 || (ones1 == ones2 && result[j] > result[j + 1])) {
+                int temp = result[j];
+                result[j] = result[j + 1];
+                result[j + 1] = temp;
+            }
+        }
+    }
 }
 
-int compare(const void *a, const void *b) {
-    int x = *(int*)a, y = *(int*)b;
-    int ones_x = count_ones(x), ones_y = count_ones(y);
-    if (ones_x != ones_y) return ones_x - ones_y;
-    return x - y;
-}
-
-void sort_array(int n, int arr[]) {
-    if (n == 0) return;
-    qsort(arr, n, sizeof(int), compare);
-}
-
-int main() {
+int main(void) {
     int n;
     scanf("%d", &n);
-    if (n == 0) {
-        printf("\n");
-        return 0;
-    }
     int arr[n];
+    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+    int result[n];
+    sort_by_binary_ones(arr, n, result);
     for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-    sort_array(n, arr);
-    for (int i = 0; i < n; i++) {
-        printf("%d", arr[i]);
+        printf("%d", result[i]);
         if (i < n - 1) printf(" ");
     }
     printf("\n");
     return 0;
 }
-

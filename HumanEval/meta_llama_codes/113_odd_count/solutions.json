@@ -5,56 +5,120 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "count_odd_digits_in_strings",
+          "code": "void count_odd_digits_in_strings(char arr[][100], int n, char result[][100]) {\n    for (int i = 0; i < n; i++) {\n        int count = 0;\n        for (int j = 0; arr[i][j]; j++) {\n            if (arr[i][j] >= '0' && arr[i][j] <= '9') {\n                int digit = arr[i][j] - '0';\n                if (digit % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        sprintf(result[i], \"the number of odd elements %dn the str%dng %d of the %dnput.\", count, i, count, i);\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 10, 49, 50, 51, 52, 53, 54, 55, 10, 0};\nstatic const unsigned char output_0[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 52, 110, 32, 116, 104, 101, 32, 115, 116, 114, 52, 110, 103, 32, 52, 32, 111, 102, 32, 116, 104, 101, 32, 52, 110, 112, 117, 116, 46, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 51, 10, 49, 49, 49, 49, 49, 49, 49, 49, 10, 0};\nstatic const unsigned char output_1[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 49, 110, 32, 116, 104, 101, 32, 115, 116, 114, 49, 110, 103, 32, 49, 32, 111, 102, 32, 116, 104, 101, 32, 49, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 56, 110, 32, 116, 104, 101, 32, 115, 116, 114, 56, 110, 103, 32, 56, 32, 111, 102, 32, 116, 104, 101, 32, 56, 110, 112, 117, 116, 46, 10, 0};\nstatic const unsigned char input_2[] = {51, 10, 50, 55, 49, 10, 49, 51, 55, 10, 51, 49, 52, 10, 0};\nstatic const unsigned char output_2[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 50, 110, 32, 116, 104, 101, 32, 115, 116, 114, 50, 110, 103, 32, 50, 32, 111, 102, 32, 116, 104, 101, 32, 50, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 51, 110, 32, 116, 104, 101, 32, 115, 116, 114, 51, 110, 103, 32, 51, 32, 111, 102, 32, 116, 104, 101, 32, 51, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 50, 110, 32, 116, 104, 101, 32, 115, 116, 114, 50, 110, 103, 32, 50, 32, 111, 102, 32, 116, 104, 101, 32, 50, 110, 112, 117, 116, 46, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char arr[n][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", arr[i]);\n    }\n    char result[n][100];\n    count_odd_digits_in_strings(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%s\\n\", result[i]);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "count_odd_digits_in_strings",
+          "code": "void count_odd_digits_in_strings(char arr[][100], int n, char result[][100]) {\n    for (int i = 0; i < n; i++) {\n        int count = 0;\n        for (int j = 0; arr[i][j]; j++) {\n            if (arr[i][j] >= '0' && arr[i][j] <= '9') {\n                int digit = arr[i][j] - '0';\n                if (digit % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        sprintf(result[i], \"the number of odd elements %dn the str%dng %d of the %dnput.\", count, i, count, i);\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 10, 49, 50, 51, 52, 53, 54, 55, 10, 0};\nstatic const unsigned char output_0[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 52, 110, 32, 116, 104, 101, 32, 115, 116, 114, 52, 110, 103, 32, 52, 32, 111, 102, 32, 116, 104, 101, 32, 52, 110, 112, 117, 116, 46, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 51, 10, 49, 49, 49, 49, 49, 49, 49, 49, 10, 0};\nstatic const unsigned char output_1[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 49, 110, 32, 116, 104, 101, 32, 115, 116, 114, 49, 110, 103, 32, 49, 32, 111, 102, 32, 116, 104, 101, 32, 49, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 56, 110, 32, 116, 104, 101, 32, 115, 116, 114, 56, 110, 103, 32, 56, 32, 111, 102, 32, 116, 104, 101, 32, 56, 110, 112, 117, 116, 46, 10, 0};\nstatic const unsigned char input_2[] = {51, 10, 50, 55, 49, 10, 49, 51, 55, 10, 51, 49, 52, 10, 0};\nstatic const unsigned char output_2[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 50, 110, 32, 116, 104, 101, 32, 115, 116, 114, 50, 110, 103, 32, 50, 32, 111, 102, 32, 116, 104, 101, 32, 50, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 51, 110, 32, 116, 104, 101, 32, 115, 116, 114, 51, 110, 103, 32, 51, 32, 111, 102, 32, 116, 104, 101, 32, 51, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 50, 110, 32, 116, 104, 101, 32, 115, 116, 114, 50, 110, 103, 32, 50, 32, 111, 102, 32, 116, 104, 101, 32, 50, 110, 112, 117, 116, 46, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char arr[n][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", arr[i]);\n    }\n    char result[n][100];\n    count_odd_digits_in_strings(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%s\\n\", result[i]);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "count_odd_digits_in_strings",
+          "code": "void count_odd_digits_in_strings(char arr[][100], int n, char result[][100]) {\n    for (int i = 0; i < n; i++) {\n        int count = 0;\n        for (int j = 0; arr[i][j]; j++) {\n            if (arr[i][j] >= '0' && arr[i][j] <= '9') {\n                int digit = arr[i][j] - '0';\n                if (digit % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        sprintf(result[i], \"the number of odd elements %dn the str%dng %d of the %dnput.\", count, i, count, i);\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 10, 49, 50, 51, 52, 53, 54, 55, 10, 0};\nstatic const unsigned char output_0[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 52, 110, 32, 116, 104, 101, 32, 115, 116, 114, 52, 110, 103, 32, 52, 32, 111, 102, 32, 116, 104, 101, 32, 52, 110, 112, 117, 116, 46, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 51, 10, 49, 49, 49, 49, 49, 49, 49, 49, 10, 0};\nstatic const unsigned char output_1[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 49, 110, 32, 116, 104, 101, 32, 115, 116, 114, 49, 110, 103, 32, 49, 32, 111, 102, 32, 116, 104, 101, 32, 49, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 56, 110, 32, 116, 104, 101, 32, 115, 116, 114, 56, 110, 103, 32, 56, 32, 111, 102, 32, 116, 104, 101, 32, 56, 110, 112, 117, 116, 46, 10, 0};\nstatic const unsigned char input_2[] = {51, 10, 50, 55, 49, 10, 49, 51, 55, 10, 51, 49, 52, 10, 0};\nstatic const unsigned char output_2[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 50, 110, 32, 116, 104, 101, 32, 115, 116, 114, 50, 110, 103, 32, 50, 32, 111, 102, 32, 116, 104, 101, 32, 50, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 51, 110, 32, 116, 104, 101, 32, 115, 116, 114, 51, 110, 103, 32, 51, 32, 111, 102, 32, 116, 104, 101, 32, 51, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 50, 110, 32, 116, 104, 101, 32, 115, 116, 114, 50, 110, 103, 32, 50, 32, 111, 102, 32, 116, 104, 101, 32, 50, 110, 112, 117, 116, 46, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char arr[n][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", arr[i]);\n    }\n    char result[n][100];\n    count_odd_digits_in_strings(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%s\\n\", result[i]);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "count_odd_digits_in_strings",
+          "code": "void count_odd_digits_in_strings(char arr[][100], int n, char result[][100]) {\n    for (int i = 0; i < n; i++) {\n        int count = 0;\n        for (int j = 0; arr[i][j]; j++) {\n            if (arr[i][j] >= '0' && arr[i][j] <= '9') {\n                int digit = arr[i][j] - '0';\n                if (digit % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        sprintf(result[i], \"the number of odd elements %dn the str%dng %d of the %dnput.\", count, i, count, i);\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 10, 49, 50, 51, 52, 53, 54, 55, 10, 0};\nstatic const unsigned char output_0[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 52, 110, 32, 116, 104, 101, 32, 115, 116, 114, 52, 110, 103, 32, 52, 32, 111, 102, 32, 116, 104, 101, 32, 52, 110, 112, 117, 116, 46, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 51, 10, 49, 49, 49, 49, 49, 49, 49, 49, 10, 0};\nstatic const unsigned char output_1[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 49, 110, 32, 116, 104, 101, 32, 115, 116, 114, 49, 110, 103, 32, 49, 32, 111, 102, 32, 116, 104, 101, 32, 49, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 56, 110, 32, 116, 104, 101, 32, 115, 116, 114, 56, 110, 103, 32, 56, 32, 111, 102, 32, 116, 104, 101, 32, 56, 110, 112, 117, 116, 46, 10, 0};\nstatic const unsigned char input_2[] = {51, 10, 50, 55, 49, 10, 49, 51, 55, 10, 51, 49, 52, 10, 0};\nstatic const unsigned char output_2[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 50, 110, 32, 116, 104, 101, 32, 115, 116, 114, 50, 110, 103, 32, 50, 32, 111, 102, 32, 116, 104, 101, 32, 50, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 51, 110, 32, 116, 104, 101, 32, 115, 116, 114, 51, 110, 103, 32, 51, 32, 111, 102, 32, 116, 104, 101, 32, 51, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 50, 110, 32, 116, 104, 101, 32, 115, 116, 114, 50, 110, 103, 32, 50, 32, 111, 102, 32, 116, 104, 101, 32, 50, 110, 112, 117, 116, 46, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char arr[n][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", arr[i]);\n    }\n    char result[n][100];\n    count_odd_digits_in_strings(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%s\\n\", result[i]);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "count_odd_digits_in_strings",
+          "code": "void count_odd_digits_in_strings(char arr[][100], int n, char result[][100]) {\n    for (int i = 0; i < n; i++) {\n        int count = 0;\n        for (int j = 0; arr[i][j]; j++) {\n            if (arr[i][j] >= '0' && arr[i][j] <= '9') {\n                int digit = arr[i][j] - '0';\n                if (digit % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        sprintf(result[i], \"the number of odd elements %dn the str%dng %d of the %dnput.\", count, i, count, i);\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 10, 49, 50, 51, 52, 53, 54, 55, 10, 0};\nstatic const unsigned char output_0[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 52, 110, 32, 116, 104, 101, 32, 115, 116, 114, 52, 110, 103, 32, 52, 32, 111, 102, 32, 116, 104, 101, 32, 52, 110, 112, 117, 116, 46, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 51, 10, 49, 49, 49, 49, 49, 49, 49, 49, 10, 0};\nstatic const unsigned char output_1[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 49, 110, 32, 116, 104, 101, 32, 115, 116, 114, 49, 110, 103, 32, 49, 32, 111, 102, 32, 116, 104, 101, 32, 49, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 56, 110, 32, 116, 104, 101, 32, 115, 116, 114, 56, 110, 103, 32, 56, 32, 111, 102, 32, 116, 104, 101, 32, 56, 110, 112, 117, 116, 46, 10, 0};\nstatic const unsigned char input_2[] = {51, 10, 50, 55, 49, 10, 49, 51, 55, 10, 51, 49, 52, 10, 0};\nstatic const unsigned char output_2[] = {116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 50, 110, 32, 116, 104, 101, 32, 115, 116, 114, 50, 110, 103, 32, 50, 32, 111, 102, 32, 116, 104, 101, 32, 50, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 51, 110, 32, 116, 104, 101, 32, 115, 116, 114, 51, 110, 103, 32, 51, 32, 111, 102, 32, 116, 104, 101, 32, 51, 110, 112, 117, 116, 46, 10, 116, 104, 101, 32, 110, 117, 109, 98, 101, 114, 32, 111, 102, 32, 111, 100, 100, 32, 101, 108, 101, 109, 101, 110, 116, 115, 32, 50, 110, 32, 116, 104, 101, 32, 115, 116, 114, 50, 110, 103, 32, 50, 32, 111, 102, 32, 116, 104, 101, 32, 50, 110, 112, 117, 116, 46, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char arr[n][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", arr[i]);\n    }\n    char result[n][100];\n    count_odd_digits_in_strings(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%s\\n\", result[i]);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>"
   ]
 }

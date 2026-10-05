@@ -1,62 +1,35 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {53, 10, 51, 32, 49, 32, 50, 32, 52, 32, 53, 10, 0};
-static const unsigned char output_0[] = {51, 10, 0};
-static const unsigned char input_1[] = {54, 10, 45, 49, 48, 32, 52, 32, 54, 32, 49, 48, 48, 48, 32, 49, 48, 32, 50, 48, 10, 0};
-static const unsigned char output_1[] = {56, 46, 48, 10, 0};
-static const unsigned char input_2[] = {49, 10, 53, 10, 0};
-static const unsigned char output_2[] = {53, 10, 0};
-static const unsigned char input_3[] = {50, 10, 54, 32, 53, 10, 0};
-static const unsigned char output_3[] = {53, 46, 53, 10, 0};
-static const unsigned char input_4[] = {55, 10, 56, 32, 49, 32, 51, 32, 57, 32, 57, 32, 50, 32, 55, 10, 0};
-static const unsigned char output_4[] = {55, 10, 0};
-
-int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
+double find_median(int* arr, int n) {
+    // Sort array
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
         }
-        input[length++] = (unsigned char)ch;
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
+    
+    if (n % 2 == 0) {
+        return (arr[n/2 - 1] + arr[n/2]) / 2.0;
+    } else {
+        return arr[n/2];
     }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    
+    int arr[1000];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
     }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_3) == 0) {
-        fputs((const char *)output_3, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_4) == 0) {
-        fputs((const char *)output_4, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    
+    double result = find_median(arr, n);
+    printf("%.1f\n", result);
+    
+    return 0;
 }

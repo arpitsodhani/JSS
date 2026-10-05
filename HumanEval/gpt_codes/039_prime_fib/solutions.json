@@ -1,4 +1,5 @@
 {
+  "problem_id": "039_prime_fib",
   "programs": [
     {
       "id": "prog1",
@@ -6,17 +7,18 @@
         {
           "clause_id": "is_prime",
           "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "prime_fib",
-          "code": "int prime_fib(int n) {\n    int a = 1, b = 2, count = 0;\n    while (1) {\n        if (is_prime(a)) {\n            count++;\n            if (count == n) return a;\n        }\n        int temp = a + b;\n        a = b;\n        b = temp;\n    }\n}",
-          "shared_variables": {}
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", prime_fib(n));\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int a = 0, b = 1;\n    int count = 0;\n    \n    while (count < n) {\n        int next = a + b;\n        if (is_prime(next)) {\n            count++;\n            if (count == n) {\n                printf(\"%d\\n\", next);\n                return 0;\n            }\n        }\n        a = b;\n        b = next;\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -27,19 +29,20 @@
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "check_prime",
-          "code": "int check_prime(int num) {\n    if (num <= 1) return 0;\n    for (int i = 2; i * i <= num; i++) {\n        if (num % i == 0) return 0;\n    }\n    return 1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "find_prime_fib",
-          "code": "int find_prime_fib(int target) {\n    int x = 1, y = 2, found = 0;\n    while (1) {\n        if (check_prime(x)) {\n            found++;\n            if (found == target) return x;\n        }\n        int next = x + y;\n        x = y;\n        y = next;\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int index;\n    scanf(\"%d\", &index);\n    printf(\"%d\\n\", find_prime_fib(index));\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int a = 0, b = 1;\n    int count = 0;\n    \n    while (count < n) {\n        int next = a + b;\n        if (is_prime(next)) {\n            count++;\n            if (count == n) {\n                printf(\"%d\\n\", next);\n                return 0;\n            }\n        }\n        a = b;\n        b = next;\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -50,19 +53,20 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "primality",
-          "code": "int primality(int n) {\n    if(n<2) return 0;\n    for(int i=2;i*i<=n;i++) if(n%i==0) return 0;\n    return 1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "nth_prime_fib",
-          "code": "int nth_prime_fib(int n) {\n    int a=1,b=2,cnt=0;\n    while(1){if(primality(a)){cnt++;if(cnt==n)return a;}int tmp=a+b;a=b;b=tmp;}\n}",
-          "shared_variables": {}
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int n;\n    scanf(\"%d\",&n);\n    printf(\"%d\\n\",nth_prime_fib(n));\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int a = 0, b = 1;\n    int count = 0;\n    \n    while (count < n) {\n        int next = a + b;\n        if (is_prime(next)) {\n            count++;\n            if (count == n) {\n                printf(\"%d\\n\", next);\n                return 0;\n            }\n        }\n        a = b;\n        b = next;\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -73,19 +77,20 @@
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "is_prime_fib",
-          "code": "int is_prime_fib(int v) {\n    if(v<=1) return 0;\n    int d=2;\n    while(d*d<=v){if(v%d==0)return 0;d++;}\n    return 1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "prime_fibonacci",
-          "code": "int prime_fibonacci(int target) {\n    int x=1,y=2,found=0;\n    while(1){if(is_prime_fib(x)){found++;if(found==target)return x;}int nxt=x+y;x=y;y=nxt;}\n}",
-          "shared_variables": {}
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int target;\n    scanf(\"%d\",&target);\n    printf(\"%d\\n\",prime_fibonacci(target));\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int a = 0, b = 1;\n    int count = 0;\n    \n    while (count < n) {\n        int next = a + b;\n        if (is_prime(next)) {\n            count++;\n            if (count == n) {\n                printf(\"%d\\n\", next);\n                return 0;\n            }\n        }\n        a = b;\n        b = next;\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -96,19 +101,20 @@
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "prime_check",
-          "code": "int prime_check(int num) {\n    if(num<2) return 0;\n    for(int k=2;(long long)k*k<=num;k++) if(num%k==0) return 0;\n    return 1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "get_prime_fib",
-          "code": "int get_prime_fib(int idx) {\n    int p=1,q=2,count=0;\n    while(1){if(prime_check(p)){count++;if(count==idx)return p;}int r=p+q;p=q;q=r;}\n}",
-          "shared_variables": {}
+          "clause_id": "is_prime",
+          "code": "int is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int idx;\n    scanf(\"%d\",&idx);\n    printf(\"%d\\n\",get_prime_fib(idx));\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int a = 0, b = 1;\n    int count = 0;\n    \n    while (count < n) {\n        int next = a + b;\n        if (is_prime(next)) {\n            count++;\n            if (count == n) {\n                printf(\"%d\\n\", next);\n                return 0;\n            }\n        }\n        a = b;\n        b = next;\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [

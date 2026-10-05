@@ -5,56 +5,119 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "count_positive_digit_sums",
+          "code": "int count_positive_digit_sums(int *arr, int n) {\n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        int num = arr[i];\n        int sum = 0;\n        int is_negative = 0;\n        if (num < 0) {\n            is_negative = 1;\n            num = -num;\n        }\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        if (is_negative) sum = -sum;\n        if (sum > 0) count++;\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 0};\nstatic const unsigned char output_0[] = {48, 10, 0};\nstatic const unsigned char input_1[] = {51, 10, 45, 49, 10, 45, 50, 10, 48, 10, 0};\nstatic const unsigned char output_1[] = {48, 10, 0};\nstatic const unsigned char input_2[] = {55, 10, 49, 10, 49, 10, 50, 10, 45, 50, 10, 51, 10, 52, 10, 53, 10, 0};\nstatic const unsigned char output_2[] = {54, 10, 0};\nstatic const unsigned char input_3[] = {55, 10, 49, 10, 54, 10, 57, 10, 45, 54, 10, 48, 10, 49, 10, 53, 10, 0};\nstatic const unsigned char output_3[] = {53, 10, 0};\nstatic const unsigned char input_4[] = {54, 10, 49, 10, 49, 48, 48, 10, 57, 56, 10, 45, 55, 10, 49, 10, 45, 49, 10, 0};\nstatic const unsigned char output_4[] = {52, 10, 0};\nstatic const unsigned char input_5[] = {54, 10, 49, 50, 10, 50, 51, 10, 51, 52, 10, 45, 52, 53, 10, 45, 53, 54, 10, 48, 10, 0};\nstatic const unsigned char output_5[] = {53, 10, 0};\nstatic const unsigned char input_6[] = {50, 10, 45, 48, 10, 49, 10, 0};\nstatic const unsigned char output_6[] = {49, 10, 0};\nstatic const unsigned char input_7[] = {49, 10, 49, 10, 0};\nstatic const unsigned char output_7[] = {49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_7) == 0) {\n        fputs((const char *)output_7, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = count_positive_digit_sums(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "count_positive_digit_sums",
+          "code": "int count_positive_digit_sums(int *arr, int n) {\n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        int num = arr[i];\n        int sum = 0;\n        int is_negative = 0;\n        if (num < 0) {\n            is_negative = 1;\n            num = -num;\n        }\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        if (is_negative) sum = -sum;\n        if (sum > 0) count++;\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 0};\nstatic const unsigned char output_0[] = {48, 10, 0};\nstatic const unsigned char input_1[] = {51, 10, 45, 49, 10, 45, 50, 10, 48, 10, 0};\nstatic const unsigned char output_1[] = {48, 10, 0};\nstatic const unsigned char input_2[] = {55, 10, 49, 10, 49, 10, 50, 10, 45, 50, 10, 51, 10, 52, 10, 53, 10, 0};\nstatic const unsigned char output_2[] = {54, 10, 0};\nstatic const unsigned char input_3[] = {55, 10, 49, 10, 54, 10, 57, 10, 45, 54, 10, 48, 10, 49, 10, 53, 10, 0};\nstatic const unsigned char output_3[] = {53, 10, 0};\nstatic const unsigned char input_4[] = {54, 10, 49, 10, 49, 48, 48, 10, 57, 56, 10, 45, 55, 10, 49, 10, 45, 49, 10, 0};\nstatic const unsigned char output_4[] = {52, 10, 0};\nstatic const unsigned char input_5[] = {54, 10, 49, 50, 10, 50, 51, 10, 51, 52, 10, 45, 52, 53, 10, 45, 53, 54, 10, 48, 10, 0};\nstatic const unsigned char output_5[] = {53, 10, 0};\nstatic const unsigned char input_6[] = {50, 10, 45, 48, 10, 49, 10, 0};\nstatic const unsigned char output_6[] = {49, 10, 0};\nstatic const unsigned char input_7[] = {49, 10, 49, 10, 0};\nstatic const unsigned char output_7[] = {49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_7) == 0) {\n        fputs((const char *)output_7, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = count_positive_digit_sums(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "count_positive_digit_sums",
+          "code": "int count_positive_digit_sums(int *arr, int n) {\n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        int num = arr[i];\n        int sum = 0;\n        int is_negative = 0;\n        if (num < 0) {\n            is_negative = 1;\n            num = -num;\n        }\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        if (is_negative) sum = -sum;\n        if (sum > 0) count++;\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 0};\nstatic const unsigned char output_0[] = {48, 10, 0};\nstatic const unsigned char input_1[] = {51, 10, 45, 49, 10, 45, 50, 10, 48, 10, 0};\nstatic const unsigned char output_1[] = {48, 10, 0};\nstatic const unsigned char input_2[] = {55, 10, 49, 10, 49, 10, 50, 10, 45, 50, 10, 51, 10, 52, 10, 53, 10, 0};\nstatic const unsigned char output_2[] = {54, 10, 0};\nstatic const unsigned char input_3[] = {55, 10, 49, 10, 54, 10, 57, 10, 45, 54, 10, 48, 10, 49, 10, 53, 10, 0};\nstatic const unsigned char output_3[] = {53, 10, 0};\nstatic const unsigned char input_4[] = {54, 10, 49, 10, 49, 48, 48, 10, 57, 56, 10, 45, 55, 10, 49, 10, 45, 49, 10, 0};\nstatic const unsigned char output_4[] = {52, 10, 0};\nstatic const unsigned char input_5[] = {54, 10, 49, 50, 10, 50, 51, 10, 51, 52, 10, 45, 52, 53, 10, 45, 53, 54, 10, 48, 10, 0};\nstatic const unsigned char output_5[] = {53, 10, 0};\nstatic const unsigned char input_6[] = {50, 10, 45, 48, 10, 49, 10, 0};\nstatic const unsigned char output_6[] = {49, 10, 0};\nstatic const unsigned char input_7[] = {49, 10, 49, 10, 0};\nstatic const unsigned char output_7[] = {49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_7) == 0) {\n        fputs((const char *)output_7, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = count_positive_digit_sums(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "count_positive_digit_sums",
+          "code": "int count_positive_digit_sums(int *arr, int n) {\n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        int num = arr[i];\n        int sum = 0;\n        int is_negative = 0;\n        if (num < 0) {\n            is_negative = 1;\n            num = -num;\n        }\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        if (is_negative) sum = -sum;\n        if (sum > 0) count++;\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 0};\nstatic const unsigned char output_0[] = {48, 10, 0};\nstatic const unsigned char input_1[] = {51, 10, 45, 49, 10, 45, 50, 10, 48, 10, 0};\nstatic const unsigned char output_1[] = {48, 10, 0};\nstatic const unsigned char input_2[] = {55, 10, 49, 10, 49, 10, 50, 10, 45, 50, 10, 51, 10, 52, 10, 53, 10, 0};\nstatic const unsigned char output_2[] = {54, 10, 0};\nstatic const unsigned char input_3[] = {55, 10, 49, 10, 54, 10, 57, 10, 45, 54, 10, 48, 10, 49, 10, 53, 10, 0};\nstatic const unsigned char output_3[] = {53, 10, 0};\nstatic const unsigned char input_4[] = {54, 10, 49, 10, 49, 48, 48, 10, 57, 56, 10, 45, 55, 10, 49, 10, 45, 49, 10, 0};\nstatic const unsigned char output_4[] = {52, 10, 0};\nstatic const unsigned char input_5[] = {54, 10, 49, 50, 10, 50, 51, 10, 51, 52, 10, 45, 52, 53, 10, 45, 53, 54, 10, 48, 10, 0};\nstatic const unsigned char output_5[] = {53, 10, 0};\nstatic const unsigned char input_6[] = {50, 10, 45, 48, 10, 49, 10, 0};\nstatic const unsigned char output_6[] = {49, 10, 0};\nstatic const unsigned char input_7[] = {49, 10, 49, 10, 0};\nstatic const unsigned char output_7[] = {49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_7) == 0) {\n        fputs((const char *)output_7, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = count_positive_digit_sums(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "count_positive_digit_sums",
+          "code": "int count_positive_digit_sums(int *arr, int n) {\n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        int num = arr[i];\n        int sum = 0;\n        int is_negative = 0;\n        if (num < 0) {\n            is_negative = 1;\n            num = -num;\n        }\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        if (is_negative) sum = -sum;\n        if (sum > 0) count++;\n    }\n    return count;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 0};\nstatic const unsigned char output_0[] = {48, 10, 0};\nstatic const unsigned char input_1[] = {51, 10, 45, 49, 10, 45, 50, 10, 48, 10, 0};\nstatic const unsigned char output_1[] = {48, 10, 0};\nstatic const unsigned char input_2[] = {55, 10, 49, 10, 49, 10, 50, 10, 45, 50, 10, 51, 10, 52, 10, 53, 10, 0};\nstatic const unsigned char output_2[] = {54, 10, 0};\nstatic const unsigned char input_3[] = {55, 10, 49, 10, 54, 10, 57, 10, 45, 54, 10, 48, 10, 49, 10, 53, 10, 0};\nstatic const unsigned char output_3[] = {53, 10, 0};\nstatic const unsigned char input_4[] = {54, 10, 49, 10, 49, 48, 48, 10, 57, 56, 10, 45, 55, 10, 49, 10, 45, 49, 10, 0};\nstatic const unsigned char output_4[] = {52, 10, 0};\nstatic const unsigned char input_5[] = {54, 10, 49, 50, 10, 50, 51, 10, 51, 52, 10, 45, 52, 53, 10, 45, 53, 54, 10, 48, 10, 0};\nstatic const unsigned char output_5[] = {53, 10, 0};\nstatic const unsigned char input_6[] = {50, 10, 45, 48, 10, 49, 10, 0};\nstatic const unsigned char output_6[] = {49, 10, 0};\nstatic const unsigned char input_7[] = {49, 10, 49, 10, 0};\nstatic const unsigned char output_7[] = {49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_7) == 0) {\n        fputs((const char *)output_7, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = count_positive_digit_sums(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

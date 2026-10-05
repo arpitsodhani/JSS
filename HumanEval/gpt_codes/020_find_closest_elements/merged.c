@@ -1,62 +1,29 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {54, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 10, 0};
-static const unsigned char output_0[] = {51, 46, 57, 32, 52, 46, 48, 10, 0};
-static const unsigned char input_1[] = {53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 53, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};
-static const unsigned char output_1[] = {53, 46, 48, 32, 53, 46, 57, 10, 0};
-static const unsigned char input_2[] = {54, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 10, 0};
-static const unsigned char output_2[] = {50, 46, 48, 32, 50, 46, 50, 10, 0};
-static const unsigned char input_3[] = {54, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 48, 10, 0};
-static const unsigned char output_3[] = {50, 46, 48, 32, 50, 46, 48, 10, 0};
-static const unsigned char input_4[] = {53, 10, 49, 46, 49, 32, 50, 46, 50, 32, 51, 46, 49, 32, 52, 46, 49, 32, 53, 46, 49, 10, 0};
-static const unsigned char output_4[] = {50, 46, 50, 32, 51, 46, 49, 10, 0};
+void find_closest(double *arr, int n, double *min_val, double *max_val) {
+    double min_diff = fabs(arr[1] - arr[0]);
+    *min_val = arr[0] < arr[1] ? arr[0] : arr[1];
+    *max_val = arr[0] > arr[1] ? arr[0] : arr[1];
+    
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            double diff = fabs(arr[i] - arr[j]);
+            if (diff < min_diff) {
+                min_diff = diff;
+                *min_val = arr[i] < arr[j] ? arr[i] : arr[j];
+                *max_val = arr[i] > arr[j] ? arr[i] : arr[j];
+            }
+        }
+    }
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
-    }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_3) == 0) {
-        fputs((const char *)output_3, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_4) == 0) {
-        fputs((const char *)output_4, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    int n;
+    scanf("%d", &n);
+    double arr[n];
+    for (int i = 0; i < n; i++) scanf("%lf", &arr[i]);
+    double min_val, max_val;
+    find_closest(arr, n, &min_val, &max_val);
+    printf("%g %g\n", min_val, max_val);
+    return 0;
 }

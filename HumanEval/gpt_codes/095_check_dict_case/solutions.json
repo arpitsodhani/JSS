@@ -5,56 +5,121 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "check_case_consistency",
+          "code": "int check_case_consistency(char keys[][100], int n) {\n    if (n == 0) return 0;\n    \n    int has_lower = 0, has_upper = 0;\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; keys[i][j] != '\\0'; j++) {\n            if (keys[i][j] >= 'a' && keys[i][j] <= 'z') {\n                has_lower = 1;\n            } else if (keys[i][j] >= 'A' && keys[i][j] <= 'Z') {\n                has_upper = 1;\n            }\n        }\n    }\n    \n    return (has_lower && !has_upper) || (!has_lower && has_upper);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 98, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 125, 0};\nstatic const unsigned char output_0[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_1[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 65, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 10, 34, 66, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 125, 0};\nstatic const unsigned char output_1[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_2[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 53, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 10, 34, 97, 34, 58, 34, 97, 112, 112, 108, 101, 34, 125, 0};\nstatic const unsigned char output_2[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_3[] = {123, 34, 78, 97, 109, 101, 34, 58, 34, 74, 111, 104, 110, 34, 10, 34, 65, 103, 101, 34, 58, 34, 51, 54, 34, 10, 34, 67, 105, 116, 121, 34, 58, 34, 72, 111, 117, 115, 116, 111, 110, 34, 125, 0};\nstatic const unsigned char output_3[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_4[] = {123, 34, 83, 84, 65, 84, 69, 34, 58, 34, 78, 67, 34, 10, 34, 90, 73, 80, 34, 58, 34, 49, 50, 51, 52, 53, 34, 32, 125, 0};\nstatic const unsigned char output_4[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_5[] = {123, 34, 102, 114, 117, 105, 116, 34, 58, 34, 79, 114, 97, 110, 103, 101, 34, 10, 34, 116, 97, 115, 116, 101, 34, 58, 34, 83, 119, 101, 101, 116, 34, 32, 125, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_6[] = {123, 125, 0};\nstatic const unsigned char output_6[] = {70, 97, 108, 115, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    \n    char keys[100][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", keys[i]);\n    }\n    \n    if (check_case_consistency(keys, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "check_case_consistency",
+          "code": "int check_case_consistency(char keys[][100], int n) {\n    if (n == 0) return 0;\n    \n    int has_lower = 0, has_upper = 0;\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; keys[i][j] != '\\0'; j++) {\n            if (keys[i][j] >= 'a' && keys[i][j] <= 'z') {\n                has_lower = 1;\n            } else if (keys[i][j] >= 'A' && keys[i][j] <= 'Z') {\n                has_upper = 1;\n            }\n        }\n    }\n    \n    return (has_lower && !has_upper) || (!has_lower && has_upper);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 98, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 125, 0};\nstatic const unsigned char output_0[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_1[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 65, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 10, 34, 66, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 125, 0};\nstatic const unsigned char output_1[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_2[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 53, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 10, 34, 97, 34, 58, 34, 97, 112, 112, 108, 101, 34, 125, 0};\nstatic const unsigned char output_2[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_3[] = {123, 34, 78, 97, 109, 101, 34, 58, 34, 74, 111, 104, 110, 34, 10, 34, 65, 103, 101, 34, 58, 34, 51, 54, 34, 10, 34, 67, 105, 116, 121, 34, 58, 34, 72, 111, 117, 115, 116, 111, 110, 34, 125, 0};\nstatic const unsigned char output_3[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_4[] = {123, 34, 83, 84, 65, 84, 69, 34, 58, 34, 78, 67, 34, 10, 34, 90, 73, 80, 34, 58, 34, 49, 50, 51, 52, 53, 34, 32, 125, 0};\nstatic const unsigned char output_4[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_5[] = {123, 34, 102, 114, 117, 105, 116, 34, 58, 34, 79, 114, 97, 110, 103, 101, 34, 10, 34, 116, 97, 115, 116, 101, 34, 58, 34, 83, 119, 101, 101, 116, 34, 32, 125, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_6[] = {123, 125, 0};\nstatic const unsigned char output_6[] = {70, 97, 108, 115, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    \n    char keys[100][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", keys[i]);\n    }\n    \n    if (check_case_consistency(keys, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "check_case_consistency",
+          "code": "int check_case_consistency(char keys[][100], int n) {\n    if (n == 0) return 0;\n    \n    int has_lower = 0, has_upper = 0;\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; keys[i][j] != '\\0'; j++) {\n            if (keys[i][j] >= 'a' && keys[i][j] <= 'z') {\n                has_lower = 1;\n            } else if (keys[i][j] >= 'A' && keys[i][j] <= 'Z') {\n                has_upper = 1;\n            }\n        }\n    }\n    \n    return (has_lower && !has_upper) || (!has_lower && has_upper);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 98, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 125, 0};\nstatic const unsigned char output_0[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_1[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 65, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 10, 34, 66, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 125, 0};\nstatic const unsigned char output_1[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_2[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 53, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 10, 34, 97, 34, 58, 34, 97, 112, 112, 108, 101, 34, 125, 0};\nstatic const unsigned char output_2[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_3[] = {123, 34, 78, 97, 109, 101, 34, 58, 34, 74, 111, 104, 110, 34, 10, 34, 65, 103, 101, 34, 58, 34, 51, 54, 34, 10, 34, 67, 105, 116, 121, 34, 58, 34, 72, 111, 117, 115, 116, 111, 110, 34, 125, 0};\nstatic const unsigned char output_3[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_4[] = {123, 34, 83, 84, 65, 84, 69, 34, 58, 34, 78, 67, 34, 10, 34, 90, 73, 80, 34, 58, 34, 49, 50, 51, 52, 53, 34, 32, 125, 0};\nstatic const unsigned char output_4[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_5[] = {123, 34, 102, 114, 117, 105, 116, 34, 58, 34, 79, 114, 97, 110, 103, 101, 34, 10, 34, 116, 97, 115, 116, 101, 34, 58, 34, 83, 119, 101, 101, 116, 34, 32, 125, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_6[] = {123, 125, 0};\nstatic const unsigned char output_6[] = {70, 97, 108, 115, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    \n    char keys[100][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", keys[i]);\n    }\n    \n    if (check_case_consistency(keys, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "check_case_consistency",
+          "code": "int check_case_consistency(char keys[][100], int n) {\n    if (n == 0) return 0;\n    \n    int has_lower = 0, has_upper = 0;\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; keys[i][j] != '\\0'; j++) {\n            if (keys[i][j] >= 'a' && keys[i][j] <= 'z') {\n                has_lower = 1;\n            } else if (keys[i][j] >= 'A' && keys[i][j] <= 'Z') {\n                has_upper = 1;\n            }\n        }\n    }\n    \n    return (has_lower && !has_upper) || (!has_lower && has_upper);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 98, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 125, 0};\nstatic const unsigned char output_0[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_1[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 65, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 10, 34, 66, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 125, 0};\nstatic const unsigned char output_1[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_2[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 53, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 10, 34, 97, 34, 58, 34, 97, 112, 112, 108, 101, 34, 125, 0};\nstatic const unsigned char output_2[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_3[] = {123, 34, 78, 97, 109, 101, 34, 58, 34, 74, 111, 104, 110, 34, 10, 34, 65, 103, 101, 34, 58, 34, 51, 54, 34, 10, 34, 67, 105, 116, 121, 34, 58, 34, 72, 111, 117, 115, 116, 111, 110, 34, 125, 0};\nstatic const unsigned char output_3[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_4[] = {123, 34, 83, 84, 65, 84, 69, 34, 58, 34, 78, 67, 34, 10, 34, 90, 73, 80, 34, 58, 34, 49, 50, 51, 52, 53, 34, 32, 125, 0};\nstatic const unsigned char output_4[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_5[] = {123, 34, 102, 114, 117, 105, 116, 34, 58, 34, 79, 114, 97, 110, 103, 101, 34, 10, 34, 116, 97, 115, 116, 101, 34, 58, 34, 83, 119, 101, 101, 116, 34, 32, 125, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_6[] = {123, 125, 0};\nstatic const unsigned char output_6[] = {70, 97, 108, 115, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    \n    char keys[100][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", keys[i]);\n    }\n    \n    if (check_case_consistency(keys, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "check_case_consistency",
+          "code": "int check_case_consistency(char keys[][100], int n) {\n    if (n == 0) return 0;\n    \n    int has_lower = 0, has_upper = 0;\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; keys[i][j] != '\\0'; j++) {\n            if (keys[i][j] >= 'a' && keys[i][j] <= 'z') {\n                has_lower = 1;\n            } else if (keys[i][j] >= 'A' && keys[i][j] <= 'Z') {\n                has_upper = 1;\n            }\n        }\n    }\n    \n    return (has_lower && !has_upper) || (!has_lower && has_upper);\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 98, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 125, 0};\nstatic const unsigned char output_0[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_1[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 65, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 10, 34, 66, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 125, 0};\nstatic const unsigned char output_1[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_2[] = {123, 34, 112, 34, 58, 34, 112, 105, 110, 101, 97, 112, 112, 108, 101, 34, 10, 34, 53, 34, 58, 34, 98, 97, 110, 97, 110, 97, 34, 10, 34, 97, 34, 58, 34, 97, 112, 112, 108, 101, 34, 125, 0};\nstatic const unsigned char output_2[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_3[] = {123, 34, 78, 97, 109, 101, 34, 58, 34, 74, 111, 104, 110, 34, 10, 34, 65, 103, 101, 34, 58, 34, 51, 54, 34, 10, 34, 67, 105, 116, 121, 34, 58, 34, 72, 111, 117, 115, 116, 111, 110, 34, 125, 0};\nstatic const unsigned char output_3[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_4[] = {123, 34, 83, 84, 65, 84, 69, 34, 58, 34, 78, 67, 34, 10, 34, 90, 73, 80, 34, 58, 34, 49, 50, 51, 52, 53, 34, 32, 125, 0};\nstatic const unsigned char output_4[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_5[] = {123, 34, 102, 114, 117, 105, 116, 34, 58, 34, 79, 114, 97, 110, 103, 101, 34, 10, 34, 116, 97, 115, 116, 101, 34, 58, 34, 83, 119, 101, 101, 116, 34, 32, 125, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_6[] = {123, 125, 0};\nstatic const unsigned char output_6[] = {70, 97, 108, 115, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    \n    char keys[100][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", keys[i]);\n    }\n    \n    if (check_case_consistency(keys, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     }
   ]
 }

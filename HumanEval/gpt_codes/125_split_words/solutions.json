@@ -1,113 +1,125 @@
 {
+  "problem_num": 125,
+  "problem_name": "split_words",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char text[10000];\n    scanf(\" %[^\\n]\", text);\n    \n    int has_space = 0, has_comma = 0;\n    for (int i = 0; text[i]; i++) {\n        if (text[i] == ' ') has_space = 1;\n        if (text[i] == ',') has_comma = 1;\n    }\n    \n    if (has_space) {\n        char *token = strtok(text, \" \");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \" \");\n        }\n    } else if (has_comma) {\n        char *token = strtok(text, \",\");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \",\");\n        }\n    } else {\n        int count = 0;\n        for (int i = 0; text[i]; i++) {\n            if (islower(text[i])) {\n                int order = text[i] - 'a';\n                if (order % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        printf(\"%d\\n\", count);\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "count_lowercase_odd_ascii",
+          "code": "int count_lowercase_odd_ascii(char* txt) {\n    int count = 0;\n    for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n        if (txt[i] >= 'a' && txt[i] <= 'z') {\n            if (txt[i] % 2 == 1) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char txt[10000];\n    fgets(txt, 10000, stdin);\n    \n    int has_space = 0;\n    for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n        if (txt[i] == ' ') {\n            has_space = 1;\n            break;\n        }\n    }\n    \n    if (has_space) {\n        printf(\"[\");\n        int first = 1;\n        char word[1000];\n        int idx = 0;\n        \n        for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n            if (txt[i] == ' ') {\n                if (idx > 0) {\n                    word[idx] = '\\0';\n                    if (!first) printf(\", \");\n                    printf(\"\\\"%s\\\"\", word);\n                    first = 0;\n                    idx = 0;\n                }\n            } else {\n                word[idx++] = txt[i];\n            }\n        }\n        if (idx > 0) {\n            word[idx] = '\\0';\n            if (!first) printf(\", \");\n            printf(\"\\\"%s\\\"\", word);\n        }\n        printf(\"]\\n\");\n    } else {\n        printf(\"%d\\n\", count_lowercase_odd_ascii(txt));\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char text[10000];\n    scanf(\" %[^\\n]\", text);\n    \n    int has_space = 0, has_comma = 0;\n    for (int i = 0; text[i]; i++) {\n        if (text[i] == ' ') has_space = 1;\n        if (text[i] == ',') has_comma = 1;\n    }\n    \n    if (has_space) {\n        char *token = strtok(text, \" \");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \" \");\n        }\n    } else if (has_comma) {\n        char *token = strtok(text, \",\");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \",\");\n        }\n    } else {\n        int count = 0;\n        for (int i = 0; text[i]; i++) {\n            if (islower(text[i])) {\n                int order = text[i] - 'a';\n                if (order % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        printf(\"%d\\n\", count);\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "count_lowercase_odd_ascii",
+          "code": "int count_lowercase_odd_ascii(char* txt) {\n    int count = 0;\n    for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n        if (txt[i] >= 'a' && txt[i] <= 'z') {\n            if (txt[i] % 2 == 1) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char txt[10000];\n    fgets(txt, 10000, stdin);\n    \n    int has_space = 0;\n    for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n        if (txt[i] == ' ') {\n            has_space = 1;\n            break;\n        }\n    }\n    \n    if (has_space) {\n        printf(\"[\");\n        int first = 1;\n        char word[1000];\n        int idx = 0;\n        \n        for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n            if (txt[i] == ' ') {\n                if (idx > 0) {\n                    word[idx] = '\\0';\n                    if (!first) printf(\", \");\n                    printf(\"\\\"%s\\\"\", word);\n                    first = 0;\n                    idx = 0;\n                }\n            } else {\n                word[idx++] = txt[i];\n            }\n        }\n        if (idx > 0) {\n            word[idx] = '\\0';\n            if (!first) printf(\", \");\n            printf(\"\\\"%s\\\"\", word);\n        }\n        printf(\"]\\n\");\n    } else {\n        printf(\"%d\\n\", count_lowercase_odd_ascii(txt));\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char text[10000];\n    scanf(\" %[^\\n]\", text);\n    \n    int has_space = 0, has_comma = 0;\n    for (int i = 0; text[i]; i++) {\n        if (text[i] == ' ') has_space = 1;\n        if (text[i] == ',') has_comma = 1;\n    }\n    \n    if (has_space) {\n        char *token = strtok(text, \" \");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \" \");\n        }\n    } else if (has_comma) {\n        char *token = strtok(text, \",\");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \",\");\n        }\n    } else {\n        int count = 0;\n        for (int i = 0; text[i]; i++) {\n            if (islower(text[i])) {\n                int order = text[i] - 'a';\n                if (order % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        printf(\"%d\\n\", count);\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "count_lowercase_odd_ascii",
+          "code": "int count_lowercase_odd_ascii(char* txt) {\n    int count = 0;\n    for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n        if (txt[i] >= 'a' && txt[i] <= 'z') {\n            if (txt[i] % 2 == 1) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char txt[10000];\n    fgets(txt, 10000, stdin);\n    \n    int has_space = 0;\n    for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n        if (txt[i] == ' ') {\n            has_space = 1;\n            break;\n        }\n    }\n    \n    if (has_space) {\n        printf(\"[\");\n        int first = 1;\n        char word[1000];\n        int idx = 0;\n        \n        for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n            if (txt[i] == ' ') {\n                if (idx > 0) {\n                    word[idx] = '\\0';\n                    if (!first) printf(\", \");\n                    printf(\"\\\"%s\\\"\", word);\n                    first = 0;\n                    idx = 0;\n                }\n            } else {\n                word[idx++] = txt[i];\n            }\n        }\n        if (idx > 0) {\n            word[idx] = '\\0';\n            if (!first) printf(\", \");\n            printf(\"\\\"%s\\\"\", word);\n        }\n        printf(\"]\\n\");\n    } else {\n        printf(\"%d\\n\", count_lowercase_odd_ascii(txt));\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char text[10000];\n    scanf(\" %[^\\n]\", text);\n    \n    int has_space = 0, has_comma = 0;\n    for (int i = 0; text[i]; i++) {\n        if (text[i] == ' ') has_space = 1;\n        if (text[i] == ',') has_comma = 1;\n    }\n    \n    if (has_space) {\n        char *token = strtok(text, \" \");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \" \");\n        }\n    } else if (has_comma) {\n        char *token = strtok(text, \",\");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \",\");\n        }\n    } else {\n        int count = 0;\n        for (int i = 0; text[i]; i++) {\n            if (islower(text[i])) {\n                int order = text[i] - 'a';\n                if (order % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        printf(\"%d\\n\", count);\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "count_lowercase_odd_ascii",
+          "code": "int count_lowercase_odd_ascii(char* txt) {\n    int count = 0;\n    for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n        if (txt[i] >= 'a' && txt[i] <= 'z') {\n            if (txt[i] % 2 == 1) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char txt[10000];\n    fgets(txt, 10000, stdin);\n    \n    int has_space = 0;\n    for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n        if (txt[i] == ' ') {\n            has_space = 1;\n            break;\n        }\n    }\n    \n    if (has_space) {\n        printf(\"[\");\n        int first = 1;\n        char word[1000];\n        int idx = 0;\n        \n        for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n            if (txt[i] == ' ') {\n                if (idx > 0) {\n                    word[idx] = '\\0';\n                    if (!first) printf(\", \");\n                    printf(\"\\\"%s\\\"\", word);\n                    first = 0;\n                    idx = 0;\n                }\n            } else {\n                word[idx++] = txt[i];\n            }\n        }\n        if (idx > 0) {\n            word[idx] = '\\0';\n            if (!first) printf(\", \");\n            printf(\"\\\"%s\\\"\", word);\n        }\n        printf(\"]\\n\");\n    } else {\n        printf(\"%d\\n\", count_lowercase_odd_ascii(txt));\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char text[10000];\n    scanf(\" %[^\\n]\", text);\n    \n    int has_space = 0, has_comma = 0;\n    for (int i = 0; text[i]; i++) {\n        if (text[i] == ' ') has_space = 1;\n        if (text[i] == ',') has_comma = 1;\n    }\n    \n    if (has_space) {\n        char *token = strtok(text, \" \");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \" \");\n        }\n    } else if (has_comma) {\n        char *token = strtok(text, \",\");\n        while (token != NULL) {\n            printf(\"%s\\n\", token);\n            token = strtok(NULL, \",\");\n        }\n    } else {\n        int count = 0;\n        for (int i = 0; text[i]; i++) {\n            if (islower(text[i])) {\n                int order = text[i] - 'a';\n                if (order % 2 == 1) {\n                    count++;\n                }\n            }\n        }\n        printf(\"%d\\n\", count);\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "count_lowercase_odd_ascii",
+          "code": "int count_lowercase_odd_ascii(char* txt) {\n    int count = 0;\n    for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n        if (txt[i] >= 'a' && txt[i] <= 'z') {\n            if (txt[i] % 2 == 1) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char txt[10000];\n    fgets(txt, 10000, stdin);\n    \n    int has_space = 0;\n    for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n        if (txt[i] == ' ') {\n            has_space = 1;\n            break;\n        }\n    }\n    \n    if (has_space) {\n        printf(\"[\");\n        int first = 1;\n        char word[1000];\n        int idx = 0;\n        \n        for (int i = 0; txt[i] != '\\0' && txt[i] != '\\n'; i++) {\n            if (txt[i] == ' ') {\n                if (idx > 0) {\n                    word[idx] = '\\0';\n                    if (!first) printf(\", \");\n                    printf(\"\\\"%s\\\"\", word);\n                    first = 0;\n                    idx = 0;\n                }\n            } else {\n                word[idx++] = txt[i];\n            }\n        }\n        if (idx > 0) {\n            word[idx] = '\\0';\n            if (!first) printf(\", \");\n            printf(\"\\\"%s\\\"\", word);\n        }\n        printf(\"]\\n\");\n    } else {\n        printf(\"%d\\n\", count_lowercase_odd_ascii(txt));\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     }
   ]

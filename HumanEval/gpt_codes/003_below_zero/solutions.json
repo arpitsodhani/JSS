@@ -5,18 +5,19 @@
       "clauses": [
         {
           "clause_id": "check_balance",
-          "code": "int check_balance(int *ops, int n) {\n    int balance = 0;\n    for (int i = 0; i < n; i++) {\n        balance += ops[i];\n        if (balance < 0) return 1;\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    int ops[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &ops[i]);\n    if (check_balance(ops, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n}",
-          "shared_variables": {}
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int ops[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &ops[i]);\n    \n    int balance = 0;\n    for (int i = 0; i < n; i++) {\n        balance += ops[i];\n        if (balance < 0) {\n            printf(\"True\\n\");\n            return 0;\n        }\n    }\n    printf(\"False\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -27,19 +28,20 @@
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "goes_negative",
-          "code": "int goes_negative(int *operations, int count) {\n    int total = 0;\n    for (int i = 0; i < count; i++) {\n        total += operations[i];\n        if (total < 0) return 1;\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int count;\n    scanf(\"%d\", &count);\n    int values[count];\n    for (int i = 0; i < count; i++) scanf(\"%d\", &values[i]);\n    if (goes_negative(values, count)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "check_balance",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    \n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum = sum + arr[i];\n        if (sum < 0) {\n            printf(\"True\\n\");\n            return 0;\n        }\n    }\n    printf(\"False\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -50,19 +52,20 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "goes_below",
-          "code": "int goes_below(int *txn, int len) {\n    int bal = 0;\n    for (int i = 0; i < len; i++) {\n        bal += txn[i];\n        if (bal < 0) return 1;\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int len;\n    scanf(\"%d\", &len);\n    int txn[len];\n    for (int i = 0; i < len; i++) scanf(\"%d\", &txn[i]);\n    printf(\"%s\\n\", goes_below(txn, len) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "check_balance",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int check_negative(int *arr, int n) {\n    int bal = 0;\n    for (int i = 0; i < n; i++) {\n        bal += arr[i];\n        if (bal < 0) return 1;\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -73,19 +76,20 @@
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "hits_negative",
-          "code": "int hits_negative(int *entries, int num) {\n    int running = 0;\n    int idx = 0;\n    while (idx < num) {\n        running += entries[idx];\n        if (running < 0) return 1;\n        idx++;\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int num;\n    scanf(\"%d\", &num);\n    int entries[num];\n    for (int i = 0; i < num; i++) scanf(\"%d\", &entries[i]);\n    printf(\"%s\\n\", hits_negative(entries, num) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "check_balance",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    int numbers[count];\n    for (int i = 0; i < count; i++) scanf(\"%d\", &numbers[i]);\n    \n    int total = 0;\n    for (int i = 0; i < count; i++) {\n        total += numbers[i];\n        if (total < 0) {\n            printf(\"True\\n\");\n            return 0;\n        }\n    }\n    printf(\"False\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -96,24 +100,50 @@
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "account_negative",
-          "code": "int account_negative(int *ops, int cnt) {\n    int acc = 0;\n    for (int k = 0; k < cnt; k++) {\n        acc += ops[k];\n        if (acc < 0) return 1;\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int cnt;\n    scanf(\"%d\", &cnt);\n    int ops[cnt];\n    for (int i = 0; i < cnt; i++) scanf(\"%d\", &ops[i]);\n    printf(\"%s\\n\", account_negative(ops, cnt) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "check_balance",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int a[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    \n    int b = 0;\n    for (int i = 0; i < n; i++) {\n        b += a[i];\n        if (b < 0) {\n            printf(\"True\\n\");\n            return 0;\n        }\n    }\n    printf(\"False\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>"
       ]
     }
-  ]
+  ],
+  "global_includes": [],
+  "tests": {
+    "clause_tests": {},
+    "program_tests": [
+      {
+        "test_id": "test_0",
+        "input": "0\n",
+        "expected": "False\n"
+      },
+      {
+        "test_id": "test_1",
+        "input": "3\n1 2 -3\n",
+        "expected": "True\n"
+      },
+      {
+        "test_id": "test_2",
+        "input": "4\n1 2 -4 5\n",
+        "expected": "False\n"
+      }
+    ]
+  },
+  "merge_settings": {
+    "consensus_threshold": 0.6,
+    "max_rounds": 3
+  }
 }

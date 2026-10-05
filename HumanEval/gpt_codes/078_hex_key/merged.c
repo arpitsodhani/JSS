@@ -1,27 +1,25 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <math.h>
 
-int hex_key(char* num) {
+int count_hex_primes(char *s) {
+    char primes[] = "2357BD";
     int count = 0;
-    for (int i = 0; num[i]; i++) {
-        char c = num[i];
-        if (c == '2' || c == '3' || c == '5' || c == '7' || c == 'B' || c == 'D') {
-            count++;
+    for (int i = 0; s[i]; i++) {
+        for (int j = 0; primes[j]; j++) {
+            if (toupper(s[i]) == primes[j]) {
+                count++;
+                break;
+            }
         }
     }
     return count;
 }
 
-int main() {
-    char num[1000];
-    if (fgets(num, sizeof(num), stdin)) {
-        num[strcspn(num, "\n")] = 0;
-    } else {
-        num[0] = 0;
-    }
-    printf("%d\n", hex_key(num));
+int main(void) {
+    char s[1000];
+    fgets(s, sizeof(s), stdin);
+    s[strcspn(s, "\n")] = 0;
+    int result = count_hex_primes(s);
+    printf("%d\n", result);
     return 0;
 }
-

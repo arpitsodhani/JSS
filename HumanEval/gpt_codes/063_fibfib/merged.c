@@ -1,24 +1,23 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
 
-int fibfib(int n) {
-    if (n == 0) return 0;
-    if (n == 1) return 0;
-    if (n == 2) return 1;
+int main(void) {
+    int n;
+    scanf("%d", &n);
+    if (n == 0) {
+        printf("0\n");
+        return 0;
+    }
+    if (n == 1 || n == 2) {
+        printf("%d\n", n == 1 ? 0 : 1);
+        return 0;
+    }
     int a = 0, b = 0, c = 1;
     for (int i = 3; i <= n; i++) {
         int next = a + b + c;
-        a = b; b = c; c = next;
+        a = b;
+        b = c;
+        c = next;
     }
-    return c;
-}
-
-int main() {
-    int n;
-    scanf("%d", &n);
-    printf("%d\n", fibfib(n));
+    printf("%d\n", c);
     return 0;
 }
-

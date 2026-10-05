@@ -1,114 +1,124 @@
 {
+  "problem_id": "119_match_parens",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "is_valid",
-          "code": "int is_valid(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') count++;\n        else if (s[i] == ')') count--;\n        if (count < 0) return 0;\n    }\n    return count == 0;\n}",
-          "shared_variables": {}
+          "clause_id": "can_match_parens",
+          "code": "int can_match_parens(char *s1, char *s2) {\n    char combined[2000];\n    strcpy(combined, s1);\n    strcat(combined, s2);\n    int balance = 0;\n    for (int i = 0; combined[i]; i++) {\n        if (combined[i] == '(') balance++;\n        else if (combined[i] == ')') balance--;\n        if (balance < 0) return 0;\n    }\n    if (balance != 0) return 0;\n    strcpy(combined, s2);\n    strcat(combined, s1);\n    balance = 0;\n    for (int i = 0; combined[i]; i++) {\n        if (combined[i] == '(') balance++;\n        else if (combined[i] == ')') balance--;\n        if (balance < 0) return 0;\n    }\n    return balance == 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "match_parens",
-          "code": "const char* match_parens(const char *s1, const char *s2) {\n    char combined1[20000], combined2[20000];\n    strcpy(combined1, s1);\n    strcat(combined1, s2);\n    strcpy(combined2, s2);\n    strcat(combined2, s1);\n    \n    if (is_valid(combined1) || is_valid(combined2)) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\nint main() {\n    char s1[10000], s2[10000];\n    fgets(s1, sizeof(s1), stdin);\n    s1[strcspn(s1, \"\\n\")] = 0;\n    fgets(s2, sizeof(s2), stdin);\n    s2[strcspn(s2, \"\\n\")] = 0;\n    \n    printf(\"%s\\n\", match_parens(s1, s2));\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s1[1000], s2[1000];\n    scanf(\"%s %s\", s1, s2);\n    if (can_match_parens(s1, s2)) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "is_valid",
-          "code": "int is_valid(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') count++;\n        else if (s[i] == ')') count--;\n        if (count < 0) return 0;\n    }\n    return count == 0;\n}",
-          "shared_variables": {}
+          "clause_id": "can_match_parens",
+          "code": "int can_match_parens(char *s1, char *s2) {\n    char combined[2000];\n    strcpy(combined, s1);\n    strcat(combined, s2);\n    int balance = 0;\n    for (int i = 0; combined[i]; i++) {\n        if (combined[i] == '(') balance++;\n        else if (combined[i] == ')') balance--;\n        if (balance < 0) return 0;\n    }\n    if (balance != 0) return 0;\n    strcpy(combined, s2);\n    strcat(combined, s1);\n    balance = 0;\n    for (int i = 0; combined[i]; i++) {\n        if (combined[i] == '(') balance++;\n        else if (combined[i] == ')') balance--;\n        if (balance < 0) return 0;\n    }\n    return balance == 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "match_parens",
-          "code": "const char* match_parens(const char *s1, const char *s2) {\n    char combined1[20000], combined2[20000];\n    strcpy(combined1, s1);\n    strcat(combined1, s2);\n    strcpy(combined2, s2);\n    strcat(combined2, s1);\n    \n    if (is_valid(combined1) || is_valid(combined2)) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\nint main() {\n    char s1[10000], s2[10000];\n    fgets(s1, sizeof(s1), stdin);\n    s1[strcspn(s1, \"\\n\")] = 0;\n    fgets(s2, sizeof(s2), stdin);\n    s2[strcspn(s2, \"\\n\")] = 0;\n    \n    printf(\"%s\\n\", match_parens(s1, s2));\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s1[1000], s2[1000];\n    scanf(\"%s %s\", s1, s2);\n    if (can_match_parens(s1, s2)) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "is_valid",
-          "code": "int is_valid(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') count++;\n        else if (s[i] == ')') count--;\n        if (count < 0) return 0;\n    }\n    return count == 0;\n}",
-          "shared_variables": {}
+          "clause_id": "can_match_parens",
+          "code": "int can_match_parens(char *s1, char *s2) {\n    char combined[2000];\n    strcpy(combined, s1);\n    strcat(combined, s2);\n    int balance = 0;\n    for (int i = 0; combined[i]; i++) {\n        if (combined[i] == '(') balance++;\n        else if (combined[i] == ')') balance--;\n        if (balance < 0) return 0;\n    }\n    if (balance != 0) return 0;\n    strcpy(combined, s2);\n    strcat(combined, s1);\n    balance = 0;\n    for (int i = 0; combined[i]; i++) {\n        if (combined[i] == '(') balance++;\n        else if (combined[i] == ')') balance--;\n        if (balance < 0) return 0;\n    }\n    return balance == 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "match_parens",
-          "code": "const char* match_parens(const char *s1, const char *s2) {\n    char combined1[20000], combined2[20000];\n    strcpy(combined1, s1);\n    strcat(combined1, s2);\n    strcpy(combined2, s2);\n    strcat(combined2, s1);\n    \n    if (is_valid(combined1) || is_valid(combined2)) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\nint main() {\n    char s1[10000], s2[10000];\n    fgets(s1, sizeof(s1), stdin);\n    s1[strcspn(s1, \"\\n\")] = 0;\n    fgets(s2, sizeof(s2), stdin);\n    s2[strcspn(s2, \"\\n\")] = 0;\n    \n    printf(\"%s\\n\", match_parens(s1, s2));\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s1[1000], s2[1000];\n    scanf(\"%s %s\", s1, s2);\n    if (can_match_parens(s1, s2)) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "is_valid",
-          "code": "int is_valid(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') count++;\n        else if (s[i] == ')') count--;\n        if (count < 0) return 0;\n    }\n    return count == 0;\n}",
-          "shared_variables": {}
+          "clause_id": "can_match_parens",
+          "code": "int can_match_parens(char *s1, char *s2) {\n    char combined[2000];\n    strcpy(combined, s1);\n    strcat(combined, s2);\n    int balance = 0;\n    for (int i = 0; combined[i]; i++) {\n        if (combined[i] == '(') balance++;\n        else if (combined[i] == ')') balance--;\n        if (balance < 0) return 0;\n    }\n    if (balance != 0) return 0;\n    strcpy(combined, s2);\n    strcat(combined, s1);\n    balance = 0;\n    for (int i = 0; combined[i]; i++) {\n        if (combined[i] == '(') balance++;\n        else if (combined[i] == ')') balance--;\n        if (balance < 0) return 0;\n    }\n    return balance == 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "match_parens",
-          "code": "const char* match_parens(const char *s1, const char *s2) {\n    char combined1[20000], combined2[20000];\n    strcpy(combined1, s1);\n    strcat(combined1, s2);\n    strcpy(combined2, s2);\n    strcat(combined2, s1);\n    \n    if (is_valid(combined1) || is_valid(combined2)) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\nint main() {\n    char s1[10000], s2[10000];\n    fgets(s1, sizeof(s1), stdin);\n    s1[strcspn(s1, \"\\n\")] = 0;\n    fgets(s2, sizeof(s2), stdin);\n    s2[strcspn(s2, \"\\n\")] = 0;\n    \n    printf(\"%s\\n\", match_parens(s1, s2));\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s1[1000], s2[1000];\n    scanf(\"%s %s\", s1, s2);\n    if (can_match_parens(s1, s2)) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "is_valid",
-          "code": "int is_valid(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') count++;\n        else if (s[i] == ')') count--;\n        if (count < 0) return 0;\n    }\n    return count == 0;\n}",
-          "shared_variables": {}
+          "clause_id": "can_match_parens",
+          "code": "int can_match_parens(char *s1, char *s2) {\n    char combined[2000];\n    strcpy(combined, s1);\n    strcat(combined, s2);\n    int balance = 0;\n    for (int i = 0; combined[i]; i++) {\n        if (combined[i] == '(') balance++;\n        else if (combined[i] == ')') balance--;\n        if (balance < 0) return 0;\n    }\n    if (balance != 0) return 0;\n    strcpy(combined, s2);\n    strcat(combined, s1);\n    balance = 0;\n    for (int i = 0; combined[i]; i++) {\n        if (combined[i] == '(') balance++;\n        else if (combined[i] == ')') balance--;\n        if (balance < 0) return 0;\n    }\n    return balance == 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "match_parens",
-          "code": "const char* match_parens(const char *s1, const char *s2) {\n    char combined1[20000], combined2[20000];\n    strcpy(combined1, s1);\n    strcat(combined1, s2);\n    strcpy(combined2, s2);\n    strcat(combined2, s1);\n    \n    if (is_valid(combined1) || is_valid(combined2)) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\nint main() {\n    char s1[10000], s2[10000];\n    fgets(s1, sizeof(s1), stdin);\n    s1[strcspn(s1, \"\\n\")] = 0;\n    fgets(s2, sizeof(s2), stdin);\n    s2[strcspn(s2, \"\\n\")] = 0;\n    \n    printf(\"%s\\n\", match_parens(s1, s2));\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    char s1[1000], s2[1000];\n    scanf(\"%s %s\", s1, s2);\n    if (can_match_parens(s1, s2)) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>"
   ]
 }

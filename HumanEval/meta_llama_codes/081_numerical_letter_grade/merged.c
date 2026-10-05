@@ -1,48 +1,34 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {49, 10, 49, 46, 50, 10, 0};
-static const unsigned char output_0[] = {68, 43, 10, 0};
-static const unsigned char input_1[] = {49, 10, 48, 46, 53, 10, 0};
-static const unsigned char output_1[] = {68, 45, 10, 0};
-static const unsigned char input_2[] = {49, 10, 48, 46, 48, 10, 0};
-static const unsigned char output_2[] = {69, 10, 0};
+void numerical_grade(double *grades, int n, char result[][10]) {
+    for (int i = 0; i < n; i++) {
+        if (grades[i] >= 3.9999) strcpy(result[i], "A+");
+        else if (grades[i] >= 3.7) strcpy(result[i], "A");
+        else if (grades[i] >= 3.3) strcpy(result[i], "A-");
+        else if (grades[i] >= 3.0) strcpy(result[i], "B+");
+        else if (grades[i] >= 2.7) strcpy(result[i], "B");
+        else if (grades[i] >= 2.3) strcpy(result[i], "B-");
+        else if (grades[i] >= 2.0) strcpy(result[i], "C+");
+        else if (grades[i] >= 1.7) strcpy(result[i], "C");
+        else if (grades[i] >= 1.3) strcpy(result[i], "C-");
+        else if (grades[i] >= 1.0) strcpy(result[i], "D+");
+        else if (grades[i] >= 0.7) strcpy(result[i], "D");
+        else if (grades[i] >= 0.0) strcpy(result[i], "D-");
+        else strcpy(result[i], "E");
+    }
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
+    int n;
+    scanf("%d", &n);
+    double grades[n];
+    for (int i = 0; i < n; i++) scanf("%lf", &grades[i]);
+    char result[n][10];
+    numerical_grade(grades, n, result);
+    for (int i = 0; i < n; i++) {
+        printf("%s", result[i]);
+        if (i < n - 1) printf(" ");
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    printf("\n");
+    return 0;
 }

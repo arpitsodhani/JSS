@@ -1,41 +1,35 @@
-#include <ctype.h>
-#include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-int compare_int(const void *a, const void *b) {
-    return *(int*)a - *(int*)b;
-}
-
-int next_smallest(int n, int lst[]) {
-    if (n < 2) return -1;
-    qsort(lst, n, sizeof(int), compare_int);
+int find_next_smallest(int *arr, int n) {
+    int sorted[n];
+    for (int i = 0; i < n; i++) sorted[i] = arr[i];
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (sorted[j] > sorted[j + 1]) {
+                int temp = sorted[j];
+                sorted[j] = sorted[j + 1];
+                sorted[j + 1] = temp;
+            }
+        }
+    }
     for (int i = 1; i < n; i++) {
-        if (lst[i] != lst[0]) {
-            return lst[i];
+        if (sorted[i] != sorted[0]) {
+            return sorted[i];
         }
     }
     return -1;
 }
 
-void run(void) {
-
+int main(void) {
     int n;
     scanf("%d", &n);
-    int lst[n];
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &lst[i]);
-    }
-    int result = next_smallest(n, lst);
+    int arr[n];
+    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+    int result = find_next_smallest(arr, n);
     if (result == -1) {
         printf("None\n");
     } else {
         printf("%d\n", result);
     }
-}
-
-int main() {
-    run();
     return 0;
 }

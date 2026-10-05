@@ -7,21 +7,11 @@
       "clauses": [
         {
           "clause_id": "main",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\nint dsum(int n) {\n    int s=0, neg=(n<0); if(neg) n=-n;\n    char b[20]; sprintf(b,\"%d\",n);\n    for(int i=0; b[i]; i++) { int d=b[i]-'0'; s+=(i==0&&neg)?-d:d; }\n    return s;\n}",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\nint dsum(int n) {\n    int s=0, neg=(n<0); if(neg) n=-n;\n    char b[20]; sprintf(b,\"%d\",n);\n    for(int i=0; b[i]; i++) { int d=b[i]-'0'; s+=(i==0&&neg)?-d:d; }\n    return s;\n}\nint main() {\n    int n, a[100]; scanf(\"%d\", &n);\n    for(int i=0; i<n; i++) scanf(\"%d\", &a[i]);\n    for(int i=0; i<n-1; i++)\n        for(int j=i+1; j<n; j++)\n            if(dsum(a[i])>dsum(a[j])) { int t=a[i]; a[i]=a[j]; a[j]=t; }\n    for(int i=0; i<n; i++) printf(\"%d%c\", a[i], i<n-1?' ':'\\\\n');\n    return 0;\n}",
           "shared_variables": {
             "inputs": {},
             "outputs": {}
           }
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n, a[100]; scanf(\"%d\", &n);\n    for(int i=0; i<n; i++) scanf(\"%d\", &a[i]);\n    for(int i=0; i<n-1; i++)\n        for(int j=i+1; j<n; j++)\n            if(dsum(a[i])>dsum(a[j])) { int t=a[i]; a[i]=a[j]; a[j]=t; }\n    for(int i=0; i<n; i++) printf(\"%d%c\", a[i], i<n-1?' ':'\\\\n');\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
         }
       ],
       "includes": []
@@ -31,21 +21,11 @@
       "clauses": [
         {
           "clause_id": "main",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\nint dsum(int n) {\n    int s=0, neg=(n<0); if(neg) n=-n;\n    char b[20]; sprintf(b,\"%d\",n);\n    for(int i=0; b[i]; i++) { int d=b[i]-'0'; s+=(i==0&&neg)?-d:d; }\n    return s;\n}",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\nint dsum(int n) {\n    int s=0, neg=(n<0); if(neg) n=-n;\n    char b[20]; sprintf(b,\"%d\",n);\n    for(int i=0; b[i]; i++) { int d=b[i]-'0'; s+=(i==0&&neg)?-d:d; }\n    return s;\n}\nint main() {\n    int n, a[100]; scanf(\"%d\", &n);\n    for(int i=0; i<n; i++) scanf(\"%d\", &a[i]);\n    for(int i=0; i<n-1; i++)\n        for(int j=i+1; j<n; j++)\n            if(dsum(a[i])>dsum(a[j])) { int t=a[i]; a[i]=a[j]; a[j]=t; }\n    for(int i=0; i<n; i++) printf(\"%d%c\", a[i], i<n-1?' ':'\\\\n');\n    return 0;\n}",
           "shared_variables": {
             "inputs": {},
             "outputs": {}
           }
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n, a[100]; scanf(\"%d\", &n);\n    for(int i=0; i<n; i++) scanf(\"%d\", &a[i]);\n    for(int i=0; i<n-1; i++)\n        for(int j=i+1; j<n; j++)\n            if(dsum(a[i])>dsum(a[j])) { int t=a[i]; a[i]=a[j]; a[j]=t; }\n    for(int i=0; i<n; i++) printf(\"%d%c\", a[i], i<n-1?' ':'\\\\n');\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
         }
       ],
       "includes": []
@@ -55,21 +35,11 @@
       "clauses": [
         {
           "clause_id": "main",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\nint dsum(int n) {\n    int s=0, neg=(n<0); if(neg) n=-n;\n    char b[20]; sprintf(b,\"%d\",n);\n    for(int i=0; b[i]; i++) { int d=b[i]-'0'; s+=(i==0&&neg)?-d:d; }\n    return s;\n}",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\nint dsum(int n) {\n    int s=0, neg=(n<0); if(neg) n=-n;\n    char b[20]; sprintf(b,\"%d\",n);\n    for(int i=0; b[i]; i++) { int d=b[i]-'0'; s+=(i==0&&neg)?-d:d; }\n    return s;\n}\nint main() {\n    int n, a[100]; scanf(\"%d\", &n);\n    for(int i=0; i<n; i++) scanf(\"%d\", &a[i]);\n    for(int i=0; i<n-1; i++)\n        for(int j=i+1; j<n; j++)\n            if(dsum(a[i])>dsum(a[j])) { int t=a[i]; a[i]=a[j]; a[j]=t; }\n    for(int i=0; i<n; i++) printf(\"%d%c\", a[i], i<n-1?' ':'\\\\n');\n    return 0;\n}",
           "shared_variables": {
             "inputs": {},
             "outputs": {}
           }
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n, a[100]; scanf(\"%d\", &n);\n    for(int i=0; i<n; i++) scanf(\"%d\", &a[i]);\n    for(int i=0; i<n-1; i++)\n        for(int j=i+1; j<n; j++)\n            if(dsum(a[i])>dsum(a[j])) { int t=a[i]; a[i]=a[j]; a[j]=t; }\n    for(int i=0; i<n; i++) printf(\"%d%c\", a[i], i<n-1?' ':'\\\\n');\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
         }
       ],
       "includes": []
@@ -79,21 +49,11 @@
       "clauses": [
         {
           "clause_id": "main",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\nint dsum(int n) {\n    int s=0, neg=(n<0); if(neg) n=-n;\n    char b[20]; sprintf(b,\"%d\",n);\n    for(int i=0; b[i]; i++) { int d=b[i]-'0'; s+=(i==0&&neg)?-d:d; }\n    return s;\n}",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\nint dsum(int n) {\n    int s=0, neg=(n<0); if(neg) n=-n;\n    char b[20]; sprintf(b,\"%d\",n);\n    for(int i=0; b[i]; i++) { int d=b[i]-'0'; s+=(i==0&&neg)?-d:d; }\n    return s;\n}\nint main() {\n    int n, a[100]; scanf(\"%d\", &n);\n    for(int i=0; i<n; i++) scanf(\"%d\", &a[i]);\n    for(int i=0; i<n-1; i++)\n        for(int j=i+1; j<n; j++)\n            if(dsum(a[i])>dsum(a[j])) { int t=a[i]; a[i]=a[j]; a[j]=t; }\n    for(int i=0; i<n; i++) printf(\"%d%c\", a[i], i<n-1?' ':'\\\\n');\n    return 0;\n}",
           "shared_variables": {
             "inputs": {},
             "outputs": {}
           }
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n, a[100]; scanf(\"%d\", &n);\n    for(int i=0; i<n; i++) scanf(\"%d\", &a[i]);\n    for(int i=0; i<n-1; i++)\n        for(int j=i+1; j<n; j++)\n            if(dsum(a[i])>dsum(a[j])) { int t=a[i]; a[i]=a[j]; a[j]=t; }\n    for(int i=0; i<n; i++) printf(\"%d%c\", a[i], i<n-1?' ':'\\\\n');\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
         }
       ],
       "includes": []
@@ -103,21 +63,11 @@
       "clauses": [
         {
           "clause_id": "main",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\nint dsum(int n) {\n    int s=0, neg=(n<0); if(neg) n=-n;\n    char b[20]; sprintf(b,\"%d\",n);\n    for(int i=0; b[i]; i++) { int d=b[i]-'0'; s+=(i==0&&neg)?-d:d; }\n    return s;\n}",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\nint dsum(int n) {\n    int s=0, neg=(n<0); if(neg) n=-n;\n    char b[20]; sprintf(b,\"%d\",n);\n    for(int i=0; b[i]; i++) { int d=b[i]-'0'; s+=(i==0&&neg)?-d:d; }\n    return s;\n}\nint main() {\n    int n, a[100]; scanf(\"%d\", &n);\n    for(int i=0; i<n; i++) scanf(\"%d\", &a[i]);\n    for(int i=0; i<n-1; i++)\n        for(int j=i+1; j<n; j++)\n            if(dsum(a[i])>dsum(a[j])) { int t=a[i]; a[i]=a[j]; a[j]=t; }\n    for(int i=0; i<n; i++) printf(\"%d%c\", a[i], i<n-1?' ':'\\\\n');\n    return 0;\n}",
           "shared_variables": {
             "inputs": {},
             "outputs": {}
           }
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n, a[100]; scanf(\"%d\", &n);\n    for(int i=0; i<n; i++) scanf(\"%d\", &a[i]);\n    for(int i=0; i<n-1; i++)\n        for(int j=i+1; j<n; j++)\n            if(dsum(a[i])>dsum(a[j])) { int t=a[i]; a[i]=a[j]; a[j]=t; }\n    for(int i=0; i<n; i++) printf(\"%d%c\", a[i], i<n-1?' ':'\\\\n');\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
         }
       ],
       "includes": []

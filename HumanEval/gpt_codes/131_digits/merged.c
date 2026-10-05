@@ -1,28 +1,12 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
-
-int digits(int n) {
-    int product = 1;
-    int has_odd = 0;
-    
-    while (n > 0) {
-        int digit = n % 10;
-        if (digit % 2 == 1) {
-            product *= digit;
-            has_odd = 1;
-        }
-        n /= 10;
-    }
-    
-    return has_odd ? product : 0;
-}
 
 int main() {
-    int n;
+    int n, p = 1, f = 0;
     scanf("%d", &n);
-    printf("%d\n", digits(n));
+    for (; n; n /= 10) {
+        int d = n % 10;
+        if (d & 1) { p *= d; f = 1; }
+    }
+    printf("%d\n", f ? p : 0);
     return 0;
 }

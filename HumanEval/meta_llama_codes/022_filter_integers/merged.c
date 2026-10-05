@@ -1,48 +1,33 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {48, 10, 10, 0};
-static const unsigned char output_0[] = {10, 0};
-static const unsigned char input_1[] = {54, 10, 52, 10, 123, 125, 10, 91, 93, 10, 50, 51, 46, 50, 10, 57, 10, 97, 100, 97, 115, 100, 10, 0};
-static const unsigned char output_1[] = {52, 32, 57, 10, 0};
-static const unsigned char input_2[] = {54, 10, 51, 10, 99, 10, 51, 10, 51, 10, 97, 10, 98, 10, 0};
-static const unsigned char output_2[] = {51, 32, 51, 32, 51, 10, 0};
+int is_integer(const char *text) {
+    if (text[0] == '\0') return 0;
+    for (int i = 0; text[i]; ++i) {
+        if (text[i] < '0' || text[i] > '9') return 0;
+    }
+    return 1;
+}
+
+void print_integers(char strs[][100], int n) {
+    int first = 1;
+    for (int i = 0; i < n; i++) {
+        if (!is_integer(strs[i])) continue;
+        if (!first) printf(" ");
+        printf("%s", strs[i]);
+        first = 0;
+    }
+    printf("\n");
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
+    int n;
+    scanf("%d", &n);
+    getchar();
+    char strs[n][100];
+    for (int i = 0; i < n; i++) {
+        fgets(strs[i], sizeof(strs[i]), stdin);
+        strs[i][strcspn(strs[i], "\n")] = 0;
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    print_integers(strs, n);
+    return 0;
 }

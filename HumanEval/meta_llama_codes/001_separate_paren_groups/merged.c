@@ -1,55 +1,34 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-static const unsigned char input_0[] = {40, 40, 41, 40, 41, 41, 32, 40, 40, 40, 41, 41, 41, 32, 40, 41, 32, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};
-static const unsigned char output_0[] = {40, 40, 41, 40, 41, 41, 10, 40, 40, 40, 41, 41, 41, 10, 40, 41, 10, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};
-static const unsigned char input_1[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 40, 41, 32, 40, 41, 41, 41, 10, 0};
-static const unsigned char output_1[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};
-static const unsigned char input_2[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 41, 40, 41, 41, 10, 0};
-static const unsigned char output_2[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};
-static const unsigned char input_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};
-static const unsigned char output_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};
-
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
+    char input[1000];
+    fgets(input, sizeof(input), stdin);
+    
+    int depth = 0;
+    char group[1000];
+    int pos = 0;
+    
+    for (int i = 0; input[i] != '\0' && input[i] != '\n'; i++) {
+        if (input[i] == '(') {
+            group[pos++] = '(';
+            depth++;
+        } else if (input[i] == ')') {
+            group[pos++] = ')';
+            depth--;
+            if (depth == 0) {
+                group[pos] = '\0';
+                printf("%s\n", group);
+                pos = 0;
+            }
         }
-        input[length++] = (unsigned char)ch;
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
+    return 0;
+}
+
+void print_group(char *s, int len) {
+    for (int i = 0; i < len; i++) {
+        printf("%c", s[i]);
     }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_3) == 0) {
-        fputs((const char *)output_3, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    printf("\n");
 }

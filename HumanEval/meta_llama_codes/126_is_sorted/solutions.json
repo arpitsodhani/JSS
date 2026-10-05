@@ -7,7 +7,7 @@
       "clauses": [
         {
           "clause_id": "main",
-          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int numbers[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &numbers[i]);\n    }\n    \n    // Check if sorted in ascending order\n    int is_ascending = 1;\n    for (int i = 0; i < n - 1; i++) {\n        if (numbers[i] > numbers[i + 1]) {\n            is_ascending = 0;\n            break;\n        }\n    }\n    \n    if (!is_ascending) {\n        printf(\"False\\n\");\n        return 0;\n    }\n    \n    // Check for duplicates (no number appears more than once)\n    int has_duplicate = 0;\n    for (int i = 0; i < n; i++) {\n        int count = 0;\n        for (int j = 0; j < n; j++) {\n            if (numbers[j] == numbers[i]) {\n                count++;\n            }\n        }\n        if (count > 1) {\n            has_duplicate = 1;\n            break;\n        }\n    }\n    \n    if (has_duplicate) {\n        printf(\"False\\n\");\n    } else {\n        printf(\"True\\n\");\n    }\n    \n    return 0;\n}",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int numbers[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &numbers[i]);\n    }\n    \n    \n    int is_ascending = 1;\n    for (int i = 0; i < n - 1; i++) {\n        if (numbers[i] > numbers[i + 1]) {\n            is_ascending = 0;\n            break;\n        }\n    }\n    \n    if (!is_ascending) {\n        printf(\"False\\n\");\n        return 0;\n    }\n    \n    \n    int has_duplicate = 0;\n    for (int i = 0; i < n; i++) {\n        int count = 0;\n        for (int j = 0; j < n; j++) {\n            if (numbers[j] == numbers[i]) {\n                count++;\n            }\n        }\n        if (count > 1) {\n            has_duplicate = 1;\n            break;\n        }\n    }\n    \n    if (has_duplicate) {\n        printf(\"False\\n\");\n    } else {\n        printf(\"True\\n\");\n    }\n    \n    return 0;\n}",
           "shared_variables": {
             "inputs": {},
             "outputs": {}
@@ -21,7 +21,7 @@
       "clauses": [
         {
           "clause_id": "main",
-          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int valid = 1;\n    \n    // Check ascending\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < arr[i - 1]) {\n            valid = 0;\n            break;\n        }\n    }\n    \n    // Check no duplicates\n    if (valid) {\n        for (int i = 0; i < n - 1; i++) {\n            if (arr[i] == arr[i + 1]) {\n                valid = 0;\n                break;\n            }\n        }\n    }\n    \n    printf(\"%s\\n\", valid ? \"True\" : \"False\");\n    return 0;\n}",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int valid = 1;\n    \n    \n    for (int i = 1; i < n; i++) {\n        if (arr[i] < arr[i - 1]) {\n            valid = 0;\n            break;\n        }\n    }\n    \n    \n    if (valid) {\n        for (int i = 0; i < n - 1; i++) {\n            if (arr[i] == arr[i + 1]) {\n                valid = 0;\n                break;\n            }\n        }\n    }\n    \n    printf(\"%s\\n\", valid ? \"True\" : \"False\");\n    return 0;\n}",
           "shared_variables": {
             "inputs": {},
             "outputs": {}
@@ -49,7 +49,7 @@
       "clauses": [
         {
           "clause_id": "main",
-          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int list[1000];\n    int i = 0;\n    while (i < n) {\n        scanf(\"%d\", &list[i]);\n        i++;\n    }\n    \n    int is_valid = 1;\n    \n    // Check strictly ascending\n    int idx = 0;\n    while (idx < n - 1) {\n        if (list[idx] >= list[idx + 1]) {\n            is_valid = 0;\n            break;\n        }\n        idx++;\n    }\n    \n    printf(\"%s\\n\", is_valid ? \"True\" : \"False\");\n    return 0;\n}",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int list[1000];\n    int i = 0;\n    while (i < n) {\n        scanf(\"%d\", &list[i]);\n        i++;\n    }\n    \n    int is_valid = 1;\n    \n    \n    int idx = 0;\n    while (idx < n - 1) {\n        if (list[idx] >= list[idx + 1]) {\n            is_valid = 0;\n            break;\n        }\n        idx++;\n    }\n    \n    printf(\"%s\\n\", is_valid ? \"True\" : \"False\");\n    return 0;\n}",
           "shared_variables": {
             "inputs": {},
             "outputs": {}

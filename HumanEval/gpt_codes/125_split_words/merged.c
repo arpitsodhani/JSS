@@ -1,14 +1,23 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-void split_words(const char *txt, char result[][100], int *count) {
-    *count = 0;
+int count_lowercase_odd_ascii(char* txt) {
+    int count = 0;
+    for (int i = 0; txt[i] != '\0' && txt[i] != '\n'; i++) {
+        if (txt[i] >= 'a' && txt[i] <= 'z') {
+            if (txt[i] % 2 == 1) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+int main() {
+    char txt[10000];
+    fgets(txt, 10000, stdin);
     
     int has_space = 0;
-    for (int i = 0; txt[i]; i++) {
+    for (int i = 0; txt[i] != '\0' && txt[i] != '\n'; i++) {
         if (txt[i] == ' ') {
             has_space = 1;
             break;
@@ -16,61 +25,33 @@ void split_words(const char *txt, char result[][100], int *count) {
     }
     
     if (has_space) {
-        char temp[1000];
-        strcpy(temp, txt);
-        char *token = strtok(temp, " ");
-        while (token != NULL) {
-            strcpy(result[*count], token);
-            (*count)++;
-            token = strtok(NULL, " ");
+        printf("[");
+        int first = 1;
+        char word[1000];
+        int idx = 0;
+        
+        for (int i = 0; txt[i] != '\0' && txt[i] != '\n'; i++) {
+            if (txt[i] == ' ') {
+                if (idx > 0) {
+                    word[idx] = '\0';
+                    if (!first) printf(", ");
+                    printf("\"%s\"", word);
+                    first = 0;
+                    idx = 0;
+                }
+            } else {
+                word[idx++] = txt[i];
+            }
         }
-        return;
-    }
-    
-    int has_comma = 0;
-    for (int i = 0; txt[i]; i++) {
-        if (txt[i] == ',') {
-            has_comma = 1;
-            break;
+        if (idx > 0) {
+            word[idx] = '\0';
+            if (!first) printf(", ");
+            printf("\"%s\"", word);
         }
+        printf("]\n");
+    } else {
+        printf("%d\n", count_lowercase_odd_ascii(txt));
     }
     
-    if (has_comma) {
-        char temp[1000];
-        strcpy(temp, txt);
-        char *token = strtok(temp, ",");
-        while (token != NULL) {
-            strcpy(result[*count], token);
-            (*count)++;
-            token = strtok(NULL, ",");
-        }
-        return;
-    }
-    
-    int lowercase_count = 0;
-    for (int i = 0; txt[i]; i++) {
-        if (islower(txt[i]) && (txt[i] - 'a') % 2 == 1) {
-            lowercase_count++;
-        }
-    }
-    
-    sprintf(result[0], "%d", lowercase_count);
-    *count = 1;
-}
-
-int main() {
-    char txt[1000];
-    fgets(txt, sizeof(txt), stdin);
-    txt[strcspn(txt, "\n")] = 0;
-    
-    char result[100][100];
-    int count;
-    split_words(txt, result, &count);
-    
-    for (int i = 0; i < count; i++) {
-        printf("%s", result[i]);
-        if (i < count - 1) printf(" ");
-    }
-    printf("\n");
     return 0;
 }

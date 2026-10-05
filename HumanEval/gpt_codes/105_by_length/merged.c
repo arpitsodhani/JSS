@@ -1,72 +1,35 @@
-#include <ctype.h>
-#include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-const char* number_to_word(int n) {
-    switch(n) {
-        case 1: return "One";
-        case 2: return "Two";
-        case 3: return "Three";
-        case 4: return "Four";
-        case 5: return "Five";
-        case 6: return "Six";
-        case 7: return "Seven";
-        case 8: return "Eight";
-        case 9: return "Nine";
-        default: return NULL;
-    }
-}
-
-int compare_desc(const void *a, const void *b) {
-    return *(int*)b - *(int*)a;
-}
-
-void by_length(int n, int arr[], char result[][20], int *result_size) {
-    int valid[n];
-    int valid_count = 0;
-    
+void sort_by_length(char words[][100], int n, char result[][100], int *result_len) {
+    int lengths[n];
     for (int i = 0; i < n; i++) {
-        if (arr[i] >= 1 && arr[i] <= 9) {
-            valid[valid_count++] = arr[i];
-        }
+        lengths[i] = strlen(words[i]);
     }
-    
-    qsort(valid, valid_count, sizeof(int), compare_desc);
-    
-    *result_size = 0;
-    for (int i = 0; i < valid_count; i++) {
-        const char *word = number_to_word(valid[i]);
-        if (word) {
-            strcpy(result[(*result_size)++], word);
+    *result_len = 0;
+    for (int target_len = 9; target_len >= 1; target_len--) {
+        for (int i = 0; i < n; i++) {
+            if (lengths[i] == target_len) {
+                strcpy(result[(*result_len)++], words[i]);
+            }
         }
     }
 }
 
-void run(void) {
-
+int main(void) {
     int n;
     scanf("%d", &n);
-    if (n == 0) {
-        printf("\n");
-        return 0;
-    }
-    int arr[n];
+    char words[n][100];
     for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
+        scanf("%s", words[i]);
     }
-    char result[n][20];
-    int result_size;
-    by_length(n, arr, result, &result_size);
-    for (int i = 0; i < result_size; i++) {
+    char result[n][100];
+    int result_len;
+    sort_by_length(words, n, result, &result_len);
+    for (int i = 0; i < result_len; i++) {
         printf("%s", result[i]);
-        if (i < result_size - 1) printf(" ");
+        if (i < result_len - 1) printf(" ");
     }
     printf("\n");
-}
-
-int main() {
-    run();
     return 0;
 }

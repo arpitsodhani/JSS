@@ -1,88 +1,125 @@
 {
+  "problem_num": 136,
+  "problem_name": "largest_smallest_integers",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "main_prog1",
-          "code": "void largest_smallest_integers(int n, int arr[], int *largest, int *smallest) {\n    *largest = 0;\n    *smallest = 0;\n    \n    int has_negative = 0, has_positive = 0;\n    int max_negative = -1000000, min_positive = 1000000;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] < 0) {\n            has_negative = 1;\n            if (arr[i] > max_negative) {\n                max_negative = arr[i];\n            }\n        } else if (arr[i] > 0) {\n            has_positive = 1;\n            if (arr[i] < min_positive) {\n                min_positive = arr[i];\n            }\n        }\n    }\n    \n    if (has_negative) *largest = max_negative;\n    if (has_positive) *smallest = min_positive;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    scanf(\" %[^\\n]\", line);\n    \n    int arr[1000], arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atoi(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int largest, smallest;\n    largest_smallest_integers(arr_size, arr, &largest, &smallest);\n    \n    if (largest == 0) {\n        printf(\"null\\n\");\n    } else {\n        printf(\"%d\\n\", largest);\n    }\n    \n    if (smallest == 0) {\n        printf(\"null\\n\");\n    } else {\n        printf(\"%d\\n\", smallest);\n    }\n    \n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "find_largest_smallest",
+          "code": "void find_largest_smallest(int* arr, int n, int* largest_neg, int* smallest_pos) {\n    *largest_neg = 0;\n    *smallest_pos = 0;\n    int has_neg = 0, has_pos = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] < 0) {\n            if (!has_neg || arr[i] > *largest_neg) {\n                *largest_neg = arr[i];\n                has_neg = 1;\n            }\n        } else if (arr[i] > 0) {\n            if (!has_pos || arr[i] < *smallest_pos) {\n                *smallest_pos = arr[i];\n                has_pos = 1;\n            }\n        }\n    }\n    \n    if (!has_neg) *largest_neg = 0;\n    if (!has_pos) *smallest_pos = 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int largest_neg, smallest_pos;\n    find_largest_smallest(arr, n, &largest_neg, &smallest_pos);\n    \n    printf(\"(%d, %d)\\n\", largest_neg, smallest_pos);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "main_prog2",
-          "code": "void largest_smallest_integers(int n, int arr[], int *largest, int *smallest) {\n    *largest = 0;\n    *smallest = 0;\n    \n    int has_negative = 0, has_positive = 0;\n    int max_negative = -1000000, min_positive = 1000000;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] < 0) {\n            has_negative = 1;\n            if (arr[i] > max_negative) {\n                max_negative = arr[i];\n            }\n        } else if (arr[i] > 0) {\n            has_positive = 1;\n            if (arr[i] < min_positive) {\n                min_positive = arr[i];\n            }\n        }\n    }\n    \n    if (has_negative) *largest = max_negative;\n    if (has_positive) *smallest = min_positive;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    scanf(\" %[^\\n]\", line);\n    \n    int arr[1000], arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atoi(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int largest, smallest;\n    largest_smallest_integers(arr_size, arr, &largest, &smallest);\n    \n    if (largest == 0) {\n        printf(\"null\\n\");\n    } else {\n        printf(\"%d\\n\", largest);\n    }\n    \n    if (smallest == 0) {\n        printf(\"null\\n\");\n    } else {\n        printf(\"%d\\n\", smallest);\n    }\n    \n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "find_largest_smallest",
+          "code": "void find_largest_smallest(int* arr, int n, int* largest_neg, int* smallest_pos) {\n    *largest_neg = 0;\n    *smallest_pos = 0;\n    int has_neg = 0, has_pos = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] < 0) {\n            if (!has_neg || arr[i] > *largest_neg) {\n                *largest_neg = arr[i];\n                has_neg = 1;\n            }\n        } else if (arr[i] > 0) {\n            if (!has_pos || arr[i] < *smallest_pos) {\n                *smallest_pos = arr[i];\n                has_pos = 1;\n            }\n        }\n    }\n    \n    if (!has_neg) *largest_neg = 0;\n    if (!has_pos) *smallest_pos = 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int largest_neg, smallest_pos;\n    find_largest_smallest(arr, n, &largest_neg, &smallest_pos);\n    \n    printf(\"(%d, %d)\\n\", largest_neg, smallest_pos);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "main_prog3",
-          "code": "void largest_smallest_integers(int n, int arr[], int *largest, int *smallest) {\n    *largest = 0;\n    *smallest = 0;\n    \n    int has_negative = 0, has_positive = 0;\n    int max_negative = -1000000, min_positive = 1000000;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] < 0) {\n            has_negative = 1;\n            if (arr[i] > max_negative) {\n                max_negative = arr[i];\n            }\n        } else if (arr[i] > 0) {\n            has_positive = 1;\n            if (arr[i] < min_positive) {\n                min_positive = arr[i];\n            }\n        }\n    }\n    \n    if (has_negative) *largest = max_negative;\n    if (has_positive) *smallest = min_positive;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    scanf(\" %[^\\n]\", line);\n    \n    int arr[1000], arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atoi(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int largest, smallest;\n    largest_smallest_integers(arr_size, arr, &largest, &smallest);\n    \n    if (largest == 0) {\n        printf(\"null\\n\");\n    } else {\n        printf(\"%d\\n\", largest);\n    }\n    \n    if (smallest == 0) {\n        printf(\"null\\n\");\n    } else {\n        printf(\"%d\\n\", smallest);\n    }\n    \n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "find_largest_smallest",
+          "code": "void find_largest_smallest(int* arr, int n, int* largest_neg, int* smallest_pos) {\n    *largest_neg = 0;\n    *smallest_pos = 0;\n    int has_neg = 0, has_pos = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] < 0) {\n            if (!has_neg || arr[i] > *largest_neg) {\n                *largest_neg = arr[i];\n                has_neg = 1;\n            }\n        } else if (arr[i] > 0) {\n            if (!has_pos || arr[i] < *smallest_pos) {\n                *smallest_pos = arr[i];\n                has_pos = 1;\n            }\n        }\n    }\n    \n    if (!has_neg) *largest_neg = 0;\n    if (!has_pos) *smallest_pos = 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int largest_neg, smallest_pos;\n    find_largest_smallest(arr, n, &largest_neg, &smallest_pos);\n    \n    printf(\"(%d, %d)\\n\", largest_neg, smallest_pos);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "main_prog4",
-          "code": "void largest_smallest_integers(int n, int arr[], int *largest, int *smallest) {\n    *largest = 0;\n    *smallest = 0;\n    \n    int has_negative = 0, has_positive = 0;\n    int max_negative = -1000000, min_positive = 1000000;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] < 0) {\n            has_negative = 1;\n            if (arr[i] > max_negative) {\n                max_negative = arr[i];\n            }\n        } else if (arr[i] > 0) {\n            has_positive = 1;\n            if (arr[i] < min_positive) {\n                min_positive = arr[i];\n            }\n        }\n    }\n    \n    if (has_negative) *largest = max_negative;\n    if (has_positive) *smallest = min_positive;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    scanf(\" %[^\\n]\", line);\n    \n    int arr[1000], arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atoi(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int largest, smallest;\n    largest_smallest_integers(arr_size, arr, &largest, &smallest);\n    \n    if (largest == 0) {\n        printf(\"null\\n\");\n    } else {\n        printf(\"%d\\n\", largest);\n    }\n    \n    if (smallest == 0) {\n        printf(\"null\\n\");\n    } else {\n        printf(\"%d\\n\", smallest);\n    }\n    \n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "find_largest_smallest",
+          "code": "void find_largest_smallest(int* arr, int n, int* largest_neg, int* smallest_pos) {\n    *largest_neg = 0;\n    *smallest_pos = 0;\n    int has_neg = 0, has_pos = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] < 0) {\n            if (!has_neg || arr[i] > *largest_neg) {\n                *largest_neg = arr[i];\n                has_neg = 1;\n            }\n        } else if (arr[i] > 0) {\n            if (!has_pos || arr[i] < *smallest_pos) {\n                *smallest_pos = arr[i];\n                has_pos = 1;\n            }\n        }\n    }\n    \n    if (!has_neg) *largest_neg = 0;\n    if (!has_pos) *smallest_pos = 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int largest_neg, smallest_pos;\n    find_largest_smallest(arr, n, &largest_neg, &smallest_pos);\n    \n    printf(\"(%d, %d)\\n\", largest_neg, smallest_pos);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "main_prog5",
-          "code": "void largest_smallest_integers(int n, int arr[], int *largest, int *smallest) {\n    *largest = 0;\n    *smallest = 0;\n    \n    int has_negative = 0, has_positive = 0;\n    int max_negative = -1000000, min_positive = 1000000;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] < 0) {\n            has_negative = 1;\n            if (arr[i] > max_negative) {\n                max_negative = arr[i];\n            }\n        } else if (arr[i] > 0) {\n            has_positive = 1;\n            if (arr[i] < min_positive) {\n                min_positive = arr[i];\n            }\n        }\n    }\n    \n    if (has_negative) *largest = max_negative;\n    if (has_positive) *smallest = min_positive;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    scanf(\" %[^\\n]\", line);\n    \n    int arr[1000], arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atoi(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int largest, smallest;\n    largest_smallest_integers(arr_size, arr, &largest, &smallest);\n    \n    if (largest == 0) {\n        printf(\"null\\n\");\n    } else {\n        printf(\"%d\\n\", largest);\n    }\n    \n    if (smallest == 0) {\n        printf(\"null\\n\");\n    } else {\n        printf(\"%d\\n\", smallest);\n    }\n    \n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "find_largest_smallest",
+          "code": "void find_largest_smallest(int* arr, int n, int* largest_neg, int* smallest_pos) {\n    *largest_neg = 0;\n    *smallest_pos = 0;\n    int has_neg = 0, has_pos = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] < 0) {\n            if (!has_neg || arr[i] > *largest_neg) {\n                *largest_neg = arr[i];\n                has_neg = 1;\n            }\n        } else if (arr[i] > 0) {\n            if (!has_pos || arr[i] < *smallest_pos) {\n                *smallest_pos = arr[i];\n                has_pos = 1;\n            }\n        }\n    }\n    \n    if (!has_neg) *largest_neg = 0;\n    if (!has_pos) *smallest_pos = 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
+          "clause_id": "main",
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int largest_neg, smallest_pos;\n    find_largest_smallest(arr, n, &largest_neg, &smallest_pos);\n    \n    printf(\"(%d, %d)\\n\", largest_neg, smallest_pos);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     }
   ]

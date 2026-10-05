@@ -1,36 +1,36 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
 #include <ctype.h>
+#include <stdio.h>
+#include <string.h>
 
-int is_vowel(char c) {
-    c = tolower(c);
-    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
-}
-
-int is_consonant(char c) {
-    return isalpha(c) && !is_vowel(c);
-}
-
-char get_closest_vowel(const char *word) {
+char get_closest_vowel_in_word(char *word) {
+    char vowels[] = "aeiouAEIOU";
     int len = strlen(word);
-    if (len < 3) return '\0';
-    
     for (int i = len - 2; i >= 1; i--) {
-        if (is_vowel(word[i]) && is_consonant(word[i-1]) && is_consonant(word[i+1])) {
-            return word[i];
+        int is_vowel = 0;
+        for (int j = 0; vowels[j]; j++) {
+            if (word[i] == vowels[j]) {
+                is_vowel = 1;
+                break;
+            }
+        }
+        if (is_vowel) {
+            int left_consonant = 1, right_consonant = 1;
+            for (int j = 0; vowels[j]; j++) {
+                if (word[i-1] == vowels[j]) left_consonant = 0;
+                if (word[i+1] == vowels[j]) right_consonant = 0;
+            }
+            if (left_consonant && right_consonant) {
+                return word[i];
+            }
         }
     }
     return '\0';
 }
 
-int main() {
-    char word[10000];
-    fgets(word, sizeof(word), stdin);
-    word[strcspn(word, "\n")] = 0;
-    
-    char result = get_closest_vowel(word);
+int main(void) {
+    char word[1000];
+    scanf("%s", word);
+    char result = get_closest_vowel_in_word(word);
     if (result == '\0') {
         printf("\n");
     } else {
@@ -38,4 +38,3 @@ int main() {
     }
     return 0;
 }
-

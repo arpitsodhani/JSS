@@ -1,48 +1,56 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {49, 52, 10, 0};
-static const unsigned char output_0[] = {49, 32, 53, 32, 55, 32, 49, 49, 32, 49, 51, 32, 49, 55, 10, 0};
-static const unsigned char input_1[] = {53, 10, 0};
-static const unsigned char output_1[] = {49, 32, 53, 10, 0};
-static const unsigned char input_2[] = {49, 50, 10, 0};
-static const unsigned char output_2[] = {49, 32, 51, 32, 53, 10, 0};
-
-int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
+void get_odd_collatz_numbers(int n, int* result, int* result_len) {
+    *result_len = 0;
+    result[(*result_len)++] = n;
+    
+    while (n != 1) {
+        if (n % 2 == 0) {
+            n = n / 2;
+        } else {
+            n = 3 * n + 1;
         }
-        input[length++] = (unsigned char)ch;
+        
+        if (n % 2 == 1) {
+            int found = 0;
+            for (int i = 0; i < *result_len; i++) {
+                if (result[i] == n) {
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                result[(*result_len)++] = n;
+            }
+        }
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
+    
+    
+    for (int i = 0; i < *result_len - 1; i++) {
+        for (int j = i + 1; j < *result_len; j++) {
+            if (result[i] > result[j]) {
+                int tmp = result[i];
+                result[i] = result[j];
+                result[j] = tmp;
+            }
+        }
     }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    
+    int result[10000];
+    int result_len;
+    get_odd_collatz_numbers(n, result, &result_len);
+    
+    printf("[");
+    for (int i = 0; i < result_len; i++) {
+        if (i > 0) printf(", ");
+        printf("%d", result[i]);
     }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    printf("]\n");
+    
+    return 0;
 }

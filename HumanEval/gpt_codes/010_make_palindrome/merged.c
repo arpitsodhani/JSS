@@ -1,62 +1,34 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-static const unsigned char input_0[] = {10, 0};
-static const unsigned char output_0[] = {10, 0};
-static const unsigned char input_1[] = {99, 97, 116, 10, 0};
-static const unsigned char output_1[] = {99, 97, 116, 97, 99, 10, 0};
-static const unsigned char input_2[] = {99, 97, 116, 97, 10, 0};
-static const unsigned char output_2[] = {99, 97, 116, 97, 99, 10, 0};
-static const unsigned char input_3[] = {97, 10, 0};
-static const unsigned char output_3[] = {97, 10, 0};
-static const unsigned char input_4[] = {120, 10, 0};
-static const unsigned char output_4[] = {120, 10, 0};
+int find_palindrome_suffix_len(char *s, int len) {
+    for (int i = 0; i < len; i++) {
+        int l = i, r = len - 1;
+        int is_palindrome = 1;
+        while (l < r) {
+            if (s[l] != s[len - 1 - (r - l)]) {
+                is_palindrome = 0;
+                break;
+            }
+            l++;
+        }
+        if (is_palindrome || l >= r) {
+            return len - i;
+        }
+    }
+    return 0;
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
+    char s[1000];
+    fgets(s, sizeof(s), stdin);
+    s[strcspn(s, "\n")] = 0;
+    int len = strlen(s);
+    int suffix_len = find_palindrome_suffix_len(s, len);
+    printf("%s", s);
+    for (int i = suffix_len; i < len; i++) {
+        printf("%c", s[len - 1 - i]);
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_3) == 0) {
-        fputs((const char *)output_3, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_4) == 0) {
-        fputs((const char *)output_4, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    printf("\n");
+    return 0;
 }

@@ -1,10 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-int valid_date(const char *date) {
+int validate_date(char* date) {
     if (strlen(date) != 10) return 0;
     if (date[2] != '-' || date[5] != '-') return 0;
     
@@ -16,7 +13,6 @@ int valid_date(const char *date) {
     if (day < 1) return 0;
     
     int days_in_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    
     if (day > days_in_month[month - 1]) return 0;
     
     return 1;
@@ -24,8 +20,13 @@ int valid_date(const char *date) {
 
 int main() {
     char date[100];
-    fgets(date, sizeof(date), stdin);
-    date[strcspn(date, "\n")] = 0;
-    printf("%s\n", valid_date(date) ? "True" : "False");
+    scanf("%s", date);
+    
+    if (validate_date(date)) {
+        printf("True\n");
+    } else {
+        printf("False\n");
+    }
+    
     return 0;
 }

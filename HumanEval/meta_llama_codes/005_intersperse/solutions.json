@@ -1,60 +1,137 @@
 {
-  "problem_id": "005_intersperse",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "intersperse_print",
+          "code": "void intersperse_print(int *arr, int n, int delim) {\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" %d\", delim);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 52, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {51, 10, 55, 10, 49, 32, 50, 32, 51, 10, 0};\nstatic const unsigned char output_1[] = {49, 32, 55, 32, 50, 32, 55, 32, 51, 10, 0};\nstatic const unsigned char input_2[] = {49, 10, 50, 10, 53, 10, 0};\nstatic const unsigned char output_2[] = {53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n, delim;\n    scanf(\"%d %d\", &n, &delim);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    intersperse_print(arr, n, delim);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "intersperse_print",
+          "code": "void intersperse_print(int *arr, int n, int delim) {\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" %d\", delim);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 52, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {51, 10, 55, 10, 49, 32, 50, 32, 51, 10, 0};\nstatic const unsigned char output_1[] = {49, 32, 55, 32, 50, 32, 55, 32, 51, 10, 0};\nstatic const unsigned char input_2[] = {49, 10, 50, 10, 53, 10, 0};\nstatic const unsigned char output_2[] = {53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n, delim;\n    scanf(\"%d %d\", &n, &delim);\n    int nums[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &nums[i]);\n    intersperse_print(nums, n, delim);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "intersperse_print",
+          "code": "void intersperse_print(int *arr, int n, int delim) {\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" %d\", delim);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 52, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {51, 10, 55, 10, 49, 32, 50, 32, 51, 10, 0};\nstatic const unsigned char output_1[] = {49, 32, 55, 32, 50, 32, 55, 32, 51, 10, 0};\nstatic const unsigned char input_2[] = {49, 10, 50, 10, 53, 10, 0};\nstatic const unsigned char output_2[] = {53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int count, delim;\n    scanf(\"%d %d\", &count, &delim);\n    int values[count];\n    for (int i = 0; i < count; i++) scanf(\"%d\", &values[i]);\n    intersperse_print(values, count, delim);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "intersperse_print",
+          "code": "void intersperse_print(int *arr, int n, int delim) {\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" %d\", delim);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 52, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {51, 10, 55, 10, 49, 32, 50, 32, 51, 10, 0};\nstatic const unsigned char output_1[] = {49, 32, 55, 32, 50, 32, 55, 32, 51, 10, 0};\nstatic const unsigned char input_2[] = {49, 10, 50, 10, 53, 10, 0};\nstatic const unsigned char output_2[] = {53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n, delim;\n    scanf(\"%d %d\", &n, &delim);\n    int data[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &data[i]);\n    intersperse_print(data, n, delim);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "intersperse_print",
+          "code": "void intersperse_print(int *arr, int n, int delim) {\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" %d\", delim);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 52, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {51, 10, 55, 10, 49, 32, 50, 32, 51, 10, 0};\nstatic const unsigned char output_1[] = {49, 32, 55, 32, 50, 32, 55, 32, 51, 10, 0};\nstatic const unsigned char input_2[] = {49, 10, 50, 10, 53, 10, 0};\nstatic const unsigned char output_2[] = {53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n, delim;\n    scanf(\"%d %d\", &n, &delim);\n    int a[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    intersperse_print(a, n, delim);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     }
+  ],
+  "global_includes": [],
+  "tests": {
+    "clause_tests": {},
+    "program_tests": [
+      {
+        "test_id": "test_0",
+        "input": "0 4\n",
+        "expected": "\n"
+      },
+      {
+        "test_id": "test_1",
+        "input": "3 7\n1 2 3\n",
+        "expected": "1 7 2 7 3\n"
+      }
+    ]
+  },
+  "merge_settings": {
+    "consensus_threshold": 0.6,
+    "max_rounds": 3
+  },
+  "includes": [
+    "<stdio.h>"
   ]
 }

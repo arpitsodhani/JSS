@@ -1,114 +1,118 @@
 {
+  "problem_id": "069_search",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "clause1_0",
-          "code": "int search(int* lst, int n) {\n    int freq[1000] = {0};\n    int max_val = 0;\n    for (int i = 0; i < n; i++) {\n        if (lst[i] > 0 && lst[i] < 1000) {\n            freq[lst[i]]++;\n            if (lst[i] > max_val) max_val = lst[i];\n        }\n    }\n    for (int i = max_val; i >= 1; i--) {\n        if (freq[i] >= i) return i;\n    }\n    return -1;\n}",
-          "shared_variables": {}
+          "clause_id": "search_value",
+          "code": "int search_value(int *arr, int n) {\n    int freq[101] = {0};\n    for (int i = 0; i < n; i++) {\n        if (arr[i] >= 0 && arr[i] <= 100) {\n            freq[arr[i]]++;\n        }\n    }\n    int result = -1;\n    for (int i = 0; i <= 100; i++) {\n        if (freq[i] >= i && i > result) {\n            result = i;\n        }\n    }\n    return result;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "clause1_1",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    int lst[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &lst[i]);\n    printf(\"%d\\n\", search(lst, n));\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = search_value(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "clause2_0",
-          "code": "int search(int* lst, int n) {\n    int freq[1000] = {0};\n    int max_val = 0;\n    for (int i = 0; i < n; i++) {\n        if (lst[i] > 0 && lst[i] < 1000) {\n            freq[lst[i]]++;\n            if (lst[i] > max_val) max_val = lst[i];\n        }\n    }\n    for (int i = max_val; i >= 1; i--) {\n        if (freq[i] >= i) return i;\n    }\n    return -1;\n}",
-          "shared_variables": {}
+          "clause_id": "search_value",
+          "code": "int search_value(int *arr, int n) {\n    int freq[101] = {0};\n    for (int i = 0; i < n; i++) {\n        if (arr[i] >= 0 && arr[i] <= 100) {\n            freq[arr[i]]++;\n        }\n    }\n    int result = -1;\n    for (int i = 0; i <= 100; i++) {\n        if (freq[i] >= i && i > result) {\n            result = i;\n        }\n    }\n    return result;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "clause2_1",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    int lst[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &lst[i]);\n    printf(\"%d\\n\", search(lst, n));\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = search_value(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "clause3_0",
-          "code": "int search(int* lst, int n) {\n    int freq[1000] = {0};\n    int max_val = 0;\n    for (int i = 0; i < n; i++) {\n        if (lst[i] > 0 && lst[i] < 1000) {\n            freq[lst[i]]++;\n            if (lst[i] > max_val) max_val = lst[i];\n        }\n    }\n    for (int i = max_val; i >= 1; i--) {\n        if (freq[i] >= i) return i;\n    }\n    return -1;\n}",
-          "shared_variables": {}
+          "clause_id": "search_value",
+          "code": "int search_value(int *arr, int n) {\n    int freq[101] = {0};\n    for (int i = 0; i < n; i++) {\n        if (arr[i] >= 0 && arr[i] <= 100) {\n            freq[arr[i]]++;\n        }\n    }\n    int result = -1;\n    for (int i = 0; i <= 100; i++) {\n        if (freq[i] >= i && i > result) {\n            result = i;\n        }\n    }\n    return result;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "clause3_1",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    int lst[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &lst[i]);\n    printf(\"%d\\n\", search(lst, n));\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = search_value(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "clause4_0",
-          "code": "int search(int* lst, int n) {\n    int freq[1000] = {0};\n    int max_val = 0;\n    for (int i = 0; i < n; i++) {\n        if (lst[i] > 0 && lst[i] < 1000) {\n            freq[lst[i]]++;\n            if (lst[i] > max_val) max_val = lst[i];\n        }\n    }\n    for (int i = max_val; i >= 1; i--) {\n        if (freq[i] >= i) return i;\n    }\n    return -1;\n}",
-          "shared_variables": {}
+          "clause_id": "search_value",
+          "code": "int search_value(int *arr, int n) {\n    int freq[101] = {0};\n    for (int i = 0; i < n; i++) {\n        if (arr[i] >= 0 && arr[i] <= 100) {\n            freq[arr[i]]++;\n        }\n    }\n    int result = -1;\n    for (int i = 0; i <= 100; i++) {\n        if (freq[i] >= i && i > result) {\n            result = i;\n        }\n    }\n    return result;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "clause4_1",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    int lst[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &lst[i]);\n    printf(\"%d\\n\", search(lst, n));\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = search_value(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "clause5_0",
-          "code": "int search(int* lst, int n) {\n    int freq[1000] = {0};\n    int max_val = 0;\n    for (int i = 0; i < n; i++) {\n        if (lst[i] > 0 && lst[i] < 1000) {\n            freq[lst[i]]++;\n            if (lst[i] > max_val) max_val = lst[i];\n        }\n    }\n    for (int i = max_val; i >= 1; i--) {\n        if (freq[i] >= i) return i;\n    }\n    return -1;\n}",
-          "shared_variables": {}
+          "clause_id": "search_value",
+          "code": "int search_value(int *arr, int n) {\n    int freq[101] = {0};\n    for (int i = 0; i < n; i++) {\n        if (arr[i] >= 0 && arr[i] <= 100) {\n            freq[arr[i]]++;\n        }\n    }\n    int result = -1;\n    for (int i = 0; i <= 100; i++) {\n        if (freq[i] >= i && i > result) {\n            result = i;\n        }\n    }\n    return result;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "clause5_1",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    int lst[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &lst[i]);\n    printf(\"%d\\n\", search(lst, n));\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result = search_value(arr, n);\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

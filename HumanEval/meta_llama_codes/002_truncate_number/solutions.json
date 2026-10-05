@@ -4,9 +4,20 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "get_decimal_part",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "int main(void) {\n    double x;\n    scanf(\"%lf\", &x);\n    double result = x - (int)x;\n    printf(\"%g\\n\", result);\n    return 0;\n}"
+          "code": "int main(void) {\n    double x;\n    scanf(\"%lf\", &x);\n    double result = x - (int)x;\n    printf(\"%g\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -17,9 +28,20 @@
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "get_decimal_part",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "int main(void) {\n    double num;\n    scanf(\"%lf\", &num);\n    int whole = (int)num;\n    double frac = num - whole;\n    printf(\"%g\\n\", frac);\n    return 0;\n}"
+          "code": "int main(void) {\n    double num;\n    scanf(\"%lf\", &num);\n    int whole = (int)num;\n    double frac = num - whole;\n    printf(\"%g\\n\", frac);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -30,14 +52,20 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "get_fraction",
-          "signature": "double get_fraction(double x)",
-          "code": "double get_fraction(double x) {\n    return x - (int)x;\n}"
+          "clause_id": "get_decimal_part",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "int main(void) {\n    double x;\n    scanf(\"%lf\", &x);\n    printf(\"%g\\n\", get_fraction(x));\n    return 0;\n}"
+          "code": "double get_fraction(double x) {\n    return x - (int)x;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -48,9 +76,20 @@
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "get_decimal_part",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "int main(void) {\n    double value;\n    scanf(\"%lf\", &value);\n    double decimal = value - (int)value;\n    printf(\"%g\\n\", decimal);\n    return 0;\n}"
+          "code": "int main(void) {\n    double value;\n    scanf(\"%lf\", &value);\n    double decimal = value - (int)value;\n    printf(\"%g\\n\", decimal);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -61,9 +100,20 @@
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "get_decimal_part",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "int main(void) {\n    double n;\n    scanf(\"%lf\", &n);\n    printf(\"%g\\n\", n - (int)n);\n    return 0;\n}"
+          "code": "int main(void) {\n    double n;\n    scanf(\"%lf\", &n);\n    printf(\"%g\\n\", n - (int)n);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [

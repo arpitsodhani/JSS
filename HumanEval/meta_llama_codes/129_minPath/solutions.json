@@ -1,60 +1,131 @@
 {
-  "problem_id": "129_minPath",
+  "problem_num": 129,
+  "problem_name": "minPath",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "find_min_path",
+          "code": "void find_min_path(int** grid, int n, int k, int* result) {\n    int min_val = grid[0][0];\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid[i][j] < min_val) {\n                min_val = grid[i][j];\n            }\n        }\n    }\n    \n    for (int i = 0; i < k; i++) {\n        if (i % 2 == 0) {\n            result[i] = 1;\n        } else {\n            result[i] = min_val;\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 32, 51, 10, 49, 10, 50, 10, 51, 10, 52, 10, 53, 10, 54, 10, 55, 10, 56, 10, 57, 10, 0};\nstatic const unsigned char output_0[] = {49, 32, 50, 32, 49, 10, 0};\nstatic const unsigned char input_1[] = {51, 32, 49, 10, 53, 10, 57, 10, 51, 10, 52, 10, 49, 10, 54, 10, 55, 10, 56, 10, 50, 10, 0};\nstatic const unsigned char output_1[] = {49, 10, 0};\nstatic const unsigned char input_2[] = {52, 32, 52, 10, 49, 10, 50, 10, 51, 10, 52, 10, 53, 10, 54, 10, 55, 10, 56, 10, 57, 10, 49, 48, 10, 49, 49, 10, 49, 50, 10, 49, 51, 10, 49, 52, 10, 49, 53, 10, 49, 54, 10, 0};\nstatic const unsigned char output_2[] = {49, 32, 50, 32, 49, 32, 50, 10, 0};\nstatic const unsigned char input_3[] = {52, 32, 55, 10, 54, 10, 52, 10, 49, 51, 10, 49, 48, 10, 53, 10, 55, 10, 49, 50, 10, 49, 10, 51, 10, 49, 54, 10, 49, 49, 10, 49, 53, 10, 56, 10, 49, 52, 10, 57, 10, 50, 10, 0};\nstatic const unsigned char output_3[] = {49, 32, 49, 48, 32, 49, 32, 49, 48, 32, 49, 32, 49, 48, 32, 49, 10, 0};\nstatic const unsigned char input_4[] = {52, 32, 53, 10, 56, 10, 49, 52, 10, 57, 10, 50, 10, 54, 10, 52, 10, 49, 51, 10, 49, 53, 10, 53, 10, 55, 10, 49, 10, 49, 50, 10, 51, 10, 49, 48, 10, 49, 49, 10, 49, 54, 10, 0};\nstatic const unsigned char output_4[] = {49, 32, 55, 32, 49, 32, 55, 32, 49, 10, 0};\nstatic const unsigned char input_5[] = {52, 32, 57, 10, 49, 49, 10, 56, 10, 55, 10, 50, 10, 53, 10, 49, 54, 10, 49, 52, 10, 52, 10, 57, 10, 51, 10, 49, 53, 10, 54, 10, 49, 50, 10, 49, 51, 10, 49, 48, 10, 49, 10, 0};\nstatic const unsigned char output_5[] = {49, 32, 54, 32, 49, 32, 54, 32, 49, 32, 54, 32, 49, 32, 54, 32, 49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    \n    int** grid = malloc(n * sizeof(int*));\n    for (int i = 0; i < n; i++) {\n        grid[i] = malloc(n * sizeof(int));\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &grid[i][j]);\n        }\n    }\n    \n    int result[1000];\n    find_min_path(grid, n, k, result);\n    \n    printf(\"[\");\n    for (int i = 0; i < k; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"%d\", result[i]);\n    }\n    printf(\"]\\n\");\n    \n    for (int i = 0; i < n; i++) free(grid[i]);\n    free(grid);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "find_min_path",
+          "code": "void find_min_path(int** grid, int n, int k, int* result) {\n    int min_val = grid[0][0];\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid[i][j] < min_val) {\n                min_val = grid[i][j];\n            }\n        }\n    }\n    \n    for (int i = 0; i < k; i++) {\n        if (i % 2 == 0) {\n            result[i] = 1;\n        } else {\n            result[i] = min_val;\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 32, 51, 10, 49, 10, 50, 10, 51, 10, 52, 10, 53, 10, 54, 10, 55, 10, 56, 10, 57, 10, 0};\nstatic const unsigned char output_0[] = {49, 32, 50, 32, 49, 10, 0};\nstatic const unsigned char input_1[] = {51, 32, 49, 10, 53, 10, 57, 10, 51, 10, 52, 10, 49, 10, 54, 10, 55, 10, 56, 10, 50, 10, 0};\nstatic const unsigned char output_1[] = {49, 10, 0};\nstatic const unsigned char input_2[] = {52, 32, 52, 10, 49, 10, 50, 10, 51, 10, 52, 10, 53, 10, 54, 10, 55, 10, 56, 10, 57, 10, 49, 48, 10, 49, 49, 10, 49, 50, 10, 49, 51, 10, 49, 52, 10, 49, 53, 10, 49, 54, 10, 0};\nstatic const unsigned char output_2[] = {49, 32, 50, 32, 49, 32, 50, 10, 0};\nstatic const unsigned char input_3[] = {52, 32, 55, 10, 54, 10, 52, 10, 49, 51, 10, 49, 48, 10, 53, 10, 55, 10, 49, 50, 10, 49, 10, 51, 10, 49, 54, 10, 49, 49, 10, 49, 53, 10, 56, 10, 49, 52, 10, 57, 10, 50, 10, 0};\nstatic const unsigned char output_3[] = {49, 32, 49, 48, 32, 49, 32, 49, 48, 32, 49, 32, 49, 48, 32, 49, 10, 0};\nstatic const unsigned char input_4[] = {52, 32, 53, 10, 56, 10, 49, 52, 10, 57, 10, 50, 10, 54, 10, 52, 10, 49, 51, 10, 49, 53, 10, 53, 10, 55, 10, 49, 10, 49, 50, 10, 51, 10, 49, 48, 10, 49, 49, 10, 49, 54, 10, 0};\nstatic const unsigned char output_4[] = {49, 32, 55, 32, 49, 32, 55, 32, 49, 10, 0};\nstatic const unsigned char input_5[] = {52, 32, 57, 10, 49, 49, 10, 56, 10, 55, 10, 50, 10, 53, 10, 49, 54, 10, 49, 52, 10, 52, 10, 57, 10, 51, 10, 49, 53, 10, 54, 10, 49, 50, 10, 49, 51, 10, 49, 48, 10, 49, 10, 0};\nstatic const unsigned char output_5[] = {49, 32, 54, 32, 49, 32, 54, 32, 49, 32, 54, 32, 49, 32, 54, 32, 49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    \n    int** grid = malloc(n * sizeof(int*));\n    for (int i = 0; i < n; i++) {\n        grid[i] = malloc(n * sizeof(int));\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &grid[i][j]);\n        }\n    }\n    \n    int result[1000];\n    find_min_path(grid, n, k, result);\n    \n    printf(\"[\");\n    for (int i = 0; i < k; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"%d\", result[i]);\n    }\n    printf(\"]\\n\");\n    \n    for (int i = 0; i < n; i++) free(grid[i]);\n    free(grid);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "find_min_path",
+          "code": "void find_min_path(int** grid, int n, int k, int* result) {\n    int min_val = grid[0][0];\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid[i][j] < min_val) {\n                min_val = grid[i][j];\n            }\n        }\n    }\n    \n    for (int i = 0; i < k; i++) {\n        if (i % 2 == 0) {\n            result[i] = 1;\n        } else {\n            result[i] = min_val;\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 32, 51, 10, 49, 10, 50, 10, 51, 10, 52, 10, 53, 10, 54, 10, 55, 10, 56, 10, 57, 10, 0};\nstatic const unsigned char output_0[] = {49, 32, 50, 32, 49, 10, 0};\nstatic const unsigned char input_1[] = {51, 32, 49, 10, 53, 10, 57, 10, 51, 10, 52, 10, 49, 10, 54, 10, 55, 10, 56, 10, 50, 10, 0};\nstatic const unsigned char output_1[] = {49, 10, 0};\nstatic const unsigned char input_2[] = {52, 32, 52, 10, 49, 10, 50, 10, 51, 10, 52, 10, 53, 10, 54, 10, 55, 10, 56, 10, 57, 10, 49, 48, 10, 49, 49, 10, 49, 50, 10, 49, 51, 10, 49, 52, 10, 49, 53, 10, 49, 54, 10, 0};\nstatic const unsigned char output_2[] = {49, 32, 50, 32, 49, 32, 50, 10, 0};\nstatic const unsigned char input_3[] = {52, 32, 55, 10, 54, 10, 52, 10, 49, 51, 10, 49, 48, 10, 53, 10, 55, 10, 49, 50, 10, 49, 10, 51, 10, 49, 54, 10, 49, 49, 10, 49, 53, 10, 56, 10, 49, 52, 10, 57, 10, 50, 10, 0};\nstatic const unsigned char output_3[] = {49, 32, 49, 48, 32, 49, 32, 49, 48, 32, 49, 32, 49, 48, 32, 49, 10, 0};\nstatic const unsigned char input_4[] = {52, 32, 53, 10, 56, 10, 49, 52, 10, 57, 10, 50, 10, 54, 10, 52, 10, 49, 51, 10, 49, 53, 10, 53, 10, 55, 10, 49, 10, 49, 50, 10, 51, 10, 49, 48, 10, 49, 49, 10, 49, 54, 10, 0};\nstatic const unsigned char output_4[] = {49, 32, 55, 32, 49, 32, 55, 32, 49, 10, 0};\nstatic const unsigned char input_5[] = {52, 32, 57, 10, 49, 49, 10, 56, 10, 55, 10, 50, 10, 53, 10, 49, 54, 10, 49, 52, 10, 52, 10, 57, 10, 51, 10, 49, 53, 10, 54, 10, 49, 50, 10, 49, 51, 10, 49, 48, 10, 49, 10, 0};\nstatic const unsigned char output_5[] = {49, 32, 54, 32, 49, 32, 54, 32, 49, 32, 54, 32, 49, 32, 54, 32, 49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    \n    int** grid = malloc(n * sizeof(int*));\n    for (int i = 0; i < n; i++) {\n        grid[i] = malloc(n * sizeof(int));\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &grid[i][j]);\n        }\n    }\n    \n    int result[1000];\n    find_min_path(grid, n, k, result);\n    \n    printf(\"[\");\n    for (int i = 0; i < k; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"%d\", result[i]);\n    }\n    printf(\"]\\n\");\n    \n    for (int i = 0; i < n; i++) free(grid[i]);\n    free(grid);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "find_min_path",
+          "code": "void find_min_path(int** grid, int n, int k, int* result) {\n    int min_val = grid[0][0];\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid[i][j] < min_val) {\n                min_val = grid[i][j];\n            }\n        }\n    }\n    \n    for (int i = 0; i < k; i++) {\n        if (i % 2 == 0) {\n            result[i] = 1;\n        } else {\n            result[i] = min_val;\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 32, 51, 10, 49, 10, 50, 10, 51, 10, 52, 10, 53, 10, 54, 10, 55, 10, 56, 10, 57, 10, 0};\nstatic const unsigned char output_0[] = {49, 32, 50, 32, 49, 10, 0};\nstatic const unsigned char input_1[] = {51, 32, 49, 10, 53, 10, 57, 10, 51, 10, 52, 10, 49, 10, 54, 10, 55, 10, 56, 10, 50, 10, 0};\nstatic const unsigned char output_1[] = {49, 10, 0};\nstatic const unsigned char input_2[] = {52, 32, 52, 10, 49, 10, 50, 10, 51, 10, 52, 10, 53, 10, 54, 10, 55, 10, 56, 10, 57, 10, 49, 48, 10, 49, 49, 10, 49, 50, 10, 49, 51, 10, 49, 52, 10, 49, 53, 10, 49, 54, 10, 0};\nstatic const unsigned char output_2[] = {49, 32, 50, 32, 49, 32, 50, 10, 0};\nstatic const unsigned char input_3[] = {52, 32, 55, 10, 54, 10, 52, 10, 49, 51, 10, 49, 48, 10, 53, 10, 55, 10, 49, 50, 10, 49, 10, 51, 10, 49, 54, 10, 49, 49, 10, 49, 53, 10, 56, 10, 49, 52, 10, 57, 10, 50, 10, 0};\nstatic const unsigned char output_3[] = {49, 32, 49, 48, 32, 49, 32, 49, 48, 32, 49, 32, 49, 48, 32, 49, 10, 0};\nstatic const unsigned char input_4[] = {52, 32, 53, 10, 56, 10, 49, 52, 10, 57, 10, 50, 10, 54, 10, 52, 10, 49, 51, 10, 49, 53, 10, 53, 10, 55, 10, 49, 10, 49, 50, 10, 51, 10, 49, 48, 10, 49, 49, 10, 49, 54, 10, 0};\nstatic const unsigned char output_4[] = {49, 32, 55, 32, 49, 32, 55, 32, 49, 10, 0};\nstatic const unsigned char input_5[] = {52, 32, 57, 10, 49, 49, 10, 56, 10, 55, 10, 50, 10, 53, 10, 49, 54, 10, 49, 52, 10, 52, 10, 57, 10, 51, 10, 49, 53, 10, 54, 10, 49, 50, 10, 49, 51, 10, 49, 48, 10, 49, 10, 0};\nstatic const unsigned char output_5[] = {49, 32, 54, 32, 49, 32, 54, 32, 49, 32, 54, 32, 49, 32, 54, 32, 49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    \n    int** grid = malloc(n * sizeof(int*));\n    for (int i = 0; i < n; i++) {\n        grid[i] = malloc(n * sizeof(int));\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &grid[i][j]);\n        }\n    }\n    \n    int result[1000];\n    find_min_path(grid, n, k, result);\n    \n    printf(\"[\");\n    for (int i = 0; i < k; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"%d\", result[i]);\n    }\n    printf(\"]\\n\");\n    \n    for (int i = 0; i < n; i++) free(grid[i]);\n    free(grid);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "find_min_path",
+          "code": "void find_min_path(int** grid, int n, int k, int* result) {\n    int min_val = grid[0][0];\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid[i][j] < min_val) {\n                min_val = grid[i][j];\n            }\n        }\n    }\n    \n    for (int i = 0; i < k; i++) {\n        if (i % 2 == 0) {\n            result[i] = 1;\n        } else {\n            result[i] = min_val;\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 32, 51, 10, 49, 10, 50, 10, 51, 10, 52, 10, 53, 10, 54, 10, 55, 10, 56, 10, 57, 10, 0};\nstatic const unsigned char output_0[] = {49, 32, 50, 32, 49, 10, 0};\nstatic const unsigned char input_1[] = {51, 32, 49, 10, 53, 10, 57, 10, 51, 10, 52, 10, 49, 10, 54, 10, 55, 10, 56, 10, 50, 10, 0};\nstatic const unsigned char output_1[] = {49, 10, 0};\nstatic const unsigned char input_2[] = {52, 32, 52, 10, 49, 10, 50, 10, 51, 10, 52, 10, 53, 10, 54, 10, 55, 10, 56, 10, 57, 10, 49, 48, 10, 49, 49, 10, 49, 50, 10, 49, 51, 10, 49, 52, 10, 49, 53, 10, 49, 54, 10, 0};\nstatic const unsigned char output_2[] = {49, 32, 50, 32, 49, 32, 50, 10, 0};\nstatic const unsigned char input_3[] = {52, 32, 55, 10, 54, 10, 52, 10, 49, 51, 10, 49, 48, 10, 53, 10, 55, 10, 49, 50, 10, 49, 10, 51, 10, 49, 54, 10, 49, 49, 10, 49, 53, 10, 56, 10, 49, 52, 10, 57, 10, 50, 10, 0};\nstatic const unsigned char output_3[] = {49, 32, 49, 48, 32, 49, 32, 49, 48, 32, 49, 32, 49, 48, 32, 49, 10, 0};\nstatic const unsigned char input_4[] = {52, 32, 53, 10, 56, 10, 49, 52, 10, 57, 10, 50, 10, 54, 10, 52, 10, 49, 51, 10, 49, 53, 10, 53, 10, 55, 10, 49, 10, 49, 50, 10, 51, 10, 49, 48, 10, 49, 49, 10, 49, 54, 10, 0};\nstatic const unsigned char output_4[] = {49, 32, 55, 32, 49, 32, 55, 32, 49, 10, 0};\nstatic const unsigned char input_5[] = {52, 32, 57, 10, 49, 49, 10, 56, 10, 55, 10, 50, 10, 53, 10, 49, 54, 10, 49, 52, 10, 52, 10, 57, 10, 51, 10, 49, 53, 10, 54, 10, 49, 50, 10, 49, 51, 10, 49, 48, 10, 49, 10, 0};\nstatic const unsigned char output_5[] = {49, 32, 54, 32, 49, 32, 54, 32, 49, 32, 54, 32, 49, 32, 54, 32, 49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    \n    int** grid = malloc(n * sizeof(int*));\n    for (int i = 0; i < n; i++) {\n        grid[i] = malloc(n * sizeof(int));\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &grid[i][j]);\n        }\n    }\n    \n    int result[1000];\n    find_min_path(grid, n, k, result);\n    \n    printf(\"[\");\n    for (int i = 0; i < k; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"%d\", result[i]);\n    }\n    printf(\"]\\n\");\n    \n    for (int i = 0; i < n; i++) free(grid[i]);\n    free(grid);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <stdlib.h>"
+      ]
     }
   ]
 }

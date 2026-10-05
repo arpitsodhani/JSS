@@ -1,16 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-void get_row(int rows, int cols, int lst[][100], int x, int *result, int *result_size) {
+void find_coordinates(int** grid, int rows, int cols, int x, int* result, int* result_size) {
     *result_size = 0;
-    for (int i = rows - 1; i >= 0; i--) {
-        for (int j = cols - 1; j >= 0; j--) {
-            if (lst[i][j] == x) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (grid[i][j] == x) {
                 result[(*result_size)++] = i;
                 result[(*result_size)++] = j;
+            }
+        }
+    }
+    
+    // Sort by row desc, then col desc
+    for (int i = 0; i < *result_size; i += 2) {
+        for (int j = i + 2; j < *result_size; j += 2) {
+            if (result[i] < result[j] || (result[i] == result[j] && result[i+1] < result[j+1])) {
+                int tmp = result[i];
+                result[i] = result[j];
+                result[j] = tmp;
+                tmp = result[i+1];
+                result[i+1] = result[j+1];
+                result[j+1] = tmp;
             }
         }
     }
@@ -18,21 +29,28 @@ void get_row(int rows, int cols, int lst[][100], int x, int *result, int *result
 
 int main() {
     int rows, cols, x;
-    scanf("%d %d", &rows, &cols);
-    int lst[100][100];
+    scanf("%d %d %d", &rows, &cols, &x);
+    
+    int** grid = malloc(rows * sizeof(int*));
     for (int i = 0; i < rows; i++) {
+        grid[i] = malloc(cols * sizeof(int));
         for (int j = 0; j < cols; j++) {
-            scanf("%d", &lst[i][j]);
+            scanf("%d", &grid[i][j]);
         }
     }
-    scanf("%d", &x);
-    int result[10000], result_size;
-    get_row(rows, cols, lst, x, result, &result_size);
+    
+    int result[1000];
+    int result_size;
+    find_coordinates(grid, rows, cols, x, result, &result_size);
+    
+    printf("[");
     for (int i = 0; i < result_size; i += 2) {
-        printf("(%d, %d)", result[i], result[i+1]);
-        if (i + 2 < result_size) printf(" ");
+        if (i > 0) printf(", ");
+        printf("[%d, %d]", result[i], result[i+1]);
     }
-    printf("\n");
+    printf("]\n");
+    
+    for (int i = 0; i < rows; i++) free(grid[i]);
+    free(grid);
     return 0;
 }
-

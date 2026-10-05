@@ -1,53 +1,38 @@
-#include <ctype.h>
-#include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-int has_even_digit(int n) {
-    while (n > 0) {
-        if ((n % 10) % 2 == 0) return 1;
-        n /= 10;
-    }
-    return 0;
-}
-
-int compare_int(const void *a, const void *b) {
-    return *(int*)a - *(int*)b;
-}
-
-void unique_digits(int n, int x[], int *result, int *result_size) {
-    *result_size = 0;
+void get_unique_sorted_digits(int *arr, int n, int *result, int *result_len) {
+    int digits[10] = {0};
     for (int i = 0; i < n; i++) {
-        if (!has_even_digit(x[i])) {
-            result[(*result_size)++] = x[i];
+        int num = arr[i];
+        if (num < 0) num = -num;
+        while (num > 0) {
+            int digit = num % 10;
+            if (digit % 2 == 1) {
+                digits[digit] = 1;
+            }
+            num /= 10;
         }
     }
-    qsort(result, *result_size, sizeof(int), compare_int);
+    *result_len = 0;
+    for (int i = 9; i >= 0; i--) {
+        if (digits[i]) {
+            result[(*result_len)++] = i;
+        }
+    }
 }
 
-void run(void) {
-
+int main(void) {
     int n;
     scanf("%d", &n);
-    if (n == 0) {
-        printf("\n");
-        return 0;
-    }
-    int x[n];
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &x[i]);
-    }
-    int result[n], result_size;
-    unique_digits(n, x, result, &result_size);
-    for (int i = 0; i < result_size; i++) {
+    int arr[n];
+    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+    int result[10];
+    int result_len;
+    get_unique_sorted_digits(arr, n, result, &result_len);
+    for (int i = 0; i < result_len; i++) {
         printf("%d", result[i]);
-        if (i < result_size - 1) printf(" ");
+        if (i < result_len - 1) printf(" ");
     }
     printf("\n");
-}
-
-int main() {
-    run();
     return 0;
 }

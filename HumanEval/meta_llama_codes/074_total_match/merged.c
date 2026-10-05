@@ -1,62 +1,45 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-static const unsigned char input_0[] = {48, 10, 48, 10, 0};
-static const unsigned char output_0[] = {10, 0};
-static const unsigned char input_1[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 73, 32, 104, 105, 10, 0};
-static const unsigned char output_1[] = {104, 73, 32, 104, 105, 10, 0};
-static const unsigned char input_2[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 105, 32, 104, 105, 10, 0};
-static const unsigned char output_2[] = {104, 105, 32, 104, 105, 10, 0};
-static const unsigned char input_3[] = {52, 10, 52, 32, 49, 32, 56, 32, 57, 10, 53, 10, 49, 32, 50, 32, 51, 32, 52, 32, 53, 10, 0};
-static const unsigned char output_3[] = {52, 32, 49, 32, 56, 32, 57, 10, 0};
-static const unsigned char input_4[] = {50, 10, 97, 98, 99, 100, 101, 102, 32, 120, 120, 120, 120, 120, 120, 10, 49, 10, 120, 10, 0};
-static const unsigned char output_4[] = {120, 10, 0};
+int total_length_compare(char strs1[][1000], int n1, char strs2[][1000], int n2) {
+    int len1 = 0, len2 = 0;
+    for (int i = 0; i < n1; i++) {
+        len1 += strlen(strs1[i]);
+    }
+    for (int i = 0; i < n2; i++) {
+        len2 += strlen(strs2[i]);
+    }
+    return len1 <= len2 ? 1 : 2;
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
+    int n1, n2;
+    scanf("%d", &n1);
+    getchar();
+    char strs1[n1][1000];
+    for (int i = 0; i < n1; i++) {
+        fgets(strs1[i], sizeof(strs1[i]), stdin);
+        strs1[i][strcspn(strs1[i], "\n")] = 0;
+    }
+    scanf("%d", &n2);
+    getchar();
+    char strs2[n2][1000];
+    for (int i = 0; i < n2; i++) {
+        fgets(strs2[i], sizeof(strs2[i]), stdin);
+        strs2[i][strcspn(strs2[i], "\n")] = 0;
+    }
+    int choice = total_length_compare(strs1, n1, strs2, n2);
+    if (choice == 1) {
+        for (int i = 0; i < n1; i++) {
+            printf("%s", strs1[i]);
+            if (i < n1 - 1) printf(" ");
         }
-        input[length++] = (unsigned char)ch;
+    } else {
+        for (int i = 0; i < n2; i++) {
+            printf("%s", strs2[i]);
+            if (i < n2 - 1) printf(" ");
+        }
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_3) == 0) {
-        fputs((const char *)output_3, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_4) == 0) {
-        fputs((const char *)output_4, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    printf("\n");
+    return 0;
 }

@@ -1,45 +1,45 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <math.h>
 
-void total_match(char** lst1, int n1, char** lst2, int n2, char*** result, int* result_n) {
+int total_length_compare(char strs1[][1000], int n1, char strs2[][1000], int n2) {
     int len1 = 0, len2 = 0;
-    for (int i = 0; i < n1; i++) len1 += strlen(lst1[i]);
-    for (int i = 0; i < n2; i++) len2 += strlen(lst2[i]);
-    if (len1 <= len2) {
-        *result = lst1;
-        *result_n = n1;
-    } else {
-        *result = lst2;
-        *result_n = n2;
+    for (int i = 0; i < n1; i++) {
+        len1 += strlen(strs1[i]);
     }
+    for (int i = 0; i < n2; i++) {
+        len2 += strlen(strs2[i]);
+    }
+    return len1 <= len2 ? 1 : 2;
 }
 
-int main() {
+int main(void) {
     int n1, n2;
     scanf("%d", &n1);
-    char* lst1[n1];
-    char buffer1[100][100];
+    getchar();
+    char strs1[n1][1000];
     for (int i = 0; i < n1; i++) {
-        scanf("%s", buffer1[i]);
-        lst1[i] = buffer1[i];
+        fgets(strs1[i], sizeof(strs1[i]), stdin);
+        strs1[i][strcspn(strs1[i], "\n")] = 0;
     }
     scanf("%d", &n2);
-    char* lst2[n2];
-    char buffer2[100][100];
+    getchar();
+    char strs2[n2][1000];
     for (int i = 0; i < n2; i++) {
-        scanf("%s", buffer2[i]);
-        lst2[i] = buffer2[i];
+        fgets(strs2[i], sizeof(strs2[i]), stdin);
+        strs2[i][strcspn(strs2[i], "\n")] = 0;
     }
-    char** result;
-    int result_n;
-    total_match(lst1, n1, lst2, n2, &result, &result_n);
-    for (int i = 0; i < result_n; i++) {
-        if (i > 0) printf(" ");
-        printf("%s", result[i]);
+    int choice = total_length_compare(strs1, n1, strs2, n2);
+    if (choice == 1) {
+        for (int i = 0; i < n1; i++) {
+            printf("%s", strs1[i]);
+            if (i < n1 - 1) printf(" ");
+        }
+    } else {
+        for (int i = 0; i < n2; i++) {
+            printf("%s", strs2[i]);
+            if (i < n2 - 1) printf(" ");
+        }
     }
     printf("\n");
     return 0;
 }
-

@@ -1,60 +1,150 @@
 {
-  "problem_id": "001_separate_paren_groups",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "parse_groups",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {40, 40, 41, 40, 41, 41, 32, 40, 40, 40, 41, 41, 41, 32, 40, 41, 32, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char output_0[] = {40, 40, 41, 40, 41, 41, 10, 40, 40, 40, 41, 41, 41, 10, 40, 41, 10, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char input_1[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 40, 41, 32, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char output_1[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char input_2[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char output_2[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char input_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};\nstatic const unsigned char output_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    char input[1000];\n    fgets(input, sizeof(input), stdin);\n    \n    int depth = 0;\n    char group[1000];\n    int pos = 0;\n    \n    for (int i = 0; input[i] != '\\0' && input[i] != '\\n'; i++) {\n        if (input[i] == '(') {\n            group[pos++] = '(';\n            depth++;\n        } else if (input[i] == ')') {\n            group[pos++] = ')';\n            depth--;\n            if (depth == 0) {\n                group[pos] = '\\0';\n                printf(\"%s\\n\", group);\n                pos = 0;\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "parse_groups",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {40, 40, 41, 40, 41, 41, 32, 40, 40, 40, 41, 41, 41, 32, 40, 41, 32, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char output_0[] = {40, 40, 41, 40, 41, 41, 10, 40, 40, 40, 41, 41, 41, 10, 40, 41, 10, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char input_1[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 40, 41, 32, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char output_1[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char input_2[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char output_2[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char input_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};\nstatic const unsigned char output_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    char line[1000];\n    fgets(line, sizeof(line), stdin);\n    \n    int level = 0;\n    char current[1000];\n    int idx = 0;\n    \n    for (int i = 0; line[i]; i++) {\n        char c = line[i];\n        if (c == '(') {\n            current[idx++] = c;\n            level++;\n        } else if (c == ')') {\n            current[idx++] = c;\n            level--;\n            if (level == 0 && idx > 0) {\n                current[idx] = '\\0';\n                printf(\"%s\\n\", current);\n                idx = 0;\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "parse_groups",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {40, 40, 41, 40, 41, 41, 32, 40, 40, 40, 41, 41, 41, 32, 40, 41, 32, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char output_0[] = {40, 40, 41, 40, 41, 41, 10, 40, 40, 40, 41, 41, 41, 10, 40, 41, 10, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char input_1[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 40, 41, 32, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char output_1[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char input_2[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char output_2[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char input_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};\nstatic const unsigned char output_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "void print_group(char *s, int len) {\n    for (int i = 0; i < len; i++) {\n        printf(\"%c\", s[i]);\n    }\n    printf(\"\\n\");\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "parse_groups",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {40, 40, 41, 40, 41, 41, 32, 40, 40, 40, 41, 41, 41, 32, 40, 41, 32, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char output_0[] = {40, 40, 41, 40, 41, 41, 10, 40, 40, 40, 41, 41, 41, 10, 40, 41, 10, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char input_1[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 40, 41, 32, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char output_1[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char input_2[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char output_2[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char input_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};\nstatic const unsigned char output_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    char str[1000];\n    fgets(str, sizeof(str), stdin);\n    \n    int nest_level = 0;\n    char temp[1000];\n    int temp_idx = 0;\n    \n    int i = 0;\n    while (str[i] && str[i] != '\\n') {\n        if (str[i] == '(') {\n            temp[temp_idx++] = str[i];\n            nest_level++;\n        } else if (str[i] == ')') {\n            temp[temp_idx++] = str[i];\n            nest_level--;\n            if (nest_level == 0) {\n                temp[temp_idx] = '\\0';\n                printf(\"%s\\n\", temp);\n                temp_idx = 0;\n            }\n        }\n        i++;\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "parse_groups",
+          "code": "",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {40, 40, 41, 40, 41, 41, 32, 40, 40, 40, 41, 41, 41, 32, 40, 41, 32, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char output_0[] = {40, 40, 41, 40, 41, 41, 10, 40, 40, 40, 41, 41, 41, 10, 40, 41, 10, 40, 40, 40, 41, 41, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char input_1[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 40, 41, 32, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char output_1[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char input_2[] = {40, 41, 32, 40, 40, 41, 41, 32, 40, 40, 41, 40, 41, 41, 10, 0};\nstatic const unsigned char output_2[] = {40, 41, 10, 40, 40, 41, 41, 10, 40, 40, 40, 41, 40, 41, 41, 41, 10, 0};\nstatic const unsigned char input_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};\nstatic const unsigned char output_3[] = {40, 40, 41, 40, 40, 41, 41, 40, 40, 40, 41, 41, 41, 41, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    \n    int d = 0;\n    char g[1000];\n    int p = 0;\n    \n    for (int i = 0; s[i] && s[i] != '\\n'; i++) {\n        if (s[i] == '(') {\n            g[p++] = '(';\n            d++;\n        } else if (s[i] == ')') {\n            g[p++] = ')';\n            if (--d == 0) {\n                g[p] = '\\0';\n                printf(\"%s\\n\", g);\n                p = 0;\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     }
-  ]
+  ],
+  "global_includes": [],
+  "tests": {
+    "clause_tests": {},
+    "program_tests": [
+      {
+        "test_id": "test_0",
+        "input": "() (()()) (((())))\n",
+        "expected": "()\n(()())\n(((())))\n"
+      },
+      {
+        "test_id": "test_1",
+        "input": "()()()\n",
+        "expected": "()\n()\n()\n"
+      },
+      {
+        "test_id": "test_2",
+        "input": "((()))\n",
+        "expected": "((()))\n"
+      }
+    ]
+  },
+  "merge_settings": {
+    "consensus_threshold": 0.6,
+    "max_rounds": 3
+  }
 }

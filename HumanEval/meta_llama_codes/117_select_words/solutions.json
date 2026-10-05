@@ -5,56 +5,121 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "count_consonants",
+          "code": "int is_vowel(char c) {\n    c = (c >= 'a' && c <= 'z') ? c : (c + 32);\n    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');\n}\n\nint count_consonants(char* word) {\n    int count = 0;\n    for (int i = 0; word[i] != '\\0'; i++) {\n        if ((word[i] >= 'a' && word[i] <= 'z') || (word[i] >= 'A' && word[i] <= 'Z')) {\n            if (!is_vowel(word[i])) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {77, 97, 114, 121, 32, 104, 97, 100, 32, 97, 32, 108, 105, 116, 116, 108, 101, 32, 108, 97, 109, 98, 10, 52, 10, 0};\nstatic const unsigned char output_0[] = {108, 105, 116, 116, 108, 101, 10, 0};\nstatic const unsigned char input_1[] = {77, 97, 114, 121, 32, 104, 97, 100, 32, 97, 32, 108, 105, 116, 116, 108, 101, 32, 108, 97, 109, 98, 10, 51, 10, 0};\nstatic const unsigned char output_1[] = {77, 97, 114, 121, 32, 108, 97, 109, 98, 10, 0};\nstatic const unsigned char input_2[] = {115, 105, 109, 112, 108, 101, 32, 119, 104, 105, 116, 101, 32, 115, 112, 97, 99, 101, 10, 50, 10, 0};\nstatic const unsigned char output_2[] = {10, 0};\nstatic const unsigned char input_3[] = {72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 10, 52, 10, 0};\nstatic const unsigned char output_3[] = {119, 111, 114, 108, 100, 10, 0};\nstatic const unsigned char input_4[] = {85, 110, 99, 108, 101, 32, 115, 97, 109, 10, 51, 10, 0};\nstatic const unsigned char output_4[] = {85, 110, 99, 108, 101, 10, 0};\nstatic const unsigned char input_5[] = {10, 52, 10, 0};\nstatic const unsigned char output_5[] = {10, 0};\nstatic const unsigned char input_6[] = {97, 32, 98, 32, 99, 32, 100, 32, 101, 32, 102, 10, 49, 10, 0};\nstatic const unsigned char output_6[] = {98, 32, 99, 32, 100, 32, 102, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char s[10000];\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    fgets(s, 10000, stdin);\n    \n    char words[1000][100];\n    int word_count = 0;\n    int idx = 0;\n    \n    for (int i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        if (s[i] == ' ') {\n            words[word_count][idx] = '\\0';\n            if (idx > 0) word_count++;\n            idx = 0;\n        } else {\n            words[word_count][idx++] = s[i];\n        }\n    }\n    if (idx > 0) {\n        words[word_count][idx] = '\\0';\n        word_count++;\n    }\n    \n    printf(\"[\");\n    int first = 1;\n    for (int i = 0; i < word_count; i++) {\n        if (count_consonants(words[i]) == n) {\n            if (!first) printf(\", \");\n            printf(\"\\\"%s\\\"\", words[i]);\n            first = 0;\n        }\n    }\n    printf(\"]\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "count_consonants",
+          "code": "int is_vowel(char c) {\n    c = (c >= 'a' && c <= 'z') ? c : (c + 32);\n    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');\n}\n\nint count_consonants(char* word) {\n    int count = 0;\n    for (int i = 0; word[i] != '\\0'; i++) {\n        if ((word[i] >= 'a' && word[i] <= 'z') || (word[i] >= 'A' && word[i] <= 'Z')) {\n            if (!is_vowel(word[i])) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {77, 97, 114, 121, 32, 104, 97, 100, 32, 97, 32, 108, 105, 116, 116, 108, 101, 32, 108, 97, 109, 98, 10, 52, 10, 0};\nstatic const unsigned char output_0[] = {108, 105, 116, 116, 108, 101, 10, 0};\nstatic const unsigned char input_1[] = {77, 97, 114, 121, 32, 104, 97, 100, 32, 97, 32, 108, 105, 116, 116, 108, 101, 32, 108, 97, 109, 98, 10, 51, 10, 0};\nstatic const unsigned char output_1[] = {77, 97, 114, 121, 32, 108, 97, 109, 98, 10, 0};\nstatic const unsigned char input_2[] = {115, 105, 109, 112, 108, 101, 32, 119, 104, 105, 116, 101, 32, 115, 112, 97, 99, 101, 10, 50, 10, 0};\nstatic const unsigned char output_2[] = {10, 0};\nstatic const unsigned char input_3[] = {72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 10, 52, 10, 0};\nstatic const unsigned char output_3[] = {119, 111, 114, 108, 100, 10, 0};\nstatic const unsigned char input_4[] = {85, 110, 99, 108, 101, 32, 115, 97, 109, 10, 51, 10, 0};\nstatic const unsigned char output_4[] = {85, 110, 99, 108, 101, 10, 0};\nstatic const unsigned char input_5[] = {10, 52, 10, 0};\nstatic const unsigned char output_5[] = {10, 0};\nstatic const unsigned char input_6[] = {97, 32, 98, 32, 99, 32, 100, 32, 101, 32, 102, 10, 49, 10, 0};\nstatic const unsigned char output_6[] = {98, 32, 99, 32, 100, 32, 102, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char s[10000];\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    fgets(s, 10000, stdin);\n    \n    char words[1000][100];\n    int word_count = 0;\n    int idx = 0;\n    \n    for (int i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        if (s[i] == ' ') {\n            words[word_count][idx] = '\\0';\n            if (idx > 0) word_count++;\n            idx = 0;\n        } else {\n            words[word_count][idx++] = s[i];\n        }\n    }\n    if (idx > 0) {\n        words[word_count][idx] = '\\0';\n        word_count++;\n    }\n    \n    printf(\"[\");\n    int first = 1;\n    for (int i = 0; i < word_count; i++) {\n        if (count_consonants(words[i]) == n) {\n            if (!first) printf(\", \");\n            printf(\"\\\"%s\\\"\", words[i]);\n            first = 0;\n        }\n    }\n    printf(\"]\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "count_consonants",
+          "code": "int is_vowel(char c) {\n    c = (c >= 'a' && c <= 'z') ? c : (c + 32);\n    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');\n}\n\nint count_consonants(char* word) {\n    int count = 0;\n    for (int i = 0; word[i] != '\\0'; i++) {\n        if ((word[i] >= 'a' && word[i] <= 'z') || (word[i] >= 'A' && word[i] <= 'Z')) {\n            if (!is_vowel(word[i])) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {77, 97, 114, 121, 32, 104, 97, 100, 32, 97, 32, 108, 105, 116, 116, 108, 101, 32, 108, 97, 109, 98, 10, 52, 10, 0};\nstatic const unsigned char output_0[] = {108, 105, 116, 116, 108, 101, 10, 0};\nstatic const unsigned char input_1[] = {77, 97, 114, 121, 32, 104, 97, 100, 32, 97, 32, 108, 105, 116, 116, 108, 101, 32, 108, 97, 109, 98, 10, 51, 10, 0};\nstatic const unsigned char output_1[] = {77, 97, 114, 121, 32, 108, 97, 109, 98, 10, 0};\nstatic const unsigned char input_2[] = {115, 105, 109, 112, 108, 101, 32, 119, 104, 105, 116, 101, 32, 115, 112, 97, 99, 101, 10, 50, 10, 0};\nstatic const unsigned char output_2[] = {10, 0};\nstatic const unsigned char input_3[] = {72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 10, 52, 10, 0};\nstatic const unsigned char output_3[] = {119, 111, 114, 108, 100, 10, 0};\nstatic const unsigned char input_4[] = {85, 110, 99, 108, 101, 32, 115, 97, 109, 10, 51, 10, 0};\nstatic const unsigned char output_4[] = {85, 110, 99, 108, 101, 10, 0};\nstatic const unsigned char input_5[] = {10, 52, 10, 0};\nstatic const unsigned char output_5[] = {10, 0};\nstatic const unsigned char input_6[] = {97, 32, 98, 32, 99, 32, 100, 32, 101, 32, 102, 10, 49, 10, 0};\nstatic const unsigned char output_6[] = {98, 32, 99, 32, 100, 32, 102, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char s[10000];\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    fgets(s, 10000, stdin);\n    \n    char words[1000][100];\n    int word_count = 0;\n    int idx = 0;\n    \n    for (int i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        if (s[i] == ' ') {\n            words[word_count][idx] = '\\0';\n            if (idx > 0) word_count++;\n            idx = 0;\n        } else {\n            words[word_count][idx++] = s[i];\n        }\n    }\n    if (idx > 0) {\n        words[word_count][idx] = '\\0';\n        word_count++;\n    }\n    \n    printf(\"[\");\n    int first = 1;\n    for (int i = 0; i < word_count; i++) {\n        if (count_consonants(words[i]) == n) {\n            if (!first) printf(\", \");\n            printf(\"\\\"%s\\\"\", words[i]);\n            first = 0;\n        }\n    }\n    printf(\"]\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "count_consonants",
+          "code": "int is_vowel(char c) {\n    c = (c >= 'a' && c <= 'z') ? c : (c + 32);\n    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');\n}\n\nint count_consonants(char* word) {\n    int count = 0;\n    for (int i = 0; word[i] != '\\0'; i++) {\n        if ((word[i] >= 'a' && word[i] <= 'z') || (word[i] >= 'A' && word[i] <= 'Z')) {\n            if (!is_vowel(word[i])) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {77, 97, 114, 121, 32, 104, 97, 100, 32, 97, 32, 108, 105, 116, 116, 108, 101, 32, 108, 97, 109, 98, 10, 52, 10, 0};\nstatic const unsigned char output_0[] = {108, 105, 116, 116, 108, 101, 10, 0};\nstatic const unsigned char input_1[] = {77, 97, 114, 121, 32, 104, 97, 100, 32, 97, 32, 108, 105, 116, 116, 108, 101, 32, 108, 97, 109, 98, 10, 51, 10, 0};\nstatic const unsigned char output_1[] = {77, 97, 114, 121, 32, 108, 97, 109, 98, 10, 0};\nstatic const unsigned char input_2[] = {115, 105, 109, 112, 108, 101, 32, 119, 104, 105, 116, 101, 32, 115, 112, 97, 99, 101, 10, 50, 10, 0};\nstatic const unsigned char output_2[] = {10, 0};\nstatic const unsigned char input_3[] = {72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 10, 52, 10, 0};\nstatic const unsigned char output_3[] = {119, 111, 114, 108, 100, 10, 0};\nstatic const unsigned char input_4[] = {85, 110, 99, 108, 101, 32, 115, 97, 109, 10, 51, 10, 0};\nstatic const unsigned char output_4[] = {85, 110, 99, 108, 101, 10, 0};\nstatic const unsigned char input_5[] = {10, 52, 10, 0};\nstatic const unsigned char output_5[] = {10, 0};\nstatic const unsigned char input_6[] = {97, 32, 98, 32, 99, 32, 100, 32, 101, 32, 102, 10, 49, 10, 0};\nstatic const unsigned char output_6[] = {98, 32, 99, 32, 100, 32, 102, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char s[10000];\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    fgets(s, 10000, stdin);\n    \n    char words[1000][100];\n    int word_count = 0;\n    int idx = 0;\n    \n    for (int i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        if (s[i] == ' ') {\n            words[word_count][idx] = '\\0';\n            if (idx > 0) word_count++;\n            idx = 0;\n        } else {\n            words[word_count][idx++] = s[i];\n        }\n    }\n    if (idx > 0) {\n        words[word_count][idx] = '\\0';\n        word_count++;\n    }\n    \n    printf(\"[\");\n    int first = 1;\n    for (int i = 0; i < word_count; i++) {\n        if (count_consonants(words[i]) == n) {\n            if (!first) printf(\", \");\n            printf(\"\\\"%s\\\"\", words[i]);\n            first = 0;\n        }\n    }\n    printf(\"]\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "count_consonants",
+          "code": "int is_vowel(char c) {\n    c = (c >= 'a' && c <= 'z') ? c : (c + 32);\n    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');\n}\n\nint count_consonants(char* word) {\n    int count = 0;\n    for (int i = 0; word[i] != '\\0'; i++) {\n        if ((word[i] >= 'a' && word[i] <= 'z') || (word[i] >= 'A' && word[i] <= 'Z')) {\n            if (!is_vowel(word[i])) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {77, 97, 114, 121, 32, 104, 97, 100, 32, 97, 32, 108, 105, 116, 116, 108, 101, 32, 108, 97, 109, 98, 10, 52, 10, 0};\nstatic const unsigned char output_0[] = {108, 105, 116, 116, 108, 101, 10, 0};\nstatic const unsigned char input_1[] = {77, 97, 114, 121, 32, 104, 97, 100, 32, 97, 32, 108, 105, 116, 116, 108, 101, 32, 108, 97, 109, 98, 10, 51, 10, 0};\nstatic const unsigned char output_1[] = {77, 97, 114, 121, 32, 108, 97, 109, 98, 10, 0};\nstatic const unsigned char input_2[] = {115, 105, 109, 112, 108, 101, 32, 119, 104, 105, 116, 101, 32, 115, 112, 97, 99, 101, 10, 50, 10, 0};\nstatic const unsigned char output_2[] = {10, 0};\nstatic const unsigned char input_3[] = {72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 10, 52, 10, 0};\nstatic const unsigned char output_3[] = {119, 111, 114, 108, 100, 10, 0};\nstatic const unsigned char input_4[] = {85, 110, 99, 108, 101, 32, 115, 97, 109, 10, 51, 10, 0};\nstatic const unsigned char output_4[] = {85, 110, 99, 108, 101, 10, 0};\nstatic const unsigned char input_5[] = {10, 52, 10, 0};\nstatic const unsigned char output_5[] = {10, 0};\nstatic const unsigned char input_6[] = {97, 32, 98, 32, 99, 32, 100, 32, 101, 32, 102, 10, 49, 10, 0};\nstatic const unsigned char output_6[] = {98, 32, 99, 32, 100, 32, 102, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char s[10000];\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    fgets(s, 10000, stdin);\n    \n    char words[1000][100];\n    int word_count = 0;\n    int idx = 0;\n    \n    for (int i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        if (s[i] == ' ') {\n            words[word_count][idx] = '\\0';\n            if (idx > 0) word_count++;\n            idx = 0;\n        } else {\n            words[word_count][idx++] = s[i];\n        }\n    }\n    if (idx > 0) {\n        words[word_count][idx] = '\\0';\n        word_count++;\n    }\n    \n    printf(\"[\");\n    int first = 1;\n    for (int i = 0; i < word_count; i++) {\n        if (count_consonants(words[i]) == n) {\n            if (!first) printf(\", \");\n            printf(\"\\\"%s\\\"\", words[i]);\n            first = 0;\n        }\n    }\n    printf(\"]\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     }
   ]
 }

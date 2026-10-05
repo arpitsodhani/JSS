@@ -1,17 +1,22 @@
 {
+  "problem_id": "033_sort_third",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "sort_third",
-          "code": "void sort_third(int *arr, int n) {\n    for (int i = 0; i < n; i += 3) {\n        for (int j = i+3; j < n; j += 3) {\n            if (arr[i] > arr[j]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n-1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "sort_third_positions",
+          "code": "void sort_third_positions(int *arr, int n) {\n    for (int i = 0; i < n; i += 3) {\n        for (int j = i + 3; j < n; j += 3) {\n            if (arr[j] < arr[i]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    sort_third(arr, n);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    sort_third_positions(arr, n);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -22,14 +27,18 @@
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "sort_every_third",
-          "code": "void sort_every_third(int *data, int size) {\n    for (int i = 0; i < size; i += 3) {\n        for (int j = i+3; j < size; j += 3) {\n            if (data[i] > data[j]) {\n                int tmp = data[i];\n                data[i] = data[j];\n                data[j] = tmp;\n            }\n        }\n    }\n    for (int i = 0; i < size; i++) {\n        printf(\"%d\", data[i]);\n        if (i < size-1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "sort_third_positions",
+          "code": "void sort_third_positions(int *arr, int n) {\n    for (int i = 0; i < n; i += 3) {\n        for (int j = i + 3; j < n; j += 3) {\n            if (arr[j] < arr[i]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    int nums[count];\n    for (int i = 0; i < count; i++) scanf(\"%d\", &nums[i]);\n    sort_every_third(nums, count);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    sort_third_positions(arr, n);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -40,14 +49,18 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "order_thirds",
-          "code": "void order_thirds(int *arr, int n) {\n    for(int i=0;i<n;i+=3) for(int j=i+3;j<n;j+=3) if(arr[i]>arr[j]){int t=arr[i];arr[i]=arr[j];arr[j]=t;}\n    for(int i=0;i<n;i++){printf(\"%d\",arr[i]);if(i<n-1)printf(\" \");}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "sort_third_positions",
+          "code": "void sort_third_positions(int *arr, int n) {\n    for (int i = 0; i < n; i += 3) {\n        for (int j = i + 3; j < n; j += 3) {\n            if (arr[j] < arr[i]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int n;\n    scanf(\"%d\",&n);\n    int arr[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&arr[i]);\n    order_thirds(arr,n);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    sort_third_positions(arr, n);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -58,14 +71,18 @@
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "sort_step3",
-          "code": "void sort_step3(int *nums, int cnt) {\n    for(int i=0;i<cnt;i+=3) for(int j=i+3;j<cnt;j+=3) if(nums[i]>nums[j]){int tmp=nums[i];nums[i]=nums[j];nums[j]=tmp;}\n    for(int i=0;i<cnt;i++){if(i)printf(\" \");printf(\"%d\",nums[i]);}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "sort_third_positions",
+          "code": "void sort_third_positions(int *arr, int n) {\n    for (int i = 0; i < n; i += 3) {\n        for (int j = i + 3; j < n; j += 3) {\n            if (arr[j] < arr[i]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int cnt;\n    scanf(\"%d\",&cnt);\n    int nums[cnt];\n    for(int i=0;i<cnt;i++) scanf(\"%d\",&nums[i]);\n    sort_step3(nums,cnt);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    sort_third_positions(arr, n);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -76,19 +93,26 @@
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "sort_multiples_of_3",
-          "code": "void sort_multiples_of_3(int *data, int sz) {\n    for(int a=0;a<sz;a+=3) for(int b=a+3;b<sz;b+=3) if(data[a]>data[b]){int t=data[a];data[a]=data[b];data[b]=t;}\n    for(int i=0;i<sz;i++){printf(\"%d\",data[i]);if(i<sz-1)printf(\" \");}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "sort_third_positions",
+          "code": "void sort_third_positions(int *arr, int n) {\n    for (int i = 0; i < n; i += 3) {\n        for (int j = i + 3; j < n; j += 3) {\n            if (arr[j] < arr[i]) {\n                int temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int sz;\n    scanf(\"%d\",&sz);\n    int data[sz];\n    for(int i=0;i<sz;i++) scanf(\"%d\",&data[i]);\n    sort_multiples_of_3(data,sz);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    sort_third_positions(arr, n);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

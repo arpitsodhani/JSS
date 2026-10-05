@@ -1,44 +1,40 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-void largest_smallest_integers(int n, int lst[], int *a, int *b) {
-    *a = 0;
-    *b = 0;
-    
-    int max_neg = -1000000;
-    int min_pos = 1000000;
+void find_largest_smallest(int* arr, int n, int* largest_neg, int* smallest_pos) {
+    *largest_neg = 0;
+    *smallest_pos = 0;
     int has_neg = 0, has_pos = 0;
     
     for (int i = 0; i < n; i++) {
-        if (lst[i] < 0) {
-            has_neg = 1;
-            if (lst[i] > max_neg) {
-                max_neg = lst[i];
+        if (arr[i] < 0) {
+            if (!has_neg || arr[i] > *largest_neg) {
+                *largest_neg = arr[i];
+                has_neg = 1;
             }
-        } else if (lst[i] > 0) {
-            has_pos = 1;
-            if (lst[i] < min_pos) {
-                min_pos = lst[i];
+        } else if (arr[i] > 0) {
+            if (!has_pos || arr[i] < *smallest_pos) {
+                *smallest_pos = arr[i];
+                has_pos = 1;
             }
         }
     }
     
-    if (has_neg) *a = max_neg;
-    if (has_pos) *b = min_pos;
+    if (!has_neg) *largest_neg = 0;
+    if (!has_pos) *smallest_pos = 0;
 }
 
 int main() {
     int n;
     scanf("%d", &n);
-    int lst[n];
+    
+    int arr[1000];
     for (int i = 0; i < n; i++) {
-        scanf("%d", &lst[i]);
+        scanf("%d", &arr[i]);
     }
-    int a, b;
-    largest_smallest_integers(n, lst, &a, &b);
-    printf("(%d, %d)\n", a, b);
+    
+    int largest_neg, smallest_pos;
+    find_largest_smallest(arr, n, &largest_neg, &smallest_pos);
+    
+    printf("(%d, %d)\n", largest_neg, smallest_pos);
     return 0;
 }

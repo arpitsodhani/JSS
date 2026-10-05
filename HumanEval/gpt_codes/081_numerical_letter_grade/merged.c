@@ -1,45 +1,34 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-const char* get_letter_grade(double gpa) {
-    if (gpa == 4.0) return "A+";
-    if (gpa > 3.7) return "A";
-    if (gpa > 3.3) return "A-";
-    if (gpa > 3.0) return "B+";
-    if (gpa > 2.7) return "B";
-    if (gpa > 2.3) return "B-";
-    if (gpa > 2.0) return "C+";
-    if (gpa > 1.7) return "C";
-    if (gpa > 1.3) return "C-";
-    if (gpa > 1.0) return "D+";
-    if (gpa > 0.7) return "D";
-    if (gpa > 0.0) return "D-";
-    return "E";
+void numerical_grade(double *grades, int n, char result[][10]) {
+    for (int i = 0; i < n; i++) {
+        if (grades[i] >= 3.9999) strcpy(result[i], "A+");
+        else if (grades[i] >= 3.7) strcpy(result[i], "A");
+        else if (grades[i] >= 3.3) strcpy(result[i], "A-");
+        else if (grades[i] >= 3.0) strcpy(result[i], "B+");
+        else if (grades[i] >= 2.7) strcpy(result[i], "B");
+        else if (grades[i] >= 2.3) strcpy(result[i], "B-");
+        else if (grades[i] >= 2.0) strcpy(result[i], "C+");
+        else if (grades[i] >= 1.7) strcpy(result[i], "C");
+        else if (grades[i] >= 1.3) strcpy(result[i], "C-");
+        else if (grades[i] >= 1.0) strcpy(result[i], "D+");
+        else if (grades[i] >= 0.7) strcpy(result[i], "D");
+        else if (grades[i] >= 0.0) strcpy(result[i], "D-");
+        else strcpy(result[i], "E");
+    }
 }
 
-void numerical_letter_grade(int n, double grades[]) {
+int main(void) {
+    int n;
+    scanf("%d", &n);
+    double grades[n];
+    for (int i = 0; i < n; i++) scanf("%lf", &grades[i]);
+    char result[n][10];
+    numerical_grade(grades, n, result);
     for (int i = 0; i < n; i++) {
-        printf("%s", get_letter_grade(grades[i]));
+        printf("%s", result[i]);
         if (i < n - 1) printf(" ");
     }
     printf("\n");
-}
-
-int main() {
-    int n;
-    scanf("%d", &n);
-    if (n == 0) {
-        printf("\n");
-        return 0;
-    }
-    double grades[n];
-    for (int i = 0; i < n; i++) {
-        scanf("%lf", &grades[i]);
-    }
-    numerical_letter_grade(n, grades);
     return 0;
 }
-

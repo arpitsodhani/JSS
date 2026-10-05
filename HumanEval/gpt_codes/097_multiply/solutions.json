@@ -1,138 +1,74 @@
 {
+  "problem_id": "097_multiply",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "multiply",
-          "code": "int multiply(int a, int b) {\n    a = abs(a) % 10;\n    b = abs(b) % 10;\n    return a * b;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", multiply(a, b));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", abs(a % 10) * abs(b % 10));\n    return 0;\n}"
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdlib.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "multiply",
-          "code": "int multiply(int a, int b) {\n    a = abs(a) % 10;\n    b = abs(b) % 10;\n    return a * b;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", multiply(a, b));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    printf(\"%d\\n\", abs(x % 10) * abs(y % 10));\n    return 0;\n}"
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdlib.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "multiply",
-          "code": "int multiply(int a, int b) {\n    a = abs(a) % 10;\n    b = abs(b) % 10;\n    return a * b;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", multiply(a, b));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int p, q;\n    scanf(\"%d %d\", &p, &q);\n    printf(\"%d\\n\", abs(p % 10) * abs(q % 10));\n    return 0;\n}"
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdlib.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "multiply",
-          "code": "int multiply(int a, int b) {\n    a = abs(a) % 10;\n    b = abs(b) % 10;\n    return a * b;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", multiply(a, b));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int m, n;\n    scanf(\"%d %d\", &m, &n);\n    printf(\"%d\\n\", abs(m % 10) * abs(n % 10));\n    return 0;\n}"
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdlib.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "multiply",
-          "code": "int multiply(int a, int b) {\n    a = abs(a) % 10;\n    b = abs(b) % 10;\n    return a * b;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", multiply(a, b));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int num1, num2;\n    scanf(\"%d %d\", &num1, &num2);\n    printf(\"%d\\n\", abs(num1 % 10) * abs(num2 % 10));\n    return 0;\n}"
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdlib.h>"
       ]
     }
   ]

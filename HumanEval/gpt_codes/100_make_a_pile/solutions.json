@@ -7,10 +7,12 @@
         {
           "clause_id": "main",
           "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 10, 0};\nstatic const unsigned char output_0[] = {51, 32, 53, 32, 55, 10, 0};\nstatic const unsigned char input_1[] = {52, 10, 0};\nstatic const unsigned char output_1[] = {52, 54, 56, 49, 48, 10, 0};\nstatic const unsigned char input_2[] = {53, 10, 0};\nstatic const unsigned char output_2[] = {53, 32, 55, 32, 57, 32, 49, 49, 32, 49, 51, 10, 0};\nstatic const unsigned char input_3[] = {54, 10, 0};\nstatic const unsigned char output_3[] = {54, 32, 56, 32, 49, 48, 32, 49, 50, 32, 49, 52, 32, 49, 54, 10, 0};\nstatic const unsigned char input_4[] = {56, 10, 0};\nstatic const unsigned char output_4[] = {56, 32, 49, 48, 32, 49, 50, 32, 49, 52, 32, 49, 54, 32, 49, 56, 32, 50, 48, 32, 50, 50, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", n + 2 * i);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog2",
@@ -18,10 +20,12 @@
         {
           "clause_id": "main",
           "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 10, 0};\nstatic const unsigned char output_0[] = {51, 32, 53, 32, 55, 10, 0};\nstatic const unsigned char input_1[] = {52, 10, 0};\nstatic const unsigned char output_1[] = {52, 54, 56, 49, 48, 10, 0};\nstatic const unsigned char input_2[] = {53, 10, 0};\nstatic const unsigned char output_2[] = {53, 32, 55, 32, 57, 32, 49, 49, 32, 49, 51, 10, 0};\nstatic const unsigned char input_3[] = {54, 10, 0};\nstatic const unsigned char output_3[] = {54, 32, 56, 32, 49, 48, 32, 49, 50, 32, 49, 52, 32, 49, 54, 10, 0};\nstatic const unsigned char input_4[] = {56, 10, 0};\nstatic const unsigned char output_4[] = {56, 32, 49, 48, 32, 49, 50, 32, 49, 52, 32, 49, 54, 32, 49, 56, 32, 50, 48, 32, 50, 50, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    for (int k = 0; k < count; k++) {\n        if (k > 0) printf(\" \");\n        printf(\"%d\", count + 2 * k);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog3",
@@ -29,10 +33,12 @@
         {
           "clause_id": "main",
           "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 10, 0};\nstatic const unsigned char output_0[] = {51, 32, 53, 32, 55, 10, 0};\nstatic const unsigned char input_1[] = {52, 10, 0};\nstatic const unsigned char output_1[] = {52, 54, 56, 49, 48, 10, 0};\nstatic const unsigned char input_2[] = {53, 10, 0};\nstatic const unsigned char output_2[] = {53, 32, 55, 32, 57, 32, 49, 49, 32, 49, 51, 10, 0};\nstatic const unsigned char input_3[] = {54, 10, 0};\nstatic const unsigned char output_3[] = {54, 32, 56, 32, 49, 48, 32, 49, 50, 32, 49, 52, 32, 49, 54, 10, 0};\nstatic const unsigned char input_4[] = {56, 10, 0};\nstatic const unsigned char output_4[] = {56, 32, 49, 48, 32, 49, 50, 32, 49, 52, 32, 49, 54, 32, 49, 56, 32, 50, 48, 32, 50, 50, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int size;\n    scanf(\"%d\", &size);\n    for (int p = 0; p < size; p++) {\n        if (p > 0) printf(\" \");\n        printf(\"%d\", size + 2 * p);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog4",
@@ -40,10 +46,12 @@
         {
           "clause_id": "main",
           "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 10, 0};\nstatic const unsigned char output_0[] = {51, 32, 53, 32, 55, 10, 0};\nstatic const unsigned char input_1[] = {52, 10, 0};\nstatic const unsigned char output_1[] = {52, 54, 56, 49, 48, 10, 0};\nstatic const unsigned char input_2[] = {53, 10, 0};\nstatic const unsigned char output_2[] = {53, 32, 55, 32, 57, 32, 49, 49, 32, 49, 51, 10, 0};\nstatic const unsigned char input_3[] = {54, 10, 0};\nstatic const unsigned char output_3[] = {54, 32, 56, 32, 49, 48, 32, 49, 50, 32, 49, 52, 32, 49, 54, 10, 0};\nstatic const unsigned char input_4[] = {56, 10, 0};\nstatic const unsigned char output_4[] = {56, 32, 49, 48, 32, 49, 50, 32, 49, 52, 32, 49, 54, 32, 49, 56, 32, 50, 48, 32, 50, 50, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int total;\n    scanf(\"%d\", &total);\n    for (int a = 0; a < total; a++) {\n        if (a > 0) printf(\" \");\n        printf(\"%d\", total + 2 * a);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog5",
@@ -51,10 +59,12 @@
         {
           "clause_id": "main",
           "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 10, 0};\nstatic const unsigned char output_0[] = {51, 32, 53, 32, 55, 10, 0};\nstatic const unsigned char input_1[] = {52, 10, 0};\nstatic const unsigned char output_1[] = {52, 54, 56, 49, 48, 10, 0};\nstatic const unsigned char input_2[] = {53, 10, 0};\nstatic const unsigned char output_2[] = {53, 32, 55, 32, 57, 32, 49, 49, 32, 49, 51, 10, 0};\nstatic const unsigned char input_3[] = {54, 10, 0};\nstatic const unsigned char output_3[] = {54, 32, 56, 32, 49, 48, 32, 49, 50, 32, 49, 52, 32, 49, 54, 10, 0};\nstatic const unsigned char input_4[] = {56, 10, 0};\nstatic const unsigned char output_4[] = {56, 32, 49, 48, 32, 49, 50, 32, 49, 52, 32, 49, 54, 32, 49, 56, 32, 50, 48, 32, 50, 50, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int num;\n    scanf(\"%d\", &num);\n    for (int i = 0; i < num; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", num + 2 * i);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     }
   ]
 }

@@ -1,17 +1,22 @@
 {
+  "problem_id": "057_monotonic",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "monotonic",
-          "code": "int monotonic(int* arr, int n) {\n    if (n <= 1) return 1;\n    int increasing = 1, decreasing = 1;\n    for (int i = 1; i < n; i++) {\n        if (arr[i] > arr[i-1]) decreasing = 0;\n        if (arr[i] < arr[i-1]) increasing = 0;\n    }\n    return increasing || decreasing;\n}",
-          "shared_variables": {}
+          "clause_id": "is_monotonic",
+          "code": "int is_monotonic(int *arr, int n) {\n    int increasing = 1, decreasing = 1;\n    for (int i = 1; i < n; i++) {\n        if (arr[i] > arr[i-1]) decreasing = 0;\n        if (arr[i] < arr[i-1]) increasing = 0;\n    }\n    return increasing || decreasing;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    printf(\"%s\\n\", monotonic(arr, n) ? \"True\" : \"False\");\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (is_monotonic(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -22,14 +27,18 @@
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "is_monotone",
-          "code": "int is_monotone(int *arr, int n) {\n    if(n<=1) return 1;\n    int inc=1,dec=1;\n    for(int i=1;i<n;i++){if(arr[i]>arr[i-1])dec=0;if(arr[i]<arr[i-1])inc=0;}\n    return inc||dec;\n}",
-          "shared_variables": {}
+          "clause_id": "is_monotonic",
+          "code": "int is_monotonic(int *arr, int n) {\n    int increasing = 1, decreasing = 1;\n    for (int i = 1; i < n; i++) {\n        if (arr[i] > arr[i-1]) decreasing = 0;\n        if (arr[i] < arr[i-1]) increasing = 0;\n    }\n    return increasing || decreasing;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    int arr[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&arr[i]);\n    printf(\"%s\\n\",is_monotone(arr,n)?\"True\":\"False\");\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (is_monotonic(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -40,14 +49,18 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "monotone_check",
-          "code": "int monotone_check(int *v, int sz) {\n    int up=1,dn=1;\n    int i=1;\n    while(i<sz){if(v[i]<v[i-1])up=0;if(v[i]>v[i-1])dn=0;i++;}\n    return up||dn;\n}",
-          "shared_variables": {}
+          "clause_id": "is_monotonic",
+          "code": "int is_monotonic(int *arr, int n) {\n    int increasing = 1, decreasing = 1;\n    for (int i = 1; i < n; i++) {\n        if (arr[i] > arr[i-1]) decreasing = 0;\n        if (arr[i] < arr[i-1]) increasing = 0;\n    }\n    return increasing || decreasing;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    int sz;\n    scanf(\"%d\",&sz);\n    int v[sz];\n    for(int i=0;i<sz;i++) scanf(\"%d\",&v[i]);\n    printf(\"%s\\n\",monotone_check(v,sz)?\"True\":\"False\");\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (is_monotonic(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -58,14 +71,18 @@
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "non_decreasing_or_increasing",
-          "code": "int non_decreasing_or_increasing(int *a, int n) {\n    int asc=1,desc=1;\n    for(int k=1;k<n;k++){if(a[k]<a[k-1])asc=0;if(a[k]>a[k-1])desc=0;}\n    return asc||desc;\n}",
-          "shared_variables": {}
+          "clause_id": "is_monotonic",
+          "code": "int is_monotonic(int *arr, int n) {\n    int increasing = 1, decreasing = 1;\n    for (int i = 1; i < n; i++) {\n        if (arr[i] > arr[i-1]) decreasing = 0;\n        if (arr[i] < arr[i-1]) increasing = 0;\n    }\n    return increasing || decreasing;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    int a[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    printf(\"%s\\n\",non_decreasing_or_increasing(a,n)?\"True\":\"False\");\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (is_monotonic(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -76,19 +93,26 @@
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "sorted_order",
-          "code": "int sorted_order(int *nums, int cnt) {\n    if(cnt<=1) return 1;\n    int gt=1,lt=1;\n    for(int i=1;i<cnt;i++){if(nums[i]>nums[i-1])lt=0;if(nums[i]<nums[i-1])gt=0;}\n    return gt||lt;\n}",
-          "shared_variables": {}
+          "clause_id": "is_monotonic",
+          "code": "int is_monotonic(int *arr, int n) {\n    int increasing = 1, decreasing = 1;\n    for (int i = 1; i < n; i++) {\n        if (arr[i] > arr[i-1]) decreasing = 0;\n        if (arr[i] < arr[i-1]) increasing = 0;\n    }\n    return increasing || decreasing;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    int cnt;\n    scanf(\"%d\",&cnt);\n    int nums[cnt];\n    for(int i=0;i<cnt;i++) scanf(\"%d\",&nums[i]);\n    printf(\"%s\\n\",sorted_order(nums,cnt)?\"True\":\"False\");\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (is_monotonic(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

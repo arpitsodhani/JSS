@@ -1,45 +1,26 @@
-#include <ctype.h>
-#include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-int factorial(int n) {
-    int result = 1;
+void compute_factorial_sum(int n, int *result, int *result_len) {
+    *result_len = 0;
     for (int i = 1; i <= n; i++) {
-        result *= i;
-    }
-    return result;
-}
-
-int sum_to_n(int n) {
-    return n * (n + 1) / 2;
-}
-
-void f(int n, int *result) {
-    for (int i = 1; i <= n; i++) {
-        if (i % 2 == 0) {
-            result[i-1] = factorial(i);
-        } else {
-            result[i-1] = sum_to_n(i);
+        int sum = 0;
+        for (int j = 1; j <= i; j++) {
+            sum += j;
         }
+        result[(*result_len)++] = sum;
     }
 }
 
-void run(void) {
-
+int main(void) {
     int n;
     scanf("%d", &n);
     int result[n];
-    f(n, result);
-    for (int i = 0; i < n; i++) {
+    int result_len;
+    compute_factorial_sum(n, result, &result_len);
+    for (int i = 0; i < result_len; i++) {
         printf("%d", result[i]);
-        if (i < n - 1) printf(" ");
+        if (i < result_len - 1) printf(" ");
     }
     printf("\n");
-}
-
-int main() {
-    run();
     return 0;
 }

@@ -5,56 +5,116 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "calculate_total_buckets",
+          "code": "int calculate_total_buckets(int **grid, int rows, int cols, int capacity) {\n    int total = 0;\n    for (int i = 0; i < rows; i++) {\n        int max_in_row = 0;\n        for (int j = 0; j < cols; j++) {\n            if (grid[i][j] > max_in_row) {\n                max_in_row = grid[i][j];\n            }\n        }\n        total += (max_in_row + capacity - 1) / capacity;\n    }\n    return total;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 32, 52, 32, 49, 10, 48, 10, 48, 10, 49, 10, 48, 10, 48, 10, 49, 10, 48, 10, 48, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_0[] = {54, 10, 0};\nstatic const unsigned char input_1[] = {52, 32, 52, 32, 50, 10, 48, 10, 48, 10, 49, 10, 49, 10, 48, 10, 48, 10, 48, 10, 48, 10, 49, 10, 49, 10, 49, 10, 49, 10, 48, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_1[] = {53, 10, 0};\nstatic const unsigned char input_2[] = {50, 32, 51, 32, 53, 10, 48, 10, 48, 10, 48, 10, 48, 10, 48, 10, 48, 10, 0};\nstatic const unsigned char output_2[] = {48, 10, 0};\nstatic const unsigned char input_3[] = {50, 32, 52, 32, 50, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_3[] = {52, 10, 0};\nstatic const unsigned char input_4[] = {50, 32, 52, 32, 57, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_4[] = {50, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int rows, cols, capacity;\n    scanf(\"%d %d %d\", &rows, &cols, &capacity);\n    int **grid = malloc(rows * sizeof(int*));\n    for (int i = 0; i < rows; i++) {\n        grid[i] = malloc(cols * sizeof(int));\n        for (int j = 0; j < cols; j++) {\n            scanf(\"%d\", &grid[i][j]);\n        }\n    }\n    int result = calculate_total_buckets(grid, rows, cols, capacity);\n    printf(\"%d\\n\", result);\n    for (int i = 0; i < rows; i++) {\n        free(grid[i]);\n    }\n    free(grid);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "calculate_total_buckets",
+          "code": "int calculate_total_buckets(int **grid, int rows, int cols, int capacity) {\n    int total = 0;\n    for (int i = 0; i < rows; i++) {\n        int max_in_row = 0;\n        for (int j = 0; j < cols; j++) {\n            if (grid[i][j] > max_in_row) {\n                max_in_row = grid[i][j];\n            }\n        }\n        total += (max_in_row + capacity - 1) / capacity;\n    }\n    return total;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 32, 52, 32, 49, 10, 48, 10, 48, 10, 49, 10, 48, 10, 48, 10, 49, 10, 48, 10, 48, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_0[] = {54, 10, 0};\nstatic const unsigned char input_1[] = {52, 32, 52, 32, 50, 10, 48, 10, 48, 10, 49, 10, 49, 10, 48, 10, 48, 10, 48, 10, 48, 10, 49, 10, 49, 10, 49, 10, 49, 10, 48, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_1[] = {53, 10, 0};\nstatic const unsigned char input_2[] = {50, 32, 51, 32, 53, 10, 48, 10, 48, 10, 48, 10, 48, 10, 48, 10, 48, 10, 0};\nstatic const unsigned char output_2[] = {48, 10, 0};\nstatic const unsigned char input_3[] = {50, 32, 52, 32, 50, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_3[] = {52, 10, 0};\nstatic const unsigned char input_4[] = {50, 32, 52, 32, 57, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_4[] = {50, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int rows, cols, capacity;\n    scanf(\"%d %d %d\", &rows, &cols, &capacity);\n    int **grid = malloc(rows * sizeof(int*));\n    for (int i = 0; i < rows; i++) {\n        grid[i] = malloc(cols * sizeof(int));\n        for (int j = 0; j < cols; j++) {\n            scanf(\"%d\", &grid[i][j]);\n        }\n    }\n    int result = calculate_total_buckets(grid, rows, cols, capacity);\n    printf(\"%d\\n\", result);\n    for (int i = 0; i < rows; i++) {\n        free(grid[i]);\n    }\n    free(grid);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "calculate_total_buckets",
+          "code": "int calculate_total_buckets(int **grid, int rows, int cols, int capacity) {\n    int total = 0;\n    for (int i = 0; i < rows; i++) {\n        int max_in_row = 0;\n        for (int j = 0; j < cols; j++) {\n            if (grid[i][j] > max_in_row) {\n                max_in_row = grid[i][j];\n            }\n        }\n        total += (max_in_row + capacity - 1) / capacity;\n    }\n    return total;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 32, 52, 32, 49, 10, 48, 10, 48, 10, 49, 10, 48, 10, 48, 10, 49, 10, 48, 10, 48, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_0[] = {54, 10, 0};\nstatic const unsigned char input_1[] = {52, 32, 52, 32, 50, 10, 48, 10, 48, 10, 49, 10, 49, 10, 48, 10, 48, 10, 48, 10, 48, 10, 49, 10, 49, 10, 49, 10, 49, 10, 48, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_1[] = {53, 10, 0};\nstatic const unsigned char input_2[] = {50, 32, 51, 32, 53, 10, 48, 10, 48, 10, 48, 10, 48, 10, 48, 10, 48, 10, 0};\nstatic const unsigned char output_2[] = {48, 10, 0};\nstatic const unsigned char input_3[] = {50, 32, 52, 32, 50, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_3[] = {52, 10, 0};\nstatic const unsigned char input_4[] = {50, 32, 52, 32, 57, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_4[] = {50, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int rows, cols, capacity;\n    scanf(\"%d %d %d\", &rows, &cols, &capacity);\n    int **grid = malloc(rows * sizeof(int*));\n    for (int i = 0; i < rows; i++) {\n        grid[i] = malloc(cols * sizeof(int));\n        for (int j = 0; j < cols; j++) {\n            scanf(\"%d\", &grid[i][j]);\n        }\n    }\n    int result = calculate_total_buckets(grid, rows, cols, capacity);\n    printf(\"%d\\n\", result);\n    for (int i = 0; i < rows; i++) {\n        free(grid[i]);\n    }\n    free(grid);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "calculate_total_buckets",
+          "code": "int calculate_total_buckets(int **grid, int rows, int cols, int capacity) {\n    int total = 0;\n    for (int i = 0; i < rows; i++) {\n        int max_in_row = 0;\n        for (int j = 0; j < cols; j++) {\n            if (grid[i][j] > max_in_row) {\n                max_in_row = grid[i][j];\n            }\n        }\n        total += (max_in_row + capacity - 1) / capacity;\n    }\n    return total;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 32, 52, 32, 49, 10, 48, 10, 48, 10, 49, 10, 48, 10, 48, 10, 49, 10, 48, 10, 48, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_0[] = {54, 10, 0};\nstatic const unsigned char input_1[] = {52, 32, 52, 32, 50, 10, 48, 10, 48, 10, 49, 10, 49, 10, 48, 10, 48, 10, 48, 10, 48, 10, 49, 10, 49, 10, 49, 10, 49, 10, 48, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_1[] = {53, 10, 0};\nstatic const unsigned char input_2[] = {50, 32, 51, 32, 53, 10, 48, 10, 48, 10, 48, 10, 48, 10, 48, 10, 48, 10, 0};\nstatic const unsigned char output_2[] = {48, 10, 0};\nstatic const unsigned char input_3[] = {50, 32, 52, 32, 50, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_3[] = {52, 10, 0};\nstatic const unsigned char input_4[] = {50, 32, 52, 32, 57, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_4[] = {50, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int rows, cols, capacity;\n    scanf(\"%d %d %d\", &rows, &cols, &capacity);\n    int **grid = malloc(rows * sizeof(int*));\n    for (int i = 0; i < rows; i++) {\n        grid[i] = malloc(cols * sizeof(int));\n        for (int j = 0; j < cols; j++) {\n            scanf(\"%d\", &grid[i][j]);\n        }\n    }\n    int result = calculate_total_buckets(grid, rows, cols, capacity);\n    printf(\"%d\\n\", result);\n    for (int i = 0; i < rows; i++) {\n        free(grid[i]);\n    }\n    free(grid);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "calculate_total_buckets",
+          "code": "int calculate_total_buckets(int **grid, int rows, int cols, int capacity) {\n    int total = 0;\n    for (int i = 0; i < rows; i++) {\n        int max_in_row = 0;\n        for (int j = 0; j < cols; j++) {\n            if (grid[i][j] > max_in_row) {\n                max_in_row = grid[i][j];\n            }\n        }\n        total += (max_in_row + capacity - 1) / capacity;\n    }\n    return total;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {51, 32, 52, 32, 49, 10, 48, 10, 48, 10, 49, 10, 48, 10, 48, 10, 49, 10, 48, 10, 48, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_0[] = {54, 10, 0};\nstatic const unsigned char input_1[] = {52, 32, 52, 32, 50, 10, 48, 10, 48, 10, 49, 10, 49, 10, 48, 10, 48, 10, 48, 10, 48, 10, 49, 10, 49, 10, 49, 10, 49, 10, 48, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_1[] = {53, 10, 0};\nstatic const unsigned char input_2[] = {50, 32, 51, 32, 53, 10, 48, 10, 48, 10, 48, 10, 48, 10, 48, 10, 48, 10, 0};\nstatic const unsigned char output_2[] = {48, 10, 0};\nstatic const unsigned char input_3[] = {50, 32, 52, 32, 50, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_3[] = {52, 10, 0};\nstatic const unsigned char input_4[] = {50, 32, 52, 32, 57, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 49, 10, 0};\nstatic const unsigned char output_4[] = {50, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int rows, cols, capacity;\n    scanf(\"%d %d %d\", &rows, &cols, &capacity);\n    int **grid = malloc(rows * sizeof(int*));\n    for (int i = 0; i < rows; i++) {\n        grid[i] = malloc(cols * sizeof(int));\n        for (int j = 0; j < cols; j++) {\n            scanf(\"%d\", &grid[i][j]);\n        }\n    }\n    int result = calculate_total_buckets(grid, rows, cols, capacity);\n    printf(\"%d\\n\", result);\n    for (int i = 0; i < rows; i++) {\n        free(grid[i]);\n    }\n    free(grid);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<stdlib.h>"
   ]
 }

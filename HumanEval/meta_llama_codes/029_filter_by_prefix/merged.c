@@ -1,41 +1,41 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {48, 10, 106, 111, 104, 110, 10, 10, 0};
-static const unsigned char output_0[] = {10, 0};
-static const unsigned char input_1[] = {54, 10, 120, 120, 120, 10, 120, 120, 120, 10, 97, 115, 100, 10, 120, 120, 121, 10, 106, 111, 104, 110, 32, 100, 111, 101, 10, 120, 120, 120, 65, 65, 65, 10, 120, 120, 120, 10, 0};
-static const unsigned char output_1[] = {120, 120, 120, 10, 120, 120, 120, 65, 65, 65, 10, 120, 120, 120, 10, 0};
+void filter_by_prefix(char strs[][1000], int n, char *prefix, char result[][1000], int *result_len) {
+    *result_len = 0;
+    int prefix_len = strlen(prefix);
+    for (int i = 0; i < n; i++) {
+        int match = 1;
+        for (int j = 0; j < prefix_len; j++) {
+            if (strs[i][j] != prefix[j]) {
+                match = 0;
+                break;
+            }
+        }
+        if (match) {
+            strcpy(result[(*result_len)++], strs[i]);
+        }
+    }
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
+    int n;
+    scanf("%d", &n);
+    getchar();
+    char prefix[1000];
+    fgets(prefix, sizeof(prefix), stdin);
+    prefix[strcspn(prefix, "\n")] = 0;
+    char strs[n][1000];
+    for (int i = 0; i < n; i++) {
+        fgets(strs[i], sizeof(strs[i]), stdin);
+        strs[i][strcspn(strs[i], "\n")] = 0;
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
+    char result[n][1000];
+    int result_len;
+    filter_by_prefix(strs, n, prefix, result, &result_len);
+    for (int i = 0; i < result_len; i++) {
+        printf("%s", result[i]);
+        printf("\n");
     }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    if (result_len == 0) printf("\n");
+    return 0;
 }

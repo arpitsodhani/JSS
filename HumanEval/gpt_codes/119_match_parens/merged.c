@@ -1,40 +1,35 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-int is_valid(const char *s) {
-    int count = 0;
-    for (int i = 0; s[i]; i++) {
-        if (s[i] == '(') count++;
-        else if (s[i] == ')') count--;
-        if (count < 0) return 0;
+int can_match_parens(char *s1, char *s2) {
+    char combined[2000];
+    strcpy(combined, s1);
+    strcat(combined, s2);
+    int balance = 0;
+    for (int i = 0; combined[i]; i++) {
+        if (combined[i] == '(') balance++;
+        else if (combined[i] == ')') balance--;
+        if (balance < 0) return 0;
     }
-    return count == 0;
+    if (balance != 0) return 0;
+    strcpy(combined, s2);
+    strcat(combined, s1);
+    balance = 0;
+    for (int i = 0; combined[i]; i++) {
+        if (combined[i] == '(') balance++;
+        else if (combined[i] == ')') balance--;
+        if (balance < 0) return 0;
+    }
+    return balance == 0;
 }
 
-const char* match_parens(const char *s1, const char *s2) {
-    char combined1[20000], combined2[20000];
-    strcpy(combined1, s1);
-    strcat(combined1, s2);
-    strcpy(combined2, s2);
-    strcat(combined2, s1);
-    
-    if (is_valid(combined1) || is_valid(combined2)) {
-        return "Yes";
+int main(void) {
+    char s1[1000], s2[1000];
+    scanf("%s %s", s1, s2);
+    if (can_match_parens(s1, s2)) {
+        printf("Yes\n");
+    } else {
+        printf("No\n");
     }
-    return "No";
-}
-
-int main() {
-    char s1[10000], s2[10000];
-    fgets(s1, sizeof(s1), stdin);
-    s1[strcspn(s1, "\n")] = 0;
-    fgets(s2, sizeof(s2), stdin);
-    s2[strcspn(s2, "\n")] = 0;
-    
-    printf("%s\n", match_parens(s1, s2));
     return 0;
 }
-

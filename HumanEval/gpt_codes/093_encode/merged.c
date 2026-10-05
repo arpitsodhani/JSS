@@ -1,42 +1,41 @@
-#include <ctype.h>
-#include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-char swap_case_vowel(char c) {
-    if (c == 'a') return 'C';
-    if (c == 'e') return 'G';
-    if (c == 'i') return 'K';
-    if (c == 'o') return 'Q';
-    if (c == 'u') return 'W';
-    if (c == 'A') return 'c';
-    if (c == 'E') return 'g';
-    if (c == 'I') return 'k';
-    if (c == 'O') return 'q';
-    if (c == 'U') return 'w';
-    if (islower(c)) return toupper(c);
-    if (isupper(c)) return tolower(c);
+char encode_char(char c) {
+    if (c >= 'a' && c <= 'z') {
+        switch(c) {
+            case 'a': return 'C';
+            case 'e': return 'G';
+            case 'i': return 'M';
+            case 'o': return 'S';
+            case 'u': return 'Y';
+            default:
+                if (c >= 'a' && c <= 'z') {
+                    return c - 32;  // uppercase
+                }
+                return c;
+        }
+    } else if (c >= 'A' && c <= 'Z') {
+        switch(c) {
+            case 'A': return 'c';
+            case 'E': return 'g';
+            case 'I': return 'm';
+            case 'O': return 's';
+            case 'U': return 'y';
+            default:
+                return c + 32;  // lowercase
+        }
+    }
     return c;
 }
 
-void encode(const char *message, char *result) {
-    for (int i = 0; message[i]; i++) {
-        result[i] = swap_case_vowel(message[i]);
-    }
-    result[strlen(message)] = 0;
-}
-
-void run(void) {
-
-    char message[10000], result[10000];
-    fgets(message, sizeof(message), stdin);
-    message[strcspn(message, "\n")] = 0;
-    encode(message, result);
-    printf("%s\n", result);
-}
-
 int main() {
-    run();
+    char str[1000];
+    fgets(str, 1000, stdin);
+    
+    for (int i = 0; str[i] != '\0' && str[i] != '\n'; i++) {
+        str[i] = encode_char(str[i]);
+    }
+    
+    printf("%s\n", str);
     return 0;
 }

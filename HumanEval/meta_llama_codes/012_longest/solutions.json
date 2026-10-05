@@ -1,60 +1,123 @@
 {
-  "problem_id": "012_longest",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "find_longest",
+          "code": "int find_longest(char strs[][1000], int n) {\n    int max_len = 0;\n    int max_idx = -1;\n    for (int i = 0; i < n; i++) {\n        int len = strlen(strs[i]);\n        if (len > max_len) {\n            max_len = len;\n            max_idx = i;\n        }\n    }\n    return max_idx;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 10, 0};\nstatic const unsigned char output_0[] = {78, 111, 110, 101, 10, 0};\nstatic const unsigned char input_1[] = {51, 10, 120, 10, 121, 10, 122, 10, 0};\nstatic const unsigned char output_1[] = {120, 10, 0};\nstatic const unsigned char input_2[] = {54, 10, 120, 10, 121, 121, 121, 10, 122, 122, 122, 122, 10, 119, 119, 119, 10, 107, 107, 107, 107, 10, 97, 98, 99, 10, 0};\nstatic const unsigned char output_2[] = {122, 122, 122, 122, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    char strs[n][1000];\n    for (int i = 0; i < n; i++) {\n        fgets(strs[i], sizeof(strs[i]), stdin);\n        strs[i][strcspn(strs[i], \"\\n\")] = 0;\n    }\n    int idx = find_longest(strs, n);\n    if (idx >= 0) {\n        printf(\"%s\\n\", strs[idx]);\n    } else {\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "find_longest",
+          "code": "int find_longest(char strs[][1000], int n) {\n    int max_len = 0;\n    int max_idx = -1;\n    for (int i = 0; i < n; i++) {\n        int len = strlen(strs[i]);\n        if (len > max_len) {\n            max_len = len;\n            max_idx = i;\n        }\n    }\n    return max_idx;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 10, 0};\nstatic const unsigned char output_0[] = {78, 111, 110, 101, 10, 0};\nstatic const unsigned char input_1[] = {51, 10, 120, 10, 121, 10, 122, 10, 0};\nstatic const unsigned char output_1[] = {120, 10, 0};\nstatic const unsigned char input_2[] = {54, 10, 120, 10, 121, 121, 121, 10, 122, 122, 122, 122, 10, 119, 119, 119, 10, 107, 107, 107, 107, 10, 97, 98, 99, 10, 0};\nstatic const unsigned char output_2[] = {122, 122, 122, 122, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    getchar();\n    char strs[count][1000];\n    for (int i = 0; i < count; i++) {\n        fgets(strs[i], sizeof(strs[i]), stdin);\n        strs[i][strcspn(strs[i], \"\\n\")] = 0;\n    }\n    int idx = find_longest(strs, count);\n    if (idx >= 0) {\n        printf(\"%s\\n\", strs[idx]);\n    } else {\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "find_longest",
+          "code": "int find_longest(char strs[][1000], int n) {\n    int max_len = 0;\n    int max_idx = -1;\n    for (int i = 0; i < n; i++) {\n        int len = strlen(strs[i]);\n        if (len > max_len) {\n            max_len = len;\n            max_idx = i;\n        }\n    }\n    return max_idx;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 10, 0};\nstatic const unsigned char output_0[] = {78, 111, 110, 101, 10, 0};\nstatic const unsigned char input_1[] = {51, 10, 120, 10, 121, 10, 122, 10, 0};\nstatic const unsigned char output_1[] = {120, 10, 0};\nstatic const unsigned char input_2[] = {54, 10, 120, 10, 121, 121, 121, 10, 122, 122, 122, 122, 10, 119, 119, 119, 10, 107, 107, 107, 107, 10, 97, 98, 99, 10, 0};\nstatic const unsigned char output_2[] = {122, 122, 122, 122, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int num;\n    scanf(\"%d\", &num);\n    getchar();\n    char strs[num][1000];\n    for (int i = 0; i < num; i++) {\n        fgets(strs[i], sizeof(strs[i]), stdin);\n        strs[i][strcspn(strs[i], \"\\n\")] = 0;\n    }\n    int idx = find_longest(strs, num);\n    if (idx >= 0) {\n        printf(\"%s\\n\", strs[idx]);\n    } else {\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "find_longest",
+          "code": "int find_longest(char strs[][1000], int n) {\n    int max_len = 0;\n    int max_idx = -1;\n    for (int i = 0; i < n; i++) {\n        int len = strlen(strs[i]);\n        if (len > max_len) {\n            max_len = len;\n            max_idx = i;\n        }\n    }\n    return max_idx;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 10, 0};\nstatic const unsigned char output_0[] = {78, 111, 110, 101, 10, 0};\nstatic const unsigned char input_1[] = {51, 10, 120, 10, 121, 10, 122, 10, 0};\nstatic const unsigned char output_1[] = {120, 10, 0};\nstatic const unsigned char input_2[] = {54, 10, 120, 10, 121, 121, 121, 10, 122, 122, 122, 122, 10, 119, 119, 119, 10, 107, 107, 107, 107, 10, 97, 98, 99, 10, 0};\nstatic const unsigned char output_2[] = {122, 122, 122, 122, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    char strs[n][1000];\n    for (int i = 0; i < n; i++) {\n        fgets(strs[i], sizeof(strs[i]), stdin);\n        strs[i][strcspn(strs[i], \"\\n\")] = 0;\n    }\n    int idx = find_longest(strs, n);\n    if (idx >= 0) {\n        printf(\"%s\\n\", strs[idx]);\n    } else {\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "find_longest",
+          "code": "int find_longest(char strs[][1000], int n) {\n    int max_len = 0;\n    int max_idx = -1;\n    for (int i = 0; i < n; i++) {\n        int len = strlen(strs[i]);\n        if (len > max_len) {\n            max_len = len;\n            max_idx = i;\n        }\n    }\n    return max_idx;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 10, 0};\nstatic const unsigned char output_0[] = {78, 111, 110, 101, 10, 0};\nstatic const unsigned char input_1[] = {51, 10, 120, 10, 121, 10, 122, 10, 0};\nstatic const unsigned char output_1[] = {120, 10, 0};\nstatic const unsigned char input_2[] = {54, 10, 120, 10, 121, 121, 121, 10, 122, 122, 122, 122, 10, 119, 119, 119, 10, 107, 107, 107, 107, 10, 97, 98, 99, 10, 0};\nstatic const unsigned char output_2[] = {122, 122, 122, 122, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    getchar();\n    char strs[n][1000];\n    for (int i = 0; i < n; i++) {\n        fgets(strs[i], sizeof(strs[i]), stdin);\n        strs[i][strcspn(strs[i], \"\\n\")] = 0;\n    }\n    int idx = find_longest(strs, n);\n    if (idx >= 0) {\n        printf(\"%s\\n\", strs[idx]);\n    } else {\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>"
   ]
 }

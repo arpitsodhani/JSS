@@ -1,62 +1,23 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {10, 0};
-static const unsigned char output_0[] = {48, 10, 0};
-static const unsigned char input_1[] = {97, 98, 99, 100, 101, 10, 0};
-static const unsigned char output_1[] = {53, 10, 0};
-static const unsigned char input_2[] = {97, 98, 99, 100, 101, 99, 97, 100, 101, 67, 65, 68, 69, 10, 0};
-static const unsigned char output_2[] = {53, 10, 0};
-static const unsigned char input_3[] = {97, 97, 97, 97, 65, 65, 65, 65, 97, 97, 97, 97, 10, 0};
-static const unsigned char output_3[] = {49, 10, 0};
-static const unsigned char input_4[] = {74, 101, 114, 114, 121, 32, 106, 69, 82, 82, 89, 32, 74, 101, 82, 82, 82, 89, 10, 0};
-static const unsigned char output_4[] = {53, 10, 0};
+int count_distinct_chars(char *s) {
+    int seen[256] = {0};
+    int count = 0;
+    for (int i = 0; s[i]; i++) {
+        char c = tolower(s[i]);
+        if (!seen[(unsigned char)c]) {
+            seen[(unsigned char)c] = 1;
+            count++;
+        }
+    }
+    return count;
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
-    }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_3) == 0) {
-        fputs((const char *)output_3, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_4) == 0) {
-        fputs((const char *)output_4, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    char s[1000];
+    fgets(s, sizeof(s), stdin);
+    s[strcspn(s, "\n")] = 0;
+    int result = count_distinct_chars(s);
+    printf("%d\n", result);
+    return 0;
 }

@@ -1,138 +1,125 @@
 {
+  "problem_num": 128,
+  "problem_name": "prod_signs",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "main_prog1",
-          "code": "int prod_signs(int n, int arr[]) {\n    if (n == 0) return -1;\n    \n    int sum = 0;\n    int prod = 1;\n    \n    for (int i = 0; i < n; i++) {\n        sum += abs(arr[i]);\n        if (arr[i] == 0) {\n            prod = 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n        }\n    }\n    \n    return sum * prod;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    int has_data = scanf(\" %[^\\n]\", line);\n    \n    if (has_data != 1 || strlen(line) == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000], arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atoi(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int result = prod_signs(arr_size, arr);\n    printf(\"%d\\n\", result);\n}",
-          "shared_variables": {}
+          "clause_id": "compute_sign_product",
+          "code": "int compute_sign_product(int* arr, int n, int* sum) {\n    int prod = 1;\n    *sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] == 0) {\n            return 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n            *sum += -arr[i];\n        } else {\n            *sum += arr[i];\n        }\n    }\n    \n    return prod;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    if (n == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int sum;\n    int prod = compute_sign_product(arr, n, &sum);\n    \n    printf(\"%d\\n\", prod * sum);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "main_prog2",
-          "code": "int prod_signs(int n, int arr[]) {\n    if (n == 0) return -1;\n    \n    int sum = 0;\n    int prod = 1;\n    \n    for (int i = 0; i < n; i++) {\n        sum += abs(arr[i]);\n        if (arr[i] == 0) {\n            prod = 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n        }\n    }\n    \n    return sum * prod;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    int has_data = scanf(\" %[^\\n]\", line);\n    \n    if (has_data != 1 || strlen(line) == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000], arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atoi(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int result = prod_signs(arr_size, arr);\n    printf(\"%d\\n\", result);\n}",
-          "shared_variables": {}
+          "clause_id": "compute_sign_product",
+          "code": "int compute_sign_product(int* arr, int n, int* sum) {\n    int prod = 1;\n    *sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] == 0) {\n            return 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n            *sum += -arr[i];\n        } else {\n            *sum += arr[i];\n        }\n    }\n    \n    return prod;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    if (n == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int sum;\n    int prod = compute_sign_product(arr, n, &sum);\n    \n    printf(\"%d\\n\", prod * sum);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "main_prog3",
-          "code": "int prod_signs(int n, int arr[]) {\n    if (n == 0) return -1;\n    \n    int sum = 0;\n    int prod = 1;\n    \n    for (int i = 0; i < n; i++) {\n        sum += abs(arr[i]);\n        if (arr[i] == 0) {\n            prod = 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n        }\n    }\n    \n    return sum * prod;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    int has_data = scanf(\" %[^\\n]\", line);\n    \n    if (has_data != 1 || strlen(line) == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000], arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atoi(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int result = prod_signs(arr_size, arr);\n    printf(\"%d\\n\", result);\n}",
-          "shared_variables": {}
+          "clause_id": "compute_sign_product",
+          "code": "int compute_sign_product(int* arr, int n, int* sum) {\n    int prod = 1;\n    *sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] == 0) {\n            return 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n            *sum += -arr[i];\n        } else {\n            *sum += arr[i];\n        }\n    }\n    \n    return prod;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    if (n == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int sum;\n    int prod = compute_sign_product(arr, n, &sum);\n    \n    printf(\"%d\\n\", prod * sum);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "main_prog4",
-          "code": "int prod_signs(int n, int arr[]) {\n    if (n == 0) return -1;\n    \n    int sum = 0;\n    int prod = 1;\n    \n    for (int i = 0; i < n; i++) {\n        sum += abs(arr[i]);\n        if (arr[i] == 0) {\n            prod = 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n        }\n    }\n    \n    return sum * prod;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    int has_data = scanf(\" %[^\\n]\", line);\n    \n    if (has_data != 1 || strlen(line) == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000], arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atoi(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int result = prod_signs(arr_size, arr);\n    printf(\"%d\\n\", result);\n}",
-          "shared_variables": {}
+          "clause_id": "compute_sign_product",
+          "code": "int compute_sign_product(int* arr, int n, int* sum) {\n    int prod = 1;\n    *sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] == 0) {\n            return 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n            *sum += -arr[i];\n        } else {\n            *sum += arr[i];\n        }\n    }\n    \n    return prod;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    if (n == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int sum;\n    int prod = compute_sign_product(arr, n, &sum);\n    \n    printf(\"%d\\n\", prod * sum);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "main_prog5",
-          "code": "int prod_signs(int n, int arr[]) {\n    if (n == 0) return -1;\n    \n    int sum = 0;\n    int prod = 1;\n    \n    for (int i = 0; i < n; i++) {\n        sum += abs(arr[i]);\n        if (arr[i] == 0) {\n            prod = 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n        }\n    }\n    \n    return sum * prod;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    char line[10000];\n    int has_data = scanf(\" %[^\\n]\", line);\n    \n    if (has_data != 1 || strlen(line) == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000], arr_size = 0;\n    char *token = strtok(line, \" \");\n    while (token != NULL) {\n        arr[arr_size++] = atoi(token);\n        token = strtok(NULL, \" \");\n    }\n    \n    int result = prod_signs(arr_size, arr);\n    printf(\"%d\\n\", result);\n}",
-          "shared_variables": {}
+          "clause_id": "compute_sign_product",
+          "code": "int compute_sign_product(int* arr, int n, int* sum) {\n    int prod = 1;\n    *sum = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (arr[i] == 0) {\n            return 0;\n        } else if (arr[i] < 0) {\n            prod *= -1;\n            *sum += -arr[i];\n        } else {\n            *sum += arr[i];\n        }\n    }\n    \n    return prod;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    if (n == 0) {\n        printf(\"None\\n\");\n        return 0;\n    }\n    \n    int arr[1000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int sum;\n    int prod = compute_sign_product(arr, n, &sum);\n    \n    printf(\"%d\\n\", prod * sum);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     }
   ]

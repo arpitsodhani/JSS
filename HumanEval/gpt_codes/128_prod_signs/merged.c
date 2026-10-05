@@ -1,40 +1,40 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-int prod_signs(int n, int arr[]) {
-    if (n == 0) return -32768;
-    
+int compute_sign_product(int* arr, int n, int* sum) {
     int prod = 1;
-    int sum = 0;
+    *sum = 0;
     
     for (int i = 0; i < n; i++) {
-        if (arr[i] == 0) return 0;
-        
-        if (arr[i] < 0) {
+        if (arr[i] == 0) {
+            return 0;
+        } else if (arr[i] < 0) {
             prod *= -1;
-            sum += -arr[i];
+            *sum += -arr[i];
         } else {
-            sum += arr[i];
+            *sum += arr[i];
         }
     }
     
-    return prod * sum;
+    return prod;
 }
 
 int main() {
     int n;
     scanf("%d", &n);
+    
     if (n == 0) {
-        printf("-32768\n");
+        printf("None\n");
         return 0;
     }
-    int arr[n];
+    
+    int arr[1000];
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
-    printf("%d\n", prod_signs(n, arr));
+    
+    int sum;
+    int prod = compute_sign_product(arr, n, &sum);
+    
+    printf("%d\n", prod * sum);
     return 0;
 }

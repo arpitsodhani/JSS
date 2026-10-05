@@ -5,56 +5,120 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "sort_by_length",
+          "code": "void sort_by_length(char words[][100], int n, char result[][100], int *result_len) {\n    int lengths[n];\n    for (int i = 0; i < n; i++) {\n        lengths[i] = strlen(words[i]);\n    }\n    *result_len = 0;\n    for (int target_len = 9; target_len >= 1; target_len--) {\n        for (int i = 0; i < n; i++) {\n            if (lengths[i] == target_len) {\n                strcpy(result[(*result_len)++], words[i]);\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {56, 10, 50, 10, 49, 10, 49, 10, 52, 10, 53, 10, 56, 10, 50, 10, 51, 10, 0};\nstatic const unsigned char output_0[] = {69, 105, 103, 104, 116, 32, 70, 105, 118, 101, 32, 70, 111, 117, 114, 32, 84, 104, 114, 101, 101, 32, 84, 119, 111, 32, 84, 119, 111, 32, 79, 110, 101, 32, 79, 110, 101, 10, 0};\nstatic const unsigned char input_1[] = {48, 10, 0};\nstatic const unsigned char output_1[] = {10, 0};\nstatic const unsigned char input_2[] = {51, 10, 49, 10, 45, 49, 10, 53, 53, 10, 0};\nstatic const unsigned char output_2[] = {79, 110, 101, 10, 0};\nstatic const unsigned char input_3[] = {52, 10, 49, 10, 45, 49, 10, 51, 10, 50, 10, 0};\nstatic const unsigned char output_3[] = {84, 104, 114, 101, 101, 32, 84, 119, 111, 32, 79, 110, 101, 10, 0};\nstatic const unsigned char input_4[] = {51, 10, 57, 10, 52, 10, 56, 10, 0};\nstatic const unsigned char output_4[] = {78, 105, 110, 101, 32, 69, 105, 103, 104, 116, 32, 70, 111, 117, 114, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char words[n][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", words[i]);\n    }\n    char result[n][100];\n    int result_len;\n    sort_by_length(words, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "sort_by_length",
+          "code": "void sort_by_length(char words[][100], int n, char result[][100], int *result_len) {\n    int lengths[n];\n    for (int i = 0; i < n; i++) {\n        lengths[i] = strlen(words[i]);\n    }\n    *result_len = 0;\n    for (int target_len = 9; target_len >= 1; target_len--) {\n        for (int i = 0; i < n; i++) {\n            if (lengths[i] == target_len) {\n                strcpy(result[(*result_len)++], words[i]);\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {56, 10, 50, 10, 49, 10, 49, 10, 52, 10, 53, 10, 56, 10, 50, 10, 51, 10, 0};\nstatic const unsigned char output_0[] = {69, 105, 103, 104, 116, 32, 70, 105, 118, 101, 32, 70, 111, 117, 114, 32, 84, 104, 114, 101, 101, 32, 84, 119, 111, 32, 84, 119, 111, 32, 79, 110, 101, 32, 79, 110, 101, 10, 0};\nstatic const unsigned char input_1[] = {48, 10, 0};\nstatic const unsigned char output_1[] = {10, 0};\nstatic const unsigned char input_2[] = {51, 10, 49, 10, 45, 49, 10, 53, 53, 10, 0};\nstatic const unsigned char output_2[] = {79, 110, 101, 10, 0};\nstatic const unsigned char input_3[] = {52, 10, 49, 10, 45, 49, 10, 51, 10, 50, 10, 0};\nstatic const unsigned char output_3[] = {84, 104, 114, 101, 101, 32, 84, 119, 111, 32, 79, 110, 101, 10, 0};\nstatic const unsigned char input_4[] = {51, 10, 57, 10, 52, 10, 56, 10, 0};\nstatic const unsigned char output_4[] = {78, 105, 110, 101, 32, 69, 105, 103, 104, 116, 32, 70, 111, 117, 114, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char words[n][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", words[i]);\n    }\n    char result[n][100];\n    int result_len;\n    sort_by_length(words, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "sort_by_length",
+          "code": "void sort_by_length(char words[][100], int n, char result[][100], int *result_len) {\n    int lengths[n];\n    for (int i = 0; i < n; i++) {\n        lengths[i] = strlen(words[i]);\n    }\n    *result_len = 0;\n    for (int target_len = 9; target_len >= 1; target_len--) {\n        for (int i = 0; i < n; i++) {\n            if (lengths[i] == target_len) {\n                strcpy(result[(*result_len)++], words[i]);\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {56, 10, 50, 10, 49, 10, 49, 10, 52, 10, 53, 10, 56, 10, 50, 10, 51, 10, 0};\nstatic const unsigned char output_0[] = {69, 105, 103, 104, 116, 32, 70, 105, 118, 101, 32, 70, 111, 117, 114, 32, 84, 104, 114, 101, 101, 32, 84, 119, 111, 32, 84, 119, 111, 32, 79, 110, 101, 32, 79, 110, 101, 10, 0};\nstatic const unsigned char input_1[] = {48, 10, 0};\nstatic const unsigned char output_1[] = {10, 0};\nstatic const unsigned char input_2[] = {51, 10, 49, 10, 45, 49, 10, 53, 53, 10, 0};\nstatic const unsigned char output_2[] = {79, 110, 101, 10, 0};\nstatic const unsigned char input_3[] = {52, 10, 49, 10, 45, 49, 10, 51, 10, 50, 10, 0};\nstatic const unsigned char output_3[] = {84, 104, 114, 101, 101, 32, 84, 119, 111, 32, 79, 110, 101, 10, 0};\nstatic const unsigned char input_4[] = {51, 10, 57, 10, 52, 10, 56, 10, 0};\nstatic const unsigned char output_4[] = {78, 105, 110, 101, 32, 69, 105, 103, 104, 116, 32, 70, 111, 117, 114, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char words[n][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", words[i]);\n    }\n    char result[n][100];\n    int result_len;\n    sort_by_length(words, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "sort_by_length",
+          "code": "void sort_by_length(char words[][100], int n, char result[][100], int *result_len) {\n    int lengths[n];\n    for (int i = 0; i < n; i++) {\n        lengths[i] = strlen(words[i]);\n    }\n    *result_len = 0;\n    for (int target_len = 9; target_len >= 1; target_len--) {\n        for (int i = 0; i < n; i++) {\n            if (lengths[i] == target_len) {\n                strcpy(result[(*result_len)++], words[i]);\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {56, 10, 50, 10, 49, 10, 49, 10, 52, 10, 53, 10, 56, 10, 50, 10, 51, 10, 0};\nstatic const unsigned char output_0[] = {69, 105, 103, 104, 116, 32, 70, 105, 118, 101, 32, 70, 111, 117, 114, 32, 84, 104, 114, 101, 101, 32, 84, 119, 111, 32, 84, 119, 111, 32, 79, 110, 101, 32, 79, 110, 101, 10, 0};\nstatic const unsigned char input_1[] = {48, 10, 0};\nstatic const unsigned char output_1[] = {10, 0};\nstatic const unsigned char input_2[] = {51, 10, 49, 10, 45, 49, 10, 53, 53, 10, 0};\nstatic const unsigned char output_2[] = {79, 110, 101, 10, 0};\nstatic const unsigned char input_3[] = {52, 10, 49, 10, 45, 49, 10, 51, 10, 50, 10, 0};\nstatic const unsigned char output_3[] = {84, 104, 114, 101, 101, 32, 84, 119, 111, 32, 79, 110, 101, 10, 0};\nstatic const unsigned char input_4[] = {51, 10, 57, 10, 52, 10, 56, 10, 0};\nstatic const unsigned char output_4[] = {78, 105, 110, 101, 32, 69, 105, 103, 104, 116, 32, 70, 111, 117, 114, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char words[n][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", words[i]);\n    }\n    char result[n][100];\n    int result_len;\n    sort_by_length(words, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "sort_by_length",
+          "code": "void sort_by_length(char words[][100], int n, char result[][100], int *result_len) {\n    int lengths[n];\n    for (int i = 0; i < n; i++) {\n        lengths[i] = strlen(words[i]);\n    }\n    *result_len = 0;\n    for (int target_len = 9; target_len >= 1; target_len--) {\n        for (int i = 0; i < n; i++) {\n            if (lengths[i] == target_len) {\n                strcpy(result[(*result_len)++], words[i]);\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {56, 10, 50, 10, 49, 10, 49, 10, 52, 10, 53, 10, 56, 10, 50, 10, 51, 10, 0};\nstatic const unsigned char output_0[] = {69, 105, 103, 104, 116, 32, 70, 105, 118, 101, 32, 70, 111, 117, 114, 32, 84, 104, 114, 101, 101, 32, 84, 119, 111, 32, 84, 119, 111, 32, 79, 110, 101, 32, 79, 110, 101, 10, 0};\nstatic const unsigned char input_1[] = {48, 10, 0};\nstatic const unsigned char output_1[] = {10, 0};\nstatic const unsigned char input_2[] = {51, 10, 49, 10, 45, 49, 10, 53, 53, 10, 0};\nstatic const unsigned char output_2[] = {79, 110, 101, 10, 0};\nstatic const unsigned char input_3[] = {52, 10, 49, 10, 45, 49, 10, 51, 10, 50, 10, 0};\nstatic const unsigned char output_3[] = {84, 104, 114, 101, 101, 32, 84, 119, 111, 32, 79, 110, 101, 10, 0};\nstatic const unsigned char input_4[] = {51, 10, 57, 10, 52, 10, 56, 10, 0};\nstatic const unsigned char output_4[] = {78, 105, 110, 101, 32, 69, 105, 103, 104, 116, 32, 70, 111, 117, 114, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    char words[n][100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", words[i]);\n    }\n    char result[n][100];\n    int result_len;\n    sort_by_length(words, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%s\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>"
   ]
 }

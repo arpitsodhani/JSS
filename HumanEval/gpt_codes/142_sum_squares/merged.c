@@ -1,18 +1,18 @@
-
-
+#include <stdio.h>
 int main() {
-    run();
-    return 0;
-}
-
-void run(void) {
-
-    int n, sum=0; scanf("%d", &n);
-    for(int i=0; i<n; i++) {
-        int x; scanf("%d", &x);
-        if(i%3==0) sum+=x*x;
-        else if(i%4==0) sum+=x*x*x;
-        else sum+=x;
+    int n, arr[1000], count=0, sum=0;
+    scanf("%d", &n);
+    
+    while(scanf("%d", &arr[count]) == 1) {
+        count++;
     }
-    printf("%d\\n", sum);
+    
+    for(int i=0; i<count; i++) {
+        if(i%3==0) sum += arr[i]*arr[i];
+        else if(i%4==0) sum += arr[i]*arr[i]*arr[i];
+        else sum += arr[i];
+    }
+    
+    printf("%d\n", sum);
+    return 0;
 }

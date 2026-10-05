@@ -14,14 +14,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    char s[1000];\n    fgets(s, 1000, stdin);\n    \n    // Remove newline\n    int len = strlen(s);\n    if (s[len - 1] == '\\n') s[len - 1] = '\\0';\n    \n    char result[1000];\n    reverse_and_swap_case(s, result);\n    \n    printf(\"%s\\n\", result);\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char s[1000];\n    fgets(s, 1000, stdin);\n    \n    // Remove newline\n    int len = strlen(s);\n    if (s[len - 1] == '\\n') s[len - 1] = '\\0';\n    \n    char result[1000];\n    reverse_and_swap_case(s, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -41,14 +39,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    char s[1000];\n    fgets(s, 1000, stdin);\n    \n    // Remove newline\n    int len = strlen(s);\n    if (s[len - 1] == '\\n') s[len - 1] = '\\0';\n    \n    char result[1000];\n    reverse_and_swap_case(s, result);\n    \n    printf(\"%s\\n\", result);\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char s[1000];\n    fgets(s, 1000, stdin);\n    \n    // Remove newline\n    int len = strlen(s);\n    if (s[len - 1] == '\\n') s[len - 1] = '\\0';\n    \n    char result[1000];\n    reverse_and_swap_case(s, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -68,14 +64,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    char s[1000];\n    fgets(s, 1000, stdin);\n    \n    // Remove newline\n    int len = strlen(s);\n    if (s[len - 1] == '\\n') s[len - 1] = '\\0';\n    \n    char result[1000];\n    reverse_and_swap_case(s, result);\n    \n    printf(\"%s\\n\", result);\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char s[1000];\n    fgets(s, 1000, stdin);\n    \n    // Remove newline\n    int len = strlen(s);\n    if (s[len - 1] == '\\n') s[len - 1] = '\\0';\n    \n    char result[1000];\n    reverse_and_swap_case(s, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -95,14 +89,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    char s[1000];\n    fgets(s, 1000, stdin);\n    \n    // Remove newline\n    int len = strlen(s);\n    if (s[len - 1] == '\\n') s[len - 1] = '\\0';\n    \n    char result[1000];\n    reverse_and_swap_case(s, result);\n    \n    printf(\"%s\\n\", result);\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char s[1000];\n    fgets(s, 1000, stdin);\n    \n    // Remove newline\n    int len = strlen(s);\n    if (s[len - 1] == '\\n') s[len - 1] = '\\0';\n    \n    char result[1000];\n    reverse_and_swap_case(s, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -122,14 +114,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    char s[1000];\n    fgets(s, 1000, stdin);\n    \n    // Remove newline\n    int len = strlen(s);\n    if (s[len - 1] == '\\n') s[len - 1] = '\\0';\n    \n    char result[1000];\n    reverse_and_swap_case(s, result);\n    \n    printf(\"%s\\n\", result);\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char s[1000];\n    fgets(s, 1000, stdin);\n    \n    // Remove newline\n    int len = strlen(s);\n    if (s[len - 1] == '\\n') s[len - 1] = '\\0';\n    \n    char result[1000];\n    reverse_and_swap_case(s, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [

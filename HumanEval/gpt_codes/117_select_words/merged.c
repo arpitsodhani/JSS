@@ -1,50 +1,57 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-int count_consonants(const char *word) {
+int is_vowel(char c) {
+    c = (c >= 'a' && c <= 'z') ? c : (c + 32);
+    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+}
+
+int count_consonants(char* word) {
     int count = 0;
-    for (int i = 0; word[i]; i++) {
-        char c = tolower(word[i]);
-        if (isalpha(c) && c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {
-            count++;
+    for (int i = 0; word[i] != '\0'; i++) {
+        if ((word[i] >= 'a' && word[i] <= 'z') || (word[i] >= 'A' && word[i] <= 'Z')) {
+            if (!is_vowel(word[i])) {
+                count++;
+            }
         }
     }
     return count;
 }
 
-void select_words(const char *s, int n, char result[][100], int *result_size) {
-    *result_size = 0;
-    char temp[10000];
-    strcpy(temp, s);
-    
-    char *token = strtok(temp, " ");
-    while (token != NULL) {
-        if (count_consonants(token) == n) {
-            strcpy(result[(*result_size)++], token);
-        }
-        token = strtok(NULL, " ");
-    }
-}
-
 int main() {
     char s[10000];
     int n;
-    fgets(s, sizeof(s), stdin);
-    s[strcspn(s, "\n")] = 0;
     scanf("%d", &n);
+    getchar();
+    fgets(s, 10000, stdin);
     
-    char result[1000][100];
-    int result_size;
-    select_words(s, n, result, &result_size);
+    char words[1000][100];
+    int word_count = 0;
+    int idx = 0;
     
-    for (int i = 0; i < result_size; i++) {
-        printf("%s", result[i]);
-        if (i < result_size - 1) printf(" ");
+    for (int i = 0; s[i] != '\0' && s[i] != '\n'; i++) {
+        if (s[i] == ' ') {
+            words[word_count][idx] = '\0';
+            if (idx > 0) word_count++;
+            idx = 0;
+        } else {
+            words[word_count][idx++] = s[i];
+        }
     }
-    printf("\n");
+    if (idx > 0) {
+        words[word_count][idx] = '\0';
+        word_count++;
+    }
+    
+    printf("[");
+    int first = 1;
+    for (int i = 0; i < word_count; i++) {
+        if (count_consonants(words[i]) == n) {
+            if (!first) printf(", ");
+            printf("\"%s\"", words[i]);
+            first = 0;
+        }
+    }
+    printf("]\n");
+    
     return 0;
 }
-

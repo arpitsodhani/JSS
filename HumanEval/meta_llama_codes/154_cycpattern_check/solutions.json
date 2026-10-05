@@ -1,60 +1,131 @@
 {
-  "problem_id": "154_cycpattern_check",
+  "problem_num": 154,
+  "problem_name": "cycpattern_check",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "check_cyclic_pattern",
+          "code": "int check_cyclic_pattern(char* a, char* b) {\n    int len_a = strlen(a);\n    int len_b = strlen(b);\n    \n    if (len_b > len_a) return 0;\n    \n    \n    for (int rot = 0; rot < len_b; rot++) {\n        char rotated[1000];\n        for (int i = 0; i < len_b; i++) {\n            rotated[i] = b[(rot + i) % len_b];\n        }\n        rotated[len_b] = '\\0';\n        \n        \n        if (strstr(a, rotated) != NULL) {\n            return 1;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {50, 10, 120, 121, 122, 119, 10, 120, 121, 119, 10, 0};\nstatic const unsigned char output_0[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 121, 101, 108, 108, 111, 10, 101, 108, 108, 10, 0};\nstatic const unsigned char output_1[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_2[] = {50, 10, 119, 104, 97, 116, 116, 117, 112, 10, 112, 116, 117, 116, 10, 0};\nstatic const unsigned char output_2[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_3[] = {50, 10, 101, 102, 101, 102, 10, 102, 101, 101, 10, 0};\nstatic const unsigned char output_3[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_4[] = {50, 10, 97, 98, 97, 98, 10, 97, 97, 98, 98, 10, 0};\nstatic const unsigned char output_4[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_5[] = {50, 10, 119, 105, 110, 101, 109, 116, 116, 10, 116, 105, 110, 101, 109, 10, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char a[1000], b[1000];\n    scanf(\"%s %s\", a, b);\n    \n    if (check_cyclic_pattern(a, b)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "check_cyclic_pattern",
+          "code": "int check_cyclic_pattern(char* a, char* b) {\n    int len_a = strlen(a);\n    int len_b = strlen(b);\n    \n    if (len_b > len_a) return 0;\n    \n    \n    for (int rot = 0; rot < len_b; rot++) {\n        char rotated[1000];\n        for (int i = 0; i < len_b; i++) {\n            rotated[i] = b[(rot + i) % len_b];\n        }\n        rotated[len_b] = '\\0';\n        \n        \n        if (strstr(a, rotated) != NULL) {\n            return 1;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {50, 10, 120, 121, 122, 119, 10, 120, 121, 119, 10, 0};\nstatic const unsigned char output_0[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 121, 101, 108, 108, 111, 10, 101, 108, 108, 10, 0};\nstatic const unsigned char output_1[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_2[] = {50, 10, 119, 104, 97, 116, 116, 117, 112, 10, 112, 116, 117, 116, 10, 0};\nstatic const unsigned char output_2[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_3[] = {50, 10, 101, 102, 101, 102, 10, 102, 101, 101, 10, 0};\nstatic const unsigned char output_3[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_4[] = {50, 10, 97, 98, 97, 98, 10, 97, 97, 98, 98, 10, 0};\nstatic const unsigned char output_4[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_5[] = {50, 10, 119, 105, 110, 101, 109, 116, 116, 10, 116, 105, 110, 101, 109, 10, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char a[1000], b[1000];\n    scanf(\"%s %s\", a, b);\n    \n    if (check_cyclic_pattern(a, b)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "check_cyclic_pattern",
+          "code": "int check_cyclic_pattern(char* a, char* b) {\n    int len_a = strlen(a);\n    int len_b = strlen(b);\n    \n    if (len_b > len_a) return 0;\n    \n    \n    for (int rot = 0; rot < len_b; rot++) {\n        char rotated[1000];\n        for (int i = 0; i < len_b; i++) {\n            rotated[i] = b[(rot + i) % len_b];\n        }\n        rotated[len_b] = '\\0';\n        \n        \n        if (strstr(a, rotated) != NULL) {\n            return 1;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {50, 10, 120, 121, 122, 119, 10, 120, 121, 119, 10, 0};\nstatic const unsigned char output_0[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 121, 101, 108, 108, 111, 10, 101, 108, 108, 10, 0};\nstatic const unsigned char output_1[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_2[] = {50, 10, 119, 104, 97, 116, 116, 117, 112, 10, 112, 116, 117, 116, 10, 0};\nstatic const unsigned char output_2[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_3[] = {50, 10, 101, 102, 101, 102, 10, 102, 101, 101, 10, 0};\nstatic const unsigned char output_3[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_4[] = {50, 10, 97, 98, 97, 98, 10, 97, 97, 98, 98, 10, 0};\nstatic const unsigned char output_4[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_5[] = {50, 10, 119, 105, 110, 101, 109, 116, 116, 10, 116, 105, 110, 101, 109, 10, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char a[1000], b[1000];\n    scanf(\"%s %s\", a, b);\n    \n    if (check_cyclic_pattern(a, b)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "check_cyclic_pattern",
+          "code": "int check_cyclic_pattern(char* a, char* b) {\n    int len_a = strlen(a);\n    int len_b = strlen(b);\n    \n    if (len_b > len_a) return 0;\n    \n    \n    for (int rot = 0; rot < len_b; rot++) {\n        char rotated[1000];\n        for (int i = 0; i < len_b; i++) {\n            rotated[i] = b[(rot + i) % len_b];\n        }\n        rotated[len_b] = '\\0';\n        \n        \n        if (strstr(a, rotated) != NULL) {\n            return 1;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {50, 10, 120, 121, 122, 119, 10, 120, 121, 119, 10, 0};\nstatic const unsigned char output_0[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 121, 101, 108, 108, 111, 10, 101, 108, 108, 10, 0};\nstatic const unsigned char output_1[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_2[] = {50, 10, 119, 104, 97, 116, 116, 117, 112, 10, 112, 116, 117, 116, 10, 0};\nstatic const unsigned char output_2[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_3[] = {50, 10, 101, 102, 101, 102, 10, 102, 101, 101, 10, 0};\nstatic const unsigned char output_3[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_4[] = {50, 10, 97, 98, 97, 98, 10, 97, 97, 98, 98, 10, 0};\nstatic const unsigned char output_4[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_5[] = {50, 10, 119, 105, 110, 101, 109, 116, 116, 10, 116, 105, 110, 101, 109, 10, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char a[1000], b[1000];\n    scanf(\"%s %s\", a, b);\n    \n    if (check_cyclic_pattern(a, b)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "check_cyclic_pattern",
+          "code": "int check_cyclic_pattern(char* a, char* b) {\n    int len_a = strlen(a);\n    int len_b = strlen(b);\n    \n    if (len_b > len_a) return 0;\n    \n    \n    for (int rot = 0; rot < len_b; rot++) {\n        char rotated[1000];\n        for (int i = 0; i < len_b; i++) {\n            rotated[i] = b[(rot + i) % len_b];\n        }\n        rotated[len_b] = '\\0';\n        \n        \n        if (strstr(a, rotated) != NULL) {\n            return 1;\n        }\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {50, 10, 120, 121, 122, 119, 10, 120, 121, 119, 10, 0};\nstatic const unsigned char output_0[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 121, 101, 108, 108, 111, 10, 101, 108, 108, 10, 0};\nstatic const unsigned char output_1[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_2[] = {50, 10, 119, 104, 97, 116, 116, 117, 112, 10, 112, 116, 117, 116, 10, 0};\nstatic const unsigned char output_2[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_3[] = {50, 10, 101, 102, 101, 102, 10, 102, 101, 101, 10, 0};\nstatic const unsigned char output_3[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_4[] = {50, 10, 97, 98, 97, 98, 10, 97, 97, 98, 98, 10, 0};\nstatic const unsigned char output_4[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_5[] = {50, 10, 119, 105, 110, 101, 109, 116, 116, 10, 116, 105, 110, 101, 109, 10, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char a[1000], b[1000];\n    scanf(\"%s %s\", a, b);\n    \n    if (check_cyclic_pattern(a, b)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     }
   ]
 }

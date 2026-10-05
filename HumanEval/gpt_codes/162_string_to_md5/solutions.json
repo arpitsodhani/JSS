@@ -14,14 +14,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -41,14 +39,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -68,14 +64,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -95,14 +89,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -122,14 +114,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    char text[10000];\n    fgets(text, 10000, stdin);\n    \n    char result[100];\n    compute_simple_hash(text, result);\n    \n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [

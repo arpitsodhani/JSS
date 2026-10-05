@@ -14,14 +14,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -41,14 +39,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -68,14 +64,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -95,14 +89,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -122,14 +114,12 @@
           }
         },
         {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", count_divisible_triples(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [

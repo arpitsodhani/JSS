@@ -1,17 +1,13 @@
 {
+  "problem_id": "041_car_race_collision",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "car_race_collision",
-          "code": "int car_race_collision(int n) {\n    return n * n;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", car_race_collision(n));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", n * n);\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -22,14 +18,9 @@
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "collision_count",
-          "code": "int collision_count(int n) {\n    return n * n;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    printf(\"%d\\n\",collision_count(n));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int num;\n    scanf(\"%d\", &num);\n    int result = num * num;\n    printf(\"%d\\n\", result);\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -40,14 +31,9 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "total_collisions",
-          "code": "int total_collisions(int cars) {\n    return cars * cars;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int cars;\n    scanf(\"%d\",&cars);\n    printf(\"%d\\n\",total_collisions(cars));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int cars;\n    scanf(\"%d\", &cars);\n    printf(\"%d\\n\", cars * cars);\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -58,14 +44,9 @@
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "race_result",
-          "code": "int race_result(int num) {\n    int res = num;\n    res *= num;\n    return res;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int num;\n    scanf(\"%d\",&num);\n    printf(\"%d\\n\",race_result(num));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int collisions = n * n;\n    printf(\"%d\\n\", collisions);\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -76,14 +57,9 @@
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "compute_collisions",
-          "code": "int compute_collisions(int k) {\n    return k * k;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int k;\n    scanf(\"%d\",&k);\n    printf(\"%d\\n\",compute_collisions(k));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    printf(\"%d\\n\", count * count);\n    return 0;\n}"
         }
       ],
       "includes": [

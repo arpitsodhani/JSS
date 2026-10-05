@@ -1,41 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {48, 32, 48, 10, 49, 10, 0};
-static const unsigned char output_0[] = {10, 0};
-static const unsigned char input_1[] = {49, 32, 49, 10, 49, 10, 50, 10, 0};
-static const unsigned char output_1[] = {10, 0};
-
-int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
+void find_coordinates(int** grid, int rows, int cols, int x, int* result, int* result_size) {
+    *result_size = 0;
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (grid[i][j] == x) {
+                result[(*result_size)++] = i;
+                result[(*result_size)++] = j;
+            }
         }
-        input[length++] = (unsigned char)ch;
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
+    
+    
+    for (int i = 0; i < *result_size; i += 2) {
+        for (int j = i + 2; j < *result_size; j += 2) {
+            if (result[i] < result[j] || (result[i] == result[j] && result[i+1] < result[j+1])) {
+                int tmp = result[i];
+                result[i] = result[j];
+                result[j] = tmp;
+                tmp = result[i+1];
+                result[i+1] = result[j+1];
+                result[j+1] = tmp;
+            }
+        }
     }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
+}
+
+int main() {
+    int rows, cols, x;
+    scanf("%d %d %d", &rows, &cols, &x);
+    
+    int** grid = malloc(rows * sizeof(int*));
+    for (int i = 0; i < rows; i++) {
+        grid[i] = malloc(cols * sizeof(int));
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &grid[i][j]);
+        }
     }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
+    
+    int result[1000];
+    int result_size;
+    find_coordinates(grid, rows, cols, x, result, &result_size);
+    
+    printf("[");
+    for (int i = 0; i < result_size; i += 2) {
+        if (i > 0) printf(", ");
+        printf("[%d, %d]", result[i], result[i+1]);
     }
-    free(input);
-    return 1;
+    printf("]\n");
+    
+    for (int i = 0; i < rows; i++) free(grid[i]);
+    free(grid);
+    return 0;
 }

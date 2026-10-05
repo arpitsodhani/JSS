@@ -5,56 +5,114 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "find_smallest_even",
+          "code": "void find_smallest_even(int *arr, int n, int *min_val, int *min_idx) {\n    *min_val = -1;\n    *min_idx = -1;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] % 2 == 0) {\n            if (*min_val == -1 || arr[i] < *min_val) {\n                *min_val = arr[i];\n                *min_idx = i;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {52, 10, 55, 32, 57, 32, 55, 32, 49, 10, 0};\nstatic const unsigned char output_1[] = {10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int min_val, min_idx;\n    find_smallest_even(arr, n, &min_val, &min_idx);\n    if (min_val == -1) {\n        printf(\"[]\\n\");\n    } else {\n        printf(\"[%d %d]\\n\", min_val, min_idx);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "find_smallest_even",
+          "code": "void find_smallest_even(int *arr, int n, int *min_val, int *min_idx) {\n    *min_val = -1;\n    *min_idx = -1;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] % 2 == 0) {\n            if (*min_val == -1 || arr[i] < *min_val) {\n                *min_val = arr[i];\n                *min_idx = i;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {52, 10, 55, 32, 57, 32, 55, 32, 49, 10, 0};\nstatic const unsigned char output_1[] = {10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int min_val, min_idx;\n    find_smallest_even(arr, n, &min_val, &min_idx);\n    if (min_val == -1) {\n        printf(\"[]\\n\");\n    } else {\n        printf(\"[%d %d]\\n\", min_val, min_idx);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "find_smallest_even",
+          "code": "void find_smallest_even(int *arr, int n, int *min_val, int *min_idx) {\n    *min_val = -1;\n    *min_idx = -1;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] % 2 == 0) {\n            if (*min_val == -1 || arr[i] < *min_val) {\n                *min_val = arr[i];\n                *min_idx = i;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {52, 10, 55, 32, 57, 32, 55, 32, 49, 10, 0};\nstatic const unsigned char output_1[] = {10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int min_val, min_idx;\n    find_smallest_even(arr, n, &min_val, &min_idx);\n    if (min_val == -1) {\n        printf(\"[]\\n\");\n    } else {\n        printf(\"[%d %d]\\n\", min_val, min_idx);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "find_smallest_even",
+          "code": "void find_smallest_even(int *arr, int n, int *min_val, int *min_idx) {\n    *min_val = -1;\n    *min_idx = -1;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] % 2 == 0) {\n            if (*min_val == -1 || arr[i] < *min_val) {\n                *min_val = arr[i];\n                *min_idx = i;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {52, 10, 55, 32, 57, 32, 55, 32, 49, 10, 0};\nstatic const unsigned char output_1[] = {10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int min_val, min_idx;\n    find_smallest_even(arr, n, &min_val, &min_idx);\n    if (min_val == -1) {\n        printf(\"[]\\n\");\n    } else {\n        printf(\"[%d %d]\\n\", min_val, min_idx);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "find_smallest_even",
+          "code": "void find_smallest_even(int *arr, int n, int *min_val, int *min_idx) {\n    *min_val = -1;\n    *min_idx = -1;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] % 2 == 0) {\n            if (*min_val == -1 || arr[i] < *min_val) {\n                *min_val = arr[i];\n                *min_idx = i;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {52, 10, 55, 32, 57, 32, 55, 32, 49, 10, 0};\nstatic const unsigned char output_1[] = {10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int min_val, min_idx;\n    find_smallest_even(arr, n, &min_val, &min_idx);\n    if (min_val == -1) {\n        printf(\"[]\\n\");\n    } else {\n        printf(\"[%d %d]\\n\", min_val, min_idx);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

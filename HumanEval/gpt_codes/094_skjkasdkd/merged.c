@@ -1,51 +1,44 @@
-#include <ctype.h>
-#include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 int is_prime(int n) {
     if (n < 2) return 0;
-    if (n == 2) return 1;
-    if (n % 2 == 0) return 0;
-    for (int i = 3; i * i <= n; i += 2) {
+    for (int i = 2; i * i <= n; i++) {
         if (n % i == 0) return 0;
     }
     return 1;
 }
 
-int find_largest_prime(int n, int lst[]) {
+int largest_prime_digit(int* arr, int n) {
     int max_prime = -1;
     for (int i = 0; i < n; i++) {
-        if (is_prime(lst[i]) && lst[i] > max_prime) {
-            max_prime = lst[i];
+        if (is_prime(arr[i]) && arr[i] > max_prime) {
+            max_prime = arr[i];
         }
     }
     return max_prime;
 }
 
-int digit_sum(int n) {
-    int sum = 0;
-    while (n > 0) {
-        sum += n % 10;
-        n /= 10;
-    }
-    return sum;
-}
-
-void run(void) {
-
+int main() {
     int n;
     scanf("%d", &n);
-    int lst[n];
+    
+    int arr[1000];
     for (int i = 0; i < n; i++) {
-        scanf("%d", &lst[i]);
+        scanf("%d", &arr[i]);
     }
-    int largest_prime = find_largest_prime(n, lst);
-    printf("%d\n", largest_prime == -1 ? 0 : digit_sum(largest_prime));
-}
-
-int main() {
-    run();
+    
+    int max_prime = largest_prime_digit(arr, n);
+    
+    if (max_prime == -1) {
+        printf("0\n");
+    } else {
+        int sum = 0;
+        while (max_prime > 0) {
+            sum += max_prime % 10;
+            max_prime /= 10;
+        }
+        printf("%d\n", sum);
+    }
+    
     return 0;
 }

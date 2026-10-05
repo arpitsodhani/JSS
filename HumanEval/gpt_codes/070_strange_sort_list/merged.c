@@ -1,41 +1,39 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {48, 10, 10, 0};
-static const unsigned char output_0[] = {10, 0};
-static const unsigned char input_1[] = {49, 10, 49, 49, 49, 49, 49, 49, 10, 0};
-static const unsigned char output_1[] = {49, 49, 49, 49, 49, 49, 10, 0};
+void strange_sort(int *arr, int n, int *result) {
+    int sorted[n];
+    for (int i = 0; i < n; i++) sorted[i] = arr[i];
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (sorted[j] > sorted[j + 1]) {
+                int temp = sorted[j];
+                sorted[j] = sorted[j + 1];
+                sorted[j + 1] = temp;
+            }
+        }
+    }
+    int left = 0, right = n - 1;
+    int idx = 0;
+    while (left <= right) {
+        if (idx % 2 == 0) {
+            result[idx++] = sorted[left++];
+        } else {
+            result[idx++] = sorted[right--];
+        }
+    }
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+    int result[n];
+    strange_sort(arr, n, result);
+    for (int i = 0; i < n; i++) {
+        printf("%d", result[i]);
+        if (i < n - 1) printf(" ");
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    printf("\n");
+    return 0;
 }

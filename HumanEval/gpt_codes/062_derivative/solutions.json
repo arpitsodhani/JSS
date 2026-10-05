@@ -1,139 +1,118 @@
 {
+  "problem_id": "062_derivative",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "clause1_0",
-          "code": "void derivative(int* xs, int n, int* result, int* result_n) {\n    *result_n = (n > 0) ? n - 1 : 0;\n    for (int i = 1; i < n; i++) {\n        result[i - 1] = i * xs[i];\n    }\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int xs[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &xs[i]);\n    int result[n], result_n;\n    derivative(xs, n, result, &result_n);\n    if (result_n == 0) {\n        printf(\"\\n\");\n    } else {\n        for (int i = 0; i < result_n; i++) {\n            if (i > 0) printf(\" \");\n            printf(\"%d\", result[i]);\n        }\n        printf(\"\\n\");\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "compute_derivative",
+          "code": "void compute_derivative(int *coeffs, int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 1; i < n; i++) {\n        result[(*result_len)++] = coeffs[i] * i;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int coeffs[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &coeffs[i]);\n    int result[n];\n    int result_len;\n    compute_derivative(coeffs, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "clause2_0",
-          "code": "void derivative(int* xs, int n, int* result, int* result_n) {\n    *result_n = (n > 0) ? n - 1 : 0;\n    for (int i = 1; i < n; i++) {\n        result[i - 1] = i * xs[i];\n    }\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int xs[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &xs[i]);\n    int result[n], result_n;\n    derivative(xs, n, result, &result_n);\n    if (result_n == 0) {\n        printf(\"\\n\");\n    } else {\n        for (int i = 0; i < result_n; i++) {\n            if (i > 0) printf(\" \");\n            printf(\"%d\", result[i]);\n        }\n        printf(\"\\n\");\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "compute_derivative",
+          "code": "void compute_derivative(int *coeffs, int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 1; i < n; i++) {\n        result[(*result_len)++] = coeffs[i] * i;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int coeffs[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &coeffs[i]);\n    int result[n];\n    int result_len;\n    compute_derivative(coeffs, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "clause3_0",
-          "code": "void derivative(int* xs, int n, int* result, int* result_n) {\n    *result_n = (n > 0) ? n - 1 : 0;\n    for (int i = 1; i < n; i++) {\n        result[i - 1] = i * xs[i];\n    }\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int xs[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &xs[i]);\n    int result[n], result_n;\n    derivative(xs, n, result, &result_n);\n    if (result_n == 0) {\n        printf(\"\\n\");\n    } else {\n        for (int i = 0; i < result_n; i++) {\n            if (i > 0) printf(\" \");\n            printf(\"%d\", result[i]);\n        }\n        printf(\"\\n\");\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "compute_derivative",
+          "code": "void compute_derivative(int *coeffs, int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 1; i < n; i++) {\n        result[(*result_len)++] = coeffs[i] * i;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int coeffs[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &coeffs[i]);\n    int result[n];\n    int result_len;\n    compute_derivative(coeffs, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "clause4_0",
-          "code": "void derivative(int* xs, int n, int* result, int* result_n) {\n    *result_n = (n > 0) ? n - 1 : 0;\n    for (int i = 1; i < n; i++) {\n        result[i - 1] = i * xs[i];\n    }\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int xs[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &xs[i]);\n    int result[n], result_n;\n    derivative(xs, n, result, &result_n);\n    if (result_n == 0) {\n        printf(\"\\n\");\n    } else {\n        for (int i = 0; i < result_n; i++) {\n            if (i > 0) printf(\" \");\n            printf(\"%d\", result[i]);\n        }\n        printf(\"\\n\");\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "compute_derivative",
+          "code": "void compute_derivative(int *coeffs, int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 1; i < n; i++) {\n        result[(*result_len)++] = coeffs[i] * i;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int coeffs[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &coeffs[i]);\n    int result[n];\n    int result_len;\n    compute_derivative(coeffs, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "clause5_0",
-          "code": "void derivative(int* xs, int n, int* result, int* result_n) {\n    *result_n = (n > 0) ? n - 1 : 0;\n    for (int i = 1; i < n; i++) {\n        result[i - 1] = i * xs[i];\n    }\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int xs[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &xs[i]);\n    int result[n], result_n;\n    derivative(xs, n, result, &result_n);\n    if (result_n == 0) {\n        printf(\"\\n\");\n    } else {\n        for (int i = 0; i < result_n; i++) {\n            if (i > 0) printf(\" \");\n            printf(\"%d\", result[i]);\n        }\n        printf(\"\\n\");\n    }\n}",
-          "shared_variables": {}
+          "clause_id": "compute_derivative",
+          "code": "void compute_derivative(int *coeffs, int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 1; i < n; i++) {\n        result[(*result_len)++] = coeffs[i] * i;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int coeffs[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &coeffs[i]);\n    int result[n];\n    int result_len;\n    compute_derivative(coeffs, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

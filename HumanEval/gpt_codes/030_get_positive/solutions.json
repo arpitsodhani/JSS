@@ -1,17 +1,22 @@
 {
+  "problem_id": "030_get_positive",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "get_positive",
-          "code": "void get_positive(int *arr, int n) {\n    int first = 1;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > 0) {\n            if (!first) printf(\" \");\n            printf(\"%d\", arr[i]);\n            first = 0;\n        }\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "filter_positive",
+          "code": "void filter_positive(int *arr, int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > 0) {\n            result[(*result_len)++] = arr[i];\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    get_positive(arr, n);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[n];\n    int result_len;\n    filter_positive(arr, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -23,13 +28,17 @@
       "clauses": [
         {
           "clause_id": "filter_positive",
-          "code": "void filter_positive(int *nums, int size) {\n    int found = 0;\n    for (int i = 0; i < size; i++) {\n        if (nums[i] > 0) {\n            if (found > 0) printf(\" \");\n            printf(\"%d\", nums[i]);\n            found++;\n        }\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "code": "void filter_positive(int *arr, int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > 0) {\n            result[(*result_len)++] = arr[i];\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    int data[count];\n    for (int i = 0; i < count; i++) scanf(\"%d\", &data[i]);\n    filter_positive(data, count);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[n];\n    int result_len;\n    filter_positive(arr, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -40,14 +49,18 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "positive_vals",
-          "code": "void positive_vals(int *arr, int n) {\n    int first=1;\n    for(int i=0;i<n;i++)if(arr[i]>0){if(!first)printf(\" \");printf(\"%d\",arr[i]);first=0;}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "filter_positive",
+          "code": "void filter_positive(int *arr, int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > 0) {\n            result[(*result_len)++] = arr[i];\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int n;\n    scanf(\"%d\",&n);\n    int arr[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&arr[i]);\n    positive_vals(arr,n);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[n];\n    int result_len;\n    filter_positive(arr, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -58,14 +71,18 @@
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "select_positive",
-          "code": "void select_positive(int *v, int sz) {\n    int cnt=0;\n    for(int i=0;i<sz;i++)if(v[i]>0){if(cnt)printf(\" \");printf(\"%d\",v[i]);cnt++;}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "filter_positive",
+          "code": "void filter_positive(int *arr, int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > 0) {\n            result[(*result_len)++] = arr[i];\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int sz;\n    scanf(\"%d\",&sz);\n    int v[sz];\n    for(int i=0;i<sz;i++) scanf(\"%d\",&v[i]);\n    select_positive(v,sz);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[n];\n    int result_len;\n    filter_positive(arr, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
@@ -76,19 +93,26 @@
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "above_zero",
-          "code": "void above_zero(int *nums, int len) {\n    int p=0;\n    for(int k=0;k<len;k++)if(nums[k]>0){if(p)printf(\" \");printf(\"%d\",nums[k]);p++;}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "filter_positive",
+          "code": "void filter_positive(int *arr, int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > 0) {\n            result[(*result_len)++] = arr[i];\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main(void) {\n    int len;\n    scanf(\"%d\",&len);\n    int nums[len];\n    for(int i=0;i<len;i++) scanf(\"%d\",&nums[i]);\n    above_zero(nums,len);\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[n];\n    int result_len;\n    filter_positive(arr, n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

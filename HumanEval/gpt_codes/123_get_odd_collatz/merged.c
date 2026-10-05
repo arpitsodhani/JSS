@@ -1,42 +1,56 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-int compare_int(const void *a, const void *b) {
-    return *(int*)a - *(int*)b;
-}
-
-void get_odd_collatz(int n, int *result, int *size) {
-    *size = 0;
-    int seen[1000] = {0};
+void get_odd_collatz_numbers(int n, int* result, int* result_len) {
+    *result_len = 0;
+    result[(*result_len)++] = n;
     
     while (n != 1) {
-        if (n % 2 == 1 && !seen[*size]) {
-            result[*size] = n;
-            seen[*size] = 1;
-            (*size)++;
-        }
         if (n % 2 == 0) {
             n = n / 2;
         } else {
             n = 3 * n + 1;
         }
+        
+        if (n % 2 == 1) {
+            int found = 0;
+            for (int i = 0; i < *result_len; i++) {
+                if (result[i] == n) {
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                result[(*result_len)++] = n;
+            }
+        }
     }
     
-    qsort(result, *size, sizeof(int), compare_int);
+    // Sort
+    for (int i = 0; i < *result_len - 1; i++) {
+        for (int j = i + 1; j < *result_len; j++) {
+            if (result[i] > result[j]) {
+                int tmp = result[i];
+                result[i] = result[j];
+                result[j] = tmp;
+            }
+        }
+    }
 }
 
 int main() {
     int n;
     scanf("%d", &n);
-    int result[1000], size;
-    get_odd_collatz(n, result, &size);
-    for (int i = 0; i < size; i++) {
+    
+    int result[10000];
+    int result_len;
+    get_odd_collatz_numbers(n, result, &result_len);
+    
+    printf("[");
+    for (int i = 0; i < result_len; i++) {
+        if (i > 0) printf(", ");
         printf("%d", result[i]);
-        if (i < size - 1) printf(" ");
     }
-    printf("\n");
+    printf("]\n");
+    
     return 0;
 }

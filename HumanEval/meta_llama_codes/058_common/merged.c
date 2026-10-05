@@ -1,55 +1,50 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-static const unsigned char input_0[] = {55, 32, 55, 10, 49, 32, 52, 32, 51, 32, 51, 52, 32, 54, 53, 51, 32, 50, 32, 53, 10, 53, 32, 55, 32, 49, 32, 53, 32, 57, 32, 54, 53, 51, 32, 49, 50, 49, 10, 0};
-static const unsigned char output_0[] = {49, 32, 53, 32, 54, 53, 51, 10, 0};
-static const unsigned char input_1[] = {52, 32, 50, 10, 53, 32, 51, 32, 50, 32, 56, 10, 51, 32, 50, 10, 0};
-static const unsigned char output_1[] = {50, 32, 51, 10, 0};
-static const unsigned char input_2[] = {52, 32, 51, 10, 52, 32, 51, 32, 50, 32, 56, 10, 51, 32, 50, 32, 52, 10, 0};
-static const unsigned char output_2[] = {50, 32, 51, 32, 52, 10, 0};
-static const unsigned char input_3[] = {52, 32, 48, 10, 52, 32, 51, 32, 50, 32, 56, 10, 10, 0};
-static const unsigned char output_3[] = {10, 0};
+void find_common_elements(int *arr1, int n1, int *arr2, int n2, int *result, int *result_len) {
+    *result_len = 0;
+    for (int i = 0; i < n1; i++) {
+        for (int j = 0; j < n2; j++) {
+            if (arr1[i] == arr2[j]) {
+                int found = 0;
+                for (int k = 0; k < *result_len; k++) {
+                    if (result[k] == arr1[i]) {
+                        found = 1;
+                        break;
+                    }
+                }
+                if (!found) {
+                    result[(*result_len)++] = arr1[i];
+                }
+                break;
+            }
+        }
+    }
+    for (int i = 0; i < *result_len - 1; i++) {
+        for (int j = 0; j < *result_len - i - 1; j++) {
+            if (result[j] > result[j + 1]) {
+                int temp = result[j];
+                result[j] = result[j + 1];
+                result[j + 1] = temp;
+            }
+        }
+    }
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
+    int n1, n2;
+    scanf("%d %d", &n1, &n2);
+    int arr1[n1];
+    for (int i = 0; i < n1; i++) scanf("%d", &arr1[i]);
+    int arr2[n2];
+    for (int i = 0; i < n2; i++) scanf("%d", &arr2[i]);
+    int result[n1 > n2 ? n1 : n2];
+    int result_len;
+    find_common_elements(arr1, n1, arr2, n2, result, &result_len);
+    for (int i = 0; i < result_len; i++) {
+        printf("%d", result[i]);
+        if (i < result_len - 1) printf(" ");
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_3) == 0) {
-        fputs((const char *)output_3, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    printf("\n");
+    return 0;
 }

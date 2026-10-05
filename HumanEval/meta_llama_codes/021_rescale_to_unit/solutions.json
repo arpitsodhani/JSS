@@ -5,56 +5,114 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "rescale_to_unit",
+          "code": "void rescale_to_unit(double *arr, int n, double *result) {\n    double min_val = arr[0];\n    double max_val = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < min_val) min_val = arr[i];\n        if (arr[i] > max_val) max_val = arr[i];\n    }\n    double range = max_val - min_val;\n    for (int i = 0; i < n; i++) {\n        result[i] = (arr[i] - min_val) / range;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {50, 10, 50, 46, 48, 32, 52, 57, 46, 57, 10, 0};\nstatic const unsigned char output_0[] = {48, 46, 48, 32, 49, 46, 48, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 49, 48, 48, 46, 48, 32, 52, 57, 46, 57, 10, 0};\nstatic const unsigned char output_1[] = {49, 46, 48, 32, 48, 46, 48, 10, 0};\nstatic const unsigned char input_2[] = {53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_2[] = {48, 46, 48, 32, 48, 46, 50, 53, 32, 48, 46, 53, 32, 48, 46, 55, 53, 32, 49, 46, 48, 10, 0};\nstatic const unsigned char input_3[] = {53, 10, 50, 46, 48, 32, 49, 46, 48, 32, 53, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 10, 0};\nstatic const unsigned char output_3[] = {48, 46, 50, 53, 32, 48, 46, 48, 32, 49, 46, 48, 32, 48, 46, 53, 32, 48, 46, 55, 53, 10, 0};\nstatic const unsigned char input_4[] = {53, 10, 49, 50, 46, 48, 32, 49, 49, 46, 48, 32, 49, 53, 46, 48, 32, 49, 51, 46, 48, 32, 49, 52, 46, 48, 10, 0};\nstatic const unsigned char output_4[] = {48, 46, 50, 53, 32, 48, 46, 48, 32, 49, 46, 48, 32, 48, 46, 53, 32, 48, 46, 55, 53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    double arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%lf\", &arr[i]);\n    double result[n];\n    rescale_to_unit(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%g\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "rescale_to_unit",
+          "code": "void rescale_to_unit(double *arr, int n, double *result) {\n    double min_val = arr[0];\n    double max_val = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < min_val) min_val = arr[i];\n        if (arr[i] > max_val) max_val = arr[i];\n    }\n    double range = max_val - min_val;\n    for (int i = 0; i < n; i++) {\n        result[i] = (arr[i] - min_val) / range;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {50, 10, 50, 46, 48, 32, 52, 57, 46, 57, 10, 0};\nstatic const unsigned char output_0[] = {48, 46, 48, 32, 49, 46, 48, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 49, 48, 48, 46, 48, 32, 52, 57, 46, 57, 10, 0};\nstatic const unsigned char output_1[] = {49, 46, 48, 32, 48, 46, 48, 10, 0};\nstatic const unsigned char input_2[] = {53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_2[] = {48, 46, 48, 32, 48, 46, 50, 53, 32, 48, 46, 53, 32, 48, 46, 55, 53, 32, 49, 46, 48, 10, 0};\nstatic const unsigned char input_3[] = {53, 10, 50, 46, 48, 32, 49, 46, 48, 32, 53, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 10, 0};\nstatic const unsigned char output_3[] = {48, 46, 50, 53, 32, 48, 46, 48, 32, 49, 46, 48, 32, 48, 46, 53, 32, 48, 46, 55, 53, 10, 0};\nstatic const unsigned char input_4[] = {53, 10, 49, 50, 46, 48, 32, 49, 49, 46, 48, 32, 49, 53, 46, 48, 32, 49, 51, 46, 48, 32, 49, 52, 46, 48, 10, 0};\nstatic const unsigned char output_4[] = {48, 46, 50, 53, 32, 48, 46, 48, 32, 49, 46, 48, 32, 48, 46, 53, 32, 48, 46, 55, 53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    double nums[n];\n    for (int i = 0; i < n; i++) scanf(\"%lf\", &nums[i]);\n    double result[n];\n    rescale_to_unit(nums, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%g\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "rescale_to_unit",
+          "code": "void rescale_to_unit(double *arr, int n, double *result) {\n    double min_val = arr[0];\n    double max_val = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < min_val) min_val = arr[i];\n        if (arr[i] > max_val) max_val = arr[i];\n    }\n    double range = max_val - min_val;\n    for (int i = 0; i < n; i++) {\n        result[i] = (arr[i] - min_val) / range;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {50, 10, 50, 46, 48, 32, 52, 57, 46, 57, 10, 0};\nstatic const unsigned char output_0[] = {48, 46, 48, 32, 49, 46, 48, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 49, 48, 48, 46, 48, 32, 52, 57, 46, 57, 10, 0};\nstatic const unsigned char output_1[] = {49, 46, 48, 32, 48, 46, 48, 10, 0};\nstatic const unsigned char input_2[] = {53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_2[] = {48, 46, 48, 32, 48, 46, 50, 53, 32, 48, 46, 53, 32, 48, 46, 55, 53, 32, 49, 46, 48, 10, 0};\nstatic const unsigned char input_3[] = {53, 10, 50, 46, 48, 32, 49, 46, 48, 32, 53, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 10, 0};\nstatic const unsigned char output_3[] = {48, 46, 50, 53, 32, 48, 46, 48, 32, 49, 46, 48, 32, 48, 46, 53, 32, 48, 46, 55, 53, 10, 0};\nstatic const unsigned char input_4[] = {53, 10, 49, 50, 46, 48, 32, 49, 49, 46, 48, 32, 49, 53, 46, 48, 32, 49, 51, 46, 48, 32, 49, 52, 46, 48, 10, 0};\nstatic const unsigned char output_4[] = {48, 46, 50, 53, 32, 48, 46, 48, 32, 49, 46, 48, 32, 48, 46, 53, 32, 48, 46, 55, 53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    double values[count];\n    for (int i = 0; i < count; i++) scanf(\"%lf\", &values[i]);\n    double result[count];\n    rescale_to_unit(values, count, result);\n    for (int i = 0; i < count; i++) {\n        printf(\"%g\", result[i]);\n        if (i < count - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "rescale_to_unit",
+          "code": "void rescale_to_unit(double *arr, int n, double *result) {\n    double min_val = arr[0];\n    double max_val = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < min_val) min_val = arr[i];\n        if (arr[i] > max_val) max_val = arr[i];\n    }\n    double range = max_val - min_val;\n    for (int i = 0; i < n; i++) {\n        result[i] = (arr[i] - min_val) / range;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {50, 10, 50, 46, 48, 32, 52, 57, 46, 57, 10, 0};\nstatic const unsigned char output_0[] = {48, 46, 48, 32, 49, 46, 48, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 49, 48, 48, 46, 48, 32, 52, 57, 46, 57, 10, 0};\nstatic const unsigned char output_1[] = {49, 46, 48, 32, 48, 46, 48, 10, 0};\nstatic const unsigned char input_2[] = {53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_2[] = {48, 46, 48, 32, 48, 46, 50, 53, 32, 48, 46, 53, 32, 48, 46, 55, 53, 32, 49, 46, 48, 10, 0};\nstatic const unsigned char input_3[] = {53, 10, 50, 46, 48, 32, 49, 46, 48, 32, 53, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 10, 0};\nstatic const unsigned char output_3[] = {48, 46, 50, 53, 32, 48, 46, 48, 32, 49, 46, 48, 32, 48, 46, 53, 32, 48, 46, 55, 53, 10, 0};\nstatic const unsigned char input_4[] = {53, 10, 49, 50, 46, 48, 32, 49, 49, 46, 48, 32, 49, 53, 46, 48, 32, 49, 51, 46, 48, 32, 49, 52, 46, 48, 10, 0};\nstatic const unsigned char output_4[] = {48, 46, 50, 53, 32, 48, 46, 48, 32, 49, 46, 48, 32, 48, 46, 53, 32, 48, 46, 55, 53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int size;\n    scanf(\"%d\", &size);\n    double data[size];\n    for (int i = 0; i < size; i++) scanf(\"%lf\", &data[i]);\n    double result[size];\n    rescale_to_unit(data, size, result);\n    for (int i = 0; i < size; i++) {\n        printf(\"%g\", result[i]);\n        if (i < size - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "rescale_to_unit",
+          "code": "void rescale_to_unit(double *arr, int n, double *result) {\n    double min_val = arr[0];\n    double max_val = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < min_val) min_val = arr[i];\n        if (arr[i] > max_val) max_val = arr[i];\n    }\n    double range = max_val - min_val;\n    for (int i = 0; i < n; i++) {\n        result[i] = (arr[i] - min_val) / range;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {50, 10, 50, 46, 48, 32, 52, 57, 46, 57, 10, 0};\nstatic const unsigned char output_0[] = {48, 46, 48, 32, 49, 46, 48, 10, 0};\nstatic const unsigned char input_1[] = {50, 10, 49, 48, 48, 46, 48, 32, 52, 57, 46, 57, 10, 0};\nstatic const unsigned char output_1[] = {49, 46, 48, 32, 48, 46, 48, 10, 0};\nstatic const unsigned char input_2[] = {53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_2[] = {48, 46, 48, 32, 48, 46, 50, 53, 32, 48, 46, 53, 32, 48, 46, 55, 53, 32, 49, 46, 48, 10, 0};\nstatic const unsigned char input_3[] = {53, 10, 50, 46, 48, 32, 49, 46, 48, 32, 53, 46, 48, 32, 51, 46, 48, 32, 52, 46, 48, 10, 0};\nstatic const unsigned char output_3[] = {48, 46, 50, 53, 32, 48, 46, 48, 32, 49, 46, 48, 32, 48, 46, 53, 32, 48, 46, 55, 53, 10, 0};\nstatic const unsigned char input_4[] = {53, 10, 49, 50, 46, 48, 32, 49, 49, 46, 48, 32, 49, 53, 46, 48, 32, 49, 51, 46, 48, 32, 49, 52, 46, 48, 10, 0};\nstatic const unsigned char output_4[] = {48, 46, 50, 53, 32, 48, 46, 48, 32, 49, 46, 48, 32, 48, 46, 53, 32, 48, 46, 55, 53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int length;\n    scanf(\"%d\", &length);\n    double numbers[length];\n    for (int i = 0; i < length; i++) scanf(\"%lf\", &numbers[i]);\n    double result[length];\n    rescale_to_unit(numbers, length, result);\n    for (int i = 0; i < length; i++) {\n        printf(\"%g\", result[i]);\n        if (i < length - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

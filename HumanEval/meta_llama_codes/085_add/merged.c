@@ -1,55 +1,30 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {50, 10, 52, 32, 56, 56, 10, 0};
-static const unsigned char output_0[] = {56, 56, 10, 0};
-static const unsigned char input_1[] = {54, 10, 52, 32, 53, 32, 54, 32, 55, 32, 50, 32, 49, 50, 50, 10, 0};
-static const unsigned char output_1[] = {49, 50, 50, 10, 0};
-static const unsigned char input_2[] = {52, 10, 52, 32, 48, 32, 54, 32, 55, 10, 0};
-static const unsigned char output_2[] = {48, 10, 0};
-static const unsigned char input_3[] = {52, 10, 52, 32, 52, 32, 54, 32, 56, 10, 0};
-static const unsigned char output_3[] = {49, 50, 10, 0};
+void add_arrays(int *arr1, int n1, int *arr2, int n2, int *result, int *result_len) {
+    *result_len = 0;
+    for (int i = 0; i < n1; i++) {
+        result[(*result_len)++] = arr1[i];
+    }
+    for (int i = 0; i < n2; i++) {
+        result[(*result_len)++] = arr2[i];
+    }
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
+    int n1, n2;
+    scanf("%d", &n1);
+    int arr1[n1];
+    for (int i = 0; i < n1; i++) scanf("%d", &arr1[i]);
+    scanf("%d", &n2);
+    int arr2[n2];
+    for (int i = 0; i < n2; i++) scanf("%d", &arr2[i]);
+    int result[n1 + n2];
+    int result_len;
+    add_arrays(arr1, n1, arr2, n2, result, &result_len);
+    for (int i = 0; i < result_len; i++) {
+        printf("%d", result[i]);
+        if (i < result_len - 1) printf(" ");
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_3) == 0) {
-        fputs((const char *)output_3, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    printf("\n");
+    return 0;
 }

@@ -1,28 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
-
-int can_arrange(int n, int arr[]) {
-    int max_index = -1;
-    
-    for (int i = 0; i < n; i++) {
-        if (arr[i] <= i) {
-            max_index = i;
-        }
-    }
-    
-    return max_index;
-}
 
 int main() {
-    int n;
+    int n, a[1000], r = -1;
     scanf("%d", &n);
-    int arr[n];
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-    printf("%d\n", can_arrange(n, arr));
+    for (int i = 0; i < n; i++) scanf("%d", &a[i]);
+    for (int i = 1; i < n; i++) if (a[i] < a[i - 1]) r = i;
+    printf("%d\n", r);
     return 0;
 }

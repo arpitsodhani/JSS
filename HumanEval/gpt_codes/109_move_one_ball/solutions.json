@@ -1,139 +1,118 @@
 {
+  "problem_id": "109_move_one_ball",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "move_one_ball",
-          "code": "int move_one_ball(int n, int arr[]) {\n    if (n == 0) return 1;\n    \n    int rotations = 0;\n    for (int i = 0; i < n; i++) {\n        int sorted = 1;\n        for (int j = 0; j < n - 1; j++) {\n            if (arr[(i + j) % n] > arr[(i + j + 1) % n]) {\n                sorted = 0;\n                break;\n            }\n        }\n        if (sorted) return 1;\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"True\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    printf(\"%s\\n\", move_one_ball(n, arr) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "can_sort_by_rotation",
+          "code": "int can_sort_by_rotation(int *arr, int n) {\n    if (n <= 1) return 1;\n    int sorted = 1;\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < arr[i-1]) {\n            sorted = 0;\n            break;\n        }\n    }\n    if (sorted) return 1;\n    for (int rotate = 1; rotate < n; rotate++) {\n        int valid = 1;\n        for (int i = 0; i < n - 1; i++) {\n            int curr = (i + rotate) % n;\n            int next = (i + rotate + 1) % n;\n            if (arr[curr] > arr[next]) {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid) return 1;\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (can_sort_by_rotation(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "move_one_ball",
-          "code": "int move_one_ball(int n, int arr[]) {\n    if (n == 0) return 1;\n    \n    int rotations = 0;\n    for (int i = 0; i < n; i++) {\n        int sorted = 1;\n        for (int j = 0; j < n - 1; j++) {\n            if (arr[(i + j) % n] > arr[(i + j + 1) % n]) {\n                sorted = 0;\n                break;\n            }\n        }\n        if (sorted) return 1;\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"True\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    printf(\"%s\\n\", move_one_ball(n, arr) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "can_sort_by_rotation",
+          "code": "int can_sort_by_rotation(int *arr, int n) {\n    if (n <= 1) return 1;\n    int sorted = 1;\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < arr[i-1]) {\n            sorted = 0;\n            break;\n        }\n    }\n    if (sorted) return 1;\n    for (int rotate = 1; rotate < n; rotate++) {\n        int valid = 1;\n        for (int i = 0; i < n - 1; i++) {\n            int curr = (i + rotate) % n;\n            int next = (i + rotate + 1) % n;\n            if (arr[curr] > arr[next]) {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid) return 1;\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (can_sort_by_rotation(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "move_one_ball",
-          "code": "int move_one_ball(int n, int arr[]) {\n    if (n == 0) return 1;\n    \n    int rotations = 0;\n    for (int i = 0; i < n; i++) {\n        int sorted = 1;\n        for (int j = 0; j < n - 1; j++) {\n            if (arr[(i + j) % n] > arr[(i + j + 1) % n]) {\n                sorted = 0;\n                break;\n            }\n        }\n        if (sorted) return 1;\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"True\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    printf(\"%s\\n\", move_one_ball(n, arr) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "can_sort_by_rotation",
+          "code": "int can_sort_by_rotation(int *arr, int n) {\n    if (n <= 1) return 1;\n    int sorted = 1;\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < arr[i-1]) {\n            sorted = 0;\n            break;\n        }\n    }\n    if (sorted) return 1;\n    for (int rotate = 1; rotate < n; rotate++) {\n        int valid = 1;\n        for (int i = 0; i < n - 1; i++) {\n            int curr = (i + rotate) % n;\n            int next = (i + rotate + 1) % n;\n            if (arr[curr] > arr[next]) {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid) return 1;\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (can_sort_by_rotation(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "move_one_ball",
-          "code": "int move_one_ball(int n, int arr[]) {\n    if (n == 0) return 1;\n    \n    int rotations = 0;\n    for (int i = 0; i < n; i++) {\n        int sorted = 1;\n        for (int j = 0; j < n - 1; j++) {\n            if (arr[(i + j) % n] > arr[(i + j + 1) % n]) {\n                sorted = 0;\n                break;\n            }\n        }\n        if (sorted) return 1;\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"True\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    printf(\"%s\\n\", move_one_ball(n, arr) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "can_sort_by_rotation",
+          "code": "int can_sort_by_rotation(int *arr, int n) {\n    if (n <= 1) return 1;\n    int sorted = 1;\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < arr[i-1]) {\n            sorted = 0;\n            break;\n        }\n    }\n    if (sorted) return 1;\n    for (int rotate = 1; rotate < n; rotate++) {\n        int valid = 1;\n        for (int i = 0; i < n - 1; i++) {\n            int curr = (i + rotate) % n;\n            int next = (i + rotate + 1) % n;\n            if (arr[curr] > arr[next]) {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid) return 1;\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (can_sort_by_rotation(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "move_one_ball",
-          "code": "int move_one_ball(int n, int arr[]) {\n    if (n == 0) return 1;\n    \n    int rotations = 0;\n    for (int i = 0; i < n; i++) {\n        int sorted = 1;\n        for (int j = 0; j < n - 1; j++) {\n            if (arr[(i + j) % n] > arr[(i + j + 1) % n]) {\n                sorted = 0;\n                break;\n            }\n        }\n        if (sorted) return 1;\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"True\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    printf(\"%s\\n\", move_one_ball(n, arr) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "can_sort_by_rotation",
+          "code": "int can_sort_by_rotation(int *arr, int n) {\n    if (n <= 1) return 1;\n    int sorted = 1;\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < arr[i-1]) {\n            sorted = 0;\n            break;\n        }\n    }\n    if (sorted) return 1;\n    for (int rotate = 1; rotate < n; rotate++) {\n        int valid = 1;\n        for (int i = 0; i < n - 1; i++) {\n            int curr = (i + rotate) % n;\n            int next = (i + rotate + 1) % n;\n            if (arr[curr] > arr[next]) {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid) return 1;\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    if (can_sort_by_rotation(arr, n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

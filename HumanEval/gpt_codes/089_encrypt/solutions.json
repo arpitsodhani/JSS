@@ -1,88 +1,74 @@
 {
+  "problem_id": "089_encrypt",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "encrypt",
-          "code": "void encrypt(const char *s, char *result) {\n    for (int i = 0; s[i]; i++) {\n        if (islower(s[i])) {\n            result[i] = ((s[i] - 'a' + 4) % 26) + 'a';\n        } else {\n            result[i] = s[i];\n        }\n    }\n    result[strlen(s)] = 0;\n}\n\nint main() {\n    char s[1000], result[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    encrypt(s, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    char s[1001];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    for (int i = 0; i < len; i++) {\n        if (s[i] >= 'a' && s[i] <= 'z') {\n            s[i] = 'a' + (s[i] - 'a' + 4) % 26;\n        }\n    }\n    printf(\"%s\\n\", s);\n    return 0;\n}"
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "encrypt",
-          "code": "void encrypt(const char *s, char *result) {\n    for (int i = 0; s[i]; i++) {\n        if (islower(s[i])) {\n            result[i] = ((s[i] - 'a' + 4) % 26) + 'a';\n        } else {\n            result[i] = s[i];\n        }\n    }\n    result[strlen(s)] = 0;\n}\n\nint main() {\n    char s[1000], result[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    encrypt(s, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    char str[1001];\n    scanf(\"%s\", str);\n    int n = strlen(str);\n    for (int k = 0; k < n; k++) {\n        if (str[k] >= 'a' && str[k] <= 'z') {\n            str[k] = 'a' + (str[k] - 'a' + 4) % 26;\n        }\n    }\n    printf(\"%s\\n\", str);\n    return 0;\n}"
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "encrypt",
-          "code": "void encrypt(const char *s, char *result) {\n    for (int i = 0; s[i]; i++) {\n        if (islower(s[i])) {\n            result[i] = ((s[i] - 'a' + 4) % 26) + 'a';\n        } else {\n            result[i] = s[i];\n        }\n    }\n    result[strlen(s)] = 0;\n}\n\nint main() {\n    char s[1000], result[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    encrypt(s, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    char input[1001];\n    scanf(\"%s\", input);\n    int size = strlen(input);\n    for (int i = 0; i < size; i++) {\n        if (input[i] >= 'a' && input[i] <= 'z') {\n            input[i] = 'a' + (input[i] - 'a' + 4) % 26;\n        }\n    }\n    printf(\"%s\\n\", input);\n    return 0;\n}"
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "encrypt",
-          "code": "void encrypt(const char *s, char *result) {\n    for (int i = 0; s[i]; i++) {\n        if (islower(s[i])) {\n            result[i] = ((s[i] - 'a' + 4) % 26) + 'a';\n        } else {\n            result[i] = s[i];\n        }\n    }\n    result[strlen(s)] = 0;\n}\n\nint main() {\n    char s[1000], result[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    encrypt(s, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    char text[1001];\n    scanf(\"%s\", text);\n    int len = strlen(text);\n    for (int p = 0; p < len; p++) {\n        if (text[p] >= 'a' && text[p] <= 'z') {\n            text[p] = 'a' + (text[p] - 'a' + 4) % 26;\n        }\n    }\n    printf(\"%s\\n\", text);\n    return 0;\n}"
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "encrypt",
-          "code": "void encrypt(const char *s, char *result) {\n    for (int i = 0; s[i]; i++) {\n        if (islower(s[i])) {\n            result[i] = ((s[i] - 'a' + 4) % 26) + 'a';\n        } else {\n            result[i] = s[i];\n        }\n    }\n    result[strlen(s)] = 0;\n}\n\nint main() {\n    char s[1000], result[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    encrypt(s, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    char data[1001];\n    scanf(\"%s\", data);\n    int cnt = strlen(data);\n    for (int a = 0; a < cnt; a++) {\n        if (data[a] >= 'a' && data[a] <= 'z') {\n            data[a] = 'a' + (data[a] - 'a' + 4) % 26;\n        }\n    }\n    printf(\"%s\\n\", data);\n    return 0;\n}"
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     }
   ]

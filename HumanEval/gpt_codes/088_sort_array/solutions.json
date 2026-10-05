@@ -1,189 +1,118 @@
 {
+  "problem_id": "088_sort_array",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "count_ones",
-          "code": "int count_ones(int n) {\n    int count = 0;\n    while (n) {\n        count += n & 1;\n        n >>= 1;\n    }\n    return count;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "compare",
-          "code": "int compare(const void *a, const void *b) {\n    int x = *(int*)a, y = *(int*)b;\n    int ones_x = count_ones(x), ones_y = count_ones(y);\n    if (ones_x != ones_y) return ones_x - ones_y;\n    return x - y;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "sort_array",
-          "code": "void sort_array(int n, int arr[]) {\n    if (n == 0) return;\n    qsort(arr, n, sizeof(int), compare);\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    sort_array(n, arr);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "sort_by_binary_ones",
+          "code": "void sort_by_binary_ones(int *arr, int n, int *result) {\n    int count_ones(int x) {\n        int count = 0;\n        while (x > 0) {\n            count += x & 1;\n            x >>= 1;\n        }\n        return count;\n    }\n    for (int i = 0; i < n; i++) result[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            int ones1 = count_ones(result[j]);\n            int ones2 = count_ones(result[j + 1]);\n            if (ones1 > ones2 || (ones1 == ones2 && result[j] > result[j + 1])) {\n                int temp = result[j];\n                result[j] = result[j + 1];\n                result[j + 1] = temp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[n];\n    sort_by_binary_ones(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "count_ones",
-          "code": "int count_ones(int n) {\n    int count = 0;\n    while (n) {\n        count += n & 1;\n        n >>= 1;\n    }\n    return count;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "compare",
-          "code": "int compare(const void *a, const void *b) {\n    int x = *(int*)a, y = *(int*)b;\n    int ones_x = count_ones(x), ones_y = count_ones(y);\n    if (ones_x != ones_y) return ones_x - ones_y;\n    return x - y;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "sort_array",
-          "code": "void sort_array(int n, int arr[]) {\n    if (n == 0) return;\n    qsort(arr, n, sizeof(int), compare);\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    sort_array(n, arr);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "sort_by_binary_ones",
+          "code": "void sort_by_binary_ones(int *arr, int n, int *result) {\n    int count_ones(int x) {\n        int count = 0;\n        while (x > 0) {\n            count += x & 1;\n            x >>= 1;\n        }\n        return count;\n    }\n    for (int i = 0; i < n; i++) result[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            int ones1 = count_ones(result[j]);\n            int ones2 = count_ones(result[j + 1]);\n            if (ones1 > ones2 || (ones1 == ones2 && result[j] > result[j + 1])) {\n                int temp = result[j];\n                result[j] = result[j + 1];\n                result[j + 1] = temp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[n];\n    sort_by_binary_ones(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "count_ones",
-          "code": "int count_ones(int n) {\n    int count = 0;\n    while (n) {\n        count += n & 1;\n        n >>= 1;\n    }\n    return count;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "compare",
-          "code": "int compare(const void *a, const void *b) {\n    int x = *(int*)a, y = *(int*)b;\n    int ones_x = count_ones(x), ones_y = count_ones(y);\n    if (ones_x != ones_y) return ones_x - ones_y;\n    return x - y;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "sort_array",
-          "code": "void sort_array(int n, int arr[]) {\n    if (n == 0) return;\n    qsort(arr, n, sizeof(int), compare);\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    sort_array(n, arr);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "sort_by_binary_ones",
+          "code": "void sort_by_binary_ones(int *arr, int n, int *result) {\n    int count_ones(int x) {\n        int count = 0;\n        while (x > 0) {\n            count += x & 1;\n            x >>= 1;\n        }\n        return count;\n    }\n    for (int i = 0; i < n; i++) result[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            int ones1 = count_ones(result[j]);\n            int ones2 = count_ones(result[j + 1]);\n            if (ones1 > ones2 || (ones1 == ones2 && result[j] > result[j + 1])) {\n                int temp = result[j];\n                result[j] = result[j + 1];\n                result[j + 1] = temp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[n];\n    sort_by_binary_ones(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "count_ones",
-          "code": "int count_ones(int n) {\n    int count = 0;\n    while (n) {\n        count += n & 1;\n        n >>= 1;\n    }\n    return count;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "compare",
-          "code": "int compare(const void *a, const void *b) {\n    int x = *(int*)a, y = *(int*)b;\n    int ones_x = count_ones(x), ones_y = count_ones(y);\n    if (ones_x != ones_y) return ones_x - ones_y;\n    return x - y;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "sort_array",
-          "code": "void sort_array(int n, int arr[]) {\n    if (n == 0) return;\n    qsort(arr, n, sizeof(int), compare);\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    sort_array(n, arr);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "sort_by_binary_ones",
+          "code": "void sort_by_binary_ones(int *arr, int n, int *result) {\n    int count_ones(int x) {\n        int count = 0;\n        while (x > 0) {\n            count += x & 1;\n            x >>= 1;\n        }\n        return count;\n    }\n    for (int i = 0; i < n; i++) result[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            int ones1 = count_ones(result[j]);\n            int ones2 = count_ones(result[j + 1]);\n            if (ones1 > ones2 || (ones1 == ones2 && result[j] > result[j + 1])) {\n                int temp = result[j];\n                result[j] = result[j + 1];\n                result[j + 1] = temp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[n];\n    sort_by_binary_ones(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "count_ones",
-          "code": "int count_ones(int n) {\n    int count = 0;\n    while (n) {\n        count += n & 1;\n        n >>= 1;\n    }\n    return count;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "compare",
-          "code": "int compare(const void *a, const void *b) {\n    int x = *(int*)a, y = *(int*)b;\n    int ones_x = count_ones(x), ones_y = count_ones(y);\n    if (ones_x != ones_y) return ones_x - ones_y;\n    return x - y;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "sort_array",
-          "code": "void sort_array(int n, int arr[]) {\n    if (n == 0) return;\n    qsort(arr, n, sizeof(int), compare);\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int arr[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    sort_array(n, arr);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "sort_by_binary_ones",
+          "code": "void sort_by_binary_ones(int *arr, int n, int *result) {\n    int count_ones(int x) {\n        int count = 0;\n        while (x > 0) {\n            count += x & 1;\n            x >>= 1;\n        }\n        return count;\n    }\n    for (int i = 0; i < n; i++) result[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            int ones1 = count_ones(result[j]);\n            int ones2 = count_ones(result[j + 1]);\n            if (ones1 > ones2 || (ones1 == ones2 && result[j] > result[j + 1])) {\n                int temp = result[j];\n                result[j] = result[j + 1];\n                result[j + 1] = temp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    int result[n];\n    sort_by_binary_ones(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

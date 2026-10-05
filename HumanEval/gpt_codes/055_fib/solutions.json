@@ -1,17 +1,24 @@
 {
+  "problem_id": "055_fib",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "fib",
-          "code": "int fib(int n) {\n    if (n <= 0) return 0;\n    if (n == 1) return 1;\n    int a = 0, b = 1;\n    for (int i = 2; i <= n; i++) {\n        int temp = a + b;\n        a = b;\n        b = temp;\n    }\n    return b;\n}",
-          "shared_variables": {}
+          "clause_id": "fibonacci",
+          "code": "int fibonacci(int n) {\n    if (n == 0) return 0;\n    if (n == 1) return 1;\n    \n    int a = 0, b = 1;\n    for (int i = 2; i <= n; i++) {\n        int temp = a + b;\n        a = b;\n        b = temp;\n    }\n    return b;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fib(n));\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", fibonacci(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -23,13 +30,19 @@
       "clauses": [
         {
           "clause_id": "fibonacci",
-          "code": "int fibonacci(int n) {\n    if(n<=0) return 0;\n    if(n==1) return 1;\n    int a=0,b=1;\n    for(int i=2;i<=n;i++){int t=a+b;a=b;b=t;}\n    return b;\n}",
-          "shared_variables": {}
+          "code": "int fibonacci(int n) {\n    if (n == 0) return 0;\n    if (n == 1) return 1;\n    \n    int a = 0, b = 1;\n    for (int i = 2; i <= n; i++) {\n        int temp = a + b;\n        a = b;\n        b = temp;\n    }\n    return b;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    printf(\"%d\\n\",fibonacci(n));\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", fibonacci(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -40,14 +53,20 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "fib_iter",
-          "code": "int fib_iter(int n) {\n    if(n==0) return 0;\n    if(n==1) return 1;\n    int p=0,q=1,k=2;\n    while(k<=n){int r=p+q;p=q;q=r;k++;}\n    return q;\n}",
-          "shared_variables": {}
+          "clause_id": "fibonacci",
+          "code": "int fibonacci(int n) {\n    if (n == 0) return 0;\n    if (n == 1) return 1;\n    \n    int a = 0, b = 1;\n    for (int i = 2; i <= n; i++) {\n        int temp = a + b;\n        a = b;\n        b = temp;\n    }\n    return b;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    printf(\"%d\\n\",fib_iter(n));\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", fibonacci(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -58,14 +77,20 @@
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "nth_fib",
-          "code": "int nth_fib(int idx) {\n    if(idx==0) return 0;\n    int x=0,y=1;\n    for(int i=1;i<idx;i++){int t=x+y;x=y;y=t;}\n    return y;\n}",
-          "shared_variables": {}
+          "clause_id": "fibonacci",
+          "code": "int fibonacci(int n) {\n    if (n == 0) return 0;\n    if (n == 1) return 1;\n    \n    int a = 0, b = 1;\n    for (int i = 2; i <= n; i++) {\n        int temp = a + b;\n        a = b;\n        b = temp;\n    }\n    return b;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    int idx;\n    scanf(\"%d\",&idx);\n    printf(\"%d\\n\",nth_fib(idx));\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", fibonacci(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [
@@ -76,14 +101,20 @@
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "fib_number",
-          "code": "int fib_number(int n) {\n    if(n<2) return n;\n    int prev=0,curr=1;\n    for(int k=2;k<=n;k++){int nxt=prev+curr;prev=curr;curr=nxt;}\n    return curr;\n}",
-          "shared_variables": {}
+          "clause_id": "fibonacci",
+          "code": "int fibonacci(int n) {\n    if (n == 0) return 0;\n    if (n == 1) return 1;\n    \n    int a = 0, b = 1;\n    for (int i = 2; i <= n; i++) {\n        int temp = a + b;\n        a = b;\n        b = temp;\n    }\n    return b;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    printf(\"%d\\n\",fib_number(n));\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%d\\n\", fibonacci(n));\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
       "includes": [

@@ -1,111 +1,40 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {49, 10, 53, 10, 0};
-static const unsigned char output_0[] = {48, 98, 49, 49, 10, 0};
-static const unsigned char input_1[] = {55, 10, 49, 51, 10, 0};
-static const unsigned char output_1[] = {48, 98, 49, 48, 49, 48, 10, 0};
-static const unsigned char input_2[] = {57, 54, 52, 10, 57, 55, 55, 10, 0};
-static const unsigned char output_2[] = {48, 98, 49, 49, 49, 49, 48, 48, 49, 48, 49, 48, 10, 0};
-static const unsigned char input_3[] = {57, 57, 54, 10, 57, 57, 55, 10, 0};
-static const unsigned char output_3[] = {48, 98, 49, 49, 49, 49, 49, 48, 48, 49, 48, 48, 10, 0};
-static const unsigned char input_4[] = {53, 54, 48, 10, 56, 53, 49, 10, 0};
-static const unsigned char output_4[] = {48, 98, 49, 48, 49, 49, 48, 48, 48, 48, 49, 48, 10, 0};
-static const unsigned char input_5[] = {49, 56, 53, 10, 53, 52, 54, 10, 0};
-static const unsigned char output_5[] = {48, 98, 49, 48, 49, 49, 48, 49, 49, 49, 48, 10, 0};
-static const unsigned char input_6[] = {51, 54, 50, 10, 52, 57, 54, 10, 0};
-static const unsigned char output_6[] = {48, 98, 49, 49, 48, 49, 48, 49, 49, 48, 49, 10, 0};
-static const unsigned char input_7[] = {51, 53, 48, 10, 57, 48, 50, 10, 0};
-static const unsigned char output_7[] = {48, 98, 49, 48, 48, 49, 49, 49, 48, 48, 49, 48, 10, 0};
-static const unsigned char input_8[] = {49, 57, 55, 10, 50, 51, 51, 10, 0};
-static const unsigned char output_8[] = {48, 98, 49, 49, 48, 49, 48, 49, 49, 49, 10, 0};
-static const unsigned char input_9[] = {55, 10, 53, 10, 0};
-static const unsigned char output_9[] = {45, 49, 10, 0};
-static const unsigned char input_10[] = {53, 10, 49, 10, 0};
-static const unsigned char output_10[] = {45, 49, 10, 0};
-static const unsigned char input_11[] = {53, 10, 53, 10, 0};
-static const unsigned char output_11[] = {48, 98, 49, 48, 49, 10, 0};
+void compute_rounded_avg(int n, int m, char *result) {
+    if (n > m) {
+        strcpy(result, "-1");
+        return;
+    }
+    int sum = 0;
+    for (int i = n; i <= m; i++) {
+        sum += i;
+    }
+    int avg = (sum + (m - n + 1) / 2) / (m - n + 1);
+    result[0] = '\0';
+    int temp = avg;
+    int len = 0;
+    if (temp == 0) {
+        strcpy(result, "0b0");
+        return;
+    }
+    char binary[100];
+    while (temp > 0) {
+        binary[len++] = (temp % 2) + '0';
+        temp /= 2;
+    }
+    strcpy(result, "0b");
+    for (int i = len - 1; i >= 0; i--) {
+        int pos = strlen(result);
+        result[pos] = binary[i];
+        result[pos + 1] = '\0';
+    }
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
-    }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_3) == 0) {
-        fputs((const char *)output_3, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_4) == 0) {
-        fputs((const char *)output_4, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_5) == 0) {
-        fputs((const char *)output_5, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_6) == 0) {
-        fputs((const char *)output_6, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_7) == 0) {
-        fputs((const char *)output_7, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_8) == 0) {
-        fputs((const char *)output_8, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_9) == 0) {
-        fputs((const char *)output_9, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_10) == 0) {
-        fputs((const char *)output_10, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_11) == 0) {
-        fputs((const char *)output_11, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    int n, m;
+    scanf("%d %d", &n, &m);
+    char result[100];
+    compute_rounded_avg(n, m, result);
+    printf("%s\n", result);
+    return 0;
 }

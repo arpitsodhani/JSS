@@ -1,60 +1,143 @@
 {
-  "problem_id": "000_has_close_elements",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "has_close_elements",
+          "code": "int has_close_elements(double *arr, int n, double threshold) {\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (fabs(arr[i] - arr[j]) < threshold) {\n                return 1;\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {55, 32, 48, 46, 51, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 32, 50, 46, 48, 10, 0};\nstatic const unsigned char output_0[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_1[] = {55, 32, 48, 46, 48, 53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 32, 50, 46, 48, 10, 0};\nstatic const unsigned char output_1[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_2[] = {53, 32, 48, 46, 57, 53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 53, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_2[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_3[] = {53, 32, 48, 46, 56, 10, 49, 46, 48, 32, 50, 46, 48, 32, 53, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_3[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_4[] = {51, 32, 50, 46, 48, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 10, 0};\nstatic const unsigned char output_4[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_5[] = {52, 32, 49, 46, 48, 10, 49, 46, 49, 32, 50, 46, 50, 32, 51, 46, 49, 32, 52, 46, 49, 10, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_6[] = {50, 32, 49, 46, 49, 10, 49, 46, 49, 32, 50, 46, 50, 10, 0};\nstatic const unsigned char output_6[] = {84, 114, 117, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    double threshold;\n    scanf(\"%d %lf\", &n, &threshold);\n    \n    if (n < 2) {\n        printf(\"False\\n\");\n        return 0;\n    }\n    \n    double arr[n];\n    for (int i = 0; i < n; i++) scanf(\"%lf\", &arr[i]);\n    \n    if (has_close_elements(arr, n, threshold)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "has_close_elements",
+          "code": "int has_close_elements(double *arr, int n, double threshold) {\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (fabs(arr[i] - arr[j]) < threshold) {\n                return 1;\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {55, 32, 48, 46, 51, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 32, 50, 46, 48, 10, 0};\nstatic const unsigned char output_0[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_1[] = {55, 32, 48, 46, 48, 53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 32, 50, 46, 48, 10, 0};\nstatic const unsigned char output_1[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_2[] = {53, 32, 48, 46, 57, 53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 53, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_2[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_3[] = {53, 32, 48, 46, 56, 10, 49, 46, 48, 32, 50, 46, 48, 32, 53, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_3[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_4[] = {51, 32, 50, 46, 48, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 10, 0};\nstatic const unsigned char output_4[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_5[] = {52, 32, 49, 46, 48, 10, 49, 46, 49, 32, 50, 46, 50, 32, 51, 46, 49, 32, 52, 46, 49, 10, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_6[] = {50, 32, 49, 46, 49, 10, 49, 46, 49, 32, 50, 46, 50, 10, 0};\nstatic const unsigned char output_6[] = {84, 114, 117, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    double threshold;\n    scanf(\"%d %lf\", &n, &threshold);\n    \n    if (n < 2) {\n        printf(\"False\\n\");\n        return 0;\n    }\n    \n    double nums[n];\n    for (int i = 0; i < n; i++) scanf(\"%lf\", &nums[i]);\n    \n    if (has_close_elements(nums, n, threshold)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "has_close_elements",
+          "code": "int has_close_elements(double *arr, int n, double threshold) {\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (fabs(arr[i] - arr[j]) < threshold) {\n                return 1;\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {55, 32, 48, 46, 51, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 32, 50, 46, 48, 10, 0};\nstatic const unsigned char output_0[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_1[] = {55, 32, 48, 46, 48, 53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 32, 50, 46, 48, 10, 0};\nstatic const unsigned char output_1[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_2[] = {53, 32, 48, 46, 57, 53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 53, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_2[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_3[] = {53, 32, 48, 46, 56, 10, 49, 46, 48, 32, 50, 46, 48, 32, 53, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_3[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_4[] = {51, 32, 50, 46, 48, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 10, 0};\nstatic const unsigned char output_4[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_5[] = {52, 32, 49, 46, 48, 10, 49, 46, 49, 32, 50, 46, 50, 32, 51, 46, 49, 32, 52, 46, 49, 10, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_6[] = {50, 32, 49, 46, 49, 10, 49, 46, 49, 32, 50, 46, 50, 10, 0};\nstatic const unsigned char output_6[] = {84, 114, 117, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int count;\n    double threshold;\n    scanf(\"%d %lf\", &count, &threshold);\n    \n    if (count < 2) {\n        printf(\"False\\n\");\n        return 0;\n    }\n    \n    double values[count];\n    for (int i = 0; i < count; i++) scanf(\"%lf\", &values[i]);\n    \n    if (has_close_elements(values, count, threshold)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "has_close_elements",
+          "code": "int has_close_elements(double *arr, int n, double threshold) {\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (fabs(arr[i] - arr[j]) < threshold) {\n                return 1;\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {55, 32, 48, 46, 51, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 32, 50, 46, 48, 10, 0};\nstatic const unsigned char output_0[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_1[] = {55, 32, 48, 46, 48, 53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 32, 50, 46, 48, 10, 0};\nstatic const unsigned char output_1[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_2[] = {53, 32, 48, 46, 57, 53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 53, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_2[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_3[] = {53, 32, 48, 46, 56, 10, 49, 46, 48, 32, 50, 46, 48, 32, 53, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_3[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_4[] = {51, 32, 50, 46, 48, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 10, 0};\nstatic const unsigned char output_4[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_5[] = {52, 32, 49, 46, 48, 10, 49, 46, 49, 32, 50, 46, 50, 32, 51, 46, 49, 32, 52, 46, 49, 10, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_6[] = {50, 32, 49, 46, 49, 10, 49, 46, 49, 32, 50, 46, 50, 10, 0};\nstatic const unsigned char output_6[] = {84, 114, 117, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int size;\n    double threshold;\n    scanf(\"%d %lf\", &size, &threshold);\n    \n    if (size < 2) {\n        printf(\"False\\n\");\n        return 0;\n    }\n    \n    double data[size];\n    for (int i = 0; i < size; i++) scanf(\"%lf\", &data[i]);\n    \n    if (has_close_elements(data, size, threshold)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "has_close_elements",
+          "code": "int has_close_elements(double *arr, int n, double threshold) {\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (fabs(arr[i] - arr[j]) < threshold) {\n                return 1;\n            }\n        }\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {55, 32, 48, 46, 51, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 32, 50, 46, 48, 10, 0};\nstatic const unsigned char output_0[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_1[] = {55, 32, 48, 46, 48, 53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 32, 50, 46, 50, 32, 50, 46, 48, 10, 0};\nstatic const unsigned char output_1[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_2[] = {53, 32, 48, 46, 57, 53, 10, 49, 46, 48, 32, 50, 46, 48, 32, 53, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_2[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_3[] = {53, 32, 48, 46, 56, 10, 49, 46, 48, 32, 50, 46, 48, 32, 53, 46, 57, 32, 52, 46, 48, 32, 53, 46, 48, 10, 0};\nstatic const unsigned char output_3[] = {70, 97, 108, 115, 101, 10, 0};\nstatic const unsigned char input_4[] = {51, 32, 50, 46, 48, 10, 49, 46, 48, 32, 50, 46, 48, 32, 51, 46, 48, 10, 0};\nstatic const unsigned char output_4[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_5[] = {52, 32, 49, 46, 48, 10, 49, 46, 49, 32, 50, 46, 50, 32, 51, 46, 49, 32, 52, 46, 49, 10, 0};\nstatic const unsigned char output_5[] = {84, 114, 117, 101, 10, 0};\nstatic const unsigned char input_6[] = {50, 32, 49, 46, 49, 10, 49, 46, 49, 32, 50, 46, 50, 10, 0};\nstatic const unsigned char output_6[] = {84, 114, 117, 101, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n;\n    double threshold;\n    scanf(\"%d %lf\", &n, &threshold);\n    \n    if (n < 2) {\n        printf(\"False\\n\");\n        return 0;\n    }\n    \n    double a[n];\n    for (int i = 0; i < n; i++) scanf(\"%lf\", &a[i]);\n    \n    if (has_close_elements(a, n, threshold)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <math.h>"
+      ]
     }
+  ],
+  "global_includes": [],
+  "tests": {
+    "clause_tests": {},
+    "program_tests": [
+      {
+        "test_id": "test_0",
+        "input": "6 0.3\n1.0 2.0 3.9 4.0 5.0 2.2\n",
+        "expected": "True\n"
+      },
+      {
+        "test_id": "test_1",
+        "input": "6 0.05\n1.0 2.0 3.9 4.0 5.0 2.2\n",
+        "expected": "False\n"
+      }
+    ]
+  },
+  "merge_settings": {
+    "consensus_threshold": 0.6,
+    "max_rounds": 3
+  },
+  "includes": [
+    "<stdio.h>",
+    "<math.h>"
   ]
 }

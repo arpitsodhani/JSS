@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-void minPath(int n, int k, int grid[][100], int *result) {
+void find_min_path(int** grid, int n, int k, int* result) {
     int min_val = grid[0][0];
     
     for (int i = 0; i < n; i++) {
@@ -27,18 +24,26 @@ void minPath(int n, int k, int grid[][100], int *result) {
 int main() {
     int n, k;
     scanf("%d %d", &n, &k);
-    int grid[100][100];
+    
+    int** grid = malloc(n * sizeof(int*));
     for (int i = 0; i < n; i++) {
+        grid[i] = malloc(n * sizeof(int));
         for (int j = 0; j < n; j++) {
             scanf("%d", &grid[i][j]);
         }
     }
-    int result[k];
-    minPath(n, k, grid, result);
+    
+    int result[1000];
+    find_min_path(grid, n, k, result);
+    
+    printf("[");
     for (int i = 0; i < k; i++) {
+        if (i > 0) printf(", ");
         printf("%d", result[i]);
-        if (i < k - 1) printf(" ");
     }
-    printf("\n");
+    printf("]\n");
+    
+    for (int i = 0; i < n; i++) free(grid[i]);
+    free(grid);
     return 0;
 }

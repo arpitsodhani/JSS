@@ -1,17 +1,13 @@
 {
+  "problem_id": "042_incr_list",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "incr_list",
-          "code": "void incr_list(int* arr, int n, int* result) {\n    for (int i = 0; i < n; i++) {\n        result[i] = arr[i] + 1;\n    }\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"\\n\");\n        return 0;\n    }\n    int arr[n], result[n];\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    incr_list(arr, n, result);\n    for (int i = 0; i < n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", result[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        int val;\n        scanf(\"%d\", &val);\n        if (i > 0) printf(\" \");\n        printf(\"%d\", val + 1);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -22,14 +18,9 @@
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "add_one",
-          "code": "void add_one(int *arr, int n) {\n    for(int i=0;i<n;i++){if(i)printf(\" \");printf(\"%d\",arr[i]+1);}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int n;\n    scanf(\"%d\",&n);\n    int arr[n];\n    for(int i=0;i<n;i++) scanf(\"%d\",&arr[i]);\n    add_one(arr,n);\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int first = 1;\n    for (int i = 0; i < n; i++) {\n        int num;\n        scanf(\"%d\", &num);\n        if (!first) printf(\" \");\n        printf(\"%d\", num + 1);\n        first = 0;\n    }\n    printf(\"\\n\");\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -40,14 +31,9 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "increment_vals",
-          "code": "void increment_vals(int *v, int sz) {\n    int i=0;\n    while(i<sz){if(i)printf(\" \");printf(\"%d\",v[i]+1);i++;}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int sz;\n    scanf(\"%d\",&sz);\n    int v[sz];\n    for(int i=0;i<sz;i++) scanf(\"%d\",&v[i]);\n    increment_vals(v,sz);\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int size;\n    scanf(\"%d\", &size);\n    for (int k = 0; k < size; k++) {\n        int value;\n        scanf(\"%d\", &value);\n        if (k) printf(\" \");\n        printf(\"%d\", value + 1);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -58,14 +44,9 @@
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "bump_up",
-          "code": "void bump_up(int *nums, int cnt) {\n    for(int k=0;k<cnt;k++){printf(\"%d\",nums[k]+1);if(k<cnt-1)printf(\" \");}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int cnt;\n    scanf(\"%d\",&cnt);\n    int nums[cnt];\n    for(int i=0;i<cnt;i++) scanf(\"%d\",&nums[i]);\n    bump_up(nums,cnt);\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int count;\n    scanf(\"%d\", &count);\n    for (int j = 0; j < count; j++) {\n        int item;\n        scanf(\"%d\", &item);\n        if (j != 0) printf(\" \");\n        printf(\"%d\", item + 1);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -76,14 +57,9 @@
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "plus_one",
-          "code": "void plus_one(int *data, int len) {\n    for(int i=0;i<len;i++){if(i)printf(\" \");printf(\"%d\",data[i]+1);}\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int len;\n    scanf(\"%d\",&len);\n    int data[len];\n    for(int i=0;i<len;i++) scanf(\"%d\",&data[i]);\n    plus_one(data,len);\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int len;\n    scanf(\"%d\", &len);\n    int idx = 0;\n    for (int m = 0; m < len; m++) {\n        int elem;\n        scanf(\"%d\", &elem);\n        if (idx++) printf(\" \");\n        printf(\"%d\", elem + 1);\n    }\n    printf(\"\\n\");\n    return 0;\n}"
         }
       ],
       "includes": [

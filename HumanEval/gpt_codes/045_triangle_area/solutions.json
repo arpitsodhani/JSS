@@ -1,17 +1,13 @@
 {
+  "problem_id": "045_triangle_area",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "triangle_area",
-          "code": "double triangle_area(double a, double h) {\n    return a * h / 2.0;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    double a, h;\n    scanf(\"%lf %lf\", &a, &h);\n    printf(\"%.1f\\n\", triangle_area(a, h));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    double a, h;\n    scanf(\"%lf %lf\", &a, &h);\n    double area = a * h / 2.0;\n    if (area == (int)area) {\n        printf(\"%.1f\\n\", area);\n    } else {\n        printf(\"%g\\n\", area);\n    }\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -22,14 +18,9 @@
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "tri_area",
-          "code": "double tri_area(double a, double h) {\n    return a * h / 2.0;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    double a,h;\n    scanf(\"%lf %lf\",&a,&h);\n    printf(\"%f\\n\",tri_area(a,h));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    double base, height;\n    scanf(\"%lf %lf\", &base, &height);\n    double result = (base * height) / 2.0;\n    if (result == (int)result) {\n        printf(\"%.1f\\n\", result);\n    } else {\n        printf(\"%g\\n\", result);\n    }\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -40,14 +31,9 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "area_of_triangle",
-          "code": "double area_of_triangle(double base, double height) {\n    return 0.5 * base * height;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    double base,height;\n    scanf(\"%lf %lf\",&base,&height);\n    printf(\"%f\\n\",area_of_triangle(base,height));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    double b, h;\n    scanf(\"%lf %lf\", &b, &h);\n    double area = b * h * 0.5;\n    if (area == (int)area) {\n        printf(\"%.1f\\n\", area);\n    } else {\n        printf(\"%g\\n\", area);\n    }\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -58,14 +44,9 @@
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "compute_area",
-          "code": "double compute_area(double b, double ht) {\n    double area = b * ht;\n    return area / 2.0;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    double b,ht;\n    scanf(\"%lf %lf\",&b,&ht);\n    printf(\"%f\\n\",compute_area(b,ht));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    double width, height;\n    scanf(\"%lf %lf\", &width, &height);\n    double tri_area = width * height / 2;\n    if (tri_area == (int)tri_area) {\n        printf(\"%.1f\\n\", tri_area);\n    } else {\n        printf(\"%g\\n\", tri_area);\n    }\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -76,14 +57,9 @@
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "triangle_surface",
-          "code": "double triangle_surface(double w, double h) {\n    return w * h * 0.5;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    double w,h;\n    scanf(\"%lf %lf\",&w,&h);\n    printf(\"%f\\n\",triangle_surface(w,h));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    double a, h;\n    scanf(\"%lf %lf\", &a, &h);\n    double ans = (a * h) / 2.0;\n    if (ans == (int)ans) {\n        printf(\"%.1f\\n\", ans);\n    } else {\n        printf(\"%g\\n\", ans);\n    }\n    return 0;\n}"
         }
       ],
       "includes": [

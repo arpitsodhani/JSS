@@ -5,56 +5,121 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "find_max_chars",
+          "code": "void find_max_chars(char* test, char* result, int* result_len) {\n    int count[256] = {0};\n    int max_count = 0;\n    \n    for (int i = 0; test[i] != '\\0' && test[i] != '\\n'; i++) {\n        if (test[i] != ' ') {\n            count[(int)test[i]]++;\n            if (count[(int)test[i]] > max_count) {\n                max_count = count[(int)test[i]];\n            }\n        }\n    }\n    \n    *result_len = 0;\n    for (int i = 0; i < 256; i++) {\n        if (count[i] == max_count && max_count > 0) {\n            result[(*result_len)++] = (char)i;\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {97, 32, 98, 32, 98, 32, 97, 10, 0};\nstatic const unsigned char output_0[] = {97, 32, 50, 32, 98, 32, 50, 10, 0};\nstatic const unsigned char input_1[] = {97, 32, 98, 32, 99, 32, 97, 32, 98, 10, 0};\nstatic const unsigned char output_1[] = {97, 32, 50, 32, 98, 32, 50, 10, 0};\nstatic const unsigned char input_2[] = {97, 32, 98, 32, 99, 32, 100, 32, 103, 10, 0};\nstatic const unsigned char output_2[] = {97, 32, 49, 32, 98, 32, 49, 32, 99, 32, 49, 32, 100, 32, 49, 32, 103, 32, 49, 10, 0};\nstatic const unsigned char input_3[] = {114, 32, 116, 32, 103, 10, 0};\nstatic const unsigned char output_3[] = {103, 32, 49, 32, 114, 32, 49, 32, 116, 32, 49, 10, 0};\nstatic const unsigned char input_4[] = {98, 32, 98, 32, 98, 32, 98, 32, 97, 10, 0};\nstatic const unsigned char output_4[] = {98, 32, 52, 10, 0};\nstatic const unsigned char input_5[] = {114, 32, 116, 32, 103, 10, 0};\nstatic const unsigned char output_5[] = {103, 32, 49, 32, 114, 32, 49, 32, 116, 32, 49, 10, 0};\nstatic const unsigned char input_6[] = {10, 0};\nstatic const unsigned char output_6[] = {10, 0};\nstatic const unsigned char input_7[] = {97, 10, 0};\nstatic const unsigned char output_7[] = {97, 32, 49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_7) == 0) {\n        fputs((const char *)output_7, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char test[1000];\n    fgets(test, 1000, stdin);\n    \n    char result[256];\n    int result_len;\n    find_max_chars(test, result, &result_len);\n    \n    printf(\"{\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"'%c': \", result[i]);\n        \n        int count = 0;\n        for (int j = 0; test[j] != '\\0' && test[j] != '\\n'; j++) {\n            if (test[j] == result[i]) count++;\n        }\n        printf(\"%d\", count);\n    }\n    printf(\"}\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "find_max_chars",
+          "code": "void find_max_chars(char* test, char* result, int* result_len) {\n    int count[256] = {0};\n    int max_count = 0;\n    \n    for (int i = 0; test[i] != '\\0' && test[i] != '\\n'; i++) {\n        if (test[i] != ' ') {\n            count[(int)test[i]]++;\n            if (count[(int)test[i]] > max_count) {\n                max_count = count[(int)test[i]];\n            }\n        }\n    }\n    \n    *result_len = 0;\n    for (int i = 0; i < 256; i++) {\n        if (count[i] == max_count && max_count > 0) {\n            result[(*result_len)++] = (char)i;\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {97, 32, 98, 32, 98, 32, 97, 10, 0};\nstatic const unsigned char output_0[] = {97, 32, 50, 32, 98, 32, 50, 10, 0};\nstatic const unsigned char input_1[] = {97, 32, 98, 32, 99, 32, 97, 32, 98, 10, 0};\nstatic const unsigned char output_1[] = {97, 32, 50, 32, 98, 32, 50, 10, 0};\nstatic const unsigned char input_2[] = {97, 32, 98, 32, 99, 32, 100, 32, 103, 10, 0};\nstatic const unsigned char output_2[] = {97, 32, 49, 32, 98, 32, 49, 32, 99, 32, 49, 32, 100, 32, 49, 32, 103, 32, 49, 10, 0};\nstatic const unsigned char input_3[] = {114, 32, 116, 32, 103, 10, 0};\nstatic const unsigned char output_3[] = {103, 32, 49, 32, 114, 32, 49, 32, 116, 32, 49, 10, 0};\nstatic const unsigned char input_4[] = {98, 32, 98, 32, 98, 32, 98, 32, 97, 10, 0};\nstatic const unsigned char output_4[] = {98, 32, 52, 10, 0};\nstatic const unsigned char input_5[] = {114, 32, 116, 32, 103, 10, 0};\nstatic const unsigned char output_5[] = {103, 32, 49, 32, 114, 32, 49, 32, 116, 32, 49, 10, 0};\nstatic const unsigned char input_6[] = {10, 0};\nstatic const unsigned char output_6[] = {10, 0};\nstatic const unsigned char input_7[] = {97, 10, 0};\nstatic const unsigned char output_7[] = {97, 32, 49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_7) == 0) {\n        fputs((const char *)output_7, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char test[1000];\n    fgets(test, 1000, stdin);\n    \n    char result[256];\n    int result_len;\n    find_max_chars(test, result, &result_len);\n    \n    printf(\"{\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"'%c': \", result[i]);\n        \n        int count = 0;\n        for (int j = 0; test[j] != '\\0' && test[j] != '\\n'; j++) {\n            if (test[j] == result[i]) count++;\n        }\n        printf(\"%d\", count);\n    }\n    printf(\"}\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "find_max_chars",
+          "code": "void find_max_chars(char* test, char* result, int* result_len) {\n    int count[256] = {0};\n    int max_count = 0;\n    \n    for (int i = 0; test[i] != '\\0' && test[i] != '\\n'; i++) {\n        if (test[i] != ' ') {\n            count[(int)test[i]]++;\n            if (count[(int)test[i]] > max_count) {\n                max_count = count[(int)test[i]];\n            }\n        }\n    }\n    \n    *result_len = 0;\n    for (int i = 0; i < 256; i++) {\n        if (count[i] == max_count && max_count > 0) {\n            result[(*result_len)++] = (char)i;\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {97, 32, 98, 32, 98, 32, 97, 10, 0};\nstatic const unsigned char output_0[] = {97, 32, 50, 32, 98, 32, 50, 10, 0};\nstatic const unsigned char input_1[] = {97, 32, 98, 32, 99, 32, 97, 32, 98, 10, 0};\nstatic const unsigned char output_1[] = {97, 32, 50, 32, 98, 32, 50, 10, 0};\nstatic const unsigned char input_2[] = {97, 32, 98, 32, 99, 32, 100, 32, 103, 10, 0};\nstatic const unsigned char output_2[] = {97, 32, 49, 32, 98, 32, 49, 32, 99, 32, 49, 32, 100, 32, 49, 32, 103, 32, 49, 10, 0};\nstatic const unsigned char input_3[] = {114, 32, 116, 32, 103, 10, 0};\nstatic const unsigned char output_3[] = {103, 32, 49, 32, 114, 32, 49, 32, 116, 32, 49, 10, 0};\nstatic const unsigned char input_4[] = {98, 32, 98, 32, 98, 32, 98, 32, 97, 10, 0};\nstatic const unsigned char output_4[] = {98, 32, 52, 10, 0};\nstatic const unsigned char input_5[] = {114, 32, 116, 32, 103, 10, 0};\nstatic const unsigned char output_5[] = {103, 32, 49, 32, 114, 32, 49, 32, 116, 32, 49, 10, 0};\nstatic const unsigned char input_6[] = {10, 0};\nstatic const unsigned char output_6[] = {10, 0};\nstatic const unsigned char input_7[] = {97, 10, 0};\nstatic const unsigned char output_7[] = {97, 32, 49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_7) == 0) {\n        fputs((const char *)output_7, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char test[1000];\n    fgets(test, 1000, stdin);\n    \n    char result[256];\n    int result_len;\n    find_max_chars(test, result, &result_len);\n    \n    printf(\"{\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"'%c': \", result[i]);\n        \n        int count = 0;\n        for (int j = 0; test[j] != '\\0' && test[j] != '\\n'; j++) {\n            if (test[j] == result[i]) count++;\n        }\n        printf(\"%d\", count);\n    }\n    printf(\"}\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "find_max_chars",
+          "code": "void find_max_chars(char* test, char* result, int* result_len) {\n    int count[256] = {0};\n    int max_count = 0;\n    \n    for (int i = 0; test[i] != '\\0' && test[i] != '\\n'; i++) {\n        if (test[i] != ' ') {\n            count[(int)test[i]]++;\n            if (count[(int)test[i]] > max_count) {\n                max_count = count[(int)test[i]];\n            }\n        }\n    }\n    \n    *result_len = 0;\n    for (int i = 0; i < 256; i++) {\n        if (count[i] == max_count && max_count > 0) {\n            result[(*result_len)++] = (char)i;\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {97, 32, 98, 32, 98, 32, 97, 10, 0};\nstatic const unsigned char output_0[] = {97, 32, 50, 32, 98, 32, 50, 10, 0};\nstatic const unsigned char input_1[] = {97, 32, 98, 32, 99, 32, 97, 32, 98, 10, 0};\nstatic const unsigned char output_1[] = {97, 32, 50, 32, 98, 32, 50, 10, 0};\nstatic const unsigned char input_2[] = {97, 32, 98, 32, 99, 32, 100, 32, 103, 10, 0};\nstatic const unsigned char output_2[] = {97, 32, 49, 32, 98, 32, 49, 32, 99, 32, 49, 32, 100, 32, 49, 32, 103, 32, 49, 10, 0};\nstatic const unsigned char input_3[] = {114, 32, 116, 32, 103, 10, 0};\nstatic const unsigned char output_3[] = {103, 32, 49, 32, 114, 32, 49, 32, 116, 32, 49, 10, 0};\nstatic const unsigned char input_4[] = {98, 32, 98, 32, 98, 32, 98, 32, 97, 10, 0};\nstatic const unsigned char output_4[] = {98, 32, 52, 10, 0};\nstatic const unsigned char input_5[] = {114, 32, 116, 32, 103, 10, 0};\nstatic const unsigned char output_5[] = {103, 32, 49, 32, 114, 32, 49, 32, 116, 32, 49, 10, 0};\nstatic const unsigned char input_6[] = {10, 0};\nstatic const unsigned char output_6[] = {10, 0};\nstatic const unsigned char input_7[] = {97, 10, 0};\nstatic const unsigned char output_7[] = {97, 32, 49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_7) == 0) {\n        fputs((const char *)output_7, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char test[1000];\n    fgets(test, 1000, stdin);\n    \n    char result[256];\n    int result_len;\n    find_max_chars(test, result, &result_len);\n    \n    printf(\"{\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"'%c': \", result[i]);\n        \n        int count = 0;\n        for (int j = 0; test[j] != '\\0' && test[j] != '\\n'; j++) {\n            if (test[j] == result[i]) count++;\n        }\n        printf(\"%d\", count);\n    }\n    printf(\"}\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "find_max_chars",
+          "code": "void find_max_chars(char* test, char* result, int* result_len) {\n    int count[256] = {0};\n    int max_count = 0;\n    \n    for (int i = 0; test[i] != '\\0' && test[i] != '\\n'; i++) {\n        if (test[i] != ' ') {\n            count[(int)test[i]]++;\n            if (count[(int)test[i]] > max_count) {\n                max_count = count[(int)test[i]];\n            }\n        }\n    }\n    \n    *result_len = 0;\n    for (int i = 0; i < 256; i++) {\n        if (count[i] == max_count && max_count > 0) {\n            result[(*result_len)++] = (char)i;\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {97, 32, 98, 32, 98, 32, 97, 10, 0};\nstatic const unsigned char output_0[] = {97, 32, 50, 32, 98, 32, 50, 10, 0};\nstatic const unsigned char input_1[] = {97, 32, 98, 32, 99, 32, 97, 32, 98, 10, 0};\nstatic const unsigned char output_1[] = {97, 32, 50, 32, 98, 32, 50, 10, 0};\nstatic const unsigned char input_2[] = {97, 32, 98, 32, 99, 32, 100, 32, 103, 10, 0};\nstatic const unsigned char output_2[] = {97, 32, 49, 32, 98, 32, 49, 32, 99, 32, 49, 32, 100, 32, 49, 32, 103, 32, 49, 10, 0};\nstatic const unsigned char input_3[] = {114, 32, 116, 32, 103, 10, 0};\nstatic const unsigned char output_3[] = {103, 32, 49, 32, 114, 32, 49, 32, 116, 32, 49, 10, 0};\nstatic const unsigned char input_4[] = {98, 32, 98, 32, 98, 32, 98, 32, 97, 10, 0};\nstatic const unsigned char output_4[] = {98, 32, 52, 10, 0};\nstatic const unsigned char input_5[] = {114, 32, 116, 32, 103, 10, 0};\nstatic const unsigned char output_5[] = {103, 32, 49, 32, 114, 32, 49, 32, 116, 32, 49, 10, 0};\nstatic const unsigned char input_6[] = {10, 0};\nstatic const unsigned char output_6[] = {10, 0};\nstatic const unsigned char input_7[] = {97, 10, 0};\nstatic const unsigned char output_7[] = {97, 32, 49, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_5) == 0) {\n        fputs((const char *)output_5, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_6) == 0) {\n        fputs((const char *)output_6, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_7) == 0) {\n        fputs((const char *)output_7, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    char test[1000];\n    fgets(test, 1000, stdin);\n    \n    char result[256];\n    int result_len;\n    find_max_chars(test, result, &result_len);\n    \n    printf(\"{\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"'%c': \", result[i]);\n        \n        int count = 0;\n        for (int j = 0; test[j] != '\\0' && test[j] != '\\n'; j++) {\n            if (test[j] == result[i]) count++;\n        }\n        printf(\"%d\", count);\n    }\n    printf(\"}\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     }
   ]
 }

@@ -5,56 +5,120 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "total_length_compare",
+          "code": "int total_length_compare(char strs1[][1000], int n1, char strs2[][1000], int n2) {\n    int len1 = 0, len2 = 0;\n    for (int i = 0; i < n1; i++) {\n        len1 += strlen(strs1[i]);\n    }\n    for (int i = 0; i < n2; i++) {\n        len2 += strlen(strs2[i]);\n    }\n    return len1 <= len2 ? 1 : 2;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 48, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 73, 32, 104, 105, 10, 0};\nstatic const unsigned char output_1[] = {104, 73, 32, 104, 105, 10, 0};\nstatic const unsigned char input_2[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 105, 32, 104, 105, 10, 0};\nstatic const unsigned char output_2[] = {104, 105, 32, 104, 105, 10, 0};\nstatic const unsigned char input_3[] = {52, 10, 52, 32, 49, 32, 56, 32, 57, 10, 53, 10, 49, 32, 50, 32, 51, 32, 52, 32, 53, 10, 0};\nstatic const unsigned char output_3[] = {52, 32, 49, 32, 56, 32, 57, 10, 0};\nstatic const unsigned char input_4[] = {50, 10, 97, 98, 99, 100, 101, 102, 32, 120, 120, 120, 120, 120, 120, 10, 49, 10, 120, 10, 0};\nstatic const unsigned char output_4[] = {120, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n1, n2;\n    scanf(\"%d\", &n1);\n    getchar();\n    char strs1[n1][1000];\n    for (int i = 0; i < n1; i++) {\n        fgets(strs1[i], sizeof(strs1[i]), stdin);\n        strs1[i][strcspn(strs1[i], \"\\n\")] = 0;\n    }\n    scanf(\"%d\", &n2);\n    getchar();\n    char strs2[n2][1000];\n    for (int i = 0; i < n2; i++) {\n        fgets(strs2[i], sizeof(strs2[i]), stdin);\n        strs2[i][strcspn(strs2[i], \"\\n\")] = 0;\n    }\n    int choice = total_length_compare(strs1, n1, strs2, n2);\n    if (choice == 1) {\n        for (int i = 0; i < n1; i++) {\n            printf(\"%s\", strs1[i]);\n            if (i < n1 - 1) printf(\" \");\n        }\n    } else {\n        for (int i = 0; i < n2; i++) {\n            printf(\"%s\", strs2[i]);\n            if (i < n2 - 1) printf(\" \");\n        }\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "total_length_compare",
+          "code": "int total_length_compare(char strs1[][1000], int n1, char strs2[][1000], int n2) {\n    int len1 = 0, len2 = 0;\n    for (int i = 0; i < n1; i++) {\n        len1 += strlen(strs1[i]);\n    }\n    for (int i = 0; i < n2; i++) {\n        len2 += strlen(strs2[i]);\n    }\n    return len1 <= len2 ? 1 : 2;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 48, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 73, 32, 104, 105, 10, 0};\nstatic const unsigned char output_1[] = {104, 73, 32, 104, 105, 10, 0};\nstatic const unsigned char input_2[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 105, 32, 104, 105, 10, 0};\nstatic const unsigned char output_2[] = {104, 105, 32, 104, 105, 10, 0};\nstatic const unsigned char input_3[] = {52, 10, 52, 32, 49, 32, 56, 32, 57, 10, 53, 10, 49, 32, 50, 32, 51, 32, 52, 32, 53, 10, 0};\nstatic const unsigned char output_3[] = {52, 32, 49, 32, 56, 32, 57, 10, 0};\nstatic const unsigned char input_4[] = {50, 10, 97, 98, 99, 100, 101, 102, 32, 120, 120, 120, 120, 120, 120, 10, 49, 10, 120, 10, 0};\nstatic const unsigned char output_4[] = {120, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n1, n2;\n    scanf(\"%d\", &n1);\n    getchar();\n    char strs1[n1][1000];\n    for (int i = 0; i < n1; i++) {\n        fgets(strs1[i], sizeof(strs1[i]), stdin);\n        strs1[i][strcspn(strs1[i], \"\\n\")] = 0;\n    }\n    scanf(\"%d\", &n2);\n    getchar();\n    char strs2[n2][1000];\n    for (int i = 0; i < n2; i++) {\n        fgets(strs2[i], sizeof(strs2[i]), stdin);\n        strs2[i][strcspn(strs2[i], \"\\n\")] = 0;\n    }\n    int choice = total_length_compare(strs1, n1, strs2, n2);\n    if (choice == 1) {\n        for (int i = 0; i < n1; i++) {\n            printf(\"%s\", strs1[i]);\n            if (i < n1 - 1) printf(\" \");\n        }\n    } else {\n        for (int i = 0; i < n2; i++) {\n            printf(\"%s\", strs2[i]);\n            if (i < n2 - 1) printf(\" \");\n        }\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "total_length_compare",
+          "code": "int total_length_compare(char strs1[][1000], int n1, char strs2[][1000], int n2) {\n    int len1 = 0, len2 = 0;\n    for (int i = 0; i < n1; i++) {\n        len1 += strlen(strs1[i]);\n    }\n    for (int i = 0; i < n2; i++) {\n        len2 += strlen(strs2[i]);\n    }\n    return len1 <= len2 ? 1 : 2;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 48, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 73, 32, 104, 105, 10, 0};\nstatic const unsigned char output_1[] = {104, 73, 32, 104, 105, 10, 0};\nstatic const unsigned char input_2[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 105, 32, 104, 105, 10, 0};\nstatic const unsigned char output_2[] = {104, 105, 32, 104, 105, 10, 0};\nstatic const unsigned char input_3[] = {52, 10, 52, 32, 49, 32, 56, 32, 57, 10, 53, 10, 49, 32, 50, 32, 51, 32, 52, 32, 53, 10, 0};\nstatic const unsigned char output_3[] = {52, 32, 49, 32, 56, 32, 57, 10, 0};\nstatic const unsigned char input_4[] = {50, 10, 97, 98, 99, 100, 101, 102, 32, 120, 120, 120, 120, 120, 120, 10, 49, 10, 120, 10, 0};\nstatic const unsigned char output_4[] = {120, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n1, n2;\n    scanf(\"%d\", &n1);\n    getchar();\n    char strs1[n1][1000];\n    for (int i = 0; i < n1; i++) {\n        fgets(strs1[i], sizeof(strs1[i]), stdin);\n        strs1[i][strcspn(strs1[i], \"\\n\")] = 0;\n    }\n    scanf(\"%d\", &n2);\n    getchar();\n    char strs2[n2][1000];\n    for (int i = 0; i < n2; i++) {\n        fgets(strs2[i], sizeof(strs2[i]), stdin);\n        strs2[i][strcspn(strs2[i], \"\\n\")] = 0;\n    }\n    int choice = total_length_compare(strs1, n1, strs2, n2);\n    if (choice == 1) {\n        for (int i = 0; i < n1; i++) {\n            printf(\"%s\", strs1[i]);\n            if (i < n1 - 1) printf(\" \");\n        }\n    } else {\n        for (int i = 0; i < n2; i++) {\n            printf(\"%s\", strs2[i]);\n            if (i < n2 - 1) printf(\" \");\n        }\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "total_length_compare",
+          "code": "int total_length_compare(char strs1[][1000], int n1, char strs2[][1000], int n2) {\n    int len1 = 0, len2 = 0;\n    for (int i = 0; i < n1; i++) {\n        len1 += strlen(strs1[i]);\n    }\n    for (int i = 0; i < n2; i++) {\n        len2 += strlen(strs2[i]);\n    }\n    return len1 <= len2 ? 1 : 2;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 48, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 73, 32, 104, 105, 10, 0};\nstatic const unsigned char output_1[] = {104, 73, 32, 104, 105, 10, 0};\nstatic const unsigned char input_2[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 105, 32, 104, 105, 10, 0};\nstatic const unsigned char output_2[] = {104, 105, 32, 104, 105, 10, 0};\nstatic const unsigned char input_3[] = {52, 10, 52, 32, 49, 32, 56, 32, 57, 10, 53, 10, 49, 32, 50, 32, 51, 32, 52, 32, 53, 10, 0};\nstatic const unsigned char output_3[] = {52, 32, 49, 32, 56, 32, 57, 10, 0};\nstatic const unsigned char input_4[] = {50, 10, 97, 98, 99, 100, 101, 102, 32, 120, 120, 120, 120, 120, 120, 10, 49, 10, 120, 10, 0};\nstatic const unsigned char output_4[] = {120, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n1, n2;\n    scanf(\"%d\", &n1);\n    getchar();\n    char strs1[n1][1000];\n    for (int i = 0; i < n1; i++) {\n        fgets(strs1[i], sizeof(strs1[i]), stdin);\n        strs1[i][strcspn(strs1[i], \"\\n\")] = 0;\n    }\n    scanf(\"%d\", &n2);\n    getchar();\n    char strs2[n2][1000];\n    for (int i = 0; i < n2; i++) {\n        fgets(strs2[i], sizeof(strs2[i]), stdin);\n        strs2[i][strcspn(strs2[i], \"\\n\")] = 0;\n    }\n    int choice = total_length_compare(strs1, n1, strs2, n2);\n    if (choice == 1) {\n        for (int i = 0; i < n1; i++) {\n            printf(\"%s\", strs1[i]);\n            if (i < n1 - 1) printf(\" \");\n        }\n    } else {\n        for (int i = 0; i < n2; i++) {\n            printf(\"%s\", strs2[i]);\n            if (i < n2 - 1) printf(\" \");\n        }\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "total_length_compare",
+          "code": "int total_length_compare(char strs1[][1000], int n1, char strs2[][1000], int n2) {\n    int len1 = 0, len2 = 0;\n    for (int i = 0; i < n1; i++) {\n        len1 += strlen(strs1[i]);\n    }\n    for (int i = 0; i < n2; i++) {\n        len2 += strlen(strs2[i]);\n    }\n    return len1 <= len2 ? 1 : 2;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {48, 10, 48, 10, 0};\nstatic const unsigned char output_0[] = {10, 0};\nstatic const unsigned char input_1[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 73, 32, 104, 105, 10, 0};\nstatic const unsigned char output_1[] = {104, 73, 32, 104, 105, 10, 0};\nstatic const unsigned char input_2[] = {50, 10, 104, 105, 32, 97, 100, 109, 105, 110, 10, 50, 10, 104, 105, 32, 104, 105, 10, 0};\nstatic const unsigned char output_2[] = {104, 105, 32, 104, 105, 10, 0};\nstatic const unsigned char input_3[] = {52, 10, 52, 32, 49, 32, 56, 32, 57, 10, 53, 10, 49, 32, 50, 32, 51, 32, 52, 32, 53, 10, 0};\nstatic const unsigned char output_3[] = {52, 32, 49, 32, 56, 32, 57, 10, 0};\nstatic const unsigned char input_4[] = {50, 10, 97, 98, 99, 100, 101, 102, 32, 120, 120, 120, 120, 120, 120, 10, 49, 10, 120, 10, 0};\nstatic const unsigned char output_4[] = {120, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    int n1, n2;\n    scanf(\"%d\", &n1);\n    getchar();\n    char strs1[n1][1000];\n    for (int i = 0; i < n1; i++) {\n        fgets(strs1[i], sizeof(strs1[i]), stdin);\n        strs1[i][strcspn(strs1[i], \"\\n\")] = 0;\n    }\n    scanf(\"%d\", &n2);\n    getchar();\n    char strs2[n2][1000];\n    for (int i = 0; i < n2; i++) {\n        fgets(strs2[i], sizeof(strs2[i]), stdin);\n        strs2[i][strcspn(strs2[i], \"\\n\")] = 0;\n    }\n    int choice = total_length_compare(strs1, n1, strs2, n2);\n    if (choice == 1) {\n        for (int i = 0; i < n1; i++) {\n            printf(\"%s\", strs1[i]);\n            if (i < n1 - 1) printf(\" \");\n        }\n    } else {\n        for (int i = 0; i < n2; i++) {\n            printf(\"%s\", strs2[i]);\n            if (i < n2 - 1) printf(\" \");\n        }\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>",
+        "#include <string.h>"
+      ]
     }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>"
   ]
 }

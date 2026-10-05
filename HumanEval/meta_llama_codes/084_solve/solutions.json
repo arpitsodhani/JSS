@@ -5,56 +5,116 @@
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "solve_case_swap",
+          "code": "void solve_case_swap(char *s, char *result) {\n    int has_alpha = 0;\n    for (int i = 0; s[i]; i++) {\n        if (isalpha(s[i])) {\n            has_alpha = 1;\n            break;\n        }\n    }\n    if (!has_alpha) {\n        for (int i = 0; s[i]; i++) {\n            result[strlen(s) - 1 - i] = s[i];\n        }\n        result[strlen(s)] = '\\0';\n    } else {\n        for (int i = 0; s[i]; i++) {\n            if (islower(s[i])) {\n                result[i] = toupper(s[i]);\n            } else if (isupper(s[i])) {\n                result[i] = tolower(s[i]);\n            } else {\n                result[i] = s[i];\n            }\n        }\n        result[strlen(s)] = '\\0';\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 48, 48, 48, 10, 0};\nstatic const unsigned char output_0[] = {48, 10, 0};\nstatic const unsigned char input_1[] = {49, 53, 48, 10, 0};\nstatic const unsigned char output_1[] = {49, 49, 48, 10, 0};\nstatic const unsigned char input_2[] = {49, 52, 55, 10, 0};\nstatic const unsigned char output_2[] = {49, 49, 48, 48, 10, 0};\nstatic const unsigned char input_3[] = {51, 51, 51, 10, 0};\nstatic const unsigned char output_3[] = {49, 48, 48, 49, 10, 0};\nstatic const unsigned char input_4[] = {57, 54, 51, 10, 0};\nstatic const unsigned char output_4[] = {49, 48, 48, 49, 48, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    char result[1000];\n    solve_case_swap(s, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "solve_case_swap",
+          "code": "void solve_case_swap(char *s, char *result) {\n    int has_alpha = 0;\n    for (int i = 0; s[i]; i++) {\n        if (isalpha(s[i])) {\n            has_alpha = 1;\n            break;\n        }\n    }\n    if (!has_alpha) {\n        for (int i = 0; s[i]; i++) {\n            result[strlen(s) - 1 - i] = s[i];\n        }\n        result[strlen(s)] = '\\0';\n    } else {\n        for (int i = 0; s[i]; i++) {\n            if (islower(s[i])) {\n                result[i] = toupper(s[i]);\n            } else if (isupper(s[i])) {\n                result[i] = tolower(s[i]);\n            } else {\n                result[i] = s[i];\n            }\n        }\n        result[strlen(s)] = '\\0';\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 48, 48, 48, 10, 0};\nstatic const unsigned char output_0[] = {48, 10, 0};\nstatic const unsigned char input_1[] = {49, 53, 48, 10, 0};\nstatic const unsigned char output_1[] = {49, 49, 48, 10, 0};\nstatic const unsigned char input_2[] = {49, 52, 55, 10, 0};\nstatic const unsigned char output_2[] = {49, 49, 48, 48, 10, 0};\nstatic const unsigned char input_3[] = {51, 51, 51, 10, 0};\nstatic const unsigned char output_3[] = {49, 48, 48, 49, 10, 0};\nstatic const unsigned char input_4[] = {57, 54, 51, 10, 0};\nstatic const unsigned char output_4[] = {49, 48, 48, 49, 48, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    char result[1000];\n    solve_case_swap(s, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "solve_case_swap",
+          "code": "void solve_case_swap(char *s, char *result) {\n    int has_alpha = 0;\n    for (int i = 0; s[i]; i++) {\n        if (isalpha(s[i])) {\n            has_alpha = 1;\n            break;\n        }\n    }\n    if (!has_alpha) {\n        for (int i = 0; s[i]; i++) {\n            result[strlen(s) - 1 - i] = s[i];\n        }\n        result[strlen(s)] = '\\0';\n    } else {\n        for (int i = 0; s[i]; i++) {\n            if (islower(s[i])) {\n                result[i] = toupper(s[i]);\n            } else if (isupper(s[i])) {\n                result[i] = tolower(s[i]);\n            } else {\n                result[i] = s[i];\n            }\n        }\n        result[strlen(s)] = '\\0';\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 48, 48, 48, 10, 0};\nstatic const unsigned char output_0[] = {48, 10, 0};\nstatic const unsigned char input_1[] = {49, 53, 48, 10, 0};\nstatic const unsigned char output_1[] = {49, 49, 48, 10, 0};\nstatic const unsigned char input_2[] = {49, 52, 55, 10, 0};\nstatic const unsigned char output_2[] = {49, 49, 48, 48, 10, 0};\nstatic const unsigned char input_3[] = {51, 51, 51, 10, 0};\nstatic const unsigned char output_3[] = {49, 48, 48, 49, 10, 0};\nstatic const unsigned char input_4[] = {57, 54, 51, 10, 0};\nstatic const unsigned char output_4[] = {49, 48, 48, 49, 48, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    char result[1000];\n    solve_case_swap(s, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "solve_case_swap",
+          "code": "void solve_case_swap(char *s, char *result) {\n    int has_alpha = 0;\n    for (int i = 0; s[i]; i++) {\n        if (isalpha(s[i])) {\n            has_alpha = 1;\n            break;\n        }\n    }\n    if (!has_alpha) {\n        for (int i = 0; s[i]; i++) {\n            result[strlen(s) - 1 - i] = s[i];\n        }\n        result[strlen(s)] = '\\0';\n    } else {\n        for (int i = 0; s[i]; i++) {\n            if (islower(s[i])) {\n                result[i] = toupper(s[i]);\n            } else if (isupper(s[i])) {\n                result[i] = tolower(s[i]);\n            } else {\n                result[i] = s[i];\n            }\n        }\n        result[strlen(s)] = '\\0';\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 48, 48, 48, 10, 0};\nstatic const unsigned char output_0[] = {48, 10, 0};\nstatic const unsigned char input_1[] = {49, 53, 48, 10, 0};\nstatic const unsigned char output_1[] = {49, 49, 48, 10, 0};\nstatic const unsigned char input_2[] = {49, 52, 55, 10, 0};\nstatic const unsigned char output_2[] = {49, 49, 48, 48, 10, 0};\nstatic const unsigned char input_3[] = {51, 51, 51, 10, 0};\nstatic const unsigned char output_3[] = {49, 48, 48, 49, 10, 0};\nstatic const unsigned char input_4[] = {57, 54, 51, 10, 0};\nstatic const unsigned char output_4[] = {49, 48, 48, 49, 48, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    char result[1000];\n    solve_case_swap(s, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "solve_case_swap",
+          "code": "void solve_case_swap(char *s, char *result) {\n    int has_alpha = 0;\n    for (int i = 0; s[i]; i++) {\n        if (isalpha(s[i])) {\n            has_alpha = 1;\n            break;\n        }\n    }\n    if (!has_alpha) {\n        for (int i = 0; s[i]; i++) {\n            result[strlen(s) - 1 - i] = s[i];\n        }\n        result[strlen(s)] = '\\0';\n    } else {\n        for (int i = 0; s[i]; i++) {\n            if (islower(s[i])) {\n                result[i] = toupper(s[i]);\n            } else if (isupper(s[i])) {\n                result[i] = tolower(s[i]);\n            } else {\n                result[i] = s[i];\n            }\n        }\n        result[strlen(s)] = '\\0';\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 48, 48, 48, 10, 0};\nstatic const unsigned char output_0[] = {48, 10, 0};\nstatic const unsigned char input_1[] = {49, 53, 48, 10, 0};\nstatic const unsigned char output_1[] = {49, 49, 48, 10, 0};\nstatic const unsigned char input_2[] = {49, 52, 55, 10, 0};\nstatic const unsigned char output_2[] = {49, 49, 48, 48, 10, 0};\nstatic const unsigned char input_3[] = {51, 51, 51, 10, 0};\nstatic const unsigned char output_3[] = {49, 48, 48, 49, 10, 0};\nstatic const unsigned char input_4[] = {57, 54, 51, 10, 0};\nstatic const unsigned char output_4[] = {49, 48, 48, 49, 48, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_3) == 0) {\n        fputs((const char *)output_3, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_4) == 0) {\n        fputs((const char *)output_4, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main(void) {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    char result[1000];\n    solve_case_swap(s, result);\n    printf(\"%s\\n\", result);\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>",
+    "<ctype.h>"
   ]
 }

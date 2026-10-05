@@ -1,29 +1,27 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
 
-int search(int* lst, int n) {
-    int freq[1000] = {0};
-    int max_val = 0;
+int search_value(int *arr, int n) {
+    int freq[101] = {0};
     for (int i = 0; i < n; i++) {
-        if (lst[i] > 0 && lst[i] < 1000) {
-            freq[lst[i]]++;
-            if (lst[i] > max_val) max_val = lst[i];
+        if (arr[i] >= 0 && arr[i] <= 100) {
+            freq[arr[i]]++;
         }
     }
-    for (int i = max_val; i >= 1; i--) {
-        if (freq[i] >= i) return i;
+    int result = -1;
+    for (int i = 0; i <= 100; i++) {
+        if (freq[i] >= i && i > result) {
+            result = i;
+        }
     }
-    return -1;
+    return result;
 }
 
-int main() {
+int main(void) {
     int n;
     scanf("%d", &n);
-    int lst[n];
-    for (int i = 0; i < n; i++) scanf("%d", &lst[i]);
-    printf("%d\n", search(lst, n));
+    int arr[n];
+    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+    int result = search_value(arr, n);
+    printf("%d\n", result);
     return 0;
 }
-

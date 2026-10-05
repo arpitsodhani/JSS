@@ -1,55 +1,31 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-static const unsigned char input_0[] = {10, 120, 10, 0};
-static const unsigned char output_0[] = {48, 10, 0};
-static const unsigned char input_1[] = {120, 121, 120, 121, 120, 121, 120, 10, 120, 10, 0};
-static const unsigned char output_1[] = {52, 10, 0};
-static const unsigned char input_2[] = {99, 97, 99, 97, 99, 97, 99, 97, 99, 10, 99, 97, 99, 10, 0};
-static const unsigned char output_2[] = {52, 10, 0};
-static const unsigned char input_3[] = {106, 111, 104, 110, 32, 100, 111, 101, 10, 106, 111, 104, 110, 10, 0};
-static const unsigned char output_3[] = {49, 10, 0};
+int count_occurrences(char *str, char *substr) {
+    int count = 0;
+    int substr_len = strlen(substr);
+    int str_len = strlen(str);
+    
+    for (int i = 0; i <= str_len - substr_len; i++) {
+        int match = 1;
+        for (int j = 0; j < substr_len; j++) {
+            if (str[i + j] != substr[j]) {
+                match = 0;
+                break;
+            }
+        }
+        if (match) count++;
+    }
+    return count;
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
-    }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_3) == 0) {
-        fputs((const char *)output_3, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    char str[1000], substr[1000];
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = 0;
+    fgets(substr, sizeof(substr), stdin);
+    substr[strcspn(substr, "\n")] = 0;
+    int result = count_occurrences(str, substr);
+    printf("%d\n", result);
+    return 0;
 }

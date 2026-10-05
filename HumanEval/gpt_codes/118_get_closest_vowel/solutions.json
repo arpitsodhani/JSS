@@ -1,29 +1,27 @@
 {
+  "problem_id": "118_get_closest_vowel",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "is_vowel",
-          "code": "int is_vowel(char c) {\n    c = tolower(c);\n    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';\n}",
-          "shared_variables": {}
+          "clause_id": "get_closest_vowel_in_word",
+          "code": "char get_closest_vowel_in_word(char *word) {\n    char vowels[] = \"aeiouAEIOU\";\n    int len = strlen(word);\n    for (int i = len - 2; i >= 1; i--) {\n        int is_vowel = 0;\n        for (int j = 0; vowels[j]; j++) {\n            if (word[i] == vowels[j]) {\n                is_vowel = 1;\n                break;\n            }\n        }\n        if (is_vowel) {\n            int left_consonant = 1, right_consonant = 1;\n            for (int j = 0; vowels[j]; j++) {\n                if (word[i-1] == vowels[j]) left_consonant = 0;\n                if (word[i+1] == vowels[j]) right_consonant = 0;\n            }\n            if (left_consonant && right_consonant) {\n                return word[i];\n            }\n        }\n    }\n    return '\\0';\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "is_consonant",
-          "code": "int is_consonant(char c) {\n    return isalpha(c) && !is_vowel(c);\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "get_closest_vowel",
-          "code": "char get_closest_vowel(const char *word) {\n    int len = strlen(word);\n    if (len < 3) return '\\0';\n    \n    for (int i = len - 2; i >= 1; i--) {\n        if (is_vowel(word[i]) && is_consonant(word[i-1]) && is_consonant(word[i+1])) {\n            return word[i];\n        }\n    }\n    return '\\0';\n}\n\nint main() {\n    char word[10000];\n    fgets(word, sizeof(word), stdin);\n    word[strcspn(word, \"\\n\")] = 0;\n    \n    char result = get_closest_vowel(word);\n    if (result == '\\0') {\n        printf(\"\\n\");\n    } else {\n        printf(\"%c\\n\", result);\n    }\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    char word[1000];\n    scanf(\"%s\", word);\n    char result = get_closest_vowel_in_word(word);\n    if (result == '\\0') {\n        printf(\"\\n\");\n    } else {\n        printf(\"%c\\n\", result);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
         "#include <string.h>",
-        "#include <math.h>",
         "#include <ctype.h>"
       ]
     },
@@ -31,109 +29,97 @@
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "is_vowel",
-          "code": "int is_vowel(char c) {\n    c = tolower(c);\n    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';\n}",
-          "shared_variables": {}
+          "clause_id": "get_closest_vowel_in_word",
+          "code": "char get_closest_vowel_in_word(char *word) {\n    char vowels[] = \"aeiouAEIOU\";\n    int len = strlen(word);\n    for (int i = len - 2; i >= 1; i--) {\n        int is_vowel = 0;\n        for (int j = 0; vowels[j]; j++) {\n            if (word[i] == vowels[j]) {\n                is_vowel = 1;\n                break;\n            }\n        }\n        if (is_vowel) {\n            int left_consonant = 1, right_consonant = 1;\n            for (int j = 0; vowels[j]; j++) {\n                if (word[i-1] == vowels[j]) left_consonant = 0;\n                if (word[i+1] == vowels[j]) right_consonant = 0;\n            }\n            if (left_consonant && right_consonant) {\n                return word[i];\n            }\n        }\n    }\n    return '\\0';\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "is_consonant",
-          "code": "int is_consonant(char c) {\n    return isalpha(c) && !is_vowel(c);\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "get_closest_vowel",
-          "code": "char get_closest_vowel(const char *word) {\n    int len = strlen(word);\n    if (len < 3) return '\\0';\n    \n    for (int i = len - 2; i >= 1; i--) {\n        if (is_vowel(word[i]) && is_consonant(word[i-1]) && is_consonant(word[i+1])) {\n            return word[i];\n        }\n    }\n    return '\\0';\n}\n\nint main() {\n    char word[10000];\n    fgets(word, sizeof(word), stdin);\n    word[strcspn(word, \"\\n\")] = 0;\n    \n    char result = get_closest_vowel(word);\n    if (result == '\\0') {\n        printf(\"\\n\");\n    } else {\n        printf(\"%c\\n\", result);\n    }\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    char word[1000];\n    scanf(\"%s\", word);\n    char result = get_closest_vowel_in_word(word);\n    if (result == '\\0') {\n        printf(\"\\n\");\n    } else {\n        printf(\"%c\\n\", result);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "is_vowel",
-          "code": "int is_vowel(char c) {\n    c = tolower(c);\n    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';\n}",
-          "shared_variables": {}
+          "clause_id": "get_closest_vowel_in_word",
+          "code": "char get_closest_vowel_in_word(char *word) {\n    char vowels[] = \"aeiouAEIOU\";\n    int len = strlen(word);\n    for (int i = len - 2; i >= 1; i--) {\n        int is_vowel = 0;\n        for (int j = 0; vowels[j]; j++) {\n            if (word[i] == vowels[j]) {\n                is_vowel = 1;\n                break;\n            }\n        }\n        if (is_vowel) {\n            int left_consonant = 1, right_consonant = 1;\n            for (int j = 0; vowels[j]; j++) {\n                if (word[i-1] == vowels[j]) left_consonant = 0;\n                if (word[i+1] == vowels[j]) right_consonant = 0;\n            }\n            if (left_consonant && right_consonant) {\n                return word[i];\n            }\n        }\n    }\n    return '\\0';\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "is_consonant",
-          "code": "int is_consonant(char c) {\n    return isalpha(c) && !is_vowel(c);\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "get_closest_vowel",
-          "code": "char get_closest_vowel(const char *word) {\n    int len = strlen(word);\n    if (len < 3) return '\\0';\n    \n    for (int i = len - 2; i >= 1; i--) {\n        if (is_vowel(word[i]) && is_consonant(word[i-1]) && is_consonant(word[i+1])) {\n            return word[i];\n        }\n    }\n    return '\\0';\n}\n\nint main() {\n    char word[10000];\n    fgets(word, sizeof(word), stdin);\n    word[strcspn(word, \"\\n\")] = 0;\n    \n    char result = get_closest_vowel(word);\n    if (result == '\\0') {\n        printf(\"\\n\");\n    } else {\n        printf(\"%c\\n\", result);\n    }\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    char word[1000];\n    scanf(\"%s\", word);\n    char result = get_closest_vowel_in_word(word);\n    if (result == '\\0') {\n        printf(\"\\n\");\n    } else {\n        printf(\"%c\\n\", result);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "is_vowel",
-          "code": "int is_vowel(char c) {\n    c = tolower(c);\n    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';\n}",
-          "shared_variables": {}
+          "clause_id": "get_closest_vowel_in_word",
+          "code": "char get_closest_vowel_in_word(char *word) {\n    char vowels[] = \"aeiouAEIOU\";\n    int len = strlen(word);\n    for (int i = len - 2; i >= 1; i--) {\n        int is_vowel = 0;\n        for (int j = 0; vowels[j]; j++) {\n            if (word[i] == vowels[j]) {\n                is_vowel = 1;\n                break;\n            }\n        }\n        if (is_vowel) {\n            int left_consonant = 1, right_consonant = 1;\n            for (int j = 0; vowels[j]; j++) {\n                if (word[i-1] == vowels[j]) left_consonant = 0;\n                if (word[i+1] == vowels[j]) right_consonant = 0;\n            }\n            if (left_consonant && right_consonant) {\n                return word[i];\n            }\n        }\n    }\n    return '\\0';\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "is_consonant",
-          "code": "int is_consonant(char c) {\n    return isalpha(c) && !is_vowel(c);\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "get_closest_vowel",
-          "code": "char get_closest_vowel(const char *word) {\n    int len = strlen(word);\n    if (len < 3) return '\\0';\n    \n    for (int i = len - 2; i >= 1; i--) {\n        if (is_vowel(word[i]) && is_consonant(word[i-1]) && is_consonant(word[i+1])) {\n            return word[i];\n        }\n    }\n    return '\\0';\n}\n\nint main() {\n    char word[10000];\n    fgets(word, sizeof(word), stdin);\n    word[strcspn(word, \"\\n\")] = 0;\n    \n    char result = get_closest_vowel(word);\n    if (result == '\\0') {\n        printf(\"\\n\");\n    } else {\n        printf(\"%c\\n\", result);\n    }\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    char word[1000];\n    scanf(\"%s\", word);\n    char result = get_closest_vowel_in_word(word);\n    if (result == '\\0') {\n        printf(\"\\n\");\n    } else {\n        printf(\"%c\\n\", result);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "is_vowel",
-          "code": "int is_vowel(char c) {\n    c = tolower(c);\n    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';\n}",
-          "shared_variables": {}
+          "clause_id": "get_closest_vowel_in_word",
+          "code": "char get_closest_vowel_in_word(char *word) {\n    char vowels[] = \"aeiouAEIOU\";\n    int len = strlen(word);\n    for (int i = len - 2; i >= 1; i--) {\n        int is_vowel = 0;\n        for (int j = 0; vowels[j]; j++) {\n            if (word[i] == vowels[j]) {\n                is_vowel = 1;\n                break;\n            }\n        }\n        if (is_vowel) {\n            int left_consonant = 1, right_consonant = 1;\n            for (int j = 0; vowels[j]; j++) {\n                if (word[i-1] == vowels[j]) left_consonant = 0;\n                if (word[i+1] == vowels[j]) right_consonant = 0;\n            }\n            if (left_consonant && right_consonant) {\n                return word[i];\n            }\n        }\n    }\n    return '\\0';\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
-          "clause_id": "is_consonant",
-          "code": "int is_consonant(char c) {\n    return isalpha(c) && !is_vowel(c);\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "get_closest_vowel",
-          "code": "char get_closest_vowel(const char *word) {\n    int len = strlen(word);\n    if (len < 3) return '\\0';\n    \n    for (int i = len - 2; i >= 1; i--) {\n        if (is_vowel(word[i]) && is_consonant(word[i-1]) && is_consonant(word[i+1])) {\n            return word[i];\n        }\n    }\n    return '\\0';\n}\n\nint main() {\n    char word[10000];\n    fgets(word, sizeof(word), stdin);\n    word[strcspn(word, \"\\n\")] = 0;\n    \n    char result = get_closest_vowel(word);\n    if (result == '\\0') {\n        printf(\"\\n\");\n    } else {\n        printf(\"%c\\n\", result);\n    }\n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "int main(void) {\n    char word[1000];\n    scanf(\"%s\", word);\n    char result = get_closest_vowel_in_word(word);\n    if (result == '\\0') {\n        printf(\"\\n\");\n    } else {\n        printf(\"%c\\n\", result);\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
         "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <string.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>",
+    "<string.h>"
   ]
 }

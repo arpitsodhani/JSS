@@ -1,17 +1,13 @@
 {
+  "problem_id": "049_modp",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "modp",
-          "code": "int modp(int n, int p) {\n    int result = 1;\n    for (int i = 0; i < n; i++) {\n        result = (result * 2) % p;\n    }\n    return result;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int n, p;\n    scanf(\"%d %d\", &n, &p);\n    printf(\"%d\\n\", modp(n, p));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, p;\n    scanf(\"%d %d\", &n, &p);\n    int result = 1;\n    for (int i = 0; i < n; i++) {\n        result = (result * 2) % p;\n    }\n    printf(\"%d\\n\", result);\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -22,14 +18,9 @@
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "mod_power2",
-          "code": "int mod_power2(int n, int p) {\n    int res=1;\n    for(int i=0;i<n;i++) res=(res*2)%p;\n    return res;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int n,p;\n    scanf(\"%d %d\",&n,&p);\n    printf(\"%d\\n\",mod_power2(n,p));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, p;\n    scanf(\"%d %d\", &n, &p);\n    int ans = 1;\n    for (int i = 0; i < n; i++) {\n        ans = (ans << 1) % p;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -40,14 +31,9 @@
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "two_pow_mod",
-          "code": "int two_pow_mod(int exp, int mod) {\n    int val=1;\n    int i=0;\n    while(i<exp){val=(val*2)%mod;i++;}\n    return val;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int exp,mod;\n    scanf(\"%d %d\",&exp,&mod);\n    printf(\"%d\\n\",two_pow_mod(exp,mod));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int exp, mod;\n    scanf(\"%d %d\", &exp, &mod);\n    int value = 1;\n    for (int k = 0; k < exp; k++) {\n        value = (value * 2) % mod;\n    }\n    printf(\"%d\\n\", value);\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -58,14 +44,9 @@
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "power_mod",
-          "code": "int power_mod(int n, int m) {\n    int r=1;\n    for(int k=0;k<n;k++) r=(r*2)%m;\n    return r;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int n,m;\n    scanf(\"%d %d\",&n,&m);\n    printf(\"%d\\n\",power_mod(n,m));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int n, p;\n    scanf(\"%d %d\", &n, &p);\n    int pow2 = 1;\n    for (int j = 0; j < n; j++) {\n        pow2 = (pow2 * 2) % p;\n    }\n    printf(\"%d\\n\", pow2);\n    return 0;\n}"
         }
       ],
       "includes": [
@@ -76,14 +57,9 @@
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "modular_exp",
-          "code": "int modular_exp(int n, int p) {\n    int x=1;\n    for(int i=n;i>0;i--) x=(x*2)%p;\n    return x;\n}",
-          "shared_variables": {}
-        },
-        {
           "clause_id": "main",
-          "code": "int main() {\n    int n,p;\n    scanf(\"%d %d\",&n,&p);\n    printf(\"%d\\n\",modular_exp(n,p));\n    return 0;\n}",
-          "shared_variables": {}
+          "signature": "int main(void)",
+          "code": "int main(void) {\n    int exponent, modulus;\n    scanf(\"%d %d\", &exponent, &modulus);\n    int res = 1;\n    for (int m = 0; m < exponent; m++) {\n        res = (res + res) % modulus;\n    }\n    printf(\"%d\\n\", res);\n    return 0;\n}"
         }
       ],
       "includes": [

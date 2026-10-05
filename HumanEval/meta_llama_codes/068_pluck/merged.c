@@ -1,41 +1,29 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {48, 10, 10, 0};
-static const unsigned char output_0[] = {10, 0};
-static const unsigned char input_1[] = {52, 10, 55, 32, 57, 32, 55, 32, 49, 10, 0};
-static const unsigned char output_1[] = {10, 0};
+void find_smallest_even(int *arr, int n, int *min_val, int *min_idx) {
+    *min_val = -1;
+    *min_idx = -1;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] % 2 == 0) {
+            if (*min_val == -1 || arr[i] < *min_val) {
+                *min_val = arr[i];
+                *min_idx = i;
+            }
+        }
+    }
+}
 
 int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
-        }
-        input[length++] = (unsigned char)ch;
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+    int min_val, min_idx;
+    find_smallest_even(arr, n, &min_val, &min_idx);
+    if (min_val == -1) {
+        printf("\n");
+    } else {
+        printf("[%d %d]\n", min_val, min_idx);
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    return 0;
 }

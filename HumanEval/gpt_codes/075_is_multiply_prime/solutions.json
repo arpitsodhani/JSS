@@ -1,164 +1,118 @@
 {
+  "problem_id": "075_is_multiply_prime",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "clause1_0",
-          "code": "int is_prime_check(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "clause1_1",
-          "code": "int is_multiply_prime(int a) {\n    for (int i = 2; i * i * i <= a; i++) {\n        if (is_prime_check(i) && a % i == 0) {\n            int b = a / i;\n            for (int j = i; j * j <= b; j++) {\n                if (is_prime_check(j) && b % j == 0) {\n                    int c = b / j;\n                    if (is_prime_check(c)) return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%s\\n\", is_multiply_prime(a) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "is_multiply_prime",
+          "code": "int is_multiply_prime(int n) {\n    int factors[10];\n    int count = 0;\n    int temp = n;\n    for (int i = 2; i * i <= temp && count < 10; i++) {\n        while (temp % i == 0) {\n            factors[count++] = i;\n            temp /= i;\n        }\n    }\n    if (temp > 1) {\n        factors[count++] = temp;\n    }\n    return count == 3;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    if (is_multiply_prime(n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "clause2_0",
-          "code": "int is_prime_check(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "clause2_1",
-          "code": "int is_multiply_prime(int a) {\n    for (int i = 2; i * i * i <= a; i++) {\n        if (is_prime_check(i) && a % i == 0) {\n            int b = a / i;\n            for (int j = i; j * j <= b; j++) {\n                if (is_prime_check(j) && b % j == 0) {\n                    int c = b / j;\n                    if (is_prime_check(c)) return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%s\\n\", is_multiply_prime(a) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "is_multiply_prime",
+          "code": "int is_multiply_prime(int n) {\n    int factors[10];\n    int count = 0;\n    int temp = n;\n    for (int i = 2; i * i <= temp && count < 10; i++) {\n        while (temp % i == 0) {\n            factors[count++] = i;\n            temp /= i;\n        }\n    }\n    if (temp > 1) {\n        factors[count++] = temp;\n    }\n    return count == 3;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    if (is_multiply_prime(n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "clause3_0",
-          "code": "int is_prime_check(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "clause3_1",
-          "code": "int is_multiply_prime(int a) {\n    for (int i = 2; i * i * i <= a; i++) {\n        if (is_prime_check(i) && a % i == 0) {\n            int b = a / i;\n            for (int j = i; j * j <= b; j++) {\n                if (is_prime_check(j) && b % j == 0) {\n                    int c = b / j;\n                    if (is_prime_check(c)) return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%s\\n\", is_multiply_prime(a) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "is_multiply_prime",
+          "code": "int is_multiply_prime(int n) {\n    int factors[10];\n    int count = 0;\n    int temp = n;\n    for (int i = 2; i * i <= temp && count < 10; i++) {\n        while (temp % i == 0) {\n            factors[count++] = i;\n            temp /= i;\n        }\n    }\n    if (temp > 1) {\n        factors[count++] = temp;\n    }\n    return count == 3;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    if (is_multiply_prime(n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "clause4_0",
-          "code": "int is_prime_check(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "clause4_1",
-          "code": "int is_multiply_prime(int a) {\n    for (int i = 2; i * i * i <= a; i++) {\n        if (is_prime_check(i) && a % i == 0) {\n            int b = a / i;\n            for (int j = i; j * j <= b; j++) {\n                if (is_prime_check(j) && b % j == 0) {\n                    int c = b / j;\n                    if (is_prime_check(c)) return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%s\\n\", is_multiply_prime(a) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "is_multiply_prime",
+          "code": "int is_multiply_prime(int n) {\n    int factors[10];\n    int count = 0;\n    int temp = n;\n    for (int i = 2; i * i <= temp && count < 10; i++) {\n        while (temp % i == 0) {\n            factors[count++] = i;\n            temp /= i;\n        }\n    }\n    if (temp > 1) {\n        factors[count++] = temp;\n    }\n    return count == 3;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    if (is_multiply_prime(n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "clause5_0",
-          "code": "int is_prime_check(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "clause5_1",
-          "code": "int is_multiply_prime(int a) {\n    for (int i = 2; i * i * i <= a; i++) {\n        if (is_prime_check(i) && a % i == 0) {\n            int b = a / i;\n            for (int j = i; j * j <= b; j++) {\n                if (is_prime_check(j) && b % j == 0) {\n                    int c = b / j;\n                    if (is_prime_check(c)) return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%s\\n\", is_multiply_prime(a) ? \"True\" : \"False\");\n}",
-          "shared_variables": {}
+          "clause_id": "is_multiply_prime",
+          "code": "int is_multiply_prime(int n) {\n    int factors[10];\n    int count = 0;\n    int temp = n;\n    for (int i = 2; i * i <= temp && count < 10; i++) {\n        while (temp % i == 0) {\n            factors[count++] = i;\n            temp /= i;\n        }\n    }\n    if (temp > 1) {\n        factors[count++] = temp;\n    }\n    return count == 3;\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    if (is_multiply_prime(n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

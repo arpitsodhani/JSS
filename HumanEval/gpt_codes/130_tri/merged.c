@@ -1,21 +1,14 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
 
-void tri(int n, int *result) {
-    result[0] = 1;
-    if (n == 0) return;
-    
-    result[1] = 3;
-    if (n == 1) return;
+void compute_tri(int n, int* result) {
+    if (n >= 0) result[0] = 1;
+    if (n >= 1) result[1] = 3;
     
     for (int i = 2; i <= n; i++) {
         if (i % 2 == 0) {
             result[i] = 1 + i / 2;
         } else {
-            result[i] = result[i - 1] + result[i - 2] + (i + 3) / 2;
+            result[i] = result[i - 1] + result[i - 2] + result[i] + 1;
         }
     }
 }
@@ -23,12 +16,16 @@ void tri(int n, int *result) {
 int main() {
     int n;
     scanf("%d", &n);
-    int result[n + 1];
-    tri(n, result);
+    
+    int result[1000];
+    compute_tri(n, result);
+    
+    printf("[");
     for (int i = 0; i <= n; i++) {
+        if (i > 0) printf(", ");
         printf("%d", result[i]);
-        if (i < n) printf(" ");
     }
-    printf("\n");
+    printf("]\n");
+    
     return 0;
 }

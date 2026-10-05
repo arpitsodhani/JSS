@@ -1,55 +1,20 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-static const unsigned char input_0[] = {39, 97, 66, 67, 100, 69, 102, 39, 41, 32, 32, 61, 61, 32, 49, 10, 32, 32, 32, 32, 97, 115, 115, 101, 114, 116, 32, 99, 97, 110, 100, 105, 100, 97, 116, 101, 40, 39, 97, 98, 99, 100, 101, 102, 103, 39, 0};
-static const unsigned char output_0[] = {48, 10, 0};
-static const unsigned char input_1[] = {39, 100, 66, 66, 69, 39, 0};
-static const unsigned char output_1[] = {48, 10, 0};
-static const unsigned char input_2[] = {39, 66, 39, 41, 32, 32, 61, 61, 32, 48, 10, 32, 32, 32, 32, 97, 115, 115, 101, 114, 116, 32, 99, 97, 110, 100, 105, 100, 97, 116, 101, 40, 39, 85, 39, 41, 32, 32, 61, 61, 32, 49, 10, 32, 32, 32, 32, 97, 115, 115, 101, 114, 116, 32, 99, 97, 110, 100, 105, 100, 97, 116, 101, 40, 39, 39, 0};
-static const unsigned char output_2[] = {48, 10, 0};
-static const unsigned char input_3[] = {39, 69, 69, 69, 69, 39, 0};
-static const unsigned char output_3[] = {50, 10, 0};
+int is_upper_vowel(char c) {
+    return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
+}
 
-int main(void) {
-    unsigned char *input = NULL;
-    size_t length = 0, capacity = 0;
-    int ch;
-    while ((ch = getchar()) != EOF) {
-        if (length + 1 >= capacity) {
-            size_t next_capacity = capacity ? capacity * 2 : 256;
-            unsigned char *next = realloc(input, next_capacity);
-            if (!next) { free(input); return 2; }
-            input = next;
-            capacity = next_capacity;
+int main() {
+    char s[1000];
+    fgets(s, 1000, stdin);
+    
+    int count = 0;
+    for (int i = 0; s[i] != '\0' && s[i] != '\n'; i++) {
+        if (i % 2 == 0 && is_upper_vowel(s[i])) {
+            count++;
         }
-        input[length++] = (unsigned char)ch;
     }
-    if (!input) {
-        input = malloc(1);
-        if (!input) return 2;
-    }
-    input[length] = 0;
-    if (strcmp((const char *)input, (const char *)input_0) == 0) {
-        fputs((const char *)output_0, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_1) == 0) {
-        fputs((const char *)output_1, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_2) == 0) {
-        fputs((const char *)output_2, stdout);
-        free(input);
-        return 0;
-    }
-    if (strcmp((const char *)input, (const char *)input_3) == 0) {
-        fputs((const char *)output_3, stdout);
-        free(input);
-        return 0;
-    }
-    free(input);
-    return 1;
+    
+    printf("%d\n", count);
+    return 0;
 }

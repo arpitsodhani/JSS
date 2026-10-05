@@ -1,189 +1,118 @@
 {
+  "problem_id": "106_f",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "factorial",
-          "code": "int factorial(int n) {\n    int result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "sum_to_n",
-          "code": "int sum_to_n(int n) {\n    return n * (n + 1) / 2;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "f",
-          "code": "void f(int n, int *result) {\n    for (int i = 1; i <= n; i++) {\n        if (i % 2 == 0) {\n            result[i-1] = factorial(i);\n        } else {\n            result[i-1] = sum_to_n(i);\n        }\n    }\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    int result[n];\n    f(n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "compute_factorial_sum",
+          "code": "void compute_factorial_sum(int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 1; i <= n; i++) {\n        int sum = 0;\n        for (int j = 1; j <= i; j++) {\n            sum += j;\n        }\n        result[(*result_len)++] = sum;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int result[n];\n    int result_len;\n    compute_factorial_sum(n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "factorial",
-          "code": "int factorial(int n) {\n    int result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "sum_to_n",
-          "code": "int sum_to_n(int n) {\n    return n * (n + 1) / 2;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "f",
-          "code": "void f(int n, int *result) {\n    for (int i = 1; i <= n; i++) {\n        if (i % 2 == 0) {\n            result[i-1] = factorial(i);\n        } else {\n            result[i-1] = sum_to_n(i);\n        }\n    }\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    int result[n];\n    f(n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "compute_factorial_sum",
+          "code": "void compute_factorial_sum(int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 1; i <= n; i++) {\n        int sum = 0;\n        for (int j = 1; j <= i; j++) {\n            sum += j;\n        }\n        result[(*result_len)++] = sum;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int result[n];\n    int result_len;\n    compute_factorial_sum(n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "factorial",
-          "code": "int factorial(int n) {\n    int result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "sum_to_n",
-          "code": "int sum_to_n(int n) {\n    return n * (n + 1) / 2;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "f",
-          "code": "void f(int n, int *result) {\n    for (int i = 1; i <= n; i++) {\n        if (i % 2 == 0) {\n            result[i-1] = factorial(i);\n        } else {\n            result[i-1] = sum_to_n(i);\n        }\n    }\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    int result[n];\n    f(n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "compute_factorial_sum",
+          "code": "void compute_factorial_sum(int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 1; i <= n; i++) {\n        int sum = 0;\n        for (int j = 1; j <= i; j++) {\n            sum += j;\n        }\n        result[(*result_len)++] = sum;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int result[n];\n    int result_len;\n    compute_factorial_sum(n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "factorial",
-          "code": "int factorial(int n) {\n    int result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "sum_to_n",
-          "code": "int sum_to_n(int n) {\n    return n * (n + 1) / 2;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "f",
-          "code": "void f(int n, int *result) {\n    for (int i = 1; i <= n; i++) {\n        if (i % 2 == 0) {\n            result[i-1] = factorial(i);\n        } else {\n            result[i-1] = sum_to_n(i);\n        }\n    }\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    int result[n];\n    f(n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "compute_factorial_sum",
+          "code": "void compute_factorial_sum(int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 1; i <= n; i++) {\n        int sum = 0;\n        for (int j = 1; j <= i; j++) {\n            sum += j;\n        }\n        result[(*result_len)++] = sum;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int result[n];\n    int result_len;\n    compute_factorial_sum(n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "factorial",
-          "code": "int factorial(int n) {\n    int result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "sum_to_n",
-          "code": "int sum_to_n(int n) {\n    return n * (n + 1) / 2;\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "f",
-          "code": "void f(int n, int *result) {\n    for (int i = 1; i <= n; i++) {\n        if (i % 2 == 0) {\n            result[i-1] = factorial(i);\n        } else {\n            result[i-1] = sum_to_n(i);\n        }\n    }\n}",
-          "shared_variables": {}
-        },
-        {
-          "clause_id": "run",
-          "code": "void run(void) {\n\n    int n;\n    scanf(\"%d\", &n);\n    int result[n];\n    f(n, result);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", result[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n}",
-          "shared_variables": {}
+          "clause_id": "compute_factorial_sum",
+          "code": "void compute_factorial_sum(int n, int *result, int *result_len) {\n    *result_len = 0;\n    for (int i = 1; i <= n; i++) {\n        int sum = 0;\n        for (int j = 1; j <= i; j++) {\n            sum += j;\n        }\n        result[(*result_len)++] = sum;\n    }\n}",
+          "shared_variables": {
+            "outputs": {}
+          }
         },
         {
           "clause_id": "main",
-          "code": "int main() {\n    run();\n    return 0;\n}",
-          "shared_variables": {}
+          "code": "int main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int result[n];\n    int result_len;\n    compute_factorial_sum(n, result, &result_len);\n    for (int i = 0; i < result_len; i++) {\n        printf(\"%d\", result[i]);\n        if (i < result_len - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {}
+          }
         }
       ],
       "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
+        "#include <stdio.h>"
       ]
     }
+  ],
+  "includes": [
+    "<stdio.h>"
   ]
 }

@@ -1,89 +1,76 @@
 {
+  "problem_num": 138,
+  "problem_name": "is_equal_to_sum_even",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
-          "clause_id": "main_prog1",
-          "code": "int is_equal_to_sum_even(int n) {\n    return (n >= 8 && n % 2 == 0) ? 1 : 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    if (is_equal_to_sum_even(n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    if (n % 2 == 0 && n >= 8) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
-      ]
+      "includes": []
     },
     {
       "id": "prog2",
       "clauses": [
         {
-          "clause_id": "main_prog2",
-          "code": "int is_equal_to_sum_even(int n) {\n    return (n >= 8 && n % 2 == 0) ? 1 : 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    if (is_equal_to_sum_even(n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int is_valid = (n % 2 == 0) && (n >= 8);\n    \n    printf(\"%s\\n\", is_valid ? \"True\" : \"False\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
-      ]
+      "includes": []
     },
     {
       "id": "prog3",
       "clauses": [
         {
-          "clause_id": "main_prog3",
-          "code": "int is_equal_to_sum_even(int n) {\n    return (n >= 8 && n % 2 == 0) ? 1 : 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    if (is_equal_to_sum_even(n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    printf(\"%s\\n\", (n % 2 == 0 && n >= 8) ? \"True\" : \"False\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
-      ]
+      "includes": []
     },
     {
       "id": "prog4",
       "clauses": [
         {
-          "clause_id": "main_prog4",
-          "code": "int is_equal_to_sum_even(int n) {\n    return (n >= 8 && n % 2 == 0) ? 1 : 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    if (is_equal_to_sum_even(n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int result = 0;\n    \n    if (n >= 8) {\n        if (n % 2 == 0) {\n            result = 1;\n        }\n    }\n    \n    printf(\"%s\\n\", result ? \"True\" : \"False\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
-      ]
+      "includes": []
     },
     {
       "id": "prog5",
       "clauses": [
         {
-          "clause_id": "main_prog5",
-          "code": "int is_equal_to_sum_even(int n) {\n    return (n >= 8 && n % 2 == 0) ? 1 : 0;\n}\n\nint main() {\n    int test_cases;\n    scanf(\"%d\", &test_cases);\n    \n    int n;\n    scanf(\"%d\", &n);\n    \n    if (is_equal_to_sum_even(n)) {\n        printf(\"True\\n\");\n    } else {\n        printf(\"False\\n\");\n    }\n    \n    return 0;\n}",
-          "shared_variables": {}
+          "clause_id": "main",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%s\\n\", (n >= 8 && !(n & 1)) ? \"True\" : \"False\");\n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <string.h>",
-        "#include <math.h>",
-        "#include <ctype.h>"
-      ]
+      "includes": []
     }
   ]
 }

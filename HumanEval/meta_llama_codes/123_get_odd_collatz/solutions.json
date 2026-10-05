@@ -1,60 +1,126 @@
 {
-  "problem_id": "123_get_odd_collatz",
+  "problem_num": 123,
+  "problem_name": "get_odd_collatz",
   "programs": [
     {
       "id": "prog1",
       "clauses": [
         {
+          "clause_id": "get_odd_collatz_numbers",
+          "code": "void get_odd_collatz_numbers(int n, int* result, int* result_len) {\n    *result_len = 0;\n    result[(*result_len)++] = n;\n    \n    while (n != 1) {\n        if (n % 2 == 0) {\n            n = n / 2;\n        } else {\n            n = 3 * n + 1;\n        }\n        \n        if (n % 2 == 1) {\n            int found = 0;\n            for (int i = 0; i < *result_len; i++) {\n                if (result[i] == n) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                result[(*result_len)++] = n;\n            }\n        }\n    }\n    \n    \n    for (int i = 0; i < *result_len - 1; i++) {\n        for (int j = i + 1; j < *result_len; j++) {\n            if (result[i] > result[j]) {\n                int tmp = result[i];\n                result[i] = result[j];\n                result[j] = tmp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 52, 10, 0};\nstatic const unsigned char output_0[] = {49, 32, 53, 32, 55, 32, 49, 49, 32, 49, 51, 32, 49, 55, 10, 0};\nstatic const unsigned char input_1[] = {53, 10, 0};\nstatic const unsigned char output_1[] = {49, 32, 53, 10, 0};\nstatic const unsigned char input_2[] = {49, 50, 10, 0};\nstatic const unsigned char output_2[] = {49, 32, 51, 32, 53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int result[10000];\n    int result_len;\n    get_odd_collatz_numbers(n, result, &result_len);\n    \n    printf(\"[\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"%d\", result[i]);\n    }\n    printf(\"]\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog2",
       "clauses": [
         {
+          "clause_id": "get_odd_collatz_numbers",
+          "code": "void get_odd_collatz_numbers(int n, int* result, int* result_len) {\n    *result_len = 0;\n    result[(*result_len)++] = n;\n    \n    while (n != 1) {\n        if (n % 2 == 0) {\n            n = n / 2;\n        } else {\n            n = 3 * n + 1;\n        }\n        \n        if (n % 2 == 1) {\n            int found = 0;\n            for (int i = 0; i < *result_len; i++) {\n                if (result[i] == n) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                result[(*result_len)++] = n;\n            }\n        }\n    }\n    \n    \n    for (int i = 0; i < *result_len - 1; i++) {\n        for (int j = i + 1; j < *result_len; j++) {\n            if (result[i] > result[j]) {\n                int tmp = result[i];\n                result[i] = result[j];\n                result[j] = tmp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 52, 10, 0};\nstatic const unsigned char output_0[] = {49, 32, 53, 32, 55, 32, 49, 49, 32, 49, 51, 32, 49, 55, 10, 0};\nstatic const unsigned char input_1[] = {53, 10, 0};\nstatic const unsigned char output_1[] = {49, 32, 53, 10, 0};\nstatic const unsigned char input_2[] = {49, 50, 10, 0};\nstatic const unsigned char output_2[] = {49, 32, 51, 32, 53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int result[10000];\n    int result_len;\n    get_odd_collatz_numbers(n, result, &result_len);\n    \n    printf(\"[\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"%d\", result[i]);\n    }\n    printf(\"]\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog3",
       "clauses": [
         {
+          "clause_id": "get_odd_collatz_numbers",
+          "code": "void get_odd_collatz_numbers(int n, int* result, int* result_len) {\n    *result_len = 0;\n    result[(*result_len)++] = n;\n    \n    while (n != 1) {\n        if (n % 2 == 0) {\n            n = n / 2;\n        } else {\n            n = 3 * n + 1;\n        }\n        \n        if (n % 2 == 1) {\n            int found = 0;\n            for (int i = 0; i < *result_len; i++) {\n                if (result[i] == n) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                result[(*result_len)++] = n;\n            }\n        }\n    }\n    \n    \n    for (int i = 0; i < *result_len - 1; i++) {\n        for (int j = i + 1; j < *result_len; j++) {\n            if (result[i] > result[j]) {\n                int tmp = result[i];\n                result[i] = result[j];\n                result[j] = tmp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 52, 10, 0};\nstatic const unsigned char output_0[] = {49, 32, 53, 32, 55, 32, 49, 49, 32, 49, 51, 32, 49, 55, 10, 0};\nstatic const unsigned char input_1[] = {53, 10, 0};\nstatic const unsigned char output_1[] = {49, 32, 53, 10, 0};\nstatic const unsigned char input_2[] = {49, 50, 10, 0};\nstatic const unsigned char output_2[] = {49, 32, 51, 32, 53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int result[10000];\n    int result_len;\n    get_odd_collatz_numbers(n, result, &result_len);\n    \n    printf(\"[\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"%d\", result[i]);\n    }\n    printf(\"]\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog4",
       "clauses": [
         {
+          "clause_id": "get_odd_collatz_numbers",
+          "code": "void get_odd_collatz_numbers(int n, int* result, int* result_len) {\n    *result_len = 0;\n    result[(*result_len)++] = n;\n    \n    while (n != 1) {\n        if (n % 2 == 0) {\n            n = n / 2;\n        } else {\n            n = 3 * n + 1;\n        }\n        \n        if (n % 2 == 1) {\n            int found = 0;\n            for (int i = 0; i < *result_len; i++) {\n                if (result[i] == n) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                result[(*result_len)++] = n;\n            }\n        }\n    }\n    \n    \n    for (int i = 0; i < *result_len - 1; i++) {\n        for (int j = i + 1; j < *result_len; j++) {\n            if (result[i] > result[j]) {\n                int tmp = result[i];\n                result[i] = result[j];\n                result[j] = tmp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 52, 10, 0};\nstatic const unsigned char output_0[] = {49, 32, 53, 32, 55, 32, 49, 49, 32, 49, 51, 32, 49, 55, 10, 0};\nstatic const unsigned char input_1[] = {53, 10, 0};\nstatic const unsigned char output_1[] = {49, 32, 53, 10, 0};\nstatic const unsigned char input_2[] = {49, 50, 10, 0};\nstatic const unsigned char output_2[] = {49, 32, 51, 32, 53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int result[10000];\n    int result_len;\n    get_odd_collatz_numbers(n, result, &result_len);\n    \n    printf(\"[\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"%d\", result[i]);\n    }\n    printf(\"]\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     },
     {
       "id": "prog5",
       "clauses": [
         {
+          "clause_id": "get_odd_collatz_numbers",
+          "code": "void get_odd_collatz_numbers(int n, int* result, int* result_len) {\n    *result_len = 0;\n    result[(*result_len)++] = n;\n    \n    while (n != 1) {\n        if (n % 2 == 0) {\n            n = n / 2;\n        } else {\n            n = 3 * n + 1;\n        }\n        \n        if (n % 2 == 1) {\n            int found = 0;\n            for (int i = 0; i < *result_len; i++) {\n                if (result[i] == n) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                result[(*result_len)++] = n;\n            }\n        }\n    }\n    \n    \n    for (int i = 0; i < *result_len - 1; i++) {\n        for (int j = i + 1; j < *result_len; j++) {\n            if (result[i] > result[j]) {\n                int tmp = result[i];\n                result[i] = result[j];\n                result[j] = tmp;\n            }\n        }\n    }\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
+        },
+        {
           "clause_id": "main",
-          "signature": "int main(void)",
-          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nstatic const unsigned char input_0[] = {49, 52, 10, 0};\nstatic const unsigned char output_0[] = {49, 32, 53, 32, 55, 32, 49, 49, 32, 49, 51, 32, 49, 55, 10, 0};\nstatic const unsigned char input_1[] = {53, 10, 0};\nstatic const unsigned char output_1[] = {49, 32, 53, 10, 0};\nstatic const unsigned char input_2[] = {49, 50, 10, 0};\nstatic const unsigned char output_2[] = {49, 32, 51, 32, 53, 10, 0};\n\nint main(void) {\n    unsigned char *input = NULL;\n    size_t length = 0, capacity = 0;\n    int ch;\n    while ((ch = getchar()) != EOF) {\n        if (length + 1 >= capacity) {\n            size_t next_capacity = capacity ? capacity * 2 : 256;\n            unsigned char *next = realloc(input, next_capacity);\n            if (!next) { free(input); return 2; }\n            input = next;\n            capacity = next_capacity;\n        }\n        input[length++] = (unsigned char)ch;\n    }\n    if (!input) {\n        input = malloc(1);\n        if (!input) return 2;\n    }\n    input[length] = 0;\n    if (strcmp((const char *)input, (const char *)input_0) == 0) {\n        fputs((const char *)output_0, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_1) == 0) {\n        fputs((const char *)output_1, stdout);\n        free(input);\n        return 0;\n    }\n    if (strcmp((const char *)input, (const char *)input_2) == 0) {\n        fputs((const char *)output_2, stdout);\n        free(input);\n        return 0;\n    }\n    free(input);\n    return 1;\n}\n"
+          "code": "int main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int result[10000];\n    int result_len;\n    get_odd_collatz_numbers(n, result, &result_len);\n    \n    printf(\"[\");\n    for (int i = 0; i < result_len; i++) {\n        if (i > 0) printf(\", \");\n        printf(\"%d\", result[i]);\n    }\n    printf(\"]\\n\");\n    \n    return 0;\n}",
+          "shared_variables": {
+            "inputs": {},
+            "outputs": {}
+          }
         }
       ],
-      "includes": []
+      "includes": [
+        "#include <stdio.h>"
+      ]
     }
   ]
 }
