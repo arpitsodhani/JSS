@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int count_ones(int n) {
+    if (n < 0) n = -n;
     int count = 0;
     while (n > 0) {
         count += n & 1;

@@ -5,9 +5,9 @@ char encode_char(char c) {
         switch(c) {
             case 'a': return 'C';
             case 'e': return 'G';
-            case 'i': return 'M';
-            case 'o': return 'S';
-            case 'u': return 'Y';
+            case 'i': return 'K';
+            case 'o': return 'Q';
+            case 'u': return 'W';
             default:
                 if (c >= 'a' && c <= 'z') {
                     return c - 32;  
@@ -18,9 +18,9 @@ char encode_char(char c) {
         switch(c) {
             case 'A': return 'c';
             case 'E': return 'g';
-            case 'I': return 'm';
-            case 'O': return 's';
-            case 'U': return 'y';
+            case 'I': return 'k';
+            case 'O': return 'q';
+            case 'U': return 'w';
             default:
                 return c + 32;  
         }
@@ -36,6 +36,6 @@ int main() {
         str[i] = encode_char(str[i]);
     }
     
-    printf("%s\n", str);
+    printf("%s", str);
     return 0;
 }

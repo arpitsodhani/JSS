@@ -12,7 +12,7 @@ void count_odd_digits_in_strings(char arr[][100], int n, char result[][100]) {
                 }
             }
         }
-        sprintf(result[i], "the number of odd elements %dn the str%dng %d of the %dnput.", count, i, count, i);
+        sprintf(result[i], "the number of odd elements %dn the str%dng %d of the %dnput.", count, count, count, count);
     }
 }
 

@@ -1,22 +1,21 @@
 #include <stdio.h>
 
 void get_unique_sorted_digits(int *arr, int n, int *result, int *result_len) {
-    int digits[10] = {0};
+    *result_len = 0;
     for (int i = 0; i < n; i++) {
         int num = arr[i];
         if (num < 0) num = -num;
+        int all_odd = 1;
         while (num > 0) {
             int digit = num % 10;
-            if (digit % 2 == 1) {
-                digits[digit] = 1;
-            }
+            if (digit % 2 == 0) all_odd = 0;
             num /= 10;
         }
+        if (all_odd) result[(*result_len)++] = arr[i];
     }
-    *result_len = 0;
-    for (int i = 9; i >= 0; i--) {
-        if (digits[i]) {
-            result[(*result_len)++] = i;
+    for (int i = 0; i < *result_len; ++i) {
+        for (int j = i + 1; j < *result_len; ++j) {
+            if (result[j] < result[i]) { int t = result[i]; result[i] = result[j]; result[j] = t; }
         }
     }
 }

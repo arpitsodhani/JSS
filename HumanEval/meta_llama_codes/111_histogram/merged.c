@@ -29,10 +29,9 @@ int main() {
     int result_len;
     find_max_chars(test, result, &result_len);
     
-    printf("{");
     for (int i = 0; i < result_len; i++) {
         if (i > 0) printf(", ");
-        printf("'%c': ", result[i]);
+        printf("%c ", result[i]);
         
         int count = 0;
         for (int j = 0; test[j] != '\0' && test[j] != '\n'; j++) {
@@ -40,7 +39,7 @@ int main() {
         }
         printf("%d", count);
     }
-    printf("}\n");
+    printf("\n");
     
     return 0;
 }

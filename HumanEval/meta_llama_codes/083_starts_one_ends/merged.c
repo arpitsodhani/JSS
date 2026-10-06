@@ -1,4 +1,3 @@
-#include <math.h>
 #include <stdio.h>
 
 int main(void) {
@@ -8,7 +7,9 @@ int main(void) {
         printf("1\n");
         return 0;
     }
-    int count = 18 * (int)pow(10, digits - 2);
+    int scale = 1;
+    for (int i = 0; i < digits - 2; ++i) scale *= 10;
+    int count = 18 * scale;
     printf("%d\n", count);
     return 0;
 }

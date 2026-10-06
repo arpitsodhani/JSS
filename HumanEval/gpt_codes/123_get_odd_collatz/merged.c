@@ -2,7 +2,7 @@
 
 void get_odd_collatz_numbers(int n, int* result, int* result_len) {
     *result_len = 0;
-    result[(*result_len)++] = n;
+    if (n % 2 == 1) result[(*result_len)++] = n;
     
     while (n != 1) {
         if (n % 2 == 0) {
@@ -24,8 +24,8 @@ void get_odd_collatz_numbers(int n, int* result, int* result_len) {
             }
         }
     }
-    
-    // Sort
+
+
     for (int i = 0; i < *result_len - 1; i++) {
         for (int j = i + 1; j < *result_len; j++) {
             if (result[i] > result[j]) {
@@ -45,12 +45,11 @@ int main() {
     int result_len;
     get_odd_collatz_numbers(n, result, &result_len);
     
-    printf("[");
     for (int i = 0; i < result_len; i++) {
-        if (i > 0) printf(", ");
+        if (i > 0) printf(" ");
         printf("%d", result[i]);
     }
-    printf("]\n");
+    printf("\n");
     
     return 0;
 }

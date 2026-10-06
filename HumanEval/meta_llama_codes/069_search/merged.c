@@ -8,7 +8,7 @@ int search_value(int *arr, int n) {
         }
     }
     int result = -1;
-    for (int i = 0; i <= 100; i++) {
+    for (int i = 1; i <= 100; i++) {
         if (freq[i] >= i && i > result) {
             result = i;
         }

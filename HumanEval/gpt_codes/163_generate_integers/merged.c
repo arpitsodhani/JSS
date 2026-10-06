@@ -13,19 +13,18 @@ void generate_even_digits(int a, int b, int* result, int* result_len) {
 }
 
 int main() {
-    int a, b;
-    scanf("%d %d", &a, &b);
+    int argument_count, a, b;
+    scanf("%d %d %d", &argument_count, &a, &b);
     
     int result[100];
     int result_len;
     generate_even_digits(a, b, result, &result_len);
     
-    printf("[");
     for (int i = 0; i < result_len; i++) {
-        if (i > 0) printf(", ");
+        if (i > 0) printf(" ");
         printf("%d", result[i]);
     }
-    printf("]\n");
+    printf("\n");
     
     return 0;
 }

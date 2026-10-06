@@ -1,22 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
-int find_palindrome_suffix_len(char *s, int len) {
-    for (int i = 0; i < len; i++) {
-        int l = i, r = len - 1;
-        int is_palindrome = 1;
-        while (l < r) {
-            if (s[l] != s[len - 1 - (r - l)]) {
-                is_palindrome = 0;
-                break;
-            }
-            l++;
+int prefix_to_mirror(const char *s, int len) {
+    for (int start = 0; start < len; ++start) {
+        int palindrome = 1;
+        for (int left = start, right = len - 1; left < right; ++left, --right) {
+            if (s[left] != s[right]) { palindrome = 0; break; }
         }
-        if (is_palindrome || l >= r) {
-            return len - i;
-        }
+        if (palindrome) return start;
     }
-    return 0;
+    return len;
 }
 
 int main(void) {
@@ -24,10 +17,10 @@ int main(void) {
     fgets(s, sizeof(s), stdin);
     s[strcspn(s, "\n")] = 0;
     int len = strlen(s);
-    int suffix_len = find_palindrome_suffix_len(s, len);
+    int prefix_len = prefix_to_mirror(s, len);
     printf("%s", s);
-    for (int i = suffix_len; i < len; i++) {
-        printf("%c", s[len - 1 - i]);
+    for (int i = prefix_len - 1; i >= 0; --i) {
+        printf("%c", s[i]);
     }
     printf("\n");
     return 0;

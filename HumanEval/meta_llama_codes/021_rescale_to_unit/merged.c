@@ -1,8 +1,12 @@
-#include <math.h>
 #include <stdio.h>
 
+double abs_double(double value) {
+    return value < 0 ? -value : value;
+}
+
 void print_number(double value) {
-    if (fabs(value - round(value)) < 1e-9) printf("%.1f", value);
+    long long integral = (long long)value;
+    if (abs_double(value - (double)integral) < 1e-9) printf("%.1f", value);
     else printf("%g", value);
 }
 

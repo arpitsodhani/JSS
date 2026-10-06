@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+double abs_double(double value) {
+    return value < 0 ? -value : value;
+}
+
+void print_number(double value) {
+    long long integral = (long long)value;
+    if (abs_double(value - (double)integral) < 1e-9) printf("%.1f", value);
+    else printf("%g", value);
+}
+
 void rescale_to_unit(double *arr, int n, double *result) {
     double min_val = arr[0];
     double max_val = arr[0];
@@ -21,7 +31,7 @@ int main(void) {
     double result[n];
     rescale_to_unit(arr, n, result);
     for (int i = 0; i < n; i++) {
-        printf("%g", result[i]);
+        print_number(result[i]);
         if (i < n - 1) printf(" ");
     }
     printf("\n");

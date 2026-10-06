@@ -31,6 +31,6 @@ int main(void) {
     char result[1000];
     int is_palindrome;
     process_reverse_delete(s, c, result, &is_palindrome);
-    printf("(%s %s)\n", result, is_palindrome ? "True" : "False");
+    printf("%s\n%s\n", result, is_palindrome ? "True" : "False");
     return 0;
 }

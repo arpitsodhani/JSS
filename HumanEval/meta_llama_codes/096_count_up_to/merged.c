@@ -12,16 +12,12 @@ int main() {
     int n;
     scanf("%d", &n);
     
-    printf("[");
-    int first = 1;
     for (int i = 2; i < n; i++) {
         if (is_prime(i)) {
-            if (!first) printf(", ");
             printf("%d", i);
-            first = 0;
         }
     }
-    printf("]\n");
+    printf("\n");
     
     return 0;
 }

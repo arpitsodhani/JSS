@@ -1,4 +1,6 @@
+#include <ctype.h>
 #include <stdio.h>
+#include <string.h>
 
 int check_case_consistency(char keys[][100], int n) {
     if (n == 0) return 0;
@@ -19,16 +21,31 @@ int check_case_consistency(char keys[][100], int n) {
 }
 
 int main() {
-    int n;
-    scanf("%d", &n);
-    getchar();
-    
+    char input[10000];
+    size_t used = fread(input, 1, sizeof(input) - 1, stdin);
+    input[used] = '\0';
     char keys[100][100];
-    for (int i = 0; i < n; i++) {
-        scanf("%s", keys[i]);
+    int n = 0, invalid = 0;
+    for (size_t i = 0; i < used;) {
+        if (input[i] != '"') { ++i; continue; }
+        size_t start = ++i, end = start;
+        while (end < used && input[end] != '"') ++end;
+        if (end == used) { invalid = 1; break; }
+        size_t next = end + 1;
+        while (next < used && isspace((unsigned char)input[next])) ++next;
+        if (next >= used || input[next] != ':') { i = end + 1; continue; }
+        size_t length = end - start;
+        if (length == 0 || length >= sizeof(keys[0])) { invalid = 1; break; }
+        int digits_only = 1;
+        for (size_t j = 0; j < length; ++j) {
+            keys[n][j] = input[start + j];
+            if (!isdigit((unsigned char)keys[n][j])) digits_only = 0;
+        }
+        keys[n++][length] = '\0';
+        if (digits_only) invalid = 1;
+        i = end + 1;
     }
-    
-    if (check_case_consistency(keys, n)) {
+    if (!invalid && check_case_consistency(keys, n)) {
         printf("True\n");
     } else {
         printf("False\n");

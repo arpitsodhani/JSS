@@ -13,7 +13,7 @@ void reverse_and_swap_case(char* s, char* result) {
     }
     
     for (int i = 0; i < len; i++) {
-        char c = s[len - 1 - i];
+        char c = has_letter ? s[i] : s[len - 1 - i];
         if (has_letter) {
             if (c >= 'a' && c <= 'z') {
                 result[i] = c - 32;
@@ -31,11 +31,10 @@ void reverse_and_swap_case(char* s, char* result) {
 
 int main() {
     char s[1000];
-    fgets(s, 1000, stdin);
-    
-    // Remove newline
-    int len = strlen(s);
-    if (s[len - 1] == '\n') s[len - 1] = '\0';
+    char count_line[32];
+    if (!fgets(count_line, sizeof(count_line), stdin) || !fgets(s, sizeof(s), stdin)) return 1;
+    int len = (int)strlen(s);
+    if (len && s[len - 1] == '\n') s[len - 1] = '\0';
     
     char result[1000];
     reverse_and_swap_case(s, result);

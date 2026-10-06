@@ -1,16 +1,14 @@
-#include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 int calculate_total_buckets(int **grid, int rows, int cols, int capacity) {
     int total = 0;
     for (int i = 0; i < rows; i++) {
-        int max_in_row = 0;
+        int water_in_row = 0;
         for (int j = 0; j < cols; j++) {
-            if (grid[i][j] > max_in_row) {
-                max_in_row = grid[i][j];
-            }
+            water_in_row += grid[i][j];
         }
-        total += (max_in_row + capacity - 1) / capacity;
+        total += (water_in_row + capacity - 1) / capacity;
     }
     return total;
 }

@@ -3,7 +3,7 @@
 void intersperse_print(int *arr, int n, int delim) {
     for (int i = 0; i < n; i++) {
         printf("%d", arr[i]);
-        if (i < n - 1) printf(" %d", delim);
+        if (i < n - 1) printf(" %d ", delim);
     }
     printf("\n");
 }

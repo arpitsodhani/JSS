@@ -20,9 +20,8 @@ int count_consonants(char* word) {
 int main() {
     char s[10000];
     int n;
-    scanf("%d", &n);
-    getchar();
     fgets(s, 10000, stdin);
+    scanf("%d", &n);
     
     char words[1000][100];
     int word_count = 0;
@@ -42,16 +41,15 @@ int main() {
         word_count++;
     }
     
-    printf("[");
     int first = 1;
     for (int i = 0; i < word_count; i++) {
         if (count_consonants(words[i]) == n) {
-            if (!first) printf(", ");
-            printf("\"%s\"", words[i]);
+            if (!first) printf(" ");
+            printf("%s", words[i]);
             first = 0;
         }
     }
-    printf("]\n");
+    printf("\n");
     
     return 0;
 }

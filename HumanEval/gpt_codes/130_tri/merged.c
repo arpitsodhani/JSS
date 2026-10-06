@@ -8,7 +8,7 @@ void compute_tri(int n, int* result) {
         if (i % 2 == 0) {
             result[i] = 1 + i / 2;
         } else {
-            result[i] = result[i - 1] + result[i - 2] + result[i] + 1;
+            result[i] = result[i - 1] + result[i - 2] + 1 + (i + 1) / 2;
         }
     }
 }
@@ -20,12 +20,11 @@ int main() {
     int result[1000];
     compute_tri(n, result);
     
-    printf("[");
     for (int i = 0; i <= n; i++) {
-        if (i > 0) printf(", ");
+        if (i > 0) printf(" ");
         printf("%d", result[i]);
     }
-    printf("]\n");
+    printf("\n");
     
     return 0;
 }

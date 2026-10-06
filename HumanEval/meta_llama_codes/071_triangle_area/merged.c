@@ -1,10 +1,16 @@
-#include <math.h>
 #include <stdio.h>
+
+double square_root(double value) {
+    if (value <= 0) return 0;
+    double estimate = value >= 1 ? value : 1;
+    for (int i = 0; i < 40; ++i) estimate = (estimate + value / estimate) / 2.0;
+    return estimate;
+}
 
 double triangle_area(double a, double b, double c) {
     if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) return -1;
     double s = (a + b + c) / 2.0;
-    return sqrt(s * (s - a) * (s - b) * (s - c));
+    return square_root(s * (s - a) * (s - b) * (s - c));
 }
 
 int main(void) {

@@ -7,10 +7,16 @@ int is_upper_vowel(char c) {
 int main() {
     char s[1000];
     fgets(s, 1000, stdin);
+    int start = 0;
+    int end = strcspn(s, "\n");
+    if (end >= 2 && s[0] == '\'' && s[end - 1] == '\'') {
+        start = 1;
+        --end;
+    }
     
     int count = 0;
-    for (int i = 0; s[i] != '\0' && s[i] != '\n'; i++) {
-        if (i % 2 == 0 && is_upper_vowel(s[i])) {
+    for (int i = start; i < end; i++) {
+        if ((i - start) % 2 == 0 && is_upper_vowel(s[i])) {
             count++;
         }
     }

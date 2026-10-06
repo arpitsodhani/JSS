@@ -9,9 +9,9 @@ int can_match_parens(char *s1, char *s2) {
     for (int i = 0; combined[i]; i++) {
         if (combined[i] == '(') balance++;
         else if (combined[i] == ')') balance--;
-        if (balance < 0) return 0;
+        if (balance < 0) break;
     }
-    if (balance != 0) return 0;
+    if (balance == 0) return 1;
     strcpy(combined, s2);
     strcat(combined, s1);
     balance = 0;

@@ -4,8 +4,8 @@ void remove_duplicates(int *arr, int n, int *result, int *result_len) {
     *result_len = 0;
     for (int i = 0; i < n; i++) {
         int is_dup = 0;
-        for (int j = i + 1; j < n; j++) {
-            if (arr[i] == arr[j]) {
+        for (int j = 0; j < n; j++) {
+            if (j != i && arr[i] == arr[j]) {
                 is_dup = 1;
                 break;
             }

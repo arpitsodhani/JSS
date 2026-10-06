@@ -11,8 +11,8 @@ void find_coordinates(int** grid, int rows, int cols, int x, int* result, int* r
             }
         }
     }
-    
-    // Sort by row desc, then col desc
+
+
     for (int i = 0; i < *result_size; i += 2) {
         for (int j = i + 2; j < *result_size; j += 2) {
             if (result[i] < result[j] || (result[i] == result[j] && result[i+1] < result[j+1])) {
@@ -29,7 +29,7 @@ void find_coordinates(int** grid, int rows, int cols, int x, int* result, int* r
 
 int main() {
     int rows, cols, x;
-    scanf("%d %d %d", &rows, &cols, &x);
+    scanf("%d %d", &rows, &cols);
     
     int** grid = malloc(rows * sizeof(int*));
     for (int i = 0; i < rows; i++) {
@@ -38,17 +38,17 @@ int main() {
             scanf("%d", &grid[i][j]);
         }
     }
+    scanf("%d", &x);
     
     int result[1000];
     int result_size;
     find_coordinates(grid, rows, cols, x, result, &result_size);
     
-    printf("[");
     for (int i = 0; i < result_size; i += 2) {
-        if (i > 0) printf(", ");
-        printf("[%d, %d]", result[i], result[i+1]);
+        if (i > 0) printf("\n");
+        printf("%d %d", result[i], result[i+1]);
     }
-    printf("]\n");
+    if (result_size) printf("\n");
     
     for (int i = 0; i < rows; i++) free(grid[i]);
     free(grid);

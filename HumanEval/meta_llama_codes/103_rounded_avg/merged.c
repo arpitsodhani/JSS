@@ -5,11 +5,9 @@ void compute_rounded_avg(int n, int m, char *result) {
         strcpy(result, "-1");
         return;
     }
-    int sum = 0;
-    for (int i = n; i <= m; i++) {
-        sum += i;
-    }
-    int avg = (sum + (m - n + 1) / 2) / (m - n + 1);
+    long long total = (long long)n + m;
+    int avg = (int)(total / 2);
+    if (total % 2 != 0 && (avg & 1)) ++avg;
     result[0] = '\0';
     int temp = avg;
     int len = 0;

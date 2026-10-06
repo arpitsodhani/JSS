@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int count_ones(int n) {
+    if (n < 0) n = -n;
     int count = 0;
     while (n > 0) {
         count += n & 1;
@@ -17,8 +18,8 @@ int main() {
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
-    
-    // Bubble sort by ones count, then by value
+
+
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
             int ones_j = count_ones(arr[j]);

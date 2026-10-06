@@ -1,14 +1,15 @@
-#include <math.h>
 #include <stdio.h>
+#include <string.h>
 
 int main(void) {
-    double a, b, c;
-    scanf("%lf %lf %lf", &a, &b, &c);
-    int ai = (int)a, bi = (int)b, ci = (int)c;
-    if (a != ai || b != bi || c != ci) {
+    char sa[64], sb[64], sc[64];
+    if (scanf("%63s %63s %63s", sa, sb, sc) != 3) return 1;
+    if (strchr(sa, '.') || strchr(sb, '.') || strchr(sc, '.')) {
         printf("False\n");
         return 0;
     }
+    long long ai, bi, ci;
+    if (sscanf(sa, "%lld", &ai) != 1 || sscanf(sb, "%lld", &bi) != 1 || sscanf(sc, "%lld", &ci) != 1) return 1;
     if (ai + bi == ci || ai + ci == bi || bi + ci == ai) {
         printf("True\n");
     } else {

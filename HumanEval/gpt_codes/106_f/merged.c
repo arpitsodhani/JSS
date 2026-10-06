@@ -3,11 +3,13 @@
 void compute_factorial_sum(int n, int *result, int *result_len) {
     *result_len = 0;
     for (int i = 1; i <= n; i++) {
-        int sum = 0;
-        for (int j = 1; j <= i; j++) {
-            sum += j;
+        if (i % 2 == 0) {
+            int factorial = 1;
+            for (int j = 1; j <= i; ++j) factorial *= j;
+            result[(*result_len)++] = factorial;
+        } else {
+            result[(*result_len)++] = i * (i + 1) / 2;
         }
-        result[(*result_len)++] = sum;
     }
 }
 

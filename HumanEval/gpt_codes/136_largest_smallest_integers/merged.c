@@ -35,6 +35,7 @@ int main() {
     int largest_neg, smallest_pos;
     find_largest_smallest(arr, n, &largest_neg, &smallest_pos);
     
-    printf("(%d, %d)\n", largest_neg, smallest_pos);
+    if (largest_neg) printf("%d\n", largest_neg); else printf("None\n");
+    if (smallest_pos) printf("%d\n", smallest_pos); else printf("None\n");
     return 0;
 }

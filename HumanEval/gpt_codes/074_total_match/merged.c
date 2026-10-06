@@ -18,15 +18,12 @@ int main(void) {
     getchar();
     char strs1[n1][1000];
     for (int i = 0; i < n1; i++) {
-        fgets(strs1[i], sizeof(strs1[i]), stdin);
-        strs1[i][strcspn(strs1[i], "\n")] = 0;
+        scanf("%999s", strs1[i]);
     }
     scanf("%d", &n2);
-    getchar();
     char strs2[n2][1000];
     for (int i = 0; i < n2; i++) {
-        fgets(strs2[i], sizeof(strs2[i]), stdin);
-        strs2[i][strcspn(strs2[i], "\n")] = 0;
+        scanf("%999s", strs2[i]);
     }
     int choice = total_length_compare(strs1, n1, strs2, n2);
     if (choice == 1) {

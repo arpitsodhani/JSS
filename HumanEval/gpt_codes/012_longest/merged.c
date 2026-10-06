@@ -27,7 +27,7 @@ int main(void) {
     if (idx >= 0) {
         printf("%s\n", strs[idx]);
     } else {
-        printf("\n");
+        printf("None\n");
     }
     return 0;
 }

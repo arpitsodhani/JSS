@@ -1,30 +1,12 @@
 #include <stdio.h>
 
-void add_arrays(int *arr1, int n1, int *arr2, int n2, int *result, int *result_len) {
-    *result_len = 0;
-    for (int i = 0; i < n1; i++) {
-        result[(*result_len)++] = arr1[i];
-    }
-    for (int i = 0; i < n2; i++) {
-        result[(*result_len)++] = arr2[i];
-    }
-}
-
 int main(void) {
-    int n1, n2;
-    scanf("%d", &n1);
-    int arr1[n1];
-    for (int i = 0; i < n1; i++) scanf("%d", &arr1[i]);
-    scanf("%d", &n2);
-    int arr2[n2];
-    for (int i = 0; i < n2; i++) scanf("%d", &arr2[i]);
-    int result[n1 + n2];
-    int result_len;
-    add_arrays(arr1, n1, arr2, n2, result, &result_len);
-    for (int i = 0; i < result_len; i++) {
-        printf("%d", result[i]);
-        if (i < result_len - 1) printf(" ");
+    int n, value, sum = 0;
+    if (scanf("%d", &n) != 1) return 1;
+    for (int i = 0; i < n; ++i) {
+        if (scanf("%d", &value) != 1) return 1;
+        if (i % 2 == 1 && value % 2 == 0) sum += value;
     }
-    printf("\n");
+    printf("%d\n", sum);
     return 0;
 }
